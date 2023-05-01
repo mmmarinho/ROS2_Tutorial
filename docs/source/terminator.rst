@@ -11,7 +11,7 @@ After installing :code:`terminator` as instructed in the last section, the defau
 Shortcuts
 ---------
 
-To prevent repetition, let's go the most relevant `terminator shortcuts <https://terminator-gtk3.readthedocs.io/en/latest/gettingstarted.html#layout-shortcuts>`_.
+To prevent repetition, let's go through the most relevant `terminator shortcuts <https://terminator-gtk3.readthedocs.io/en/latest/gettingstarted.html#layout-shortcuts>`_ only once, here, now.
 
 .. csv-table:: Terminator Shortcuts
    :file: terminator_shortcuts.csv
