@@ -16,6 +16,7 @@ Contents
    terminator
    workspace_setup
    create_python_package
+   create_python_node
    faq
 
 
