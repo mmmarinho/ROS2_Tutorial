@@ -66,7 +66,7 @@ ROS2 packages are implemented in such way that they live peacefully in the :code
 
 The :code:`~/.bashrc` file can be used for that exact purpose as, in Ubuntu, that is the file that configures each terminal window for a given user.
 
-**TL;DR** just run this
+**TL;DR** just run this **ONCE AND ONLY ONCE**
 
 .. code-block:: bash
 
