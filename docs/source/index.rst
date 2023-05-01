@@ -15,6 +15,7 @@ Contents
    installation
    terminator
    workspace_setup
+   create_python_package
    faq
 
 
