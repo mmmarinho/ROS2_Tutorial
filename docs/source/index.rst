@@ -14,6 +14,7 @@ Contents
 
    installation
    terminator
+   faq
 
 
 .. _ROS2-Humble: https://docs.ros.org/en/humble/
