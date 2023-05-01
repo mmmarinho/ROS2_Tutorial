@@ -14,6 +14,7 @@ Contents
 
    installation
    terminator
+   workspace_setup
    faq
 
 
