@@ -1,17 +1,11 @@
-Welcome to Lumache's documentation!
+Welcome to ROS2 Tutorials (by Murilo M. Marinho)
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+ROS2-Humble_ tutorials by `yours trully <murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and programming the programming practices of successfull state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+.. warning::
 
-.. note::
-
-   This project is under active development.
+   This project is under active development and currently a rough draft.
 
 Contents
 --------
@@ -21,3 +15,5 @@ Contents
    installation
    usage
    api
+
+_ROS2-Humble: https://docs.ros.org/en/humble/
