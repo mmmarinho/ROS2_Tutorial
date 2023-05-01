@@ -48,7 +48,42 @@ which will result in going through the package we created in the prior example a
     Summary: 2 packages finished [1.36s]
       2 packages had stderr output: python_package_with_a_node the_simplest_python_package
       
-Running a Node
+Always source after you build
+-----------------------------
+
+When creating new packages or modifying existing ones, many changes will not be visible by the system unless our workspace is re-sourced.
+
+For example, if we try the following in the terminal window we used to first build this example package
+
+.. code:: bash
+
+   ros2 run python_package_with_a_node sample_python_node
+
+it will not work and will output
+
+.. code:: bash
+
+   Package 'python_package_with_a_node' not found
+   
+As the workspace grows bigger and the packages more complex, figuring out such errors becomes a considerable hassle. One suggestion is to always source after a build, so that sourcing errors can always be ruled out.
+
+.. code:: bash
+
+   cd ~/ros2_tutorial_workspace
+   colcon build
+   source install/setup.bash
+   
+Running a node
 --------------
 
+With a properly sourced terminal, the example node can be executed with
 
+.. code:: bash
+
+   ros2 run python_package_with_a_node sample_python_node
+
+which will now correctly output
+
+.. code:: bash
+
+   Hi from python_package_with_a_node.
