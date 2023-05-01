@@ -3,7 +3,7 @@ Terminator is life
 
 .. note::
 
-   You can refer to the `project's documentation <https://terminator-gtk3.readthedocs.io/en/latest/>` for more info.
+   You can refer to the `project's documentation <https://terminator-gtk3.readthedocs.io/en/latest/>`_ for more info.
    
    
 After installing :code:`terminator` as instructed in the last section, the default terminal window will be automatically updated to use it.
