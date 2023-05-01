@@ -1,5 +1,5 @@
-Creating a Python package
-=========================
+Creating a Python package (using :code:`ament_python`)
+======================================================
 
 Create packages
 ---------------
