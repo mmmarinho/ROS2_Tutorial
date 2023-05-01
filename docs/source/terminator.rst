@@ -20,9 +20,9 @@ To prevent repetition, let's go the most relevant `terminator shortcuts <https:/
 
 For example, pressing the following combination:
 
-1. `CTRL`+`ALT`+`T`
-2. `CTRL`+`ALT`+`E`
-3. `CTRL`+`ALT`+`O`
+1. ``CTRL``+``ALT``+``T``
+2. ``CTRL``+``ALT``+``E``
+3. ``CTRL``+``ALT``+``O``
 
 Will result in three terminal windows that look like so.
 
