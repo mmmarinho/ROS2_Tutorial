@@ -1,0 +1,142 @@
+Creating a Python package
+=========================
+
+Create packages
+---------------
+
+:code:`ROS2` has a tool to help creating package templates. We can get all available options by running
+
+.. code:: bash
+   
+   ros2 pkg create -h
+
+which outputs a list of handy options to populate the package template with useful files.
+
+.. code:: bash
+
+    usage: ros2 pkg create [-h] [--package-format {2,3}] [--description DESCRIPTION]
+                           [--license LICENSE]
+                           [--destination-directory DESTINATION_DIRECTORY]
+                           [--build-type {cmake,ament_cmake,ament_python}]
+                           [--dependencies DEPENDENCIES [DEPENDENCIES ...]]
+                           [--maintainer-email MAINTAINER_EMAIL]
+                           [--maintainer-name MAINTAINER_NAME] [--node-name NODE_NAME]
+                           [--library-name LIBRARY_NAME]
+                           package_name
+
+    Create a new ROS 2 package
+
+    positional arguments:
+      package_name          The package name
+
+    options:
+      -h, --help            show this help message and exit
+      --package-format {2,3}, --package_format {2,3}
+                            The package.xml format.
+      --description DESCRIPTION
+                            The description given in the package.xml
+      --license LICENSE     The license attached to this package; this can be an arbitrary
+                            string, but a LICENSE file will only be generated if it is one
+                            of the supported licenses (pass '?' to get a list)
+      --destination-directory DESTINATION_DIRECTORY
+                            Directory where to create the package directory
+      --build-type {cmake,ament_cmake,ament_python}
+                            The build type to process the package with
+      --dependencies DEPENDENCIES [DEPENDENCIES ...]
+                            list of dependencies
+      --maintainer-email MAINTAINER_EMAIL
+                            email address of the maintainer of this package
+      --maintainer-name MAINTAINER_NAME
+                            name of the maintainer of this package
+      --node-name NODE_NAME
+                            name of the empty executable
+      --library-name LIBRARY_NAME
+                            name of the empty library
+
+
+Using :code:`ament_python`
+--------------------------
+
+Packages in :code:`ROS2` can either rely on :code:`CMake` or directly use setup tools available in :code:`Python`. 
+For pure :code:`Python` projects, it might be easier to use :code:`ament_python`, so we start this tutorial with it.
+
+.. note::
+   This is **NOT** the only way to build :code:`Python` packages in :code:`ROS2`.
+
+Let us build the simplest of :code:`Python` packages and start from there.
+
+.. code:: bash
+
+   cd ~/ros2_tutorial_workspace/src
+   ros2 pkg create --build-type ament_python the_simplest_python_package
+   
+which will result in the output below, meaning the package has been generated successfully.
+
+..  code:: bash
+    
+    going to create a new package
+    package name: the_simplest_python_package
+    destination directory: /home/murilo/ros2_tutorial_workspace/src
+    package format: 3
+    version: 0.0.0
+    description: TODO: Package description
+    maintainer: ['murilo <murilomarinho@ieee.org>']
+    licenses: ['TODO: License declaration']
+    build type: ament_python
+    dependencies: []
+    creating folder ./the_simplest_python_package
+    creating ./the_simplest_python_package/package.xml
+    creating source folder
+    creating folder ./the_simplest_python_package/the_simplest_python_package
+    creating ./the_simplest_python_package/setup.py
+    creating ./the_simplest_python_package/setup.cfg
+    creating folder ./the_simplest_python_package/resource
+    creating ./the_simplest_python_package/resource/the_simplest_python_package
+    creating ./the_simplest_python_package/the_simplest_python_package/__init__.py
+    creating folder ./the_simplest_python_package/test
+    creating ./the_simplest_python_package/test/test_copyright.py
+    creating ./the_simplest_python_package/test/test_flake8.py
+    creating ./the_simplest_python_package/test/test_pep257.py
+
+    [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+    It is recommended to use one of the ament license identitifers:
+    Apache-2.0
+    BSL-1.0
+    BSD-2.0
+    BSD-2-Clause
+    BSD-3-Clause
+    GPL-3.0-only
+    LGPL-3.0-only
+    MIT
+    MIT-0
+
+
+We can build the workspace that now has this empty package using :code:`colcon`
+
+.. code:: bash
+
+   cd ~/ros2_tutorial_workspace
+   colcon build
+  
+which will now output
+
+.. code:: bash
+
+    Starting >>> the_simplest_python_package
+    --- stderr: the_simplest_python_package                   
+    /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+      warnings.warn(
+    ---
+    Finished <<< the_simplest_python_package [1.72s]
+
+    Summary: 1 package finished [1.89s]
+      1 package had stderr output: the_simplest_python_package
+
+meaning that :code:`colcon` succesfully built the example package. Sadly, in this version of :code:`ROS2`, all :code:`ament_python` packages will output a :code:`SetuptoolsDeprecationWarning`.
+This is related to `this issue on Github <https://github.com/colcon/colcon-core/issues/454#issuecomment-1262592774>`_. Until that is fixed, just ignore it.
+
+
+
+
+
+
