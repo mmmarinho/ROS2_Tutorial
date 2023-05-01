@@ -1,4 +1,4 @@
 ﻿Shortcut,Description
-`CTRL`+`ALT`+`T`,Open a new terminal window using your default viewer.
-`SHIFT`+`CTRL`+`O`,**Vertically** split the currently focused window by adding a new terminal.
-`SHIFT`+`CTRL`+`E`,**Horizontally** split the currently focused window by adding a new terminal.
+:code`CTRL+ALT+T`,Open a new terminal window using your default viewer.
+:code`SHIFT+CTRL+O`,**Vertically** split the currently focused window by adding a new terminal.
+:code`SHIFT+CTRL+E`,**Horizontally** split the currently focused window by adding a new terminal.
