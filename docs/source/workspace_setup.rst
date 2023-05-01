@@ -1,7 +1,7 @@
 Workspace set up
 ================
 
-Similar to how :code:`ROS2` files are installed in :code:`/opt/ros/ROS_DISTRO` so that you can have several distributions installed simultaneously, you can also have many separate workspaces in your system.
+Similar to how :code:`ROS2` files are installed in :code:`/opt/ros/{ROS_DISTRO}` so that you can have several distributions installed simultaneously, you can also have many separate workspaces in your system.
 
 In addition, because files in the :code:`/opt` folder require super user privileges (for good reasons), having a user-wide workspace is the accepted practice. They call this an **overlay**.
 
@@ -60,5 +60,5 @@ Do the following just once, so that all terminal windows automatically source th
    echo "source ~/ros2_tutorial_workspace/install/setup.bash" >> ~/.bashrc
    source ~/.bashrc
    
-However, since our workspace is currently empty, there's not much we can do with it. Let's start to add some content.
+However, since our workspace is currently empty, there's not much we can do with it. Let's add some content.
    
