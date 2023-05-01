@@ -20,16 +20,16 @@ To prevent repetition, let's go the most relevant `terminator shortcuts <https:/
 
 For example, pressing the following combination:
 
-1. ``CTRL``+``ALT``+``T``
-2. ``CTRL``+``ALT``+``E``
-3. ``CTRL``+``ALT``+``O``
+1. :code:`CTRL+ALT+T`
+2. :code:`SHIFT+CTRL+E`
+3. :code:`SHIFT+CTRL+O`
 
 Will result in three terminal windows that look like so.
 
 .. image:: ../images/terminator_example.png
    :width: 200px
    :height: 200px
-   :scale: 50 %
+   :scale: 100 %
    :alt: alternate text
    :align: center
 
