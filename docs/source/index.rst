@@ -13,7 +13,7 @@ Contents
 .. toctree::
 
    installation
-   usage
-   api
+   terminator
+
 
 .. _ROS2-Humble: https://docs.ros.org/en/humble/
