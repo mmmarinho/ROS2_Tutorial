@@ -26,6 +26,13 @@ For example, pressing the following combination:
 
 Will result in three terminal windows that look like so.
 
+.. image:: ../images/terminator_example.png
+   :width: 200px
+   :height: 200px
+   :scale: 50 %
+   :alt: alternate text
+   :align: center
+
 Shortcuts scare me
 ------------------
 
