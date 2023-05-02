@@ -92,10 +92,9 @@ Once again, we have to refresh the workspace so we run
 And, with that, we can run
 
 .. code:: bash
-
-   ros2 run python_package_with_a_node print_forever_node
+  ros2 run python_package_with_a_node print_forever_node
    
- which will output, as expected
+which will output, as expected
  
 .. code:: bash
  
