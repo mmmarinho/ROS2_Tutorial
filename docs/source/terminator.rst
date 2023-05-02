@@ -20,9 +20,9 @@ To prevent repetition, let's go through the most relevant `terminator shortcuts 
 
 For example, pressing the following combination:
 
-1. :code:`CTRL+ALT+T`
-2. :code:`SHIFT+CTRL+E`
-3. :code:`SHIFT+CTRL+O`
+1. :kbd:`CTRL+ALT+T`
+2. :kbd:`SHIFT+CTRL+E`
+3. :kbd:`SHIFT+CTRL+O`
 
 Will result in three terminal windows that look like so.
 
