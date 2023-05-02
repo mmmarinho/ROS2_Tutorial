@@ -52,5 +52,7 @@ With :code:`PyCharm` opened as instructed above, here are a few tips to make you
 1. Go to :code:`File` >> :code:`Open...` and browse to our workspace folder :code:`~/ros2_tutorial_workspace`
 2. Right-click the folder :code:`install` and choose :code:`Mark Directory as` >> :code:`Excluded`. Do the same for :code:`build` and :code:`log`
 
+:menuselection:`Start --> Programs`
+
 Running a Node from :code:`PyCharm`
 -----------------------------------
