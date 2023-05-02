@@ -18,6 +18,7 @@ Contents
    create_packages
    create_python_package
    create_python_node
+   editing_python_source
    faq
 
 
