@@ -132,9 +132,9 @@ The current version of :code:`ROS2` behaves better when your custom node is a su
    :lines: 28-33
    :emphasize-lines: 1,5
    
-About inheritance in :code:`Python`, you can check the official documentation on ` inheritance <https://docs.python.org/3/tutorial/classes.html#inheritance>`_ and on `super() <https://docs.python.org/3/library/functions.html#super>`_.
+About inheritance in :code:`Python`, you can check the official documentation on `inheritance <https://docs.python.org/3/tutorial/classes.html#inheritance>`_ and on `super() <https://docs.python.org/3/library/functions.html#super>`_.
 
-In more advanced nodes, inheritance doesn't cut it, but that is an advanced topic to be covered some other time.
+In more advanced nodes, inheritance does not cut it, but that is an advanced topic to be covered some other time.
 
 3. Use a :code:`Timer` when using :code:`rclpy.spin()`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -157,7 +157,7 @@ The method to be called is defined as follows
    :lines: 37-39
    :emphasize-lines: 1
    
-In :code:`ROS2`, the logging methods depend on a Node. So, the capability to log using :code:`ROS2` Nodes is dependent on the scope in which that Node exists.
+In :code:`ROS2`, the logging methods, i.e. :code:`self.get_logger().info()`, depend on a Node. So, the capability to log using :code:`ROS2` Nodes is dependent on the scope in which that Node exists.
    
 4. Don't forget :code:`rclpy.init()` and :code:`rclpy.spin()` 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -173,7 +173,7 @@ Nothing will happen unless these two methods are called. First, :code:`rclpy.ini
 5. *ALWAYS* have a :code:`try-catch` block for :code:`KeyboardInterrupt`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the current version of the `official ROS2 examples <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_, for reasons beyond my comprehension this step is not followed.
+In the current version of the `official ROS2 examples <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_ , for reasons beyond my comprehension this step is not followed.
 
 However, when running Nodes either in the terminal or in :code:`PyCharm`, catching a :code:`KeyboardInterrupt` is the only reliable way to finish the Nodes cleanly. A :code:`KeyboardInterrupt` is emitted at a terminal by pressing :kbd:`CTRL+C`, whereas it is emitted by :code:`PyCharm` when pressing :guilabel:`Stop`.
 
