@@ -52,5 +52,37 @@ With :code:`PyCharm` opened as instructed above, here are a few tips to make you
 1. Go to :menuselection:`File --> Open...` and browse to our workspace folder :file:`~/ros2_tutorial_workspace`
 2. Right-click the folder :file:`install` and choose :menuselection:`Mark Directory as --> Excluded`. Do the same for :file:`build` and :file:`log`
 
+Your project view should look like so
+
+.. image:: /images/pycharm_project.jpg
+   :align: center
+
 Running a Node from :code:`PyCharm`
 -----------------------------------
+
+With the project correctly configured, you can
+
+1. move to :menuselection:`src --> python_package_with_a_node --> python_package_with_a_node`.
+2. double (left) click :program:`sample_python_node.py` to open the source code, showing the contents of the Node. It is minimal to the point that it doesn't have anything related to :program:`ROS` at all.
+
+.. code:: python
+
+   def main():
+      print('Hi from python_package_with_a_node.')
+
+
+   if __name__ == '__main__':
+      main()
+
+3. right click :program:`sample_python_node.py` and choose :menuselection:`Run sample_python_node`
+
+It will output in :code:`PyCharm`'s console
+
+.. code:: bash
+   
+    Hi from python_package_with_a_node.
+    
+.. note:: 
+
+   You should extensively use the Debugger in :code:`PyCharm` when developing code. If you're still adding :code:`print` functions to figure out what is wrong with your code, now is the opportunity you always needed to stop doing that and join the adult table.
+
