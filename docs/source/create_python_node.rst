@@ -1,22 +1,17 @@
-Creating a Python Node (using :code:`ament_python`)
+Creating a Python Node with a template (for :code:`ament_python`)
 ===================================================
-
-Create a package with a Node template
--------------------------------------
 
 .. code:: bash
 
    cd ~/ros2_tutorial_workspace/src
-   ros2 pkg create --build-type ament_python python_package_with_a_node --dependencies rclpy --node-name sample_python_node
+   ros2 pkg create --build-type ament_python python_package_with_a_node --node-name sample_python_node
    
-Which will output many things in common with the prior example (removed for readability), but with two additional tasks automatically performed. First, it adds the :code:`dependencies: ['rclpy']` for us. Then, it generates a template node :code:`creating ./python_package_with_a_node/python_package_with_a_node/sample_python_node.py`.
+Which will output many things in common with the prior example (removed for readability), but with one additional task automatically performed. It generates a template node :code:`creating ./python_package_with_a_node/python_package_with_a_node/sample_python_node.py`.
 
 .. code:: bash
 
     going to create a new package
     package name: python_package_with_a_node
-    (...)
-    dependencies: ['rclpy']
     (...)
     creating ./python_package_with_a_node/python_package_with_a_node/sample_python_node.py
     (...)
