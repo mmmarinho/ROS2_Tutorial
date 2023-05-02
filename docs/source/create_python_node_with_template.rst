@@ -62,11 +62,7 @@ it will not work and will output
    
 As the workspace grows bigger and the packages more complex, figuring out such errors becomes a considerable hassle. One suggestion is to always source after a build, so that sourcing errors can always be ruled out.
 
-.. code:: bash
-
-   cd ~/ros2_tutorial_workspace
-   colcon build
-   source install/setup.bash
+.. include:: the_canonical_build_command.rst
    
 Running a node
 --------------
