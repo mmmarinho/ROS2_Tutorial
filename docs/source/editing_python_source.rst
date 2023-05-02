@@ -49,10 +49,8 @@ Using :code:`PyCharm` for :code:`ROS2` sources
 
 With :code:`PyCharm` opened as instructed above, here are a few tips to make your life easier.
 
-1. Go to :code:`File` >> :code:`Open...` and browse to our workspace folder :code:`~/ros2_tutorial_workspace`
-2. Right-click the folder :code:`install` and choose :code:`Mark Directory as` >> :code:`Excluded`. Do the same for :code:`build` and :code:`log`
-
-:menuselection:`Start --> Programs`
+1. Go to :menuselection:`File --> Open...` and browse to our workspace folder :file:`~/ros2_tutorial_workspace`
+2. Right-click the folder :file:`install` and choose :menuselection:`Mark Directory as --> Excluded`. Do the same for :file:`build` and :file:`log`
 
 Running a Node from :code:`PyCharm`
 -----------------------------------
