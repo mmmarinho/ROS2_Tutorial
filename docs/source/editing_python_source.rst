@@ -86,3 +86,6 @@ It will output in :code:`PyCharm`'s console
 
    You should extensively use the Debugger in :code:`PyCharm` when developing code. If you're still adding :code:`print` functions to figure out what is wrong with your code, now is the opportunity you always needed to stop doing that and join the adult table.
 
+.. note::
+
+   You can read more about debugging with :code:`PyCharm` at the `official documentation <https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html#where-is-the-problem>`_
