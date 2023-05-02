@@ -15,7 +15,8 @@ By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meani
 
 Let us add the dependency between the :code:`<license>` and :code:`<test_depend>` tags. This is not a strict requirement, but is where it commonly is for standard packages.
 
-.. code:: xml
+.. code-block:: xml
+  :emphasize-lines: 3
 
   <license>TODO: License declaration</license>
 
@@ -61,15 +62,13 @@ To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2`. The node w
    Process finished with exit code 0
    
 Making :command:`ros2 run` work
-----------------------------
+-------------------------------
 
 Even though you can run the new node in :code:`PyCharm`, we need an additional step to make it deployable in a place where :command:`ros2 run` can find it.
 
 To do so, we modify the :code:`entry_points` variable in :file:`setup.py`, from the original to
 
-
 .. code-block:: python
-     :linenos:
      :emphasize-lines: 4
      
       entry_points={
@@ -79,9 +78,32 @@ To do so, we modify the :code:`entry_points` variable in :file:`setup.py`, from 
           ],
       },
 
+The format is straightforward. From left to right
 
+- :code:`print_forever_node`: The name of the node when calling it through :command:`ros2 run`.
+- :code:`python_package_with_a_node`: The name of the package.
+- :code:`sample_python_node`: The name of the script, without the :file:`.py` extension.
+- :code:`main`: The function, within the script, that will be called. In general, :code:`main`.
 
-    
+Once again, we have to refresh the workspace so we run
+
+.. include:: the_canonical_build_command.rst
+
+And, with that, we can run
+
+.. code:: bash
+
+   ros2 run python_package_with_a_node print_forever_node
    
+ which will output, as expected
+ 
+.. code:: bash
+ 
+    [INFO] [1683010987.130432622] [print_forever]: Printed 0 times.
+    [INFO] [1683010987.622780292] [print_forever]: Printed 0 times.
+    [INFO] [1683010988.122731296] [print_forever]: Printed 0 times.
+    [INFO] [1683010988.622735422] [print_forever]: Printed 0 times.
+
+To stop, press :kbd:`CTRL+C` and the Node will return gracefully.
 
 
