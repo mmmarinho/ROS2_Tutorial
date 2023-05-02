@@ -7,7 +7,7 @@ These are the steps that must be taken, in general, to add a new node.
 Handling dependencies
 ---------------------
 
-It is common for new Nodes to have additional dependencies, so we will cover that here. For and :code:`ament_python` package, we must modify the :file:`package.xml` to add the dependencies.
+It is common for new Nodes to have additional dependencies, so we will cover that here. For an :code:`ament_python` package, we must modify the :file:`package.xml` to add the dependencies.
 
 In this toy example, let us add the :code:`rclpy` as dependency, because it is the :code:`Python` implementation of the :abbr:`RCL (ROS Client Library)`. All Nodes that use anything related to :code:`ROS2` will directly or indirectly depend on that library.
 
@@ -92,6 +92,7 @@ Once again, we have to refresh the workspace so we run
 And, with that, we can run
 
 .. code:: bash
+
   ros2 run python_package_with_a_node print_forever_node
    
 which will output, as expected
