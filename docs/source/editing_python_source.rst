@@ -40,6 +40,7 @@ More resources on :code:`PyCharm`
 ---------------------------------
 
 Given that this is not a tutorial on :code:`PyCharm`, please check the official documentation if some of the advice given here seems unclear.
+
 - https://www.jetbrains.com/help/pycharm/working-with-source-code.html
 - And the following :code:`Run, debug, test, and deploy` that doesn't have a link.
 
