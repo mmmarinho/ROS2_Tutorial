@@ -17,7 +17,7 @@ Contents
    workspace_setup
    create_packages
    create_python_package
-   create_python_node
+   create_python_node_with_template
    editing_python_source
    faq
 
