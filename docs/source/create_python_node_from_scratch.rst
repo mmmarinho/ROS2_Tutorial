@@ -33,7 +33,7 @@ Copy and paste the following contents into the file.
 .. literalinclude:: ../scripts/print_forever_node.py
    :language: python
    :linenos:
-   :lines:24-
+   :lines:24-59
    
 .. note::
     
