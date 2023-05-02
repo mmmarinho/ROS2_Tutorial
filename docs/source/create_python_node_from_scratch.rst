@@ -33,4 +33,9 @@ Copy and paste the following contents into the file.
 .. literalinclude:: ../scripts/print_forever_node.py
    :language: python
    :linenos:
+   
+.. note::
+    
+   At this stage, :code:`PyCharm` should be complaining that it couldn't find :code:`rclpy`. Can you guess why that is the case?
+
 
