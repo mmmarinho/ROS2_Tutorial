@@ -177,7 +177,7 @@ In the current version of the `official ROS2 examples <https://docs.ros.org/en/h
 
 However, when running Nodes either in the terminal or in :code:`PyCharm`, catching a :code:`KeyboardInterrupt` is the only reliable way to finish the Nodes cleanly. A :code:`KeyboardInterrupt` is emitted at a terminal by pressing :kbd:`CTRL+C`, whereas it is emitted by :code:`PyCharm` when pressing :guilabel:`Stop`.
 
-That is particularly important when real robots need to be gracefully shutdown (otherwise they might unadvertedly start the mechanical uprising), but it also looks unprofessional when all your Nodes return with an ugly stack trace.
+That is particularly important when real robots need to be gracefully shutdown (otherwise they might unadvertedly start the evil robot uprising), but it also looks unprofessional when all your Nodes return with an ugly stack trace.
 
 .. literalinclude:: ../scripts/print_forever_node.py
    :language: python
