@@ -19,6 +19,7 @@ Contents
    create_python_package
    create_python_node_with_template
    editing_python_source
+   create_python_node_from_scrath
    faq
 
 
