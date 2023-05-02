@@ -5,7 +5,7 @@ ROS2-Humble_ tutorials by `yours trully <https://murilomarinho.info/>`_, focusin
 
 .. warning::
 
-   This project is under active development and currently a rough draft.
+   This project is under active development and is currently just a rough draft.
 
 Contents
 --------
