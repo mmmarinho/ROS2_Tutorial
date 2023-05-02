@@ -22,6 +22,16 @@ Let us add the dependency between the :code:`<license>` and :code:`<test_depend>
   <depend>rclpy</depend>
 
   <test_depend>ament_copyright</test_depend>
+  
+After you modify the dependencies, build once
+---------------------------------------------
+
+After you add a new dependency to :file:`package.xml`, nothing really changes in the workspace unless a new build is performed. 
+When programming with new dependencies, unless you rebuild the workspace, :code:`PyCharm` will not recognize the libraries and autocomplete will not work.
+
+So, run
+
+.. include:: the_canonical_build_command.rst
 
 Creating the Node
 -----------------
@@ -35,8 +45,43 @@ Copy and paste the following contents into the file.
    :linenos:
    :lines: 24-
    
-.. note::
+By now, this should be enough for you to be able to run the node in :code:`PyCharm`. You can right click it and choose :guilabel:`D&ebug sample_python_node`. This will output
+
+.. code:: bash
+
+    [INFO] [1683009340.877110693] [print_forever]: Printed 0 times.
+    [INFO] [1683009341.336559942] [print_forever]: Printed 0 times.
+    [INFO] [1683009341.836334639] [print_forever]: Printed 0 times.
+    [INFO] [1683009342.336555088] [print_forever]: Printed 0 times.
+
+To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2`. The node will exit gracefully with
+
+.. code:: bash
+
+   Process finished with exit code 0
+   
+Making :command:`ros2 run` work
+----------------------------
+
+Even though you can run the new node in :code:`PyCharm`, we need an additional step to make it deployable in a place where :command:`ros2 run` can find it.
+
+To do so, we modify the :code:`entry_points` variable in :file:`setup.py`, from the original to
+
+
+.. code-block:: python
+     :linenos:
+     :emphasize-lines: 4
+     
+      entry_points={
+          'console_scripts': [
+              'sample_python_node = python_package_with_a_node.sample_python_node:main',
+              'print_forever_node = python_package_with_a_node.print_forever_node:main'
+          ],
+      },
+
+
+
     
-   At this stage, :code:`PyCharm` should be complaining that it couldn't find :code:`rclpy`. Can you guess why that is the case?
+   
 
 
