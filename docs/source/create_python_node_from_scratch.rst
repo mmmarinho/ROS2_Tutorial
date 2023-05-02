@@ -106,4 +106,26 @@ which will output, as expected
 
 To stop, press :kbd:`CTRL+C` and the Node will return gracefully.
 
+The Node source code, explained
+-------------------------------
 
+In a strict sense, this new Node is not minimal, but it does showcase most good practices in a Node that actually does something.
+
+1. The imports
+
+.. literalinclude:: ../scripts/print_forever_node.py
+   :language: python
+   :linenos:
+   :lines: 24-25
+   
+As in any :code:`Python` code, we have to import the libraries that we will use and specific modules/classes within those libraries. With :code:`rclpy`, there is no difference.
+
+2. Making a subclass of :code:`Node`.
+
+The current version of :code:`ROS2` behaves better when your custom node is a subclass of :code:`rclpy.node.Node`. That is achieved with 
+
+.. literalinclude:: ../scripts/print_forever_node.py
+   :language: python
+   :linenos:
+   :lines: 28-33
+   :emphasize-lines: 1,5
