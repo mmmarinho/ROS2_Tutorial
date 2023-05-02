@@ -185,3 +185,25 @@ That is particularly important when real robots need to be gracefully shutdown (
    :lines: 42-55
    :emphasize-lines: 7,13
 
+6. *ALWAYS* document your code with Docstrings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As simple as a code might look for you right now, it needs to be documented for anyone you work with, including the future you. In a few weeks/months/years time, the :code:`BeStNoDeYouEvErWrote (TM)` might be indistinguishable from `Yautja Language <https://avp.fandom.com/wiki/Yautja_Language>`_.
+
+Add as much description as possible to classes and methods, using the `Docstring Convention <https://peps.python.org/pep-0257/>`_.
+
+Example for a class:
+
+.. literalinclude:: ../scripts/print_forever_node.py
+   :language: python
+   :linenos:
+   :lines: 28-31
+   :emphasize-lines: 2
+   
+Example for a method:
+
+.. literalinclude:: ../scripts/print_forever_node.py
+   :language: python
+   :linenos:
+   :lines: 37-39
+   :emphasize-lines: 2
