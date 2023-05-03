@@ -1,10 +1,14 @@
 The Python Node, explained
--------------------------------
+==========================
 
-In a strict sense, this new Node is not minimal, but it does showcase most good practices in a Node that actually does something.
+.. note::
+   
+   The way that a Python Node in :code:`ROS2` works, i.e. the explanation in this section, does not depend on the building with :program:`ament_python` or :program:`ament_cmake`.
 
-1. The imports
-~~~~~~~~~~~~~~
+In a strict sense, the :file:`print_forever_node.py` is not a minimal Node, but it does showcase most good practices in a Node that actually does something.
+
+The imports
+-----------
 
 .. literalinclude:: ../scripts/print_forever_node.py
    :language: python
@@ -13,8 +17,8 @@ In a strict sense, this new Node is not minimal, but it does showcase most good 
    
 As in any :code:`Python` code, we have to import the libraries that we will use and specific modules/classes within those libraries. With :code:`rclpy`, there is no difference.
 
-2. Making a subclass of :code:`Node`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Making a subclass of :code:`Node`
+---------------------------------
 
 The current version of :code:`ROS2` behaves better when your custom node is a subclass of :code:`rclpy.node.Node`. That is achieved with 
 
@@ -28,8 +32,8 @@ About inheritance in :code:`Python`, you can check the official documentation on
 
 In more advanced nodes, inheritance does not cut it, but that is an advanced topic to be covered some other time.
 
-3. Use a :code:`Timer` when using :code:`rclpy.spin()`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Use a :code:`Timer` when using :code:`rclpy.spin()`
+---------------------------------------------------
 
 If the code relies on :code:`rclpy.spin()`, which is usually the easiest way to handle the :code:`ROS2` loop, periodic tasks must be handled by a `Timer <https://github.com/ros2/rclpy/blob/humble/rclpy/src/rclpy/timer.hpp>`_. 
 
@@ -51,8 +55,8 @@ The method to be called is defined as follows
    
 In :code:`ROS2`, the logging methods, i.e. :code:`self.get_logger().info()`, depend on a Node. So, the capability to log using :code:`ROS2` Nodes is dependent on the scope in which that Node exists.
    
-4. Don't forget :code:`rclpy.init()` and :code:`rclpy.spin()` 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Don't forget :code:`rclpy.init()` and :code:`rclpy.spin()` 
+----------------------------------------------------------
 
 Nothing will happen unless these two methods are called. First, :code:`rclpy.init()` is going to initialize a bunch of :code:`ROS2` elements behind the curtains, whereas :code:`rclpy.spin()` will block the program. There are alternative ways to :code:`spin()`, but we will not discuss them right now.
 
@@ -62,8 +66,8 @@ Nothing will happen unless these two methods are called. First, :code:`rclpy.ini
    :lines: 42-55
    :emphasize-lines: 8,12
    
-5. *ALWAYS* have a :code:`try-catch` block for :code:`KeyboardInterrupt`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ALWAYS* have a :code:`try-catch` block for :code:`KeyboardInterrupt`
+---------------------------------------------------------------------
 
 In the current version of the `official ROS2 examples <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_ , for reasons beyond my comprehension this step is not followed.
 
@@ -77,8 +81,8 @@ That is particularly important when real robots need to be gracefully shutdown (
    :lines: 42-55
    :emphasize-lines: 7,13
 
-6. *ALWAYS* document your code with Docstrings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*ALWAYS* document your code with Docstrings
+-------------------------------------------
 
 As simple as a code might look for you right now, it needs to be documented for anyone you work with, including the future you. In a few weeks/months/years time, the :code:`BeStNoDeYouEvErWrote (TM)` might be indistinguishable from `Yautja Language <https://avp.fandom.com/wiki/Yautja_Language>`_.
 
