@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'ROS2 Tutorials'
+project = 'ROS2 Tutorial'
 copyright = '2023, Murilo M. Marinho'
 author = 'Murilo M. Marinho'
 
@@ -20,7 +20,7 @@ extensions = [
 ]
 
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/3/', None),
+    'python': ('https://docs.python.org/3.10/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
 }
 intersphinx_disabled_domains = ['std']
