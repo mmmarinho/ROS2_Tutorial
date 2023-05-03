@@ -66,8 +66,8 @@ Nothing will happen unless these two methods are called. First, :code:`rclpy.ini
    :lines: 42-55
    :emphasize-lines: 8,12
    
-*ALWAYS* have a :code:`try-catch` block for :code:`KeyboardInterrupt`
----------------------------------------------------------------------
+Have a :code:`try-catch` block for :code:`KeyboardInterrupt`
+------------------------------------------------------------
 
 In the current version of the `official ROS2 examples <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_ , for reasons beyond my comprehension this step is not followed.
 
@@ -81,8 +81,8 @@ That is particularly important when real robots need to be gracefully shutdown (
    :lines: 42-55
    :emphasize-lines: 7,13
 
-*ALWAYS* document your code with Docstrings
--------------------------------------------
+Document your code with Docstrings
+----------------------------------
 
 As simple as a code might look for you right now, it needs to be documented for anyone you work with, including the future you. In a few weeks/months/years time, the :code:`BeStNoDeYouEvErWrote (TM)` might be indistinguishable from `Yautja Language <https://avp.fandom.com/wiki/Yautja_Language>`_.
 
