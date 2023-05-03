@@ -20,6 +20,7 @@ Contents
    create_python_node_with_template
    editing_python_source
    create_python_node_from_scratch
+   python_node_explained
    faq
 
 
