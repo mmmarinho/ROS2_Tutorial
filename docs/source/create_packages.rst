@@ -10,6 +10,7 @@ Create packages (:program:`ros2 pkg create`)
 which outputs a list of handy options to populate the package template with useful files.
 
 .. code-block:: console
+   :emphasize-lines: 27
 
     usage: ros2 pkg create [-h] [--package-format {2,3}] [--description DESCRIPTION]
                            [--license LICENSE]
