@@ -90,7 +90,7 @@ The format is straightforward. From left to right
 
 - :code:`print_forever_node`: The name of the node when calling it through :command:`ros2 run`.
 - :code:`python_package_with_a_node`: The name of the package.
-- :code:`sample_python_node`: The name of the script, without the :file:`.py` extension.
+- :code:`print_forever_node`: The name of the script, without the :file:`.py` extension.
 - :code:`main`: The function, within the script, that will be called. In general, :code:`main`.
 
 Once again, we have to refresh the workspace so we run
