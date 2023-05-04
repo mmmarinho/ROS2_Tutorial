@@ -7,7 +7,7 @@ Create packages (:program:`ros2 pkg create`)
    
    ros2 pkg create -h
 
-which outputs a list of handy options to populate the package template with useful files.
+which outputs a list of handy options to populate the package template with useful files. Namely, the four emphasized ones.
 
 .. code-block:: console
    :emphasize-lines: 27, 29, 35, 37
