@@ -1,15 +1,15 @@
-Create packages (:code:`ros2 pkg create`)
+Create packages (:program:`ros2 pkg create`)
 ---------------
 
 :code:`ROS2` has a tool to help creating package templates. We can get all available options by running
 
-.. code:: bash
+.. code-block:: console
    
    ros2 pkg create -h
 
 which outputs a list of handy options to populate the package template with useful files.
 
-.. code:: bash
+.. code-block:: console
 
     usage: ros2 pkg create [-h] [--package-format {2,3}] [--description DESCRIPTION]
                            [--license LICENSE]
