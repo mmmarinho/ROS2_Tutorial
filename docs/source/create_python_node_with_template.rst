@@ -1,5 +1,5 @@
 Creating a Python Node with a template (for :code:`ament_python`)
-===================================================
+=================================================================
 
 .. code:: bash
 
@@ -63,18 +63,3 @@ it will not work and will output
 As the workspace grows bigger and the packages more complex, figuring out such errors becomes a considerable hassle. One suggestion is to always source after a build, so that sourcing errors can always be ruled out.
 
 .. include:: the_canonical_build_command.rst
-   
-Running a node
---------------
-
-With a properly sourced terminal, the example node can be executed with
-
-.. code:: bash
-
-   ros2 run python_package_with_a_node sample_python_node
-
-which will now correctly output
-
-.. code:: bash
-
-   Hi from python_package_with_a_node.
