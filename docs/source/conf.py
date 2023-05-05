@@ -18,8 +18,6 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'sphinx.ext.autofunction',
-    'sphinx.ext.autoexception'
 ]
 
 intersphinx_mapping = {
