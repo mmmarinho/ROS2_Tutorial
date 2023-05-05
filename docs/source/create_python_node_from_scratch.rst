@@ -3,10 +3,10 @@ Creating a Python Node from scratch (for :code:`ament_python`)
 
 .. note::
 
-  **TL;DL** When using :code:`ament_python`
-  #. Modify :file:`package.xml` with any additional dependencies.
-  #. Create the Node
-  #. Modify the :file:`setup.py` file.
+    **TL;DL** When using :code:`ament_python`
+    #. Modify :file:`package.xml` with any additional dependencies.
+    #. Create the Node
+    #. Modify the :file:`setup.py` file.
      
 
 Let us add an additional Node to our :code:`ament_python` package that actually uses :code:`ROS2` functionality. 
