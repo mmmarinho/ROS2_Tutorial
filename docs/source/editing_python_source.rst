@@ -54,7 +54,7 @@ With :code:`PyCharm` opened as instructed above, here are a few tips to make you
 
 Your project view should look like so
 
-.. image:: ../images/pycharm_project.jpg
+.. image:: ../images/pycharm_project.png
    :align: center
 
 Running a Node from :code:`PyCharm`
