@@ -1,5 +1,6 @@
 # Configuration file for the Sphinx documentation builder.
 
+master_doc = 'index'
 # -- Project information
 
 project = 'ROS2 Tutorial'
