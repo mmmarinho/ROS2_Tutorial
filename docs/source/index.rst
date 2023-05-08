@@ -28,6 +28,7 @@ Contents
    create_python_node_from_scratch
    python_node_explained
    create_python_library
+   using_python_library
    faq
 
 
