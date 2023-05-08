@@ -8,7 +8,7 @@ setup(
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
-            ['resource/' + package_name]),
+         ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
     install_requires=['setuptools'],
@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'sample_python_node = python_package_with_a_node.sample_python_node:main'
+            'sample_python_node = python_package_with_a_node.sample_python_node:main',
+            'print_forever_node = python_package_with_a_node.print_forever_node:main'
         ],
     },
 )
