@@ -24,14 +24,9 @@ By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meani
 
 Let us add the dependency between the :code:`<license>` and :code:`<test_depend>` tags. This is not a strict requirement, but is where it commonly is for standard packages.
 
-.. code-block:: xml
-  :emphasize-lines: 3
-
-  <license>TODO: License declaration</license>
-
-  <depend>rclpy</depend>
-
-  <test_depend>ament_copyright</test_depend>
+.. literalinclude:: ../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml
+   :language: xml
+   :linenos:
   
 After you modify the dependencies, build once
 ---------------------------------------------
@@ -50,7 +45,7 @@ In the directory :file:`src/python_package_with_a_node/python_package_with_a_nod
 
 Copy and paste the following contents into the file.
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 24-
@@ -77,15 +72,9 @@ Even though you can run the new node in :code:`PyCharm`, we need an additional s
 
 To do so, we modify the :code:`entry_points` variable in :file:`setup.py`, from the original to
 
-.. code-block:: python
-     :emphasize-lines: 4
-     
-      entry_points={
-          'console_scripts': [
-              'sample_python_node = python_package_with_a_node.sample_python_node:main',
-              'print_forever_node = python_package_with_a_node.print_forever_node:main'
-          ],
-      },
+.. literalinclude:: ../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py
+   :language: python
+   :linenos:
 
 The format is straightforward. From left to right
 
