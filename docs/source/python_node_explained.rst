@@ -22,7 +22,7 @@ Making a subclass of :code:`Node`
 
 The current version of :code:`ROS2` behaves better when your custom node is a subclass of :code:`rclpy.node.Node`. That is achieved with 
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 28-33
@@ -39,7 +39,7 @@ If the code relies on :code:`rclpy.spin()`, which is usually the easiest way to 
 
 To do so, have the node create it with the :code:`create_timer()` method, as follows.
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 31-35
@@ -47,7 +47,7 @@ To do so, have the node create it with the :code:`create_timer()` method, as fol
 
 The method to be called is defined as follows
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 37-39
@@ -60,7 +60,7 @@ Don't forget :code:`rclpy.init()` and :code:`rclpy.spin()`
 
 Nothing will happen unless these two methods are called. First, :code:`rclpy.init()` is going to initialize a bunch of :code:`ROS2` elements behind the curtains, whereas :code:`rclpy.spin()` will block the program. There are alternative ways to :code:`spin()`, but we will not discuss them right now.
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 42-55
@@ -75,7 +75,7 @@ However, when running Nodes either in the terminal or in :code:`PyCharm`, catchi
 
 That is particularly important when real robots need to be gracefully shutdown (otherwise they might unadvertedly start the evil robot uprising), but it also looks unprofessional when all your Nodes return with an ugly stack trace.
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 42-55
@@ -90,7 +90,7 @@ Add as much description as possible to classes and methods, using the `Docstring
 
 Example for a class:
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 28-31
@@ -98,7 +98,7 @@ Example for a class:
    
 Example for a method:
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 37-39
