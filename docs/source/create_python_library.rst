@@ -82,11 +82,30 @@ With respect to the highlighted files, we will
       └── resource
       └── test
       
-Create the sample function
---------------------------
+Create the sample :code:`function`
+----------------------------------
 
 Add a new file to :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library` called :file:`_sample_function.py` with the following content.
 
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py
+   :language: python
+   :linenos:
+   :lines: 24-
+      
+Create the sample :code:`class`
+-------------------------------
 
-      
-      
+Add a new file to :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library` called :file:`_sample_class.py` with the following content.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py
+   :language: python
+   :linenos:
+   :lines: 24-
+   
+Modify the :code:`__init__.py` to export the symbols
+----------------------------------------------------
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py
+   :language: python
+   :linenos:
+   :lines: 24-
