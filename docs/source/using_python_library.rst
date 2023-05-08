@@ -13,7 +13,7 @@ Note that we must now add it as a dependency when calling :program:`ros2 pkg cre
 resulting in yet another version of our favorite wall of text
 
 .. code-block:: console
-   :emphasize-lines:: 29
+   :emphasize-lines: 27
 
    going to create a new package
    package name: python_package_that_uses_the_library
