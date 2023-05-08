@@ -13,11 +13,11 @@ Note that we must now add it as a dependency when calling :program:`ros2 pkg cre
 resulting in yet another version of our favorite wall of text
 
 .. code-block:: console
-   :emphasize-lines: 27
+   :emphasize-lines: 25
 
    going to create a new package
    package name: python_package_that_uses_the_library
-   destination directory: /home/murilo/git/ROS2_Tutorial/ros2_tutorial_workspace/src
+   destination directory: /home/murilo/ros2_tutorial_workspace/src
    package format: 3
    version: 0.0.0
    description: TODO: Package description
