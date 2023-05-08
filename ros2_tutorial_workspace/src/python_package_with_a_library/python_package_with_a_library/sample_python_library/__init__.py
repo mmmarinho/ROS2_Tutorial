@@ -21,5 +21,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from _sample_class import SampleClass
-from _sample_function import sample_function_for_square_of_sum
+from python_package_with_a_library.sample_python_library._sample_class import SampleClass
+from python_package_with_a_library.sample_python_library._sample_function import sample_function_for_square_of_sum
