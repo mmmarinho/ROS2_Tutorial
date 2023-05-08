@@ -12,7 +12,6 @@ The imports
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :linenos:
    :lines: 24-25
    
 As in any :code:`Python` code, we have to import the libraries that we will use and specific modules/classes within those libraries. With :code:`rclpy`, there is no difference.
@@ -24,7 +23,6 @@ The current version of :code:`ROS2` behaves better when your custom node is a su
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :linenos:
    :lines: 28-33
    :emphasize-lines: 1,5
    
@@ -41,7 +39,6 @@ To do so, have the node create it with the :code:`create_timer()` method, as fol
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :linenos:
    :lines: 31-35
    :emphasize-lines: 4
 
@@ -49,7 +46,6 @@ The method to be called is defined as follows
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :linenos:
    :lines: 37-39
    :emphasize-lines: 1
    
@@ -62,7 +58,6 @@ Nothing will happen unless these two methods are called. First, :code:`rclpy.ini
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :linenos:
    :lines: 42-55
    :emphasize-lines: 8,12
    
@@ -77,7 +72,6 @@ That is particularly important when real robots need to be gracefully shutdown (
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :linenos:
    :lines: 42-55
    :emphasize-lines: 7,13
 
@@ -92,7 +86,6 @@ Example for a class:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :linenos:
    :lines: 28-31
    :emphasize-lines: 2
    
@@ -100,6 +93,5 @@ Example for a method:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :linenos:
    :lines: 37-39
    :emphasize-lines: 2
