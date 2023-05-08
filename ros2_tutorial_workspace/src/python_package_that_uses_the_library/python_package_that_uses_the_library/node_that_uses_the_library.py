@@ -29,11 +29,11 @@ from rclpy.node import Node
 from python_package_with_a_library.sample_python_library import SampleClass, sample_function_for_square_of_sum
 
 
-class PrintForever(Node):
+class NodeThatUsesTheLibrary(Node):
     """A ROS2 Node that prints to the console periodically."""
 
     def __init__(self):
-        super().__init__('print_forever')
+        super().__init__('node_that_uses_the_library')
         timer_period: float = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
@@ -58,9 +58,9 @@ def main(args=None):
     try:
         rclpy.init(args=args)
 
-        print_forever_node = PrintForever()
+        node_that_uses_the_library = NodeThatUsesTheLibrary()
 
-        rclpy.spin(print_forever_node)
+        rclpy.spin(node_that_uses_the_library)
     except KeyboardInterrupt:
         pass
 
