@@ -11,7 +11,6 @@ Let us start, as already recommended in this tutorial, with a template by :progr
 which outputs the forever beautiful wall of text we're by now used to, with a minor difference regarding the additional library template
 
 .. code:: bash
-      :emphasize-lines: 26
 
       going to create a new package
       package name: python_package_with_a_library
