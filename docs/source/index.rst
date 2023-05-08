@@ -1,5 +1,5 @@
-Welcome to ROS2 Tutorials (by Murilo M. Marinho)
-===================================
+Welcome to (Murilo's) ROS2 Tutorials
+====================================
 
 .. note::
    
@@ -27,6 +27,7 @@ Contents
    editing_python_source
    create_python_node_from_scratch
    python_node_explained
+   create_python_library
    faq
 
 
