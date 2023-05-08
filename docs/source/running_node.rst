@@ -11,7 +11,7 @@ More information on it can be obtained through
    
 which returns the most relevant arguments :code:`package_name` and :code:`executable_name`.
 
-.. code-block:: bash
+.. code-block:: console
    :emphasize-lines: 6, 7
 
    usage: ros2 run [-h] [--prefix PREFIX] package_name executable_name ...
