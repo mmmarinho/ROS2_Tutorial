@@ -59,9 +59,7 @@ Overview of the library
 
    If you have created the bad habit of declaring all/too many things in your :file:`__init__.py` file, take the hint and start breaking the definitions into different files and use the :file:`__init__.py` just to export the relevant parts of your library. 
 
-For the sake of the example, let us create a library with a Python :code:`function` and another one with a :code:`class`.
-
-To guide our next steps, we first draw a quick overview of what our :code:`python_package_with_a_library` will look like.
+For the sake of the example, let us create a library with a Python :code:`function` and another one with a :code:`class`. To guide our next steps, we first draw a quick overview of what our :code:`python_package_with_a_library` will look like.
 
 .. code-block:: console
    :emphasize-lines: 4,5,6
