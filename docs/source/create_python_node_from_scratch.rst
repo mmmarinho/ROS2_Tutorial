@@ -24,14 +24,10 @@ By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meani
 
 Let us add the dependency between the :code:`<license>` and :code:`<test_depend>` tags. This is not a strict requirement, but is where it commonly is for standard packages.
 
-.. code-block:: xml
-  :emphasize-lines: 3
-
-  <license>TODO: License declaration</license>
-
-  <depend>rclpy</depend>
-
-  <test_depend>ament_copyright</test_depend>
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml
+   :language: xml
+   :linenos:
+   :emphasize-lines: 10
   
 After you modify the dependencies, build once
 ---------------------------------------------
@@ -50,7 +46,7 @@ In the directory :file:`src/python_package_with_a_node/python_package_with_a_nod
 
 Copy and paste the following contents into the file.
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 24-
@@ -75,17 +71,16 @@ Making :command:`ros2 run` work
 
 Even though you can run the new node in :code:`PyCharm`, we need an additional step to make it deployable in a place where :command:`ros2 run` can find it.
 
-To do so, we modify the :code:`entry_points` variable in :file:`setup.py`, from the original to
+To do so, we modify the :code:`console_scripts` key in the :code:`entry_points` dictionary defined in :file:`setup.py`, to have our new node, as follows
 
-.. code-block:: python
-     :emphasize-lines: 4
-     
-      entry_points={
-          'console_scripts': [
-              'sample_python_node = python_package_with_a_node.sample_python_node:main',
-              'print_forever_node = python_package_with_a_node.print_forever_node:main'
-          ],
-      },
+.. note:: 
+
+   :code:`console_scripts` expects a :code:`list` of :code:`str` in a specific format. Hence, follow the format properly and don't forget the commas to separate elements in the :code:`list`.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py
+   :language: python
+   :linenos:
+   :emphasize-lines: 24
 
 The format is straightforward. From left to right
 
