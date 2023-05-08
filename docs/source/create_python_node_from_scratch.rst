@@ -27,6 +27,7 @@ Let us add the dependency between the :code:`<license>` and :code:`<test_depend>
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml
    :language: xml
    :linenos:
+   :emphasize-lines: 10
   
 After you modify the dependencies, build once
 ---------------------------------------------
@@ -70,11 +71,16 @@ Making :command:`ros2 run` work
 
 Even though you can run the new node in :code:`PyCharm`, we need an additional step to make it deployable in a place where :command:`ros2 run` can find it.
 
-To do so, we modify the :code:`entry_points` variable in :file:`setup.py`, from the original to
+To do so, we modify the :code:`console_scripts` key in the :code:`entry_points` dictionary defined in :file:`setup.py`, to have our new node, as follows
+
+.. note:: 
+
+   :code:`console_scripts` expects a :code:`list` of :code:`str` in a specific format. Hence, follow the format properly and don't forget the commas to separate elements in the :code:`list`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py
    :language: python
    :linenos:
+   :emphasize-lines: 24
 
 The format is straightforward. From left to right
 
