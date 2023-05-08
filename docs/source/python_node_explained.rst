@@ -10,7 +10,7 @@ In a strict sense, the :file:`print_forever_node.py` is not a minimal Node, but 
 The imports
 -----------
 
-.. literalinclude:: ../scripts/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 24-25
