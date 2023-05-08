@@ -65,14 +65,9 @@ With the project correctly configured, you can
 1. move to :menuselection:`src --> python_package_with_a_node --> python_package_with_a_node`.
 2. double (left) click :program:`sample_python_node.py` to open the source code, showing the contents of the Node. It is minimal to the point that it doesn't have anything related to :program:`ROS` at all.
 
-.. code:: python
-
-   def main():
-      print('Hi from python_package_with_a_node.')
-
-
-   if __name__ == '__main__':
-      main()
+.. literalinclude:: ../ros2_tutorial_workspace/src/python_package_with_a_node/sample_python_node.py
+   :language: python
+   :linenos:
 
 3. right click :program:`sample_python_node.py` and choose :menuselection:`Run sample_python_node`
 
