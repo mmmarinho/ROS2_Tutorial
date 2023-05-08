@@ -21,5 +21,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from _sample_class import SampleClass
-from _sample_function import sample_function_for_square_of_sum
+
+
+class SampleClass:
+    """A sample class to check how they can be imported by other ROS2 packages."""
+
+    def __init__(self, name: str):
+        self.name_ = name
+
+    def get_name(self) -> str:
+        """
+        Gets the name of this instance.
+        :return: This name.
+        """
+        return self.name_

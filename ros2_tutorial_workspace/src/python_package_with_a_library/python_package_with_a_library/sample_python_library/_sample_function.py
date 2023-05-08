@@ -21,5 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from _sample_class import SampleClass
-from _sample_function import sample_function_for_square_of_sum
+
+
+def sample_function_for_square_of_sum(a: float, b: float) -> float:
+    """Returns the square of a sum (a + b)^2 = a^2 + 2ab + b^2"""
+    return a**2 + 2*a*b + b**2
