@@ -52,15 +52,14 @@ which outputs the forever beautiful wall of text we're by now used to, with a mi
    MIT
    MIT-0
 
-
-For the sake of the example, let us create a library with a Python :code:`function` and another one with a :code:`class`.
-
 Overview of the library
 -----------------------
 
 .. note::
 
    If you have created the bad habit of declaring all/too many things in your :file:`__init__.py` file, take the hint and start breaking the definitions into different files and use the :file:`__init__.py` just to export the relevant parts of your library. 
+
+For the sake of the example, let us create a library with a Python :code:`function` and another one with a :code:`class`.
 
 To guide our next steps, we first draw a quick overview of what our :code:`python_package_with_a_library` will look like.
 With respect to the highlighted files, we will
