@@ -12,8 +12,8 @@ Let us use the template for creating a package with a Node, as follows.
    
 Which will output many things in common with the prior example, but two major differences. 
 
-#. 1 It generates a template Node :code:`creating ./python_package_with_a_node/python_package_with_a_node/sample_python_node.py`.
-#. 2 The :file:`setup.py` has information about the Node.
+#. It generates a template Node :code:`creating ./python_package_with_a_node/python_package_with_a_node/sample_python_node.py`.
+#. The :file:`setup.py` has information about the Node.
 
 .. code:: bash
       :emphasize-lines: 16, 25
@@ -55,7 +55,6 @@ Which will output many things in common with the prior example, but two major di
       LGPL-3.0-only
       MIT
       MIT-0
-
 
 Then, we can build the workspace as usual to consider the new package as well.
 
