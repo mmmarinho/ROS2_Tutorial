@@ -53,3 +53,40 @@ which outputs the forever beautiful wall of text we're by now used to, with a mi
    MIT-0
 
 
+For the sake of the example, let us create a library with a Python :code:`function` and another one with a :code:`class`.
+
+Overview of the library
+-----------------------
+
+.. note::
+
+   If you have created the bad habit of declaring all/too many things in your :file:`__init__.py` file, take the hint and start breaking the definitions into different files and use the :file:`__init__.py` just to export the relevant parts of your library. 
+
+To guide our next steps, we first draw a quick overview of what our :code:`python_package_with_a_library` will look like.
+With respect to the highlighted files, we will
+
+#. Create the :code:`_sample_function.py`.
+#. Create the :code:`_sample_class.py`.
+#. Modify :file:`__init__.py` to use the new :code:`function` and :code:`class`.
+
+.. code-block:: console
+   :emphasize-lines: 4,5,6
+   
+   python_package_with_a_library
+      └── python_package_with_a_library
+         └── sample_python_library
+            __init__.py
+            _sample_class.py
+            _sample_function.py
+         __init__.py
+      └── resource
+      └── test
+      
+Create the sample function
+--------------------------
+
+Add a new file to :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library` called :file:`_sample_function.py` with the following content.
+
+
+      
+      
