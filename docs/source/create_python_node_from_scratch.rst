@@ -24,7 +24,7 @@ By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meani
 
 Let us add the dependency between the :code:`<license>` and :code:`<test_depend>` tags. This is not a strict requirement, but is where it commonly is for standard packages.
 
-.. literalinclude:: ../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml
    :language: xml
    :linenos:
   
@@ -45,7 +45,7 @@ In the directory :file:`src/python_package_with_a_node/python_package_with_a_nod
 
 Copy and paste the following contents into the file.
 
-.. literalinclude:: ../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 24-
@@ -72,7 +72,7 @@ Even though you can run the new node in :code:`PyCharm`, we need an additional s
 
 To do so, we modify the :code:`entry_points` variable in :file:`setup.py`, from the original to
 
-.. literalinclude:: ../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py
    :language: python
    :linenos:
 
