@@ -11,22 +11,22 @@ More information on it can be obtained through
    
 which returns the most relevant arguments :code:`package_name` and :code:`executable_name`.
 
-.. code:: bash
-      :emphasize-lines: 6, 7
-      
-      usage: ros2 run [-h] [--prefix PREFIX] package_name executable_name ...
+.. code-block:: bash
+   :emphasize-lines: 6, 7
 
-      Run a package specific executable
+   usage: ros2 run [-h] [--prefix PREFIX] package_name executable_name ...
 
-      positional arguments:
-        package_name     Name of the ROS package
-        executable_name  Name of the executable
-        argv             Pass arbitrary arguments to the executable
+   Run a package specific executable
 
-      options:
-        -h, --help       show this help message and exit
-        --prefix PREFIX  Prefix command, which should go before the executable. Command must be wrapped
-                         in quotes if it contains spaces (e.g. --prefix 'gdb -ex run --args').
+   positional arguments:
+     package_name     Name of the ROS package
+     executable_name  Name of the executable
+     argv             Pass arbitrary arguments to the executable
+
+   options:
+     -h, --help       show this help message and exit
+     --prefix PREFIX  Prefix command, which should go before the executable. Command must be wrapped
+                      in quotes if it contains spaces (e.g. --prefix 'gdb -ex run --args').
 
 
 Back to our example, with a properly sourced terminal, the example node can be executed with
