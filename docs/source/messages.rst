@@ -1,5 +1,5 @@
-Messages
-========
+Messages (:program:`ros2 interface`)
+====================================
 
 If by now you haven't particularly fallen in love with ROS2, fear not. Indeed, we haven't done much so far that couldn't be achieved more easily by other means.
 
@@ -136,7 +136,7 @@ which returns
 
 For example, let's say that we are interested in looking up the contents of :file:`example_interfaces/msg/String`. We can do so with :program:`ros2 interface show`, like so
 
-.. code:: bash
+.. code:: console
 
     ros2 interface show example_interfaces/msg/String
     
