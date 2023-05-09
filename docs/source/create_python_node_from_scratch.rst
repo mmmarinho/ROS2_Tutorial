@@ -42,10 +42,9 @@ So, run
 Creating the Node
 -----------------
 
-In the directory :file:`src/python_package_with_a_node/python_package_with_a_node`, create a new file called :file:`print_forever_node.py`.
+In the directory :file:`src/python_package_with_a_node/python_package_with_a_node`, create a new file called :file:`print_forever_node.py`. Copy and paste the following contents into the file.
 
-Copy and paste the following contents into the file (or download :download:`print_forever_node.py <../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py>`.
-
+(Alternatively, download :download:`print_forever_node.py <../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py>`).
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
