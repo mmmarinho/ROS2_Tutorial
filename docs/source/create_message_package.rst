@@ -56,11 +56,12 @@ The :file:`package.xml` must include extra dependencies
 
 Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely,
 
-:download:`_sample_class.py <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
+:download:`package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml
    :language: xml
    :linenos:
+   :emphasize-lines: 12,13,14
 
 
 
