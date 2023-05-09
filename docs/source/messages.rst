@@ -92,13 +92,13 @@ From those :file:`sensor_msgs` and :file:`geometry_msgs` are packages to always 
 
 As an example, let us take a look into the :file:`example_interfaces` package, containing, as the name implies, example message types. We can do so with 
  
-.. code:: bash
+.. code:: console
 
     ros2 interface package example_interfaces
     
 which returns
 
-.. code:: bash
+.. code:: console
 
     example_interfaces/msg/String
     example_interfaces/srv/AddTwoInts
