@@ -156,3 +156,12 @@ With the necessary files created and properly organized, the last step is to :co
    :language: python
    :linenos:
    :lines: 24-
+
+Build and source
+----------------
+
+No surprise here, right?
+
+.. include:: the_canonical_build_command.rst
+
+If it builds without any unexpected issues, we're good to go!
