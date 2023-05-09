@@ -122,6 +122,8 @@ Create the sample function
 
 Add a new file to :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library` called :file:`_sample_function.py` with the following content.
 
+:download:`_sample_function.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py>`
+
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py
    :language: python
    :linenos:
@@ -134,6 +136,8 @@ Create the sample class
 
 Add a new file to :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library` called :file:`_sample_class.py` with the following content.
 
+:download:`_sample_class.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py>`
+
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py
    :language: python
    :linenos:
@@ -145,6 +149,8 @@ Modify the :code:`__init__.py` to export the symbols
 ----------------------------------------------------
 
 With the necessary files created and properly organized, the last step is to :code:`import` the function and the class. We modify the :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py` to have the following contents.
+
+:download:`__init__.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py
    :language: python
