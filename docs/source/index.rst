@@ -29,6 +29,7 @@ Contents
    python_node_explained
    create_python_library
    using_python_library
+   messages
    faq
 
 
