@@ -87,16 +87,6 @@ Whenever there is a :file:`__init__.py`, that folder is understood by Python as 
 - `Resource file <https://answers.ros.org/question/367328/ament_python-package-doesnt-explicitly-install-a-marker-in-the-package-index/>`_
 - `setup.cfg <https://docs.python.org/3.10/distutils/configfile.html>`_
 
-I think this is too difficult, can you make it easier?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. quote:: 
-
-   Too many folders and files and too confusing and make much easier now. Why do you need a :file:`package.xml` with sometimes the same information as the :file:`setup.py` and also a :file:`setup.cfg` and then an empty file inside the :file:`resource` folder with the name of the package.
-   
-Maybe you can try reaching the nice people that made ROS2 at https://github.com/ros2/ros2/issues, and give them a piece of your mind. Otherwise, no, we just have to deal with it.
-
-
 Overview of the library
 -----------------------
 
