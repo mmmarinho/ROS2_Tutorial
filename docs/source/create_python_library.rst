@@ -85,7 +85,7 @@ Whenever there is a :file:`__init__.py`, that folder is understood by Python as 
       setup.py --> (2) The second file colcon goes through, running the setup instructions
 
 - `Resource file <https://answers.ros.org/question/367328/ament_python-package-doesnt-explicitly-install-a-marker-in-the-package-index/>`_
-- `setup.cfg <>https://docs.python.org/3.10/distutils/configfile.html`_
+- `setup.cfg <https://docs.python.org/3.10/distutils/configfile.html>`_
 
 I think this is too difficult, can you make it easier?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
