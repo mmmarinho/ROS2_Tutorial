@@ -30,6 +30,7 @@ Contents
    create_python_library
    using_python_library
    messages
+   create_message_package
    faq
 
 
