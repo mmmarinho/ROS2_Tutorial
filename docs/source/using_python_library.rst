@@ -57,3 +57,10 @@ The sample Node
 ---------------
 
 Given that it was created from a template, the file :file:`python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py` is currently *mostly* empty. Let us replace its contents with 
+
+:download:`_sample_class.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
+   :language: python
+   :linenos:
+   :lines: 26-
