@@ -64,3 +64,48 @@ Given that it was created from a template, the file :file:`python_package_that_u
    :language: python
    :linenos:
    :lines: 27-
+
+Indeed, the most difficult part is to make and configure the library itself. After that, to use it in another package, it is straightfoward. We :code:`import` the library.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
+   :language: python
+   :linenos:
+   :lines: 27-29
+   :emphasize-lines: 3
+   
+And then use the symbols we imported as we would any other Python library.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
+   :language: python
+   :linenos:
+   :lines: 37-42
+
+Build and source
+----------------
+
+As always, this is needed so that our new package and node can be recognized by :program:`ros2 run`.
+
+.. include:: the_canonical_build_command.rst
+
+Run
+---
+
+.. note::
+
+   Remember that you can stop the node at any time with :kbd:`CTRL+C`.
+
+.. code:: bash
+
+   ros2 run python_package_that_uses_the_library node_that_uses_the_library
+   
+Which outputs something similar to the shown below, but with different numbers and strings as they are randomized.
+
+.. code:: bash
+
+   [INFO] [1683598288.149167944] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.19395834493833486,1.3891603395040568) returned 2.506264769030609.
+   [INFO] [1683598288.149643378] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned qyOXLBEtzZ.
+   [INFO] [1683598288.616095880] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.7387236329957096,1.7650481260672202) returned 6.2688730214810775.
+   [INFO] [1683598288.616604769] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned LCFNFyzwhk.
+   [INFO] [1683598289.116050219] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.003813494022560704,1.7056916575839387) returned 2.9224078633691604.
+   [INFO] [1683598289.116553899] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned wrtTlOdanZ.
+    
