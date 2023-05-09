@@ -63,4 +63,4 @@ Given that it was created from a template, the file :file:`python_package_that_u
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
    :language: python
    :linenos:
-   :lines: 26-
+   :lines: 27-
