@@ -12,14 +12,14 @@ Description
 
 In ROS2, the ROS2 :abbr:`IDL (Interface Description Language)` is used. Each type of message is described in a :file:`.msg` file, which is then compiled by :program:`colcon` into libraries that can be imported into your Python programs.
 
-It is good practice to use message types that already exist in ROS2, instead of creating new ones that serve the exact same purpose. In addition, for complicated message types, we can combine existing types for simplicity.
+When dealing with common robotics concepts such as geometric and sensor messages, it is good practice to use message types that already exist in ROS2, instead of creating new ones that serve the exact same purpose. In addition, for complicated message types, we can combine existing types for simplicity. 
 
 Getting info on messages
 ------------------------
 
 We can get information about ROS2 messages available in our system with :program:`ros2 interface`. Let us first get more information about the program usage with
 
-.. code:: bash
+.. code:: console
    
    ros2 interface -h
    
@@ -45,7 +45,7 @@ which results in
       
 This shows that with :code:`ros2 interface list` we can get a list of all interfaces available in our workspace. That returns a huge list of interfaces, so it will not be replicated entirely here. Instead, we can run
 
-.. code:: bash
+.. code:: console
 
      ros2 interface packages
      
@@ -150,5 +150,11 @@ which returns the contents of the source file used to create this message
     # it into a system you should create a semantically meaningful message type.
     # If you want to embed it in another message, use the primitive data type instead.
     string data
+
+Basically, the comments help to emphasize that message types with too broad meaning are unloved in ROS2. Given that these example interfaces are either unsupported or only loosely supported, my advice would also be to not rely on them for anything besides examples.
+
+The real content of the message file is :code:`string data`, showing that it contains a single string called :code:`data`. Using :code:`ros2 interface show` on other example interfaces, it is easy to see how to build interesting message types.
+
+
 
 
