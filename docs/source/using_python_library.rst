@@ -78,7 +78,7 @@ And then use the symbols we imported as we would any other Python library.
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
    :language: python
    :linenos:
-   :lines: 37-42
+   :lines: 40-59
 
 Build and source
 ----------------
