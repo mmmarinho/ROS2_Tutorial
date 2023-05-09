@@ -51,7 +51,8 @@ This shows that with :code:`ros2 interface list` we can get a list of all interf
      
 to get the list of packages with interfaces available, which returns something similar to
  
-.. code:: console
+.. code-block:: console
+    :emphasize-lines:: 8, 19
  
     action_msgs
     action_tutorials_interfaces
@@ -84,7 +85,7 @@ to get the list of packages with interfaces available, which returns something s
     visualization_msgs
 
 
-From those :file:`sensor_msgs` and :file:`geometry_msgs` are packages to always keep in mind when looking for a suitable interface.
+From those :file:`sensor_msgs` and :file:`geometry_msgs` are packages to always keep in mind when looking for a suitable interface. It will help keeping your nodes compatible with the community.
 
 .. warning:: 
 
