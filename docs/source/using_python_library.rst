@@ -3,7 +3,7 @@ Using a Python Library (for :code:`ament_python`)
 
 Let us create a package with a Node that uses the library we created in the prior example. 
 
-Note that we must now add it as a dependency when calling :program:`ros2 pkg create`. We also add :code:`rclcpp` as a dependency so that we can do something useful with it.
+Note that we must add the :code:`python_package_with_a_library` as a dependency to our new package. The easiest way to do so is through :program:`ros2 pkg create`. We also add :code:`rclcpp` as a dependency so that our Node can do something useful.
 
 .. code:: bash
 
@@ -13,7 +13,7 @@ Note that we must now add it as a dependency when calling :program:`ros2 pkg cre
 resulting in yet another version of our favorite wall of text
 
 .. code-block:: console
-   :emphasize-lines: 25
+   :emphasize-lines: 10
 
    going to create a new package
    package name: python_package_that_uses_the_library
@@ -52,3 +52,8 @@ resulting in yet another version of our favorite wall of text
    LGPL-3.0-only
    MIT
    MIT-0
+   
+The sample Node
+---------------
+
+Given that it was created from a template, the file :file:`python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py` is currently *mostly* empty. Let us replace its contents with 
