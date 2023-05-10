@@ -182,7 +182,7 @@ returns
    package_with_interfaces/srv/WhatIsThePoint
    package_with_interfaces/msg/AmazingQuote
    
-and we can further get more specific info such as
+and we can further get more specific info on :file:`AmazingQuote.msg`
 
 .. code:: console
 
