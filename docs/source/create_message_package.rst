@@ -187,7 +187,6 @@ If additional interfaces are required
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
       :lines: 30-33
-      :emphasize-lines: 3
 
 Build and source
 ----------------
