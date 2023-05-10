@@ -1,5 +1,5 @@
-Creating a dedicated package for interfaces
-===========================================
+Creating a dedicated package for custom interfaces
+==================================================
 
 .. warning::
 
