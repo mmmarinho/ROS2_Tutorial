@@ -1,5 +1,5 @@
-Creating a dedicated package for interfaces
-===========================================
+Creating a dedicated package for custom interfaces
+==================================================
 
 .. warning::
 
@@ -140,22 +140,53 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
-   :emphasize-lines: 16-31
+   :emphasize-lines: 16-34
 
-If additional interfaces are required, there are two points of change.
+What to do when adding new interfaces?
+--------------------------------------
 
-First, we add each new interface in the :code:`set(interface_files ...)`, one per line
+.. note::
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
-   :language: cmake
-   :lines: 17-22
-   
-Then, we add any new dependencies below the :code:`DEPENDENCIES` directive, one per line
+            **TL:DR**
+            #. Add new dependencies to :file:`package.xml`
+            #. Add each new interface file to :code:`set(interface_files ...)`
+            #. Add new dependencies to :code:`DEPENDENCIES`
+            #. Add new dependencies to :code:`ament_export_dependencies(...)`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
-   :language: cmake
-   :lines: 24-28
-   :emphasize-lines: 3
+            Yes, you have to add the same dependency in three places!
+
+.. warning::
+
+   If we forget to add a dependency in any of those three places, the package will either fail to build or cause dependent packages to not build in some cases.
+
+If additional interfaces are required
+
+#. Modify the :file:`package.xml` to have any additional dependency.
+
+#. Add each new interface file to :code:`set(interface_files ...)`
+
+   This is done by adding each new interface in the :code:`set(interface_files ...)`, one per line
+
+   .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+      :language: cmake
+      :lines: 17-22
+
+#. Add new dependencies to :code:`DEPENDENCIES`
+
+   Then, we add any new dependencies below the :code:`DEPENDENCIES` directive, one per line
+
+   .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+      :language: cmake
+      :lines: 24-28
+      :emphasize-lines: 3
+
+#. Add new dependencies to :code:`ament_export_dependencies(...)`
+
+   Then, we add any new dependencies into :code:`ament_export_dependencies(...)`, one per line
+
+   .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+      :language: cmake
+      :lines: 30-33
 
 Build and source
 ----------------

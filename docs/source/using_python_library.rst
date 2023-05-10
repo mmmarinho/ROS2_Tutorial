@@ -8,7 +8,7 @@ Note that we must add the :code:`python_package_with_a_library` as a dependency 
 .. code:: bash
 
    cd ~/ros2_tutorial_workspace/src
-   ros2 pkg create python_package_that_uses_the_library --build-type ament_python --node-name node_that_uses_the_library --dependencies rclcpp python_package_with_a_library
+   ros2 pkg create python_package_that_uses_the_library --build-type ament_python --node-name node_that_uses_the_library --dependencies rclpy python_package_with_a_library
    
 resulting in yet another version of our favorite wall of text
 
@@ -24,7 +24,7 @@ resulting in yet another version of our favorite wall of text
    maintainer: ['murilo <murilomarinho@ieee.org>']
    licenses: ['TODO: License declaration']
    build type: ament_python
-   dependencies: ['rclcpp', 'python_package_with_a_library']
+   dependencies: ['rclpy', 'python_package_with_a_library']
    node_name: node_that_uses_the_library
    creating folder ./python_package_that_uses_the_library
    creating ./python_package_that_uses_the_library/package.xml
