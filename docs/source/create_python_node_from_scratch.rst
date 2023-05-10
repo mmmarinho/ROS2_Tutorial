@@ -58,9 +58,9 @@ By now, this should be enough for you to be able to run the node in :code:`PyCha
 .. code:: bash
 
     [INFO] [1683009340.877110693] [print_forever]: Printed 0 times.
-    [INFO] [1683009341.336559942] [print_forever]: Printed 0 times.
-    [INFO] [1683009341.836334639] [print_forever]: Printed 0 times.
-    [INFO] [1683009342.336555088] [print_forever]: Printed 0 times.
+    [INFO] [1683009341.336559942] [print_forever]: Printed 1 times.
+    [INFO] [1683009341.836334639] [print_forever]: Printed 2 times.
+    [INFO] [1683009342.336555088] [print_forever]: Printed 3 times.
 
 To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2`. The node will exit gracefully with
 
@@ -108,8 +108,8 @@ which will output, as expected
 .. code:: bash
  
     [INFO] [1683010987.130432622] [print_forever]: Printed 0 times.
-    [INFO] [1683010987.622780292] [print_forever]: Printed 0 times.
-    [INFO] [1683010988.122731296] [print_forever]: Printed 0 times.
-    [INFO] [1683010988.622735422] [print_forever]: Printed 0 times.
+    [INFO] [1683010987.622780292] [print_forever]: Printed 1 times.
+    [INFO] [1683010988.122731296] [print_forever]: Printed 2 times.
+    [INFO] [1683010988.622735422] [print_forever]: Printed 3 times.
 
 To stop, press :kbd:`CTRL+C` and the Node will return gracefully.
