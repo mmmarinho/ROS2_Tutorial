@@ -10,6 +10,19 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+#### ROS2 Interface Directives ####
+set(msg_files
+  "msg/AmazingQuote.msg"
+)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${msg_files}
+)
+
+ament_export_dependencies(rosidl_default_runtime)
+#### ROS2 Interface Directives [END] ####
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
