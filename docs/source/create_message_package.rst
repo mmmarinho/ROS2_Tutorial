@@ -108,4 +108,7 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
    :emphasize-lines: 13-25
 
 
-
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+   :language: cmake
+   :lines: 20-22
+   
