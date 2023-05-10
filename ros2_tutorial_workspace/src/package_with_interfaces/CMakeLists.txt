@@ -27,7 +27,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   geometry_msgs
 )
 
-ament_export_dependencies(rosidl_default_runtime)
+ament_export_dependencies(
+  rosidl_default_runtime
+  geometry_msgs
+)
 #### ROS2 Interface Directives [END] ####
 
 if(BUILD_TESTING)
