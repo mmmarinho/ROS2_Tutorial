@@ -1,5 +1,5 @@
-Creating a dedicated package for messages
-=========================================
+Creating a dedicated package for interfaces
+===========================================
 
 All interfaces in ROS2 must be made in an :program:`ament_cmake` package. We have so far not needed it, but for this scenario we cannot escape. Thankfully, for this we don't need to dig too deep into :program:`CMake` just for this purpose, so fear not.
 
@@ -77,7 +77,7 @@ The convention is to add all messages to a folder called :file:`msg`. Let's foll
 The message file
 ----------------
 
-Let us create a message file to transfer inspirational quotes. For example, the one below.
+Let us create a message file to transfer inspirational quotes between Nodes. For example, the one below.
 
 .. epigraph::
 
@@ -97,7 +97,11 @@ Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we 
 The :file:`CMakeLists.txt` directives
 -------------------------------------
 
-If a package is going to be dedicated for messages, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
+.. note:: 
+
+   The order of the :program:`CMake` directives is very important. In addition, building several nodes, libraries, and messages in the same project can be complex and generate a lot of issues given the interactions between the targets and their dependencies.
+
+If a package is dedicated for interfaces, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
 Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 
 :download:`CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
@@ -107,8 +111,9 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
    :linenos:
    :emphasize-lines: 13-25
 
+If additional interfaces are required, the only point of change is this. We can add one per line, keeping the identation.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
-   :lines: 20-22
+   :lines: 16-18
    
