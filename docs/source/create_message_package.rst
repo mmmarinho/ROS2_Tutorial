@@ -194,3 +194,26 @@ which returns
    :language: yaml
    :linenos:
 
+alternatively, we can do the same for :file:`WhatIsThePoint.srv`
+
+.. code:: console
+
+   ros2 interface show package_with_interfaces/srv/WhatIsThePoint
+   
+which returns expanded information on each field of the service
+
+
+.. code:: yaml
+
+   # WhatIsThePoint.srv from https://ros2-tutorial.readthedocs.io
+   # Receives and AmazingQuote and returns what is the point
+   AmazingQuote quote
+      int32 id
+      string philosopher_name
+      string quote
+   ---
+   geometry_msgs/Point point
+      float64 x
+      float64 y
+      float64 z
+
