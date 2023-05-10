@@ -102,6 +102,22 @@ Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we 
    :language: yaml
    :linenos:
 
+The service folder
+------------------
+
+The convention is to add all services to a folder called :file:`srv`. Let's follow that convention 
+
+.. code:: console
+
+   cd ~/ros2_tutorial_workspace/src
+   mkdir srv
+
+:download:`WhatIsThePoint.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv
+   :language: yaml
+   :linenos:
+
 The :file:`CMakeLists.txt` directives
 -------------------------------------
 
