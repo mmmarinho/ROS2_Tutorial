@@ -66,7 +66,6 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :linenos:
    :lines: 32-37
    :emphasize-lines: 3
 
@@ -78,15 +77,16 @@ The rule of thumb is that all of these three, including the :code:`qos_profile`,
 
 Then, each message is handled much like any other class in Python. We instanteate and initialize the message as follows
 
-
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+   :language: python
+   :lines: 42-45
 
 Lastly, the message needs to be published using :code:`Node.publish(msg)`. 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :linenos:
-   :lines: 16,25
-   :emphasize-lines: 3-6, 8
+   :lines: 45-47
+   :emphasize-lines: 2
 
 .. note::
 
