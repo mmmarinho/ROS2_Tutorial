@@ -137,7 +137,7 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 
 If additional interfaces are required, there are two points of change.
 
-First, we add each new interface in the place below, one per line
+First, we add each new interface in the :code:`set(interface_files ...)`, one per line
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
@@ -148,3 +148,4 @@ Then, we add any new dependencies below the :code:`DEPENDENCIES` directive, one 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :lines: 24-28
+   :emphasize-lines: 3
