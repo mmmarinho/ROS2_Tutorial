@@ -66,7 +66,7 @@ Edit the :file:`package_with_interfaces/package.xml` like so
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml
    :language: xml
    :linenos:
-   :emphasize-lines: 12,14-16
+   :emphasize-lines: 14-16
 
 The message folder
 ------------------
