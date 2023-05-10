@@ -13,8 +13,8 @@ Then
 
 Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_.
 
-Create the package
-------------------
+Create the package and its elements
+-----------------------------------
 
 First, let us create an :program:`ament_python` package that depends on our newly developed :file:`packages_with_interfaces` and build from there.
 
@@ -23,9 +23,15 @@ First, let us create an :program:`ament_python` package that depends on our newl
   ros2 pkg create python_package_that_uses_the_messages \
   --build-type ament_python \
   --dependencies rclpy package_with_interfaces
-  
+
+Before we start exploring the elements of the package, let us
+
+#. Create the publisher Node.
+#. Create the subscriber Node.
+#. Update the :file:`setup.py` so that :program:`ros2 run` finds these programs.
+
 Create the publisher Node
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :download:`amazing_quote_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py>`
 
@@ -36,7 +42,7 @@ Create the publisher Node
    :emphasize-lines: 3, 11, 18-21, 23
 
 Create the subscriber Node
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :download:`amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py>`
 
@@ -45,6 +51,17 @@ Create the subscriber Node
    :linenos:
    :lines: 24-
    :emphasize-lines: 3, 11-15, 17-34
+   
+
+Update the :file:`setup.py`
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py
+   :language: python
+   :linenos:
+   :emphasize-lines: 11-15
 
 Inspecting topics with :program:`ros2 topic`
 --------------------------------------------
