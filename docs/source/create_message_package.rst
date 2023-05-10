@@ -170,7 +170,7 @@ If additional interfaces are required
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
       :lines: 17-24
-      :emphasize-lines: 5
+      :emphasize-lines: 4, 7
 
 #. Add new dependencies to :code:`DEPENDENCIES`
 
