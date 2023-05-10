@@ -31,7 +31,7 @@ Contents
    using_python_library
    messages
    create_message_package
-   using_interface_package
+   publishers_and_subscribers
    faq
 
 
