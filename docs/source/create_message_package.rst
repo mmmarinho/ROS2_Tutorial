@@ -239,8 +239,8 @@ which returns expanded information on each field of the service
    # Receives an AmazingQuote and returns what is the point
    AmazingQuote quote
       int32 id
-      string philosopher_name
       string quote
+      string philosopher_name
    ---
    geometry_msgs/Point point
       float64 x
