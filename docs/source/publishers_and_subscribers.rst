@@ -11,7 +11,7 @@ Then
 - A program that sends (publishes) information to the topic has a :code:`Publisher`.
 - A program that reads (subscribes) information from a topic has a :code:`Subscriber`.
 
-Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and combination thereof, connecting to an arbitrary number of Nodes. This forms part of the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_, the rest of it being made by any other relationships using other interface types.
+Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_.
 
 Create the package
 ------------------
