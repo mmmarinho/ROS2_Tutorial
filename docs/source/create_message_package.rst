@@ -81,6 +81,10 @@ The convention is to add all messages to a folder called :file:`msg`. Let's foll
 The message file
 ----------------
 
+.. note::
+
+   Here is a list of available `built-in types <https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html#field-types>`_ for ROS2 interfaces.
+
 Let us create a message file to transfer inspirational quotes between Nodes. For example, the one below.
 
 .. epigraph::
@@ -97,7 +101,7 @@ Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
    :linenos:
-   
+
 The :file:`CMakeLists.txt` directives
 -------------------------------------
 
