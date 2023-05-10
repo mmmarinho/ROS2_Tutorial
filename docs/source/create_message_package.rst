@@ -83,6 +83,7 @@ The :file:`CMakeLists.txt` directives
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
+   :emphasize-lines: 13, 15-18, 20-22, 24,25
 
 
 
