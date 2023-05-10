@@ -37,6 +37,7 @@ class PrintForever(Node):
     def timer_callback(self):
         """Method that is periodically called by the timer."""
         self.get_logger().info('Printed {} times.'.format(self.print_count))
+        self.print_count = self.print_count + 1
 
 
 def main(args=None):
