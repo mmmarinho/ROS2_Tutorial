@@ -23,21 +23,38 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from package_with_interfaces.msg import AmazingQuote
 
 
-class PrintForever(Node):
-    """A ROS2 Node that prints to the console periodically."""
+class AmazingQuoteSubscriberNode(Node):
+    """A ROS2 Node that receives and prints an amazing quote."""
 
     def __init__(self):
-        super().__init__('print_forever')
-        timer_period: float = 0.5
-        self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.print_count: int = 0
+        super().__init__('amazing_quote_subscriber_node')
+        self.amazing_quote_subscriber = self.create_subscription(
+            AmazingQuote,
+            '/amazing_quote',
+            self.amazing_quote_subscriber_callback,
+            1)
 
-    def timer_callback(self):
+    def amazing_quote_subscriber_callback(self, msg: AmazingQuote):
         """Method that is periodically called by the timer."""
-        self.get_logger().info('Printed {} times.'.format(self.print_count))
-        self.print_count = self.print_count + 1
+        self.get_logger().info("""
+        I have received the most amazing of quotes.
+        It says
+            
+               '{}'
+               
+        And was though by the following genius
+            
+            -- {}
+            
+        This latest quote had the id={}.
+        """.format(
+            msg.quote,
+            msg.philosopher_name,
+            msg.id
+        ))
 
 
 def main(args=None):
@@ -49,9 +66,9 @@ def main(args=None):
     try:
         rclpy.init(args=args)
 
-        print_forever_node = PrintForever()
+        amazing_quote_subscriber_node = AmazingQuoteSubscriberNode()
 
-        rclpy.spin(print_forever_node)
+        rclpy.spin(amazing_quote_subscriber_node)
     except KeyboardInterrupt:
         pass
 

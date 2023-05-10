@@ -27,12 +27,12 @@ from package_with_interfaces.msg import AmazingQuote
 
 
 class AmazingQuotePublisherNode(Node):
-    """A ROS2 Node that repeatedly publishes an amazing quote."""
+    """A ROS2 Node that receives and prints an amazing quote."""
 
     def __init__(self):
-        super().__init__('amazing_quote_publisher_node')
-        timer_period: float = 0.5
+        super().__init__('amazing_quote_subscriber_node')
         self.amazing_quote_publisher = self.create_publisher(AmazingQuote, '/amazing_quote', 1)
+        timer_period: float = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.incremental_id: int = 0
 
