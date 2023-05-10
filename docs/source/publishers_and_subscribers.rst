@@ -13,6 +13,9 @@ Then
 
 Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and combination thereof, connecting to an arbitrary number of Nodes. This forms the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_
 
+Create the package
+------------------
+
 First, let us create an :program:`ament_python` package that depends on our newly developed :file:`packages_with_interfaces` and build from there.
 
 .. code:: console
