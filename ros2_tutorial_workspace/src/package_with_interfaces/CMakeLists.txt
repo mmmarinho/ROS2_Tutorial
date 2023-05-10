@@ -24,7 +24,7 @@ set(interface_files
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${interface_files}
   DEPENDENCIES
-  geometry_msgs 
+  geometry_msgs
 )
 
 ament_export_dependencies(rosidl_default_runtime)
