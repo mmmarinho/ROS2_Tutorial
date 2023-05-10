@@ -13,12 +13,12 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 #### ROS2 Interface Directives ####
-set(msg_files
+set(interface_files
   "msg/AmazingQuote.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  ${msg_files}
+  ${interface_files}
 )
 
 ament_export_dependencies(rosidl_default_runtime)
