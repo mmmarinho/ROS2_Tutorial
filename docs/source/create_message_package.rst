@@ -51,8 +51,8 @@ again showing our beloved wall of text, with a few highlighted differences becau
 
 The :file:`package.xml` works the same way as when using :file:`ament_python`. However, we no longer have a :file:`setup.py` or :file:`setup.cfg`, everything is handled by the :file:`CMakeLists.txt`.
 
-The :file:`package.xml` must include extra dependencies
--------------------------------------------------------
+The :file:`package.xml` dependencies
+------------------------------------
 
 Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely,
 
@@ -63,7 +63,12 @@ Whenever the package has any type of interface, the :file:`package.xml` **must**
    :linenos:
    :emphasize-lines: 12,13,14
 
+The :file:`CMakeLists.txt` directives
+-------------------------------------
 
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.xml
+   :language: cmake
+   :linenos:
 
 
 
