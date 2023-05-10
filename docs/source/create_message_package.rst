@@ -55,6 +55,7 @@ The :file:`package.xml` dependencies
 ------------------------------------
 
 Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely, the ones highlighted below.
+Edit the :file:`package_with_interfaces/package.xml` like so
 
 :download:`package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
 
@@ -63,27 +64,48 @@ Whenever the package has any type of interface, the :file:`package.xml` **must**
    :linenos:
    :emphasize-lines: 12,13,14
 
+The message folder
+------------------
+
+The convention is to add all messages to a folder called :file:`msg`. Let's follow that convention 
+
+.. code:: console
+
+   cd ~/ros2_tutorial_workspace/src
+   mkdir msg
+
 The message file
 ----------------
+
+Let us create a message file to transfer inspirational quotes. For example, the one below.
 
 .. epigraph::
 
    Use the force, Pikachu!
 
-   -- Naruto Urameshi
+   -- Uncle Ben
+
+There are many ways to represent this, but for the sake of the example let us give each message an :code:`id` and two rather obvious fields.
+Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we just created with the following contents.
+
+:download:`AmazingQuote.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
    :linenos:
    
-
 The :file:`CMakeLists.txt` directives
 -------------------------------------
+
+If a package is going to be dedicated for messages, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
+Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
+
+:download:`CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
-   :emphasize-lines: 13, 15-18, 20-22, 24,25
+   :emphasize-lines: 13-25
 
 
 
