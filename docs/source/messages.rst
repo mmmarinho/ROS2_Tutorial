@@ -1,23 +1,23 @@
-Messages (:program:`ros2 interface`)
-====================================
+Messages and Services (:program:`ros2 interface`)
+=================================================
 
 If by now you haven't particularly fallen in love with ROS2, fear not. Indeed, we haven't done much so far that couldn't be achieved more easily by other means.
 
 ROS2 begins to shine most in its interprocess communication, through what are called `ROS2 interfaces <https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html>`_. In particular, the fact that we can easily interface Nodes written in Python and C++ is a strong selling point.
 
-:code:`Messages` are one of the three types of ROS2 interfaces. This will most likely be the standard of communication between Nodes in your packages.
+:code:`Messages` are one of the three types of ROS2 interfaces. This will most likely be the standard of communication between Nodes in your packages. We will also see the bidirectional :code:`Services` now. The last type of interface, :code:`Actions`, is left for another section.
 
 Description
 -----------
 
-In ROS2, the ROS2 :abbr:`IDL (Interface Description Language)` is used. Each type of message is described in a :file:`.msg` file, which is then compiled by :program:`colcon` into libraries that can be imported into your Python programs.
+In ROS2, interfaces are files written in the ROS2 :abbr:`IDL (Interface Description Language)` is used. Each type of message is described in a :file:`.msg` file (or :file:`.srv` file), which is then compiled by :program:`colcon` into libraries that can be imported into your Python programs.
 
-When dealing with common robotics concepts such as geometric and sensor messages, it is good practice to use message types that already exist in ROS2, instead of creating new ones that serve the exact same purpose. In addition, for complicated message types, we can combine existing types for simplicity. 
+When dealing with common robotics concepts such as geometric and sensor messages, it is good practice to use interfaces that already exist in ROS2, instead of creating new ones that serve the exact same purpose. In addition, for complicated interfaces, we can combine existing ones for simplicity. 
 
-Getting info on messages
-------------------------
+Getting info on interfaces
+--------------------------
 
-We can get information about ROS2 messages available in our system with :program:`ros2 interface`. Let us first get more information about the program usage with
+We can get information about ROS2 intefaces available in our system with :program:`ros2 interface`. Let us first get more information about the program usage with
 
 .. code:: console
    
@@ -135,6 +135,9 @@ which returns
     example_interfaces/msg/UInt64MultiArray
     example_interfaces/msg/UInt32
 
+Messages
+--------
+
 For example, let's say that we are interested in looking up the contents of :file:`example_interfaces/msg/String`. We can do so with :program:`ros2 interface show`, like so
 
 .. code:: console
@@ -156,8 +159,23 @@ Basically, the comments help to emphasize that message types with too broad mean
 
 The real content of the message file is :code:`string data`, showing that it contains a single string called :code:`data`. Using :code:`ros2 interface show` on other example interfaces, it is easy to see how to build interesting message types.
 
-.. warning::
+Services
+--------
 
-   Despite this push in ROS2 towards having the users define even the simplest of message types, to define new interfaces in ROS2 we must use an :program:`ament_cmake` package. It **cannot** be done with an :program:`ament_python` package.
+In the case of a service, let's look up the contents of :file:`example_interfaces/srv/AddTwoInts`.
 
+.. code:: console
 
+    ros2 interface show example_interfaces/srv/AddTwoInts
+    
+that results in
+    
+.. code-block:: yaml
+   :emphasize-lines:  3
+
+   int64 a
+   int64 b
+   ---
+   int64 sum
+
+Notice that the :code:`---` is what separates the :code:`Request`, above, from the :code:`Response` below. Anyone using this service would expect that the result would be :math:`sum = a + b`, but this logic needs to be implemented on the Node. The service itself is just the ways of bidirectional communication.
