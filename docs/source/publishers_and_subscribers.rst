@@ -61,7 +61,7 @@ Update the :file:`setup.py`
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py
    :language: python
    :linenos:
-   :emphasize-lines: 11-15
+   :emphasize-lines: 21-25
 
 Inspecting topics with :program:`ros2 topic`
 --------------------------------------------
