@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'python_package_that_uses_the_interfaces'
+package_name = 'python_package_that_uses_the_messages'
 
 setup(
     name=package_name,
@@ -20,10 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'amazing_quote_publisher_node = python_package_that_uses_the_interfaces.amazing_quote_publisher_node:main',
-            'amazing_quote_subscriber_node = python_package_that_uses_the_interfaces.amazing_quote_subscriber_node:main',
-            'service_server_node = python_package_that_uses_the_interfaces.service_server_node:main',
-            'service_client_node = python_package_that_uses_the_interfaces.publisher_node:main'
+            'amazing_quote_publisher_node = python_package_that_uses_the_messages.amazing_quote_publisher_node:main',
+            'amazing_quote_subscriber_node = python_package_that_uses_the_messages.amazing_quote_subscriber_node:main'
         ],
     },
 )
