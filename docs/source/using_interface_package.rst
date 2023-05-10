@@ -263,3 +263,4 @@ Using interfaces from another package
    :language: python
    :linenos:
    :lines: 24-
+   :emphasize-lines: 3, 11-15, 17-34
