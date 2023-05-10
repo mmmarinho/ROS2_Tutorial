@@ -15,11 +15,16 @@ find_package(rosidl_default_generators REQUIRED)
 
 #### ROS2 Interface Directives ####
 set(interface_files
+  # Messages
   "msg/AmazingQuote.msg"
+  # Services
+  "srv/WhatIsThePoint.srv"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${interface_files}
+  DEPENDENCIES
+  geometry_msgs 
 )
 
 ament_export_dependencies(rosidl_default_runtime)
