@@ -147,13 +147,14 @@ What to do when adding new interfaces?
 
 .. note::
 
-            **TL:DR**
-            #. Add new dependencies to :file:`package.xml`
-            #. Add each new interface file to :code:`set(interface_files ...)`
-            #. Add new dependencies to :code:`DEPENDENCIES`
-            #. Add new dependencies to :code:`ament_export_dependencies(...)`
+         **TL:DR**
 
-            Yes, you have to add the same dependency in three places!
+         #. Add new dependencies to :file:`package.xml`
+         #. Add each new interface file to :code:`set(interface_files ...)`
+         #. Add new dependencies to :code:`DEPENDENCIES`
+         #. Add new dependencies to :code:`ament_export_dependencies(...)`
+
+         Yes, you have to add the same dependency in three places!
 
 .. warning::
 
