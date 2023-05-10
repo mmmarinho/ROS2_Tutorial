@@ -63,6 +63,20 @@ Whenever the package has any type of interface, the :file:`package.xml` **must**
    :linenos:
    :emphasize-lines: 12,13,14
 
+The message file
+----------------
+
+.. epigraph::
+
+   Use the force, Pikachu!
+
+   -- Naruto Urameshi
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
+   :language: yaml
+   :linenos:
+   
+
 The :file:`CMakeLists.txt` directives
 -------------------------------------
 
