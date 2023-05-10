@@ -205,7 +205,7 @@ which returns expanded information on each field of the service
 .. code:: yaml
 
    # WhatIsThePoint.srv from https://ros2-tutorial.readthedocs.io
-   # Receives and AmazingQuote and returns what is the point
+   # Receives an AmazingQuote and returns what is the point
    AmazingQuote quote
       int32 id
       string philosopher_name
