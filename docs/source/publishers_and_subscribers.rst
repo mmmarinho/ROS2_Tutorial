@@ -32,6 +32,20 @@ Before we start exploring the elements of the package, let us
 
 Create the publisher Node
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
+
+         **TL:DR** Creating a publisher
+
+         #. Add new dependencies to :file:`package.xml`
+         #. Import new messages :code:`from <package_name>.msg import <msg_name>`
+         #. In a subclass of :code:`Node`
+         
+            #. create a publisher with :code:`self.publisher = self.create_publisher(...)`
+            #. Send messages with :code:`self.publisher.publish(....)`
+            
+         #. Add the new Node to :file:`setup.py`
+
+For this example, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_publisher_node.py`, with the following contents
 
 :download:`amazing_quote_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py>`
 
@@ -41,8 +55,56 @@ Create the publisher Node
    :lines: 24-
    :emphasize-lines: 3, 11, 18-21, 23
 
+When we built our :file:`package_with_interfaces` in the last section, what ROS2 did for us, among other things, was create a Python library called :file:`package_with_interfaces.msg` contaning the Python implementation of the :file:`AmazingQuote.msg`. Because of that, we can use it by importing it like so
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+   :language: python
+   :lines: 1,3
+   :emphasize-lines: 3
+
+The publisher must be created with the :code:`Node.create_publisher(...)` method, and receives the three arguments we defined. The method parameters they relate to, are, in order
+
+The rule of thumb is that all of these three, including the :code:`qos_profile`, should be the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
+
+- :code:`msg_type: {__class__}` A class, namely the message that will be used in the topic. In this case, :code:`AmazingQuote`.
+- :code:`topic: str`: The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.
+- :code:`qos_profile: QoSProfile | int`: The simplest interpretation for this case is the number of messages that will be saved if the :code:`spin(...)` takes to long to process them. The long story is available at the `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.
+
+Then, each message is handled much like any other class in Python. We instanteate and initialize the message as follows
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+   :language: python
+   :linenos:
+   :lines: 9,14
+   :emphasize-lines: 3
+
+Lastly, the message needs to be published using :code:`Node.publish(msg)`. 
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+   :language: python
+   :linenos:
+   :lines: 16,25
+   :emphasize-lines: 3-6, 8
+
+.. note::
+
+   In general, the message will **NOT** be published instantenously after :code:`Node.publish()` is called. It is usually fast, but entirely dependent on :code:`rclpy.spin()` and how much work it is doing.
+
 Create the subscriber Node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+         **TL:DR** Creating a subscriber
+
+         #. Add new dependencies to :file:`package.xml`
+         #. Import new messages :code:`from <package_name>.msg import <msg_name>`
+         #. In a subclass of :code:`Node`, 
+         
+                #. create a callback :code:`def callback(self, msg):`
+                #. create a subscriber :code:`self.subscriber = self.create_subscription(...)`
+                
+         #. Add the new Node to :file:`setup.py`
 
 :download:`amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py>`
 
