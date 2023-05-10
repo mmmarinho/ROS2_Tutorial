@@ -1,12 +1,47 @@
 Publishers and Subscribers : using messages
 ===========================================
 
+Finally, we reach a point where ROS2 becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
+We can use those to provide interprocess communication, i.e. two different programs talking to each other, which otherwise can be error-prone and very difficult to implement.
+
+ROS2 works on a model in which any number of processes can communicate over a :code:`Topic` that only accepts one message type. Each topic is uniquely identified by a string.
+
+Then
+
+- A program that sends (publisher) information to the topic is has a :code:`Publisher`
+- A program that reads (subscribes) information from a topic is has a :code:`Subscriber`
+
+Each Node can have any number of :code:`Publishers` and :code:`Subscribers`, connecting to an arbitrary number of Nodes. This forms the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_
+
+First, let us create an :program:`ament_python` package that depends on our newly developed :file:`packages_with_interfaces` and build from there.
+
 .. code:: console
 
   ros2 pkg create python_package_that_uses_the_messages \
   --build-type ament_python \
   --dependencies rclpy package_with_interfaces
   
+Create the publisher Node
+--------------------------
+
+:download:`amazing_quote_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+   :language: python
+   :linenos:
+   :lines: 24-
+   :emphasize-lines: 3, 11, 18-21, 23
+
+Create the subscriber Node
+--------------------------
+
+:download:`amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
+   :language: python
+   :linenos:
+   :lines: 24-
+   :emphasize-lines: 3, 11-15, 17-34
 
 .. code:: console
 
@@ -215,14 +250,4 @@ Publishers and Subscribers : using messages
 
   ros2 run python_package_that_uses_the_messages amazing_quote_publisher_node
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
-   :language: python
-   :linenos:
-   :lines: 24-
-   :emphasize-lines: 3, 11, 18-21, 23
-   
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
-   :language: python
-   :linenos:
-   :lines: 24-
-   :emphasize-lines: 3, 11-15, 17-34
+
