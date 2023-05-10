@@ -140,7 +140,7 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
-   :emphasize-lines: 14,16-38
+   :emphasize-lines: 14-38
 
 What to do when adding new interfaces?
 --------------------------------------
