@@ -67,7 +67,7 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
    :linenos:
-   :lines: 31-36
+   :lines: 32-37
    :emphasize-lines: 3
 
 The rule of thumb is that all of these three, including the :code:`qos_profile`, should be the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
