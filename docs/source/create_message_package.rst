@@ -119,9 +119,16 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
    :linenos:
    :emphasize-lines: 16-31
 
-If additional interfaces are required, the only point of change is this. We can add one per line, keeping the identation.
+If additional interfaces are required, there are two points of change.
+
+First, we add each new interface in the place below, one per line
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :lines: 17-22
    
+Then, we add any new dependencies below the :code:`DEPENDENCIES` directive, one per line
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+   :language: cmake
+   :lines: 24-28
