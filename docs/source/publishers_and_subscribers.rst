@@ -59,12 +59,10 @@ When we built our :file:`package_with_interfaces` in the last section, what ROS2
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 1,3
+   :lines: 24-26
    :emphasize-lines: 3
 
-The publisher must be created with the :code:`Node.create_publisher(...)` method, and receives the three arguments we defined. The method parameters they relate to, are, in order
-
-The rule of thumb is that all of these three, including the :code:`qos_profile`, should be the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
+The publisher must be created with the :code:`Node.create_publisher(...)` method, and receives the three arguments we defined. The rule of thumb is that all of these three, including the :code:`qos_profile`, should be the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
 
 - :code:`msg_type: {__class__}` A class, namely the message that will be used in the topic. In this case, :code:`AmazingQuote`.
 - :code:`topic: str`: The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.
