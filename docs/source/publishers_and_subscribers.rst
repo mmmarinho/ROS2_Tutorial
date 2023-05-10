@@ -1,7 +1,7 @@
 Publishers and Subscribers : using messages
 ===========================================
 
-Finally, we reach a point where ROS2 becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
+Finally, we reached the point where ROS2 becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
 We can use those to provide interprocess communication, i.e. two different programs talking to each other, which otherwise can be error-prone and very difficult to implement.
 
 ROS2 works on a model in which any number of processes can communicate over a :code:`Topic` that only accepts one message type. Each topic is uniquely identified by a string.
