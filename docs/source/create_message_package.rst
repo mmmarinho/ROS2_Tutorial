@@ -66,7 +66,7 @@ Whenever the package has any type of interface, the :file:`package.xml` **must**
 The :file:`CMakeLists.txt` directives
 -------------------------------------
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.xml
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
 
