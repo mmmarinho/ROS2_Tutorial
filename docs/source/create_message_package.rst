@@ -112,11 +112,18 @@ The convention is to add all services to a folder called :file:`srv`. Let's foll
    cd ~/ros2_tutorial_workspace/src
    mkdir srv
 
+The service file
+----------------
+
+With the :file:`AmazingQuote.msg`, we have seen how to use built-in types. Let's use the service to learn two more possibilities. Let us use a message from the same package and a message from another package. Services cannot be used to define other services.
+
 :download:`WhatIsThePoint.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv
    :language: yaml
    :linenos:
+
+Note that if the message is defined in the same package, the package name does not appear in the service or message definition. If the message is defined elsewhere, we have to specify it.
 
 The :file:`CMakeLists.txt` directives
 -------------------------------------
