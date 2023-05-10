@@ -12,12 +12,12 @@ Creating the package
 
 There isn't a template for message-only packages using :program:`ros2 pkg create`. We'll need to build on top of a mostly empty :program:`ament_cmake` package.
 
-Run
+To take this chance to also learn how to nest messages on other interfaces, we also add the dependency on :code:`geometry_msgs`.
 
 .. code:: console
 
    cd ~/ros2_tutorial_workspace/src
-   ros2 pkg create --build-type ament_cmake package_with_interfaces
+   ros2 pkg create --build-type ament_cmake package_with_interfaces --dependencies geometry_msgs
 
 again showing our beloved wall of text, with a few highlighted differences because of it being a :program:`ament_cmake` package.
 
@@ -33,7 +33,7 @@ again showing our beloved wall of text, with a few highlighted differences becau
     maintainer: ['murilo <murilomarinho@ieee.org>']
     licenses: ['TODO: License declaration']
     build type: ament_cmake
-    dependencies: []
+    dependencies: [geometry_msgs]
     creating folder ./package_with_interfaces
     creating ./package_with_interfaces/package.xml
     creating source and include folder
