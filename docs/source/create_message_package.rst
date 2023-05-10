@@ -140,7 +140,7 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
-   :emphasize-lines: 16-34
+   :emphasize-lines: 16-38
 
 What to do when adding new interfaces?
 --------------------------------------
@@ -169,7 +169,8 @@ If additional interfaces are required
 
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
-      :lines: 17-22
+      :lines: 17-24
+      :emphasize_lines: 4,7
 
 #. Add new dependencies to :code:`DEPENDENCIES`
 
@@ -177,8 +178,8 @@ If additional interfaces are required
 
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
-      :lines: 24-28
-      :emphasize-lines: 3
+      :lines: 26-31
+      :emphasize-lines: 5
 
 #. Add new dependencies to :code:`ament_export_dependencies(...)`
 
@@ -186,7 +187,8 @@ If additional interfaces are required
 
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
-      :lines: 30-33
+      :lines: 33-37
+      :emphasize-lines: 4
 
 Build and source
 ----------------
