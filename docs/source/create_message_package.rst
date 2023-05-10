@@ -155,6 +155,10 @@ What to do when adding new interfaces?
 
             Yes, you have to add the same dependency in three places!
 
+.. warning::
+
+   If we forget to add a dependency in any of those three places, the package will either fail to build or cause dependent packages to not build in some cases.
+
 If additional interfaces are required
 
 #. Modify the :file:`package.xml` to have any additional dependency.
