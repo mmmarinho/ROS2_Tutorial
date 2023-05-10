@@ -166,8 +166,6 @@ If additional interfaces are required
 
 #. Add each new interface file to :code:`set(interface_files ...)`
 
-   This is done by adding each new interface in the :code:`set(interface_files ...)`, one per line
-
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
       :lines: 17-24
@@ -175,16 +173,12 @@ If additional interfaces are required
 
 #. Add new dependencies to :code:`rosidl_generate_interfaces(... DEPENDENCIES ...)`
 
-   Then, we add any new dependencies below the :code:`rosidl_generate_interfaces(... DEPENDENCIES ...)` directive, one per line
-
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
       :lines: 26-31
       :emphasize-lines: 5
 
 #. Add new dependencies to :code:`ament_export_dependencies(...)`
-
-   Then, we add any new dependencies into :code:`ament_export_dependencies(...)`, one per line
 
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
