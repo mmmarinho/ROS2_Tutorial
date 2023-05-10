@@ -192,7 +192,6 @@ which returns
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
-   :linenos:
 
 alternatively, we can do the same for :file:`WhatIsThePoint.srv`
 
