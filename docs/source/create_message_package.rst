@@ -142,20 +142,48 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
    :linenos:
    :emphasize-lines: 16-31
 
-If additional interfaces are required, there are two points of change.
+What to do when adding new interfaces?
+--------------------------------------
 
-First, we add each new interface in the :code:`set(interface_files ...)`, one per line
+.. note::
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
-   :language: cmake
-   :lines: 17-22
-   
-Then, we add any new dependencies below the :code:`DEPENDENCIES` directive, one per line
+         **TL:DR**
+         #. Add new dependencies to :file:`package.xml`
+         #. Add each new interface file to :code:`set(interface_files ...)`
+         #. Add new dependencies to :code:`DEPENDENCIES`
+         #. Add new dependencies to :code:`ament_export_dependencies(...)`
+         
+         Yes, you have to add the same dependency in three places!
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
-   :language: cmake
-   :lines: 24-28
-   :emphasize-lines: 3
+If additional interfaces are required
+
+#. Modify the :file:`package.xml` to have any additional dependency.
+
+#. Add each new interface file to :code:`set(interface_files ...)`
+
+   This is done by adding each new interface in the :code:`set(interface_files ...)`, one per line
+
+   .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+      :language: cmake
+      :lines: 17-22
+
+#. Add new dependencies to :code:`DEPENDENCIES`
+
+   Then, we add any new dependencies below the :code:`DEPENDENCIES` directive, one per line
+
+   .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+      :language: cmake
+      :lines: 24-28
+      :emphasize-lines: 3
+
+#. Add new dependencies to :code:`ament_export_dependencies(...)`
+
+   Then, we add any new dependencies into :code:`ament_export_dependencies(...)`, one per line
+
+   .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+      :language: cmake
+      :lines: 24-28
+      :emphasize-lines: 3
 
 Build and source
 ----------------
