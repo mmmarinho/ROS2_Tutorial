@@ -156,3 +156,41 @@ Then, we add any new dependencies below the :code:`DEPENDENCIES` directive, one 
    :language: cmake
    :lines: 24-28
    :emphasize-lines: 3
+
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: the_canonical_build_command.rst
+
+Getting info on custom interfaces
+---------------------------------
+
+As long as the package has been correctly built and sourced, we can easily get information on its interfaces using :program:`ros2 interface`.
+
+For instance, running
+
+.. code:: console
+
+   ros2 interface package package_with_interfaces
+   
+returns
+
+.. code:: console
+
+   package_with_interfaces/srv/WhatIsThePoint
+   package_with_interfaces/msg/AmazingQuote
+   
+and we can further get more specific info such as
+
+.. code:: console
+
+   ros2 interface show package_with_interfaces/msg/AmazingQuote
+
+which returns
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
+   :language: yaml
+   :linenos:
+
