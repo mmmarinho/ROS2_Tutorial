@@ -249,4 +249,10 @@ Using interfaces from another package
   philosopher_name: Uncle Ben
   ---
 
+.. code:: console
+
+  ros2 run python_package_that_uses_the_interfaces amazing_quote_publisher_node
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_interfaces/python_package_that_uses_the_interfaces/amazing_quote_publisher_node.py
+   :language: yaml
 
