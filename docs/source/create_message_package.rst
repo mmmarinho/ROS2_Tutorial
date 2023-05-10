@@ -54,7 +54,7 @@ The :file:`package.xml` works the same way as when using :file:`ament_python`. H
 The :file:`package.xml` dependencies
 ------------------------------------
 
-Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely,
+Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely, the ones highlighted below.
 
 :download:`package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
 
