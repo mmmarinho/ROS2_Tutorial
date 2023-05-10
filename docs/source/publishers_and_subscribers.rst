@@ -8,10 +8,10 @@ ROS2 works on a model in which any number of processes can communicate over a :c
 
 Then
 
-- A program that sends (publisher) information to the topic is has a :code:`Publisher`
-- A program that reads (subscribes) information from a topic is has a :code:`Subscriber`
+- A program that sends (publishes) information to the topic has a :code:`Publisher`.
+- A program that reads (subscribes) information from a topic has a :code:`Subscriber`.
 
-Each Node can have any number of :code:`Publishers` and :code:`Subscribers`, connecting to an arbitrary number of Nodes. This forms the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_
+Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and combination thereof, connecting to an arbitrary number of Nodes. This forms the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_
 
 First, let us create an :program:`ament_python` package that depends on our newly developed :file:`packages_with_interfaces` and build from there.
 
