@@ -30,7 +30,7 @@ Contents
    create_python_library
    using_python_library
    messages
-   create_message_package
+   create_interface_package
    publishers_and_subscribers
    faq
 
