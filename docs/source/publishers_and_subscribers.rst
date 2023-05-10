@@ -79,14 +79,13 @@ Then, each message is handled much like any other class in Python. We instanteat
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 42-45
+   :lines: 41-44
 
 Lastly, the message needs to be published using :code:`Node.publish(msg)`. 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 45-47
-   :emphasize-lines: 2
+   :lines: 46
 
 .. note::
 
