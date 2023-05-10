@@ -257,6 +257,7 @@ Using interfaces from another package
    :language: python
    :linenos:
    :lines: 24-
+   :emphasize-lines: 11, 18-21, 23
    
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_interfaces/python_package_that_uses_the_interfaces/amazing_quote_subscriber_node.py
    :language: python
