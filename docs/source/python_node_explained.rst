@@ -14,7 +14,7 @@ The imports
    :language: python
    :lines: 24-25
    
-As in any :code:`Python` code, we have to import the libraries that we will use and specific modules/classes within those libraries. With :code:`rclpy`, there is no difference.
+As in any Python code, we have to import the libraries that we will use and specific modules/classes within those libraries. With :code:`rclpy`, there is no difference.
 
 Making a subclass of :code:`Node`
 ---------------------------------
@@ -26,7 +26,7 @@ The current version of ROS2 behaves better when your custom node is a subclass o
    :lines: 28-33
    :emphasize-lines: 1,5
    
-About inheritance in :code:`Python`, you can check the official documentation on `inheritance <https://docs.python.org/3/tutorial/classes.html#inheritance>`_ and on `super() <https://docs.python.org/3/library/functions.html#super>`_.
+About inheritance in Python, you can check the official documentation on `inheritance <https://docs.python.org/3/tutorial/classes.html#inheritance>`_ and on `super() <https://docs.python.org/3/library/functions.html#super>`_.
 
 In more advanced nodes, inheritance does not cut it, but that is an advanced topic to be covered some other time.
 

@@ -18,7 +18,7 @@ Handling dependencies
 
 It is common for new Nodes to have additional dependencies, so we will cover that here. For an :program:`ament_python` package, we must modify the :file:`package.xml` to add the dependencies.
 
-In this toy example, let us add the :code:`rclpy` as dependency, because it is the :code:`Python` implementation of the :abbr:`RCL (ROS Client Library)`. All Nodes that use anything related to ROS2 will directly or indirectly depend on that library.
+In this toy example, let us add the :code:`rclpy` as dependency, because it is the Python implementation of the :abbr:`RCL (ROS Client Library)`. All Nodes that use anything related to ROS2 will directly or indirectly depend on that library.
 
 By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meaning that it is written in :abbr:`XML (Extensible Markup Language)`.
 

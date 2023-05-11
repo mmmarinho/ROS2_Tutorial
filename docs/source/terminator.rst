@@ -6,7 +6,7 @@ Terminator is life
    You can refer to the `project's documentation <https://terminator-gtk3.readthedocs.io/en/latest/>`_ for more info.
    
    
-After installing :code:`terminator` as instructed in the last section, the default terminal window will be automatically updated to use it.
+After installing :program:`terminator` as instructed in the last section, the default terminal window will be automatically updated to use it.
 
 Shortcuts
 ---------

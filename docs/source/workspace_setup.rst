@@ -22,8 +22,8 @@ It is common practice to have all source files inside the :code:`src` folder, so
 First build
 -----------
 
-Regardless of it being a currently empty project, we run :code:`colcon` once to set up the enviroment and illustrate a few things.
-The program :code:`colcon` is the build system of ROS2 and will be described in more detail later.
+Regardless of it being a currently empty project, we run :program:`colcon` once to set up the enviroment and illustrate a few things.
+The program :program:`colcon` is the build system of ROS2 and will be described in more detail later.
 
 For now, run
 
