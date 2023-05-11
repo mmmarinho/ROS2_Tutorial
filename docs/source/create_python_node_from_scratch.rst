@@ -67,7 +67,9 @@ To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2`. The node w
 .. code:: bash
 
    Process finished with exit code 0
-   
+
+.. _make ros2 work:
+
 Making :command:`ros2 run` work
 -------------------------------
 
