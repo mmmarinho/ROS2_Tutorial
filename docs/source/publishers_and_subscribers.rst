@@ -17,8 +17,8 @@ Then
 
 Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_.
 
-Create the package and its elements
------------------------------------
+Create the package
+------------------
 
 First, let us create an :program:`ament_python` package that depends on our newly developed :file:`packages_with_interfaces` and build from there.
 
@@ -35,7 +35,8 @@ Before we start exploring the elements of the package, let us
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds these programs.
 
 Create the publisher Node
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
+
 .. note::
 
          **TL:DR** Creating a publisher
@@ -96,7 +97,7 @@ Lastly, the message needs to be published using :code:`Node.publish(msg)`.
    In general, the message will **NOT** be published instantenously after :code:`Node.publish()` is called. It is usually fast, but entirely dependent on :code:`rclpy.spin()` and how much work it is doing.
 
 Create the subscriber Node
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 .. note::
 
@@ -151,7 +152,7 @@ That callback method will be automatically called by ROS2, as one of the tasks p
    The message will **ALWAYS** take some time between being published and being received by the subscriber. The speed in which that will happen will depend no only on this Node's :code:`rclpy.spin()`, but also on the :code:`rclpy.spin()` of the publisher node and the communication channel.
 
 Update the :file:`setup.py`
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 As we already learned in `make ros2 run work`_, we must adjust the :file:`setup.py` to refer to the Nodes we just created.
 
@@ -162,8 +163,8 @@ As we already learned in `make ros2 run work`_, we must adjust the :file:`setup.
    :linenos:
    :emphasize-lines: 21-25
 
-Testing Publisher and Subscriber simultaneously
------------------------------------------------
+Testing Publisher and Subscriber
+--------------------------------
 
 .. code:: console
 
