@@ -76,9 +76,11 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 
 The rule of thumb is that all of these three, including the :code:`qos_profile`, should be the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
 
-- :code:`msg_type: {__class__}` A class, namely the message that will be used in the topic. In this case, :code:`AmazingQuote`.
-- :code:`topic: str` The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.
-- :code:`qos_profile: QoSProfile | int` The simplest interpretation for this parameter is the number of messages that will be saved if the :code:`spin(...)` takes to long to process them. The long story is available at the `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.
+=====================================      ===============================================================================================================================================
+:code:`msg_type: {__class__}`              A class, namely the message that will be used in the topic. In this case, :code:`AmazingQuote`.
+:code:`topic: str`                         The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.
+:code:`qos_profile: QoSProfile | int`      The simplest interpretation for this parameter is the number of messages that will be saved if the :code:`spin(...)` takes to long to process them. The long story is available at the `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.
+=====================================      ===============================================================================================================================================
 
 Then, each message is handled much like any other class in Python. We instanteate and initialize the message as follows
 
