@@ -17,7 +17,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'hoverxref.extension'
+    'hoverxref.extension' # https://sphinx-hoverxref.readthedocs.io/en/latest/index.html
 ]
 
 intersphinx_mapping = {
