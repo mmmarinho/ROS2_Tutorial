@@ -12,7 +12,7 @@ What we will do, instead, is to download an specific :program:`PyCharm` version 
 
 Run
 
-.. code:: bash
+.. code :: console
 
    cd ~
    mkdir ros2_workspace_pycharm
@@ -24,7 +24,7 @@ Create an alias for :code:`pycharm_ros2`
 
 :program:`PyCharm` will only recognize ROS2 packages if it was started from a terminal that has been sourced with our ROS2 overlay. To cover this requirement and to simplify the use of this specific version of :program:`PyCharm`, let us create a bash alias for it. 
 
-.. code:: bash
+.. code :: console
 
    echo "# Alias for PyCharm, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
    echo "alias pycharm_ros2="~/ros2_workspace_pycharm/pycharm-community-2023.1.1/bin/pycharm.sh" >> ~/.bashrc
@@ -32,7 +32,7 @@ Create an alias for :code:`pycharm_ros2`
    
 Then, you can run :program:`PyCharm` with
 
-.. code:: bash
+.. code :: console
 
     pycharm_ros2
     
@@ -73,7 +73,7 @@ With the project correctly configured, you can
 
 It will output in :program:`PyCharm`'s console
 
-.. code:: bash
+.. code :: console
    
     Hi from python_package_with_a_node.
     

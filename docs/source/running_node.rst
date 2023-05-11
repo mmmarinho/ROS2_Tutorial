@@ -5,7 +5,7 @@ The most basic way of running a Node is using the ROS2 tool :program:`ros2 run`.
 
 More information on it can be obtained through
 
-.. code:: bash
+.. code :: console
 
    ros2 run -h
    
@@ -31,12 +31,12 @@ which returns the most relevant arguments :code:`package_name` and :code:`execut
 
 Back to our example, with a properly sourced terminal, the example node can be executed with
 
-.. code:: bash
+.. code :: console
 
    ros2 run python_package_with_a_node sample_python_node
 
 which will now correctly output
 
-.. code:: bash
+.. code :: console
 
    Hi from python_package_with_a_node.

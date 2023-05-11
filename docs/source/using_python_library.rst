@@ -5,7 +5,7 @@ Let us create a package with a Node that uses the library we created in the prio
 
 Note that we must add the :code:`python_package_with_a_library` as a dependency to our new package. The easiest way to do so is through :program:`ros2 pkg create`. We also add :code:`rclcpp` as a dependency so that our Node can do something useful.
 
-.. code:: bash
+.. code :: console
 
    cd ~/ros2_tutorial_workspace/src
    ros2 pkg create python_package_that_uses_the_library --build-type ament_python --node-name node_that_uses_the_library --dependencies rclpy python_package_with_a_library
@@ -93,13 +93,13 @@ Run
 
    Remember that you can stop the node at any time with :kbd:`CTRL+C`.
 
-.. code:: bash
+.. code :: console
 
    ros2 run python_package_that_uses_the_library node_that_uses_the_library
    
 Which outputs something similar to the shown below, but with different numbers and strings as they are randomized.
 
-.. code:: bash
+.. code :: console
 
    [INFO] [1683598288.149167944] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.19395834493833486,1.3891603395040568) returned 2.506264769030609.
    [INFO] [1683598288.149643378] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned qyOXLBEtzZ.

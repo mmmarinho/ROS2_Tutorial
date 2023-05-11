@@ -3,7 +3,7 @@ Creating a Python Library (for :program:`ament_python`)
 
 Let us start, as already recommended in this tutorial, with a template by :program:`ros2 pkg create`.
 
-.. code:: bash
+.. code :: console
 
    cd ~/ros2_tutorial_workspace
    ros2 pkg create python_package_with_a_library --build-type ament_python --library-name sample_python_library

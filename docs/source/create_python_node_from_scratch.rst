@@ -55,7 +55,7 @@ In the directory :file:`src/python_package_with_a_node/python_package_with_a_nod
    
 By now, this should be enough for you to be able to run the node in :program:`PyCharm`. You can right click it and choose :guilabel:`D&ebug sample_python_node`. This will output
 
-.. code:: bash
+.. code :: console
 
     [INFO] [1683009340.877110693] [print_forever]: Printed 0 times.
     [INFO] [1683009341.336559942] [print_forever]: Printed 1 times.
@@ -64,7 +64,7 @@ By now, this should be enough for you to be able to run the node in :program:`Py
 
 To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2`. The node will exit gracefully with
 
-.. code:: bash
+.. code :: console
 
    Process finished with exit code 0
 
@@ -101,13 +101,13 @@ Once again, we have to refresh the workspace so we run
 
 And, with that, we can run
 
-.. code:: bash
+.. code :: console
 
   ros2 run python_package_with_a_node print_forever_node
    
 which will output, as expected
  
-.. code:: bash
+.. code :: console
  
     [INFO] [1683010987.130432622] [print_forever]: Printed 0 times.
     [INFO] [1683010987.622780292] [print_forever]: Printed 1 times.

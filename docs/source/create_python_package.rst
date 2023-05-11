@@ -9,14 +9,14 @@ For pure Python projects, it might be easier to use :program:`ament_python`, so 
 
 Let us build the simplest of Python packages and start from there.
 
-.. code:: bash
+.. code :: console
 
    cd ~/ros2_tutorial_workspace/src
    ros2 pkg create --build-type ament_python the_simplest_python_package
    
 which will result in the output below, meaning the package has been generated successfully.
 
-..  code:: bash
+..  code :: console
     
     going to create a new package
     package name: the_simplest_python_package
@@ -57,14 +57,14 @@ which will result in the output below, meaning the package has been generated su
 
 We can build the workspace that now has this empty package using :program:`colcon`
 
-.. code:: bash
+.. code :: console
 
    cd ~/ros2_tutorial_workspace
    colcon build
   
 which will now output
 
-.. code:: bash
+.. code :: console
 
     Starting >>> the_simplest_python_package
     --- stderr: the_simplest_python_package                   
