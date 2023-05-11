@@ -40,5 +40,5 @@ hoverxref_auto_ref = True
 
 # Optionally declare the Python requirements required to build your docs
 python:
-    install:
-        - requirements: docs/source/requirements.txt
+   install:
+   - requirements: docs/source/requirements.txt
