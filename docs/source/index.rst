@@ -32,6 +32,7 @@ Contents
    messages
    create_interface_package
    publishers_and_subscribers
+   inspecting_topics
    advanced
    faq
 
