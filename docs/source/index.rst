@@ -6,7 +6,7 @@ Welcome to (Murilo's) ROS2 Tutorials
    If you're looking for the official documentation, this is **NOT** it. For the official ROS documentation, refer to this `link <https://docs.ros.org>`_.
 
 
-ROS2-Humble_ tutorials by `yours trully <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and programming the programming practices of successfull state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
+`ROS2 Humble`_ tutorials by `yours trully <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and programming the programming practices of successfull state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
 .. warning::
 
@@ -37,4 +37,4 @@ Contents
    faq
 
 
-.. _ROS2-Humble: https://docs.ros.org/en/humble/
+.. _`ROS2 Humble`: https://docs.ros.org/en/humble/
