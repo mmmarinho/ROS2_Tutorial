@@ -4,7 +4,7 @@ Creating a Python package (for :program:`ament_python`)
 .. note::
    This is **NOT** the only way to build Python packages in ROS2.
 
-Packages in ROS2 can either rely on :code:`CMake` or directly use setup tools available in Python. 
+Packages in ROS2 can either rely on :program:`CMake` or directly use setup tools available in Python. 
 For pure Python projects, it might be easier to use :program:`ament_python`, so we start this tutorial with it.
 
 Let us build the simplest of Python packages and start from there.
