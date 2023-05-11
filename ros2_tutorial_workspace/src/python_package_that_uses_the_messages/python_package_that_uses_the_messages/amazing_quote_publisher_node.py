@@ -31,7 +31,10 @@ class AmazingQuotePublisherNode(Node):
 
     def __init__(self):
         super().__init__('amazing_quote_subscriber_node')
-        self.amazing_quote_publisher = self.create_publisher(AmazingQuote, '/amazing_quote', 1)
+        self.amazing_quote_publisher = self.create_publisher(
+            msg_type=AmazingQuote,
+            topic='/amazing_quote',
+            qos_profile=1)
         timer_period: float = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.incremental_id: int = 0

@@ -32,10 +32,10 @@ class AmazingQuoteSubscriberNode(Node):
     def __init__(self):
         super().__init__('amazing_quote_subscriber_node')
         self.amazing_quote_subscriber = self.create_subscription(
-            AmazingQuote,
-            '/amazing_quote',
-            self.amazing_quote_subscriber_callback,
-            1)
+            msg_type=AmazingQuote,
+            topic='/amazing_quote',
+            callback=self.amazing_quote_subscriber_callback,
+            qos_profile=1)
 
     def amazing_quote_subscriber_callback(self, msg: AmazingQuote):
         """Method that is periodically called by the timer."""
