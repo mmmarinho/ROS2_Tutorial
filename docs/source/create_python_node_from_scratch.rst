@@ -10,7 +10,7 @@ Creating a Python Node from scratch (for :code:`ament_python`)
          #. Modify the :file:`setup.py` file.
      
 
-Let us add an additional Node to our :code:`ament_python` package that actually uses :code:`ROS2` functionality. 
+Let us add an additional Node to our :code:`ament_python` package that actually uses ROS2 functionality. 
 These are the steps that must be taken, in general, to add a new node.
 
 Handling dependencies
@@ -18,7 +18,7 @@ Handling dependencies
 
 It is common for new Nodes to have additional dependencies, so we will cover that here. For an :code:`ament_python` package, we must modify the :file:`package.xml` to add the dependencies.
 
-In this toy example, let us add the :code:`rclpy` as dependency, because it is the :code:`Python` implementation of the :abbr:`RCL (ROS Client Library)`. All Nodes that use anything related to :code:`ROS2` will directly or indirectly depend on that library.
+In this toy example, let us add the :code:`rclpy` as dependency, because it is the :code:`Python` implementation of the :abbr:`RCL (ROS Client Library)`. All Nodes that use anything related to ROS2 will directly or indirectly depend on that library.
 
 By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meaning that it is written in :abbr:`XML (Extensible Markup Language)`.
 
@@ -35,7 +35,7 @@ After you modify the dependencies, build once
 ---------------------------------------------
 
 After you add a new dependency to :file:`package.xml`, nothing really changes in the workspace unless a new build is performed. 
-When programming with new dependencies, unless you rebuild the workspace, :code:`PyCharm` will not recognize the libraries and autocomplete will not work.
+When programming with new dependencies, unless you rebuild the workspace, :program:`PyCharm` will not recognize the libraries and autocomplete will not work.
 
 So, run
 
@@ -53,7 +53,7 @@ In the directory :file:`src/python_package_with_a_node/python_package_with_a_nod
    :linenos:
    :lines: 24-
    
-By now, this should be enough for you to be able to run the node in :code:`PyCharm`. You can right click it and choose :guilabel:`D&ebug sample_python_node`. This will output
+By now, this should be enough for you to be able to run the node in :program:`PyCharm`. You can right click it and choose :guilabel:`D&ebug sample_python_node`. This will output
 
 .. code:: bash
 
@@ -73,7 +73,7 @@ To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2`. The node w
 Making :command:`ros2 run` work
 -------------------------------
 
-Even though you can run the new node in :code:`PyCharm`, we need an additional step to make it deployable in a place where :command:`ros2 run` can find it.
+Even though you can run the new node in :program:`PyCharm`, we need an additional step to make it deployable in a place where :command:`ros2 run` can find it.
 
 To do so, we modify the :code:`console_scripts` key in the :code:`entry_points` dictionary defined in :file:`setup.py`, to have our new node, as follows
 

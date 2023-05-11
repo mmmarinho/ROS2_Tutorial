@@ -1,14 +1,14 @@
 Workspace set up
 ================
 
-Similar to how :code:`ROS2` files are installed in :code:`/opt/ros/{ROS_DISTRO}` so that you can have several distributions installed simultaneously, you can also have many separate workspaces in your system.
+Similar to how ROS2 files are installed in :code:`/opt/ros/{ROS_DISTRO}` so that you can have several distributions installed simultaneously, you can also have many separate workspaces in your system.
 
 In addition, because files in the :code:`/opt` folder require super user privileges (for good reasons), having a user-wide workspace is the accepted practice. They call this an **overlay**.
 
 Setting up
 ----------
 
-In :code:`ROS2`, a workspace is nothing more than a folder in which all your packages are contained.
+In ROS2, a workspace is nothing more than a folder in which all your packages are contained.
 
 No, really, you just need to make a folder, e.g. the one we will use throughout the these tutorials.
 
@@ -23,7 +23,7 @@ First build
 -----------
 
 Regardless of it being a currently empty project, we run :code:`colcon` once to set up the enviroment and illustrate a few things.
-The program :code:`colcon` is the build system of :code:`ROS2` and will be described in more detail later.
+The program :code:`colcon` is the build system of ROS2 and will be described in more detail later.
 
 For now, run
 
