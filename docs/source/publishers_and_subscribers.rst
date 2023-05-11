@@ -137,8 +137,13 @@ Then, in our subclass of :code:`Node`, we call :code:`Node.create_publisher(...)
    
 where the only difference with respect to the publisher is the third argument, namely
 
-- :code:`callback`
+- :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
 
+That callback method 
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
+   :language: python
+   :lines: 15-17
 
 
 Update the :file:`setup.py`
