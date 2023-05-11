@@ -1,11 +1,11 @@
-Creating a Python package (using :code:`ament_python`)
+Creating a Python package (using :program:`ament_python`)
 ======================================================
 
 .. note::
    This is **NOT** the only way to build :code:`Python` packages in ROS2.
 
 Packages in ROS2 can either rely on :code:`CMake` or directly use setup tools available in :code:`Python`. 
-For pure :code:`Python` projects, it might be easier to use :code:`ament_python`, so we start this tutorial with it.
+For pure :code:`Python` projects, it might be easier to use :program:`ament_python`, so we start this tutorial with it.
 
 Let us build the simplest of :code:`Python` packages and start from there.
 
@@ -76,7 +76,7 @@ which will now output
     Summary: 1 package finished [1.89s]
       1 package had stderr output: the_simplest_python_package
 
-meaning that :code:`colcon` succesfully built the example package. Sadly, in this version of ROS2, all :code:`ament_python` packages will output a :code:`SetuptoolsDeprecationWarning`.
+meaning that :code:`colcon` succesfully built the example package. Sadly, in this version of ROS2, all :program:`ament_python` packages will output a :code:`SetuptoolsDeprecationWarning`.
 This is related to `this issue on Github <https://github.com/colcon/colcon-core/issues/454#issuecomment-1262592774>`_. Until that is fixed, just ignore it.
 
 

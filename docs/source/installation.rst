@@ -10,13 +10,13 @@ Installation
 .. warning:: 
   All commands must be followed to the letter, in the precise order described herein. Any deviation from what is described might cause unspecified problems and not all of them are easily solvable.
 
-Update :code:`apt` packages
+Update :program:`apt` packages
 ---------------------------
 
 .. note:: 
   You can quickly open a new terminal window by pressing :code:`CTRL+ATL+T`.
 
-After a fresh install, update and upgrade all :code:`apt` packages.
+After a fresh install, update and upgrade all :program:`apt` packages.
 
 .. code-block:: bash
 
@@ -32,7 +32,7 @@ Install a few pre-requisites
    
 Namely:
 
-- software-properties-common_ to help add the ROS2 packages to :code:`apt` from the terminal.
+- software-properties-common_ to help add the ROS2 packages to :program:`apt` from the terminal.
 - curl_ to help downloading installation/configuration files from the terminal.
 - terminator_ ROS uses plenty of terminals, so this helps keep one's sanity intact by enabling the management of several terminals in a single window. Despite what some might say, this particular terminator has no interest whatsoever in Sarah Connor.
 - git_ that trendy source control program everyone mentions in their CV. You might be interested in knowing why it's called :code:`git`.
@@ -40,7 +40,7 @@ Namely:
 Add ROS2 sources
 ----------------
 
-Your :code:`apt` needs to know where the ROS2 packages can be found and to be able to verify their authenticity. After setting up the :code:`apt` sources, the local package list must be updated.
+Your :program:`apt` needs to know where the ROS2 packages can be found and to be able to verify their authenticity. After setting up the :program:`apt` sources, the local package list must be updated.
 The following commands will do all that magic.
 
 .. code-block:: bash

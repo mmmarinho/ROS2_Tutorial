@@ -1,4 +1,4 @@
-Creating a Python Node with a template (for :code:`ament_python`)
+Creating a Python Node with a template (for :program:`ament_python`)
 =================================================================
 
 It is always good to rely on the templates available in :program:`ros2 pkg create`, mostly because the best practices for packaging might change between ROS2 versions. 

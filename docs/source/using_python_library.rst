@@ -1,4 +1,4 @@
-Using a Python Library from another package (for :code:`ament_python`)
+Using a Python Library from another package (for :program:`ament_python`)
 ======================================================================
 
 Let us create a package with a Node that uses the library we created in the prior example. 

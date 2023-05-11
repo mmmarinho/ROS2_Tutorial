@@ -1,4 +1,4 @@
-Creating a Python Library (for :code:`ament_python`)
+Creating a Python Library (for :program:`ament_python`)
 ====================================================
 
 Let us start, as already recommended in this tutorial, with a template by :program:`ros2 pkg create`.

@@ -1,22 +1,22 @@
-Creating a Python Node from scratch (for :code:`ament_python`)
+Creating a Python Node from scratch (for :program:`ament_python`)
 ==============================================================
 
 .. note::
 
-         **TL;DL** When using :code:`ament_python`
+         **TL;DL** When using :program:`ament_python`
          
          #. Modify :file:`package.xml` with any additional dependencies.
          #. Create the Node
          #. Modify the :file:`setup.py` file.
      
 
-Let us add an additional Node to our :code:`ament_python` package that actually uses ROS2 functionality. 
+Let us add an additional Node to our :program:`ament_python` package that actually uses ROS2 functionality. 
 These are the steps that must be taken, in general, to add a new node.
 
 Handling dependencies
 ---------------------
 
-It is common for new Nodes to have additional dependencies, so we will cover that here. For an :code:`ament_python` package, we must modify the :file:`package.xml` to add the dependencies.
+It is common for new Nodes to have additional dependencies, so we will cover that here. For an :program:`ament_python` package, we must modify the :file:`package.xml` to add the dependencies.
 
 In this toy example, let us add the :code:`rclpy` as dependency, because it is the :code:`Python` implementation of the :abbr:`RCL (ROS Client Library)`. All Nodes that use anything related to ROS2 will directly or indirectly depend on that library.
 
