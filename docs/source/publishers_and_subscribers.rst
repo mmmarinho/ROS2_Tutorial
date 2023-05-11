@@ -143,7 +143,8 @@ That callback method
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
-   :lines: 15-17
+   :lines: 39-57
+   :emphasize-lines: 15-17
 
 
 Update the :file:`setup.py`
