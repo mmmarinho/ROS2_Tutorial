@@ -37,8 +37,3 @@ epub_show_urls = 'footnote'
 
 # -- Options for hoverxref.extension https://sphinx-hoverxref.readthedocs.io/en/latest/configuration.html
 hoverxref_auto_ref = True
-
-# Optionally declare the Python requirements required to build your docs
-python:
-   install:
-   - requirements: docs/source/requirements.txt
