@@ -43,7 +43,7 @@ which results in
 
       Call `ros2 interface <command> -h` for more detailed usage.
       
-This shows that with :code:`ros2 interface list` we can get a list of all interfaces available in our workspace. That returns a huge list of interfaces, so it will not be replicated entirely here. Instead, we can run
+This shows that with :program:`ros2 interface list` we can get a list of all interfaces available in our workspace. That returns a huge list of interfaces, so it will not be replicated entirely here. Instead, we can run
 
 .. code:: console
 
