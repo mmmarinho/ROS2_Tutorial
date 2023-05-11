@@ -57,7 +57,7 @@ For the publisher, create a file in :file:`python_package_that_uses_the_messages
    :language: python
    :linenos:
    :lines: 24-
-   :emphasize-lines: 3, 11, 18-21, 23
+   :emphasize-lines: 3, 11-14, 22-25, 27
 
 When we built our :file:`package_with_interfaces` in the last section, what ROS2 did for us, among other things, was create a Python library called :file:`package_with_interfaces.msg` contaning the Python implementation of the :file:`AmazingQuote.msg`. Because of that, we can use it by importing it like so
 
@@ -71,7 +71,7 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
    :lines: 32-37
-   :emphasize-lines: 3
+   :emphasize-lines: 3-6
 
 The rule of thumb is that all of these three, including the :code:`qos_profile`, should be the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
 
@@ -83,7 +83,7 @@ Then, each message is handled much like any other class in Python. We instanteat
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 41-44
+   :lines: 42-44
 
 Lastly, the message needs to be published using :code:`Node.publish(msg)`. 
 
@@ -142,7 +142,7 @@ where the only difference with respect to the publisher is the third argument, n
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :lines: 40-57
-   :emphasize-lines: 16-18
+   :emphasize-lines: 15-17
 
 That callback method will be automatically called by ROS2, as one of the tasks performed by :code:`rclpy.spin(Node)`. Depending on the :code:`qos_profile`, it will not necessarily be the latest message.
 
