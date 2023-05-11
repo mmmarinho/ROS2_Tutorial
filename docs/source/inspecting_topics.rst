@@ -1,5 +1,5 @@
-Inspecting topics (with :program:`ros2 topic`)
-==============================================
+Inspecting topics (:program:`ros2 topic`)
+=========================================
 
 .. code:: console
 
