@@ -1,5 +1,5 @@
-Creating a Python package (using :program:`ament_python`)
-======================================================
+Creating a Python package (for :program:`ament_python`)
+=======================================================
 
 .. note::
    This is **NOT** the only way to build Python packages in ROS2.
