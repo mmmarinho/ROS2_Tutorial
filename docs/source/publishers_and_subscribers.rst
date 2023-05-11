@@ -153,6 +153,8 @@ That callback method will be automatically called by ROS2, as one of the tasks p
 Update the :file:`setup.py`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+As we already learned in `make ros2 run work`_, we must adjust the :file:`setup.py` to refer to the Nodes we just created.
+
 :download:`setup.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py
