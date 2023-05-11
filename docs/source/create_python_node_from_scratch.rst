@@ -68,7 +68,7 @@ To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2`. The node w
 
    Process finished with exit code 0
 
-.. _My target:
+.. _Making rosrun work:
 
 Making :command:`ros2 run` work
 -------------------------------
