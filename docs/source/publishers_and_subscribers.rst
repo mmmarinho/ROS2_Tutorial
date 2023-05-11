@@ -139,13 +139,16 @@ where the only difference with respect to the publisher is the third argument, n
 
 - :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
 
-That callback method 
-
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
-   :lines: 39-57
-   :emphasize-lines: 16-19
+   :lines: 40-57
+   :emphasize-lines: 16-18
 
+That callback method will be automatically called by ROS2, as one of the tasks performed by :code:`rclpy.spin(Node)`. Depending on the :code:`qos_profile`, it will not necessarily be the latest message.
+
+.. note::
+
+   The message will **ALWAYS** take some time between being published and being received by the subscriber. The speed in which that will happen will depend no only on this Node's :code:`rclpy.spin()`, but also on the :code:`rclpy.spin()` of the publisher node and the communication channel.
 
 Update the :file:`setup.py`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
