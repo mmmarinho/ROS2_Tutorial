@@ -49,7 +49,7 @@ Create the publisher Node
             
          #. Add the new Node to :file:`setup.py`
 
-For this example, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_publisher_node.py`, with the following contents
+For the publisher, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_publisher_node.py`, with the following contents
 
 :download:`amazing_quote_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py>`
 
@@ -111,6 +111,8 @@ Create the subscriber Node
                 
          #. Add the new Node to :file:`setup.py`
 
+For the subscriber Node, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_subscriber_node.py`, with the following contents
+
 :download:`amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
@@ -119,6 +121,25 @@ Create the subscriber Node
    :lines: 24-
    :emphasize-lines: 3, 11-15, 17-34
    
+Similarly to the publisher, in the subscriber we start by importing the message in question
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
+   :language: python
+   :lines: 24-26
+   :emphasize-lines: 3
+
+Then, in our subclass of :code:`Node`, we call :code:`Node.create_publisher(...)` as follows
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
+   :language: python
+   :lines: 32-38
+   :emphasize-lines: 3-7
+   
+where the only difference with respect to the publisher is the third argument, namely
+
+- :code:`callback`
+
+
 
 Update the :file:`setup.py`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
