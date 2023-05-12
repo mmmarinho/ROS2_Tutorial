@@ -4,7 +4,7 @@ Editing Python source (with :program:`PyCharm`)
 There are near infinite ways to manage your Python code and, for this tutorial, we will use :program:`PyCharm`. Namely, the free community version.
 
 Installing :program:`PyCharm`
---------------------------
+----------------------------
 
 :program:`PyCharm` is a great program for managing one's Python sources that is frequently updated and has a free edition. However, precisely because it is frequently updated, there is no way for this tutorial to keep track of future changes.
 
@@ -37,7 +37,7 @@ Then, you can run :program:`PyCharm` with
     pycharm_ros2
     
 More resources on :program:`PyCharm`
----------------------------------
+------------------------------------
 
 Given that this is not a tutorial on :program:`PyCharm`, please check the official documentation if some of the advice given here seems unclear.
 
@@ -45,7 +45,7 @@ Given that this is not a tutorial on :program:`PyCharm`, please check the offici
 - And the following :code:`Run, debug, test, and deploy` that doesn't have a link.
 
 Using :program:`PyCharm` for ROS2 sources
-----------------------------------------------
+-----------------------------------------
 
 With :program:`PyCharm` opened as instructed above, here are a few tips to make your life easier.
 
@@ -58,7 +58,7 @@ Your project view should look like so
    :align: center
 
 Running a Node from :program:`PyCharm`
------------------------------------
+-------------------------------------
 
 With the project correctly configured, you can
 
