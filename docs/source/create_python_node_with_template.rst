@@ -82,7 +82,9 @@ which will result in going through the package we created in the prior example a
 
     Summary: 2 packages finished [1.36s]
       2 packages had stderr output: python_package_with_a_node the_simplest_python_package
-      
+
+.. _Always source after you build:
+
 Always source after you build
 -----------------------------
 
