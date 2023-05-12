@@ -5,7 +5,7 @@ Creating a dedicated package for custom interfaces
 
    Despite this push in ROS2 towards having the users define even the simplest of message types, to define new interfaces in ROS2 we must use an :program:`ament_cmake` package. It **cannot** be done with an :program:`ament_python` package.
 
-All interfaces in ROS2 must be made in an :program:`ament_cmake` package. We have so far not needed it, but for this scenario we cannot escape. Thankfully, for this we don't need to dig too deep into :program:`CMake` just for this purpose, so fear not.
+All interfaces in ROS2 must be made in an :program:`ament_cmake` package. We have so far not needed it, but for this scenario we cannot escape. Thankfully, for this we don't need to dig too deep into :program:`CMake`, so fear not.
 
 Creating the package
 --------------------
@@ -16,10 +16,11 @@ To take this chance to also learn how to nest messages on other interfaces, we a
 
 .. code:: console
 
-   cd ~/ros2_tutorial_workspace/src
-   ros2 pkg create --build-type ament_cmake package_with_interfaces --dependencies geometry_msgs
+  ros2 pkg create package_with_interfaces \
+  --build-type ament_python \
+  --dependencies geometry_msgs
 
-again showing our beloved wall of text, with a few highlighted differences because of it being a :program:`ament_cmake` package.
+which again shows our beloved wall of text, with a few highlighted differences because of it being a :program:`ament_cmake` package.
 
 .. code-block:: console
     :emphasize-lines: 9, 14, 15, 16
@@ -117,6 +118,8 @@ The service file
 
 With the :file:`AmazingQuote.msg`, we have seen how to use built-in types. Let's use the service to learn two more possibilities. Let us use a message from the same package and a message from another package. Services cannot be used to define other services.
 
+Add the file :file:`WhatIsThePoint.srv` in the :file:`srv` folder with the following contents
+
 :download:`WhatIsThePoint.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv
@@ -130,7 +133,7 @@ The :file:`CMakeLists.txt` directives
 
 .. note:: 
 
-   The order of the :program:`CMake` directives is very important. In addition, building several nodes, libraries, and messages in the same project can be complex and generate a lot of issues given the interactions between the targets and their dependencies.
+   The order of the :program:`CMake` directives is very important and getting the order wrong can result in bugs with cryptic error messages.
 
 If a package is dedicated for interfaces, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
 Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
@@ -147,18 +150,18 @@ What to do when adding new interfaces?
 
 .. note::
 
-         **TL:DR**
+         **TL:DR** When adding new interfaces
 
          #. Add new dependencies to :file:`package.xml`
          #. Add each new interface file to :code:`set(interface_files ...)`
          #. Add new dependencies to :code:`rosidl_generate_interfaces(... DEPENDENCIES ...)`
 
-         Yes, you have to add the same dependency in two places!
+         Yes, you **MUST** add the same dependency in two places!
 
 
 If additional interfaces are required
 
-#. Modify the :file:`package.xml` to have any additional dependency.
+#. Modify the :file:`package.xml` to have any additional dependency. See :ref:`Handling dependencies` for more details.
 
 #. Add each new interface file to :code:`set(interface_files ...)`
 
