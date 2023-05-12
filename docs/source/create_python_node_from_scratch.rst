@@ -31,8 +31,12 @@ Let us add the dependency between the :code:`<license>` and :code:`<test_depend>
    :linenos:
    :emphasize-lines: 10
   
-After you modify the dependencies, build once
----------------------------------------------
+After you modify the workspace, build once
+------------------------------------------
+
+.. warning:
+ 
+   Depending on the particulars of the workspace you are (re)building, :program:`PyCharm` will only be able to recognize certain changes if it is restarted from a properly sourced terminal.
 
 After you add a new dependency to :file:`package.xml`, nothing really changes in the workspace unless a new build is performed. 
 When programming with new dependencies, unless you rebuild the workspace, :program:`PyCharm` will not recognize the libraries and autocomplete will not work.
@@ -40,6 +44,7 @@ When programming with new dependencies, unless you rebuild the workspace, :progr
 So, run
 
 .. include:: the_canonical_build_command.rst
+
 
 Creating the Node
 -----------------
@@ -62,7 +67,7 @@ By now, this should be enough for you to be able to run the node in :program:`Py
     [INFO] [1683009341.836334639] [print_forever]: Printed 2 times.
     [INFO] [1683009342.336555088] [print_forever]: Printed 3 times.
 
-To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2`. The node will exit gracefully with
+To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2` on :program:`PyCharm`. The node will exit gracefully with
 
 .. code :: console
 
@@ -88,7 +93,7 @@ To do so, we modify the :code:`console_scripts` key in the :code:`entry_points` 
    :linenos:
    :emphasize-lines: 24
 
-The format is straightforward. From left to right
+The format is straightforward, as follows
 
 ==================================   ===================================================================================
 :code:`print_forever_node`           The name of the node when calling it through :command:`ros2 run`.
@@ -116,4 +121,4 @@ which will output, as expected
     [INFO] [1683010988.122731296] [print_forever]: Printed 2 times.
     [INFO] [1683010988.622735422] [print_forever]: Printed 3 times.
 
-To stop, press :kbd:`CTRL+C` and the Node will return gracefully.
+To stop, press :kbd:`CTRL+C` on the terminal and the Node will return gracefully.
