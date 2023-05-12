@@ -179,7 +179,7 @@ If additional interfaces are required
 
 .. note::
 
-   There are ways to use :program:`CMake` directives to automatically add all files in a given folder and provide other conveniences. In hindsight, that might seem to reduce our burden. However, the method described herein is the one used in the official ROS2 packages (e.g. `geometry_msgs <https://github.com/ros2/common_interfaces/blob/f4eac72f0bbd70f7955a5f709d4a6705eb6ca7e8/geometry_msgs/CMakeLists.txt>`_, so let us trust that they have good reasons for it.
+   There are ways to use :program:`CMake` directives to automatically add all files in a given folder and provide other conveniences. In hindsight, that might seem to reduce our burden. However, the method described herein is the one used in the official ROS2 packages (e.g. `geometry_msgs <https://github.com/ros2/common_interfaces/blob/f4eac72f0bbd70f7955a5f709d4a6705eb6ca7e8/geometry_msgs/CMakeLists.txt>`_), so let us trust that they have good reasons for it.
 
 Build and source
 ----------------
