@@ -1,0 +1,4 @@
+/*Fixing table horizontal bar scrolling https://stackoverflow.com/questions/40641252/how-can-i-avoid-the-horizontal-scrollbar-in-a-rest-table*/
+.wy-table-responsive table td {
+white-space: normal;
+}
