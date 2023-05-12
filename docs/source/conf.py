@@ -40,4 +40,6 @@ hoverxref_auto_ref = True
 
 # -- Fixing table horizontal bar scrolling https://stackoverflow.com/questions/40641252/how-can-i-avoid-the-horizontal-scrollbar-in-a-rest-table
 def setup(app):
-        app.add_stylesheet('custom.css')
+        # app.add_stylesheet('custom.css')
+        # API Changed https://github.com/sphinx-doc/sphinx/issues/7747
+        app.add_css_file('custom.css')
