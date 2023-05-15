@@ -24,6 +24,7 @@ First, let us create an :program:`ament_python` package that depends on our newl
 
 .. code:: console
 
+  cd ~/ros2_tutorial_workspace/src
   ros2 pkg create python_package_that_uses_the_messages \
   --build-type ament_python \
   --dependencies rclpy package_with_interfaces
