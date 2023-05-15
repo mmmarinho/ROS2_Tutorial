@@ -1,4 +1,4 @@
 ﻿Shortcut,Description
 :kbd:`CTRL+ALT+T`,Open a new terminal window using your default viewer.
-:kbd:`SHIFT+CTRL+O`,**Vertically** split the currently focused window by adding a new terminal.
 :kbd:`SHIFT+CTRL+E`,**Horizontally** split the currently focused window by adding a new terminal.
+:kbd:`SHIFT+CTRL+O`,**Vertically** split the currently focused window by adding a new terminal.
