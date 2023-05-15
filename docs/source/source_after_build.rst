@@ -1,3 +1,5 @@
+.. _Always source after you build:
+
 Always source after you build
 =============================
 
