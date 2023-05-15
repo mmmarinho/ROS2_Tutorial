@@ -28,4 +28,8 @@ As the workspace grows bigger and the packages more complex, figuring out such e
 .. warning::
 
    In rare cases, the workspace can be left in an unclean state in which older build artifacts cause issues. These might include old files that should have been removed, issues with dependencies and so on. In those cases, it might be good to remove the :file:`build`, :file:`install`, and :file:`log` folders before rebuilding and re-sourcing. 
-   It might also be the case that certain packages fail to build after those folder are removed. This is usually becase the dependencies of the packages are poorly configured and, in consequence, ROS2 is not building them in the correct order. If your workspace does not build properly after being cleaned as mentioned above, you must correct its dependencies until it builds properly.
+  
+.. warning::
+
+   It might also be the case that certain packages fail to build after :file:`build`, :file:`install`, and :file:`log` are removed. It might also be the case that the build only works after :program:`colcon` is called twice. 
+   This is usually becase the dependencies of the packages in your workspace are poorly configured and, in consequence, ROS2 is not building them in the correct order. If your workspace does not build properly after being cleaned as mentioned above, you must correct its dependencies until it builds properly.
