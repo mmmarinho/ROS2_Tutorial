@@ -1,5 +1,5 @@
 Editing Python source (with :program:`PyCharm`)
-============================================
+===============================================
 
 There are near infinite ways to manage your Python code and, for this tutorial, we will use :program:`PyCharm`. Namely, the free community version.
 
@@ -91,9 +91,19 @@ My :program:`PyCharm` is not finding the dependencies
 
 If you have rulled out all issues related to your own code, it might be the case that the terminal in which you initially ran :program:`PyCharm` is unaware of certain changes to your ROS2 workspace.
 
-To be sure the current :program:`PyCharm` session is updated without changes to any settings, do
+To be sure that the current :program:`PyCharm` session is updated without changes to any settings, do
 
-#. Close :program:`PyCharm`
-#. Run
+#. Close :program:`PyCharm`.
+#. Build and source the ROS2 workspace.
   
    .. include:: the_canonical_build_command.rst
+   
+#. Re-open :program:`PyCharm`.
+
+   .. code :: console
+
+    pycharm_ros2
+   
+.. note::
+
+   There might be ways to adjust the settings of :program:`PyCharm` or other IDEs to save us from the trouble of having to do this. Nonetheless, this is the *one-size-fits-all* solution, which should work for all past and future versions of :program:`PyCharm`.
