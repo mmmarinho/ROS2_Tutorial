@@ -31,5 +31,5 @@ As the workspace grows bigger and the packages more complex, figuring out such e
   
 .. warning::
 
-   It might also be the case that certain packages fail to build after :file:`build`, :file:`install`, and :file:`log` are removed. It might also be the case that the build only works after :program:`colcon` is called twice. 
+   It might also be the case that certain packages fail to build after :file:`build`, :file:`install`, and :file:`log` are removed, or that the build only works after :program:`colcon` is called twice in a row. 
    This is usually becase the dependencies of the packages in your workspace are poorly configured and, in consequence, ROS2 is not building them in the correct order. If your workspace does not build properly after being cleaned as mentioned above, you must correct its dependencies until it builds properly.
