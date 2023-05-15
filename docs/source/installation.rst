@@ -32,10 +32,12 @@ Install a few pre-requisites
    
 Namely:
 
-- software-properties-common_ to help add the ROS2 packages to :program:`apt` from the terminal.
-- curl_ to help downloading installation/configuration files from the terminal.
-- terminator_ ROS uses plenty of terminals, so this helps keep one's sanity intact by enabling the management of several terminals in a single window. Despite what some might say, this particular terminator has no interest whatsoever in Sarah Connor.
-- git_ that trendy source control program everyone mentions in their CV. You might be interested in knowing why it's called :code:`git`.
+===========================   ================================================================================================================================================
+software-properties-common_   Allows us to access the ROS2 packages using :program:`apt`.
+curl_                         Helps downloading installation/configuration files from the terminal.
+terminator_                   ROS uses plenty of terminals, so this helps keep one's sanity intact by enabling the management of several terminals in a single window. Despite what some might say, this particular terminator has no interest whatsoever in Sarah Connor.
+git_                          The trendy source control program everyone mentions in their CV. You might be interested in knowing why it's called :code:`git`.
+===========================   ================================================================================================================================================
 
 Add ROS2 sources
 ----------------
