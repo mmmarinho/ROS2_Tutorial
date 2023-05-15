@@ -12,7 +12,8 @@ Let us build the simplest of Python packages and start from there.
 .. code :: console
 
    cd ~/ros2_tutorial_workspace/src
-   ros2 pkg create --build-type ament_python the_simplest_python_package
+   ros2 pkg create the_simplest_python_package \
+   --build-type ament_python
    
 which will result in the output below, meaning the package has been generated successfully.
 
