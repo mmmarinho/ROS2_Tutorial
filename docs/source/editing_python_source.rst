@@ -16,6 +16,7 @@ Run
 
    cd ~
    mkdir ros2_workspace_pycharm
+   cd ros2_workspace_pycharm
    wget https://download.jetbrains.com/python/pycharm-community-2023.1.1.tar.gz
    tar -xzvf pycharm-community-2023.1.1.tar.gz
    
