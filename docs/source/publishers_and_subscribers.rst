@@ -172,8 +172,30 @@ As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`se
 Testing Publisher and Subscriber
 --------------------------------
 
+Whenever we need to open two or more terminal windows, remember that :ref:`Terminal is life`.
+
+Let us open two terminals.
+
+In the first terminal, we run
+
 .. code:: console
 
   ros2 run python_package_that_uses_the_messages amazing_quote_publisher_node
 
+Nothing in particular should happen now. The publisher is sending messages through the specific topic we defined, but we need at least one subscribed to interact with those messages.
 
+Hence, in the second terminal, we run
+
+.. code:: console
+
+  ros2 run python_package_that_uses_the_messages amazing_quote_subscribed_node
+ 
+which outputs
+
+.. code:: console
+
+  asd
+
+.. note::
+
+   If there are any issues with either the publisher or the subscriber, this connection will not work. In the next section, we'll see strategies to help us troubleshoot and understand the communication through topics.
