@@ -85,3 +85,15 @@ It will output in :program:`PyCharm`'s console
 .. note::
 
    You can read more about debugging with :program:`PyCharm` at the `official documentation <https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html#where-is-the-problem>`_
+
+My :program:`PyCharm` is not finding the dependencies
+-----------------------------------------------------
+
+If you have rulled out all issues related to your own code, it might be the case that the terminal in which you initially ran :program:`PyCharm` is unaware of certain changes to your ROS2 workspace.
+
+To be sure the current :program:`PyCharm` session is updated without changes to any settings, do
+
+#. Close :program:`PyCharm`
+#. Run
+  
+   .. include:: the_canonical_build_command.rst
