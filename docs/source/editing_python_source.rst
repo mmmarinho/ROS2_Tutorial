@@ -89,6 +89,10 @@ It will output in :program:`PyCharm`'s console
 My :program:`PyCharm` is not finding the dependencies
 -----------------------------------------------------
 
+.. note::
+
+   There might be ways to adjust the settings of :program:`PyCharm` or other IDEs to save us from the trouble of having to do this. Nonetheless, this is the *one-size-fits-all* solution, which should work for all past and future versions of :program:`PyCharm`.
+
 If you have rulled out all issues related to your own code, it might be the case that the terminal in which you initially ran :program:`PyCharm` is unaware of certain changes to your ROS2 workspace.
 
 To be sure that the current :program:`PyCharm` session is updated without changes to any settings, do
@@ -104,6 +108,3 @@ To be sure that the current :program:`PyCharm` session is updated without change
 
     pycharm_ros2
    
-.. note::
-
-   There might be ways to adjust the settings of :program:`PyCharm` or other IDEs to save us from the trouble of having to do this. Nonetheless, this is the *one-size-fits-all* solution, which should work for all past and future versions of :program:`PyCharm`.
