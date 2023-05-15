@@ -1,3 +1,5 @@
+.. _Terminator is life:
+
 Terminator is life
 ==================
 
