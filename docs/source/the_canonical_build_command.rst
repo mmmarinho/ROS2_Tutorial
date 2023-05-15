@@ -6,4 +6,4 @@
 
 .. note::
 
-   If you don't remember why we're doing this, see :ref:`Always source after you build`.
+   If you don't remember why we're building with these commands, see :ref:`Always source after you build`.
