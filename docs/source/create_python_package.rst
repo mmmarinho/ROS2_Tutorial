@@ -77,8 +77,12 @@ which will now output
     Summary: 1 package finished [1.89s]
       1 package had stderr output: the_simplest_python_package
 
-meaning that :program:`colcon` succesfully built the example package. Sadly, in this version of ROS2, all :program:`ament_python` packages will output a :code:`SetuptoolsDeprecationWarning`.
-This is related to `this issue on Github <https://github.com/colcon/colcon-core/issues/454#issuecomment-1262592774>`_. Until that is fixed, just ignore it.
+meaning that :program:`colcon` succesfully built the example package. 
+
+.. warning::
+
+   In this version of ROS2, all :program:`ament_python` packages will output a :code:`SetuptoolsDeprecationWarning`.
+   This is related to `this issue on Github <https://github.com/colcon/colcon-core/issues/454#issuecomment-1262592774>`_. Until that is fixed, just ignore it.
 
 
 
