@@ -23,6 +23,7 @@ Contents
    create_packages
    create_python_package
    create_python_node_with_template
+   source_after_build
    running_node
    editing_python_source
    create_python_node_from_scratch
