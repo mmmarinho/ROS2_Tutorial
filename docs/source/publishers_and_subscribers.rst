@@ -172,7 +172,7 @@ As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`se
 Testing Publisher and Subscriber
 --------------------------------
 
-Whenever we need to open two or more terminal windows, remember that :ref:`Terminal is life`.
+Whenever we need to open two or more terminal windows, remember that :ref:`Terminator is life`.
 
 Let us open two terminals.
 
