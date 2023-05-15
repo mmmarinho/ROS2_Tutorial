@@ -8,7 +8,9 @@ Let us use the template for creating a package with a Node, as follows.
 .. code :: console
 
    cd ~/ros2_tutorial_workspace/src
-   ros2 pkg create --build-type ament_python python_package_with_a_node --node-name sample_python_node
+   ros2 pkg create python_package_with_a_node \
+   --build-type ament_python \
+   --node-name sample_python_node
    
 Which will output many things in common with the prior example, but two major differences. 
 
