@@ -182,7 +182,7 @@ In the first terminal, we run
 
   ros2 run python_package_that_uses_the_messages amazing_quote_publisher_node
 
-Nothing in particular should happen now. The publisher is sending messages through the specific topic we defined, but we need at least one subscribed to interact with those messages.
+Nothing in particular should happen now. The publisher is sending messages through the specific topic we defined, but we need at least one subscriber to interact with those messages.
 
 Hence, in the second terminal, we run
 
