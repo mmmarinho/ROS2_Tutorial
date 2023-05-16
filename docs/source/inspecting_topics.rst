@@ -244,7 +244,7 @@ Testing your subscribers with :program:`ros2 topic pub`
 
 .. note::
 
-   To improve readability, the command is using the escape character :code:`\`. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_
+   To improve readability, the command is using the escape character **\**. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_.
 
 .. code-block:: console
    :emphasize-lines: 4-6
