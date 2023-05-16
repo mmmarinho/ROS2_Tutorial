@@ -16,6 +16,7 @@ To take this chance to also learn how to nest messages on other interfaces, we a
 
 .. code:: console
 
+  cd ~/ros2_tutorial_workspace/src
   ros2 pkg create package_with_interfaces \
   --build-type ament_python \
   --dependencies geometry_msgs
