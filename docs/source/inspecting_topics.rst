@@ -73,6 +73,19 @@ which, in this case, outputs
 
 showing, in particular, the :code:`/amazing_quote` topic what we were looking for.
 
+.. note::
+
+   The :program:`ros2 topic info` is one of the main tools to find out typos in the names of topics. For example, if there was a typo in our topic we might find, in fact, two topics being listed, when we only expected one. For instance,
+
+    .. code-block:: console
+        :emphasize-lines: 1,2
+
+        /amazing_quote
+        /amazing_quotes
+        /parameter_events
+        /rosout
+        
+
 :program:`grep` is your new best friend
 ---------------------------------------
 
@@ -289,6 +302,9 @@ which will result in our subscriber outputing
 
             This latest quote had the id=1994.
         
+
+For complicated messages, properly writing the message on the terminal can be a handfull. In that case, it might be better to make a minimal script to test the subscriber instead.
+
 
 
 
