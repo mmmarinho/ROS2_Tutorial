@@ -30,7 +30,7 @@ class AmazingQuotePublisherNode(Node):
     """A ROS2 Node that receives and prints an amazing quote."""
 
     def __init__(self):
-        super().__init__('amazing_quote_subscriber_node')
+        super().__init__('amazing_quote_publisher_node')
         self.amazing_quote_publisher = self.create_publisher(
             msg_type=AmazingQuote,
             topic='/amazing_quote',
