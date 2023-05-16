@@ -8,7 +8,10 @@ Note that we must add the :code:`python_package_with_a_library` as a dependency 
 .. code :: console
 
    cd ~/ros2_tutorial_workspace/src
-   ros2 pkg create python_package_that_uses_the_library --build-type ament_python --node-name node_that_uses_the_library --dependencies rclpy python_package_with_a_library
+   ros2 pkg create python_package_that_uses_the_library \
+   --dependencies rclpy python_package_with_a_library \
+   --build-type ament_python \
+   --node-name node_that_uses_the_library
    
 resulting in yet another version of our favorite wall of text
 
