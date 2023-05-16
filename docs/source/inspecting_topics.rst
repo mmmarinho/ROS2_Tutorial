@@ -103,7 +103,8 @@ To get some quick information on a topic we can run
 
 which outputs the message type and the number of publishers and subscribers connected to that topic
 
-.. code:: console
+.. code-block:: console
+    :emphasize-lines: 2
 
     Type: package_with_interfaces/msg/AmazingQuote
     Publisher count: 1
@@ -172,3 +173,72 @@ which will output only the lines with that pattern, e.g.
     id: 1551
     id: 1552
     id: 1553
+
+Measuring publishing frequency with :program:`ros2 topic hz`
+------------------------------------------------------------
+
+There are situations in which we are interested in knowing if the topics are receiving messages at an expected rate, without particular interest in the contents of the messages. We can do so with
+
+.. code:: console
+
+   ros2 topic hz /amazing_quote
+   
+which will output, after some time,
+
+.. code:: console
+
+       WARNING: topic [/amazing_quote] does not appear to be published yet
+    average rate: 2.000
+        min: 0.500s max: 0.500s std dev: 0.00007s window: 4
+    average rate: 2.000
+        min: 0.500s max: 0.500s std dev: 0.00013s window: 7
+    average rate: 2.000
+        min: 0.500s max: 0.500s std dev: 0.00011s window: 9
+
+We must wait for a while until messages are received so that the tool can measure the frequency properly. You probably have noticed that the frequency measured by :program:`ros2 topic hz` is compatible with the period of the :code:`Timer` in our publisher Node.
+
+Stop the publisher
+------------------
+
+Now we have exhausted all relevant tools that can give us information related to the publisher. Let us close the publisher with :kbd:`CTLR+C` so that we can evaluate how these tools can help us analise a subscriber.
+
+Start the subscriber and get basic info
+---------------------------------------
+
+.. code:: console
+
+  ros2 run python_package_that_uses_the_messages amazing_quote_subscriber_node 
+
+When only the subscriber is running, we can still get the basic info on the topic, e.g. 
+
+.. code:: console
+
+   ros2 topic list
+   
+which also outputs
+
+.. code-block:: console
+    :emphasize-lines: 1
+
+    /amazing_quote
+    /parameter_events
+    /rosout
+
+and 
+
+.. code:: console
+
+    ros2 topic info /amazing_quote
+
+which, differently from before, outputs
+
+.. code-block:: console
+    :emphasize-lines: 3
+
+    Type: package_with_interfaces/msg/AmazingQuote
+    Publisher count: 0
+    Subscription count: 1
+
+Testing your subscribers with :program:`ros2 topic pub`
+-------------------------------------------------------
+
