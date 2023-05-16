@@ -195,13 +195,48 @@ Hence, in the second terminal, we run
 
 .. code:: console
 
-  ros2 run python_package_that_uses_the_messages amazing_quote_subscribed_node
+  ros2 run python_package_that_uses_the_messages amazing_quote_subscriber_node
  
 which outputs
 
 .. code:: console
 
-  asd
+   [INFO] [1684215672.344532584] [amazing_quote_subscriber_node]: 
+        I have received the most amazing of quotes.
+        It says
+
+               'Use the force, Pikachu!'
+
+        And was though by the following genius
+
+            -- Uncle Ben
+
+        This latest quote had the id=3.
+
+   [INFO] [1684215672.844618237] [amazing_quote_subscriber_node]: 
+        I have received the most amazing of quotes.
+        It says
+
+               'Use the force, Pikachu!'
+
+        And was though by the following genius
+
+            -- Uncle Ben
+
+        This latest quote had the id=4.
+
+   [INFO] [1684215673.344514856] [amazing_quote_subscriber_node]: 
+        I have received the most amazing of quotes.
+        It says
+
+               'Use the force, Pikachu!'
+
+        And was though by the following genius
+
+            -- Uncle Ben
+
+        This latest quote had the id=5.
+
 
 .. note::
 
