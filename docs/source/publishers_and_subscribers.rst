@@ -35,6 +35,8 @@ Before we start exploring the elements of the package, let us
 #. Create the subscriber Node.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds these programs.
 
+.. _Create a publisher:
+
 Create the Node with a publisher
 --------------------------------
 
