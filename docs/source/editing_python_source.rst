@@ -86,8 +86,10 @@ It will output in :program:`PyCharm`'s console
 
    You can read more about debugging with :program:`PyCharm` at the `official documentation <https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html#where-is-the-problem>`_
 
-My :program:`PyCharm` is not finding the dependencies
------------------------------------------------------
+.. _PyCharm is not finding the dependencies:
+
+:program:`PyCharm` is not finding the dependencies
+--------------------------------------------------
 
 .. note::
 
