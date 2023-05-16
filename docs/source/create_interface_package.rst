@@ -77,7 +77,7 @@ The convention is to add all messages to a folder called :file:`msg`. Let's foll
 
 .. code:: console
 
-   cd ~/ros2_tutorial_workspace/src
+   cd ~/ros2_tutorial_workspace/src/package_with_interfaces
    mkdir msg
 
 The message file
@@ -111,7 +111,7 @@ The convention is to add all services to a folder called :file:`srv`. Let's foll
 
 .. code:: console
 
-   cd ~/ros2_tutorial_workspace/src
+   cd ~/ros2_tutorial_workspace/src/package_with_interfaces
    mkdir srv
 
 The service file
