@@ -241,3 +241,7 @@ which outputs
 .. note::
 
    If there are any issues with either the publisher or the subscriber, this connection will not work. In the next section, we'll see strategies to help us troubleshoot and understand the communication through topics.
+   
+.. warning::
+
+   Unless instructed otherwise, the publisher does **NOT** wait for a subscriber to connect before it to starts publishing the messages. As shown in the case above, the first message we received started with `id=3`. If we delayed longer to start the publisher, we would have received later messages only.
