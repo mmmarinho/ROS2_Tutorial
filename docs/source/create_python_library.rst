@@ -5,8 +5,10 @@ Let us start, as already recommended in this tutorial, with a template by :progr
 
 .. code :: console
 
-   cd ~/ros2_tutorial_workspace
-   ros2 pkg create python_package_with_a_library --build-type ament_python --library-name sample_python_library
+   cd ~/ros2_tutorial_workspace/src
+   ros2 pkg create python_package_with_a_library \
+   --build-type ament_python \
+   --library-name sample_python_library
    
 which outputs the forever beautiful wall of text we're by now used to, with a minor difference regarding the additional library template, as highlighted below.
 
