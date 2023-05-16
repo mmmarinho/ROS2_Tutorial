@@ -169,6 +169,13 @@ As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`se
    :linenos:
    :emphasize-lines: 21-25
 
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: the_canonical_build_command.rst
+
 Testing Publisher and Subscriber
 --------------------------------
 
