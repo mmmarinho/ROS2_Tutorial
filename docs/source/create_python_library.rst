@@ -164,7 +164,7 @@ Modify the :code:`setup.py` to export the modules
 
 .. note::
 
-   This is a *one-size-fits-all* solution, which might not work for certain Python module structures. As a generic solution, we will export all libraries in the package excluding the `test` directory. For more information on :program:`setuptools`, see the `official Python packaging docs <https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/>`_.
+   This is a *one-size-fits-most* solution, which might not work for certain Python module structures. As a generic solution, we will export all libraries in the package excluding the `test` directory. For more information on :program:`setuptools`, see the `official Python packaging docs <https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/>`_.
 
 :download:`__init__.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/setup.py>`
 
