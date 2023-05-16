@@ -253,7 +253,7 @@ Testing your subscribers with :program:`ros2 topic pub`
    package_with_interfaces/msg/AmazingQuote \
    "{ \
    id: 2008, \
-   quote: Is this real life?, \
+   quote: uhhh. I feel funny., \
    philosopher_name: David After Dentist \
    }"
 
