@@ -303,7 +303,7 @@ which will result in our subscriber outputing
             This latest quote had the id=1994.
         
 
-For complicated messages, properly writing the message on the terminal can be a handfull. In that case, it might be better to make a minimal script to test the subscriber instead.
+For complicated messages, properly writing the message on the terminal can be a handfull. In that case, it might be better to make a minimal script to test the subscriber instead. Refer to :ref:`Create a publisher`.
 
 
 
