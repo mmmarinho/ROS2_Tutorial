@@ -180,6 +180,4 @@ No surprise here, right?
 
 .. include:: the_canonical_build_command.rst
 
-.. include:: the_pycharm_dependencies_warning.rst
-
 If it builds without any unexpected issues, we're good to go!
