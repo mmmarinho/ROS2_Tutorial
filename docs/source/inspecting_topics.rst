@@ -242,3 +242,17 @@ which, differently from before, outputs
 Testing your subscribers with :program:`ros2 topic pub`
 -------------------------------------------------------
 
+.. note::
+
+   To improve readability, the command is using the escape character :code:`\`. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_
+
+.. code-block::
+
+   ros2 topic pub /amazing_quote \
+   package_with_interfaces/msg/AmazingQuote \
+   "{ \
+   id: 123, \
+   quote: Is this real life, \
+   philosopher_name: Old-school meme boy that came from the dentist. \
+   }"
+
