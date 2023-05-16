@@ -18,7 +18,7 @@ To take this chance to also learn how to nest messages on other interfaces, we a
 
   cd ~/ros2_tutorial_workspace/src
   ros2 pkg create package_with_interfaces \
-  --build-type ament_python \
+  --build-type ament_cmake \
   --dependencies geometry_msgs
 
 which again shows our beloved wall of text, with a few highlighted differences because of it being a :program:`ament_cmake` package.
