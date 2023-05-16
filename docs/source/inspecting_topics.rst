@@ -246,7 +246,8 @@ Testing your subscribers with :program:`ros2 topic pub`
 
    To improve readability, the command is using the escape character :code:`\`. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_
 
-.. code-block::
+.. code-block:: console
+   :emphasize-lines: 4-6
 
    ros2 topic pub /amazing_quote \
    package_with_interfaces/msg/AmazingQuote \
