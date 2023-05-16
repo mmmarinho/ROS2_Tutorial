@@ -28,7 +28,7 @@ Create an alias for :code:`pycharm_ros2`
 .. code :: console
 
    echo "# Alias for PyCharm, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
-   echo "alias pycharm_ros2="~/ros2_workspace_pycharm/pycharm-community-2023.1.1/bin/pycharm.sh" >> ~/.bashrc
+   echo "alias pycharm_ros2=~/ros2_workspace_pycharm/pycharm-community-2023.1.1/bin/pycharm.sh" >> ~/.bashrc
    source ~/.bashrc
    
 Then, you can run :program:`PyCharm` with
