@@ -93,7 +93,7 @@ It will output in :program:`PyCharm`'s console
 
 .. note::
 
-   There might be ways to adjust the settings of :program:`PyCharm` or other IDEs to save us from the trouble of having to do this. Nonetheless, this is the *one-size-fits-all* solution, which should work for all past and future versions of :program:`PyCharm`.
+   There might be ways to adjust the settings of :program:`PyCharm` or other IDEs to save us from the trouble of having to do this. Nonetheless, this is the *one-size-fits-most* solution, which should work for all past and future versions of :program:`PyCharm`.
 
 If you have rulled out all issues related to your own code, it might be the case that the terminal in which you initially ran :program:`PyCharm` is unaware of certain changes to your ROS2 workspace.
 
