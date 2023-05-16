@@ -242,6 +242,10 @@ which, differently from before, outputs
 Testing your subscribers with :program:`ros2 topic pub`
 -------------------------------------------------------
 
+To somewhat quickly evaluate a subscriber, we can use the :program:`ros2 topic pub`. It allows us to publish messages to check the behavior of our subscribers.
+
+In our case, we can send an :program:`AmazingQuote` as follows
+
 .. note::
 
    To improve readability, the command is using the escape character ``\``. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_.
@@ -252,8 +256,39 @@ Testing your subscribers with :program:`ros2 topic pub`
    ros2 topic pub /amazing_quote \
    package_with_interfaces/msg/AmazingQuote \
    "{ \
-   id: 2008, \
-   quote: uhhh. I feel funny., \
-   philosopher_name: David After Dentist \
+   id: 1994, \
+   quote: So you’re telling me there’s a chance, \
+   philosopher_name: Lloyd \
    }"
+
+which will result in our subscriber outputing
+
+.. code:: console
+
+    [INFO] [1684222464.960446589] [amazing_quote_subscriber_node]: 
+            I have received the most amazing of quotes.
+            It says
+
+                   'So you’re telling me there’s a chance'
+
+            And was though by the following genius
+
+                -- Lloyd
+
+            This latest quote had the id=1994.
+
+    [INFO] [1684222465.953452826] [amazing_quote_subscriber_node]: 
+            I have received the most amazing of quotes.
+            It says
+
+                   'So you’re telling me there’s a chance'
+
+            And was though by the following genius
+
+                -- Lloyd
+
+            This latest quote had the id=1994.
+        
+
+
 
