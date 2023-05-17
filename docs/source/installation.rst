@@ -18,7 +18,7 @@ Update :program:`apt` packages
 
 After a fresh install, update and upgrade all :program:`apt` packages.
 
-.. code-block:: bash
+.. code-block:: console
 
    sudo apt update && sudo apt upgrade -y
 
@@ -26,7 +26,7 @@ After a fresh install, update and upgrade all :program:`apt` packages.
 Install a few pre-requisites
 ----------------------------
 
-.. code-block:: bash
+.. code-block:: console
 
    sudo apt install -y software-properties-common curl terminator git
    
@@ -45,7 +45,7 @@ Add ROS2 sources
 Your :program:`apt` needs to know where the ROS2 packages can be found and to be able to verify their authenticity. After setting up the :program:`apt` sources, the local package list must be updated.
 The following commands will do all that magic.
 
-.. code-block:: bash
+.. code-block:: console
 
    sudo add-apt-repository universe
    sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
@@ -57,7 +57,7 @@ Install ROS2 packages
 
 There are plenty of ways to install ROS2, the following will suffice for now. 
 
-.. code-block:: bash
+.. code-block:: console
 
    sudo apt install -y ros-humble-desktop ros-dev-tools 
 
@@ -70,7 +70,7 @@ The :code:`~/.bashrc` file can be used for that exact purpose as, in Ubuntu, tha
 
 **TL;DR** just run this **ONCE AND ONLY ONCE**
 
-.. code-block:: bash
+.. code-block:: console
 
    echo "# Source ROS2 Humble, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
    echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
@@ -81,13 +81,13 @@ Check if it works
 
 If the following command
 
-.. code-block:: bash
+.. code-block:: console
     
    ros2
 
 outputs something similar to what is shown below, then it worked! Otherwise, it didn't!
 
-.. code-block:: bash
+.. code-block:: console
 
        usage: ros2 [-h] [--use-python-default-buffering]
                 Call `ros2 <command> -h` for more detailed usage. ...
