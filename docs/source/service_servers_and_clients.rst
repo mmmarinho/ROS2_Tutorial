@@ -78,10 +78,10 @@ Create the Node with a Service Client
          #. Add the new Node to :file:`setup.py`
 
 .. note::
-
    This example deviates from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
    The official examples are not particularly :code:`async` because they explicitly wait for the response after the call and/or call the service only once.
-   The implementation proposed herein is "truly" :code:`async` and follows a similar logic to the :code:`Publishers` (with a :code:`Timer`), however it is another *one-size-fits-most* solution, that might not be suitable for other cases.
+   The implementation proposed herein is "truly" :code:`async`, follows a similar logic to the :code:`Publishers` (with a :code:`Timer`), uses the regular :code:`rclpy.spin()`, and does not play with :code:`Executors`.
+   However it is another *one-size-fits-most* solution, that might not be suitable for some cases.
 
 
 :download:`what_is_the_point_service_client_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py>`
@@ -91,6 +91,10 @@ Create the Node with a Service Client
    :linenos:
    :lines: 24-
    :emphasize-lines: 1
+
+.. note::
+
+   If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
 
 Update the :file:`setup.py`
 ---------------------------
