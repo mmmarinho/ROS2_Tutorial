@@ -95,7 +95,7 @@ The rule of thumb is that all of these three, including the :code:`qos_profile`,
 |                    |  (See more on  `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.)                                 |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Then, each message is handled much like any other class in Python. We instanteate and initialize the message as follows
+Then, each message is handled much like any other class in Python. We instantiate and initialize the message as follows
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
@@ -109,7 +109,7 @@ Lastly, the message needs to be published using :code:`Node.publish(msg)`.
 
 .. note::
 
-   In general, the message will **NOT** be published instantenously after :code:`Node.publish()` is called. It is usually fast, but entirely dependent on :code:`rclpy.spin()` and how much work it is doing.
+   In general, the message will **NOT** be published instantaneously after :code:`Node.publish()` is called. It is usually fast, but entirely dependent on :code:`rclpy.spin()` and how much work it is doing.
 
 Create the Node with a subscriber
 ---------------------------------

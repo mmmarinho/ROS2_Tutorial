@@ -50,7 +50,7 @@ Create the Node with a Service Server
 .. note::
 
    The API for the Service Server callback is a bit weird in that it receives the response as an argument.
-   This api `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now we have to roll with it.
+   This API `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now we have to roll with it.
 
 :download:`what_is_the_point_service_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py>`
 
@@ -71,6 +71,28 @@ Create the Node with a Service Client
    :linenos:
    :lines: 24-
    :emphasize-lines: 1
+
+Update the :file:`setup.py`
+---------------------------
+
+As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`setup.py` to refer to the Nodes we just created.
+
+:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/setup.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/setup.py
+   :language: python
+   :linenos:
+   :emphasize-lines: 21-25
+
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: the_canonical_build_command.rst
+
+Testing Service Server and Client
+---------------------------------
 
 .. code:: console
 
