@@ -64,7 +64,32 @@ class WhatIsThePointServiceClientNode(Node):
             future=future,
             timeout_sec=None
         )
-        return future.result()
+        response: WhatIsThePoint.Response = future.result()
+
+        if response is not None:
+            self.get_logger().info("""
+                #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+            
+                We have thus received the point of our quote.
+                
+                {}
+                
+                -- {}
+                
+                The point was:
+                
+                            {}
+                
+                #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$    
+            """.format(
+                request.quote.quote,
+                request.quote.philosopher_name,
+                (response.point.x, response.point.y, response.point.z)
+            ))
+        else:
+            self.get_logger().info("""
+                    The response was None. :(    
+            """)
 
 
 def main(args=None):
