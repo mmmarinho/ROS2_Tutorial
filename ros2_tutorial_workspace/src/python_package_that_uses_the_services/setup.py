@@ -20,6 +20,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'what_is_the_point_service_client_node = '
+            'python_package_that_uses_the_services.what_is_the_point_service_client_node:main',
+            'what_is_the_point_service_server_node = '
+            'python_package_that_uses_the_services.what_is_the_point_service_server_node:main'
         ],
     },
 )
