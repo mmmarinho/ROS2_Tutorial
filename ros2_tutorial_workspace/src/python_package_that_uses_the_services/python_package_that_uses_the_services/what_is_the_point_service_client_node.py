@@ -68,7 +68,7 @@ class WhatIsThePointServiceClientNode(Node):
             self.get_logger().info("Took too long to process async service call."
                                    "Is the Service Server still alive?")
         self.future = self.service_client.call_async(request)
-        self.future.add_done_callback(self.process_response(self.future))
+        self.future.add_done_callback(self.process_response)
 
     async def process_response(self, future: Future):
         """Callback for the future, that will be called when it is done"""

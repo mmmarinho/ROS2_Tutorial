@@ -75,7 +75,7 @@ class WhatIsThePointServiceServerNode(Node):
             This is the call number {} to this Service Server.
             The analysis of the AmazingQuote below is complete.
             
-            {}
+                    {}
             
             -- {}
             
