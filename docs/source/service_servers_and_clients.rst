@@ -57,19 +57,19 @@ Create the Node with a Service Server
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
    :linenos:
-   :lines: 25-31
+   :lines: 24-30
    :emphasize-lines: 6
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
    :linenos:
-   :lines: 36-44
+   :lines: 35-43
    :emphasize-lines: 4-7
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
    :linenos:
-   :lines: 43-46
+   :lines: 42-45
 
 .. note::
 
@@ -79,12 +79,12 @@ Create the Node with a Service Server
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
    :linenos:
-   :lines: 70-74
+   :lines: 69-73
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
    :linenos:
-   :lines: 89-91
+   :lines: 88-90
    :emphasize-lines: 2
 
 
