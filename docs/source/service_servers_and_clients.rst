@@ -71,3 +71,45 @@ Create the Node with a Service Client
    :linenos:
    :lines: 24-
    :emphasize-lines: 1
+
+
+.. code:: console
+
+   ros2 run python_package_that_uses_the_services what_is_the_point_service_client_node
+
+
+.. code:: console
+
+    [INFO] [1684293008.888276849] [what_is_the_point_service_client]: service /what_is_the_point not available, waiting...
+    [INFO] [1684293009.890589539] [what_is_the_point_service_client]: service /what_is_the_point not available, waiting...
+    [INFO] [1684293010.892778194] [what_is_the_point_service_client]: service /what_is_the_point not available, waiting...
+
+.. code:: console
+
+    ros2 run python_package_that_uses_the_services what_is_the_point_service_server_node
+
+.. code:: console
+
+    [INFO] [1684293071.140372053] [what_is_the_point_service_server]:
+                Valued Customer,
+
+                Thank you for calling the `WhatIsThePoint` service callback helpline.
+                We are proud to have been called 1 times.
+
+                **-**-**-**-**-**-**-**-**-**-**-**-
+
+                We have analysed the following AmazingQuote:
+
+                My life, it's potato...
+                                         In your working life, and your living
+                                         it is always potatoes. I dream of potatoes.
+
+                -- a young Maltese potato farmer
+
+                The point has been sent to you accordingly.
+                Feel free to check the response at your convenience.
+
+                **-**-**-**-**-**-**-**-**-**-**-**-
+
+                Have a nice day,
+                Service Callerson Jr.

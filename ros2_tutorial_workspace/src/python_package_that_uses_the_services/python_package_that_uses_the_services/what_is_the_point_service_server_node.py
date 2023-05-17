@@ -50,10 +50,10 @@ class WhatIsThePointServiceServerNode(Node):
         """
 
         # Generate the x,y,z of the point
-        if "life" in request.quote.quote:
+        if "life" in request.quote.quote.lower():
             x: float = random.uniform(0, 42)
-            y: float = random.uniform(x, 42)
-            z: float = random.uniform(x + y, 42)
+            y: float = random.uniform(0, 42 - x)
+            z: float = 42 - (x + y)
         else:
             x: float = random.uniform(0, 100)
             y: float = random.uniform(0, 100)
@@ -64,7 +64,7 @@ class WhatIsThePointServiceServerNode(Node):
         # Assign to the response
         response.point.x = x
         response.point.y = y
-        response.point.y = z
+        response.point.z = z
 
         # Increase the call count
         self.service_server_call_count = self.service_server_call_count + 1

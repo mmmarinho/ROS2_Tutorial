@@ -23,7 +23,9 @@ SOFTWARE.
 """
 import random
 import rclpy
+from rclpy.task import Future
 from rclpy.node import Node
+from rclpy.callback_groups import ReentrantCallbackGroup
 from package_with_interfaces.srv import WhatIsThePoint
 
 
@@ -33,15 +35,22 @@ class WhatIsThePointServiceClientNode(Node):
     def __init__(self):
         super().__init__('what_is_the_point_service_client')
 
+        #self.callback_group = ReentrantCallbackGroup()
         self.service_client = self.create_client(
             srv_type=WhatIsThePoint,
-            srv_name='/what_is_the_point')
+            srv_name='/what_is_the_point')#,
+        #    callback_group=self.callback_group)
 
         while not self.service_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service {} not available, waiting...'.format(self.service_client.srv_name))
 
+        self.future: Future = None
+
         timer_period: float = 0.5
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer = self.create_timer(
+            timer_period_sec=timer_period,
+            callback=self.timer_callback)#,
+        #    callback_group=self.callback_group)
 
     def timer_callback(self):
         """Method that is periodically called by the timer."""
@@ -52,38 +61,27 @@ class WhatIsThePointServiceClientNode(Node):
             request.quote.philosopher_name = "Creators of Deep Thought"
             request.quote.id = 1979
         else:
-            request.quote.quote = """My life, it's potato... 
-                                     In your working life, and your living
-                                     it is always potatoes. I dream of potatoes."""
+            request.quote.quote = """[...] your living... it is always potatoes. I dream of potatoes."""
             request.quote.philosopher_name = "a young Maltese potato farmer"
             request.quote.id = 2013
 
-        future = self.service_client.call_async(request)
-        rclpy.spin_until_future_complete(
-            node=self,
-            future=future,
-            timeout_sec=None
-        )
-        response: WhatIsThePoint.Response = future.result()
+        if self.future is not None and not self.future.done():
+            self.get_logger().info("Took too long to process async service call.")
+        self.future = self.service_client.call_async(request)
+        self.future.add_done_callback(self.process_response(self.future))
 
+    async def process_response(self, future: Future):
+        response = future.result()
         if response is not None:
             self.get_logger().info("""
                 #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
-            
+
                 We have thus received the point of our quote.
-                
-                {}
-                
-                -- {}
-                
-                The point was:
-                
+
                             {}
-                
+
                 #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$    
             """.format(
-                request.quote.quote,
-                request.quote.philosopher_name,
                 (response.point.x, response.point.y, response.point.z)
             ))
         else:
