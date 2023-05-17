@@ -72,11 +72,11 @@ Create the Node with a Service Client
    :lines: 24-
    :emphasize-lines: 1
 
-
 .. code:: console
 
    ros2 run python_package_that_uses_the_services what_is_the_point_service_client_node
 
+when running the client Node, the server is still not active. In that case, the client node will keep waiting for it, as follows
 
 .. code:: console
 
@@ -84,25 +84,27 @@ Create the Node with a Service Client
     [INFO] [1684293009.890589539] [what_is_the_point_service_client]: service /what_is_the_point not available, waiting...
     [INFO] [1684293010.892778194] [what_is_the_point_service_client]: service /what_is_the_point not available, waiting...
 
+In another terminal, we run the :program:`python_package_uses_the_service_node`, as follows
+
 .. code:: console
 
     ros2 run python_package_that_uses_the_services what_is_the_point_service_server_node
 
+the server Node will then output, periodically,
+
 .. code:: console
 
-    [INFO] [1684293071.140372053] [what_is_the_point_service_server]:
+    [INFO] [1684305461.723440894] [what_is_the_point_service_server]:
                 Valued Customer,
 
                 Thank you for calling the `WhatIsThePoint` service callback helpline.
-                We are proud to have been called 1 times.
+                We are proud to have been called 3 times.
 
                 **-**-**-**-**-**-**-**-**-**-**-**-
 
                 We have analysed the following AmazingQuote:
 
-                My life, it's potato...
-                                         In your working life, and your living
-                                         it is always potatoes. I dream of potatoes.
+                [...] your living... it is always potatoes. I dream of potatoes.
 
                 -- a young Maltese potato farmer
 
@@ -113,3 +115,18 @@ Create the Node with a Service Client
 
                 Have a nice day,
                 Service Callerson Jr.
+
+
+and the client Node will output, periodically,
+
+.. code:: console
+
+    [INFO] [1684305461.224588634] [what_is_the_point_service_client]:
+                    #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+
+                    We have thus received the point of our quote.
+
+                                (21.480765227729144, 1.8148233711302457, 18.70441140114061)
+
+                    #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+

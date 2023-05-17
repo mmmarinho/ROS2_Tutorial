@@ -43,7 +43,7 @@ class WhatIsThePointServiceClientNode(Node):
 
         self.future: Future = None
 
-        timer_period: float = 0.05
+        timer_period: float = 0.5
         self.timer = self.create_timer(
             timer_period_sec=timer_period,
             callback=self.timer_callback)
