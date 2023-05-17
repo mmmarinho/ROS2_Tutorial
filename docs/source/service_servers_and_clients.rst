@@ -35,7 +35,6 @@ Create the Node with a Service Server
 -------------------------------------
 
 .. note::
-
          **TL:DR** Creating a service server
 
          #. Add new dependencies to :file:`package.xml`
@@ -47,11 +46,6 @@ Create the Node with a Service Server
 
          #. Add the new Node to :file:`setup.py`
 
-.. note::
-
-   The API for the Service Server callback is a bit weird in that it receives the response as an argument.
-   This API `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now we have to roll with it.
-
 :download:`what_is_the_point_service_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
@@ -59,6 +53,39 @@ Create the Node with a Service Server
    :linenos:
    :lines: 24-
    :emphasize-lines: 1
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
+   :language: python
+   :linenos:
+   :lines: 25-31
+   :emphasize-lines: 6
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
+   :language: python
+   :linenos:
+   :lines: 36-44
+   :emphasize-lines: 4-7
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
+   :language: python
+   :linenos:
+   :lines: 43-46
+
+.. note::
+
+   The API for the Service Server callback is a bit weird in that it receives the response as an argument.
+   This API `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now this is what we got.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
+   :language: python
+   :linenos:
+   :lines: 70-74
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
+   :language: python
+   :linenos:
+   :lines: 89-91
+   :emphasize-lines: 2
 
 
 Create the Node with a Service Client
