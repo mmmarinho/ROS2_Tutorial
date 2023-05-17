@@ -2,16 +2,13 @@ Installation
 ============
 
 .. note:: 
-  This tutorial is an abridged version of the original ROS2-Documentation_ considering its specific needs.
+  This tutorial is an abridged version of the original `ROS 2 Documentation <https://docs.ros.org/en/humble/index.html>`_. This tutorial considers a fresh Ubuntu Desktop 22.04 LTS 64bit installation, that you have super user access, and common sense.
 
-.. note:: 
-  This tutorial considers a fresh Ubuntu Desktop 22.04 LTS 64bit installation, that you have super user access, and common sense.
-  
 .. warning:: 
   All commands must be followed to the letter, in the precise order described herein. Any deviation from what is described might cause unspecified problems and not all of them are easily solvable.
 
 Update :program:`apt` packages
----------------------------
+------------------------------
 
 .. note:: 
   You can quickly open a new terminal window by pressing :kbd:`CTRL+ATL+T`.
@@ -125,8 +122,6 @@ outputs something similar to what is shown below, then it worked! Otherwise, it 
 
 
 
-
-.. _ROS2-Documentation: https://docs.ros.org/en/humble/index.html
 .. _software-properties-common: https://askubuntu.com/questions/1000118/what-is-software-properties-common
 .. _curl: https://curl.se/
 .. _terminator: https://manpages.ubuntu.com/manpages/bionic/man1/terminator.1.html
