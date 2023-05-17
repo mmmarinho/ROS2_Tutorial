@@ -21,38 +21,50 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+import random
 import rclpy
 from rclpy.node import Node
-from package_with_interfaces.msg import AmazingQuote
+from package_with_interfaces.srv import WhatIsThePoint
 
 
-class AmazingQuotePublisherNode(Node):
-    """A ROS2 Node that receives and prints an amazing quote."""
+class WhatIsThePointServiceClientNode(Node):
+    """A ROS2 Node with a Service Client for WhatIsThePoint."""
 
     def __init__(self):
-        super().__init__('amazing_quote_publisher_node')
+        super().__init__('what_is_the_point_service_client')
 
-        self.amazing_quote_publisher = self.create_publisher(
-            msg_type=AmazingQuote,
-            topic='/amazing_quote',
-            qos_profile=1)
+        self.service_client = self.create_client(
+            srv_type=WhatIsThePoint,
+            srv_name='/what_is_the_point')
+
+        while not self.service_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('service {} not available, waiting...'.format(self.service_client.srv_name))
 
         timer_period: float = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
-        self.incremental_id: int = 0
-
     def timer_callback(self):
         """Method that is periodically called by the timer."""
 
-        amazing_quote = AmazingQuote()
-        amazing_quote.id = self.incremental_id
-        amazing_quote.quote = 'Use the force, Pikachu!'
-        amazing_quote.philosopher_name = 'Uncle Ben'
+        request = WhatIsThePoint.Request()
+        if random.uniform(0, 1) < 0.5:
+            request.quote.quote = "I wonder about the Ultimate Question of Life, the Universe, and Everything."
+            request.quote.philosopher_name = "Creators of Deep Thought"
+            request.quote.id = 1979
+        else:
+            request.quote.quote = """My life, it's potato... 
+                                     In your working life, and your living
+                                     it is always potatoes. I dream of potatoes."""
+            request.quote.philosopher_name = "a young Maltese potato farmer"
+            request.quote.id = 2013
 
-        self.amazing_quote_publisher.publish(amazing_quote)
-
-        self.incremental_id = self.incremental_id + 1
+        future = self.service_client.call_async(request)
+        rclpy.spin_until_future_complete(
+            node=self,
+            future=future,
+            timeout_sec=None
+        )
+        return future.result()
 
 
 def main(args=None):
@@ -64,9 +76,9 @@ def main(args=None):
     try:
         rclpy.init(args=args)
 
-        amazing_quote_publisher_node = AmazingQuotePublisherNode()
+        what_is_the_point_service_client_node = WhatIsThePointServiceClientNode()
 
-        rclpy.spin(amazing_quote_publisher_node)
+        rclpy.spin(what_is_the_point_service_client_node)
     except KeyboardInterrupt:
         pass
 
