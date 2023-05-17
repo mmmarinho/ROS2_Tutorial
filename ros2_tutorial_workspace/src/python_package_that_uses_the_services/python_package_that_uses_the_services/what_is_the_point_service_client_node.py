@@ -35,22 +35,19 @@ class WhatIsThePointServiceClientNode(Node):
     def __init__(self):
         super().__init__('what_is_the_point_service_client')
 
-        #self.callback_group = ReentrantCallbackGroup()
         self.service_client = self.create_client(
             srv_type=WhatIsThePoint,
-            srv_name='/what_is_the_point')#,
-        #    callback_group=self.callback_group)
+            srv_name='/what_is_the_point')
 
         while not self.service_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service {} not available, waiting...'.format(self.service_client.srv_name))
 
         self.future: Future = None
 
-        timer_period: float = 0.5
+        timer_period: float = 0.01
         self.timer = self.create_timer(
             timer_period_sec=timer_period,
-            callback=self.timer_callback)#,
-        #    callback_group=self.callback_group)
+            callback=self.timer_callback)
 
     def timer_callback(self):
         """Method that is periodically called by the timer."""
