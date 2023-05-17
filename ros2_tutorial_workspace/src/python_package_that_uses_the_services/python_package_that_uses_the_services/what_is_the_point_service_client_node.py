@@ -65,7 +65,8 @@ class WhatIsThePointServiceClientNode(Node):
             request.quote.id = 2013
 
         if self.future is not None and not self.future.done():
-            self.get_logger().info("Took too long to process async service call.")
+            self.get_logger().info("Took too long to process async service call."
+                                   "Is the Service Server still alive?")
         self.future = self.service_client.call_async(request)
         self.future.add_done_callback(self.process_response(self.future))
 
@@ -73,14 +74,10 @@ class WhatIsThePointServiceClientNode(Node):
         """Callback for the future, that will be called when it is done"""
         response = future.result()
         if response is not None:
-            self.get_logger().info(dedent("""\
-                #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
-
+            self.get_logger().info(dedent("""
                 We have thus received the point of our quote.
 
                             {}
-
-                #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$    
             """.format(
                 (response.point.x, response.point.y, response.point.z)
             )))

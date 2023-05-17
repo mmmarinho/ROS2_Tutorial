@@ -71,27 +71,15 @@ class WhatIsThePointServiceServerNode(Node):
         # Increase the call count
         self.service_server_call_count = self.service_server_call_count + 1
 
-        self.get_logger().info(dedent("""\
-            Valued Customer,
-        
-            Thank you for calling the `WhatIsThePoint` service callback helpline.
-            We are proud to have been called {} times.
-            
-            **-**-**-**-**-**-**-**-**-**-**-**-
-            
-            We have analysed the following AmazingQuote:
+        self.get_logger().info(dedent("""
+            This is the call number {} to this Service Server.
+            The analysis of the AmazingQuote below is complete.
             
             {}
             
             -- {}
             
-            The point has been sent to you accordingly.
-            Feel free to check the response at your convenience.
-            
-            **-**-**-**-**-**-**-**-**-**-**-**-
-            
-            Have a nice day,
-            Service Callerson Jr.
+            The point has been sent back to the client.
         """.format(
             self.service_server_call_count,
             request.quote.quote,
