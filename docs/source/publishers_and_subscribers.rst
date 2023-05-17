@@ -29,10 +29,17 @@ First, let us create an :program:`ament_python` package that depends on our newl
   --build-type ament_python \
   --dependencies rclpy package_with_interfaces
 
+Overview
+--------
+
+.. note::
+
+   By no coincidence, we are using the terminology Node *with* a publisher, and Node *with* a subscriber. In general, each Node will have a combination of publishers, subscribers, and other interfaces.
+
 Before we start exploring the elements of the package, let us
 
-#. Create the publisher Node.
-#. Create the subscriber Node.
+#. Create the Node with a publisher.
+#. Create the Node with a subscriber.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds these programs.
 
 .. _Create a publisher:
