@@ -11,7 +11,7 @@ In some cases, we need means of communication in which each command has an assoc
 Create the package
 ------------------
 
-We start by creating a package to use the :code:`Service` we first created in :ref:`Services`.
+We start by creating a package to use the :code:`Service` we first created in :ref:`The service file`.
 
 .. code-block:: console
 

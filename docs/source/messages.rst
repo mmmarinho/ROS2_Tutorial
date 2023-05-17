@@ -159,8 +159,6 @@ Basically, the comments help to emphasize that message types with too broad mean
 
 The real content of the message file is :code:`string data`, showing that it contains a single string called :code:`data`. Using :code:`ros2 interface show` on other example interfaces, it is easy to see how to build interesting message types.
 
-.. _Services:
-
 Services
 --------
 

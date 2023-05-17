@@ -114,6 +114,8 @@ The convention is to add all services to a folder called :file:`srv`. Let's foll
    cd ~/ros2_tutorial_workspace/src/package_with_interfaces
    mkdir srv
 
+.. _The service file:
+
 The service file
 ----------------
 
