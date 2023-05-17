@@ -17,7 +17,7 @@ When dealing with common robotics concepts such as geometric and sensor messages
 Getting info on interfaces
 --------------------------
 
-We can get information about ROS2 intefaces available in our system with :program:`ros2 interface`. Let us first get more information about the program usage with
+We can get information about ROS2 interfaces available in our system with :program:`ros2 interface`. Let us first get more information about the program usage with
 
 .. code:: console
    

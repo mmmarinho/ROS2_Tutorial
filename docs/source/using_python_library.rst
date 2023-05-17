@@ -68,7 +68,7 @@ Given that it was created from a template, the file :file:`python_package_that_u
    :linenos:
    :lines: 27-
 
-Indeed, the most difficult part is to make and configure the library itself. After that, to use it in another package, it is straightfoward. We :code:`import` the library.
+Indeed, the most difficult part is to make and configure the library itself. After that, to use it in another package, it is straightforward. We :code:`import` the library.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
    :language: python

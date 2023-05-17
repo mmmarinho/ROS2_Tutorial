@@ -22,7 +22,7 @@ It is common practice to have all source files inside the :code:`src` folder, so
 First build
 -----------
 
-Regardless of it being a currently empty project, we run :program:`colcon` once to set up the enviroment and illustrate a few things.
+Regardless of it being a currently empty project, we run :program:`colcon` once to set up the environment and illustrate a few things.
 The program :program:`colcon` is the build system of ROS2 and will be described in more detail later.
 
 For now, run
@@ -40,7 +40,7 @@ for which the output will be something similar to
    
 given that we have an empty workspace, no surprise here.
 
-The folders :code:`build`, :code:`install`, and :code:`log` have been generated automatically by colcon. The project structure becomes as follows.
+The folders :code:`build`, :code:`install`, and :code:`log` have been generated automatically by :program:`colcon`. The project structure becomes as follows.
 
 .. code-block:: console
    :emphasize-lines: 3,4,5

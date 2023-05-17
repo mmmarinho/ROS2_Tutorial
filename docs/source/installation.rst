@@ -58,7 +58,7 @@ There are plenty of ways to install ROS2, the following will suffice for now.
 
    sudo apt install -y ros-humble-desktop ros-dev-tools 
 
-Set up system enviroment to find ROS2
+Set up system environment to find ROS2
 -------------------------------------
 
 ROS2 packages are implemented in such way that they live peacefully in the :code:`/opt/ros/{ROS_DISTRO}` folder in your Ubuntu. A given terminal window or program will only know that ROS2 exists, and which version you want to use, if you run a setup file *for each terminal, everytime you open a new one*.

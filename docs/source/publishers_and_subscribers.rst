@@ -70,7 +70,7 @@ For the publisher, create a file in :file:`python_package_that_uses_the_messages
    :lines: 24-
    :emphasize-lines: 3, 11-14, 21-24, 26
 
-When we built our :file:`package_with_interfaces` in the last section, what ROS2 did for us, among other things, was create a Python library called :file:`package_with_interfaces.msg` contaning the Python implementation of the :file:`AmazingQuote.msg`. Because of that, we can use it by importing it like so
+When we built our :file:`package_with_interfaces` in the last section, what ROS2 did for us, among other things, was create a Python library called :file:`package_with_interfaces.msg` containing the Python implementation of the :file:`AmazingQuote.msg`. Because of that, we can use it by importing it like so
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python

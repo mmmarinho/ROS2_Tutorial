@@ -77,7 +77,7 @@ which will now output
     Summary: 1 package finished [1.89s]
       1 package had stderr output: the_simplest_python_package
 
-meaning that :program:`colcon` succesfully built the example package. 
+meaning that :program:`colcon` successfully built the example package.
 
 .. warning::
 

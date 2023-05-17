@@ -1,13 +1,13 @@
 Inspecting topics (:program:`ros2 topic`)
 =========================================
 
-ROS2 has a tool to help us inspect topics. This is used with comsiderable frequency in practice to troubleshoot and speed up the development of publishers and subscribers. As usual, we can more information on this tool as follows.
+ROS2 has a tool to help us inspect topics. This is used with considerable frequency in practice to troubleshoot and speed up the development of publishers and subscribers. As usual, we can more information on this tool as follows.
 
 .. code:: console
 
     ros2 topic -h
 
-which outputs the detailed information of the tool, as shown below. In particular, the highlighed fields are used quite frequently in practice.
+which outputs the detailed information of the tool, as shown below. In particular, the highlighted fields are used quite frequently in practice.
 
 .. code-block:: console
     :emphasize-lines: 19,21-24
@@ -47,7 +47,7 @@ During the development of a publisher, it is extremely useful to be able to chec
 
 .. warning::
 
-   Be sure to terminate the Nodes we used in the past section before proceeding (e.g. with :kbd:`CTLR+C`), otherwise the output will look different from what is described here.
+   Be sure to terminate the Nodes we used in the past section before proceeding (e.g. with :kbd:`CTRL+C`), otherwise the output will look different from what is described here.
 
 .. code:: console
 
@@ -132,7 +132,7 @@ The :program:`ros2 topic echo` is the main tool that we can use to inspect topic
 
     ros2 topic echo -h
 
-To inspect the topic whose name we alredy know, we run
+To inspect the topic whose name we already know, we run
 
 .. code:: console
 
@@ -213,7 +213,7 @@ We must wait for a while until messages are received so that the tool can measur
 Stop the publisher
 ------------------
 
-Now we have exhausted all relevant tools that can give us information related to the publisher. Let us close the publisher with :kbd:`CTLR+C` so that we can evaluate how these tools can help us analise a subscriber.
+Now we have exhausted all relevant tools that can give us information related to the publisher. Let us close the publisher with :kbd:`CTRL+C` so that we can evaluate how these tools can help us analise a subscriber.
 
 Start the subscriber and get basic info
 ---------------------------------------
@@ -274,7 +274,7 @@ In our case, we can send an :program:`AmazingQuote` as follows
    philosopher_name: Lloyd \
    }"
 
-which will result in our subscriber outputing
+which will result in our subscriber outputting
 
 .. code:: console
 
@@ -303,7 +303,7 @@ which will result in our subscriber outputing
             This latest quote had the id=1994.
         
 
-For complicated messages, properly writing the message on the terminal can be a handfull. In that case, it might be better to make a minimal script to test the subscriber instead. Refer to :ref:`Create a publisher`.
+For complicated messages, properly writing the message on the terminal can be a handful. In that case, it might be better to make a minimal script to test the subscriber instead. Refer to :ref:`Create a publisher`.
 
 
 
