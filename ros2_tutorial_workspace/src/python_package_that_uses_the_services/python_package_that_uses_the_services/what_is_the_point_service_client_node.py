@@ -22,9 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import random
+from textwrap import dedent  # https://docs.python.org/3/library/textwrap.html#textwrap.dedent
+
 import rclpy
 from rclpy.task import Future
 from rclpy.node import Node
+
 from package_with_interfaces.srv import WhatIsThePoint
 
 
@@ -70,7 +73,7 @@ class WhatIsThePointServiceClientNode(Node):
         """Callback for the future, that will be called when it is done"""
         response = future.result()
         if response is not None:
-            self.get_logger().info("""
+            self.get_logger().info(dedent("""\
                 #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
 
                 We have thus received the point of our quote.
@@ -80,7 +83,7 @@ class WhatIsThePointServiceClientNode(Node):
                 #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$    
             """.format(
                 (response.point.x, response.point.y, response.point.z)
-            ))
+            )))
         else:
             self.get_logger().info("""
                     The response was None. :(    

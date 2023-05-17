@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import random
+from textwrap import dedent  # https://docs.python.org/3/library/textwrap.html#textwrap.dedent
+
 import rclpy
 from rclpy.node import Node
 from package_with_interfaces.srv import WhatIsThePoint
@@ -69,7 +71,7 @@ class WhatIsThePointServiceServerNode(Node):
         # Increase the call count
         self.service_server_call_count = self.service_server_call_count + 1
 
-        self.get_logger().info("""
+        self.get_logger().info(dedent("""\
             Valued Customer,
         
             Thank you for calling the `WhatIsThePoint` service callback helpline.
@@ -94,7 +96,7 @@ class WhatIsThePointServiceServerNode(Node):
             self.service_server_call_count,
             request.quote.quote,
             request.quote.philosopher_name
-        ))
+        )))
 
         return response
 
