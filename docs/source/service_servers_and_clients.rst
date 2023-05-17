@@ -51,3 +51,23 @@ Create the Node with a Service Server
 
    The API for the Service Server callback is a bit weird in that it receives the response as an argument.
    This api `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now we have to roll with it.
+
+:download:`amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server.py
+   :language: python
+   :linenos:
+   :lines: 24-
+   :emphasize-lines: 1
+
+
+Create the Node with a Service Client
+-------------------------------------
+
+:download:`amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client.py
+   :language: python
+   :linenos:
+   :lines: 24-
+   :emphasize-lines: 1
