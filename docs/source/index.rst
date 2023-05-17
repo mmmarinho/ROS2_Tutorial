@@ -34,6 +34,7 @@ Contents
    create_interface_package
    publishers_and_subscribers
    inspecting_topics
+   service_servers_and_clients
    advanced
    faq
 
