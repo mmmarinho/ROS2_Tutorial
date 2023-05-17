@@ -39,11 +39,11 @@ Create the Node with a Service Server
          **TL:DR** Creating a service server
 
          #. Add new dependencies to :file:`package.xml`
-         #. Import new services :code:`from <package_name>.srv import <msg_name>`
+         #. Import new services :code:`from <package_name>.srv import <srv_name>`
          #. In a subclass of :code:`Node`
 
             #. create a callback :code:`def callback(self, request, response):`
-            #. create a publisher with :code:`self.publisher = self.create_service(...)`
+            #. create a service server with :code:`self.service_server = self.create_service(...)`
 
          #. Add the new Node to :file:`setup.py`
 
@@ -69,11 +69,13 @@ Create the Node with a Service Client
          **TL:DR** Creating a service client
 
          #. Add new dependencies to :file:`package.xml`
-         #. Import new services :code:`from <package_name>.srv import <msg_name>`
+         #. Import new services :code:`from <package_name>.srv import <srv_name>`
          #. In a subclass of :code:`Node`
 
-            #. create a callback :code:`def callback(self, request, response):`
-            #. create a publisher with :code:`self.publisher = self.create_service(...)`
+            #. (*recommended*) wait for service to be available :code:`service_client.wait_for_service(...)`.
+            #. (*if periodic*) add a :code:`Timer` with a proper :code:`timer_callback()`
+            #. create a callback for the future :code:`def service_future_callback(self, future: Future):`
+            #. create a service client with :code:`self.service_client = self.create_client(...)`
 
          #. Add the new Node to :file:`setup.py`
 
