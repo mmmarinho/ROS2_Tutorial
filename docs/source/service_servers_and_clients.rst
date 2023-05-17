@@ -64,6 +64,26 @@ Create the Node with a Service Server
 Create the Node with a Service Client
 -------------------------------------
 
+.. note::
+
+         **TL:DR** Creating a service client
+
+         #. Add new dependencies to :file:`package.xml`
+         #. Import new services :code:`from <package_name>.srv import <msg_name>`
+         #. In a subclass of :code:`Node`
+
+            #. create a callback :code:`def callback(self, request, response):`
+            #. create a publisher with :code:`self.publisher = self.create_service(...)`
+
+         #. Add the new Node to :file:`setup.py`
+
+.. note::
+
+   This example deviates from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
+   The official examples are not particularly :code:`async` because they explicitly wait for the response after the call and/or call the service only once.
+   The implementation proposed herein is "truly" :code:`async` and follows a similar logic to the :code:`Publishers` (with a :code:`Timer`), however it is another *one-size-fits-most* solution, that might not be suitable for other cases.
+
+
 :download:`what_is_the_point_service_client_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
