@@ -33,3 +33,21 @@ Before we start exploring the elements of the package, let us
 
 Create the Node with a Service Server
 -------------------------------------
+
+.. note::
+
+         **TL:DR** Creating a service server
+
+         #. Add new dependencies to :file:`package.xml`
+         #. Import new services :code:`from <package_name>.srv import <msg_name>`
+         #. In a subclass of :code:`Node`
+
+            #. create a callback :code:`def callback(self, request, response):`
+            #. create a publisher with :code:`self.publisher = self.create_service(...)`
+
+         #. Add the new Node to :file:`setup.py`
+
+.. note::
+
+   The API for the Service Server callback is a bit weird in that it receives the response as an argument.
+   This api `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now we have to roll with it.
