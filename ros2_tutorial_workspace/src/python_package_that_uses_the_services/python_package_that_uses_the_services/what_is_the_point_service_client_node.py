@@ -25,7 +25,6 @@ import random
 import rclpy
 from rclpy.task import Future
 from rclpy.node import Node
-from rclpy.callback_groups import ReentrantCallbackGroup
 from package_with_interfaces.srv import WhatIsThePoint
 
 
@@ -44,7 +43,7 @@ class WhatIsThePointServiceClientNode(Node):
 
         self.future: Future = None
 
-        timer_period: float = 0.01
+        timer_period: float = 0.05
         self.timer = self.create_timer(
             timer_period_sec=timer_period,
             callback=self.timer_callback)
@@ -68,6 +67,7 @@ class WhatIsThePointServiceClientNode(Node):
         self.future.add_done_callback(self.process_response(self.future))
 
     async def process_response(self, future: Future):
+        """Callback for the future, that will be called when it is done"""
         response = future.result()
         if response is not None:
             self.get_logger().info("""
