@@ -121,15 +121,14 @@ Create the Node with a Service Client
    :language: python
    :linenos:
    :lines: 24-
-   :emphasize-lines: 1
 
 Import
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 24-31
-   :emphasize-lines: 8
+   :lines: 31
+   :lineno-start: 8
 
 :code:`create_client`
 
