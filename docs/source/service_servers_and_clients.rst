@@ -52,7 +52,6 @@ Create the Node with a Service Server
    :language: python
    :linenos:
    :lines: 24-
-   :emphasize-lines: 1
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
