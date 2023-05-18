@@ -65,7 +65,8 @@ class WhatIsThePointServiceClientNode(Node):
             request.quote.id = 2013
 
         if self.future is not None and not self.future.done():
-            self.get_logger().info("Took too long to process async service call."
+            self.future.cancel()  # Cancel the future. The callback will be called with Future.result == None.
+            self.get_logger().info("Service Future canceled. The Node took too long to process the service call."
                                    "Is the Service Server still alive?")
         self.future = self.service_client.call_async(request)
         self.future.add_done_callback(self.process_response)
@@ -82,9 +83,9 @@ class WhatIsThePointServiceClientNode(Node):
                 (response.point.x, response.point.y, response.point.z)
             )))
         else:
-            self.get_logger().info("""
+            self.get_logger().info(dedent("""
                     The response was None. :(    
-            """)
+            """))
 
 
 def main(args=None):
