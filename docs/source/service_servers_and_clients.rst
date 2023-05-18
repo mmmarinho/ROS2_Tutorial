@@ -108,12 +108,11 @@ Create the Node with a Service Client
 
 .. note::
    This example deviates a bit from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
-   The implementation shown herein fits better the narrative of this tutorial.
-   It follows a similar logic to the :code:`Publishers` (with a :code:`Timer`), uses the regular :code:`rclpy.spin()`, and does not play with :code:`Executors`.
-   However it is another *one-size-fits-most* solution and might not be suitable for some cases.
+   The implementation shown herein fits better the narrative of this tutorial, using a callback and :code:`rclpy.spin()`.
+   However, it is another *one-size-fits-most* solution, and might not be suitable for some cases.
 
 .. note::
-   ROS2 :code:`rclpy` Service Clients are implemented using an :code:`asyncyo <https://docs.python.org/3.10/library/asyncio.html>`_ logic.
+   ROS2 :code:`rclpy` Service Clients are implemented using an :code:`asyncio` logic (`More info <https://docs.python.org/3.10/library/asyncio.html>`_).
    In this tutorial, we briefly introduce unavoidable :code:`async` concepts, but for any extra understanding it's better to check the official documentation.
 
 :download:`what_is_the_point_service_client_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py>`
@@ -129,7 +128,7 @@ Import
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 1-8
+   :lines: 24-32
    :emphasize-lines: 8
 
 :code:`create_client`
@@ -137,7 +136,7 @@ Import
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 17-19
+   :lines: 41-43
    :lineno-start: 17
 
 :code:`wait_for_service`
@@ -145,22 +144,21 @@ Import
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 21,22
+   :lines: 45,46
    :lineno-start: 21
 
-:code:`Future` `more info <https://docs.python.org/3.10/library/asyncio-future.html#asyncio-futures>`_
+:code:`Future` (`More info <https://docs.python.org/3.10/library/asyncio-future.html#asyncio-futures>`_)
 
 .. note::
-   Asynchronous code is not the same as code that runs in parallel, even more so in Python because of the :abbr:`GIL (Global Interpreter Lock) <https://wiki.python.org/moin/GlobalInterpreterLock>`_.
+   Asynchronous code is not the same as code that runs in parallel, even more so in Python because of the :abbr:`GIL (Global Interpreter Lock)` (`More info <https://wiki.python.org/moin/GlobalInterpreterLock>`_).
    Basically, the :code:`async` framework allows us to not waste time waiting for results that we don't know when will arrive.
-   It either allows us to attach a :code:`callback` for when the result is ready, or to run many service calls at once
-   and :code:`await` for them all, instead of running one at a time.
-
+   It either allows us to attach a :code:`callback` for when the result is ready, or to run many service calls and :code:`await`
+   for them all, instead of running one at a time.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 24
+   :lines: 48
    :lineno-start: 24
 
 .. note::
