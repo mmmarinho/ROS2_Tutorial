@@ -128,7 +128,7 @@ Import
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 24-32
+   :lines: 24-31
    :emphasize-lines: 8
 
 :code:`create_client`
@@ -136,7 +136,7 @@ Import
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 41-43
+   :lines: 40-42
    :lineno-start: 17
 
 :code:`wait_for_service`
@@ -144,7 +144,7 @@ Import
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 45,46
+   :lines: 44,45
    :lineno-start: 21
 
 :code:`Future` (`More info <https://docs.python.org/3.10/library/asyncio-future.html#asyncio-futures>`_)
@@ -158,7 +158,7 @@ Import
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 48
+   :lines: 47
    :lineno-start: 24
 
 .. note::
