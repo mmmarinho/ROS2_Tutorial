@@ -30,7 +30,7 @@ About inheritance in Python, you can check the official documentation on `inheri
 
 In more advanced nodes, inheritance does not cut it, but that is an advanced topic to be covered some other time.
 
-.. _Use a Timer for peridoc work:
+.. _Use a Timer for periodic work:
 
 Use a :code:`Timer` for periodic work (when using :code:`rclpy.spin()`)
 -----------------------------------------------------------------------
