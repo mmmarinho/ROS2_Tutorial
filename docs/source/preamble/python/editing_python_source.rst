@@ -8,9 +8,9 @@ There are near infinite ways to manage your Python code and, for this tutorial, 
 Installing :program:`PyCharm`
 ----------------------------
 
-:program:`PyCharm` is a great program for managing one's Python sources that is frequently updated and has a free edition. However, precisely because it is frequently updated, there is no way for this tutorial to keep track of future changes.
+:program:`PyCharm` is a great program for managing one's Python sources that is frequently updated and has a free edition. However, precisely because it is frequently updated, there is no way for this tutorial to keep up with future changes.
 
-What we will do, instead, is to download an specific :program:`PyCharm` version for these tutorials, so that it is predictable. If you'd prefer using the shiniest new version, be sure to wear sunglasses and to not stare directly into the light.
+What we will do, instead, is to download a specific version of :program:`PyCharm` for these tutorials, so that its behavior/looks/menus are predictable. If you'd prefer using the shiniest new version, be sure to wear sunglasses and to not stare directly into the light.
 
 Run
 
@@ -25,7 +25,10 @@ Run
 Create an alias for :code:`pycharm_ros2`
 ----------------------------------------
 
-:program:`PyCharm` will only recognize ROS2 packages if it was started from a terminal that has been sourced with our ROS2 overlay. To cover this requirement and to simplify the use of this specific version of :program:`PyCharm`, let us create a bash alias for it. 
+.. note:
+   Starting :program:`PyCharm` from the terminal has the added benefit of easily recognizing our ROS2, as long as it has been started from properly sourced terminal. 
+
+To simplify the use of this specific version of :program:`PyCharm`, let us create a bash alias for it. 
 
 .. code :: console
 
@@ -38,3 +41,6 @@ Then, you can run :program:`PyCharm` with
 .. code :: console
 
     pycharm_ros2
+
+.. warning::
+   We use :code:`pycharm_ros2` instead of :code:`pycharm` on purpose. This prevents our alias from misbehaving if you have another version of :program:`PyCharm` installed.
