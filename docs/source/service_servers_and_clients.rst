@@ -199,12 +199,16 @@ The timer callback
 The Future callback
 ^^^^^^^^^^^^^^^^^^^
 
+The callback for the :code:`Future` must receive a :code:`Future` as argument. Having it as an attribute of the Node's class allows us to access ROS2 method such as :code:`get_logger()` and other contextual information.
+
+The result of the :code:`Future` is obtained using :code:`Future.result()`. The response might be :code:`None` in some cases, so we must check it before trying to use the result.
+
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
    :lines: 74-88
    :lineno-start: 51
-   :emphasize-lines: 3,4
+   :emphasize-lines: 1,3,4
 
 
 Update the :file:`setup.py`
