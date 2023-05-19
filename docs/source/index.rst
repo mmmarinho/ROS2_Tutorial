@@ -16,26 +16,52 @@ Contents
 --------
 
 .. toctree::
+   :caption: Preamble
 
-   preamble
+   preamble/python_basics
+   preamble/python_best_practices
+
+.. toctree::
+   :caption: ROS2 Setup
+
    installation
    terminator
    workspace_setup
+
+.. toctree::
+   :caption: ROS2 Python Package/Build Basics
+
    create_packages
    create_python_package
    create_python_node_with_template
    source_after_build
+   
+.. toctree::
+   :caption: ROS2 Python Node Basics
+   
    running_node
    editing_python_source
    create_python_node_from_scratch
    python_node_explained
+   
+.. toctree::
+   :caption: ROS2 Python Library Basics   
+   
    create_python_library
    using_python_library
+   
+.. toctree::
+   :caption: ROS2 Interface Basics
+   
    messages
    create_interface_package
    publishers_and_subscribers
    inspecting_topics
    service_servers_and_clients
+   
+.. toctree::
+   :caption: Other content
+   
    advanced
    faq
 
