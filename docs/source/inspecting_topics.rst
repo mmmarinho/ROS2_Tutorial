@@ -271,7 +271,7 @@ In our case, we can send an :program:`AmazingQuote` using :abbr:`YAML (YAML Ain'
    }"
 
 .. note::
-   To improve readability, the command above uses the escape character ``\``. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_. 
+   To improve readability, the command above uses the escape character ``\``. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_. You can also refer to the :program:`bash` Cheat Sheet at `QuickRef.ME <https://quickref.me/bash.html>`_. 
 
 which will result in our subscriber outputting
 
