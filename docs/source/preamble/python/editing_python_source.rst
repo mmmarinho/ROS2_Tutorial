@@ -22,13 +22,13 @@ Run
    wget https://download.jetbrains.com/python/pycharm-community-2023.1.1.tar.gz
    tar -xzvf pycharm-community-2023.1.1.tar.gz
    
-Create an alias for :code:`pycharm_ros2`
-----------------------------------------
+Create an alias for :program:`pycharm_ros2`
+-------------------------------------------
 
 .. note:
    Starting :program:`PyCharm` from the terminal has the added benefit of easily recognizing our ROS2, as long as it has been started from properly sourced terminal. 
 
-To simplify the use of this specific version of :program:`PyCharm`, let us create a bash alias for it. 
+To simplify the use of this version of :program:`PyCharm`, let us create a :program:`bash` alias for it. 
 
 .. code :: console
 
@@ -43,4 +43,4 @@ Then, you can run :program:`PyCharm` with
     pycharm_ros2
 
 .. warning::
-   We use :code:`pycharm_ros2` instead of :code:`pycharm` on purpose. This prevents our alias from misbehaving if you have another version of :program:`PyCharm` installed.
+   We use :program:`pycharm_ros2` instead of :program:`pycharm` on purpose. This prevents our alias from misbehaving if you have another version of :program:`PyCharm` installed.
