@@ -196,7 +196,7 @@ The need for a callback for the :code:`Timer`, should also be no surprise.
 Service Clients use :code:`<srv>.Request()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Given that services work in a request--response model, the service client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call, as shown below.
+Given that services work in a request--response model, the service client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call, as shown below. To make the example more interesting, it randomly switches between two possible quotes.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -217,11 +217,11 @@ Make service calls with :code:`call_async()`
    At first glance, it might feel that all this trouble to use :code:`async` is unjustified. However, Nodes in practice will hardly ever do one service call and be done. Many Nodes in a complex system
    will have a composition of many service servers, service clients, publishers, and subscribers. Blocking the entire Node while it waits for the result of a service is, in most cases, a bad design.
 
-The recommended way to initiate service calls is through :code:`call_async()`, which is the reason why we are working with :code:`async` logic. In general, the result of the call, a :code:`Future`, will still not have the result of the service call. 
+The recommended way to call a service is through :code:`call_async()`, which is the reason why we are working with :code:`async` logic. In general, the result of :code:`call_async()`, a :code:`Future`, will not have the result of the service call at the next line of our program. 
 
 There are many ways to address the use of a :code:`Future`. One of them, especially tailored for interfacing :code:`async` with callback-based frameworks is the :code:`Future.add_done_callback()`. If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
 
-The benefit of this is that the callback will not hold our resources until the response is ready. When the response is ready, and the executor gets to processing callbacks, our callback will be called *automagically*.
+The benefit of this is that the callback will not block our resources until the response is ready. When the response is ready, and the ROS2 executor gets to processing :code:`Future` callbacks, our callback will be called *automagically*.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -230,7 +230,7 @@ The benefit of this is that the callback will not hold our resources until the r
    :lineno-start: 44
    :emphasize-lines: 5,6
 
-Given that we are periodically calling the service, before we change the value of the :code:`Future`, we can check if the service call was done with :code:`Future.done()`. If it is not done, we can use :code:`Future.cancel()` so that our callback can handle this case as well. For instance, if the Service Server has been shutdown, the :code:`Future` would never be done.
+Given that we are periodically calling the service, before replace the class :code:`Future` with the next service call, we can check if the service call was done with :code:`Future.done()`. If it is not done, we can use :code:`Future.cancel()` so that our callback can handle this case as well. For instance, if the Service Server has been shutdown, the :code:`Future` would never be done.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
