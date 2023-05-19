@@ -183,27 +183,56 @@ Whenever periodic work must be done, it is recommended to use a :code:`Timer`, a
    :lines: 49-52
    :lineno-start: 26
 
-The timer callback
-^^^^^^^^^^^^^^^^^^
-
-The need for a callback for the :code:`Timer`, should not be a surprise (see :ref:`Use a Timer for periodic work`.).
+The need for a callback for the :code:`Timer`, should also be no surprise.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 54-72
+   :lines: 54-55
    :lineno-start: 31
-   :emphasize-lines: 4,18,19
 
-.. note::
-   If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
+Service Clients use :code:`<srv>.Request()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Given that services work in a request--response model, the service client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
+   :language: python
+   :linenos:
+   :lines: 57-65
+   :lineno-start: 34
+
+Make service calls with :code:`call_async()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The recommended way to initiate service calls is through :code:`call_async()`, which is the reason why we are working with :code:`async` logic. In general, the result of the call, a :code:`Future`, will still not have the result of the service call. 
+
+There are many ways to address the use of a :code:`Future`. One of them, especially tailored for interfacing :code:`async` with callback-based frameworks is the :code:`Future.add_done_callback()`. If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
+
+The benefit of this is that the callback will not hold our resources until the response is ready. When the response is ready, and the executor gets to processing callbacks, our callback will be called *automagically*.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
+   :language: python
+   :linenos:
+   :lines: 67-72
+   :lineno-start: 44
+   :emphasize-lines: 5,6
+
+Given that we are periodically calling the service, before we change the value of the :code:`Future`, we can check if the service call was done with :code:`Future.done()`. If it is not done, we can use :code:`Future.cancel()` so that our callback can handle this case as well. For instance, if the Service Server has been shutdown, the :code:`Future` would never be done.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
+   :language: python
+   :linenos:
+   :lines: 67-72
+   :lineno-start: 44
+   :emphasize-lines: 1-4
 
 The Future callback
 ^^^^^^^^^^^^^^^^^^^
 
 The callback for the :code:`Future` must receive a :code:`Future` as argument. Having it as an attribute of the Node's class allows us to access ROS2 method such as :code:`get_logger()` and other contextual information.
 
-The result of the :code:`Future` is obtained using :code:`Future.result()`. The response might be :code:`None` in some cases, so we must check it before trying to use the result.
+The result of the :code:`Future` is obtained using :code:`Future.result()`. The response might be :code:`None` in some cases, so we must check it before trying to use the result, otherwise we will get a nasty exception.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -211,7 +240,6 @@ The result of the :code:`Future` is obtained using :code:`Future.result()`. The 
    :lines: 74-88
    :lineno-start: 51
    :emphasize-lines: 1,3,4
-
 
 Update the :file:`setup.py`
 ---------------------------
