@@ -1,9 +1,6 @@
-Template for the Read the Docs tutorial
-=======================================
+(Murilo’s) ROS2 Tutorial
+========================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+Available at:
 
-Read the tutorial here:
-
-https://docs.readthedocs.io/en/stable/tutorial/
+https://ros2-tutorial.readthedocs.io/en/latest/
