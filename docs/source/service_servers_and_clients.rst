@@ -113,9 +113,12 @@ Create the Node with a Service Client (using a :code:`callback`)
 The Node
 ^^^^^^^^
 
-This example deviates somewhat from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
-This implementation shown herein uses a callback and :code:`rclpy.spin()`.
-It has many practical but it's no *panacea*.
+.. note::
+   This example deviates somewhat from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
+   This implementation shown herein uses a callback and :code:`rclpy.spin()`.
+   It has many practical but it's no *panacea*.
+
+We start by adding a :file:`what_is_the_point_service_client_node.py` at :file:`python_package_that_uses_the_services/python_package_that_uses_the_services` with the following contents.
 
 :download:`what_is_the_point_service_client_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py>`
 
@@ -125,7 +128,9 @@ It has many practical but it's no *panacea*.
    :lines: 24-
 
 Imports
-^^^^^^^^
+^^^^^^^
+
+To have access to the service, we import it with :code:`from <package>.srv import <Service>`. 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -136,7 +141,7 @@ Imports
 Instantiate a Service Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:code:`create_client`
+We instanteate a service client with :code:`Node.create_client()`. The values of :code:`srv_type` and :code:`srv_name` must match the ones used in the service server.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -147,7 +152,10 @@ Instantiate a Service Client
 (Recommended) Wait for the Service Server to be available
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:code:`wait_for_service`
+.. warning::
+   The order of execution and speed of Nodes depends on a complicated web of relationships between ROS2, the operating system, and the workload of the machine. It would be naive to expect the server to always be active before the client, even if the server Node is started before the client Node.
+
+In many cases, having the result of the service of particular importance (hence the use of a service and not messages). In that case, we have to wait until :code:`service_client.wait_for_service()`, as shown below.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -158,13 +166,7 @@ Instantiate a Service Client
 Instantiate a :code:`Future` as class attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:code:`Future` (`More info <https://docs.python.org/3.10/library/asyncio-future.html#asyncio-futures>`_)
-
-.. note::
-   Asynchronous code is not the same as code that runs in parallel, even more so in Python because of the :abbr:`GIL (Global Interpreter Lock)` (`More info <https://wiki.python.org/moin/GlobalInterpreterLock>`_).
-   Basically, the :code:`async` framework allows us to not waste time waiting for results that we don't know when will arrive.
-   It either allows us to attach a :code:`callback` for when the result is ready, or to run many service calls and :code:`await`
-   for them all, instead of running one at a time.
+As part of the :code:`async` framework, we instantiate a :code:`Future` (`More info <https://docs.python.org/3.10/library/asyncio-future.html#asyncio-futures>`_). In this example it is important to have it as an attribute of the class so that we do not lose the reference to it after the callback.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -204,6 +206,12 @@ Given that services work in a request--response model, the service client must i
 
 Make service calls with :code:`call_async()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+   Asynchronous code is not the same as code that runs in parallel, even more so in Python because of the :abbr:`GIL (Global Interpreter Lock)` (`More info <https://wiki.python.org/moin/GlobalInterpreterLock>`_).
+   Basically, the :code:`async` framework allows us to not waste time waiting for results that we don't know when will arrive.
+   It either allows us to attach a :code:`callback` for when the result is ready, or to run many service calls and :code:`await`
+   for them all, instead of running one at a time.
 
 The recommended way to initiate service calls is through :code:`call_async()`, which is the reason why we are working with :code:`async` logic. In general, the result of the call, a :code:`Future`, will still not have the result of the service call. 
 
