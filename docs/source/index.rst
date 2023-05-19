@@ -17,6 +17,7 @@ Contents
 
 .. toctree::
 
+   preamble
    installation
    terminator
    workspace_setup
