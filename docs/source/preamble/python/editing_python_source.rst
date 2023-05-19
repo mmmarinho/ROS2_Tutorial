@@ -1,3 +1,5 @@
+.. _Editing Python source:
+
 Editing Python source (with :program:`PyCharm`)
 ===============================================
 
