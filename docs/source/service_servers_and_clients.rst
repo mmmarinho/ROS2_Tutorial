@@ -86,13 +86,18 @@ Create the Node with a Service Server
    :lines: 88-90
    :emphasize-lines: 2
 
+Service Clients
+---------------
 
-Create the Node with a Service Client
--------------------------------------
+ROS2 :code:`rclpy` Service Clients are implemented using an :code:`asyncio` logic (`More info <https://docs.python.org/3.10/library/asyncio.html>`_).
+In this tutorial, we briefly introduce unavoidable :code:`async` concepts, but for any extra understanding it's better to check the official documentation.
+
+Create the Node with a Service Client (using a :code:`callback`)
+----------------------------------------------------------------
 
 .. note::
 
-         **TL:DR** Creating a service client
+         **TL:DR** Creating a service client (using a :code:`callback`)
 
          #. Add new dependencies to :file:`package.xml`
          #. Import new services :code:`from <package_name>.srv import <srv_name>`
@@ -106,13 +111,12 @@ Create the Node with a Service Client
          #. Add the new Node to :file:`setup.py`
 
 .. note::
-   This example deviates a bit from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
-   The implementation shown herein fits better the narrative of this tutorial, using a callback and :code:`rclpy.spin()`.
-   However, it is another *one-size-fits-most* solution, and might not be suitable for some cases.
+   This example deviates somewhat from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
+   This implementation shown herein uses a callback and :code:`rclpy.spin()`.
+   It has many practical but it's no *panacea*.
 
-.. note::
-   ROS2 :code:`rclpy` Service Clients are implemented using an :code:`asyncio` logic (`More info <https://docs.python.org/3.10/library/asyncio.html>`_).
-   In this tutorial, we briefly introduce unavoidable :code:`async` concepts, but for any extra understanding it's better to check the official documentation.
+The Node
+^^^^^^^^
 
 :download:`what_is_the_point_service_client_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py>`
 
@@ -121,13 +125,17 @@ Create the Node with a Service Client
    :linenos:
    :lines: 24-
 
-Import
+Imports
+^^^^^^^^
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
    :lines: 31
    :lineno-start: 8
+
+Instantiate a Service Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :code:`create_client`
 
@@ -137,6 +145,9 @@ Import
    :lines: 40-42
    :lineno-start: 17
 
+(Recommended) Wait for the Service Server to be available
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 :code:`wait_for_service`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
@@ -144,6 +155,9 @@ Import
    :linenos:
    :lines: 44,45
    :lineno-start: 21
+
+(Recommended) Instantiate a :code:`Future` as class attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :code:`Future` (`More info <https://docs.python.org/3.10/library/asyncio-future.html#asyncio-futures>`_)
 
@@ -162,6 +176,17 @@ Import
 .. note::
 
    If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
+
+(If periodic) Instatiate a Timer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Whenever periodic work must be done, it is recommended to use a :ref:`Timer`.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
+   :language: python
+   :linenos:
+   :lines: 39-42
+   :lineno-start: 26
 
 Update the :file:`setup.py`
 ---------------------------
