@@ -30,9 +30,8 @@ This is a tutorial that supposes that the user will follow it linearly.
    :caption: Preamble
    :hidden:
 
-   preamble/python/editing_python_source
-   preamble/python/python_basics
-   preamble/python/python_best_practices
+   preamble/ubuntu.rst
+   preamble/python.rst
 
 .. toctree::
    :caption: ROS2 Setup
