@@ -6,11 +6,11 @@
    If you're looking for the official documentation, this is **NOT** it. For the official ROS documentation, refer to this `link <https://docs.ros.org>`_.
 
 
-`ROS2 Humble`_ tutorials by `yours truly <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
+`ROS2 Humble`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
 .. warning::
 
-   This project is under active development and is currently just a rough draft.
+   This project is under active development and is currently a rough draft.
 
 Using this tutorial
 -------------------
@@ -21,7 +21,7 @@ This is a tutorial that supposes that the user will follow it linearly.
     Basic content such as simple Ubuntu use, Python in Ubuntu etc.
     
 :doc:`ROS2 Setup <installation>`
-    Setting up a working ROS2 enviroment.
+    Setting up a working ROS2 environment.
 
 :doc:`ROS2 Tutorial <create_packages>`
     The first lesson of the tutorial, supposing that the ROS2 enviroment is properly set up.
