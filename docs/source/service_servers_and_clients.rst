@@ -196,7 +196,7 @@ The need for a callback for the :code:`Timer`, should also be no surprise.
 Service Clients use :code:`<srv>.Request()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Given that services work in a request--response model, the service client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call.
+Given that services work in a request--response model, the service client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call, as shown below.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
