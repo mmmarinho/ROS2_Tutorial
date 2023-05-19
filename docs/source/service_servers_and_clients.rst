@@ -297,39 +297,53 @@ the server Node will then output, periodically,
 
 .. code:: console
 
-    [INFO] [1684305461.723440894] [what_is_the_point_service_server]:
-                Valued Customer,
+   [INFO] [1684485151.608507798] [what_is_the_point_service_server]: 
+   This is the call number 1 to this Service Server.
+   The analysis of the AmazingQuote below is complete.
 
-                Thank you for calling the `WhatIsThePoint` service callback helpline.
-                We are proud to have been called 3 times.
+           [...] your living... it is always potatoes. I dream of potatoes.
 
-                **-**-**-**-**-**-**-**-**-**-**-**-
+   -- a young Maltese potato farmer
 
-                We have analysed the following AmazingQuote:
+   The point has been sent back to the client.
 
-                [...] your living... it is always potatoes. I dream of potatoes.
+   [INFO] [1684485152.092508332] [what_is_the_point_service_server]: 
+   This is the call number 2 to this Service Server.
+   The analysis of the AmazingQuote below is complete.
 
-                -- a young Maltese potato farmer
+           I wonder about the Ultimate Question of Life, the Universe, and Everything.
 
-                The point has been sent to you accordingly.
-                Feel free to check the response at your convenience.
+   -- Creators of Deep Thought
 
-                **-**-**-**-**-**-**-**-**-**-**-**-
+   The point has been sent back to the client.
 
-                Have a nice day,
-                Service Callerson Jr.
+   [INFO] [1684485152.592516148] [what_is_the_point_service_server]: 
+   This is the call number 3 to this Service Server.
+   The analysis of the AmazingQuote below is complete.
 
+           I wonder about the Ultimate Question of Life, the Universe, and Everything.
+
+   -- Creators of Deep Thought
+
+   The point has been sent back to the client.
 
 and the client Node will output, periodically,
 
 .. code:: console
 
-    [INFO] [1684305461.224588634] [what_is_the_point_service_client]:
-                    #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+   [INFO] [1684485151.609611689] [what_is_the_point_service_client]: 
+   We have thus received the point of our quote.
 
-                    We have thus received the point of our quote.
+               (18.199457100225292, 33.14595477433704, 52.65262570058381)
 
-                                (21.480765227729144, 1.8148233711302457, 18.70441140114061)
+   [INFO] [1684485152.093228181] [what_is_the_point_service_client]: 
+   We have thus received the point of our quote.
 
-                    #$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+               (11.17170193214362, 9.384897014549527, 21.443401053306854)
+
+   [INFO] [1684485152.593294259] [what_is_the_point_service_client]: 
+   We have thus received the point of our quote.
+
+               (16.58535176162403, 0.6180505400411676, 24.796597698334804)
+
 
