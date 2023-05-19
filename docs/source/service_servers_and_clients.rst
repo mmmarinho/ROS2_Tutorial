@@ -251,7 +251,7 @@ As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`se
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/setup.py
    :language: python
    :linenos:
-   :emphasize-lines: 22-26
+   :emphasize-lines: 23-26
 
 Build and source
 ----------------
