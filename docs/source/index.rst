@@ -17,13 +17,13 @@ Using this tutorial
 
 This is a tutorial that supposes that the user will follow it linearly. 
 
-:doc:`Preamble <preamble/python_basics>`
+:doc:`Preamble <preamble/python/python_basics>`
     Basic content such as simple Ubuntu use, Python in Ubuntu etc.
     
 :doc:`ROS2 Setup <installation>`
     Setting up a working ROS2 enviroment.
 
-:doc:`ROS2 Tutorial`
+:doc:`ROS2 Tutorial <create_packages>`
     The first lesson of the tutorial, supposing that the ROS2 enviroment is properly set up.
 
 .. toctree::
