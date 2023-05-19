@@ -186,12 +186,14 @@ Whenever periodic work must be done, it is recommended to use a :code:`Timer`, a
 The timer callback
 ^^^^^^^^^^^^^^^^^^
 
+The need for a callback for the :code:`Timer`, should not be a surprise (see :ref:`Use a Timer for periodic work`.).
+
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
    :lines: 54-72
    :lineno-start: 31
-   :emphasize-lines: 48,49
+   :emphasize-lines: 4,18,19
 
 .. note::
    If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
