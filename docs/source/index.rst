@@ -12,17 +12,30 @@
 
    This project is under active development and is currently just a rough draft.
 
-Contents
---------
+Using this tutorial
+-------------------
+
+This is a tutorial that supposes that the user will follow it linearly. 
+
+:doc:`Preamble <preamble/python_basics>`
+    Basic content such as simple Ubuntu use, Python in Ubuntu etc.
+    
+:doc:`ROS2 Setup <installation>`
+    Setting up a working ROS2 enviroment.
+
+:doc:`ROS2 Tutorial`
+    The first lesson of the tutorial, supposing that the ROS2 enviroment is properly set up.
 
 .. toctree::
    :caption: Preamble
+   :hidden:
 
    preamble/python_basics
    preamble/python_best_practices
 
 .. toctree::
    :caption: ROS2 Setup
+   :hidden:
 
    installation
    terminator
@@ -30,6 +43,7 @@ Contents
 
 .. toctree::
    :caption: ROS2 Python Package/Build Basics
+   :hidden:
 
    create_packages
    create_python_package
@@ -38,6 +52,7 @@ Contents
    
 .. toctree::
    :caption: ROS2 Python Node Basics
+   :hidden:
    
    running_node
    editing_python_source
@@ -45,13 +60,15 @@ Contents
    python_node_explained
    
 .. toctree::
-   :caption: ROS2 Python Library Basics   
+   :caption: ROS2 Python Library Basics
+   :hidden:
    
    create_python_library
    using_python_library
    
 .. toctree::
    :caption: ROS2 Interface Basics
+   :hidden:
    
    messages
    create_interface_package
@@ -61,6 +78,7 @@ Contents
    
 .. toctree::
    :caption: Other content
+   :hidden:
    
    advanced
    faq
