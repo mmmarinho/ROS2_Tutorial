@@ -172,15 +172,15 @@ Instantiate a :code:`Future` as class attribute
    :lines: 47
    :lineno-start: 24
 
-Instatiate a Timer
-^^^^^^^^^^^^^^^^^^
+Instantiate a Timer
+^^^^^^^^^^^^^^^^^^^
 
 Whenever periodic work must be done, it is recommended to use a :code:`Timer`, as we already learned in :ref:`Use a Timer for periodic work`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 50-53
+   :lines: 49-52
    :lineno-start: 26
 
 The timer callback
@@ -189,7 +189,7 @@ The timer callback
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 55-73
+   :lines: 54-72
    :lineno-start: 31
    :emphasize-lines: 48,49
 
@@ -202,9 +202,9 @@ The Future callback
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 74-84
+   :lines: 74-88
    :lineno-start: 51
-   :emphasize-lines: 51,53,54
+   :emphasize-lines: 3,4
 
 
 Update the :file:`setup.py`
