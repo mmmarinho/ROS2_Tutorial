@@ -71,7 +71,7 @@ class WhatIsThePointServiceClientNode(Node):
         self.future = self.service_client.call_async(request)
         self.future.add_done_callback(self.process_response)
 
-    async def process_response(self, future: Future):
+    def process_response(self, future: Future):
         """Callback for the future, that will be called when it is done"""
         response = future.result()
         if response is not None:
