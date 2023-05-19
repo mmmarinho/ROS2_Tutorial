@@ -60,8 +60,8 @@ Nothing will happen unless these two methods are called. First, :code:`rclpy.ini
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 42-55
-   :emphasize-lines: 8,12
+   :lines: 43-56
+   :emphasize-lines: 9,13
    
 Have a :code:`try-catch` block for :code:`KeyboardInterrupt`
 ------------------------------------------------------------
@@ -74,8 +74,8 @@ That is particularly important when real robots need to be gracefully shutdown (
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 42-55
-   :emphasize-lines: 7,13
+   :lines: 43-56
+   :emphasize-lines: 8,14
 
 Document your code with Docstrings
 ----------------------------------
