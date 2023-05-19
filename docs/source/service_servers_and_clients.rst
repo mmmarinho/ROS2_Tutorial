@@ -212,6 +212,10 @@ Make service calls with :code:`call_async()`
    Basically, the :code:`async` framework allows us to not waste time waiting for results that we don't know when will arrive.
    It either allows us to attach a :code:`callback` for when the result is ready, or to run many service calls and :code:`await`
    for them all, instead of running one at a time.
+   
+.. note::
+   At first glance, it might feel that all this trouble to use :code:`async` is unjustified. However, Nodes in practice will hardly ever do one service call and be done. In general, many Nodes in a complex system
+   will have a composition of many service servers, service clients, publishers, and subscribers. Holding the entire Node while it waits for the result of the service is, in most cases, a bad design.
 
 The recommended way to initiate service calls is through :code:`call_async()`, which is the reason why we are working with :code:`async` logic. In general, the result of the call, a :code:`Future`, will still not have the result of the service call. 
 
