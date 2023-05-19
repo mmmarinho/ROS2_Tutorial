@@ -257,11 +257,11 @@ Testing your subscribers with :program:`ros2 topic pub`
 
 To somewhat quickly evaluate a subscriber, we can use the :program:`ros2 topic pub`. It allows us to publish messages to check the behavior of our subscribers.
 
-In our case, we can send an :program:`AmazingQuote` as follows
+In our case, we can send an :program:`AmazingQuote` using :abbr:`YAML (YAML Ain't Markup Language)` `(More info) <https://yaml.org/>_`. 
 
 .. note::
 
-   To improve readability, the command is using the escape character ``\``. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_.
+   To improve readability, the command is using the escape character ``\``. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_. You can also refer to the YAML Cheat Sheet at `QuickRef.ME <https://quickref.me/yaml.html>`_.
 
 .. code-block:: console
    :emphasize-lines: 4-6
