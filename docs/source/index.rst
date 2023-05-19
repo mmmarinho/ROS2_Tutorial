@@ -10,7 +10,7 @@
 
 .. warning::
 
-   This project is under active development and is currently a rough draft.
+   This project is under active development and currently a draft.
 
 Using this tutorial
 -------------------
