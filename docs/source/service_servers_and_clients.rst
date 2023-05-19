@@ -110,13 +110,12 @@ Create the Node with a Service Client (using a :code:`callback`)
 
          #. Add the new Node to :file:`setup.py`
 
-.. note::
-   This example deviates somewhat from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
-   This implementation shown herein uses a callback and :code:`rclpy.spin()`.
-   It has many practical but it's no *panacea*.
-
 The Node
 ^^^^^^^^
+
+This example deviates somewhat from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
+This implementation shown herein uses a callback and :code:`rclpy.spin()`.
+It has many practical but it's no *panacea*.
 
 :download:`what_is_the_point_service_client_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py>`
 
@@ -173,10 +172,6 @@ Instantiate a :code:`Future` as class attribute
    :lines: 47
    :lineno-start: 24
 
-.. note::
-
-   If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
-
 Instatiate a Timer
 ^^^^^^^^^^^^^^^^^^
 
@@ -185,7 +180,7 @@ Whenever periodic work must be done, it is recommended to use a :code:`Timer`, a
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 26-29
+   :lines: 50-53
    :lineno-start: 26
 
 The timer callback
@@ -194,9 +189,12 @@ The timer callback
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 31-49
+   :lines: 55-73
    :lineno-start: 31
    :emphasize-lines: 48,49
+
+.. note::
+   If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
 
 The Future callback
 ^^^^^^^^^^^^^^^^^^^
@@ -204,7 +202,7 @@ The Future callback
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
    :linenos:
-   :lines: 51-65
+   :lines: 74-84
    :lineno-start: 51
    :emphasize-lines: 51,53,54
 
