@@ -180,7 +180,7 @@ Instantiate a Service Client
 (If periodic) Instatiate a Timer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Whenever periodic work must be done, it is recommended to use a :ref:`Timer`.
+Whenever periodic work must be done, it is recommended to use a :code:`Timer`, as we already learned in :ref:`Use a Timer for peridoc work`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -198,7 +198,7 @@ As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`se
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/setup.py
    :language: python
    :linenos:
-   :emphasize-lines: 21-25
+   :emphasize-lines: 22-26
 
 Build and source
 ----------------
