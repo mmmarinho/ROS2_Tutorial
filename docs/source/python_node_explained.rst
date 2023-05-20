@@ -88,12 +88,12 @@ Example for a class:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 28-31
+   :lines: 28-30
    :emphasize-lines: 2
    
 Example for a method:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 37-39
+   :lines: 37-38
    :emphasize-lines: 2
