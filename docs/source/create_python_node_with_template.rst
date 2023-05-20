@@ -14,7 +14,11 @@ Let us use the template for creating a package with a Node, as follows.
    
 Which will output many things in common with the prior example, but with two major differences. 
 
-#. It generates a template Node :code:`creating ./python_package_with_a_node/python_package_with_a_node/sample_python_node.py`.
+#. It generates a template Node 
+
+   .. code-block:: console
+      creating ./python_package_with_a_node/python_package_with_a_node/sample_python_node.py
+      
 #. The :file:`setup.py` has information about the Node.
 
 .. code-block:: bash
