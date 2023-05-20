@@ -10,7 +10,7 @@ ROS2 begins to shine most in its interprocess communication, through what are ca
 Description
 -----------
 
-In ROS2, interfaces are files written in the ROS2 :abbr:`IDL (Interface Description Language)` is used. Each type of message is described in a :file:`.msg` file (or :file:`.srv` file), which is then compiled by :program:`colcon` into libraries that can be imported into your Python programs.
+In ROS2, interfaces are files written in the ROS2 :abbr:`IDL (Interface Description Language)`. Each type of interface is described in a :file:`.msg` file (or :file:`.srv` file), which is then built by :program:`colcon` into libraries that can be imported into your Python programs.
 
 When dealing with common robotics concepts such as geometric and sensor messages, it is good practice to use interfaces that already exist in ROS2, instead of creating new ones that serve the exact same purpose. In addition, for complicated interfaces, we can combine existing ones for simplicity. 
 
@@ -85,13 +85,13 @@ to get the list of packages with interfaces available, which returns something s
     visualization_msgs
 
 
-From those :file:`sensor_msgs` and :file:`geometry_msgs` are packages to always keep in mind when looking for a suitable interface. It will help keeping your nodes compatible with the community.
+From those, :file:`sensor_msgs` and :file:`geometry_msgs` are packages to always keep in mind when looking for a suitable interface. It will help keeping your Nodes compatible with the community.
 
 .. warning:: 
 
-   The :file:`std_msgs` package, widely used in ROS1, is "deprecated" in ROS2 since Foxy. The :file:`example_interfaces` somewhat takes its place, but the "recommended" practice is to create "semantically meaningful message types". They might remove both or either of these in future versions, so use at your own risk. 
+   The :file:`std_msgs` package, widely used in ROS1, is deprecated in ROS2 since Foxy. The :file:`example_interfaces` somewhat takes its place, but the recommended practice is to create "semantically meaningful message types". They might remove both or either of these in future versions, so do not use them.
 
-As an example, let us take a look into the :file:`example_interfaces` package, containing, as the name implies, example message types. We can do so with 
+As an example, let us take a look into the :file:`example_interfaces` package, containing, as the name implies, example interface types. We can do so with 
  
 .. code:: console
 
@@ -155,14 +155,16 @@ which returns the contents of the source file used to create this message
     # If you want to embed it in another message, use the primitive data type instead.
     string data
 
-Basically, the comments help to emphasize that message types with too broad meaning are unloved in ROS2. Given that these example interfaces are either unsupported or only loosely supported, my advice would also be to not rely on them for anything besides examples.
+Basically, the comments help to emphasize that interface types with too broad meaning are unloved in ROS2. Given that these example interfaces are either unsupported or only loosely supported, do not rely on them.
 
-The real content of the message file is :code:`string data`, showing that it contains a single string called :code:`data`. Using :code:`ros2 interface show` on other example interfaces, it is easy to see how to build interesting message types.
+The real content of the message file is :code:`string data`, showing that it contains a single string called :code:`data`. Using :code:`ros2 interface show` on other example interfaces, it is easy to see how to build interesting message types to fit our needs.
 
 Services
 --------
 
 In the case of a service, let's look up the contents of :file:`example_interfaces/srv/AddTwoInts`.
+
+We run
 
 .. code:: console
 
