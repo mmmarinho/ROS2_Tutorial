@@ -50,5 +50,21 @@ in particular, if the :code:`[GCC 11.3.0] on linux` is different, then get this 
 
 As you already know, to exit the `interative shell <https://docs.python.org/3.10/tutorial/interpreter.html>`_ you can use :kbd:`CTLR+D` or type :code:`quit()` and press :kbd:`ENTER`.
 
+Some Python packages must be installed through :program:`apt`
+=============================================================
+
+.. warning::
+   Aside from these packages that you **MUST** install from :program:`apt`, it is best to use :program:`venv` and :program:`pip` to install packages only for your user
+   without using :code:`sudo`.
+
+For some Python packages to work well with the default Python in Ubuntu, some packages must be installed through :program:`apt`. If you deviate from this you can cause issues that might not be easy to recover from.
+
+For the purposes of this tutorial, let us install
+
+.. code-block:: console
+   sudo apt install -y python3-pip python3-venv
+   
+
+
 
 
