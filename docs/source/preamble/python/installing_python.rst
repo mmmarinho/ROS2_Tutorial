@@ -21,15 +21,15 @@ If your version is different from this, in particular, the :code:`3.10` part, ge
 .. warning::
    Note that the command is :program:`python3` and not :program:`python`. In fact, the result of
    
-   .. code-block:: console
-       python
+   .. code:: console
+            python
    
    is 
    
    .. code-block:: console
-         Command 'python' not found, did you mean:
-        command 'python3' from deb python3
-        command 'python' from deb python-is-python3
+                   Command 'python' not found, did you mean:
+                  command 'python3' from deb python3
+                  command 'python' from deb python-is-python3
 
 A quick Python check
 ====================
