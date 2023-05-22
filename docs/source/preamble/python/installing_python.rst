@@ -9,11 +9,13 @@ In Ubuntu 22.04, Python is already installed!
 In fact, Ubuntu would not work without it. Let's check its version by running
 
 .. code-block:: console
+
    python3 --version
 
 which should output 
 
 .. code-block:: console
+
    Python 3.10.6
    
 If your version is different from this, in particular, the :code:`3.10` part, get this fixed because this tutorial will not work for you. 
@@ -21,12 +23,14 @@ If your version is different from this, in particular, the :code:`3.10` part, ge
 .. warning::
    Note that the command is :program:`python3` and not :program:`python`. In fact, the result of
    
-   .. code:: console
+   .. code-block:: console
+   
             python
    
    is 
    
    .. code-block:: console
+   
                    Command 'python' not found, did you mean:
                   command 'python3' from deb python3
                   command 'python' from deb python-is-python3
@@ -37,11 +41,13 @@ A quick Python check
 Run
 
 .. code-block:: console
+
    python3
 
 which should output something similar to
 
 .. code-block:: console
+
    Python 3.10.6 (main, Mar 10 2023, 10:55:28) [GCC 11.3.0] on linux
    Type "help", "copyright", "credits" or "license" for more information.
    >>> 
@@ -62,6 +68,7 @@ For some Python packages to work well with the default Python in Ubuntu, some pa
 For the purposes of this tutorial, let us install
 
 .. code-block:: console
+
    sudo apt install -y python3-pip python3-venv
    
 
