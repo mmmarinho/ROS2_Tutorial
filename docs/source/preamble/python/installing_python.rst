@@ -36,7 +36,7 @@ If your version is different from this, in particular, the :code:`3.10` part, ge
                   command 'python' from deb python-is-python3
 
 A quick Python check
-====================
+--------------------
 
 Run
 
@@ -57,13 +57,13 @@ in particular, if the :code:`[GCC 11.3.0] on linux` is different, then get this 
 As you already know, to exit the `interative shell <https://docs.python.org/3.10/tutorial/interpreter.html>`_ you can use :kbd:`CTLR+D` or type :code:`quit()` and press :kbd:`ENTER`.
 
 Some Python packages must be installed through :program:`apt`
-=============================================================
+-------------------------------------------------------------
 
 .. warning::
    Aside from these packages that you **MUST** install from :program:`apt`, it is best to use :program:`venv` and :program:`pip` to install packages only for your user
    without using :code:`sudo`.
 
-For some Python packages to work well with the default Python in Ubuntu, some packages must be installed through :program:`apt`. If you deviate from this you can cause issues that might not be easy to recover from.
+For some Python packages to work well with the default Python in Ubuntu, they must be installed through :program:`apt`. If you deviate from this, you can cause issues that might not be easy to recover from.
 
 For the purposes of this tutorial, let us install
 
@@ -71,6 +71,28 @@ For the purposes of this tutorial, let us install
 
    sudo apt install -y python3-pip python3-venv
    
+
+When you want to isolate your environment, use :program:`venv`
+--------------------------------------------------------------
+
+.. warning::
+   At the time of this writing, there was no support for :program:`venv` on ROS2 `(More info) <https://github.com/ros2/ros2/issues/1094#issuecomment-897638520>`_.
+   Until that is handled, we are not going to use :program:`venv` for the ROS2 tutorials. 
+   However, we will use :program:`venv` to protect our ROS2 enviroment from these Python preamble tutorials.
+
+When using :program:`pip`, do **NOT** use :code:`sudo`
+------------------------------------------------------
+
+Using :code:`sudo` without knowing what one is doing is *the* easiest way to wreak havoc in a Ubuntu installation. Even seemengly innocuous operations such as copying files with :code:`sudo` can cause irreparable damage to your Ubuntu environment.
+
+When installing Python packages that are not available on :program:`apt`, use :program:`pip`.
+
+
+
+
+
+
+
 
 
 
