@@ -9,6 +9,7 @@ Using :code:`await`
 
 .. note::
    **TL;DR** 
+   
    #. Run multiple :code:`Task`
    #. Use :code:`await` for them, **after they were executed**
 
@@ -28,6 +29,7 @@ Using :code:`callback`
 
 .. note::
    **TL;DR** 
+   
    #. Run multiple :code:`Task`
    #. Add a :code:`callback` to handle the result **as soon as it is ready**
    #. Use :code:`await` for them just so that the main loop does not die.
