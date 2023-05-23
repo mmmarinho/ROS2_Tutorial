@@ -10,7 +10,7 @@ Installation
 Update :program:`apt` packages
 ------------------------------
 
-.. note:: 
+.. hint:: 
   You can quickly open a new terminal window by pressing :kbd:`CTRL+ATL+T`.
 
 After a fresh install, update and upgrade all :program:`apt` packages.
