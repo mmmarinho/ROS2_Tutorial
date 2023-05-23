@@ -19,6 +19,8 @@ end the program or further continue with other tasks.
 
 This type of interaction is suitable when either we need the results from all tasks before proceeding or when the order of result matters.
 
+:download:`async_await_example.py <../../../../preamble/python/async_await_example.py>`
+
 .. literalinclude:: ../../../../preamble/python/async_await_example.py
    :language: python
    :linenos:
@@ -40,6 +42,8 @@ Using :code:`callback`
 Differently from :code:`await` -ing for each task and then processing their result, we can define :code:`callbacks`
 in such way that each result will processed as they come. In that way, the results can be processed in an arbitrary
 order.
+
+:download:`async_callback_example.py <../../../../preamble/python/async_callback_example.py>`
 
 .. literalinclude:: ../../../../preamble/python/async_callback_example.py
    :language: python
