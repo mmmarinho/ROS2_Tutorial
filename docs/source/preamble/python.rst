@@ -6,5 +6,4 @@ Python Basics
    python/installing_python
    python/editing_python_source
    python/python_programming_basics
-   python/python_asyncio
    python/python_best_practices
