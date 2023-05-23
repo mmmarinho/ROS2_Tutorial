@@ -92,8 +92,7 @@ As always, this is needed so that our new package and node can be recognized by 
 Run
 ---
 
-.. note::
-
+.. hint::
    Remember that you can stop the node at any time with :kbd:`CTRL+C`.
 
 .. code :: console
