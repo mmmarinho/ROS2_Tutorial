@@ -115,6 +115,15 @@ Deactivate a :file:`venv`
 
    deactivate
 
+
+Installing libraries
+--------------------
+
+.. warning::
+   In these tutorials, we rely either on :program:`apt` or　:program:`pip` to install packages. 
+   There are other package managers for Python and plenty of other ways to install and manage packages.
+   They are, in general, not compatible with each other so, like cleaning products, **DO NOT** mix them.
+   
 .. hint::
    Using :code:`python3 -m pip` instead of calling just :code:`pip` allows more control which version of :program:`pip` is being called. The need for this
    becomes more evident when several Python versions have to coexist in a system.
@@ -131,7 +140,6 @@ which will result in
 
    TODO
    
-
 
 When using :program:`pip`, do **NOT** use :code:`sudo`
 ------------------------------------------------------
