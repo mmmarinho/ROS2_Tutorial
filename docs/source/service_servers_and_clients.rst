@@ -116,7 +116,7 @@ The Node
 .. note::
    This example deviates somewhat from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
    This implementation shown herein uses a callback and :code:`rclpy.spin()`.
-   It has many practical but it's no *panacea*.
+   It has many practical applications, but it's no *panacea*.
 
 We start by adding a :file:`what_is_the_point_service_client_node.py` at :file:`python_package_that_uses_the_services/python_package_that_uses_the_services` with the following contents.
 
@@ -153,7 +153,7 @@ We instanteate a service client with :code:`Node.create_client()`. The values of
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
-   The order of execution and speed of Nodes depends on a complicated web of relationships between ROS2, the operating system, and the workload of the machine. It would be naive to expect the server to always be active before the client, even if the server Node is started before the client Node.
+   The order of execution and speed of Nodes depend on a complicated web of relationships between ROS2, the operating system, and the workload of the machine. It would be naive to expect the server to always be active before the client, even if the server Node is started before the client Node.
 
 In many cases, having the result of the service of particular importance (hence the use of a service and not messages). In that case, we have to wait until :code:`service_client.wait_for_service()`, as shown below.
 
