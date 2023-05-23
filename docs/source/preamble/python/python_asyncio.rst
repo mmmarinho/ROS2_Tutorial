@@ -10,8 +10,8 @@ Using :code:`await`
 .. note::
    **TL;DR** Using :code:`await`
    
-   #. Run multiple :code:`Task`
-   #. Use :code:`await` for them, **after they were executed**
+   #. Run multiple :code:`Task`.
+   #. Use :code:`await` for them, **after they were executed**.
 
 Differently from "regular" programming, using :code:`async` needs us to reflect on several tasks being executed at the same time.
 The main use case are multiple tasks that can run concurrently and, at some point, we need the result of those tasks to either
@@ -33,8 +33,8 @@ Using :code:`callback`
 .. note::
    **TL;DR** Using :code:`callbacks`
    
-   #. Run multiple :code:`Task`
-   #. Add a :code:`callback` to handle the result **as soon as it is ready**
+   #. Run multiple :code:`Task`.
+   #. Add a :code:`callback` to handle the result **as soon as it is ready**.
    #. Use :code:`await` for them just so that the main loop does not die.
 
 Differently from :code:`await` -ing for each task and then processing their result, we can define :code:`callbacks`
