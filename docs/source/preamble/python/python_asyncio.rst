@@ -24,6 +24,9 @@ This type of interaction is suitable when either we need the results from all ta
    :linenos:
    :lines: 24-
 
+.. hint::
+   If the function/method has an :code:`await`, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
+
 Using :code:`callback`
 ----------------------
 
