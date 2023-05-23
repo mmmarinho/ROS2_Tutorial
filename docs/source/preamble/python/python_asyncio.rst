@@ -1,14 +1,36 @@
 Python's :code:`asyncio`
 ========================
 
-Using :code:`await`.
+There are two main ways to interact with :code:`async` code, the first being by :code:`await`ing the results or by handling those
+results through :code:`callback`s.
 
-.. literalinclude:: ../../../../preamble/python/sync_await_example.py
+Using :code:`await`
+-------------------
+
+.. note::
+   **TL;DR** 
+   #. Run multiple :code:`Task`
+   #. Use :code:`await` for them, **after they were executed**
+
+Differently from "regular" programming, using :code:`async` needs us to reflect on several tasks being executed at the same time.
+The main use case are multiple tasks that can run concurrently and, at some point, we need the result of those tasks to either
+end the program or further continue with other tasks.
+
+This type of interaction is suitable when either we need the results from all tasks before proceeding or when the order of result matters.
+
+.. literalinclude:: ../../../../preamble/python/async_await_example.py
    :language: python
    :linenos:
    :lines: 24-
 
-Using :code:`callback`.
+Using :code:`callback`
+----------------------
+
+.. note::
+   **TL;DR** 
+   #. Run multiple :code:`Task`
+   #. Add a :code:`callback` to handle the result **as soon as it is ready**
+   #. Use :code:`await` for them just so that the main loop does not die.
 
 .. literalinclude:: ../../../../preamble/python/async_callback_example.py
    :language: python
