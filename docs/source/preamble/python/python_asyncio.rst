@@ -1,6 +1,12 @@
 Python's :code:`asyncio`
 ========================
 
+.. note::
+   Asynchronous code is not the same as code that runs in parallel, even more so in Python because of the :abbr:`GIL (Global Interpreter Lock)` (`More info <https://wiki.python.org/moin/GlobalInterpreterLock>`_).
+   Basically, the :code:`async` framework allows us to not waste time waiting for results that we don't know when will arrive.
+   It either allows us to attach a :code:`callback` for when the result is ready, or to run many service calls and :code:`await`
+   for them all, instead of running one at a time.
+
 There are two main ways to interact with :code:`async` code, the first being by :code:`await` -ing the results or by handling those
 results through :code:`callbacks`.
 
