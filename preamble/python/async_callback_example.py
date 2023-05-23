@@ -59,7 +59,7 @@ async def main() -> None:
     # by the callback. We just wait here until they are over so that the main program
     # does not return prematurely.
     print("Awaiting for results...")
-    for (tag, task) in zip(tags, tasks):
+    for task in tasks:
         await task
 
 
