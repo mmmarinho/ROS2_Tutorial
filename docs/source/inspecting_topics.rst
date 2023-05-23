@@ -73,8 +73,7 @@ which, in this case, outputs
 
 showing, in particular, the :code:`/amazing_quote` topic what we were looking for.
 
-.. note::
-
+.. hint::
    The :program:`ros2 topic info` is one of the main tools to find out typos in the names of topics. For example, if there was a typo in our topic we might find, in fact, two topics being listed, when we only expected one. For instance,
 
     .. code-block:: console
