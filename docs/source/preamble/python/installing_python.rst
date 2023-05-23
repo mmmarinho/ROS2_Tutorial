@@ -3,7 +3,7 @@ Installing Python on Ubuntu
 
 .. warning::
    If you change or try to tinker with the default Python version of Ubuntu, your system will most likely **BREAK COMPLETELY**. 
-   Do not play around with the Python installation, because Ubuntu depends on it to work properly (or work at all).
+   Do not play around with the default Python installation, because Ubuntu depends on it to work properly (or work at all).
    
 In Ubuntu 22.04, Python is already installed!
 In fact, Ubuntu would not work without it. Let's check its version by running
