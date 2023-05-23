@@ -1,3 +1,5 @@
+.. _Asyncio:
+
 Python's :code:`asyncio`
 ========================
 
