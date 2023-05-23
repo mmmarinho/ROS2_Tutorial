@@ -19,15 +19,15 @@ end the program or further continue with other tasks.
 
 This type of interaction is suitable when either we need the results from all tasks before proceeding or when the order of result matters.
 
+.. hint::
+   If the function/method has an :code:`await`, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
+
 :download:`async_await_example.py <../../../../preamble/python/async_await_example.py>`
 
 .. literalinclude:: ../../../../preamble/python/async_await_example.py
    :language: python
    :linenos:
    :lines: 24-
-
-.. hint::
-   If the function/method has an :code:`await`, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
 
 Using :code:`callback`
 ----------------------
