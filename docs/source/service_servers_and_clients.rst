@@ -207,11 +207,7 @@ Given that services work in a request--response model, the service client must i
 Make service calls with :code:`call_async()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note::
-   Asynchronous code is not the same as code that runs in parallel, even more so in Python because of the :abbr:`GIL (Global Interpreter Lock)` (`More info <https://wiki.python.org/moin/GlobalInterpreterLock>`_).
-   Basically, the :code:`async` framework allows us to not waste time waiting for results that we don't know when will arrive.
-   It either allows us to attach a :code:`callback` for when the result is ready, or to run many service calls and :code:`await`
-   for them all, instead of running one at a time.
+The :code:`async` framework in ROS2 is based on Python's :code:`asyncio` that we already saw in :ref:`Asyncio`.
    
 .. note::
    At first glance, it might feel that all this trouble to use :code:`async` is unjustified. However, Nodes in practice will hardly ever do one service call and be done. Many Nodes in a complex system
