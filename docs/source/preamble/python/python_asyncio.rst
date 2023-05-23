@@ -1,8 +1,8 @@
 Python's :code:`asyncio`
 ========================
 
-There are two main ways to interact with :code:`async` code, the first being by :code:`await`ing the results or by handling those
-results through :code:`callback`s.
+There are two main ways to interact with :code:`async` code, the first being by :code:`await` -ing the results or by handling those
+results through :code:`callbacks`.
 
 Using :code:`await`
 -------------------
