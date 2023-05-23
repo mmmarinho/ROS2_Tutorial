@@ -8,7 +8,7 @@ Using :code:`await`
 -------------------
 
 .. note::
-   **TL;DR** 
+   **TL;DR** Using :code:`await`
    
    #. Run multiple :code:`Task`
    #. Use :code:`await` for them, **after they were executed**
@@ -28,11 +28,15 @@ Using :code:`callback`
 ----------------------
 
 .. note::
-   **TL;DR** 
+   **TL;DR** Using :code:`callbacks`
    
    #. Run multiple :code:`Task`
    #. Add a :code:`callback` to handle the result **as soon as it is ready**
    #. Use :code:`await` for them just so that the main loop does not die.
+
+Differently from :code:`await` -ing for each task and then processing their result, we can define :code:`callbacks`
+in such way that each result will processed as they come. In that way, the results can be processed in an arbitrary
+order.
 
 .. literalinclude:: ../../../../preamble/python/async_callback_example.py
    :language: python
