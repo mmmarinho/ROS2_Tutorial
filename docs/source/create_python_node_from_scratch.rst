@@ -84,7 +84,7 @@ Even though you can run the new node in :program:`PyCharm`, we need an additiona
 
 To do so, we modify the :code:`console_scripts` key in the :code:`entry_points` dictionary defined in :file:`setup.py`, to have our new node, as follows
 
-.. note:: 
+.. hint:: 
 
    :code:`console_scripts` expects a :code:`list` of :code:`str` in a specific format. Hence, follow the format properly and don't forget the commas to separate elements in the :code:`list`.
 
