@@ -7,12 +7,6 @@
 
 `ROS2 Humble`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
-.. warning::
-   This project is under active development and currently a draft.
-
-.. warning::
-   If you're using macOS or Windows, this is **NOT** the guide for you. There might be a lot of overlap, but none of the code shown here has been tested on those operating systems.
-
 Using this tutorial
 -------------------
 
@@ -84,5 +78,11 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    advanced
    faq
 
+
+.. warning::
+   This project is under active development and currently a draft.
+
+.. warning::
+   If you're using macOS or Windows, this is **NOT** the guide for you. There might be a lot of overlap, but none of the code shown here has been tested on those operating systems.
 
 .. _`ROS2 Humble`: https://docs.ros.org/en/humble/
