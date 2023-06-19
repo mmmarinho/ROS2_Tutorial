@@ -21,46 +21,51 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from functools import partial
 import asyncio
-from async_await_example import unlikely_to_return
+import random
+from textwrap import dedent
 
 
-def handle_return_callback(tag: str, future: asyncio.Future) -> None:
+async def unlikely_to_return(tag: str, likelihood: float = 0.1) -> float:
     """
-    Callback example for asyncio.Future
-    :param tag: An example parameter, in this case a tag
-    :param future: A asyncio.Future is expected to be the last parameter
-    of the callback.
-    :return: Nothing.
+    A function that is unlikely to return.
+    :return: When it returns, the successful random roll as a float.
     """
-    if future is not None and future.done():
-        print("The result of task={} was {}.".format(tag, future.result()))
-    else:
-        print("Problem with task={}.".format(tag))
+    while True:
+        a = random.uniform(0.0, 1.0)
+        if a < likelihood:
+            print("{} Done.".format(tag))
+            return a
+        else:
+            print(dedent("""\
+            {} retry needed (roll = {} > {}).\
+            """).format(
+                tag,
+                a,
+                likelihood
+            ))
+            await asyncio.sleep(0.1)
 
 
 async def main() -> None:
     tags: list[str] = ["task1", "task2"]
     tasks: list[asyncio.Task] = []
 
-    # Start all tasks before adding the callback
+    # Start all tasks before awaiting on them, otherwise the code
+    # will not be concurrent.
     for task_tag in tags:
         task = asyncio.create_task(
             unlikely_to_return(tag=task_tag)
         )
-        task.add_done_callback(
-            partial(handle_return_callback, task_tag)
-        )
         tasks.append(task)
 
     # Alternatively, use asyncio.gather()
-    # The functions are already running concurrently. And the result will be processed
-    # by the callback. We just wait here until they are over so that the main program
-    # does not return prematurely.
+    # At this point, the functions are already running concurrently. We are now (a)waiting for the
+    # results, IN THE ORDER OF THE AWAIT, even if the other task ends first.
     print("Awaiting for results...")
-    for task in tasks:
-        await task
+    for (tag, task) in zip(tags, tasks):
+        result = await task
+        print("The result of task={} was {}.".format(tag, result))
 
 
 if __name__ == "__main__":
