@@ -174,7 +174,7 @@ Minimalist Package
 
 :download:`__init__.py <../../../../preamble/python/minimalist_package/__init__.py>`
 
-.. literalinclude:: ./../../../preamble/python/minimalist_package/__init__.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/__init__.py
    :language: python
    :linenos:
    :lines: 1-
@@ -184,7 +184,7 @@ Minimalist class
 
 :download:`_minimalist_class.py <../../../../preamble/python/minimalist_package/_minimalist_class.py>`
 
-.. literalinclude:: ./../../../preamble/python/minimalist_package/_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/_minimalist_class.py
    :language: python
    :linenos:
    :lines: 31-
@@ -194,7 +194,7 @@ Unit tests
 
 :download:`_test_minimalist_class.py <../../../../preamble/python/minimalist_package/_test_minimalist_class.py>`
 
-.. literalinclude:: ./../../../preamble/python/minimalist_package/_test_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/_test_minimalist_class.py
    :language: python
    :linenos:
    :lines: 6-
