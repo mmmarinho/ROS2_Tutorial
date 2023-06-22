@@ -228,7 +228,7 @@ Unit tests: always test your code
 
 .. warning::
 
-   This is **NOT** a comprehensive tutorial on unit testing. You're better served with the `unittest docs<https://docs.python.org/3.10/library/unittest.html>`_.
+   This is **NOT** a comprehensive tutorial on unit testing. You're better served with the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
 
 `Unit testing <https://en.wikipedia.org/wiki/Unit_testing>`_ is a flag that has been waved by programming enthusiasts 
 and is often a good measurement of code maturity.
