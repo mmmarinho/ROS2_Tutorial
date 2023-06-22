@@ -134,8 +134,8 @@ what to do with that file.
    ./minimalist_module.py: line 5: `def main() -> None:'
 
 
-The :code:`main` function
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Wrap the :code:`main` function on a `try--except` block
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :download:`minimalist_module.py <../../../../preamble/python/minimalist_module.py>`
 
@@ -169,8 +169,21 @@ test the code of all combinations of inputs and states. As `they say <https://da
    this clause temporarily when trying to debug a stubborn bug, at the risk of forgetting to put it back and ruining
    your hardware.
 
-Minimalist Package
-------------------
+Minimalist Package: Use packages to organize your code
+------------------------------------------------------
+
+A Python package is a folder that has an :file:`__init__.py`. Yes, a :file:`__init__.py` can even be empty and it would
+still be considered a Python package.
+
+Anyways, back to the example. First, let's make a folder for our package
+
+.. code-block::
+
+   cd ~/ros2_tutorials_preamble/python
+   mkdir minimalist_package
+
+then, let's create a file :file:`__init__.py` in :file:`~/ros2_tutorials_preamble/python/minimalist_package` with the
+following contents
 
 :download:`__init__.py <../../../../preamble/python/minimalist_package/__init__.py>`
 
@@ -179,8 +192,23 @@ Minimalist Package
    :linenos:
    :lines: 1-
 
-Minimalist class
-----------------
+When adding imports to the :file:`__init__.py`, the folder that we use to open in Pycharm and that we call to execute
+the scripts is *extremely* relevant. When packages are deployed (e.g. in `PyPI <https://pypi.org/>`_ or ROS2), the correct
+way to import in :file:`__init__.py` is to use :code:`import <PACKAGE_NAME>.<THING_TO_IMPORT>`, which is why we're doing
+it this way.
+
+.. note::
+
+   Relative imports such as :code:`.<THING_TO_IMPORT>` might work in some cases, and that is fine. It is a supported
+   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc, and generates 
+   a lot of frustration.
+
+Minimalist class: Use classes profusely
+---------------------------------------
+
+As you are familiar with object-oriented programing, you know that classes are central to this paradigm.
+As a memory refresher, let's make a class that honestly does nothing useful but illustrates all
+the basic points in a Python class.
 
 :download:`_minimalist_class.py <../../../../preamble/python/minimalist_package/_minimalist_class.py>`
 
@@ -188,6 +216,10 @@ Minimalist class
    :language: python
    :linenos:
    :lines: 31-
+
+Use type hints profusely
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 Unit tests
 ----------
