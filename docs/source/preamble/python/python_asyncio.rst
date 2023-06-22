@@ -17,9 +17,8 @@ results through :code:`callbacks`.
 Using :code:`await`
 -------------------
 
-.. note::
-   **TL;DR** Using :code:`await`
-   
+.. admonition:: **TL;DR** Using :code:`await`
+      
    #. Run multiple :code:`Task`.
    #. Use :code:`await` for them, **after they were executed**.
 
@@ -42,9 +41,8 @@ This type of interaction is suitable when either we need the results from all ta
 Using :code:`callback`
 ----------------------
 
-.. note::
-   **TL;DR** Using :code:`callbacks`
-   
+.. admonition:: **TL;DR** Using :code:`callbacks`
+      
    #. Run multiple :code:`Task`.
    #. Add a :code:`callback` to handle the result **as soon as it is ready**.
    #. Use :code:`await` for them just so that the main loop does not die.
