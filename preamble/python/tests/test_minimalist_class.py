@@ -4,7 +4,7 @@ in every platform, always, and supported with the other default Python packages.
 https://docs.python.org/3.10/library/unittest.html
 """
 import unittest
-from . import MinimalistClass
+from minimalist_package import MinimalistClass
 
 
 class TestMinimalistClass(unittest.TestCase):
@@ -26,8 +26,6 @@ class TestMinimalistClass(unittest.TestCase):
     def test_get_set_private_attribute(self):
         self.minimalist_instance.set_private_attribute(20.0)
         self.assertEqual(self.minimalist_instance.get_private_attribute(), 20.0)
-        # Reset the value to what we expect for the other tests
-        self.minimalist_instance.set_private_attribute(35.0)
 
     def test_static_method(self):
         self.assertEqual(MinimalistClass.static_method(), "Hello World!")
