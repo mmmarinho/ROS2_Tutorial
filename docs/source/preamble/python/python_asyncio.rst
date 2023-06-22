@@ -32,9 +32,9 @@ This type of interaction is suitable when either we need the results from all ta
 .. hint::
    If the function/method has uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
 
-:download:`async_await_example.py <../../../../preamble/python/async_await_example.py>`
+:download:`async_await_example.py <../../../../preamble/python/minimalist_async/async_await_example.py>`
 
-.. literalinclude:: ../../../../preamble/python/async_await_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_async/async_await_example.py
    :language: python
    :linenos:
    :lines: 24-
@@ -53,9 +53,9 @@ Differently from :code:`await` -ing for each task and then processing their resu
 in such way that each result will processed as they come. In that way, the results can be processed in an arbitrary
 order.
 
-:download:`async_callback_example.py <../../../../preamble/python/async_callback_example.py>`
+:download:`async_callback_example.py <../../../../preamble/python/minimalist_async/async_callback_example.py>`
 
-.. literalinclude:: ../../../../preamble/python/async_callback_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_async/async_callback_example.py
    :language: python
    :linenos:
    :lines: 24-
