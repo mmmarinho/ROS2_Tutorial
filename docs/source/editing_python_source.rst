@@ -11,6 +11,8 @@ Your project view should look like so
 .. image:: ../images/pycharm_project.png
    :align: center
 
+
+
 Running a Node from :program:`PyCharm`
 -------------------------------------
 
@@ -22,7 +24,6 @@ With the project correctly configured, you can
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/sample_python_node.py
    :language: python
    :linenos:
-
 3. right click :program:`sample_python_node.py` and choose :menuselection:`Run sample_python_node`
 
 It will output in :program:`PyCharm`'s console
