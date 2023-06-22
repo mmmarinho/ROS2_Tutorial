@@ -2,6 +2,10 @@ Python Best Practices
 =====================
 
 .. warning::
+
+   Under heavy construction.
+
+.. warning::
    This tutorial expects prior knowledge in Python and objected-oriented programming.
    As such, this section is not meant to be a comprehensive Python tutorial. You have better resources
    made by smarter people available online, e.g. `The Python Tutorial <https://docs.python.org/3.10/tutorial/index.html>`_.
