@@ -13,13 +13,13 @@ Using this tutorial
 This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/python/python_basics>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, even the :doc:`ROS2 Setup <installation>`. 
 
 :doc:`Preamble <preamble/python/python_basics>`
-    Basic content such as simple Ubuntu use, Python in Ubuntu etc.
+    Basic content to refresh your memory, such as simple Ubuntu use, Python in Ubuntu, etc.
     
-:doc:`ROS2 Setup <installation>`
+:doc:`ROS2 Setup <installation>` (⭐The ROS2 tutorial starts here⭐)
     Setting up a working ROS2 environment properly to follow this tutorial. 
 
-:doc:`ROS2 Tutorial <create_packages>`
-    The beginning of the tutorial, supposing that the ROS2 enviroment is properly set up.
+:doc:`ROS2 Usage <create_packages>`
+    After setting up, instructions on creating packages, nodes, subscribers, publishers, services, etc.
 
 .. toctree::
    :caption: Preamble
