@@ -12,7 +12,7 @@ Terminology
 -----------
 
 Let's go through the terminology used in this tutorial. This terminology is not necessarily uniform with other
-sources/tutorials you might find elsewhere. It it is based on my interpretation of
+sources/tutorials you might find elsewhere. It is based on my interpretation of
 `The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_.
 
 =======  ====================================================================================================
@@ -26,7 +26,7 @@ The difference between *scripts* and *modules*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 According to `The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, the definition of
-*script* and *module* is not disjoint, in fact it is said that
+*script* and *module* is not disjoint, in fact, it is said that
 
   [...] you can make the file usable as a script as well as an importable module [...]
 
@@ -40,7 +40,7 @@ and a module as
   [A module is a file] to put definitions [...] and use them in a script or in an interactive instance of the interpreter.
 
 There are more profound differences in how the Python interpreter handles *scripts* and *modules*, but in the wild the
-difference is usually as I described in :ref:`Python Terminology`.
+the difference is usually as I described in :ref:`Python Terminology`.
 
 
 Minimalist module
@@ -150,11 +150,11 @@ It is good practice to wrap the :code:`main()` call in a :code:`try--except` blo
 with at least the :code:`KeyboardInterrupt` clause. This allows the user to shutdown
 the module cleanly either through the terminal or through :program:`PyCharm`.
 
-This is of particular importance when hardware is used, otherwise the connection with it might be left in an undefined
+This is of particular importance when hardware is used, otherwise, the connection with it might be left in an undefined
 state causing difficult-to-understand problems at best and physical harm at worst.
 
 The :code:`Exception` clause in our example is very broad, but a **MUST** in code that is still under development.
-Exceptions of all sorts can be generated when there is a communication error with the hardware, software (internet etc),
+Exceptions of all sorts can be generated when there is a communication error with the hardware, software (internet, etc),
 or other issues.
 
 This broad :code:`Exception` clause could be replaced for a less broad exception handling if that makes sense in a given
