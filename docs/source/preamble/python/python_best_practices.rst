@@ -292,6 +292,8 @@ which will output
    
    Process finished with exit code 0
 
+Yay! We've done it!
+
 Always use :code:`unittest`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
