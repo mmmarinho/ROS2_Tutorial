@@ -3,14 +3,14 @@ Workspace setup
 
 Similar to how ROS2 files are installed in :code:`/opt/ros/{ROS_DISTRO}` so that you can have several distributions installed simultaneously, you can also have many separate workspaces in your system.
 
-In addition, because files in the :code:`/opt` folder require super user privileges (for good reasons), having a user-wide workspace is the accepted practice. They call this an **overlay**.
+In addition, because files in the :code:`/opt` folder require superuser privileges (for good reasons), having a user-wide workspace is the accepted practice. They call this an **overlay**.
 
 Setting up
 ----------
 
 In ROS2, a workspace is nothing more than a folder in which all your packages are contained.
 
-No, really, you just need to make a folder, e.g. the one we will use throughout the these tutorials.
+No, really, you just need to make a folder, e.g. the one we will use throughout these tutorials.
 
 .. code :: console
 
