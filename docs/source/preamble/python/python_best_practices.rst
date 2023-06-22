@@ -248,7 +248,7 @@ Back to the example, a good practice is to create a folder name :file:`tests` at
    cd ~/ros2_tutorials_preamble/python
    mkdir tests
 
-Then, we create a file named :file:`test_minimalist_class.py` with the contents below.
+Then, we create a file named :file:`test_minimalist_class.py` with the contents below and add it to the :file:`tests` folder.
 
 .. note::
  
