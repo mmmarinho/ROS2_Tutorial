@@ -36,17 +36,16 @@ Before we start exploring the elements of the package, let us
 Create the Node with a Service Server
 -------------------------------------
 
-.. note::
-         **TL:DR** Creating a service server
-
-         #. Add new dependencies to :file:`package.xml`
-         #. Import new services :code:`from <package_name>.srv import <srv_name>`
-         #. In a subclass of :code:`Node`
-
-            #. create a callback :code:`def callback(self, request, response):`
-            #. create a service server with :code:`self.service_server = self.create_service(...)`
-
-         #. Add the new Node to :file:`setup.py`
+.. admonition::  **TL:DR** Creating a service server
+      
+               #. Add new dependencies to :file:`package.xml`
+               #. Import new services :code:`from <package_name>.srv import <srv_name>`
+               #. In a subclass of :code:`Node`
+      
+                  #. create a callback :code:`def callback(self, request, response):`
+                  #. create a service server with :code:`self.service_server = self.create_service(...)`
+      
+               #. Add the new Node to :file:`setup.py`
 
 :download:`what_is_the_point_service_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py>`
 
@@ -97,20 +96,18 @@ In this tutorial, we briefly introduce unavoidable :code:`async` concepts, but f
 Create the Node with a Service Client (using a :code:`callback`)
 ----------------------------------------------------------------
 
-.. note::
+.. admonition::  **TL:DR** Creating a service client (using a :code:`callback`)
 
-         **TL:DR** Creating a service client (using a :code:`callback`)
-
-         #. Add new dependencies to :file:`package.xml`
-         #. Import new services :code:`from <package_name>.srv import <srv_name>`
-         #. In a subclass of :code:`Node`
-
-            #. (*recommended*) wait for service to be available :code:`service_client.wait_for_service(...)`.
-            #. (*if periodic*) add a :code:`Timer` with a proper :code:`timer_callback()`
-            #. create a callback for the future :code:`def service_future_callback(self, future: Future):`
-            #. create a service client with :code:`self.service_client = self.create_client(...)`
-
-         #. Add the new Node to :file:`setup.py`
+               #. Add new dependencies to :file:`package.xml`
+               #. Import new services :code:`from <package_name>.srv import <srv_name>`
+               #. In a subclass of :code:`Node`
+      
+                  #. (*recommended*) wait for service to be available :code:`service_client.wait_for_service(...)`.
+                  #. (*if periodic*) add a :code:`Timer` with a proper :code:`timer_callback()`
+                  #. create a callback for the future :code:`def service_future_callback(self, future: Future):`
+                  #. create a service client with :code:`self.service_client = self.create_client(...)`
+      
+               #. Add the new Node to :file:`setup.py`
 
 The Node
 ^^^^^^^^
