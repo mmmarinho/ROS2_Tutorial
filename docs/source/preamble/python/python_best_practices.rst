@@ -233,7 +233,7 @@ Unit tests: always test your code
 `Unit testing <https://en.wikipedia.org/wiki/Unit_testing>`_ is a flag that has been waved by programming enthusiasts 
 and is often a good measurement of code maturity.
 
-The elephant in the room is that writing unit tests is **boring**. Yes, we know, very boring.
+The elephant in the room is that writing unit tests is **boring**. Yes, we know, *very* boring.
 
 Unit tests are boring because they are an *investment*. Unit testing won't necessarily make your
 code `[...] better, faster, [...] <https://www.youtube.com/watch?v=gAjR4_CbPpQ>`_ *right now*. However, without tests, don't 
@@ -307,6 +307,11 @@ We import the :code:`unittest` module along with the class that we want to test,
 
 Test them all
 ^^^^^^^^^^^^^
+
+.. note::
+
+   Good unit tests will not only let you know when something broke but also *where* it broke. A failed test of a high-level function might not give
+   you too much information, whereas a failed test of a lower-level (more fundamental) function will allow you to pin-point the issue.
 
 Unit tests are somewhat like insurance. The more coverage you have, the better. In this example, we test all the 
 elements in the class. Each test will be based on one or more asserts. For more info check the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
