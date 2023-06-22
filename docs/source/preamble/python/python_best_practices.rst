@@ -223,8 +223,37 @@ Use type hints profusely
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Unit tests
-----------
+Unit tests: always test your code
+---------------------------------
+
+.. warning::
+
+   This is **NOT** a comprehensive tutorial on unit testing. You're better served with the `unittest docs<https://docs.python.org/3.10/library/unittest.html>`_.
+
+`Unit testing <https://en.wikipedia.org/wiki/Unit_testing>`_ is a flag that has been waved by programming enthusiasts 
+and is often a good measurement of code maturity.
+
+The elephant in the room is that writing unit tests is **boring**. Yes, we know, very boring.
+
+Unit tests are boring because they are an *investment*. Unit testing won't necessarily make your
+code "[...] better, faster, [...] <https://www.youtube.com/watch?v=gAjR4_CbPpQ>"_ *right now*. However, without tests, don't 
+be surprised after some point if your implementations make you drown in `tech debt <https://en.wikipedia.org/wiki/Technical_debt>`_.
+Dedicating a couple of minutes now to make a couple of tests when your codebase is still in its infancy makes it more manageable 
+and less boresome.
+
+Back to the example, a good practice is to create a folder name :file:`tests` at the same level as the packages to be tested, like so
+
+.. code-block::
+
+   cd ~/ros2_tutorials_preamble/python
+   mkdir tests
+
+Then, we create a file named :file:`test_minimalist_class.py` with the contents below.
+
+.. note::
+ 
+   The prefix :file:`test_` is important as it is used by some frameworks to automatically discover tests. So it is better not to use
+   that prefix if that file does not contain a unit test.
 
 :download:`test_minimalist_class.py <../../../../preamble/python/tests/test_minimalist_class.py>`
 
@@ -247,3 +276,21 @@ Unit tests
    ============================== 5 passed in 0.03s ===============================
    
    Process finished with exit code 0
+
+Use :code:`unittest`
+^^^^^^^^^^^^^^^^^^^^
+
+There are many test frameworks for Python. Nonetheless, the `unittest module <https://docs.python.org/3.10/library/unittest.html>`_
+is built into Python so, unless you have a very good reason not to use it, `just [use] it <https://www.youtube.com/watch?v=ZXsQAXx_ao0>`_.
+
+We import the :code:`unittest` module along with the class that we want to test, namely :code:`MinimalistClass`.
+
+.. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
+   :language: python
+   :linenos:
+   :lines: 6-7
+
+Test them all
+^^^^^^^^^^^^^
+
+
