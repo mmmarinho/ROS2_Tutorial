@@ -262,6 +262,21 @@ Then, we create a file named :file:`test_minimalist_class.py` with the contents 
    :linenos:
    :lines: 6-
 
+Running the tests
+^^^^^^^^^^^^^^^^^
+
+For a little jolt of instant gratification, let's run the tests before we proceed with the explanation.
+
+There are many ways to run tests written with :code:`unittest`. What we'll do that works with this example
+is
+
+.. code-block:: commandLine
+
+   cd ~/ros2_tutorials_preamble/python
+   python3 -m unittest tests/test_minimalist_class.py
+
+which will output
+
 .. code-block:: commandLine
    
    ============================= test session starts ==============================
@@ -277,8 +292,8 @@ Then, we create a file named :file:`test_minimalist_class.py` with the contents 
    
    Process finished with exit code 0
 
-Use :code:`unittest`
-^^^^^^^^^^^^^^^^^^^^
+Always use :code:`unittest`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are many test frameworks for Python. Nonetheless, the `unittest module <https://docs.python.org/3.10/library/unittest.html>`_
 is built into Python so, unless you have a very good reason not to use it, `just [use] it <https://www.youtube.com/watch?v=ZXsQAXx_ao0>`_.
@@ -293,4 +308,15 @@ We import the :code:`unittest` module along with the class that we want to test,
 Test them all
 ^^^^^^^^^^^^^
 
+.. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
+   :language: python
+   :linenos:
+   :lines: 10-31
 
+The main function
+^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
+   :language: python
+   :linenos:
+   :lines: 34-35
