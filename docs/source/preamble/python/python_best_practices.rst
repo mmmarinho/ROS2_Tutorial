@@ -236,7 +236,7 @@ and is often a good measurement of code maturity.
 The elephant in the room is that writing unit tests is **boring**. Yes, we know, very boring.
 
 Unit tests are boring because they are an *investment*. Unit testing won't necessarily make your
-code "[...] better, faster, [...] <https://www.youtube.com/watch?v=gAjR4_CbPpQ>"_ *right now*. However, without tests, don't 
+code `[...] better, faster, [...] <https://www.youtube.com/watch?v=gAjR4_CbPpQ>`_ *right now*. However, without tests, don't 
 be surprised after some point if your implementations make you drown in `tech debt <https://en.wikipedia.org/wiki/Technical_debt>`_.
 Dedicating a couple of minutes now to make a couple of tests when your codebase is still in its infancy makes it more manageable 
 and less boresome.
