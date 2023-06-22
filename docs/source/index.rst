@@ -12,7 +12,7 @@ Using this tutorial
 
 This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/python/python_basics>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, even the :doc:`ROS2 Setup <installation>`. 
 
-:doc:`Preamble <preamble/python/python_basics>`
+:doc:`Preamble <preamble/ubuntu>`
     Basic content to refresh your memory, such as simple Ubuntu use, Python in Ubuntu, etc.
     
 :doc:`ROS2 Setup <installation>` (⭐The ROS2 tutorial starts here⭐)
@@ -25,8 +25,8 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    :caption: Preamble
    :hidden:
 
-   preamble/ubuntu.rst
-   preamble/python.rst
+   preamble/ubuntu
+   preamble/python
 
 .. toctree::
    :caption: ROS2 Setup
@@ -80,7 +80,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 
 .. warning::
-   This project is under active development and currently a draft.
+   This project is under active development and is currently a draft.
 
 .. warning::
    If you're using macOS or Windows, this is **NOT** the guide for you. There might be a lot of overlap, but none of the code shown here has been tested on those operating systems.
