@@ -308,6 +308,12 @@ We import the :code:`unittest` module along with the class that we want to test,
 Test them all
 ^^^^^^^^^^^^^
 
+Unit tests are somewhat like insurance. The more coverage you have, the better. In this example, we test all the 
+elements in the class. Each test will be based on one or more asserts. For more info check the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
+
+In a few words, we make a subclass of :code:`unittest.TestCase` and create methods within it that test one part
+of the code, hence the name unit tests. 
+
 .. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
    :language: python
    :linenos:
@@ -315,6 +321,9 @@ Test them all
 
 The main function
 ^^^^^^^^^^^^^^^^^
+
+Generally, a test script based on `unittest` will have the following main function. It will run all available tests in our test class.
+For more info and alternatives check the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
 
 .. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
    :language: python
