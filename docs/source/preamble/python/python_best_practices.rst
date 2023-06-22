@@ -30,16 +30,16 @@ The difference between *scripts* and *modules*
 According to `The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, the definition of
 *script* and *module* is not disjoint, in fact, it is said that
 
-  [...] you can make the file usable as a script as well as an importable module [...]
+  *[...] you can make the file usable as a script as well as an importable module [...]*
 
 In the official documentation, a Python script is defined as
 
-  [...] a [script is a] somewhat longer program, you are better off using a text editor to prepare the input for the
-  interpreter and running it with [a script] as input instead.
+  *[...] a [script is a] somewhat longer program, you are better off using a text editor to prepare the input for the
+  interpreter and running it with [a script] as input instead.*
 
 and a module as is defined as
 
-  [A module is a file] to put definitions [...] and use them in a script or in an interactive instance of the interpreter.
+  *[A module is a file] to put definitions [...] and use them in a script or in an interactive instance of the interpreter.*
 
 There are more profound differences in how the Python interpreter handles *scripts* and *modules*, but in the wild the
 the difference is usually as I described in :ref:`Python Terminology`.
@@ -163,7 +163,7 @@ This broad :code:`Exception` clause could be replaced for a less broad exception
 application, but that is usually not necessary nor safe. When handling hardware, it is, in general, **IMPOSSIBLE** to
 test the code of all combinations of inputs and states. As `they say <https://darkestdungeon.fandom.com/wiki/Narrator_(Darkest_Dungeon)>`_,
 
-   Be wary, for overconfidence is a slow and insidious [source for terrible bugs and failed demos]
+   *Be wary, for overconfidence is a slow and insidious [source for terrible bugs and failed demos]*
 
 .. hint::
 
