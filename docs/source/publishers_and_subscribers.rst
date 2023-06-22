@@ -47,18 +47,16 @@ Before we start exploring the elements of the package, let us
 Create the Node with a publisher
 --------------------------------
 
-.. note::
+.. admonition:: **TL:DR** Creating a publisher
 
-         **TL:DR** Creating a publisher
-
-         #. Add new dependencies to :file:`package.xml`
-         #. Import new messages :code:`from <package_name>.msg import <msg_name>`
-         #. In a subclass of :code:`Node`
-         
-            #. create a publisher with :code:`self.publisher = self.create_publisher(...)`
-            #. Send messages with :code:`self.publisher.publish(....)`
-            
-         #. Add the new Node to :file:`setup.py`
+               #. Add new dependencies to :file:`package.xml`
+               #. Import new messages :code:`from <package_name>.msg import <msg_name>`
+               #. In a subclass of :code:`Node`
+               
+                  #. create a publisher with :code:`self.publisher = self.create_publisher(...)`
+                  #. Send messages with :code:`self.publisher.publish(....)`
+                  
+               #. Add the new Node to :file:`setup.py`
 
 For the publisher, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_publisher_node.py`, with the following contents
 
