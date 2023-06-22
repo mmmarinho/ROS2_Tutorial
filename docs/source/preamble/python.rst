@@ -6,6 +6,7 @@ Python Basics
    Under heavy construction.
 
 .. toctree::
+   :maxdepth: 2
 
    python/installing_python
    python/editing_python_source
