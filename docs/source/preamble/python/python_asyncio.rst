@@ -3,9 +3,7 @@
 Python's :code:`asyncio`
 ========================
 
-.. warning::
-
-   Under heavy construction.
+.. include:: ../../the_topic_is_under_heavy_construction.rst
 
 .. note::
    Asynchronous code is not the same as code that runs in parallel, even more so in Python because of the :abbr:`GIL (Global Interpreter Lock)` (`More info <https://wiki.python.org/moin/GlobalInterpreterLock>`_).
