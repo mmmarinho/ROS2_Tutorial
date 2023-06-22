@@ -1,9 +1,7 @@
 Python Basics
 =============
 
-.. warning::
-
-   Under heavy construction.
+.. include:: the_topic_is_under_heavy_construction.rst
 
 .. toctree::
 
