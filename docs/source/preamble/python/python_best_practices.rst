@@ -166,7 +166,7 @@ test the code of all combinations of inputs and states. As `they say <https://da
 .. hint::
 
    Catching all :code:`Exceptions` might make debugging more difficult in some cases. At your own risk, you can remove
-   this clause temporarily when trying to fix a stubborn bug, at the risk of forgetting to putting it back and ruining
+   this clause temporarily when trying to debug a stubborn bug, at the risk of forgetting to put it back and ruining
    your hardware.
 
 Minimalist Package
