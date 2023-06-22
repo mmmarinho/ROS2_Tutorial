@@ -224,9 +224,24 @@ Use type hints profusely
 Unit tests
 ----------
 
-:download:`_test_minimalist_class.py <../../../../preamble/python/minimalist_package/_test_minimalist_class.py>`
+:download:`test_minimalist_class.py <../../../../preamble/python/tests/test_minimalist_class.py>`
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/_test_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
    :language: python
    :linenos:
    :lines: 6-
+
+.. code-block:: commandLine
+   
+   ============================= test session starts ==============================
+   collecting ... collected 5 items
+   
+   tests/test_minimalist_class.py::TestMinimalistClass::test_attribute PASSED [ 20%]
+   tests/test_minimalist_class.py::TestMinimalistClass::test_get_set_private_attribute PASSED [ 40%]
+   tests/test_minimalist_class.py::TestMinimalistClass::test_method PASSED  [ 60%]
+   tests/test_minimalist_class.py::TestMinimalistClass::test_private_attribute PASSED [ 80%]
+   tests/test_minimalist_class.py::TestMinimalistClass::test_static_method PASSED [100%]
+   
+   ============================== 5 passed in 0.03s ===============================
+   
+   Process finished with exit code 0
