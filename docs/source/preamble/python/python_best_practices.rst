@@ -35,9 +35,9 @@ According to `The Python Tutorial on Modules <https://docs.python.org/3.10/tutor
 In the official documentation, a Python script is defined as
 
   [...] a [script is a] somewhat longer program, you are better off using a text editor to prepare the input for the
-  interpreter and running it with that file as input instead.
+  interpreter and running it with [a script] as input instead.
 
-and a module as
+and a module as is defined as
 
   [A module is a file] to put definitions [...] and use them in a script or in an interactive instance of the interpreter.
 
