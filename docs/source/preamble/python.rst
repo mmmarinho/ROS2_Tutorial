@@ -1,6 +1,10 @@
 Python Basics
 =============
 
+.. warning::
+
+   Under heavy construction.
+
 .. toctree::
 
    python/installing_python
