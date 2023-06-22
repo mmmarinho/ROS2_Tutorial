@@ -112,18 +112,16 @@ Lastly, the message needs to be published using :code:`Node.publish(msg)`.
 Create the Node with a subscriber
 ---------------------------------
 
-.. note::
+.. admonition:: **TL:DR** Creating a subscriber
 
-         **TL:DR** Creating a subscriber
-
-         #. Add new dependencies to :file:`package.xml`
-         #. Import new messages :code:`from <package_name>.msg import <msg_name>`
-         #. In a subclass of :code:`Node` 
-         
-                #. create a callback :code:`def callback(self, msg):`
-                #. create a subscriber :code:`self.subscriber = self.create_subscription(...)`
-                
-         #. Add the new Node to :file:`setup.py`
+               #. Add new dependencies to :file:`package.xml`
+               #. Import new messages :code:`from <package_name>.msg import <msg_name>`
+               #. In a subclass of :code:`Node` 
+               
+                      #. create a callback :code:`def callback(self, msg):`
+                      #. create a subscriber :code:`self.subscriber = self.create_subscription(...)`
+                      
+               #. Add the new Node to :file:`setup.py`
 
 For the subscriber Node, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_subscriber_node.py`, with the following contents
 
