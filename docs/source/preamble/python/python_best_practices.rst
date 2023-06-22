@@ -15,12 +15,12 @@ Let's go through the terminology used in this tutorial. This terminology is not 
 sources/tutorials you might find elsewhere. It it is based on my interpretation of
 `The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_.
 
-======  ==========
-Term    Definition
-script  A file that can be executed, in contrast with a file with only definitions (i.e. a library).
-module  A file with content that is meant to be imported by other modules and scripts.
-package A collection of modules.
-======  ==========
+=======  ====================================================================================================
+Term     Definition
+script   A file that can be executed, in contrast with a file with only definitions (i.e. a library).
+module   A file with content that is meant to be imported by other modules and scripts.
+package  A collection of modules.
+=======  ====================================================================================================
 
 The difference between "scripts" and "modules"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,20 +28,14 @@ The difference between "scripts" and "modules"
 According to `The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, the definition of
 *script* and *module* is not disjoint, in fact it is said that
 
-::
-
   [...] you can make the file usable as a script as well as an importable module [...]
 
 In the official documentation, a Python script is defined as
-
-::
 
   [...] a [script is a] somewhat longer program, you are better off using a text editor to prepare the input for the
   interpreter and running it with that file as input instead.
 
 and a module as
-
-::
 
   [A module is a file] to put definitions [...] and use them in a script or in an interactive instance of the interpreter.
 
