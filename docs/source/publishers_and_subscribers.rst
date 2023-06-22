@@ -53,7 +53,7 @@ Create the Node with a publisher
                #. Import new messages :code:`from <package_name>.msg import <msg_name>`
                #. In a subclass of :code:`Node`
                
-                  #. create a publisher with :code:`self.publisher = self.create_publisher(...)`
+                  #. Create a publisher with :code:`self.publisher = self.create_publisher(...)`
                   #. Send messages with :code:`self.publisher.publish(....)`
                   
                #. Add the new Node to :file:`setup.py`
@@ -66,7 +66,7 @@ For the publisher, create a file in :file:`python_package_that_uses_the_messages
    :language: python
    :linenos:
    :lines: 24-
-   :emphasize-lines: 3, 11-14, 21-24, 26
+   :emphasize-lines: 3, 12-15, 25-28, 30
 
 When we built our :file:`package_with_interfaces` in the last section, what ROS2 did for us, among other things, was create a Python library called :file:`package_with_interfaces.msg` containing the Python implementation of the :file:`AmazingQuote.msg`. Because of that, we can use it by importing it like so
 
@@ -79,8 +79,7 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 32-37
-   :emphasize-lines: 3-6
+   :lines: 35-38
 
 The rule of thumb is that all of these three, including the :code:`qos_profile`, should be the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
 
@@ -89,7 +88,7 @@ The rule of thumb is that all of these three, including the :code:`qos_profile`,
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 |:code:`topic`       |  The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.                              |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-|:code:`qos_profile` |  The simplest interpretation for this parameter is the number of messages that will be stored if the :code:`spin(...)` takes to long to process them.    |
+|:code:`qos_profile` |  The simplest interpretation for this parameter is the number of messages that will be stored if the :code:`spin(...)` takes too long to process them.    |
 |                    |  (See more on  `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.)                                 |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -97,13 +96,13 @@ Then, each message is handled much like any other class in Python. We instantiat
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 42-44
+   :lines: 48-51
 
 Lastly, the message needs to be published using :code:`Node.publish(msg)`. 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 46
+   :lines: 53
 
 .. note::
 
@@ -118,8 +117,8 @@ Create the Node with a subscriber
                #. Import new messages :code:`from <package_name>.msg import <msg_name>`
                #. In a subclass of :code:`Node` 
                
-                      #. create a callback :code:`def callback(self, msg):`
-                      #. create a subscriber :code:`self.subscriber = self.create_subscription(...)`
+                      #. Create a callback :code:`def callback(self, msg):`
+                      #. Create a subscriber :code:`self.subscriber = self.create_subscription(...)`
                       
                #. Add the new Node to :file:`setup.py`
 
@@ -133,7 +132,7 @@ For the subscriber Node, create a file in :file:`python_package_that_uses_the_me
    :lines: 24-
    :emphasize-lines: 3, 11-15, 17-34
    
-Similarly to the publisher, in the subscriber we start by importing the message in question
+Similarly to the publisher, in the subscriber, we start by importing the message in question
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
@@ -144,12 +143,9 @@ Then, in our subclass of :code:`Node`, we call :code:`Node.create_publisher(...)
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
-   :lines: 32-38
-   :emphasize-lines: 3-7
+   :lines: 34-38
    
-where the only difference with respect to the publisher is the third argument, namely
-
-- :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
+where the only difference with respect to the publisher is the third argument, namely :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
