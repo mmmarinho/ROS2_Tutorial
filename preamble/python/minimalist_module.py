@@ -10,9 +10,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    """
-    When this module is run directly, it's __name__ property will be '__main__'.
-    """
+    """When this module is run directly, it's __name__ property will be '__main__'."""
     try:
         main()
     except KeyboardInterrupt:
