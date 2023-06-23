@@ -1,8 +1,6 @@
 Python Best Practices
 =====================
 
-.. include:: ../../the_topic_is_under_heavy_construction.rst
-
 .. warning::
    This tutorial expects prior knowledge in Python and objected-oriented programming.
    As such, this section is not meant to be a comprehensive Python tutorial. You have better resources
