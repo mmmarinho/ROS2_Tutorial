@@ -48,6 +48,12 @@ the difference is usually as I described in :ref:`Python Terminology`.
 Minimalist module: something to start with
 ------------------------------------------
 
+.. code-block:: console
+   :emphasize-lines: 2
+   
+   python/
+     └── minimalist_module.py
+
 Let's start with a minimalist module (in this case also a script) that prints a string periodically,
 as follows. Create a file in :file:`~/ros2_tutorials_preamble/python` called :file:`minimalist_module.py` with the following
 contents.
@@ -170,6 +176,14 @@ test the code of all combinations of inputs and states. As `they say <https://da
 Minimalist Package: Use packages to organize your code
 ------------------------------------------------------
 
+.. code-block:: console
+   :emphasize-lines: 3,4
+   
+   python/
+     └── minimalist_module.py
+     └── minimalist_package/
+           └── __init__.py
+
 A Python package is a folder that has an :file:`__init__.py`. Yes, a :file:`__init__.py` can even be empty and it would
 still be considered a Python package.
 
@@ -203,6 +217,15 @@ it this way.
 
 Minimalist class: Use classes profusely
 ---------------------------------------
+
+.. code-block:: console
+   :emphasize-lines: 5
+   
+   python/
+     └── minimalist_module.py
+     └── minimalist_package/
+           └── __init__.py
+           └── _minimalist_class.py
 
 As you are familiar with object-oriented programing, you know that classes are central to this paradigm.
 As a memory refresher, let's make a class that honestly does nothing really useful but illustrates all
@@ -249,6 +272,17 @@ For method arguments we use :code:`<argument>: type` and for return types we use
 
 Unit tests: always test your code
 ---------------------------------
+
+.. code-block:: console
+   :emphasize-lines: 5,6
+   
+   python/
+     └── minimalist_module.py
+     └── minimalist_package/
+           └── __init__.py
+           └── _minimalist_class.py
+     └── tests/
+           └── test_minimalist_class.py
 
 .. note::
 
