@@ -97,7 +97,7 @@ will be locked here until it finishes. With :code:`await`, the interpreter is fr
 .. literalinclude:: ../../../../preamble/python/minimalist_async/async_await_example.py
    :language: python
    :lines: 34-47
-   :emphasize-lines: 34,38,47
+   :emphasize-lines: 1,5,14
 
 The example is a bit on the fancy side to make it easier to read and mantain, but it could be even simpler. When using the :code:`await` paradigm, focus on the following
 
@@ -108,7 +108,7 @@ The example is a bit on the fancy side to make it easier to read and mantain, bu
 .. literalinclude:: ../../../../preamble/python/minimalist_async/async_await_example.py
    :language: python
    :lines: 50-68
-   :emphasize-lines: 3,8,46
+   :emphasize-lines: 3,8,18
 
 Ok, enough with the explanation, let's go to the endorphin rush of actually running the program with
 
