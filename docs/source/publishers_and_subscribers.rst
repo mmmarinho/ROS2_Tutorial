@@ -6,7 +6,7 @@ Publishers and Subscribers : using messages
    Except for the particulars of the :file:`setup.py` file, the way that publishers and subscribers in ROS2 work in Python, i.e. the explanation in this section, does not depend on :program:`ament_python` or :program:`ament_cmake`.
 
 Finally, we reached the point where ROS2 becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
-We can use those to provide interprocess communication, i.e. two different programs talking to each other, which otherwise can be error-prone and very difficult to implement.
+We can use those to provide `interprocess communication <https://en.wikipedia.org/wiki/Inter-process_communication>`_, i.e. two different programs talking to each other, which otherwise can be error-prone and very difficult to implement.
 
 ROS2 works on a model in which any number of processes can communicate over a :code:`Topic` that only accepts one message type. Each topic is uniquely identified by a string.
 
