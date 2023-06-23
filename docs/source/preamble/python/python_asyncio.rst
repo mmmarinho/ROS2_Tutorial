@@ -14,6 +14,17 @@ Python's :code:`asyncio`
 There are two main ways to interact with :code:`async` code, the first being by :code:`await` -ing the results or by handling those
 results through :code:`callbacks`. Let's go through both of them with examples.
 
+Use a :code:`venv`
+------------------
+
+We already know that it is a good practice to :ref:`Isolate your environment with a venv`. So, let's turn that into a reflex
+and do so for this whole section.
+
+.. code-block:: console
+
+   cd ~
+   source ros2tutorial_venv/bin/activate
+
 Create the :file:`minimalist_async` package
 -------------------------------------------
 
