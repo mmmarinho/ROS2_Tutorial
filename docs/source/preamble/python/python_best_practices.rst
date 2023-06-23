@@ -117,13 +117,12 @@ resulting in
    Howdy!
    Howdy!
 
-Note that for this second execution strategy to work, we **MUST** have the first line, called `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_
-which specifies what will be used to interpret that file. In general, Ubuntu does not guess the file type by the extension
-when running it. The shebang must be the first line of a file, such as in our example
+Note that for this second execution strategy to work, we **MUST** have the `#!` at the beginning of the first line, called `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_,
+which specifies what program will be used to interpret that file. In general, Ubuntu does not guess the file type by the extension
+when running it. 
 
 .. literalinclude:: ../../../../preamble/python/minimalist_module.py
    :language: python
-   :linenos:
    :lines: 1
 
 If we remove the shebang and try to execute the script, it will return the following errors, because Ubuntu doesn't know
@@ -143,7 +142,6 @@ Wrap the :code:`main` function on a `try--except` block
 
 .. literalinclude:: ../../../../preamble/python/minimalist_module.py
    :language: python
-   :linenos:
    :lines: 12-
 
 When a module is run directly, its :code:`__name__` property will be :code:`'__main__'`.
