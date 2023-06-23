@@ -1,7 +1,7 @@
 Creating a Python Node from scratch (for :program:`ament_python`)
 ==============================================================
 
-.. admonition:: **TL;DL** Making an :program:`ament_python` Node
+.. admonition:: **TL;DR** Making an :program:`ament_python` Node
          
          #. Modify :file:`package.xml` with any additional dependencies.
          #. Create the Node
