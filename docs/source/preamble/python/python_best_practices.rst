@@ -18,8 +18,8 @@ sources/tutorials you might find elsewhere. It is based on my interpretation of
 =======  ====================================================================================================
 Term     Definition
 script   A file that can be executed, in contrast with a file with only definitions (i.e. a library). In practice any file that can be executed.
-module   A file with content that is meant to be imported by other modules and scripts. In practice any file with an `assignment <https://en.wikipedia.org/wiki/Assignment_(computer_science)>`_ or a :code:`def`.
-package  A collection of modules. In practice, more than one nested folder with a :file:`__init__.py` each.
+module   A file with content that is meant to be imported by other modules and scripts. In practice any file with an `assignment <https://en.wikipedia.org/wiki/Assignment_(computer_science)>`_ or a :code:`def` that you import from another module or script.
+package  A collection of modules. In practice, something with a :code:`setup.py`.
 =======  ====================================================================================================
 
 The difference between *scripts* and *modules*
@@ -42,6 +42,21 @@ and a module is defined as
 There are more profound differences in how the Python interpreter handles *scripts* and *modules*, but in the wild the
 the difference is usually as I described in :ref:`Python Terminology`.
 
+The difference between *modules* and *packages*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+According to `Holy Grail of Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, a definition of packages is
+given *en passant* as follows
+
+   *Suppose you want to design a collection of modules (a “package”) [...]*
+
+In practice, the line between modules and packages tends to be somewhat blurred. It could be a single folder with many modules but at the same time `they <https://docs.python.org/3.10/tutorial/modules.html>`_
+come up with namings such as submodule
+
+   *Packages are a way of structuring Python’s module namespace [...]. For example, the module name A.B designates a submodule named B in a package named A.*
+
+What most people want to say when they mention a package is, usually, something with a :code:`setup.py` that can be built into a :code:`wheel` or something similar. We are not going to see
+that in this preamble, but we will see a lot in the ROS2 tutorial.
 
 Use a :code:`venv`
 ------------------
