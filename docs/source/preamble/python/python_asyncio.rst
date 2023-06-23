@@ -12,10 +12,10 @@ Python's :code:`asyncio`
    for them all, instead of running one at a time.
 
 There are two main ways to interact with :code:`async` code, the first being by :code:`await` -ing the results or by handling those
-results through :code:`callbacks`.
+results through :code:`callbacks`. Let's go through both of them with examples.
 
-Example package
----------------
+Create the :file:`minimalist_async` package
+-------------------------------------------
 
 .. admonition:: In this step, we'll work on this.
 
@@ -25,6 +25,15 @@ Example package
       python/
         └── minimalist_async/
               └── __init__.py
+
+As we learned in :ref:`Python package`, let's make a package called :file:`minimalist_async`.
+
+.. code-block::
+
+   cd ~/ros2_tutorials_preamble/python
+   mkdir minimalist_async
+   cd minimalist_async
+   touch __init__.py
 
 Using :code:`await`
 -------------------
@@ -44,7 +53,7 @@ Using :code:`await`
               └── __init__.py
               └── async_await_example.py
 
-Differently from "regular" programming, using :code:`async` needs us to reflect on several tasks being executed at the same time.
+Differently from synchronous programming, using :code:`async` needs us to reflect on several tasks being executed at the same time.
 The main use case is for programs with multiple tasks that can run concurrently and, at some point, we need the result of those tasks to either
 end the program or further continue with other tasks.
 
@@ -52,6 +61,8 @@ This type of interaction is suitable when either we need the results from all ta
 
 .. hint::
    If the function/method has uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
+
+To illustrate this, let's make a file called :file:`async_await_example.py` in :file:`minimalist_async` with the following contents.
 
 :download:`async_await_example.py <../../../../preamble/python/minimalist_async/async_await_example.py>`
 
