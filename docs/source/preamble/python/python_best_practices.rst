@@ -45,6 +45,17 @@ There are more profound differences in how the Python interpreter handles *scrip
 the difference is usually as I described in :ref:`Python Terminology`.
 
 
+Use a :code:`venv`
+------------------
+
+We already know that it is a good practice to :ref:`Isolate your environment with a venv`. So, let's turn that into a reflex
+and do so for this whole section.
+
+.. code-block:: console
+
+   cd ~
+   source ros2tutorial_venv/bin/activate
+
 Minimalist module: something to start with
 ------------------------------------------
 
