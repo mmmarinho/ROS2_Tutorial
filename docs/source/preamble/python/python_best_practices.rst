@@ -225,7 +225,7 @@ Use type hints profusely
    For more info, check out the documentation on `Python typing <https://docs.python.org/3.10/library/typing.html>`_ and the
    `type hints cheat sheet <https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html>`_
 
-::
+Before you flood my inbox with complaints, let me vent for you. A *preemptive* vent.
 
   *But, you know, one of the cool things in Python is that we don't have to explicitly type variables. Do you want to turn Python into C?? Why do you love C++ so much you unpythonic Python hater????*
 
