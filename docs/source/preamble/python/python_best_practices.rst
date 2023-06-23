@@ -227,7 +227,7 @@ Use type hints profusely
 
   *But, you know, one of the cool things in Python is that we don't have to explicitly type variables. Do you want to turn Python into C?? Why do you love C++ so much you unpythonic Python hater????*
 
-The dynamic typing nature of Python is, no doubt, a strong point of the language. Note that adding type hints does not impede your code to be used with other types as arguments. Type hint basically lets users know what types your functions were made/tested for, and allows your favorite :abbr:`IDE (Integrated Development Environment)` to help you with suggestions.
+The dynamic typing nature of Python is, no doubt, a strong point of the language. Note that adding type hints does not impede your code to be used with other types as arguments. Type hints are, to no one's surprise, hints to let users (and some automated tools) know what types your functions were made for, e.g. to allow your favorite :abbr:`IDE (Integrated Development Environment)` to help you with code suggestions.
 
 In these tutorials, we are not going to use any complex form of type hints. We're basically going to attain ourselves to the simplest two forms, the (attribute, argument, etc) type, and the return types.
 
