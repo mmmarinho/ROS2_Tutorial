@@ -135,8 +135,8 @@ what to do with that file.
    ./minimalist_module.py: line 5: `def main() -> None:'
 
 
-Wrap the :code:`main` function on a `try--except` block
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+It's dangerous to go alone: Always wrap the :code:`main` function on a `try--except` block
+------------------------------------------------------------------------------------------
 
 :download:`minimalist_module.py <../../../../preamble/python/minimalist_module.py>`
 
