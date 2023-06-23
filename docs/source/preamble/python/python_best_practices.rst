@@ -19,7 +19,7 @@ sources/tutorials you might find elsewhere. It is based on my interpretation of
 Term     Definition
 script   A file that can be executed, in contrast with a file with only definitions (i.e. a library). In practice any file that can be executed.
 module   A file with content that is meant to be imported by other modules and scripts. In practice any file with an `assignment <https://en.wikipedia.org/wiki/Assignment_(computer_science)>`_ or a :code:`def`.
-package  A collection of modules. In practice any folder with an :file:`__init__.py`
+package  A collection of modules. In practice, more than one nested folder with a :file:`__init__.py` each.
 =======  ====================================================================================================
 
 The difference between *scripts* and *modules*
