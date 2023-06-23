@@ -21,7 +21,7 @@ In this toy example, let us add the :code:`rclpy` as dependency, because it is t
 
 By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meaning that it is written in :abbr:`XML (Extensible Markup Language)`.
 
-Let us add the dependency between the :code:`<license>` and :code:`<test_depend>` tags. This is not a strict requirement, but is where it commonly is for standard packages.
+Let us add the dependency between the :code:`<license>` and :code:`<test_depend>` tags. This is not a strict requirement but is where it commonly is for standard packages.
 
 :download:`package.xml <../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml>`
 
@@ -38,7 +38,7 @@ After you modify the workspace, build once
    Depending on the particulars of the workspace you are (re)building, :program:`PyCharm` will only be able to recognize certain changes if it is restarted from a properly sourced terminal.
 
 After you add a new dependency to :file:`package.xml`, nothing really changes in the workspace unless a new build is performed. 
-When programming with new dependencies, unless you rebuild the workspace, :program:`PyCharm` will not recognize the libraries and autocomplete will not work.
+When programming with new dependencies, unless you rebuild the workspace, :program:`PyCharm` will not recognize the libraries, and autocomplete will not work.
 
 So, run
 
@@ -57,7 +57,7 @@ In the directory :file:`src/python_package_with_a_node/python_package_with_a_nod
    :linenos:
    :lines: 24-
    
-By now, this should be enough for you to be able to run the node in :program:`PyCharm`. You can right click it and choose :guilabel:`D&ebug sample_python_node`. This will output
+By now, this should be enough for you to be able to run the node in :program:`PyCharm`. You can right-click it and choose :guilabel:`D&ebug sample_python_node`. This will output
 
 .. code :: console
 
