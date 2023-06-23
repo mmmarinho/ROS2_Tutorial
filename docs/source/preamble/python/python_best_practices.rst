@@ -327,7 +327,6 @@ We import the :code:`unittest` module along with the class that we want to test,
 
 .. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
    :language: python
-   :linenos:
    :lines: 6-7
 
 Test them all
@@ -346,7 +345,6 @@ of the code, hence the name unit tests.
 
 .. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
    :language: python
-   :linenos:
    :lines: 10-31
 
 The main function
@@ -357,5 +355,4 @@ For more info and alternatives check the `unittest docs <https://docs.python.org
 
 .. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
    :language: python
-   :linenos:
    :lines: 34-35
