@@ -1,8 +1,6 @@
 Installing Python on Ubuntu
 ===========================
 
-.. include:: ../../the_topic_is_under_heavy_construction.rst
-
 .. warning::
    If you change or try to tinker with the default Python version of Ubuntu, your system will most likely **BREAK COMPLETELY**. 
    Do not play around with the default Python installation, because Ubuntu depends on it to work properly (or work at all).
@@ -104,19 +102,26 @@ Whenever we want to use a :file:`venv`, it must be explicitly activated.
    cd ~
    source ros2tutorial_venv/bin/activate
    
-The terminal will change to let us know that we are using a :file:`venv`, as follows
+The terminal will change to have the prefix :code:`(ros2tutorial_venv)` to let us know that we are using a :file:`venv`, as follows
 
 .. code-block:: console
 
-   TODO
+   (ros2tutorial_venv) murilo@murilos-toaster:~$ 
    
 Deactivate a :file:`venv`
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To deactivate, run
 
 .. code-block:: console
 
    deactivate
 
+We'll know that we're no longer using the :code:`ros2tutorial_venv` because the prefix will dissapear back to 
+
+.. code-block:: console
+
+   murilo@murilos-toaster:~$ 
 
 Installing libraries
 --------------------
@@ -132,31 +137,36 @@ Installing libraries
    
 As an example, let us install the best robot modeling and control library ever conceived, `DQ Robotics <https://github.com/dqrobotics>`_. 
 
+First, we activate the virtual environment
+
+.. code-block:: console
+
+   cd ~
+   source ros2tutorial_venv/bin/activate
+
+then, we install
+
 .. code-block:: console
 
    python3 -m pip install dqrobotics
    
-which will result in
+which will result in something similar to (might change depending on future versions)
 
 .. code-block:: console
 
-   TODO
-   
+   Collecting dqrobotics
+   Downloading dqrobotics-23.4.0a15-cp310-cp310-manylinux1_x86_64.whl (551 kB)
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 551.4/551.4 KB 6.3 MB/s eta 0:00:00
+   Collecting numpy
+     Downloading numpy-1.25.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.6 MB)
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.6/17.6 MB 7.4 MB/s eta 0:00:00
+   Installing collected packages: numpy, dqrobotics
+   Successfully installed dqrobotics-23.4.0a15 numpy-1.25.0
 
+   
 When using :program:`pip`, do **NOT** use :code:`sudo`
 ------------------------------------------------------
 
 Using :code:`sudo` without knowing what one is doing is *the* easiest way to wreak havoc in a Ubuntu installation. Even seemingly innocuous operations such as copying files with :code:`sudo` can cause irreparable damage to your Ubuntu environment.
 
 When installing Python packages that are not available on :program:`apt`, use :program:`pip`.
-
-
-
-
-
-
-
-
-
-
-
