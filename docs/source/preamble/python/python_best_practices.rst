@@ -45,8 +45,8 @@ There are more profound differences in how the Python interpreter handles *scrip
 the difference is usually as I described in :ref:`Python Terminology`.
 
 
-Minimalist module
------------------
+Minimalist module: something to start with
+------------------------------------------
 
 Let's start with a minimalist module (in this case also a script) that prints a string periodically,
 as follows. Create a file in :file:`~/ros2_tutorials_preamble/python` called `minimalist_module.py` with the following
@@ -60,10 +60,10 @@ contents.
    :lines: 1-
 
 Running a Python script on the terminal
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------
 
 There are a few ways to run this module in the command line. Without worrying about file permissions, specifying that
-the file must be interpreted by Python (and which version of Python) is the general way to run a script
+the file must be interpreted by Python (and which version of Python) is the most general way to run a script
 
 .. code-block:: commandline
 
@@ -82,7 +82,7 @@ which will output
    Howdy!
    Howdy!
 
-Another way to run a Python script is to execute it directly. This can be done with
+Another way to run a Python script is to execute it directly in the terminal. This can be done with
 
 .. code-block:: commandline
 
@@ -218,15 +218,37 @@ the basic points in a Python class.
    :lines: 31-
 
 Use type hints profusely
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
+.. note::
+
+   For more info, check out the documentation on `Python typing <https://docs.python.org/3.10/library/typing.html>`_ and the
+   `type hints cheat sheet <https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html>`_
+
+  *But, you know, one of the cool things in Python is that we don't have to explicitly type variables. Do you want to turn Python into C?? Why do you love C++ so much you unpythonic Python hater????*
+
+The dynamic typing nature of Python is, no doubt, a strong point of the language. Note that adding type hints does not impede your code to be used with other types as arguments. Type hint basically lets users know what types your functions were made/tested for, and allows your favorite :abbr:`IDE (Integrated Development Environment)` to help you with suggestions.
+
+In these tutorials, we are not going to use any complex form of type hints. We're basically going to attain ourselves to the simplest two forms, the (attribute, argument, etc) type, and the return types.
+
+For attributes we use :code:`<attribute>: type`, as shown below
+
+.. literalinclude:: ../../../../preamble/python/minimalist_package/_minimalist_class.py
+   :language: python
+   :lines: 38
+
+For method arguments we use :code:`<argument>: type` and for return types we use :code:`def method(args) -> return type`, as shown below in our example
+
+.. literalinclude:: ../../../../preamble/python/minimalist_package/_minimalist_class.py
+   :language: python
+   :lines: 62-64
 
 Unit tests: always test your code
 ---------------------------------
 
-.. warning::
+.. note::
 
-   This is **NOT** a comprehensive tutorial on unit testing. You're better served with the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
+   For a comprehensive tutorial on unit testing go through the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
 
 `Unit testing <https://en.wikipedia.org/wiki/Unit_testing>`_ is a flag that has been waved by programming enthusiasts 
 and is often a good measurement of code maturity.
