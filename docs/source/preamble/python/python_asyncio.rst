@@ -117,15 +117,17 @@ Ok, enough with the explanation, let's go to the endorphin rush of actually runn
    cd ~/ros2_tutorials_preamble/python
    python -m minimalist_async.async_await_example
 
-Which will result in something like shown below. The function is stochastic so it might take more or less to 
-and the order of the tasks ending might also be different.
+Which will result in something like shown below. The function is stochastic so it might take more or less time to 
+return and the order of the tasks ending might also be different.
 
 However, in the :code:`await` framework, the results will **ALWAYS** be processed in the order that was specified
 by the :code:`await`, **EVEN WHEN THE OTHER TASK ENDS FIRST**, as in the example below. This is neither good nor bad,
 it will be proper for some cases and not proper for others.
 
+We can also see that both tasks are running concurrently until :code:`task2` finishes, then only :code:`task1` is executed.
+
 .. code-block:: console
-   :emphasize-lines: 21,22
+   :emphasize-lines: 13,20,21,22
 
    Awaiting results...
    task1 retry needed (roll = 0.36896762068176037 > 0.1).            
@@ -152,13 +154,14 @@ it will be proper for some cases and not proper for others.
    
    Process finished with exit code 0
 
+Hooray! May there be concurrency!
 
 Using :code:`callback`
 ----------------------
 
 .. admonition:: **TL;DR** Using :code:`callbacks`
       
-   #. Run multiple :code:`Task`.
+   #. Run multiple :code:`Task` -s.
    #. Add a :code:`callback` to handle the result **as soon as it is ready**.
    #. Use :code:`await` for them just so that the main loop does not die.
 
@@ -175,7 +178,10 @@ Using :code:`callback`
 
 Differently from :code:`await` -ing for each task and then processing their result, we can define :code:`callbacks`
 in such a way that each result will be processed as they come. In that way, the results can be processed in an arbitrary
-order.
+order. Once again, this is inherently neither a good strategy nor a bad one. Some frameworks will work with callbacks,
+for example ROS1, ROS2, and Qt, but some others will prefer to use :code:`await`.
+
+Enough diplomacy, let's make a file called :file:`async_callback_example.py` in :file:`minimalist_async` with the following contents.
 
 :download:`async_callback_example.py <../../../../preamble/python/minimalist_async/async_callback_example.py>`
 
@@ -183,3 +189,53 @@ order.
    :language: python
    :linenos:
    :lines: 24-
+
+In the :code:`callback` paradigm, besides the function that does the actual task, as in the prior example, we have to make
+a, to no one's surprise, callback function to process the results as they come.
+
+We do so with 
+
+.. literalinclude:: ../../../../preamble/python/minimalist_async/async_callback_example.py
+   :language: python
+   :lines: 28-39
+
+In this case, the :code:`callback` must receive a :code:`asyncio.Future` and process it. Test the future for :code:`None` in 
+case the task fails for any reason.
+
+Aside from that, there are only two key differences with the :code:`await` logic example we showed before,
+
+#. The callback must be added with :code:`task.add_done_callback()`, remember to use :code:`partial()` if the callback has other parameters besides the :code:`Future`
+#. :code:`await` for the tasks at the end, not because this script will process it (it will be processed as they come by its :code:`callback`), but because otherwise the main script will return and nothing will be done.
+
+.. literalinclude:: ../../../../preamble/python/minimalist_async/async_callback_example.py
+   :language: python
+   :lines: 42-61
+   :emphasize-lines: 10,20
+
+`But enough talk… Have at you! <https://knowyourmeme.com/memes/die-monster-what-is-a-man>`_ Let's run the code with
+
+.. code-block:: console
+
+   cd ~/ros2_tutorials_preamble/python
+   python -m minimalist_async.async_callback_example
+
+Depending on our luck, we will have a very illustrative result like the one below. This example shows that, with the :code:`callback` logic, when the second task
+ends before the first one, it will be automatically processed by its :code:`callback`.
+
+.. code-block:: console
+   :emphasize-lines: 5,6,11,12
+
+   Awaiting for results...
+   task1 retry needed (roll = 0.6248308966234916 > 0.1).
+   task2 retry needed (roll = 0.24259714032999036 > 0.1).
+   task1 retry needed (roll = 0.1996764883575476 > 0.1).            
+   task2 Done.
+   The result of task=task2 was 0.09069407383542283.
+   task1 retry needed (roll = 0.6700777523785147 > 0.1).            
+   task1 retry needed (roll = 0.7344216907108979 > 0.1).            
+   task1 retry needed (roll = 0.4907223062034761 > 0.1).            
+   task1 retry needed (roll = 0.20026037098687932 > 0.1).            
+   task1 Done.
+   The result of task=task1 was 0.09676678954317675.
+
+Can you feel the new synaptic connections?
