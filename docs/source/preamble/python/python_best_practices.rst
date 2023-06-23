@@ -45,7 +45,7 @@ the difference is usually as I described in :ref:`Python Terminology`.
 The difference between *modules* and *packages*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-According to `Holy Grail of Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, a definition of packages is
+According to `Holy Book of Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, a definition of packages is
 given *en passant* as follows
 
    *Suppose you want to design a collection of modules (a “package”) [...]*
