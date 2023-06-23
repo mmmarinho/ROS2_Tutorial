@@ -14,19 +14,41 @@ Python's :code:`asyncio`
 There are two main ways to interact with :code:`async` code, the first being by :code:`await` -ing the results or by handling those
 results through :code:`callbacks`.
 
+Example package
+---------------
+
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 2,3
+      
+      python/
+        └── minimalist_async/
+              └── __init__.py
+
 Using :code:`await`
 -------------------
 
 .. admonition:: **TL;DR** Using :code:`await`
       
-   #. Run multiple :code:`Task`.
+   #. Run multiple :code:`Task`s.
    #. Use :code:`await` for them, **after they were executed**.
 
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 4
+      
+      python/
+        └── minimalist_async/
+              └── __init__.py
+              └── async_await_example.py
+
 Differently from "regular" programming, using :code:`async` needs us to reflect on several tasks being executed at the same time.
-The main use case are multiple tasks that can run concurrently and, at some point, we need the result of those tasks to either
+The main use case is for programs with multiple tasks that can run concurrently and, at some point, we need the result of those tasks to either
 end the program or further continue with other tasks.
 
-This type of interaction is suitable when either we need the results from all tasks before proceeding or when the order of result matters.
+This type of interaction is suitable when either we need the results from all tasks before proceeding or when the order of results matters.
 
 .. hint::
    If the function/method has uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
@@ -47,8 +69,19 @@ Using :code:`callback`
    #. Add a :code:`callback` to handle the result **as soon as it is ready**.
    #. Use :code:`await` for them just so that the main loop does not die.
 
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 5
+      
+      python/
+        └── minimalist_async/
+              └── __init__.py
+              └── async_await_example.py
+              └── async_callback_example.py
+
 Differently from :code:`await` -ing for each task and then processing their result, we can define :code:`callbacks`
-in such way that each result will processed as they come. In that way, the results can be processed in an arbitrary
+in such a way that each result will be processed as they come. In that way, the results can be processed in an arbitrary
 order.
 
 :download:`async_callback_example.py <../../../../preamble/python/minimalist_async/async_callback_example.py>`
