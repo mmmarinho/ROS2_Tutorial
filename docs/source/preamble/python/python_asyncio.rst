@@ -112,7 +112,7 @@ The example is a bit on the fancy side to make it easier to read and mantain, bu
 
 Ok, enough with the explanation, let's go to the endorphin rush of actually running the program with
 
-.. code-block:: commandLine
+.. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python
    python -m minimalist_async.async_await_example
@@ -124,7 +124,7 @@ However, in the :code:`await` framework, the results will **ALWAYS** be processe
 by the :code:`await`, **EVEN WHEN THE OTHER TASK ENDS FIRST**, as in the example below. This is neither good nor bad,
 it will be proper for some cases and not proper for others.
 
-.. code-block:: commandLine
+.. code-block:: console
    :emphasize-lines: 21,22
 
    Awaiting results...
