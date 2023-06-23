@@ -75,7 +75,7 @@ When we built our :file:`package_with_interfaces` in the last section, what ROS2
    :lines: 24-26
    :emphasize-lines: 3
 
-The publisher must be created with the :code:`Node.create_publisher(...)` method, and receives the three arguments we defined. 
+The publisher must be created with the :code:`Node.create_publisher(...)` method, which has the three parameters defined in the :ref:`publisher and subscriber parameter table`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
