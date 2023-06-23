@@ -18,7 +18,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 :doc:`ROS2 Setup <installation>` (⭐The ROS2 tutorial starts here⭐)
     Setting up a working ROS2 environment properly to follow this tutorial. 
 
-:doc:`ROS2 Usage <create_packages>`
+:doc:`ROS2 Python Usage <create_packages>`
     After setting up, instructions on creating packages, nodes, subscribers, publishers, services, etc.
 
 .. toctree::
