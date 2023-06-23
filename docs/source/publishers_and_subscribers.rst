@@ -81,16 +81,20 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
    :language: python
    :lines: 35-38
 
-The rule of thumb is that all of these three, including the :code:`qos_profile`, should be the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
+.. _publisher and subscriber parameter table:
 
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 |:code:`msg_type`    |  A class, namely the message that will be used in the topic. In this case, :code:`AmazingQuote`.                                                         |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 |:code:`topic`       |  The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.                              |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-|:code:`qos_profile` |  The simplest interpretation for this parameter is the number of messages that will be stored if the :code:`spin(...)` takes too long to process them.    |
+|:code:`qos_profile` |  The simplest interpretation for this parameter is the number of messages that will be stored if the :code:`spin(...)` takes too long to process them.   |
 |                    |  (See more on  `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.)                                 |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+.. warning::
+
+   All the parameters in :ref:`publisher and subscriber parameter table` should be *EXACTLY* the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
 
 Then, each message is handled much like any other class in Python. We instantiate and initialize the message as follows
 
@@ -156,7 +160,7 @@ That callback method will be automatically called by ROS2, as one of the tasks p
 
 .. note::
 
-   The message will **ALWAYS** take some time between being published and being received by the subscriber. The speed in which that will happen will depend no only on this Node's :code:`rclpy.spin()`, but also on the :code:`rclpy.spin()` of the publisher node and the communication channel.
+   The message will **ALWAYS** take some time between being published and being received by the subscriber. The speed in which that will happen will depend not only on this Node's :code:`rclpy.spin()`, but also on the :code:`rclpy.spin()` of the publisher node and the communication channel.
 
 Update the :file:`setup.py`
 ---------------------------
@@ -190,7 +194,7 @@ In the first terminal, we run
 
   ros2 run python_package_that_uses_the_messages amazing_quote_publisher_node
 
-Nothing in particular should happen now. The publisher is sending messages through the specific topic we defined, but we need at least one subscriber to interact with those messages.
+Nothing, in particular, should happen now. The publisher is sending messages through the specific topic we defined, but we need at least one subscriber to interact with those messages.
 
 Hence, in the second terminal, we run
 
@@ -208,7 +212,7 @@ which outputs
 
                'Use the force, Pikachu!'
 
-        And was though by the following genius
+        And was thought by the following genius
 
             -- Uncle Ben
 
@@ -220,7 +224,7 @@ which outputs
 
                'Use the force, Pikachu!'
 
-        And was though by the following genius
+        And was thought by the following genius
 
             -- Uncle Ben
 
@@ -232,7 +236,7 @@ which outputs
 
                'Use the force, Pikachu!'
 
-        And was though by the following genius
+        And was thought by the following genius
 
             -- Uncle Ben
 
@@ -241,7 +245,7 @@ which outputs
 
 .. note::
 
-   If there are any issues with either the publisher or the subscriber, this connection will not work. In the next section, we'll see strategies to help us troubleshoot and understand the communication through topics.
+   If there are any issues with either the publisher or the subscriber, this connection will not work. In the next section, we'll see strategies to help us troubleshoot and understand communication through topics.
    
 .. warning::
 
