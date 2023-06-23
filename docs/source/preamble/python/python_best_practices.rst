@@ -286,7 +286,7 @@ Unit tests: always test your code
 .. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 5,6
+      :emphasize-lines: 6,7
       
       python/
         └── minimalist_module.py
