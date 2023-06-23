@@ -82,7 +82,7 @@ When you want to isolate your environment, use :program:`venv`
    Until that is handled, we are not going to use :program:`venv` for the ROS2 tutorials. 
    However, we will use :program:`venv` to protect our ROS2 environment from these Python preamble tutorials.
  
-Using :program:`venv` (`More info <https://docs.python.org/3.10/library/venv.html>`_)is quite straightforward. 
+Using :program:`venv` (`More info <https://docs.python.org/3.10/library/venv.html>`_) is quite straightforward. 
 
 Create a :file:`venv`
 ^^^^^^^^^^^^^^^^^^^^^
@@ -92,7 +92,7 @@ Create a :file:`venv`
    cd ~
    python3 -m venv ros2tutorial_venv
    
-where the only argument, :code:`ros2tutorial_venv` is the name of the folder in which the :code:`venv` will be created.
+where the only argument, :code:`ros2tutorial_venv`, is the name of the folder in which the :code:`venv` will be created.
 
 Activate a :file:`venv`
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -127,7 +127,7 @@ Installing libraries
    They are, in general, not compatible with each other so, like cleaning products, **DO NOT** mix them.
    
 .. hint::
-   Using :code:`python3 -m pip` instead of calling just :code:`pip` allows more control which version of :program:`pip` is being called. The need for this
+   Using :code:`python3 -m pip` instead of calling just :code:`pip` allows more control over which version of :program:`pip` is being called. The need for this
    becomes more evident when several Python versions have to coexist in a system.
    
 As an example, let us install the best robot modeling and control library ever conceived, `DQ Robotics <https://github.com/dqrobotics>`_. 
@@ -146,7 +146,7 @@ which will result in
 When using :program:`pip`, do **NOT** use :code:`sudo`
 ------------------------------------------------------
 
-Using :code:`sudo` without knowing what one is doing is *the* easiest way to wreak havoc in a Ubuntu installation. Even seemengly innocuous operations such as copying files with :code:`sudo` can cause irreparable damage to your Ubuntu environment.
+Using :code:`sudo` without knowing what one is doing is *the* easiest way to wreak havoc in a Ubuntu installation. Even seemingly innocuous operations such as copying files with :code:`sudo` can cause irreparable damage to your Ubuntu environment.
 
 When installing Python packages that are not available on :program:`apt`, use :program:`pip`.
 
