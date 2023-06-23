@@ -49,7 +49,7 @@ Minimalist module: something to start with
 ------------------------------------------
 
 Let's start with a minimalist module (in this case also a script) that prints a string periodically,
-as follows. Create a file in :file:`~/ros2_tutorials_preamble/python` called `minimalist_module.py` with the following
+as follows. Create a file in :file:`~/ros2_tutorials_preamble/python` called :file:`minimalist_module.py` with the following
 contents.
 
 :download:`minimalist_module.py <../../../../preamble/python/minimalist_module.py>`
@@ -138,17 +138,15 @@ what to do with that file.
 It's dangerous to go alone: Always wrap the :code:`main` function on a `try--except` block
 ------------------------------------------------------------------------------------------
 
-:download:`minimalist_module.py <../../../../preamble/python/minimalist_module.py>`
-
-.. literalinclude:: ../../../../preamble/python/minimalist_module.py
-   :language: python
-   :lines: 12-
-
 When a module is run directly, its :code:`__name__` property will be :code:`'__main__'`.
 
 It is good practice to wrap the :code:`main()` call in a :code:`try--except` block
 with at least the :code:`KeyboardInterrupt` clause. This allows the user to shutdown
-the module cleanly either through the terminal or through :program:`PyCharm`.
+the module cleanly either through the terminal or through :program:`PyCharm`. We have done so in the example as follows
+
+.. literalinclude:: ../../../../preamble/python/minimalist_module.py
+   :language: python
+   :lines: 12-
 
 This is of particular importance when hardware is used, otherwise, the connection with it might be left in an undefined
 state causing difficult-to-understand problems at best and physical harm at worst.
@@ -193,7 +191,7 @@ following contents
    :lines: 1-
 
 When adding imports to the :file:`__init__.py`, the folder that we use to open in Pycharm and that we call to execute
-the scripts is *extremely* relevant. When packages are deployed (e.g. in `PyPI <https://pypi.org/>`_ or ROS2), the correct
+the scripts is *extremely* relevant. When packages are deployed (e.g. in `PyPI <https://pypi.org/>`_ or ROS2), the "correct"
 way to import in :file:`__init__.py` is to use :code:`import <PACKAGE_NAME>.<THING_TO_IMPORT>`, which is why we're doing
 it this way.
 
@@ -207,8 +205,11 @@ Minimalist class: Use classes profusely
 ---------------------------------------
 
 As you are familiar with object-oriented programing, you know that classes are central to this paradigm.
-As a memory refresher, let's make a class that honestly does nothing useful but illustrates all
+As a memory refresher, let's make a class that honestly does nothing really useful but illustrates all
 the basic points in a Python class.
+
+Create a file in :file:`~/ros2_tutorials_preamble/python/minimalist_package` called :file:`_minimalist_class.py` with the following
+contents.
 
 :download:`_minimalist_class.py <../../../../preamble/python/minimalist_package/_minimalist_class.py>`
 
@@ -271,7 +272,7 @@ Back to the example, a good practice is to create a folder name :file:`tests` at
    cd ~/ros2_tutorials_preamble/python
    mkdir tests
 
-Then, we create a file named :file:`test_minimalist_class.py` with the contents below and add it to the :file:`tests` folder.
+Then, we create a file named :file:`test_minimalist_class.py` with the contents below in the :file:`tests` folder.
 
 .. note::
  
