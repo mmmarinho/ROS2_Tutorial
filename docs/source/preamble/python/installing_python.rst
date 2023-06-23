@@ -127,7 +127,7 @@ Installing libraries
 --------------------
 
 .. warning::
-   In these tutorials, we rely either on :program:`apt` or　:program:`pip` to install packages. 
+   In these tutorials, we rely either on :program:`apt` or :program:`pip` to install packages. 
    There are other package managers for Python and plenty of other ways to install and manage packages.
    They are, in general, not compatible with each other so, like cleaning products, **DO NOT** mix them.
    
