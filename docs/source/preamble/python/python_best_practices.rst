@@ -13,7 +13,7 @@ Python Best Practices
 Terminology
 -----------
 
-Let's go through the terminology used in this tutorial. This terminology is not necessarily uniform with other
+Let's go through the Python terminology used in this tutorial. This terminology is not necessarily uniform with other
 sources/tutorials you might find elsewhere. It is based on my interpretation of
 `The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_.
 
