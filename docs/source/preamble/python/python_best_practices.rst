@@ -335,7 +335,7 @@ Test them all
 .. note::
 
    Good unit tests will not only let you know when something broke but also *where* it broke. A failed test of a high-level function might not give
-   you too much information, whereas a failed test of a lower-level (more fundamental) function will allow you to pin-point the issue.
+   you too much information, whereas a failed test of a lower-level (more fundamental) function will allow you to pinpoint the issue.
 
 Unit tests are somewhat like insurance. The more coverage you have, the better. In this example, we test all the 
 elements in the class. Each test will be based on one or more asserts. For more info check the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
@@ -347,6 +347,8 @@ of the code, hence the name unit tests.
    :language: python
    :lines: 10-31
 
+If one of the :code:`asserts` fails, then the related test will fail, and the test framework will let us know which one.
+
 The main function
 ^^^^^^^^^^^^^^^^^
 
@@ -356,3 +358,4 @@ For more info and alternatives check the `unittest docs <https://docs.python.org
 .. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
    :language: python
    :lines: 34-35
+   :emphasize-lines: 2
