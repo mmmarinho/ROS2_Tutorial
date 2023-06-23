@@ -51,7 +51,7 @@ Using :code:`await`
 
 .. admonition:: **TL;DR** Using :code:`await`
       
-   #. Run multiple :code:`Task`s.
+   #. Run multiple :code:`Task`.
    #. Use :code:`await` for them, **after they were executed**.
 
 .. admonition:: In this step, we'll work on this.
