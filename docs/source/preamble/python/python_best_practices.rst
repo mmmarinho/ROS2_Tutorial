@@ -186,6 +186,8 @@ test the code of all combinations of inputs and states. As `they say <https://da
    this clause temporarily when trying to debug a stubborn bug, at the risk of forgetting to put it back and ruining
    your hardware.
 
+.. _Python package:
+
 Minimalist Package: Use packages to organize your code
 ------------------------------------------------------
 
