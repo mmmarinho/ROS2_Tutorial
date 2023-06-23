@@ -62,7 +62,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    using_python_library
    
 .. toctree::
-   :caption: ROS2 Interface Basics
+   :caption: ROS2 Python Interface Basics
    :hidden:
    
    messages
