@@ -273,8 +273,17 @@ contents.
    :linenos:
    :lines: 31-
 
-Use type hints profusely
-------------------------
+Not a matter of taste: Code style
+---------------------------------
+
+*TODO*
+
+It might be cramming throgh giberjabber leetcode that gets you through the door into one of those fancy companies with no dress code and free snacks. In the ideal world, at least, writing easy to understand code with the proper style is what should keep you in that job.
+
+...
+
+Take the (type) hint: Always type hints
+----------------------------------------
 
 .. note::
 
