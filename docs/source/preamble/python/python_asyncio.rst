@@ -26,7 +26,7 @@ and do so for this whole section.
 Create the :file:`minimalist_async` package
 -------------------------------------------
 
-.. admonition:: In this step, we'll work on this.
+.. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
       :emphasize-lines: 2,3
@@ -42,7 +42,37 @@ As we learned in :ref:`Python package`, let's make a package called :file:`minim
    cd ~/ros2_tutorials_preamble/python/minimalist_package
    mkdir minimalist_async
    cd minimalist_async
-   touch __init__.py
+
+we then create an :file:`__init__.py` file with the following contents
+
+:download:`__init__.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/__init__.py>`
+
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/__init__.py
+   :language: python
+   :linenos:
+   :lines: 1-
+
+Create the :code:`async` function
+---------------------------------
+
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 4
+      
+      python/minimalist_package/
+        └── minimalist_async/
+              └── __init__.py
+              └── _unlikely_to_return.py
+
+
+:download:`_unlikely_to_return.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/_unlikely_to_return.py>`
+
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/_unlikely_to_return.py
+   :language: python
+   :linenos:
+   :lines: 1-
+
 
 Using :code:`await`
 -------------------
