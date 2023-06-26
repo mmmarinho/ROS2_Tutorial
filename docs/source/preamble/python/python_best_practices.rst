@@ -13,14 +13,23 @@ Terminology
 
 Let's go through the Python terminology used in this tutorial. This terminology is not necessarily uniform with other
 sources/tutorials you might find elsewhere. It is based on my interpretation of
-`The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_ and my own experience.
+`The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, the `Python Glossary <https://docs.python.org/3.10/glossary.html_>`, and my own experience.
 
-=======  ====================================================================================================
-Term     Definition
-script   A file that can be executed, in contrast with a file with only definitions (i.e. a library). In practice any file meant to be executed.
-module   A file with content that is meant to be imported by other modules and scripts. In practice a folder with an :file:`__init__.py`.
-package  A collection of modules. In practice, something with a :code:`setup.py`.
-=======  ====================================================================================================
+.. list-table:: (Murilo's) Python Glossary
+   :header-rows: 1
+
+   * - Term
+     - Book Definition
+     - Use in the wild
+   * - script
+     - A Python file that can be executed.
+     - Any Python file *meant to be* executed.
+   * - module
+     - A file with content that is meant to be imported by other modules and scripts.
+     - This term is used very loosely and can basically mean any Python file, but usually a Python file *meant to be* imported from.
+   * - package
+     - A collection of modules.
+     - A folder with a :file:`__init__.py`, even if it doesn't have more than one module.
 
 The difference between *scripts* and *modules*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
