@@ -29,7 +29,7 @@ sources/tutorials you might find elsewhere. It is based on my interpretation of
      - This term is used very loosely and can basically mean any Python file, but usually a Python file *meant to be* imported from.
    * - package
      - A collection of modules.
-     - A folder with a :file:`__init__.py`, even if it doesn't have more than one module. When people say `Python Packaging <https://packaging.python.org/en/latest/>`_ it refers instead to making your package installable (e.g. with a :file:`setup.py` or :file`pyproject.toml`), so be ready for that ambiguity.
+     - A folder with a :file:`__init__.py`, even if it doesn't have more than one module. When people say `Python Packaging <https://packaging.python.org/en/latest/>`_ it refers instead to making your package installable (e.g. with a :file:`setup.py` or :file:`pyproject.toml`), so be ready for that ambiguity.
 
 The difference between *scripts* and *modules*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
