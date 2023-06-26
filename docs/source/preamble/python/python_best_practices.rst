@@ -468,7 +468,7 @@ We import the :code:`unittest` module along with the class that we want to test,
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
-   :lines: 6-7
+   :lines: 1-2
 
 Test them all
 ^^^^^^^^^^^^^
