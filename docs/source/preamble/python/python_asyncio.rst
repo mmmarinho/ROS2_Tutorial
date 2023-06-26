@@ -37,7 +37,7 @@ Create the :file:`minimalist_async` package
 
 As we learned in :ref:`Python package`, let's make a package called :file:`minimalist_async`.
 
-.. code-block::
+.. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package
    mkdir minimalist_async
@@ -66,6 +66,8 @@ Create the :code:`async` function
               └── _unlikely_to_return.py
 
 
+Let's create a module called :file:`_unlikely_to_return.py` to hold a function used for this example at the :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_async` folder with the following contents
+
 :download:`_unlikely_to_return.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/_unlikely_to_return.py>`
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/_unlikely_to_return.py
@@ -73,6 +75,12 @@ Create the :code:`async` function
    :linenos:
    :lines: 1-
 
+Because we're using :code:`await` in the function, we start by defining an :code:`async` function.
+
+.. hint::
+   If the function/method has uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
+
+The function by itself doesn't do much, so let's use it in another module.
 
 Using :code:`await`
 -------------------
@@ -85,11 +93,12 @@ Using :code:`await`
 .. admonition:: In this step, we'll work on this.
 
    .. code-block:: console
-      :emphasize-lines: 4
+      :emphasize-lines: 5
       
       python/minimalist_package/
         └── minimalist_async/
               └── __init__.py
+              └── _unlikely_to_return.py
               └── async_await_example.py
 
 Differently from synchronous programming, using :code:`async` needs us to reflect on several tasks being executed at the same time.
@@ -106,16 +115,6 @@ To illustrate this, let's make a file called :file:`async_await_example.py` in :
    :language: python
    :linenos:
    :lines: 24-
-
-Because we're going with the :code:`await` strategy, we start by defining an :code:`async` function.
-
-.. hint::
-   If the function/method has uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
-
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_await_example.py
-   :language: python
-   :lines: 29-33
-   :emphasize-lines: 1
 
 The function will be run by an instance of :code:`asyncio.Task`, which basically runs the function once. To emulate us waiting for something
 external without actually having to, we add a :code:`while True:` and return only with 10% chance. Instead of using a :code:`time.sleep()` we
