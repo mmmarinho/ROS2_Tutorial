@@ -1,8 +1,3 @@
-"""
-The 'unittest' package is built-in. Always rely on it first as it will be available
-in every platform, always, and supported with the other default Python packages.
-https://docs.python.org/3.10/library/unittest.html
-"""
 import unittest
 from minimalist_package import MinimalistClass
 

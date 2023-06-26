@@ -1,9 +1,4 @@
 """
-It is common practice to name internal modules with a trailing '_', so that
-they can be correctly imported in the '__init__.py'.
-"""
-
-"""
 MIT LICENSE
 
 Copyright (C) 2023 Murilo Marques Marinho (www.murilomarinho.info)

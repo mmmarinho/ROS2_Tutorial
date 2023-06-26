@@ -23,7 +23,7 @@ SOFTWARE.
 """
 from functools import partial
 import asyncio
-from .async_await_example import unlikely_to_return
+from minimalist_package.minimalist_async.async_await_example import unlikely_to_return
 
 
 def handle_return_callback(tag: str, future: asyncio.Future) -> None:
@@ -40,7 +40,7 @@ def handle_return_callback(tag: str, future: asyncio.Future) -> None:
         print("Problem with task={}.".format(tag))
 
 
-async def main() -> None:
+async def async_main() -> None:
     tags: list[str] = ["task1", "task2"]
     tasks: list[asyncio.Task] = []
 
@@ -62,10 +62,14 @@ async def main() -> None:
         await task
 
 
-if __name__ == "__main__":
+def main() -> None:
     try:
-        asyncio.run(main())
+        asyncio.run(async_main())
     except KeyboardInterrupt:
         pass
     except Exception as e:
         print(e)
+
+
+if __name__ == "__main__":
+    main()

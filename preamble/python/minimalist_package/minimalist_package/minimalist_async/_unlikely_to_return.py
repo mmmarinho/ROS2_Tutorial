@@ -45,33 +45,3 @@ async def unlikely_to_return(tag: str, likelihood: float = 0.1) -> float:
                 likelihood
             ))
             await asyncio.sleep(0.1)
-
-
-async def main() -> None:
-    tags: list[str] = ["task1", "task2"]
-    tasks: list[asyncio.Task] = []
-
-    # Start all tasks before awaiting on them, otherwise the code
-    # will not be concurrent.
-    for task_tag in tags:
-        task = asyncio.create_task(
-            unlikely_to_return(tag=task_tag)
-        )
-        tasks.append(task)
-
-    # Alternatively, use asyncio.gather()
-    # At this point, the functions are already running concurrently. We are now (a)waiting for the
-    # results, IN THE ORDER OF THE AWAIT, even if the other task ends first.
-    print("Awaiting for results...")
-    for (tag, task) in zip(tags, tasks):
-        result = await task
-        print("The result of task={} was {}.".format(tag, result))
-
-
-if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        pass
-    except Exception as e:
-        print(e)
