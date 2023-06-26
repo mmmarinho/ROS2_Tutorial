@@ -73,12 +73,18 @@ Let's create a module called :file:`_unlikely_to_return.py` to hold a function u
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/_unlikely_to_return.py
    :language: python
    :linenos:
-   :lines: 1-
+   :lines: 24-
+   :emphasize-lines: 6,11,15,24
 
 Because we're using :code:`await` in the function, we start by defining an :code:`async` function.
 
 .. hint::
    If the function/method has uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
+
+This function was thought this way to emulate, for example, us waiting for something
+external without actually having to. To do so,  we add a :code:`while True:` and return only with 10% chance. Instead of using a :code:`time.sleep()` we
+use :code:`await asyncio.sleep(0.1)` to unleash the power of :code:`async`. The main difference is that :code:`time.sleep()` is synchronous (blocking), meaning that the interpreter
+will be locked here until it finishes. With :code:`await`, the interpreter is free to do other things and come back to this one later after the desired amount of time has elapsed.
 
 The function by itself doesn't do much, so let's use it in another module.
 
@@ -87,7 +93,7 @@ Using :code:`await`
 
 .. admonition:: **TL;DR** Using :code:`await`
       
-   #. Run multiple :code:`Task`.
+   #. Run multiple :code:`Task` -s.
    #. Use :code:`await` for them, **after they were executed**.
 
 .. admonition:: In this step, we'll work on this.
@@ -101,11 +107,11 @@ Using :code:`await`
               └── _unlikely_to_return.py
               └── async_await_example.py
 
-Differently from synchronous programming, using :code:`async` needs us to reflect on several tasks being executed at the same time.
+Differently from synchronous programming, using :code:`async` needs us to reflect on several tasks being executed at the same time (-ish).
 The main use case is for programs with multiple tasks that can run concurrently and, at some point, we need the result of those tasks to either
 end the program or further continue with other tasks.
 
-This type of interaction is suitable when either we need the results from all tasks before proceeding or when the order of results matters.
+The :code:`await` strategy we're seeing now is suitable when either we need the results from all tasks before proceeding or when the order of results matters.
 
 To illustrate this, let's make a file called :file:`async_await_example.py` in :file:`minimalist_async` with the following contents.
 
@@ -116,25 +122,21 @@ To illustrate this, let's make a file called :file:`async_await_example.py` in :
    :linenos:
    :lines: 24-
 
-The function will be run by an instance of :code:`asyncio.Task`, which basically runs the function once. To emulate us waiting for something
-external without actually having to, we add a :code:`while True:` and return only with 10% chance. Instead of using a :code:`time.sleep()` we
-use :code:`await asyncio.sleep(0.1)`. The main difference is that :code:`time.sleep()` is synchronous (blocking), meaning that the interpreter
-will be locked here until it finishes. With :code:`await`, the interpreter is free to do other things and come back to this one later.
+We start by importing the :code:`async` method we defined in the other module
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_await_example.py
    :language: python
-   :lines: 34-47
-   :emphasize-lines: 1,5,14
+   :lines: 25
 
-The example is a bit on the fancy side to make it easier to read and mantain, but it could be even simpler. When using the :code:`await` paradigm, focus on the following
+The function will be run by an instance of :code:`asyncio.Task`. When the task is created, it is equivalent to calling the function and it starts running concurrently to the script that created the task. The example is a bit on the fancy side to make it easier to read and mantain, but the concept is simple. When using the :code:`await` paradigm, focus on the following
 
-#. Make the function it should run, like our :code:`unlikely_to_return()` above.
+#. Make the function it should run, like our :code:`unlikely_to_return()`.
 #. Run all concurrent tasks and keep a reference to them as :code:`asyncio.Task`.
 #. :code:`await` on each :code:`asyncio.Task`, in the order in which you want those results.
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_await_example.py
    :language: python
-   :lines: 50-68
+   :lines: 28-47
    :emphasize-lines: 3,8,18
 
 Ok, enough with the explanation, let's go to the endorphin rush of actually running the program with
