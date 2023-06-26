@@ -362,13 +362,13 @@ In these tutorials, we are not going to use any complex form of type hints. We'r
 
 For attributes we use :code:`<attribute>: type`, as shown below
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py
    :language: python
    :lines: 37
 
 For method arguments we use :code:`<argument>: type` and for return types we use :code:`def method(args) -> return type`, as shown below in our example
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py
    :language: python
    :lines: 62-64
    :emphasize-lines: 1
@@ -466,7 +466,7 @@ is built into Python so, unless you have a very good reason not to use it, `just
 
 We import the :code:`unittest` module along with the class that we want to test, namely :code:`MinimalistClass`.
 
-.. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
    :lines: 6-7
 
@@ -484,7 +484,7 @@ elements in the class. Each test will be based on one or more asserts. For more 
 In a few words, we make a subclass of :code:`unittest.TestCase` and create methods within it that test one part
 of the code, hence the name unit tests. 
 
-.. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
    :lines: 10-31
 
@@ -496,7 +496,7 @@ The main function
 Generally, a test script based on `unittest` will have the following main function. It will run all available tests in our test class.
 For more info and alternatives check the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
 
-.. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
    :lines: 34-35
    :emphasize-lines: 2
