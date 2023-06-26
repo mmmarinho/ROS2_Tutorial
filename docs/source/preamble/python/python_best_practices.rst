@@ -220,8 +220,8 @@ what to do with that file.
    ./minimalist_script.py: line 5: syntax error near unexpected token `('
    ./minimalist_script.py: line 5: `def main() -> None:'
 
-When using :code:`if :code:`__name__`:`, just call the real :code:`main()`
---------------------------------------------------------------------------
+When using :code:`if "__name__":`, just call the real :code:`main()`
+--------------------------------------------------------------------
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_module.py
    :language: python
@@ -232,11 +232,11 @@ It's dangerous to go alone: Always wrap the contents of :code:`main` function on
 
 When a module is run directly, its :code:`__name__` property will be :code:`'__main__'`.
 
-It is good practice to wrap the :code:`main()` call in a :code:`try--except` block
+It is good practice to wrap the contents of :code:`main()` call in a :code:`try--except` block
 with at least the :code:`KeyboardInterrupt` clause. This allows the user to shutdown
 the module cleanly either through the terminal or through :program:`PyCharm`. We have done so in the example as follows
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_module.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
    :lines: 12-
 
@@ -317,28 +317,46 @@ It might be parsing through jibber-jabber l〇〇tcode lessons that gets you thr
 
 So, always pay attention to the naming of classes (`PascalCase <https://en.wiktionary.org/wiki/Pascal_case>`_), files and functions (`snake_case <https://en.wikipedia.org/wiki/Snake_case>`_), etc.
 
-Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PEP (Python Enhancement Proposal)`, such as <PEP8 <https://peps.python.org/pep-0008/>>_. Take this time to read it and get inspired by `The Zen of Python <>`_
+Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PEP (Python Enhancement Proposal)`, such as `PEP8 <https://peps.python.org/pep-0008/>`_. Take this time to read it and get inspired by `The Zen of Python <https://peps.python.org/pep-0020/>`_
 
 .. 
 
    Beautiful is better than ugly.
+
    Explicit is better than implicit.
+
    Simple is better than complex.
+
    Complex is better than complicated.
+
    Flat is better than nested.
+
    Sparse is better than dense.
+
    Readability counts.
+
    Special cases aren't special enough to break the rules.
+
    Although practicality beats purity.
+
    Errors should never pass silently.
+
    Unless explicitly silenced.
+
    In the face of ambiguity, refuse the temptation to guess.
+
    There should be one-- and preferably only one --obvious way to do it.
+
    Although that way may not be obvious at first unless you're Dutch.
+
    Now is better than never.
+
    Although never is often better than *right* now.
+
    If the implementation is hard to explain, it's a bad idea.
+
    If the implementation is easy to explain, it may be a good idea.
+
    Namespaces are one honking great idea -- let's do more of those!
 
 
