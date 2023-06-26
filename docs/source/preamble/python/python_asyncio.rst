@@ -226,7 +226,7 @@ We do so with
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_callback_example.py
    :language: python
-   :lines: 28-39
+   :lines: 29-40
 
 In this case, the :code:`callback` must receive a :code:`asyncio.Future` and process it. Test the future for :code:`None` in 
 case the task fails for any reason.
@@ -238,7 +238,7 @@ Aside from that, there are only two key differences with the :code:`await` logic
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_callback_example.py
    :language: python
-   :lines: 42-61
+   :lines: 43-62
    :emphasize-lines: 10,20
 
 `But enough talk… Have at you! <https://knowyourmeme.com/memes/die-monster-what-is-a-man>`_ Let's run the code with
