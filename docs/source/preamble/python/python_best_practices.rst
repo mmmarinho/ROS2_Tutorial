@@ -237,6 +237,7 @@ the module cleanly either through the terminal or through :program:`PyCharm`. We
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
    :lines: 5-14
+   :emphasize-lines: 3,7,9
 
 This is of particular importance when hardware is used, otherwise, the connection with it might be left in an undefined
 state causing difficult-to-understand problems at best and physical harm at worst.
