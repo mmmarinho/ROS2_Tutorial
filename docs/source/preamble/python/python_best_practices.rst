@@ -78,24 +78,92 @@ and do so for this whole section.
    cd ~
    source ros2tutorial_venv/bin/activate
 
-Minimalist module: something to start with
-------------------------------------------
+.. _Python package:
+
+Minimalist package: something to start with
+-------------------------------------------
 
 .. admonition:: In this step, we'll work on this.
 
    .. code-block:: console
-      :emphasize-lines: 2
+      :emphasize-lines: 2,3
       
-      python/
-        └── minimalist_module.py
+      python/minimalist_package/
+        └── minimalist_package/
+              └── __init__.py
 
-Let's start with a minimalist module (in this case also a script) that prints a string periodically,
-as follows. Create a file in :file:`~/ros2_tutorials_preamble/python` called :file:`minimalist_module.py` with the following
+
+A Python package is a folder that has an :file:`__init__.py`. Yes, a :file:`__init__.py` can even be empty and it would
+still, be considered a Python package.
+
+Anyways, back to the example. First, let's make a folder for our package
+
+.. code-block::
+
+   cd ~/ros2_tutorials_preamble/python/
+   mkdir minimalist_package
+
+Then, **AGAIN**, let's create a folder with the same name within it
+
+.. code-block::
+
+   cd ~/ros2_tutorials_preamble/python/minimalist_package
+   mkdir minimalist_package
+
+.. warning::
+
+   It is confusing to have two nested folders with the same name. However, this is quite common and
+   starts to make sense after getting used to it (it is also the norm in ROS2). The first folder
+   is supposed to be how your file system sees your package (where we place the :code:`setup.py` 
+   and the other the actual Python package, with the :file:`__init__.py` and other source code.
+
+then, let's create a file :file:`__init__.py` in :file:`~/ros2_tutorials_preamble/python/minimalist_package` with the
+following contents
+
+:download:`__init__.py <../../../../preamble/python/minimalist_package/minimalist_package/__init__.py>`
+
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/__init__.py
+   :language: python
+   :linenos:
+   :lines: 1-
+
+
+.. hint::
+
+   In :code:`PyCharm`, open the :file:`~/ros2_tutorials_preamble/python/minimalist_package` folder.
+
+When adding imports to the :file:`__init__.py`, the folder that we use to open in Pycharm and that we call to execute
+the scripts is *extremely* relevant. When packages are deployed (e.g. in `PyPI <https://pypi.org/>`_ or ROS2), the "correct"
+way to import in :file:`__init__.py` is to use :code:`import <PACKAGE_NAME>.<THING_TO_IMPORT>`, which is why we're doing
+it this way.
+
+.. note::
+
+   Relative imports such as :code:`.<THING_TO_IMPORT>` might work in some cases, and that is fine. It is a supported
+   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc, and generates 
+   a lot of frustration.
+
+
+Minimalist script
+-----------------
+
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 4
+      
+      python/minimalist_package/
+        └── minimalist_package/
+              └── __init__.py
+              └── minimalist_script.py
+
+Let's start with a minimalist script (also a module) that prints a string periodically,
+as follows. Create a file in :file:`~/ros2_tutorials_preamble/python/minimalist_package` called :file:`minimalist_script.py` with the following
 contents.
 
-:download:`minimalist_module.py <../../../../preamble/python/minimalist_module.py>`
+:download:`minimalist_script.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py>`
 
-.. literalinclude:: ../../../../preamble/python/minimalist_module.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
    :linenos:
    :lines: 1-
@@ -108,8 +176,8 @@ the file must be interpreted by Python (and which version of Python) is the most
 
 .. code-block:: commandline
 
-   cd ~/ros2_tutorials_preamble/python
-   python3 minimalist_module.py
+   cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
+   python3 minimalist_script.py
 
 which will output
 
@@ -127,28 +195,28 @@ Another way to run a Python script is to execute it directly in the terminal. Th
 
 .. code-block:: commandline
 
-   cd ~/ros2_tutorials_preamble/python
-   ./minimalist_module.py
+   cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
+   ./minimalist_script.py
 
 which will result in
 
 .. code-block:: commandline
 
-   bash: ./minimalist_module.py: Permission denied
+   bash: ./minimalist_script.py: Permission denied
 
 because our file does not have the permission to run as an executable. To give it that permission, we must run **ONCE**
 
 .. code-block::
 
-   cd ~/ros2_tutorials_preamble/python
-   chmod +x minimalist_module.py
+   cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
+   chmod +x minimalist_script.py
 
 and now we can run it properly with
 
 .. code-block:: commandline
 
-   cd ~/ros2_tutorials_preamble/python
-   ./minimalist_module.py
+   cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
+   ./minimalist_script.py
 
 resulting in
 
@@ -162,7 +230,7 @@ Note that for this second execution strategy to work, we **MUST** have the `#!` 
 which specifies what program will be used to interpret that file. In general, Ubuntu does not guess the file type by the extension
 when running it. 
 
-.. literalinclude:: ../../../../preamble/python/minimalist_module.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
    :lines: 1
 
@@ -171,13 +239,19 @@ what to do with that file.
 
 .. code-block::
 
-   ./minimalist_module.py: line 2: import: command not found
-   ./minimalist_module.py: line 5: syntax error near unexpected token `('
-   ./minimalist_module.py: line 5: `def main() -> None:'
+   ./minimalist_script.py: line 2: import: command not found
+   ./minimalist_script.py: line 5: syntax error near unexpected token `('
+   ./minimalist_script.py: line 5: `def main() -> None:'
 
+When using :code:`if :code:`__name__`:`, just call the real :code:`main()`
+--------------------------------------------------------------------------
 
-It's dangerous to go alone: Always wrap the :code:`main` function on a `try--except` block
-------------------------------------------------------------------------------------------
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_module.py
+   :language: python
+   :lines: 12-
+
+It's dangerous to go alone: Always wrap the contents of :code:`main` function on a `try--except` block
+------------------------------------------------------------------------------------------------------
 
 When a module is run directly, its :code:`__name__` property will be :code:`'__main__'`.
 
@@ -185,7 +259,7 @@ It is good practice to wrap the :code:`main()` call in a :code:`try--except` blo
 with at least the :code:`KeyboardInterrupt` clause. This allows the user to shutdown
 the module cleanly either through the terminal or through :program:`PyCharm`. We have done so in the example as follows
 
-.. literalinclude:: ../../../../preamble/python/minimalist_module.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_module.py
    :language: python
    :lines: 12-
 
@@ -208,76 +282,31 @@ test the code of all combinations of inputs and states. As `they say <https://da
    this clause temporarily when trying to debug a stubborn bug, at the risk of forgetting to put it back and ruining
    your hardware.
 
-.. _Python package:
+Minimalist class: Use classes profusely
+---------------------------------------
 
-Minimalist Package: Use packages to organize your code
-------------------------------------------------------
 
 .. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 3,4
+      :emphasize-lines: 3,5
       
-      python/
-        └── minimalist_module.py
+      python/minimalist_package/
         └── minimalist_package/
               └── __init__.py
-
-A Python package is a folder that has an :file:`__init__.py`. Yes, a :file:`__init__.py` can even be empty and it would
-still be considered a Python package.
-
-Anyways, back to the example. First, let's make a folder for our package
-
-.. code-block::
-
-   cd ~/ros2_tutorials_preamble/python
-   mkdir minimalist_package
-
-then, let's create a file :file:`__init__.py` in :file:`~/ros2_tutorials_preamble/python/minimalist_package` with the
-following contents
-
-:download:`__init__.py <../../../../preamble/python/minimalist_package/__init__.py>`
-
-.. literalinclude:: ../../../../preamble/python/minimalist_package/__init__.py
-   :language: python
-   :linenos:
-   :lines: 1-
-
-When adding imports to the :file:`__init__.py`, the folder that we use to open in Pycharm and that we call to execute
-the scripts is *extremely* relevant. When packages are deployed (e.g. in `PyPI <https://pypi.org/>`_ or ROS2), the "correct"
-way to import in :file:`__init__.py` is to use :code:`import <PACKAGE_NAME>.<THING_TO_IMPORT>`, which is why we're doing
-it this way.
-
-.. note::
-
-   Relative imports such as :code:`.<THING_TO_IMPORT>` might work in some cases, and that is fine. It is a supported
-   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc, and generates 
-   a lot of frustration.
-
-Minimalist class: Use classes profusely
----------------------------------------
-
-.. admonition:: In this step, we'll work on this.
-
-   .. code-block:: console
-      :emphasize-lines: 5
-      
-      python/
-        └── minimalist_module.py
-        └── minimalist_package/
-              └── __init__.py
-              └── _minimalist_class.py
+              └── minimalist_script.py
+              └── _minimalist_class.py 
 
 As you are familiar with object-oriented programing, you know that classes are central to this paradigm.
 As a memory refresher, let's make a class that honestly does nothing really useful but illustrates all
 the basic points in a Python class.
 
-Create a file in :file:`~/ros2_tutorials_preamble/python/minimalist_package` called :file:`_minimalist_class.py` with the following
+Create a file in :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package` called :file:`_minimalist_class.py` with the following
 contents.
 
-:download:`_minimalist_class.py <../../../../preamble/python/minimalist_package/_minimalist_class.py>`
+:download:`_minimalist_class.py <../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py>`
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py
    :language: python
    :linenos:
    :lines: 31-
@@ -287,7 +316,7 @@ Not a matter of taste: Code style
 
 *TODO*
 
-It might be cramming throgh giberjabber leetcode that gets you through the door into one of those fancy companies with no dress code and free snacks. In the ideal world, at least, writing easy to understand code with the proper style is what should keep you in that job.
+It might be cramming through parsing through jibber-jabber in l〇〇tcode that gets you through the door into one of those fancy companies with no dress code and free snacks. In the ideal world, at least, writing easy-to-understand code with the proper style is what should keep you in that job.
 
 ...
 
