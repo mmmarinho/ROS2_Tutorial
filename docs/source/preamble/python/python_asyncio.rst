@@ -70,9 +70,9 @@ This type of interaction is suitable when either we need the results from all ta
 
 To illustrate this, let's make a file called :file:`async_await_example.py` in :file:`minimalist_async` with the following contents.
 
-:download:`async_await_example.py <../../../../preamble/python/minimalist_package/minimalist_async/async_await_example.py>`
+:download:`async_await_example.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_await_example.py>`
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_async/async_await_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_await_example.py
    :language: python
    :linenos:
    :lines: 24-
@@ -82,7 +82,7 @@ Because we're going with the :code:`await` strategy, we start by defining an :co
 .. hint::
    If the function/method has uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_async/async_await_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_await_example.py
    :language: python
    :lines: 29-33
    :emphasize-lines: 1
@@ -92,7 +92,7 @@ external without actually having to, we add a :code:`while True:` and return onl
 use :code:`await asyncio.sleep(0.1)`. The main difference is that :code:`time.sleep()` is synchronous (blocking), meaning that the interpreter
 will be locked here until it finishes. With :code:`await`, the interpreter is free to do other things and come back to this one later.
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_async/async_await_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_await_example.py
    :language: python
    :lines: 34-47
    :emphasize-lines: 1,5,14
@@ -103,7 +103,7 @@ The example is a bit on the fancy side to make it easier to read and mantain, bu
 #. Run all concurrent tasks and keep a reference to them as :code:`asyncio.Task`.
 #. :code:`await` on each :code:`asyncio.Task`, in the order in which you want those results.
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_async/async_await_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_await_example.py
    :language: python
    :lines: 50-68
    :emphasize-lines: 3,8,18
@@ -181,9 +181,9 @@ for example ROS1, ROS2, and Qt, but some others will prefer to use :code:`await`
 
 Enough diplomacy, let's make a file called :file:`async_callback_example.py` in :file:`minimalist_async` with the following contents.
 
-:download:`async_callback_example.py <../../../../preamble/python/minimalist_package/minimalist_async/async_callback_example.py>`
+:download:`async_callback_example.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_callback_example.py>`
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_async/async_callback_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_callback_example.py
    :language: python
    :linenos:
    :lines: 24-
@@ -193,7 +193,7 @@ a, to no one's surprise, callback function to process the results as they come.
 
 We do so with 
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_async/async_callback_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_callback_example.py
    :language: python
    :lines: 28-39
 
@@ -205,7 +205,7 @@ Aside from that, there are only two key differences with the :code:`await` logic
 #. The callback must be added with :code:`task.add_done_callback()`, remember to use :code:`partial()` if the callback has other parameters besides the :code:`Future`
 #. :code:`await` for the tasks at the end, not because this script will process it (it will be processed as they come by its :code:`callback`), but because otherwise the main script will return and nothing will be done.
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_async/async_callback_example.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_callback_example.py
    :language: python
    :lines: 42-61
    :emphasize-lines: 10,20
