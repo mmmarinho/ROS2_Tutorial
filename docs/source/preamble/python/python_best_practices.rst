@@ -118,8 +118,8 @@ Then, **AGAIN**, let's create a folder with the same name within it
 
    It is confusing to have two nested folders with the same name. However, this is quite common and
    starts to make sense after getting used to it (it is also the norm in ROS2). The first folder
-   is supposed to be how your file system sees your package (where we place the :code:`setup.py`) 
-   and the other the actual Python package, with the :file:`__init__.py` and other source code.
+   is supposed to be how your file system sees your package, i.e. the *project* folder,
+   and the other contains the actual Python package, with the :file:`__init__.py` and other source code.
 
 Minimalist script
 -----------------
