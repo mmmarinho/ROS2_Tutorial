@@ -287,7 +287,7 @@ contents.
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py
    :language: python
    :linenos:
-   :lines: 31-
+   :lines: 26-
 
 then, let's modify the :file:`__init__.py` with the
 following contents
