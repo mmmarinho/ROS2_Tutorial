@@ -83,7 +83,7 @@ and do so for this whole section.
 Minimalist package: something to start with
 -------------------------------------------
 
-.. admonition:: In this step, we'll work on this.
+.. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
       :emphasize-lines: 2,3
@@ -323,25 +323,25 @@ Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PE
 
 .. 
 
-   | Beautiful is better than ugly.
-   | Explicit is better than implicit.
-   | Simple is better than complex.
-   | Complex is better than complicated.
-   | Flat is better than nested.
-   | Sparse is better than dense.
-   | Readability counts.
-   | Special cases aren't special enough to break the rules.
-   | Although practicality beats purity.
-   | Errors should never pass silently.
-   | Unless explicitly silenced.
-   | In the face of ambiguity, refuse the temptation to guess.
-   | There should be one-- and preferably only one --obvious way to do it.
-   | Although that way may not be obvious at first `unless you're Dutch <https://stackoverflow.com/questions/2470761/what-does-this-sentence-mean-in-the-zen-of-python>`_.
-   | Now is better than never.
-   | Although never is often better than *right* now.
-   | If the implementation is hard to explain, it's a bad idea.
-   | If the implementation is easy to explain, it may be a good idea.
-   | Namespaces are one honking great idea -- let's do more of those!
+   | *Beautiful is better than ugly.*
+   | *Explicit is better than implicit.*
+   | *Simple is better than complex.*
+   | *Complex is better than complicated.*
+   | *Flat is better than nested.*
+   | *Sparse is better than dense.*
+   | *Readability counts.*
+   | *Special cases aren't special enough to break the rules.*
+   | *Although practicality beats purity.*
+   | *Errors should never pass silently.*
+   | *Unless explicitly silenced.*
+   | *In the face of ambiguity, refuse the temptation to guess.*
+   | *There should be one-- and preferably only one --obvious way to do it.*
+   | *Although that way may not be obvious at first `unless you're Dutch <https://stackoverflow.com/questions/2470761/what-does-this-sentence-mean-in-the-zen-of-python>`_.*
+   | *Now is better than never.*
+   | *Although never is often better than *right* now.*
+   | *If the implementation is hard to explain, it's a bad idea.*
+   | *If the implementation is easy to explain, it may be a good idea.*
+   | *Namespaces are one honking great idea -- let's do more of those!*
 
 
 Take the (type) hint: Always type hints
