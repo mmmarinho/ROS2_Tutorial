@@ -427,7 +427,7 @@ Then, we create a file named :file:`test_minimalist_class.py` with the contents 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
    :linenos:
-   :lines: 6-
+   :lines: 1-
 
 Running the tests
 ^^^^^^^^^^^^^^^^^
