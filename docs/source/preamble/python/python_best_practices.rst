@@ -64,8 +64,7 @@ come up with namings such as submodule
 
    *Packages are a way of structuring Python’s module namespace [...]. For example, the module name A.B designates a submodule named B in a package named A.*
 
-What most people want to say when they mention a package is, usually, something with a :code:`setup.py` that can be built into a :code:`wheel` or something similar. We are not going to see
-that in this preamble, but we will see a lot in the ROS2 tutorial.
+What most people want to say when they mention a package is, usually, either a folder with a :file:`__init__.py` something with a :code:`setup.py` that can be built into a :code:`wheel` or something similar. 
 
 Use a :code:`venv`
 ------------------
