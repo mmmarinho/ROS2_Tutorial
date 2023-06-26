@@ -500,25 +500,3 @@ For more info and alternatives check the `unittest docs <https://docs.python.org
    :language: python
    :lines: 29,30
    :emphasize-lines: 2
-
-Making your package installable
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. admonition:: In this step, we'll work on this.
-
-   .. code-block:: console
-      :emphasize-lines: 8
-      
-      python/minimalist_package/
-        └── minimalist_package/
-              └── __init__.py
-              └── minimalist_script.py
-              └── _minimalist_class.py
-        └── test/
-              └── test_minimalist_class.py
-        setup.py
-
-.. literalinclude:: ../../../../preamble/python/minimalist_package/setup.py
-   :language: python
-   :lines: 1-
-
