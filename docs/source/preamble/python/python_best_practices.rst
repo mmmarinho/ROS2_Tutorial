@@ -160,7 +160,7 @@ which will output
 
 .. hint::
 
-   You can end the :program:`minimalist_module.py` by pressing :kbd:`CTRL+C` in the terminal in which it is running.
+   You can end the :program:`minimalist_script.py` by pressing :kbd:`CTRL+C` in the terminal in which it is running.
 
 .. code-block:: commandline
 
@@ -223,7 +223,7 @@ what to do with that file.
 When using :code:`if "__name__":`, just call the real :code:`main()`
 --------------------------------------------------------------------
 
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_module.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
    :lines: 12-
 
@@ -401,12 +401,12 @@ Unit tests: always test your code
    .. code-block:: console
       :emphasize-lines: 6,7
       
-      python/
-        └── minimalist_module.py
+      python/minimalist_package/
         └── minimalist_package/
               └── __init__.py
+              └── minimalist_script.py
               └── _minimalist_class.py
-        └── tests/
+        └── test/
               └── test_minimalist_class.py
 
 `Unit testing <https://en.wikipedia.org/wiki/Unit_testing>`_ is a flag that has been waved by programming enthusiasts 
@@ -420,23 +420,27 @@ be surprised after some point if your implementations make you drown in `tech de
 Dedicating a couple of minutes now to make a couple of tests when your codebase is still in its infancy makes it more manageable 
 and less boresome.
 
-Back to the example, a good practice is to create a folder name :file:`tests` at the same level as the packages to be tested, like so
+.. note::
+
+   ROS2 uses :code:`pytest`, but that doesn't mean you also have to.
+
+Back to the example, a good practice is to create a folder name :file:`test` at the same level as the packages to be tested, like so
 
 .. code-block::
 
    cd ~/ros2_tutorials_preamble/python
-   mkdir tests
+   mkdir test
 
-Then, we create a file named :file:`test_minimalist_class.py` with the contents below in the :file:`tests` folder.
+Then, we create a file named :file:`test_minimalist_class.py` with the contents below in the :file:`test` folder.
 
 .. note::
  
    The prefix :file:`test_` is important as it is used by some frameworks to automatically discover tests. So it is better not to use
    that prefix if that file does not contain a unit test.
 
-:download:`test_minimalist_class.py <../../../../preamble/python/tests/test_minimalist_class.py>`
+:download:`test_minimalist_class.py <../../../../preamble/python/minimalist_package/test/test_minimalist_class.py>`
 
-.. literalinclude:: ../../../../preamble/python/tests/test_minimalist_class.py
+.. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
    :linenos:
    :lines: 6-
@@ -446,30 +450,27 @@ Running the tests
 
 For a little jolt of instant gratification, let's run the tests before we proceed with the explanation.
 
-There are many ways to run tests written with :code:`unittest`. What we'll do that works with this example
-is
+There are many ways to run tests written with :code:`unittest`. The following will run all tests found in the folder :file:`test`
 
 .. code-block:: commandLine
 
-   cd ~/ros2_tutorials_preamble/python
-   python3 -m unittest tests/test_minimalist_class.py
+   cd ~/ros2_tutorials_preamble/python/minimalist_package
+   python -m unittest discover -v test
 
 which will output
 
 .. code-block:: commandLine
    
-   ============================= test session starts ==============================
-   collecting ... collected 5 items
+   test_attribute (test_minimalist_class.TestMinimalistClass) ... ok
+   test_get_set_private_attribute (test_minimalist_class.TestMinimalistClass) ... ok
+   test_method (test_minimalist_class.TestMinimalistClass) ... ok
+   test_private_attribute (test_minimalist_class.TestMinimalistClass) ... ok
+   test_static_method (test_minimalist_class.TestMinimalistClass) ... ok
    
-   tests/test_minimalist_class.py::TestMinimalistClass::test_attribute PASSED [ 20%]
-   tests/test_minimalist_class.py::TestMinimalistClass::test_get_set_private_attribute PASSED [ 40%]
-   tests/test_minimalist_class.py::TestMinimalistClass::test_method PASSED  [ 60%]
-   tests/test_minimalist_class.py::TestMinimalistClass::test_private_attribute PASSED [ 80%]
-   tests/test_minimalist_class.py::TestMinimalistClass::test_static_method PASSED [100%]
+   ----------------------------------------------------------------------
+   Ran 5 tests in 0.000s
    
-   ============================== 5 passed in 0.03s ===============================
-   
-   Process finished with exit code 0
+   OK
 
 Yay! We've done it!
 
