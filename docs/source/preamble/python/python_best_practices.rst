@@ -486,7 +486,7 @@ of the code, hence the name unit tests.
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
-   :lines: 10-31
+   :lines: 12-31
 
 If one of the :code:`asserts` fails, then the related test will fail, and the test framework will let us know which one.
 
@@ -498,5 +498,5 @@ For more info and alternatives check the `unittest docs <https://docs.python.org
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
-   :lines: 34-35
+   :lines: 29,30
    :emphasize-lines: 2
