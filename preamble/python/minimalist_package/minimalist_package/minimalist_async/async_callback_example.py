@@ -23,7 +23,7 @@ SOFTWARE.
 """
 from functools import partial
 import asyncio
-from minimalist_package.minimalist_async.async_await_example import unlikely_to_return
+from minimalist_package.minimalist_async import unlikely_to_return
 
 
 def handle_return_callback(tag: str, future: asyncio.Future) -> None:
