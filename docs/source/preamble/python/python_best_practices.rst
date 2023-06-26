@@ -13,7 +13,7 @@ Terminology
 
 Let's go through the Python terminology used in this tutorial. This terminology is not necessarily uniform with other
 sources/tutorials you might find elsewhere. It is based on my interpretation of
-`The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, the `Python Glossary <https://docs.python.org/3.10/glossary.html_>`, and my own experience.
+`The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, the `Python Glossary <https://docs.python.org/3.10/glossary.html>`_, and my own experience.
 
 .. list-table:: (Murilo's) Python Glossary
    :header-rows: 1
