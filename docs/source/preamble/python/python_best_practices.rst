@@ -400,15 +400,11 @@ be surprised after some point if your implementations make you drown in `tech de
 Dedicating a couple of minutes now to make a couple of tests when your codebase is still in its infancy makes it more manageable 
 and less boresome.
 
-.. note::
-
-   ROS2 uses :code:`pytest`, but that doesn't mean you also have to.
-
 Back to the example, a good practice is to create a folder name :file:`test` at the same level as the packages to be tested, like so
 
 .. code-block::
 
-   cd ~/ros2_tutorials_preamble/python
+   cd ~/ros2_tutorials_preamble/python/minimalist_package
    mkdir test
 
 Then, we create a file named :file:`test_minimalist_class.py` with the contents below in the :file:`test` folder.
@@ -428,7 +424,7 @@ Then, we create a file named :file:`test_minimalist_class.py` with the contents 
 Running the tests
 ^^^^^^^^^^^^^^^^^
 
-For a little jolt of instant gratification, let's run the tests before we proceed with the explanation.
+For a quick jolt of instant gratification, let's run the tests before we proceed with the explanation.
 
 There are many ways to run tests written with :code:`unittest`. The following will run all tests found in the folder :file:`test`
 
@@ -456,6 +452,10 @@ Yay! We've done it!
 
 Always use :code:`unittest`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+   ROS2 uses :code:`pytest`, but that doesn't mean you also have to.
 
 There are many test frameworks for Python. Nonetheless, the `unittest module <https://docs.python.org/3.10/library/unittest.html>`_
 is built into Python so, unless you have a very good reason not to use it, `just [use] it <https://www.youtube.com/watch?v=ZXsQAXx_ao0>`_.
