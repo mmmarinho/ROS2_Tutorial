@@ -220,17 +220,19 @@ what to do with that file.
    ./minimalist_script.py: line 5: syntax error near unexpected token `('
    ./minimalist_script.py: line 5: `def main() -> None:'
 
-When using :code:`if "__name__":`, just call the real :code:`main()`
---------------------------------------------------------------------
+When using :code:`if "__name__"=="__main__":`, just call the real :code:`main()`
+--------------------------------------------------------------------------------
+
+As we will see later, that are multiple ways of running a Python script. In a some of them, the name
+of the module will become :code:`__main__`, but in others that :code:`if` can be completely skipped.
+So, write the :code:`main()` function as something standalone and, in the condition, just call it.
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
-   :lines: 12-
+   :lines: 16-
 
 It's dangerous to go alone: Always wrap the contents of :code:`main` function on a `try--except` block
 ------------------------------------------------------------------------------------------------------
-
-When a module is run directly, its :code:`__name__` property will be :code:`'__main__'`.
 
 It is good practice to wrap the contents of :code:`main()` call in a :code:`try--except` block
 with at least the :code:`KeyboardInterrupt` clause. This allows the user to shutdown
@@ -238,7 +240,7 @@ the module cleanly either through the terminal or through :program:`PyCharm`. We
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
-   :lines: 12-
+   :lines: 5-14
 
 This is of particular importance when hardware is used, otherwise, the connection with it might be left in an undefined
 state causing difficult-to-understand problems at best and physical harm at worst.
