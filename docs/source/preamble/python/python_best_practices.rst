@@ -490,8 +490,8 @@ of the code, hence the name unit tests.
 
 If one of the :code:`asserts` fails, then the related test will fail, and the test framework will let us know which one.
 
-The main function
-^^^^^^^^^^^^^^^^^
+The test's main function
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Generally, a test script based on `unittest` will have the following main function. It will run all available tests in our test class.
 For more info and alternatives check the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
@@ -500,3 +500,25 @@ For more info and alternatives check the `unittest docs <https://docs.python.org
    :language: python
    :lines: 29,30
    :emphasize-lines: 2
+
+Making your package installable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 8
+      
+      python/minimalist_package/
+        └── minimalist_package/
+              └── __init__.py
+              └── minimalist_script.py
+              └── _minimalist_class.py
+        └── test/
+              └── test_minimalist_class.py
+        setup.py
+
+.. literalinclude:: ../../../../preamble/python/minimalist_package/setup.py
+   :language: python
+   :lines: 1-
+
