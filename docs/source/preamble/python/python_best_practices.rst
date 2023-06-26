@@ -314,11 +314,34 @@ contents.
 Not a matter of taste: Code style
 ---------------------------------
 
-*TODO*
+It might be parsing through jibber-jabber l〇〇tcode lessons that gets you through the door into one of those fancy companies with no dress code and free snacks. In the ideal world, at least, writing easy-to-understand code with the proper style is what should keep you in that job.
 
-It might be cramming through parsing through jibber-jabber in l〇〇tcode that gets you through the door into one of those fancy companies with no dress code and free snacks. In the ideal world, at least, writing easy-to-understand code with the proper style is what should keep you in that job.
+So, always pay attention to the naming of classes (`PascalCase <https://en.wiktionary.org/wiki/Pascal_case>`_), files and functions (`snake_case <https://en.wikipedia.org/wiki/Snake_case>`_), etc.
 
-...
+Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PEP (Python Enhancement Proposal)`, such as <PEP8 <https://peps.python.org/pep-0008/>>_. Take this time to read it and get inspired by `The Zen of Python <>`_
+
+.. 
+
+   Beautiful is better than ugly.
+   Explicit is better than implicit.
+   Simple is better than complex.
+   Complex is better than complicated.
+   Flat is better than nested.
+   Sparse is better than dense.
+   Readability counts.
+   Special cases aren't special enough to break the rules.
+   Although practicality beats purity.
+   Errors should never pass silently.
+   Unless explicitly silenced.
+   In the face of ambiguity, refuse the temptation to guess.
+   There should be one-- and preferably only one --obvious way to do it.
+   Although that way may not be obvious at first unless you're Dutch.
+   Now is better than never.
+   Although never is often better than *right* now.
+   If the implementation is hard to explain, it's a bad idea.
+   If the implementation is easy to explain, it may be a good idea.
+   Namespaces are one honking great idea -- let's do more of those!
+
 
 Take the (type) hint: Always type hints
 ----------------------------------------
