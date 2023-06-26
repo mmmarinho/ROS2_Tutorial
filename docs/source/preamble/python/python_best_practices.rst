@@ -364,13 +364,13 @@ For attributes we use :code:`<attribute>: type`, as shown below
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py
    :language: python
-   :lines: 37
+   :lines: 45
 
 For method arguments we use :code:`<argument>: type` and for return types we use :code:`def method(args) -> return type`, as shown below in our example
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py
    :language: python
-   :lines: 62-64
+   :lines: 57-59
    :emphasize-lines: 1
 
 Unit tests: always test your code
