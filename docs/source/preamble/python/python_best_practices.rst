@@ -220,8 +220,8 @@ what to do with that file.
    ./minimalist_script.py: line 5: syntax error near unexpected token `('
    ./minimalist_script.py: line 5: `def main() -> None:'
 
-When using :code:`if "__name__"=="__main__":`, just call the real :code:`main()`
---------------------------------------------------------------------------------
+When using :code:`if __name__=="__main__":`, just call the real :code:`main()`
+------------------------------------------------------------------------------
 
 As we will see later, that are multiple ways of running a Python script. In a some of them, the name
 of the module will become :code:`__main__`, but in others that :code:`if` can be completely skipped.
