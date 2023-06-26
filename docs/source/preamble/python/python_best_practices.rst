@@ -110,39 +110,16 @@ Then, **AGAIN**, let's create a folder with the same name within it
    cd ~/ros2_tutorials_preamble/python/minimalist_package
    mkdir minimalist_package
 
+.. hint::
+
+   In :code:`PyCharm`, open the :file:`~/ros2_tutorials_preamble/python/minimalist_package` folder.
+
 .. warning::
 
    It is confusing to have two nested folders with the same name. However, this is quite common and
    starts to make sense after getting used to it (it is also the norm in ROS2). The first folder
    is supposed to be how your file system sees your package (where we place the :code:`setup.py`) 
    and the other the actual Python package, with the :file:`__init__.py` and other source code.
-
-then, let's create a file :file:`__init__.py` in :file:`~/ros2_tutorials_preamble/python/minimalist_package` with the
-following contents
-
-:download:`__init__.py <../../../../preamble/python/minimalist_package/minimalist_package/__init__.py>`
-
-.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/__init__.py
-   :language: python
-   :linenos:
-   :lines: 1-
-
-
-.. hint::
-
-   In :code:`PyCharm`, open the :file:`~/ros2_tutorials_preamble/python/minimalist_package` folder.
-
-When adding imports to the :file:`__init__.py`, the folder that we use to open in Pycharm and that we call to execute
-the scripts is *extremely* relevant. When packages are deployed (e.g. in `PyPI <https://pypi.org/>`_ or ROS2), the "correct"
-way to import in :file:`__init__.py` is to use :code:`import <PACKAGE_NAME>.<THING_TO_IMPORT>`, which is why we're doing
-it this way.
-
-.. note::
-
-   Relative imports such as :code:`.<THING_TO_IMPORT>` might work in some cases, and that is fine. It is a supported
-   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc, and generates 
-   a lot of frustration.
-
 
 Minimalist script
 -----------------
@@ -285,7 +262,6 @@ test the code of all combinations of inputs and states. As `they say <https://da
 Minimalist class: Use classes profusely
 ---------------------------------------
 
-
 .. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
@@ -310,6 +286,29 @@ contents.
    :language: python
    :linenos:
    :lines: 31-
+
+then, let's modify the :file:`__init__.py` with the
+following contents
+
+:download:`__init__.py <../../../../preamble/python/minimalist_package/minimalist_package/__init__.py>`
+
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/__init__.py
+   :language: python
+   :linenos:
+   :lines: 1-
+
+.. note::
+
+   When adding imports to the :file:`__init__.py`, the folder that we use to open in Pycharm and that we call to execute
+   the scripts is *extremely* relevant. When packages are deployed (e.g. in `PyPI <https://pypi.org/>`_ or ROS2), the "correct"
+   way to import in :file:`__init__.py` is to use :code:`import <PACKAGE_NAME>.<THING_TO_IMPORT>`, which is why we're doing
+   it this way.
+
+.. note::
+
+   Relative imports such as :code:`.<THING_TO_IMPORT>` might work in some cases, and that is fine. It is a supported
+   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc, and generates 
+   a lot of frustration.
 
 Not a matter of taste: Code style
 ---------------------------------
