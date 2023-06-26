@@ -64,7 +64,7 @@ come up with namings such as submodule
 
    *Packages are a way of structuring Python’s module namespace [...]. For example, the module name A.B designates a submodule named B in a package named A.*
 
-What most people want to say when they mention a package is, usually, either a folder with a :file:`__init__.py` something with a :code:`setup.py` that can be built into a :code:`wheel` or something similar. 
+What most people want to say when they mention a package is, usually, either a folder with a :file:`__init__.py` or a folder with a :code:`setup.py` that can be built into a :code:`wheel` or something similar. 
 
 Use a :code:`venv`
 ------------------
@@ -92,10 +92,7 @@ Minimalist package: something to start with
               └── __init__.py
 
 
-A Python package is a folder that has an :file:`__init__.py`. Yes, a :file:`__init__.py` can even be empty and it would
-still, be considered a Python package.
-
-Anyways, back to the example. First, let's make a folder for our package
+A Python package is a folder that has an :file:`__init__.py`. First, let's make a folder for our package
 
 .. code-block::
 
@@ -104,14 +101,14 @@ Anyways, back to the example. First, let's make a folder for our package
 
 Then, **AGAIN**, let's create a folder with the same name within it
 
-.. code-block::
+.. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package
    mkdir minimalist_package
 
 .. hint::
 
-   In :code:`PyCharm`, open the :file:`~/ros2_tutorials_preamble/python/minimalist_package` folder.
+   In :code:`PyCharm`, open the :file:`~/ros2_tutorials_preamble/python/minimalist_package` folder to correctly interact with this project.
 
 .. warning::
 
@@ -150,7 +147,7 @@ Running a Python script on the terminal
 There are a few ways to run this module in the command line. Without worrying about file permissions, specifying that
 the file must be interpreted by Python (and which version of Python) is the most general way to run a script
 
-.. code-block:: commandline
+.. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
    python3 minimalist_script.py
@@ -161,7 +158,7 @@ which will output
 
    You can end the :program:`minimalist_script.py` by pressing :kbd:`CTRL+C` in the terminal in which it is running.
 
-.. code-block:: commandline
+.. code-block:: console
 
    Howdy!
    Howdy!
@@ -169,14 +166,14 @@ which will output
 
 Another way to run a Python script is to execute it directly in the terminal. This can be done with
 
-.. code-block:: commandline
+.. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
    ./minimalist_script.py
 
 which will result in
 
-.. code-block:: commandline
+.. code-block:: console
 
    bash: ./minimalist_script.py: Permission denied
 
@@ -196,7 +193,7 @@ and now we can run it properly with
 
 resulting in
 
-.. code-block:: commandline
+.. code-block:: console
 
    Howdy!
    Howdy!
@@ -335,7 +332,7 @@ Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PE
    | *Unless explicitly silenced.*
    | *In the face of ambiguity, refuse the temptation to guess.*
    | *There should be one-- and preferably only one --obvious way to do it.*
-   | *Although that way may not be obvious at first `unless you're Dutch <https://stackoverflow.com/questions/2470761/what-does-this-sentence-mean-in-the-zen-of-python>`_.*
+   | *Although that way may not be obvious at first* `*unless you're Dutch* <https://stackoverflow.com/questions/2470761/what-does-this-sentence-mean-in-the-zen-of-python>`_.
    | *Now is better than never.*
    | *Although never is often better than *right* now.*
    | *If the implementation is hard to explain, it's a bad idea.*
