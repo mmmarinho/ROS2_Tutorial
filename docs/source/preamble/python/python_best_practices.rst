@@ -1,5 +1,5 @@
-Python Best Practices
-=====================
+(Murilo's) Python Best Practices
+================================
 
 .. warning::
    This tutorial expects prior knowledge in Python and objected-oriented programming.
