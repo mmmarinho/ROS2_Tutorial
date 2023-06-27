@@ -79,11 +79,11 @@ Let's use it. (!?)
 
 The thing is, we'll be using the terminal throughout the entire tutorial, so don't worry. 
 
+Let's start with creating an empty file inside a new directory, as follows
+
 .. hint::
 
    The path :file:`~` stands for the current logged-in user's home folder.
-
-Let's start with creating an empty file inside a new directory, as follows
 
 .. hint:: 
 
@@ -154,12 +154,19 @@ So, enough of this example, let's get rid of everything with
 Tab completion
 --------------
 
+.. hint::
+
+   Use :kbd:`TAB` completion extensively.
+
 Whenever I have to look at a novice's shoulders while they interact with the terminal it gives me a certain level of anxiety. The terminal has :kbd:`TAB` completion, so use it extensively.
 You can press :kbd:`TAB` at any time to complete the name of a program, folder, file, or pretty much anything. 
 
-
 Be careful with :program:`sudo`
 -------------------------------
+
+.. warning::
+
+   **DO NOT**, I repeat, **DO NOT** play around with :program:`sudo`.
 
 With great power, comes great opportunity to destroy your Ubuntu. It turns out that :program:`sudo` is the master key of destruction, it will allow you to do basically anything in the system as far as the software is concerned.
 
@@ -170,4 +177,10 @@ For these tutorials, only use :program:`sudo` when installing system-wide packag
 File permissions
 ----------------
 
+.. warning::
+
+   **DO NOT**, I repeat, **DO NOT** play around with :program:`sudo`, :program:`chmod`, or :program:`chown`.
+
 One of the reasons that using :program:`sudo` indiscriminately will destroy your Ubuntu is `file permissions <https://help.ubuntu.com/community/FilePermissions>`_. For example, if you *simply* open a file and save it as :program:`sudo`, you'll change its permissions, and that might be enough to even block you from logging into Ubuntu via the :abbr:`GUI (Graphics User Interface)`.
+
+I will not get into detail here about programs to change permissions because we won't need them extensively in these tutorials. However, this is important to be aware that this exists and might cause problems.
