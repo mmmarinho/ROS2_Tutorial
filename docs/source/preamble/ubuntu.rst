@@ -13,7 +13,9 @@ You already know how to turn your computer and press some keys to make bits flip
 Keep all issues to :code:`#vent`
 --------------------------------
 
-The wording on these tutorials is precise, but not pedantic. Some terms are used in the wild (i.e. the internet) with broad meanings, but the message is conveyed. So, to end any deep discussions that might distract you from the point of these tutorials, I'll let you with the world-renowned Linux copypasta edited with `what was actually said <https://www.gnu.org/gnu/incorrect-quotation.html>`_ 
+The wording on these tutorials is precise, but some terms are used in the wild (i.e. the internet) with broad meanings, but the message is conveyed. 
+
+So, to end any deep discussions that might distract you from the point of these tutorials before they even start, I'll let you with the world-renowned Linux copypasta edited with `what was actually said <https://www.gnu.org/gnu/incorrect-quotation.html>`_ 
 
   *I'd just like to interject for a moment. What you're referring to as Linux, is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux. Linux is not an operating system [...]. Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called “Linux,” and many of its users are not aware that it is basically the GNU system, developed by the GNU Project. There really is a Linux, and these people are using it, but it is just a part of the system they use.*
   
