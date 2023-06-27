@@ -19,8 +19,8 @@ and do so for this whole section.
    cd ~
    source ros2tutorial_venv/bin/activate
 
-The file:`setup.py`
--------------------
+The :file:`setup.py`
+--------------------
 
 .. admonition:: In this step, we'll work on this.
 
