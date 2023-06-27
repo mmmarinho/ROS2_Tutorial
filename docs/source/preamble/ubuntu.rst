@@ -28,6 +28,11 @@ The :program:`terminal`
 
    Check out `Canonical's Tutorial <https://ubuntu.com/tutorials/command-line-for-beginners>`_ for the complete story.
 
+.. warning::
+
+   This is about the default terminal in Ubuntu 22.04. If you prefer to use the :program:`TeRmInAlDeluxeUltiMateHyruleMaster` instead, then this might not be useful to you,
+   and you might be happier referring to its documentation instead.
+
 The :program:`terminal` is one of those things with many names. Some call it :program:`shell`, some :program:`console`, some :program:`command line`, some :program:`terminal`. I'm sure there's a person way smarter than me capable of making a copypasta describing in detail what the differences might be. The truth is that, in the wild, those terms are used pretty much as synonyms.
 
 For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, we use it to send commands to Ubuntu that make stuff happen.
@@ -43,16 +48,36 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - Output in the absolute path to the current directory.
    * - :program:`mkdir`
      - :code:`mkdir this_is_a_folder`
-     - Makes a folder called :file:`this_is_a_folder` in the current directory. 
+     - **M**\ a\ **k**\ es a **dir**ectory called :file:`this_is_a_folder` in the current directory. 
+   * - :program:`cd`
+     - :code:`cd this_is_a_folder`
+     - **c**\ hanges **d**\ irectory to a specified target.
+   * - :program:`touch`
+     - :code:`touch a_file.whatever`
+     - Creates an empty file called :file:a_file.whatever`.
    * - :program:`cat`
      - :code:`cat a_file.whatever`
      - Outputs into the console the contents of :file:`a_file.whatever`.
+   * - :program:`rm`
+     - :code:`rm a_file.whatever`
+     - **R**\ e\ **m**\ oves a file or directory (with the :code:`-r` option).
    * - :program:`ls`
      - :code:`ls`
-     - Outputs the contents of the current directory.
-   * - :program:`touch`
-     - :code:`touch new_empty_file.yo`
-     - Creates an empty file called :file:`new_empty_file.yo`.
+     - **L**\ i\ **s**\ ts the contents of the current directory.
    * - :program:`grep`
      - :code:`cat a_file.whatever | grep robocop`
      - Output the lines of :file:`a_file.whatever` that contain the string :code:`robocop`.
+   * - :program:`nano`
+     - :code:`nano a_file.whatever`
+     - Quick edits to a file in a user-friendly program, so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
+   * - :program:`apt`
+     - :code:`apt install git`
+     - Installs Ubuntu packages.
+
+.. hint::
+
+        You can open a terminal window at any time with :kbd:`CTRL+ALT+T`.
+
+.. hint::
+
+        **ALWAYS** be careful when using :program:`rm`. The files removed this way do **NOT** go to the trash can, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_.
