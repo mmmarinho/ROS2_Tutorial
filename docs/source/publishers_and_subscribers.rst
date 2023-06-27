@@ -34,7 +34,7 @@ Overview
 
 .. note::
 
-   By no coincidence, we are using the terminology Node *with* a publisher, and Node *with* a subscriber. In general, each Node will have a combination of publishers, subscribers, and other interfaces.
+   By no coincidence, I am using the terminology Node *with* a publisher, and Node *with* a subscriber. In general, each Node will have a combination of publishers, subscribers, and other interfaces.
 
 Before we start exploring the elements of the package, let us
 
