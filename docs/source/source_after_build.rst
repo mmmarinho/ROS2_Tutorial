@@ -17,7 +17,7 @@ it will not work and will output
 
    Package 'python_package_with_a_node' not found
    
-As the workspace grows bigger and the packages more complex, figuring out such errors becomes a considerable hassle. One suggestion is to always source after a build, so that sourcing errors can always be ruled out.
+As the workspace grows bigger and the packages more complex, figuring out such errors becomes a considerable hassle. My suggestion is to always source after a build, so that sourcing errors can always be ruled out.
 
 .. code :: console
 
