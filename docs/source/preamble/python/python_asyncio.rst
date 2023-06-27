@@ -31,7 +31,7 @@ Create the :file:`minimalist_async` package
    .. code-block:: console
       :emphasize-lines: 2,3
       
-      python/minimalist_package/
+      python/minimalist_package/minimalist_package/
         └── minimalist_async/
               └── __init__.py
 
@@ -39,7 +39,7 @@ As we learned in :ref:`Python package`, let's make a package called :file:`minim
 
 .. code-block:: console
 
-   cd ~/ros2_tutorials_preamble/python/minimalist_package
+   cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
    mkdir minimalist_async
    cd minimalist_async
 
@@ -60,13 +60,13 @@ Create the :code:`async` function
    .. code-block:: console
       :emphasize-lines: 4
       
-      python/minimalist_package/
+      python/minimalist_package/minimalist_package/
         └── minimalist_async/
               └── __init__.py
               └── _unlikely_to_return.py
 
 
-Let's create a module called :file:`_unlikely_to_return.py` to hold a function used for this example at the :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_async` folder with the following contents
+Let's create a module called :file:`_unlikely_to_return.py` to hold a function used for this example at the :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package/minimalist_async` folder with the following contents
 
 :download:`_unlikely_to_return.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/_unlikely_to_return.py>`
 
@@ -101,7 +101,7 @@ Using :code:`await`
    .. code-block:: console
       :emphasize-lines: 5
       
-      python/minimalist_package/
+      python/minimalist_package/minimalist_package/
         └── minimalist_async/
               └── __init__.py
               └── _unlikely_to_return.py
@@ -143,7 +143,7 @@ Ok, enough with the explanation, let's go to the endorphin rush of actually runn
 
 .. code-block:: console
 
-   cd ~/ros2_tutorials_preamble/python/minimalist_package
+   cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
    python -m minimalist_async.async_await_example
 
 Which will result in something like shown below. The function is stochastic so it might take more or less time to 
@@ -199,7 +199,7 @@ Using :code:`callback`
    .. code-block:: console
       :emphasize-lines: 5
       
-      python/minimalist_package/
+      python/minimalist_package/minimalist_package/
         └── minimalist_async/
               └── __init__.py
               └── async_await_example.py
