@@ -1,8 +1,6 @@
 At your Service: Servers and Clients
 ====================================
 
-.. include:: the_topic_is_under_heavy_construction.rst
-
 .. note::
 
    Except for the particulars of the :file:`setup.py` file, the way that services in ROS2 work in Python, i.e. the explanation in this section, does not depend on :program:`ament_python` or :program:`ament_cmake`.
