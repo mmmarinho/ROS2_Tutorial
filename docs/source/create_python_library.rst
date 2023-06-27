@@ -68,7 +68,11 @@ The ROS2 package created from the template has a structure like so. In particula
             __init__.py
          __init__.py
       └── resource
+         python_package_with_a_library
       └── test
+      package.xml
+      setup.cfg
+      setup.py
       
 We learned the meaning of most of those in the preamble, namely :ref:`Python Best Practices`. To quickly clarify a few things, see the table below.
 
