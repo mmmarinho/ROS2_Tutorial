@@ -54,8 +54,8 @@ which outputs the forever beautiful wall of text we're by now used to, with a mi
    MIT
    MIT-0
 
-The folders, Mason, what do they mean?
---------------------------------------
+The folders/files, Mason, what do they mean?
+--------------------------------------------
 
 The ROS2 package created from the template has a structure like so. In particular, we can see that :file:`python_package_with_a_library` is repeated twice in a row. This is a common source of error, so don't forget!
 
@@ -70,24 +70,27 @@ The ROS2 package created from the template has a structure like so. In particula
       └── resource
       └── test
       
-Whenever there is a :file:`__init__.py`, that folder is understood by Python as a `module <https://docs.python.org/3.10/tutorial/modules.html>`_. Hence, to help clarify, our project structure with a few comments means
+We learned the meaning of most of those in the preamble, namely :ref:`Python Best Practices`. To quickly clarify a few things, see the table below.
 
-.. code-block:: console
-   
-   python_package_with_a_library --> The ROS2 package, depends on (1), (2), and (3)  
-      └── python_package_with_a_library --> The Python module, inside the ROS2 package, with the same name.
-         └── sample_python_library --> A sample library inside the module.
-            __init__.py --> Makes Python treat this folder as a module
-         __init__.py --> Makes Python treat this folder as a module
-      └── resource
-         python_package_with_a_library --> (3) The setup.py installs this file so that ROS2 knows that your package exists.
-      └── test --> Sample test files
-      package.xml --> (1) The first file colcon looks into, to know what to do with this package.
-      setup.cfg --> Used by setup.py 
-      setup.py --> (2) The second file colcon goes through, running the setup instructions
+.. list-table:: ROS2 Python package folders/files explained
+   :header-rows: 1
 
-- `Resource file <https://answers.ros.org/question/367328/ament_python-package-doesnt-explicitly-install-a-marker-in-the-package-index/>`_
-- `setup.cfg <https://docs.python.org/3.10/distutils/configfile.html>`_
+   * - File/Directory
+     - Meaning
+   * - :file:`python_package_with_a_library`
+     - The ROS2 package folder
+   * - :file:`python_package_with_a_library/python_package_with_a_library`
+     - The Python package, as we saw in the preamble.
+   * - :file:`sample_python_library`
+     - The module corresponding to our sample library
+   * - :file:`resource/python_package_with_a_library`
+     - A file for ROS2 to index this package correctly. See `Resource file <https://answers.ros.org/question/367328/ament_python-package-doesnt-explicitly-install-a-marker-in-the-package-index/>`_.
+   * - :file:`test`
+     - The folder contaning the tests, as we already saw in the preamble.
+   * - :file:`setup.cfg`
+     - Used by setup.py, see `setup.cfg docs<https://docs.python.org/3.10/distutils/configfile.html>`_.
+   * - :file:`setup.py`
+     - The instructions to make the package installable, as we saw in the preamble.
 
 Overview of the library
 -----------------------
