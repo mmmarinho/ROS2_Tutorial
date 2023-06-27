@@ -47,51 +47,60 @@ Create the Node with a Service Server
       
                #. Add the new Node to :file:`setup.py`
 
+Let's start by creating a :file:`what_is_the_point_service_server_node.py` in :file:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services` with the following contents
+
 :download:`what_is_the_point_service_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
-   :linenos:
    :lines: 24-
+
+The code begins with an import to the service we created. No surprise here.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
-   :linenos:
    :lines: 24-29
    :emphasize-lines: 6
 
+The Service Server must be initialzied with the :code:`create_service()`, as follows, with parameters that should by now be quite obvious to us.
+
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
-   :linenos:
    :lines: 35-43
    :emphasize-lines: 4-7
 
+The Service Server receives a :code:`WhatIsThePoint.Request` and returns a :code:`WhatIsThePoint.Response`.
+
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
-   :linenos:
-   :lines: 45-49
+   :lines: 45-52
 
-.. note::
+.. warning::
 
    The API for the Service Server callback is a bit weird in that it receives the response as an argument.
    This API `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now this is what we got.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
-   :language: python
-   :linenos:
-   :lines: 64-69
+We play around with the :code:`WhatIsThePoint.Request` a bit and use that result to popule a :code:`WhatIsThePoint.Response`, as follows
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
    :linenos:
-   :lines: 88-90
+   :lines: 66-68
+
+At the end of the callback, we must return that :code:`WhatIsThePoint.Request`, like so 
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
+   :language: python
+   :lines: 89
    :emphasize-lines: 2
+
+The Service Server was quite painless, but it doesn't do much. The Service Client might be a bit more on the painful side for the uninitiated.
 
 Service Clients
 ---------------
 
 ROS2 :code:`rclpy` Service Clients are implemented using an :code:`asyncio` logic (`More info <https://docs.python.org/3.10/library/asyncio.html>`_).
-In this tutorial, we briefly introduce unavoidable :code:`async` concepts, but for any extra understanding it's better to check the official documentation.
+In this tutorial, we briefly introduce unavoidable :code:`async` concepts in :ref:`Asyncio`, but for any extra understanding it's better to check the official documentation.
 
 Create the Node with a Service Client (using a :code:`callback`)
 ----------------------------------------------------------------
@@ -133,9 +142,7 @@ To have access to the service, we import it with :code:`from <package>.srv impor
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 31
-   :lineno-start: 8
 
 Instantiate a Service Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -144,9 +151,7 @@ We instanteate a service client with :code:`Node.create_client()`. The values of
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 40-42
-   :lineno-start: 17
 
 (Recommended) Wait for the Service Server to be available
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,9 +163,7 @@ In many cases, having the result of the service of particular importance (hence 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 44,45
-   :lineno-start: 21
 
 Instantiate a :code:`Future` as class attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -169,9 +172,7 @@ As part of the :code:`async` framework, we instantiate a :code:`Future` (`More i
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 47
-   :lineno-start: 24
 
 Instantiate a Timer
 ^^^^^^^^^^^^^^^^^^^
@@ -180,17 +181,13 @@ Whenever periodic work must be done, it is recommended to use a :code:`Timer`, a
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 49-52
-   :lineno-start: 26
 
 The need for a callback for the :code:`Timer`, should also be no surprise.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 54-55
-   :lineno-start: 31
 
 Service Clients use :code:`<srv>.Request()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -199,9 +196,7 @@ Given that services work in a request--response model, the service client must i
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 57-65
-   :lineno-start: 34
 
 Make service calls with :code:`call_async()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -220,18 +215,14 @@ The benefit of this is that the callback will not block our resources until the 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 67-72
-   :lineno-start: 44
    :emphasize-lines: 5,6
 
 Given that we are periodically calling the service, before replace the class :code:`Future` with the next service call, we can check if the service call was done with :code:`Future.done()`. If it is not done, we can use :code:`Future.cancel()` so that our callback can handle this case as well. For instance, if the Service Server has been shutdown, the :code:`Future` would never be done.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 67-72
-   :lineno-start: 44
    :emphasize-lines: 1-4
 
 The Future callback
@@ -243,9 +234,7 @@ The result of the :code:`Future` is obtained using :code:`Future.result()`. The 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
-   :linenos:
    :lines: 74-88
-   :lineno-start: 51
    :emphasize-lines: 1,3,4
 
 Update the :file:`setup.py`
