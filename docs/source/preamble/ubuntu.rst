@@ -116,15 +116,47 @@ then you can exit with the following keys
 
 you can also look at the bottom side of the window to know what keys to press. As an example, in :program:`nano`, :code:`^X` stands for :kbd:`CTLR+X`.
 
+Then, if you run
+
+.. code-block:: console
+
+   ls
+
+the output will be
+
+.. code-block:: console
+
+   an_empty_file.txt  file_with_stuff.txt
+
+we can, for example, get the contents of :file:`file_with_stuff.txt` with
+
+.. code-block:: console
+
+   cat file_with_stuff.txt
+
+whose output will be
+
+.. code-block:: console
+
+   stuff
+
+So, enough of this example, let's get rid of everything with
+
+.. warning::
+
+   **ALWAYS** be careful when using :program:`rm`. The files removed this way do **NOT** go to the trash can, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_ to those files/directories.
+
+.. code-block:: console
+
+   cd ~
+   rm -r a_new_folder
+
 Tab completion
 --------------
 
-Every time I have to look at a novice's shoulders while they interact with the terminal it gives me a certain level of anxiety. The terminal has :kbd:`TAB` completion, so use it extensively.
+Whenever I have to look at a novice's shoulders while they interact with the terminal it gives me a certain level of anxiety. The terminal has :kbd:`TAB` completion, so use it extensively.
+You can press :kbd:`TAB` at any time to complete the name of a program, folder, file, or pretty much anything. 
 
-Deleting files
---------------
-
-**ALWAYS** be careful when using :program:`rm`. The files removed this way do **NOT** go to the trash can, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_ to those files/directories.
 
 Be careful with :program:`sudo`
 -------------------------------
@@ -138,6 +170,7 @@ For these tutorials, only use :program:`sudo` when installing system-wide packag
 File permissions
 ----------------
 
-One of the reasons that using :program:`sudo` indiscriminately will destroy your ubuntu are file permissions. If you open a file and save is as :program:`sudo`, you'll change its permissions and that might be enough to even block you from logging into Ubuntu via the :abbr:`GUI (Graphics User Interface)`.
+One of the reasons that using :program:`sudo` indiscriminately will destroy your Ubuntu is file permissions. If you open a file and save it as :program:`sudo`, you'll change its permissions, and that might be enough to even block you from logging into Ubuntu via the :abbr:`GUI (Graphics User Interface)`.
+
 
 
