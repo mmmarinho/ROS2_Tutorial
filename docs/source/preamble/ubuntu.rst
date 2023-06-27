@@ -74,10 +74,70 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - :code:`apt install git`
      - Installs Ubuntu packages.
 
+Let's use it. (!?)
+------------------
+
+The thing is, we'll be using the terminal throughout the entire tutorial, so don't worry. 
+
 .. hint::
 
-        You can open a terminal window at any time with :kbd:`CTRL+ALT+T`.
+   The path :file:`~` stands for the current logged-in user's home folder.
 
-.. hint::
+Let's start with creating an empty file inside a new directory, as follows
 
-        **ALWAYS** be careful when using :program:`rm`. The files removed this way do **NOT** go to the trash can, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_.
+.. hint:: 
+
+   You can open a new terminal window by pressing :kbd:`CTRL+ALT+T`.
+
+.. code-block:: console
+
+   cd ~
+   mkdir a_new_folder
+   cd a_new_folder
+   touch an_empty_file.txt
+
+Then, we can use :program:`nano` to create another file with some contents
+
+.. code-block:: console
+
+   nano file_with_stuff.txt
+
+Then, :program:`nano` will run. At this point we can start typing, so let's just type 
+
+.. code-block:: console
+
+   stuff
+
+then you can exit with the following keys
+
+#. :kbd:`CTLR+X`
+#. :kbd:`Y`
+#. :kbd:`ENTER`
+
+you can also look at the bottom side of the window to know what keys to press. As an example, in :program:`nano`, :code:`^X` stands for :kbd:`CTLR+X`.
+
+Tab completion
+--------------
+
+Every time I have to look at a novice's shoulders while they interact with the terminal it gives me a certain level of anxiety. The terminal has :kbd:`TAB` completion, so use it extensively.
+
+Deleting files
+--------------
+
+**ALWAYS** be careful when using :program:`rm`. The files removed this way do **NOT** go to the trash can, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_ to those files/directories.
+
+Be careful with :program:`sudo`
+-------------------------------
+
+With great power, comes great opportunity to destroy your Ubuntu. It turns out that :program:`sudo` is the master key of destruction, it will allow you to do basically anything in the system as far as the software is concerned.
+
+So, don't.
+
+For these tutorials, only use :program:`sudo` when installing system-wide packages. Otherwise, do not use it.
+
+File permissions
+----------------
+
+One of the reasons that using :program:`sudo` indiscriminately will destroy your ubuntu are file permissions. If you open a file and save is as :program:`sudo`, you'll change its permissions and that might be enough to even block you from logging into Ubuntu via the :abbr:`GUI (Graphics User Interface)`.
+
+
