@@ -163,7 +163,37 @@ which will result in something similar to (might change depending on future vers
    Installing collected packages: numpy, dqrobotics
    Successfully installed dqrobotics-23.4.0a15 numpy-1.25.0
 
+Removing libraries (installed with :program:`pip`)
+--------------------------------------------------
+
+We can remove the library we just installed with
+
+.. code-block:: console
+
+   python3 -m pip uninstall dqrobotics
+
+resulting in
+
+.. code-block:: console
    
+   Found existing installation: dqrobotics 23.4.0a15
+   Uninstalling dqrobotics-23.4.0a15:
+     Would remove:
+       /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/dqrobotics-23.4.0a15.dist-info/*
+       /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/dqrobotics/*
+   Proceed (Y/n)?
+
+.. hint::
+
+   If in the terminal a question is made, the option with an uppercase letter, in this case :kbd:`Y`, will be the default.
+   If you want the default, just press :kbd:`ENTER`.
+
+Then, press :kbd:`ENTER`, which results in
+
+.. code-block:: console
+
+     Successfully uninstalled dqrobotics-23.4.0a15
+
 When using :program:`pip`, do **NOT** use :code:`sudo`
 ------------------------------------------------------
 
