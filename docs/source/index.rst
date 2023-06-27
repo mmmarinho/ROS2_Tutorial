@@ -70,6 +70,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    publishers_and_subscribers
    inspecting_topics
    service_servers_and_clients
+   inspecting_services
    
 .. toctree::
    :caption: Other content
