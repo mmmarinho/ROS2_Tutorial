@@ -110,11 +110,11 @@ Then, :program:`nano` will run. At this point we can start typing, so let's just
 
 then you can exit with the following keys
 
-#. :kbd:`CTLR+X`
+#. :kbd:`CTRL+X`
 #. :kbd:`Y`
 #. :kbd:`ENTER`
 
-you can also look at the bottom side of the window to know what keys to press. As an example, in :program:`nano`, :code:`^X` stands for :kbd:`CTLR+X`.
+you can also look at the bottom side of the window to know what keys to press. As an example, in :program:`nano`, :code:`^X` stands for :kbd:`CTRL+X`.
 
 Then, if you run
 
