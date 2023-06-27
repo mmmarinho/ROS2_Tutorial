@@ -82,3 +82,14 @@ to everyone's surprise, there are a lot of services beyond the one we created. W
          philosopher_name: Lloyd 
          }
     }'
+
+
+.. code-block:: console
+    
+    waiting for service to become available...
+    requester: making request: package_with_interfaces.srv.WhatIsThePoint_Request(quote=package_with_interfaces.msg.AmazingQuote(id=1994, quote='So you’re telling me there’s a chance', philosopher_name='Lloyd'))
+    
+    response:
+    package_with_interfaces.srv.WhatIsThePoint_Response(point=geometry_msgs.msg.Point(x=8.327048266159165, y=95.97987946924988, z=67.03878311627777))
+
+
