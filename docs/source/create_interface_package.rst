@@ -151,16 +151,13 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 What to do when adding new interfaces?
 --------------------------------------
 
-.. note::
-
-         **TL:DR** When adding new interfaces
+.. admonition:: **TL:DR** Adding new interfaces
 
          #. Add new dependencies to :file:`package.xml`
          #. Add each new interface file to :code:`set(interface_files ...)`
          #. Add new dependencies to :code:`rosidl_generate_interfaces(... DEPENDENCIES ...)`
 
          Yes, you **MUST** add the same dependency in two places!
-
 
 If additional interfaces are required
 
