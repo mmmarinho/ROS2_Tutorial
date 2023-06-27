@@ -53,6 +53,16 @@ The probably most unusual part of it is the :code:`entry_points` dictionary. In 
 Installing :file:`wheel`
 ------------------------
 
+.. warning::
+
+   In the current version of Python, if you do not install :file:`wheel` as described herein, the following warning will be output.
+
+   .. code-block:: console
+
+      DEPRECATION: minimalist-package is being installed using the legacy 'setup.py install' method, because it does not have a 'pyproject.toml' 
+      and the 'wheel' package is not installed. pip 23.1 will enforce this behaviour change. A possible replacement is to enable the '--use-pep517'
+      option. Discussion can be found at https://github.com/pypa/pip/issues/8559
+
 To install the package in the recommended way in this tutorial, we need :file:`wheel`. While using the :code:`venv`, we install it
 
 .. code-block:: console
