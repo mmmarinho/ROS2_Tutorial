@@ -94,7 +94,7 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 
 .. warning::
 
-   All the parameters in :ref:`publisher and subscriber parameter table` should be *EXACTLY* the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
+   All the arguments in :ref:`publisher and subscriber parameter table` should be *EXACTLY* the same in the :code:`Publishers` and :code:`Subscribers` of the same topic.
 
 Then, each message is handled much like any other class in Python. We instantiate and initialize the message as follows
 
