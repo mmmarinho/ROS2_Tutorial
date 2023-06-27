@@ -92,19 +92,23 @@ Minimalist package: something to start with
               └── __init__.py
 
 
-A Python package is a folder that has an :file:`__init__.py`. First, let's make a folder for our package
+First, let's make a folder for our project
 
 .. code-block::
 
    cd ~/ros2_tutorials_preamble/python/
    mkdir minimalist_package
 
-Then, **AGAIN**, let's create a folder with the same name within it
+Then, let's create a folder with the same name within it for our package. A Python package is a folder that has an :file:`__init__.py`, so for now we add an empty :file:`__init__.py` by doing so
 
 .. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package
    mkdir minimalist_package
+   cd minimalist_package
+   touch __init__.py
+
+The (empty) package is done!
 
 .. hint::
 
@@ -130,8 +134,8 @@ Minimalist script
               └── __init__.py
               └── minimalist_script.py
 
-Let's start with a minimalist script (also a module) that prints a string periodically,
-as follows. Create a file in :file:`~/ros2_tutorials_preamble/python/minimalist_package` called :file:`minimalist_script.py` with the following
+Let's start with a minimalist script that prints a string periodically,
+as follows. Create a file in :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package` called :file:`minimalist_script.py` with the following
 contents.
 
 :download:`minimalist_script.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py>`
@@ -144,7 +148,7 @@ contents.
 Running a Python script on the terminal
 ---------------------------------------
 
-There are a few ways to run this module in the command line. Without worrying about file permissions, specifying that
+There are a few ways to run a script/module in the command line. Without worrying about file permissions, specifying that
 the file must be interpreted by Python (and which version of Python) is the most general way to run a script
 
 .. code-block:: console
@@ -199,15 +203,15 @@ resulting in
    Howdy!
    Howdy!
 
-Note that for this second execution strategy to work, we **MUST** have the `#!` at the beginning of the first line, called `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_,
-which specifies what program will be used to interpret that file. In general, Ubuntu does not guess the file type by the extension
+Note that for this second execution strategy to work, we **MUST** have the `#!`, called `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_, at the beginning of the first line.
+The path after the shebang specifies what program will be used to interpret that file. In general, differently from Windows, Ubuntu does not guess the file type by the extension
 when running it. 
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
    :lines: 1
 
-If we remove the shebang and try to execute the script, it will return the following errors, because Ubuntu doesn't know
+If we remove the shebang line and try to execute the script, it will return the following errors, because Ubuntu doesn't know
 what to do with that file.
 
 .. code-block::
@@ -219,9 +223,9 @@ what to do with that file.
 When using :code:`if __name__=="__main__":`, just call the real :code:`main()`
 ------------------------------------------------------------------------------
 
-As we will see later, that are multiple ways of running a Python script. In a some of them, the name
-of the module will become :code:`__main__`, but in others that :code:`if` can be completely skipped.
-So, write the :code:`main()` function as something standalone and, in the condition, just call it.
+There are multiple ways of running a Python script. In the one we just saw, the name
+of the module becomes :code:`__main__`, but in others that does not happen, meaning that the :code:`if` can be completely skipped.
+So, write the :code:`main()` function of a script as something standalone and, in the condition, just call it and do nothing else, as shown below
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
