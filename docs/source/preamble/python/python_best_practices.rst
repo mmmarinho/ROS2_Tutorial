@@ -1,3 +1,5 @@
+.. _Python Best Practices:
+
 (Murilo's) Python Best Practices
 ================================
 
