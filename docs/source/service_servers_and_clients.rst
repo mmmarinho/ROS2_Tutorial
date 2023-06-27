@@ -77,7 +77,7 @@ The Service Server receives a :code:`WhatIsThePoint.Request` and returns a :code
 
 .. warning::
 
-   The API for the Service Server callback is a bit weird in that it receives the response as an argument.
+   The API for the Service Server callback is a bit weird in that needs the :code:`Response` as an argument.
    This API `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now this is what we got.
 
 We play around with the :code:`WhatIsThePoint.Request` a bit and use that result to popule a :code:`WhatIsThePoint.Response`, as follows
