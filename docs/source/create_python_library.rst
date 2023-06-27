@@ -92,7 +92,7 @@ We learned the meaning of most of those in the preamble, namely :ref:`Python Bes
    * - :file:`test`
      - The folder contaning the tests, as we already saw in the preamble.
    * - :file:`setup.cfg`
-     - Used by setup.py, see `setup.cfg docs<https://docs.python.org/3.10/distutils/configfile.html>`_.
+     - Used by setup.py, see `setup.cfg docs <https://docs.python.org/3.10/distutils/configfile.html>`_.
    * - :file:`setup.py`
      - The instructions to make the package installable, as we saw in the preamble.
 
