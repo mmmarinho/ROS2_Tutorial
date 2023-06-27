@@ -170,7 +170,4 @@ For these tutorials, only use :program:`sudo` when installing system-wide packag
 File permissions
 ----------------
 
-One of the reasons that using :program:`sudo` indiscriminately will destroy your Ubuntu is file permissions. If you open a file and save it as :program:`sudo`, you'll change its permissions, and that might be enough to even block you from logging into Ubuntu via the :abbr:`GUI (Graphics User Interface)`.
-
-
-
+One of the reasons that using :program:`sudo` indiscriminately will destroy your Ubuntu is `file permissions <https://help.ubuntu.com/community/FilePermissions>`_. For example, if you *simply* open a file and save it as :program:`sudo`, you'll change its permissions, and that might be enough to even block you from logging into Ubuntu via the :abbr:`GUI (Graphics User Interface)`.
