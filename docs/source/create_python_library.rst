@@ -165,15 +165,15 @@ With the necessary files created and properly organized, the last step is to :co
    :linenos:
    :lines: 24-
 
-Modify the :code:`setup.py` to export the modules
--------------------------------------------------
+Modify the :code:`setup.py` to export the packages
+--------------------------------------------------
 
 .. warning::
    This step might be unnecessary after `this fix <https://github.com/ros2/ros2cli/issues/833>`_.
 
 .. note::
 
-   This is a *one-size-fits-most* solution, which might not work for certain Python module structures. As a generic solution, we will export all libraries in the package excluding the `test` directory. For more information on :program:`setuptools`, see the `official Python packaging docs <https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/>`_.
+   This is a *one-size-fits-most* solution, which might not work for certain Python package structures. As a generic solution, we will export all Python packages in the ROS2 package excluding the `test` directory. For more information on :program:`setuptools`, see the `official Python packaging docs <https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/>`_.
 
 :download:`setup.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/setup.py>`
 
