@@ -66,14 +66,14 @@ The Service Server must be initialzied with the :code:`create_service()`, as fol
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
-   :lines: 35-43
-   :emphasize-lines: 4-7
+   :lines: 38-41
 
 The Service Server receives a :code:`WhatIsThePoint.Request` and returns a :code:`WhatIsThePoint.Response`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
    :lines: 45-52
+   :emphasize-lines: 2,4
 
 .. warning::
 
@@ -84,8 +84,7 @@ We play around with the :code:`WhatIsThePoint.Request` a bit and use that result
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
-   :linenos:
-   :lines: 66-68
+   :lines: 66-69
 
 At the end of the callback, we must return that :code:`WhatIsThePoint.Request`, like so 
 
