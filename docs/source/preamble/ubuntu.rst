@@ -13,7 +13,7 @@ You already know how to turn your computer and press some keys to make bits flip
 Keep all issues to :code:`#vent`
 --------------------------------
 
-The wording on these tutorials is precise, but some terms are used in the wild (i.e. the internet) with broad meanings, but the message is conveyed. 
+The wording on these tutorials is precise as much as possible. Note that some terms are commonly used with loose meanings, but the message is still conveyed. 
 
 So, to end any deep discussions that might distract you from the point of these tutorials before they even start, I'll let you with the world-renowned Linux copypasta edited with `what was actually said <https://www.gnu.org/gnu/incorrect-quotation.html>`_ 
 
