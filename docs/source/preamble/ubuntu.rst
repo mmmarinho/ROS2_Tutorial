@@ -10,8 +10,8 @@ You already know how to turn your computer and press some keys to make bits flip
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-Keep all issues to :code:`#vent`
---------------------------------
+Keep all grievances in :code:`#vent`
+------------------------------------
 
 The wording on these tutorials is precise as much as possible. Note that some terms are commonly used with loose meanings, but the message is still conveyed. 
 
