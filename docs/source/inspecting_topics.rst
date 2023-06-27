@@ -263,11 +263,11 @@ In our case, we can send an :program:`AmazingQuote` using :abbr:`YAML (YAML Ain'
 
    ros2 topic pub /amazing_quote \
    package_with_interfaces/msg/AmazingQuote \
-   "{ \
-   id: 1994, \
-   quote: So you’re telling me there’s a chance, \
-   philosopher_name: Lloyd \
-   }"
+   '{ 
+   id: 1994, 
+   quote: So you’re telling me there’s a chance, 
+   philosopher_name: Lloyd 
+   }'
 
 .. note::
    To improve readability, the command above uses the escape character ``\``. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_. You can also refer to the :program:`bash` Cheat Sheet at `QuickRef.ME <https://quickref.me/bash.html>`_. 
