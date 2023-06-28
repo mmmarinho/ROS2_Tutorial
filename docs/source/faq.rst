@@ -16,7 +16,7 @@ Besides the humorous nature of the `meme <https://knowyourmeme.com/memes/see-nob
 It's not Linux, it's GNU/Linux: Keep all grievances in :code:`#vent`
 --------------------------------------------------------------------
 
-The wording on these tutorials is precise as possible. Note that some terms are commonly used with loose meanings, but I hope that the message is still conveyed. 
+The wording on these tutorials is precise as possible. Note that some terms are commonly used with loose meanings, but I hope that the message is still conveyed. This applies to the whole tutorial, given that even official sources are not uniform in their terminology.
 
 So, to end any deep discussions that might distract you from the point of these tutorials before they even start, I'll let you with the world-renowned Linux copypasta edited with `what was actually said <https://www.gnu.org/gnu/incorrect-quotation.html>`_ 
 
