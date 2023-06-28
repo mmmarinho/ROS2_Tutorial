@@ -43,7 +43,7 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - **c**\ hanges **d**\ irectory to a specified target.
    * - :program:`touch`
      - :code:`touch a_file.whatever`
-     - Creates an empty file called :file:a_file.whatever`.
+     - Creates an empty file called :file:`a_file.whatever`.
    * - :program:`cat`
      - :code:`cat a_file.whatever`
      - Outputs into the console the contents of :file:`a_file.whatever`.
