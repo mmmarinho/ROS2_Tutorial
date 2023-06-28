@@ -54,7 +54,7 @@ which should output something similar to
 
 in particular, if the :code:`[GCC 11.3.0] on linux` is different, then get this fixed because this tutorial will not work for you.
 
-As you already know, to exit the `interative shell <https://docs.python.org/3.10/tutorial/interpreter.html>`_ you can use :kbd:`CTLR+D` or type :code:`quit()` and press :kbd:`ENTER`.
+As you already know, to exit the `interative shell <https://docs.python.org/3.10/tutorial/interpreter.html>`_ you can use :kbd:`CTRL+D` or type :code:`quit()` and press :kbd:`ENTER`.
 
 Some Python packages must be installed through :program:`apt`
 -------------------------------------------------------------
