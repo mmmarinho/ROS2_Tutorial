@@ -1,7 +1,7 @@
 Ubuntu Basics
 =============
 
-You already know how to turn your computer and press some keys to make bits flip and colorful pixels shine in your monitor. Here, we'll go through a few tips
+You already know how to turn your computer and press some keys to make bits flip and colorful pixels shine in your monitor. Here, we'll go through a few tips on Ubuntu.
 
 .. note::
 
