@@ -427,7 +427,7 @@ Always use :code:`unittest`
 
 .. note::
 
-   ROS2 uses :code:`pytest`, but that doesn't mean you also have to.
+   ROS2 uses :code:`pytest` as default, but that doesn't mean you also have to use it in every Python script you ever write.
 
 There are many test frameworks for Python. Nonetheless, the `unittest module <https://docs.python.org/3.10/library/unittest.html>`_
 is built into Python so, unless you have a very good reason not to use it, `just [use] it <https://www.youtube.com/watch?v=ZXsQAXx_ao0>`_.
