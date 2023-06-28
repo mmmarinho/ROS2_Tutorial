@@ -13,8 +13,8 @@ Besides the humorous nature of the `meme <https://knowyourmeme.com/memes/see-nob
 .. image:: ../images/ros2_or_ros_2.jpg
    :align: center
 
-It's not Linux, it's GNU/Linus: Keep all grievances in :code:`#vent`: p
------------------------------------------------------------------------
+It's not Linux, it's GNU/Linux: Keep all grievances in :code:`#vent`
+--------------------------------------------------------------------
 
 The wording on these tutorials is precise as possible. Note that some terms are commonly used with loose meanings, but I hope that the message is still conveyed. 
 
