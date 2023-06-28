@@ -334,7 +334,7 @@ For attributes we use :code:`<attribute>: type`, as shown below
    :language: python
    :lines: 45
 
-For method arguments we use :code:`<argument>: type` and for return types we use :code:`def method(args) -> return type`, as shown below in our example
+For method arguments we use :code:`<argument>: <type>` and for return types we use :code:`def <method>(<params>) -> <type>`, as shown below in our example
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py
    :language: python
