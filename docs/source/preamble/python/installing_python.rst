@@ -118,7 +118,7 @@ To deactivate, run
 
    deactivate
 
-We'll know that we're no longer using the :code:`ros2tutorial_venv` because the prefix will dissapear back to 
+We'll know that we're no longer using the :code:`ros2tutorial_venv` because the prefix will disappear back to 
 
 .. code-block:: console
 
