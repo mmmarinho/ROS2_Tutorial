@@ -66,9 +66,9 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
 Let's use it. (!?)
 ------------------
 
-The thing is, we'll be using the terminal throughout the entire tutorial, so don't worry. 
+The thing is, we'll be using the terminal throughout the entire tutorial, so don't worry about going to deep right now.
 
-Let's start with creating an empty file inside a new directory, as follows
+To warm up, let's start with creating an empty file inside a new directory, as follows
 
 .. hint::
 
