@@ -1,3 +1,5 @@
+.. include:: ../the_topic_is_under_heavy_construction.rst
+
 Ubuntu Basics
 =============
 
@@ -7,8 +9,6 @@ You already know how to turn your computer and press some keys to make bits flip
 
    The world is full of smart people, and they've done some amazing stuff, like Ubuntu and Linux. There are endless tutorials for those and this
    one is not a complete one. We'll go through some basic tools available in Ubuntu that help with our quest to learn/use ROS2.
-
-.. include:: ../the_topic_is_under_heavy_construction.rst
 
 The :program:`terminal`
 -----------------------
