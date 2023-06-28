@@ -311,6 +311,7 @@ Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PE
    | *If the implementation is easy to explain, it may be a good idea.*
    | *Namespaces are one honking great idea -- let's do more of those!*
 
+.. _Type hints:
 
 Take the (type) hint: Always type hints
 ----------------------------------------
@@ -340,6 +341,46 @@ For method arguments we use :code:`<argument>: <type>` and for return types we u
    :language: python
    :lines: 57-59
    :emphasize-lines: 1
+
+Document your code with Docstrings
+----------------------------------
+
+You do not need to document every single line you code, that would in fact be white obnoxious
+
+.. code-block:: python
+
+   # c stores the sum of a and b
+   c = a + b
+
+   # d stores the square of c
+   d = c**2
+
+   # check if d is zero
+   if d == 0:
+      # Print warning
+      print("Warning")
+
+But, on the other side of the coin, it doesn't take too long for us to forget what the parameters of a function mean. :ref:`Type hints` help a lot,
+but additional information is always welcome. If you get used to using docstrings for every new method, your programming will be better in general
+because documenting your code makes you think about it.
+
+The example below shows a quick explanation of what the class does using a docstring
+
+.. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py
+   :language: python
+   :lines: 26-30
+
+The `PEP 257 <https://peps.python.org/pep-0257/>`_ talks about docstrings but does not define too much beyond saying that we should use it.
+My recommendation as of now would be the `Sphinx markup <https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#python-signatures>`_, because
+of the many Python libraries using it for Sphinx documentation/tutorials like this one.
+
+The sample code shown in this section has docstrings everywhere, but they are being used to explain the general usage of some Python syntax.
+When documenting your code, obviously, the documentation should be about what the method/class/attribute does.
+
+.. hint::
+
+   Ideally, all documentation is perfect from the start. In reality, however, that rarely ever happens so some documentation is always better than none. 
+   My advice would be to write something as it goes and possibly adjust it to more stable or cleaner documentation when the need arises.
 
 Unit tests: always test your code
 ---------------------------------
