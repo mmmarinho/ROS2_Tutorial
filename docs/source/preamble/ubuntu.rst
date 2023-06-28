@@ -37,7 +37,7 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - Output in the absolute path to the current directory.
    * - :program:`mkdir`
      - :code:`mkdir this_is_a_folder`
-     - **M**\ a\ **k**\ es a **dir**ectory called :file:`this_is_a_folder` in the current directory. 
+     - **M**\ a\ **k**\ es a **dir**\ ectory called :file:`this_is_a_folder` in the current directory. 
    * - :program:`cd`
      - :code:`cd this_is_a_folder`
      - **c**\ hanges **d**\ irectory to a specified target.
@@ -133,7 +133,7 @@ So, enough of this example, let's get rid of everything with
 
 .. warning::
 
-   **ALWAYS** be careful when using :program:`rm`. The files removed this way do **NOT** go to the trash can, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_ to those files/directories.
+   **ALWAYS** be careful when using :program:`rm`. `The files removed this way do **NOT**\ go to the trash can <https://unix.stackexchange.com/questions/10883/where-do-files-go-when-the-rm-command-is-issued>`_, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_ to those files/directories.
 
 .. code-block:: console
 
@@ -162,6 +162,12 @@ With great power, comes great opportunity to destroy your Ubuntu. It turns out t
 So, don't.
 
 For these tutorials, only use :program:`sudo` when installing system-wide packages. Otherwise, do not use it.
+
+Be careful even when not using :program:`sudo`
+----------------------------------------------
+
+With regular user privileges, the `major <https://www.youtube.com/watch?v=DDfPwaWwrII>`_ system folders will be protected from tampering. However, our home folder, e.g. :file:`/home/<YOU>` will not.
+In our home folder, we are the lords, so a mistake can be fatal for your files/directories. 
 
 File permissions
 ----------------
