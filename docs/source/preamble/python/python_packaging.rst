@@ -180,7 +180,7 @@ which will return something similar to
        /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/minimalist_package/*
    Proceed (Y/n)? 
 
-and just press :kbd:`Enter`, resulting in the package being uninstalled
+and just press :kbd:`ENTER`, resulting in the package being uninstalled
 
 .. code-block:: console
 
