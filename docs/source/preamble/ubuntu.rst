@@ -36,10 +36,10 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - :code:`pwd`
      - Output in the absolute path to the current directory.
    * - :program:`mkdir`
-     - :code:`mkdir this_is_a_folder`
+     - :code:`mkdir a_folder`
      - **M**\ a\ **k**\ es a **dir**\ ectory called :file:`this_is_a_folder` in the current directory. 
    * - :program:`cd`
-     - :code:`cd this_is_a_folder`
+     - :code:`cd a_folder`
      - **c**\ hanges **d**\ irectory to a specified target.
    * - :program:`touch`
      - :code:`touch a_file.whatever`
@@ -66,13 +66,13 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
 Let's use it. (!?)
 ------------------
 
-The thing is, we'll be using the terminal throughout the entire tutorial, so don't worry about going to deep right now.
+The thing is, we'll be using the terminal throughout the entire tutorial, so don't worry about going too deep right now.
 
 To warm up, let's start with creating an empty file inside a new directory, as follows
 
 .. hint::
 
-   The path :file:`~` stands for the current logged-in user's home folder.
+   The path :file:`~` stands for the currently logged-in user's home folder.
 
 .. hint:: 
 
@@ -81,8 +81,8 @@ To warm up, let's start with creating an empty file inside a new directory, as f
 .. code-block:: console
 
    cd ~
-   mkdir a_new_folder
-   cd a_new_folder
+   mkdir a_folder
+   cd a_folder
    touch an_empty_file.txt
 
 Then, we can use :program:`nano` to create another file with some contents
@@ -138,7 +138,7 @@ So, enough of this example, let's get rid of everything with
 .. code-block:: console
 
    cd ~
-   rm -r a_new_folder
+   rm -r a_folder
 
 Tab completion
 --------------
