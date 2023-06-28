@@ -133,7 +133,7 @@ So, enough of this example, let's get rid of everything with
 
 .. warning::
 
-   **ALWAYS** be careful when using :program:`rm`. `The files removed this way do **NOT**\ go to the trash can <https://unix.stackexchange.com/questions/10883/where-do-files-go-when-the-rm-command-is-issued>`_, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_ to those files/directories.
+   **ALWAYS** be careful when using :program:`rm`. `The files removed this way do NOT go to the trash can <https://unix.stackexchange.com/questions/10883/where-do-files-go-when-the-rm-command-is-issued>`_, if you use it you pretty much said `bye bye bye <https://www.youtube.com/watch?v=Eo-KmOd3i7s>`_ to those files/directories.
 
 .. code-block:: console
 
