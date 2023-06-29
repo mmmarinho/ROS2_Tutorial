@@ -183,7 +183,7 @@ I will not get into detail here about programs to change permissions because we 
 :program:`nautilus`: browzing files with a :abbr:`GUI (Graphical User Interface)`
 ---------------------------------------------------------------------------------
 
-To some extent similar to :program:`explorer` in Windows and :program:`finder` in macOS, :program:`nautilus` is the default file manager in Ubuntu.
+To some extent similar to :program:`explorer` in Windows and :program:`finder` in macOS, :program:`nautilus` is `the default file manager in Ubuntu <https://manpages.ubuntu.com/manpages/jammy/en/man1/nautilus.1.html>`_.
 
 One tip is that it can be opened from the :program:`terminal` as well, so that you don't have to find whatever folder you are again.
 For example, 
