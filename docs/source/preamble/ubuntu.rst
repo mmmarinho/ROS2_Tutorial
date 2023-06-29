@@ -179,3 +179,22 @@ File permissions
 One of the reasons that using :program:`sudo` indiscriminately will destroy your Ubuntu is `file permissions <https://help.ubuntu.com/community/FilePermissions>`_. For example, if you *simply* open a file and save it as :program:`sudo`, you'll change its permissions, and that might be enough to even block you from logging into Ubuntu via the :abbr:`GUI (Graphics User Interface)`.
 
 I will not get into detail here about programs to change permissions because we won't need them extensively in these tutorials. However, this is important to be aware that this exists and might cause problems.
+
+:program:`nautilus`: browzing files with a :abbr:`GUI (Graphical User Interface)`
+---------------------------------------------------------------------------------
+
+To some extent similar to :program:`explorer` in Windows and :program:`finder` in macOS, :program:`nautilus` is the default file manager in Ubuntu.
+
+One tip is that it can be opened from the :program:`terminal` as well, so that you don't have to find whatever folder you are again.
+For example, 
+
+.. hint::
+
+   The path :file:`.` means the current folder.
+
+.. code-block:: console
+
+   cd ~
+   nautilus .
+
+will open the current logged-in user's home folder in :program:`nautilus`.
