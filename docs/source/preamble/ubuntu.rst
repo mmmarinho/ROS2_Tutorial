@@ -1,7 +1,7 @@
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-Ubuntu Basics
-=============
+Ubuntu Terminal Basics
+======================
 
 You already know how to turn your computer and press some keys to make bits flip and colorful pixels shine in your monitor. Here, we'll go through a few tips on Ubuntu.
 
@@ -10,12 +10,25 @@ You already know how to turn your computer and press some keys to make bits flip
    The world is full of smart people, and they've done some amazing stuff, like Ubuntu and Linux. There are endless tutorials for those and this
    one is not a complete one. We'll go through some basic tools available in Ubuntu that help with our quest to learn/use ROS2.
 
+
+Who cares about the :program:`terminal` anyways, are you like 100 years old or something?
+-----------------------------------------------------------------------------------------
+
+Basides the uninteded upside that if you're typing into a terminal fast enough with a black hoodie you're cosplaying `Mr. Robot <https://www.imdb.com/title/tt4158110/>`_ at a very low cost, there wouldn't be another way to make a tutorial like this within
+the current age of the Universe without relying on Ubuntu's :program:`terminal`. 
+
+:abbr:`GUIs (Graphical User Interfaces)` change faster than long tutorials like this one can keep up with and :program:`terminal` 
+is our reliable patner in crime and unlikely to change much in the foreseable future.
+
+For the whole tutorial you can copy and paste your commands in :program:`terminal`. If it doesn't work, it's either your fault or mine,
+but surely not the :program:`terminal`\ 's.
+
 The :program:`terminal`
 -----------------------
 
 .. note::
 
-   Check out `Canonical's Tutorial <https://ubuntu.com/tutorials/command-line-for-beginners>`_ for the complete story.
+   Check out `Canonical's Tutorial <https://ubuntu.com/tutorials/command-line-for-beginners>`_ on :program:`terminal` for the complete story.
 
 .. warning::
 
