@@ -345,7 +345,7 @@ For method arguments we use :code:`<argument>: <type>` and for return types we u
 Document your code with Docstrings
 ----------------------------------
 
-You do not need to document every single line you code, that would in fact be white obnoxious
+You do not need to document every single line you code, that would in fact be quite obnoxious
 
 .. code-block:: python
 
