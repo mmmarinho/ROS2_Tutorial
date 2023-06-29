@@ -58,7 +58,7 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - Output the lines of :file:`a_file.whatever` that contain the string :code:`robocop`.
    * - :program:`nano`
      - :code:`nano a_file.whatever`
-     - Quick edits to a file in a user-friendly program, so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
+     - Helps you do edits to a file using a (relatively?) user-friendly program, so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
    * - :program:`apt`
      - :code:`apt install git`
      - Installs Ubuntu packages.
