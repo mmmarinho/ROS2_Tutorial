@@ -313,8 +313,8 @@ Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PE
 
 .. _Type hints:
 
-Take the (type) hint: Always type hints
-----------------------------------------
+Take the (type) hint: Always use type hints
+-------------------------------------------
 
 .. note::
 
