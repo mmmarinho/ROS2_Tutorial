@@ -70,6 +70,9 @@ which, in this case, outputs
 
 To everyone's surprise, there are a lot of services beyond the one we created. We can address those when we talk about ROS2 parameters, for now, we just ignore them.
 
+Testing your service servers with ros2 service call
+---------------------------------------------------
+
 Similar to the discussion about topics, we ROS2 has a tool to allow us to call a service from the terminal, called :program:`ros2 service call`. The service must be specified and an instance of its request must be written using :abbr:`YAML (YAML Ain't Markup Language)`.
 Back to our example, we can do
 
