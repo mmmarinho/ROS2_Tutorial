@@ -89,6 +89,6 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 .. admonition:: Disclaimer
 
    All advice, comments, and terrible memes in this tutorial are my own and not endorsed by anyone or anything else mentioned herein. 
-   Also, this tutorial and its software is provided as-is, and I make no other warranties, express or implied, and hereby disclaims all implied warranties, including any warranty of merchantability and warranty of fitness for a particular purpose. 
+   Also, this tutorial and its software is provided as-is, and I make no other warranties, express or implied, and hereby disclaim all implied warranties, including any warranty of merchantability and warranty of fitness for a particular purpose. 
 
 .. _`ROS2 Humble`: https://docs.ros.org/en/humble/
