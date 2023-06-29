@@ -14,7 +14,7 @@ You already know how to turn your computer and press some keys to make bits flip
 Who cares about the :program:`terminal` anyways, are you like 100 years old or something?
 -----------------------------------------------------------------------------------------
 
-Basides the uninteded upside that if you're typing into a terminal fast enough with a black hoodie you're cosplaying `Mr. Robot <https://www.imdb.com/title/tt4158110/>`_ at a very low cost, there wouldn't be another way to make a tutorial like this within
+Besides the unintended upside that if you're typing into a terminal fast enough with a black hoodie you're cosplaying `Mr. Robot <https://www.imdb.com/title/tt4158110/>`_ at a very low cost, there wouldn't be another way to make a tutorial like this within
 the current age of the Universe without relying on Ubuntu's :program:`terminal`. 
 
 :abbr:`GUIs (Graphical User Interfaces)` change faster than long tutorials like this one can keep up with and :program:`terminal` 
