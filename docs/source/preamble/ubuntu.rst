@@ -61,7 +61,7 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - Helps you do edits to a file using a (relatively?) user-friendly program, so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
    * - :program:`apt`
      - :code:`apt install git`
-     - Installs Ubuntu packages.
+     - Installs Ubuntu packages, in this case, :program:`git`.
 
 Let's use it. (!?)
 ------------------
