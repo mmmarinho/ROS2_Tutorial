@@ -93,7 +93,7 @@ Using :code:`await`
 
 .. admonition:: **TL;DR** Using :code:`await`
       
-   #. Run multiple :code:`Task` -s.
+   #. Run multiple :code:`Task`\ s.
    #. Use :code:`await` for them, **after they were executed**.
 
 .. admonition:: In this step, we'll work on this.
@@ -107,7 +107,7 @@ Using :code:`await`
               └── _unlikely_to_return.py
               └── async_await_example.py
 
-Differently from synchronous programming, using :code:`async` needs us to reflect on several tasks being executed at the same time (-ish).
+Differently from synchronous programming, using :code:`async` needs us to reflect on several tasks being executed at the same time(-ish).
 The main use case is for programs with multiple tasks that can run concurrently and, at some point, we need the result of those tasks to either
 end the program or further continue with other tasks.
 
@@ -146,7 +146,7 @@ Ok, enough with the explanation, let's go to the endorphin rush of actually runn
    cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
    python -m minimalist_async.async_await_example
 
-Which will result in something like shown below. The function is stochastic so it might take more or less time to 
+Which will result in something like shown below. The function is stochastic, so it might take more or less time to 
 return and the order of the tasks ending might also be different.
 
 However, in the :code:`await` framework, the results will **ALWAYS** be processed in the order that was specified
@@ -190,9 +190,9 @@ Using :code:`callback`
 
 .. admonition:: **TL;DR** Using :code:`callbacks`
       
-   #. Run multiple :code:`Task` -s.
+   #. Run multiple :code:`Task`\ s.
    #. Add a :code:`callback` to handle the result **as soon as it is ready**.
-   #. Use :code:`await` for them just so that the main loop does not die.
+   #. Use :code:`await` for each :code:`Task` just so that the main loop does not return prematurely.
 
 .. admonition:: In this step, we'll work on this.
 
@@ -205,7 +205,7 @@ Using :code:`callback`
               └── async_await_example.py
               └── async_callback_example.py
 
-Differently from :code:`await` -ing for each task and then processing their result, we can define :code:`callbacks`
+Differently from :code:`await`\ ing for each task and then processing their result, we can define :code:`callbacks`
 in such a way that each result will be processed as they come. In that way, the results can be processed in an arbitrary
 order. Once again, this is inherently neither a good strategy nor a bad one. Some frameworks will work with callbacks,
 for example ROS1, ROS2, and Qt, but some others will prefer to use :code:`await`.
@@ -234,7 +234,7 @@ case the task fails for any reason.
 Aside from that, there are only two key differences with the :code:`await` logic example we showed before,
 
 #. The callback must be added with :code:`task.add_done_callback()`, remember to use :code:`partial()` if the callback has other parameters besides the :code:`Future`
-#. :code:`await` for the tasks at the end, not because this script will process it (it will be processed as they come by its :code:`callback`), but because otherwise the main script will return and nothing will be done.
+#. :code:`await` for the tasks at the end, not because this script will process it (it will be processed as they come by its :code:`callback`), but because otherwise the main script will return and (most likely) nothing will be done.
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_callback_example.py
    :language: python
