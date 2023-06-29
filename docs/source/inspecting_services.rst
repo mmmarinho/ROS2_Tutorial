@@ -36,8 +36,7 @@ which outputs the detailed information of the tool, as shown below. In particula
 Start a service server
 ----------------------
 
-Similar to the discussion in topics, it is good to be able to test service servers without having to develop a complete service client. Let's starting by running
-the service server we created just now.
+Similar to the discussion about topics, it is good to be able to test service servers without having to develop a complete service client. Let's starting by running the service server we created just now.
 
 .. warning::
 
@@ -69,7 +68,10 @@ which, in this case, outputs
     /what_is_the_point_service_server/set_parameters
     /what_is_the_point_service_server/set_parameters_atomically
 
-to everyone's surprise, there are a lot of services beyond the one we created. We can address those when we talk about ROS2 parameters, for now, we just ignore them.
+To everyone's surprise, there are a lot of services beyond the one we created. We can address those when we talk about ROS2 parameters, for now, we just ignore them.
+
+Similar to the discussion about topics, we ROS2 has a tool to allow us to call a service from the terminal, called :program:`ros2 service call`. The service must be specified and an instance of its request must be written using :abbr:`YAML (YAML Ain't Markup Language)`.
+Back to our example, we can do
 
 .. code-block:: console
 
@@ -83,6 +85,7 @@ to everyone's surprise, there are a lot of services beyond the one we created. W
          }
     }'
 
+which results in
 
 .. code-block:: console
     
