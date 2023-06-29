@@ -1,3 +1,5 @@
+.. _Python packaging:
+
 Making your Python package installable
 ======================================
 
