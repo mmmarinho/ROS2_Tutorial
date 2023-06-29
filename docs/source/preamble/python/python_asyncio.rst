@@ -9,7 +9,7 @@ Python's :code:`asyncio`
    It either allows us to attach a :code:`callback` for when the result is ready, or to run many service calls and :code:`await`
    for them all, instead of running one at a time.
 
-There are two main ways to interact with :code:`async` code, the first being by :code:`await` -ing the results or by handling those
+There are two main ways to interact with :code:`async` code, the first being by :code:`await`\ ing the results or by handling those
 results through :code:`callbacks`. Let's go through both of them with examples.
 
 Use a :code:`venv`
