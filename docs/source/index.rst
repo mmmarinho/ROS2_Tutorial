@@ -78,6 +78,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
    parameters_and_launch
    launch_configurable_nodes
+   inspecting_parameters
 
 .. toctree::
    :caption: Other content
