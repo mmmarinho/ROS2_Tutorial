@@ -66,11 +66,11 @@ Nothing will happen unless these two methods are called. First, :code:`rclpy.ini
 Have a :code:`try-catch` block for :code:`KeyboardInterrupt`
 ------------------------------------------------------------
 
-In the current version of the `official ROS2 examples <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_ , for reasons beyond my comprehension this step is not followed.
+In the current version of the `official ROS2 examples <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_ , for reasons beyond my comprehension, this step is not followed.
 
 However, when running Nodes either in the terminal or in :program:`PyCharm`, catching a :code:`KeyboardInterrupt` is the only reliable way to finish the Nodes cleanly. A :code:`KeyboardInterrupt` is emitted at a terminal by pressing :kbd:`CTRL+C`, whereas it is emitted by :program:`PyCharm` when pressing :guilabel:`Stop`.
 
-That is particularly important when real robots need to be gracefully shutdown (otherwise they might inadvertently start the evil robot uprising), but it also looks unprofessional when all your Nodes return with an ugly stack trace.
+That is particularly important when real robots need to be gracefully shut down (otherwise they might inadvertently start the evil robot uprising), but it also looks unprofessional when all your Nodes return with an ugly stack trace.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
@@ -84,14 +84,14 @@ As simple as a code might look for you right now, it needs to be documented for 
 
 Add as much description as possible to classes and methods, using the `Docstring Convention <https://peps.python.org/pep-0257/>`_.
 
-Example for a class:
+Example of a class:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 28-29
    :emphasize-lines: 2
    
-Example for a method:
+Example of a method:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
