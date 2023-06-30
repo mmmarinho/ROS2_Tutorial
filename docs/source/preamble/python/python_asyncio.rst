@@ -3,6 +3,8 @@
 Python's :code:`asyncio`
 ========================
 
+.. include:: ../../the_section_is_optional.rst
+
 .. note::
    Asynchronous code is not the same as code that runs in parallel, even more so in Python because of the :abbr:`GIL (Global Interpreter Lock)` (`More info <https://wiki.python.org/moin/GlobalInterpreterLock>`_).
    Basically, the :code:`async` framework allows us to not waste time waiting for results that we don't know when will arrive.
