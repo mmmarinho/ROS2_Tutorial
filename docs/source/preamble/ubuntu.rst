@@ -1,9 +1,9 @@
+Ubuntu Terminal Basics
+======================
+
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
 .. include:: ../the_section_is_optional.rst
-
-Ubuntu Terminal Basics
-======================
 
 You already know how to turn your computer and press some keys to make bits flip and colorful pixels shine in your monitor. Here, we'll go through a few tips on Ubuntu.
 
