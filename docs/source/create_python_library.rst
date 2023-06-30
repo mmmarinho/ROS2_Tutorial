@@ -10,7 +10,7 @@ Let us start, as already recommended in this tutorial, with a template by :progr
    --build-type ament_python \
    --library-name sample_python_library
    
-which outputs the forever beautiful wall of text we're by now used to, with a minor difference regarding the additional library template, as highlighted below.
+which outputs the forever beautiful wall of text we're now used to, with a minor difference regarding the additional library template, as highlighted below.
 
 .. code-block:: console
    :emphasize-lines: 25, 26
