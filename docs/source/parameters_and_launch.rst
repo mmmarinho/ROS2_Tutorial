@@ -119,11 +119,11 @@ Create the :file:`launch` file
 
    The Python launch file **MUST** have the suffix :file:`_launch.py`. It will be used by the :file:`setup.py` to install it correctly.
 
-Suppose that we are tired of all the meme quotes and want to make a node with a truly inspirational quote. We start by making the launch file named :file:`peanut_butter_falcon_quote_publisher_launch.py` within the :file:`launch` folder we just created, with the following contents
+Suppose that we are tired of all the meme quotes and want to make our Node publish a truly inspirational quote. We start by making the launch file named :file:`peanut_butter_falcon_quote_publisher_launch.py` within the :file:`launch` folder we just created, with the following contents
 
 :download:`peanut_butter_falcon_quote_publisher_launch.py <../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
    :lineno:
    :lines: 1-
