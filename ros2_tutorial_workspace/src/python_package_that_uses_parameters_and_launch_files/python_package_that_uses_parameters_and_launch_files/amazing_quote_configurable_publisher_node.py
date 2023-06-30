@@ -32,15 +32,15 @@ class AmazingQuoteConfigurablePublisherNode(Node):
     def __init__(self):
         super().__init__('amazing_quote_configurable_publisher_node')
 
+        # Periodically-obtained parameters
+        self.declare_parameter('quote', 'Use the force, Pikachu!')
+        self.declare_parameter('philosopher_name', 'Uncle Ben')
+
         # One-off parameters
         self.declare_parameter('topic_name', 'amazing_quote')
         topic_name: str = self.get_parameter('topic_name').get_parameter_value().string_value
         self.declare_parameter('period', 0.5)
         timer_period: float = self.get_parameter('period').get_parameter_value().double_value
-
-        # Periodically-obtained parameters
-        self.declare_parameter('quote', 'Use the force, Pikachu!')
-        self.declare_parameter('philosopher_name', 'Uncle Ben')
 
         self.configurable_amazing_quote_publisher = self.create_publisher(
             msg_type=AmazingQuote,
