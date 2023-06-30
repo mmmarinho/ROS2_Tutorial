@@ -45,7 +45,7 @@ class AmazingQuoteSubscriberNode(Node):
             
                '{}'
                
-        And was though by the following genius
+        And was thought by the following genius
             
             -- {}
             
