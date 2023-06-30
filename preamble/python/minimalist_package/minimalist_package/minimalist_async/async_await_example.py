@@ -29,7 +29,7 @@ async def async_main() -> None:
     tags: list[str] = ["task1", "task2"]
     tasks: list[asyncio.Task] = []
 
-    # Start all tasks before awaiting on them, otherwise the code
+    # Start all tasks before awaiting them, otherwise the code
     # will not be concurrent.
     for task_tag in tags:
         task = asyncio.create_task(
