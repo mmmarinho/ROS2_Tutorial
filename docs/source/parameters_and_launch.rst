@@ -215,3 +215,12 @@ We have already seen a :file:`setup.py` so many times we're almost calling it `W
 The only difference is emphasized above inside the :code:`data_files`, which is the line that will specify that launch files will be installed as well. Notice that
 the :file:`setup.py` looks for files with a specific pattern in the folder :file:`launch`, so be sure that your launch files
 have the correct name otherwise they might not be installed as expected.
+
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: the_canonical_build_command.rst
+
+
