@@ -256,7 +256,7 @@ ends before the first one, it will be automatically processed by its :code:`call
 .. code-block:: console
    :emphasize-lines: 5,6,11,12
 
-   Awaiting for results...
+   Awaiting results...
    task1 retry needed (roll = 0.6248308966234916 > 0.1).
    task2 retry needed (roll = 0.24259714032999036 > 0.1).
    task1 retry needed (roll = 0.1996764883575476 > 0.1).            
