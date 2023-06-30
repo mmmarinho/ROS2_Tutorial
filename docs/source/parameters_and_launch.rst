@@ -37,6 +37,16 @@ Create the Node using parameters
                #. Declare the parameter with :code:`Node.declare_parameter()`, usually in the class's :code:`__init__`.
                #. Get the parameter with :code:`Node.get_parameter()` either once or continuously.
 
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 4
+      
+      src/python_package_that_uses_parameters_and_launch_files
+        └── python_package_that_uses_parameters_and_launch_files/
+              └── __init__.py
+              └── amazing_quote_configurable_publisher_node.py
+
 For the sake of the example, let us suppose that we want to make an :code:`AmazingQuote` publisher that is, now, configurable.
 
 Let's start by creating an :file:`amazing_quote_configurable_publisher_node.py` in :file:`python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files` with the following contents
@@ -107,6 +117,17 @@ Differently from ROS1, in ROS2 we can use Python launch files. They are quite po
 (Once) create the :file:`launch` folder
 ---------------------------------------
 
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 5
+      
+      src/python_package_that_uses_parameters_and_launch_files
+        └── python_package_that_uses_parameters_and_launch_files/
+              └── __init__.py
+              └── amazing_quote_configurable_publisher_node.py
+        └── launch
+
 Well, without further ado
 
 .. code:: console
@@ -116,6 +137,18 @@ Well, without further ado
 
 Create the :file:`launch` file
 ------------------------------
+
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 6
+      
+      src/python_package_that_uses_parameters_and_launch_files
+        └── python_package_that_uses_parameters_and_launch_files/
+              └── __init__.py
+              └── amazing_quote_configurable_publisher_node.py
+        └── launch
+              └── peanut_butter_falcon_quote_publisher_launch.py
 
 .. warning:
    The Python launch file **MUST** have the suffix :file:`_launch.py`. It will be used by the :file:`setup.py` to install it correctly.
@@ -156,14 +189,29 @@ Finally, our parameters are defined using a dictionary within a list, namely
 The :file:`setup.py`
 --------------------
 
-:download:`amazing_quote_configurable_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py>`
+.. admonition:: In this step, we'll work on this.
+
+   .. code-block:: console
+      :emphasize-lines: 7
+      
+      src/python_package_that_uses_parameters_and_launch_files
+        └── python_package_that_uses_parameters_and_launch_files/
+              └── __init__.py
+              └── amazing_quote_configurable_publisher_node.py
+        └── launch
+              └── peanut_butter_falcon_quote_publisher_launch.py
+        setup.py
+
+Modify the :file:`setup.py` to look like this
+
+:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py
    :language: python
    :linenos:
-   :emphasize-lines: 15
+   :emphasize-lines: 15,25-27
 
 We have already seen a :file:`setup.py` so many times we're almost calling it `Wilson <https://www.imdb.com/name/nm1012434/>`_. 
-The only difference is emphasized above, which is the line that will specify that launch files will be installed as well. Notice that
+The only difference is emphasized above inside the :code:`data_files`, which is the line that will specify that launch files will be installed as well. Notice that
 the :file:`setup.py` looks for files with a specific pattern in the folder :file:`launch`, so be sure that your launch files
 have the correct name otherwise they might not be installed as expected.
