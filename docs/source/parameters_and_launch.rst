@@ -73,7 +73,7 @@ In this case, we're making the topic name and publication periodicity as one-off
 Continously-obtained parameters
 -------------------------------
 
-For parameters that we obtain constinuously through the lifetime of the Node, we can, for example, declare them in the :code:`__init__` method, like so
+For parameters that we obtain continuously through the lifetime of the Node, we can, for example, declare them in the :code:`__init__` method, like so
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
@@ -84,7 +84,7 @@ then obtain them in another method, like so
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
    :lines: 54-67
-   :emphasize-lines: 4,5,8,9
+   :emphasize-lines: 4,5,9,10
 
 In this example, we are making the :code:`quote` and the :code:`philosopher_name` as configurable parameters that can be changed continuously, during the lifetime of the Node. After they are changed, the node will publish a message with different contents.
 
@@ -128,4 +128,3 @@ Suppose that we are tired of all the meme quotes and want to make our Node publi
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
    :lineno:
-   :lines: 1-
