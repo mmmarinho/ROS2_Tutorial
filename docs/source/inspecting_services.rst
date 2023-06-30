@@ -1,7 +1,7 @@
+.. include:: the_topic_is_under_heavy_construction.rst
+
 Inspecting services (:program:`ros2 service`)
 =============================================
-
-.. include:: the_topic_is_under_heavy_construction.rst
 
 ROS2 has a tool to help us inspect services. It is just as helpful as the tools for topics.
 
