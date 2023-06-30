@@ -27,7 +27,7 @@ from package_with_interfaces.msg import AmazingQuote
 
 
 class AmazingQuoteConfigurablePublisherNode(Node):
-    """A configurable ROS2 Node that receives and prints an amazing quote."""
+    """A configurable ROS2 Node that publishes a configurable amazing quote."""
 
     def __init__(self):
         super().__init__('amazing_quote_configurable_publisher_node')
