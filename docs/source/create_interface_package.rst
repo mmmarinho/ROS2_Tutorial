@@ -138,7 +138,7 @@ The :file:`CMakeLists.txt` directives
 
    The order of the :program:`CMake` directives is very important and getting the order wrong can result in bugs with cryptic error messages.
 
-If a package is dedicated for interfaces, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
+If a package is dedicated to interfaces, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
 Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 
 :download:`CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
@@ -161,7 +161,7 @@ What to do when adding new interfaces?
 
 If additional interfaces are required
 
-#. Modify the :file:`package.xml` to have any additional dependency. See :ref:`Handling dependencies` for more details.
+#. Modify the :file:`package.xml` to have any additional dependencies. See :ref:`Handling dependencies` for more details.
 
 #. Add each new interface file to :code:`set(interface_files ...)`
 
