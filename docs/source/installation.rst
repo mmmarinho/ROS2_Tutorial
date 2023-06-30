@@ -1,8 +1,10 @@
-Installation
-============
+.. _ROS2 installation:
+
+ROS2 Installation
+=================
 
 .. note:: 
-  This tutorial is an abridged version of the original `ROS 2 Documentation <https://docs.ros.org/en/humble/index.html>`_. This tutorial considers a fresh Ubuntu Desktop 22.04 LTS 64bit installation, that you have super user access, and common sense.
+  This tutorial is an abridged version of the original `ROS 2 Documentation <https://docs.ros.org/en/humble/index.html>`_. This tutorial considers a fresh Ubuntu Desktop 22.04 LTS 64bit installation, that you have super user access and common sense.
 
 .. warning:: 
   All commands must be followed to the letter, in the precise order described herein. Any deviation from what is described might cause unspecified problems and not all of them are easily solvable.
@@ -31,7 +33,7 @@ Namely:
 
 ===========================   ================================================================================================================================================
 software-properties-common_   Allows us to access the ROS2 packages using :program:`apt`.
-curl_                         Helps downloading installation/configuration files from the terminal.
+curl_                         Helps download installation/configuration files from the terminal.
 terminator_                   ROS uses plenty of terminals, so this helps keep one's sanity intact by enabling the management of several terminals in a single window. Despite what some might say, this particular terminator has no interest whatsoever in Sarah Connor.
 git_                          The trendy source control program everyone mentions in their CV. You might be interested in knowing why it's called :code:`git`.
 ===========================   ================================================================================================================================================
@@ -61,7 +63,7 @@ There are plenty of ways to install ROS2, the following will suffice for now.
 Set up system environment to find ROS2
 -------------------------------------
 
-ROS2 packages are implemented in such way that they live peacefully in the :code:`/opt/ros/{ROS_DISTRO}` folder in your Ubuntu. A given terminal window or program will only know that ROS2 exists, and which version you want to use, if you run a setup file *for each terminal, everytime you open a new one*.
+ROS2 packages are implemented in such a way that they live peacefully in the :code:`/opt/ros/{ROS_DISTRO}` folder in your Ubuntu. A given terminal window or program will only know that ROS2 exists, and which version you want to use, if you run a setup file *for each terminal, every time you open a new one*.
 
 The :code:`~/.bashrc` file can be used for that exact purpose as, in Ubuntu, that is the file that configures each terminal window for a given user.
 
