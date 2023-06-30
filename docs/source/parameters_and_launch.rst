@@ -1,7 +1,7 @@
 .. include:: the_topic_is_under_heavy_construction.rst
 
-Parameters: Launching configurable nodes
-========================================
+Parameters: creating configurable Nodes
+=======================================
 
 The Nodes we have made in the past few sections are interesting because they take advantage of the interprocess communication provided by ROS2. 
 
@@ -78,7 +78,7 @@ For one-off parameters, we just get them once after declaring them. Because we'r
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
    :lines: 39-50
-   :emphasize-lines: 2-5,8,9,12
+   :emphasize-lines: 2-5,9,12
 
 In this case, we're making the topic name and publication periodicity as one-off configurable parameters. 
 
