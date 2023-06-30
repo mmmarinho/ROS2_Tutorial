@@ -15,7 +15,7 @@ Then
 - A program that sends (publishes) information to the topic has a :code:`Publisher`.
 - A program that reads (subscribes) information from a topic has a :code:`Subscriber`.
 
-Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_.
+Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and a combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_.
 
 Create the package
 ------------------
@@ -88,7 +88,7 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 |:code:`topic`       |  The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.                              |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-|:code:`qos_profile` |  The simplest interpretation for this parameter is the number of messages that will be stored if the :code:`spin(...)` takes too long to process them.   |
+|:code:`qos_profile` |  The simplest interpretation for this parameter is the number of messages that will be stored in the :code:`spin(...)` takes too long to process them.   |
 |                    |  (See more on  `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.)                                 |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -249,6 +249,6 @@ which outputs
    
 .. warning::
 
-   Unless instructed otherwise, the publisher does **NOT** wait for a subscriber to connect before it to starts publishing the messages. As shown in the case above, the first message we received started with `id=3`. If we delayed longer to start the publisher, we would have received later messages only.
+   Unless instructed otherwise, the publisher does **NOT** wait for a subscriber to connect before it starts publishing the messages. As shown in the case above, the first message we received started with `id=3`. If we delayed longer to start the publisher, we would have received later messages only.
    
 Let's close each node with :kbd:`CTRL+C` on each terminal before we proceed to the next tutorial.
