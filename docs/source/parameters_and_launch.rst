@@ -39,3 +39,11 @@ Create the Node using parameters
                #. Get the parameter with :code:`Node.get_parameter()` either once or continuously
 
 For the sake of the example, let us suppose that we want to make an :code:`AmazingQuote` publisher that is, now, configurable.
+
+Let's start by creating an :file:`amazing_quote_configurable_publisher_node.py` in :file:`~/ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files` with the following contents
+
+:download:`amazing_quote_configurable_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
+   :language: python
+   :lines: 24-
