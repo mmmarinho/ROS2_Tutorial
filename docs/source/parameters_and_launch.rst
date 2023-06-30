@@ -45,6 +45,7 @@ Let's start by creating an :file:`amazing_quote_configurable_publisher_node.py` 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
+   :lines: 24-
    :linenos:
 
 Don't forget to declare the parameter!
