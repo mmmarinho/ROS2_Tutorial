@@ -86,6 +86,9 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 :doc:`ROS2 Python Usage <create_packages>`
     After setting up, instructions on creating packages, nodes, subscribers, publishers, services, etc.
 
+Disclaimers etc
+---------------
+
 .. warning::
    This project is under active development and is currently a draft.
 
