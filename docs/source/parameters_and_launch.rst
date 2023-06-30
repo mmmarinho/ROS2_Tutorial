@@ -70,8 +70,8 @@ For one-off parameters, we just get them once after declaring them. Because we'r
 
 In this case, we're making the topic name and publication periodicity as one-off configurable parameters.
 
-Continously-obtained parameters
--------------------------------
+Continuously-obtained parameters
+--------------------------------
 
 For parameters that we obtain continuously through the lifetime of the Node, we can, for example, declare them in the :code:`__init__` method, like so
 
@@ -118,7 +118,6 @@ Create the :file:`launch` file
 ------------------------------
 
 .. warning:
-
    The Python launch file **MUST** have the suffix :file:`_launch.py`. It will be used by the :file:`setup.py` to install it correctly.
 
 Suppose that we are tired of all the meme quotes and want to make our Node publish a truly inspirational quote. We start by making the launch file named :file:`peanut_butter_falcon_quote_publisher_launch.py` within the :file:`launch` folder we just created, with the following contents
@@ -129,4 +128,30 @@ Suppose that we are tired of all the meme quotes and want to make our Node publi
    :language: python
    :linenos: 
 
-Which...
+We're relying on the :code:`LaunchDescription`, which expects a list of :code:`launch_ros.actions`. 
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+   :language: python
+   :lines: 1,2
+
+When using a :code:`launch_ros.actions.Node`, we need to define which :file:`package` it belongs to and the :file:`executable` which must match the name
+we set for the executable in the :file:`setup.py`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+   :language: python
+   :lines: 8,9
+
+Besides the parameters, we can configure the name of the Node, such that each is unique
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+   :language: python
+   :lines: 10
+
+The :file:`setup.py`
+--------------------
+
+:download:`amazing_quote_configurable_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py
+   :language: python
+   :linenos:
