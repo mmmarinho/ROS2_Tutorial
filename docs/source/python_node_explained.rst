@@ -66,6 +66,10 @@ Nothing will happen unless these two methods are called. First, :code:`rclpy.ini
 Have a :code:`try-catch` block for :code:`KeyboardInterrupt`
 ------------------------------------------------------------
 
+.. note:
+
+   You can see more about this topic at :ref:`Python try catch`, in the preamble.
+
 In the current version of the `official ROS2 examples <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_ , for reasons beyond my comprehension, this step is not followed.
 
 However, when running Nodes either in the terminal or in :program:`PyCharm`, catching a :code:`KeyboardInterrupt` is the only reliable way to finish the Nodes cleanly. A :code:`KeyboardInterrupt` is emitted at a terminal by pressing :kbd:`CTRL+C`, whereas it is emitted by :program:`PyCharm` when pressing :guilabel:`Stop`.
