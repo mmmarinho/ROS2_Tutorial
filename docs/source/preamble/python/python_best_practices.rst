@@ -1,9 +1,9 @@
+.. include:: ../../the_section_is_optional.rst
+
 .. _Python Best Practices:
 
 (Murilo's) Python Best Practices
 ================================
-
-.. include:: ../../the_section_is_optional.rst
 
 .. warning::
    This tutorial expects prior knowledge in Python and objected-oriented programming.
