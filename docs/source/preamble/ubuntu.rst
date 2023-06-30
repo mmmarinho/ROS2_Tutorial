@@ -10,7 +10,7 @@ You already know how to turn your computer and press some keys to make bits flip
 .. note::
 
    The world is full of smart people, and they've done some amazing stuff, like Ubuntu and Linux. There are endless tutorials for those and this
-   one is not a complete one. We'll go through some basic tools available in Ubuntu that help with our quest to learn/use ROS2.
+   one is not a complete one. We'll go through some basic tools available in Ubuntu's terminal that help with our quest to learn/use ROS2.
 
 
 Who cares about the :program:`terminal` anyways, are you like 100 years old or something?
@@ -73,7 +73,7 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - Output the lines of :file:`a_file.whatever` that contain the string :code:`robocop`.
    * - :program:`nano`
      - :code:`nano a_file.whatever`
-     - Helps you do edits to a file using a (relatively?) user-friendly program, so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
+     - Helps you do edits to a file using a (relatively?) user-friendly program so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
    * - :program:`apt`
      - :code:`apt install git`
      - Installs Ubuntu packages, in this case, :program:`git`.
