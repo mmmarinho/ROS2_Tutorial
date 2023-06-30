@@ -85,7 +85,7 @@ to get the list of packages with interfaces available, which returns something s
     visualization_msgs
 
 
-From those, :file:`sensor_msgs` and :file:`geometry_msgs` are packages to always keep in mind when looking for a suitable interface. It will help keeping your Nodes compatible with the community.
+From those, :file:`sensor_msgs` and :file:`geometry_msgs` are packages to always keep in mind when looking for a suitable interface. It will help to keep your Nodes compatible with the community.
 
 .. warning:: 
 
@@ -180,4 +180,4 @@ that results in
    ---
    int64 sum
 
-Notice that the :code:`---` is what separates the :code:`Request`, above, from the :code:`Response` below. Anyone using this service would expect that the result would be :math:`sum = a + b`, but this logic needs to be implemented on the Node. The service itself is just the ways of bidirectional communication.
+Notice that the :code:`---` is what separates the :code:`Request`, above, from the :code:`Response` below. Anyone using this service would expect that the result would be :math:`sum = a + b`, but this logic needs to be implemented on the Node. The service itself is just a way of bidirectional communication.
