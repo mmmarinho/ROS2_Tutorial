@@ -47,7 +47,7 @@ During the development of a publisher, it is extremely useful to be able to chec
 
 .. warning::
 
-   Be sure to terminate the Nodes we used in the past section before proceeding (e.g. with :kbd:`CTRL+C`), otherwise the output will look different from what is described here.
+   Be sure to terminate the Nodes we used in the past section before proceeding (e.g. with :kbd:`CTRL+C`), otherwise, the output will look different from what is described here.
 
 .. code:: console
 
@@ -56,7 +56,7 @@ During the development of a publisher, it is extremely useful to be able to chec
 Getting all topics with :program:`ros2 topic list`
 --------------------------------------------------
 
-In particular when there are many topics, it is difficult to remember every name. To see all currently active topics, we can run
+In particular, when there are many topics, it is difficult to remember every name. To see all currently active topics, we can run
 
 .. code:: console
 
@@ -212,7 +212,7 @@ We must wait for a while until messages are received so that the tool can measur
 Stop the publisher
 ------------------
 
-Now we have exhausted all relevant tools that can give us information related to the publisher. Let us close the publisher with :kbd:`CTRL+C` so that we can evaluate how these tools can help us analise a subscriber.
+Now we have exhausted all relevant tools that can give us information related to the publisher. Let us close the publisher with :kbd:`CTRL+C` so that we can evaluate how these tools can help us analyze a subscriber.
 
 Start the subscriber and get basic info
 ---------------------------------------
