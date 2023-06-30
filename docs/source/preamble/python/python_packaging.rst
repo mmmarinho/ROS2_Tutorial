@@ -3,6 +3,8 @@
 Making your Python package installable
 ======================================
 
+.. include:: ../../the_section_is_optional.rst
+
 .. warning::
 
    There is some movement towards having Python deployable packages be configurable with :file:`pyproject.toml` as a default.
