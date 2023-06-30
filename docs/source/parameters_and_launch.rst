@@ -147,6 +147,12 @@ Besides the parameters, we can configure the name of the Node, such that each is
    :language: python
    :lines: 10
 
+Finally, our parameters are defined using a dictionary within a list, namely
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+   :language: python
+   :lines: 12-16
+
 The :file:`setup.py`
 --------------------
 
