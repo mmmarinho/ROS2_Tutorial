@@ -161,3 +161,9 @@ The :file:`setup.py`
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py
    :language: python
    :linenos:
+   :emphasize-lines: 15
+
+We have already seen a :file:`setup.py` so many times we're almost calling it `Wilson <https://www.imdb.com/name/nm1012434/>`_. 
+The only difference is emphasized above, which is the line that will specify that launch files will be installed as well. Notice that
+the :file:`setup.py` looks for files with a specific pattern in the folder :file:`launch`, so be sure that your launch files
+have the correct name otherwise they might not be installed as expected.
