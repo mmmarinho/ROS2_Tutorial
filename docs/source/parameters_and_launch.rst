@@ -56,7 +56,7 @@ One-off parameters
 
 .. hint:
 
-   The second parameter of :code:`declare_parameter()` is the default value of a parameter. It can be used to give a value for when a parameter is not externaly defined.
+   The second parameter of :code:`declare_parameter()` is the default value of a parameter. It can be used to give a value for when a parameter is not externally defined.
    If you want to enforce that this parameter must be defined, do not define a second argument when calling the method.
 
 For one-off parameters, we just get them once after declaring them. Because we're using those attributes directly in the :code:`__init__` method, they are not made attributes of the class, but they could be.
@@ -66,7 +66,7 @@ For one-off parameters, we just get them once after declaring them. Because we'r
    :lines: 39-50
    :emphasize-lines: 2-5,8,9,12
 
-In this case, we're making the topic name a publication periodicity as one-off configurable parameters.
+In this case, we're making the topic name and publication periodicity as one-off configurable parameters.
 
 Continously-obtained parameters
 -------------------------------
@@ -84,7 +84,7 @@ then obtain them in another method, like so
    :lines: 54-67
    :emphasize-lines: 4,5,8,9
 
-In this example, we are making the :code:`quote` and the :code:`philosopher_name` as configurable parameters that can be changed continously, during the lifetime of the Node. After they are changed, the node will publish a message with different contents.
+In this example, we are making the :code:`quote` and the :code:`philosopher_name` as configurable parameters that can be changed continuously, during the lifetime of the Node. After they are changed, the node will publish a message with different contents.
 
 Truly configurable: using :file:`_launch.py` files
 --------------------------------------------------
