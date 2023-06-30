@@ -3,10 +3,7 @@ Parameters: Launching configurable nodes
 
 The Nodes we have made in the past few sections are interesting because they take advantage of the interprocess communication provided by ROS2. 
 
-  Other capabilities of ROS2 that we must take advantage of are `ROS2 parameters <https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html>`_
-and `ROS2 launch files <https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html>`_. We can use them to modify the behavior of Nodes without having
-  to modify their source code. For Python users, that might sound less appealing than users of compiled languages. However, users of your package might not want nor be able
-  to modify the source code directly, if the package is installable or part of a larger system with multiple users.
+Other capabilities of ROS2 that we must take advantage of are `ROS2 parameters <https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html>`_ and `ROS2 launch files <https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html>`_. We can use them to modify the behavior of Nodes without having to modify their source code. For Python users, that might sound less appealing than users of compiled languages. However, users of your package might not want nor be able to modify the source code directly, if the package is installable or part of a larger system with multiple users.
 
   
 Create the package
