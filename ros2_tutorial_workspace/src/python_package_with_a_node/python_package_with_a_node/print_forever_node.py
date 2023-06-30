@@ -54,6 +54,8 @@ def main(args=None):
         rclpy.spin(print_forever_node)
     except KeyboardInterrupt:
         pass
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':

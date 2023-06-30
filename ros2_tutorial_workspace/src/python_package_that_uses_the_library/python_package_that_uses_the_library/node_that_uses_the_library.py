@@ -69,6 +69,8 @@ def main(args=None):
         rclpy.spin(node_that_uses_the_library)
     except KeyboardInterrupt:
         pass
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':

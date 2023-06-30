@@ -69,6 +69,8 @@ def main(args=None):
         rclpy.spin(amazing_quote_publisher_node)
     except KeyboardInterrupt:
         pass
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':

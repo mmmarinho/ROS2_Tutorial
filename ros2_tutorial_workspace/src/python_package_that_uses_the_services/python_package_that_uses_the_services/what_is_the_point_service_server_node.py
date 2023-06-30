@@ -103,6 +103,8 @@ def main(args=None):
         rclpy.spin(what_is_the_point_service_server_node)
     except KeyboardInterrupt:
         pass
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':
