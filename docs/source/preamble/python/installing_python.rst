@@ -159,7 +159,7 @@ which will result in something similar to (might change depending on future vers
 
    Collecting dqrobotics
    Downloading dqrobotics-23.4.0a15-cp310-cp310-manylinux1_x86_64.whl (551 kB)
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 551.4/551.4 KB 6.3 MB/s eta 0:00:00
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 551.4/551.4 KB 6.3 MB/s eta 0:00:00
    Collecting numpy
      Downloading numpy-1.25.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.6 MB)
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.6/17.6 MB 7.4 MB/s eta 0:00:00
