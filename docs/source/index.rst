@@ -1,26 +1,6 @@
 (Murilo's) ROS2 Tutorial
 ========================
 
-.. note::
-   If you're looking for the official documentation, this is **NOT** it. For the official ROS documentation, refer to this `link <https://docs.ros.org>`_.
-
-
-`ROS2 Humble`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
-
-Using this tutorial
--------------------
-
-This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/python/python_basics>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, even the :doc:`ROS2 Setup <installation>`. 
-
-:doc:`Preamble <preamble/ubuntu>`
-    Basic content to refresh your memory, such as simple Ubuntu use, Python in Ubuntu, etc.
-    
-:doc:`ROS2 Setup <installation>` (⭐The ROS2 tutorial starts here⭐)
-    Setting up a working ROS2 environment properly to follow this tutorial. 
-
-:doc:`ROS2 Python Usage <create_packages>`
-    After setting up, instructions on creating packages, nodes, subscribers, publishers, services, etc.
-
 .. toctree::
    :caption: Preamble
    :hidden:
@@ -87,6 +67,24 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    advanced
    faq
 
+.. note::
+   If you're looking for the official documentation, this is **NOT** it. For the official ROS documentation, refer to this `link <https://docs.ros.org>`_.
+
+`ROS2 Humble`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
+
+Using this tutorial
+-------------------
+
+This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/python/python_basics>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, even the :doc:`ROS2 Setup <installation>`. 
+
+:doc:`Preamble <preamble/ubuntu>`
+    Basic content to refresh your memory, such as simple Ubuntu use, Python in Ubuntu, etc.
+    
+:doc:`ROS2 Setup <installation>` (⭐The ROS2 tutorial starts here⭐)
+    Setting up a working ROS2 environment properly to follow this tutorial. 
+
+:doc:`ROS2 Python Usage <create_packages>`
+    After setting up, instructions on creating packages, nodes, subscribers, publishers, services, etc.
 
 .. warning::
    This project is under active development and is currently a draft.
