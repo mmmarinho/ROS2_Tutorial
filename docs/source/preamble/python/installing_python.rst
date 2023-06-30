@@ -1,7 +1,7 @@
+.. include:: ../../the_section_is_optional.rst
+
 Installing Python on Ubuntu
 ===========================
-
-.. include:: ../../the_section_is_optional.rst
 
 .. warning::
    If you change or try to tinker with the default Python version of Ubuntu, your system will most likely **BREAK COMPLETELY**. 
