@@ -98,4 +98,7 @@ which results in
     response:
     package_with_interfaces.srv.WhatIsThePoint_Response(point=geometry_msgs.msg.Point(x=8.327048266159165, y=95.97987946924988, z=67.03878311627777))
 
+Testing your service clients???
+-------------------------------
 
+To the best of my knowledge, there is no tool inside :program:`ros2 service` to allow us to experiment with the service servers. For those, apparently, the only way is to make a minimal service server to interact with it. We've already done that, so this topic ends here.
