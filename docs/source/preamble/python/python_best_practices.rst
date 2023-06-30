@@ -3,6 +3,8 @@
 (Murilo's) Python Best Practices
 ================================
 
+.. include:: ../../the_section_is_optional.rst
+
 .. warning::
    This tutorial expects prior knowledge in Python and objected-oriented programming.
    As such, this section is not meant to be a comprehensive Python tutorial. You have better resources
