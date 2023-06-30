@@ -200,6 +200,8 @@ So, write the :code:`main()` function of a script as something standalone and, i
    :language: python
    :lines: 17-
 
+.. _Python try catch:
+
 It's dangerous to go alone: Always wrap the contents of :code:`main` function on a `try--except` block
 ------------------------------------------------------------------------------------------------------
 
