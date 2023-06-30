@@ -29,7 +29,7 @@ from minimalist_package.minimalist_async import unlikely_to_return
 def handle_return_callback(tag: str, future: asyncio.Future) -> None:
     """
     Callback example for asyncio.Future
-    :param tag: An example parameter, in this case a tag
+    :param tag: An example parameter, in this case, a tag
     :param future: A asyncio.Future is expected to be the last parameter
     of the callback.
     :return: Nothing.
