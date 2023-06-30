@@ -101,4 +101,4 @@ which results in
 Testing your service clients???
 -------------------------------
 
-To the best of my knowledge, there is no tool inside :program:`ros2 service` to allow us to experiment with the service servers. For those, apparently, the only way is to make a minimal service server to interact with it. We've already done that, so this topic ends here.
+To the best of my knowledge, there is no tool inside :program:`ros2 service` to allow us to experiment with the service clients. For service clients, apparently, the only way to test them is to make a minimal service server to interact with them. We've already done that, so this topic ends here.
