@@ -60,7 +60,7 @@ The code begins with an import to the service we created. No surprise here.
    :lines: 24-29
    :emphasize-lines: 6
 
-The Service Server must be initialzied with the :code:`create_service()`, as follows, with parameters that should by now be quite obvious to us.
+The Service Server must be initialised with the :code:`create_service()`, as follows, with parameters that should by now be quite obvious to us.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
@@ -78,7 +78,7 @@ The Service Server receives a :code:`WhatIsThePoint.Request` and returns a :code
    The API for the Service Server callback is a bit weird in that needs the :code:`Response` as an argument.
    This API `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now this is what we got.
 
-We play around with the :code:`WhatIsThePoint.Request` a bit and use that result to popule a :code:`WhatIsThePoint.Response`, as follows
+We play around with the :code:`WhatIsThePoint.Request` a bit and use that result to populate a :code:`WhatIsThePoint.Response`, as follows
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
@@ -97,7 +97,7 @@ Service Clients
 ---------------
 
 ROS2 :code:`rclpy` Service Clients are implemented using an :code:`asyncio` logic (`More info <https://docs.python.org/3.10/library/asyncio.html>`_).
-In this tutorial, we briefly introduce unavoidable :code:`async` concepts in :ref:`Asyncio`, but for any extra understanding it's better to check the official documentation.
+In this tutorial, we briefly introduce unavoidable :code:`async` concepts in :ref:`Asyncio`, but for any extra understanding, it's better to check the official documentation.
 
 Create the Node with a Service Client (using a :code:`callback`)
 ----------------------------------------------------------------
@@ -162,8 +162,8 @@ In many cases, having the result of the service of particular importance (hence 
    :language: python
    :lines: 44,45
 
-Instantiate a :code:`Future` as class attribute
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Instantiate a :code:`Future` as a class attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As part of the :code:`async` framework, we instantiate a :code:`Future` (`More info <https://docs.python.org/3.10/library/asyncio-future.html#asyncio-futures>`_). In this example it is important to have it as an attribute of the class so that we do not lose the reference to it after the callback.
 
@@ -189,7 +189,7 @@ The need for a callback for the :code:`Timer`, should also be no surprise.
 Service Clients use :code:`<srv>.Request()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Given that services work in a request--response model, the service client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call, as shown below. To make the example more interesting, it randomly switches between two possible quotes.
+Given that services work in a request-response model, the service client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call, as shown below. To make the example more interesting, it randomly switches between two possible quotes.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -206,7 +206,7 @@ The :code:`async` framework in ROS2 is based on Python's :code:`asyncio` that we
 
 The recommended way to call a service is through :code:`call_async()`, which is the reason why we are working with :code:`async` logic. In general, the result of :code:`call_async()`, a :code:`Future`, will not have the result of the service call at the next line of our program. 
 
-There are many ways to address the use of a :code:`Future`. One of them, especially tailored for interfacing :code:`async` with callback-based frameworks is the :code:`Future.add_done_callback()`. If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
+There are many ways to address the use of a :code:`Future`. One of them, specially tailored to interface :code:`async` with callback-based frameworks is the :code:`Future.add_done_callback()`. If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
 
 The benefit of this is that the callback will not block our resources until the response is ready. When the response is ready, and the ROS2 executor gets to processing :code:`Future` callbacks, our callback will be called *automagically*.
 
@@ -225,7 +225,7 @@ Given that we are periodically calling the service, before replace the class :co
 The Future callback
 ^^^^^^^^^^^^^^^^^^^
 
-The callback for the :code:`Future` must receive a :code:`Future` as argument. Having it as an attribute of the Node's class allows us to access ROS2 method such as :code:`get_logger()` and other contextual information.
+The callback for the :code:`Future` must receive a :code:`Future` as an argument. Having it as an attribute of the Node's class allows us to access ROS2 method such as :code:`get_logger()` and other contextual information.
 
 The result of the :code:`Future` is obtained using :code:`Future.result()`. The response might be :code:`None` in some cases, so we must check it before trying to use the result, otherwise we will get a nasty exception.
 
