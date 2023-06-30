@@ -94,3 +94,5 @@ resulting in something similar to
     quote: Yeah, you're gonna die, it's a matter of time. That ain't the question. The question's, whether they're gonna have a good story ...
     philosopher_name: Tyler
     ---
+
+And there you have it. Feeling inspired yet?
