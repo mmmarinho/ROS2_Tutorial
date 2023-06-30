@@ -51,7 +51,10 @@ Inspecting parameters (:program:`ros2 param`)
 .. code-block:: console
 
    ros2 param set /peanut_butter_falcon_quote_publisher_node quote "You got a good-guy heart. You can't do shit about it, that's just who you are. You're a hero." 
-Set parameter successful
+
+.. code-block:: console
+
+   Set parameter successful
 
 .. code-block:: console
 
