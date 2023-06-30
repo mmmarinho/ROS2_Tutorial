@@ -1,7 +1,7 @@
 Create packages (:program:`ros2 pkg create`)
 ---------------
 
-ROS2 has a tool to help creating package templates. We can get all available options by running
+ROS2 has a tool to help create package templates. We can get all available options by running
 
 .. code-block:: console
    
