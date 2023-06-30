@@ -1,5 +1,3 @@
-.. include:: the_topic_is_under_heavy_construction.rst
-
 Inspecting services (:program:`ros2 service`)
 =============================================
 
@@ -40,7 +38,7 @@ Similar to the discussion about topics, it is good to be able to test service se
 
 .. warning::
 
-   Be sure to terminate the Nodes we used in the past section before proceeding (e.g. with :kbd:`CTRL+C`), otherwise the output will look different from what is described here.
+   Be sure to terminate the Nodes we used in the past section before proceeding (e.g. with :kbd:`CTRL+C`), otherwise, the output will look different from what is described here.
 
 .. code:: console
 
@@ -68,12 +66,12 @@ which, in this case, outputs
     /what_is_the_point_service_server/set_parameters
     /what_is_the_point_service_server/set_parameters_atomically
 
-To everyone's surprise, there are a lot of services beyond the one we created. We can address those when we talk about ROS2 parameters, for now, we just ignore them.
+To everyone's surprise, there are a lot of services beyond the one we created. We can address those when we talk about ROS2 parameters, for now, we ignore them.
 
 Testing your service servers with ros2 service call
 ---------------------------------------------------
 
-Similar to the discussion about topics, ROS2 has a tool to allow us to call a service from the terminal, called :program:`ros2 service call`. The service must be specified and an instance of its request must be written using :abbr:`YAML (YAML Ain't Markup Language)`.
+Like the discussion about topics, ROS2 has a tool to call a service from the terminal, called :program:`ros2 service call`. The service must be specified and an instance of its request must be written using :abbr:`YAML (YAML Ain't Markup Language)`.
 Back to our example, we can do
 
 .. code-block:: console
