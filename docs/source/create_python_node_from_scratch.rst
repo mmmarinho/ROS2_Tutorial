@@ -17,7 +17,7 @@ Handling dependencies (:file:`package.xml`)
 
 It is common for new Nodes to have additional dependencies, so we will cover that here. For any ROS2 package, we must modify the :file:`package.xml` to add the dependencies.
 
-In this toy example, let us add the :code:`rclpy` as dependency, because it is the Python implementation of the :abbr:`RCL (ROS Client Library)`. All Nodes that use anything related to ROS2 will directly or indirectly depend on that library.
+In this toy example, let us add the :code:`rclpy` as a dependency because it is the Python implementation of the :abbr:`RCL (ROS Client Library)`. All Nodes that use anything related to ROS2 will directly or indirectly depend on that library.
 
 By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meaning that it is written in :abbr:`XML (Extensible Markup Language)`.
 
@@ -30,8 +30,8 @@ Let us add the dependency between the :code:`<license>` and :code:`<test_depend>
    :linenos:
    :emphasize-lines: 10
   
-After you modify the workspace, build once
-------------------------------------------
+After you modify the workspace, build it once
+---------------------------------------------
 
 .. warning:
  
