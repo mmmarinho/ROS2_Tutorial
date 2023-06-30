@@ -45,7 +45,7 @@ Let's start by creating an :file:`amazing_quote_configurable_publisher_node.py` 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
-   :lineno:
+   :linenos:
 
 Don't forget to declare the parameter!
 --------------------------------------
@@ -126,6 +126,6 @@ Suppose that we are tired of all the meme quotes and want to make our Node publi
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
-   :lineno: 
+   :linenos: 
 
 Which...
