@@ -223,8 +223,8 @@ Before we proceed, let us build and source once.
 
 .. include:: the_canonical_build_command.rst
 
-Launch files run with :program:`ros2 launch`
---------------------------------------------
+Launch files to the moon with :program:`ros2 launch`
+----------------------------------------------------
 
 ROS2 has a tool to interact with launch files called :program:`ros2 launch`.
 
