@@ -7,9 +7,9 @@ Making your Python package installable
 
 .. warning::
 
-   There is some movement towards having Python deployable packages be configurable with :file:`pyproject.toml` as a default.
+   There is some movement towards having Python deployable packages configurable with :file:`pyproject.toml` as a default.
    However, in ROS2 and many other frameworks, the :file:`setup.py` approach using setuptools is ingrained.
-   So, we'll do that for these tutorials but it doesn't necessary mean it's the best approach.
+   So, we'll do that for these tutorials but it doesn't necessarily mean it's the best approach.
 
 
 Use a :code:`venv`
@@ -47,12 +47,12 @@ First, we create a :file:`setup.py` at :file:`~/ros2_tutorials_preamble/python/m
 
 .. note::
 
-   By no coincidence, the :file:`setup.py` is a Python file. We use Python to interprete it, meaning that we can processs information using
+   By no coincidence, the :file:`setup.py` is a Python file. We use Python to interprete it, meaning that we can process information using
    Python to define the arguments for the :code:`setup()` function.
 
-All arguments defined above are quite self explanatory and are passed to the :code:`setup()` function available at the :code:`setuptools` module built into Python.
+All arguments defined above are quite self-explanatory and are passed to the :code:`setup()` function available at the :code:`setuptools` module built into Python.
 
-The probably most unusual part of it is the :code:`entry_points` dictionary. In the key :code:`console_scripts`, we can list up scripts in the package that can be used as console programs after the package is installed. Indeed, :code:`setuptools` is rich, has a catle, and can do magic.
+The probably most unusual part of it is the :code:`entry_points` dictionary. In the key :code:`console_scripts`, we can list up scripts in the package that can be used as console programs after the package is installed. Indeed, :code:`setuptools` is rich, has a castle, and can do magic.
 
 Installing :file:`wheel`
 ------------------------
@@ -63,7 +63,7 @@ Installing :file:`wheel`
 
    .. code-block:: console
 
-      DEPRECATION: minimalist-package is being installed using the legacy 'setup.py install' method, because it does not have a 'pyproject.toml' 
+      DEPRECATION: minimalist-package is being installed using the legacy 'setup.py install' method because it does not have a 'pyproject.toml' 
       and the 'wheel' package is not installed. pip 23.1 will enforce this behaviour change. A possible replacement is to enable the '--use-pep517'
       option. Discussion can be found at https://github.com/pypa/pip/issues/8559
 
@@ -76,7 +76,7 @@ To install the package in the recommended way in this tutorial, we need :file:`w
 Installing the Python package
 -----------------------------
 
-We first go to the folder contaning our *project* folder and we build and install the *project* filder within it using :program:`pip` as follows
+We first go to the folder containing our *project* folder and we build and install the *project* folder within it using :program:`pip` as follows
 
 .. code-block:: console
 
@@ -117,7 +117,7 @@ which will return the friendly
    Howdy!
    Howdy!
 
-The other two scripts are also available, for instance we can do
+The other two scripts are also available, for instance, we can do
 
 .. code-block:: console
 
@@ -150,7 +150,7 @@ We first run an interactive session with
 
    python3 
 
-we can then interact with is as any other installed package
+we can then interact with it as any other installed package
 
 .. code-block:: python
 
