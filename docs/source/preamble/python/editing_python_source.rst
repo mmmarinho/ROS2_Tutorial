@@ -3,6 +3,8 @@
 Editing Python source (with :program:`PyCharm`)
 ===============================================
 
+.. include:: ../../the_section_is_optional.rst
+
 There are near-infinite ways to manage your Python code and, for this tutorial, we will use :program:`PyCharm`. Namely, the free community version.
 
 Installing :program:`PyCharm`
