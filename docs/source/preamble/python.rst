@@ -1,6 +1,8 @@
 Python Basics
 =============
 
+.. include:: ../the_section_is_optional.rst
+
 .. toctree::
    :maxdepth: 2
 
