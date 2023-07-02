@@ -50,6 +50,10 @@ Lauching the Node with parameters
 List-up parameters with :program:`ros2 param list`
 --------------------------------------------------
 
+.. hint:
+
+   Remember that :ref:`Grep best friend`.
+
 Similar to other ROS2 commands, we can get a list of currently loaded parameters with 
 
 .. code-block:: console
@@ -65,6 +69,9 @@ Similar to other ROS2 commands, we can get a list of currently loaded parameters
     topic_name
     use_sim_time
 
+Obtain parameters with :program:`ros2 param get`
+-----------------------------------------------
+
 .. code-block:: console
 
    ros2 param get /peanut_butter_falcon_quote_publisher_node quote
@@ -72,6 +79,9 @@ Similar to other ROS2 commands, we can get a list of currently loaded parameters
 .. code-block:: console
 
    String value is: Yeah, you're gonna die, it's a matter of time. That ain't the question. The question's, whether they're gonna have a good story to tell about you when you're gone
+
+Assign values to parameters with :program:`ros2 param set`
+----------------------------------------------------------
 
 .. code-block:: console
 
