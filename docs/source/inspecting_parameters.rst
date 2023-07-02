@@ -14,25 +14,25 @@ We can obtain more information on it with
 which returns
 
 .. code-block:: console
-  :emphasize-lines: 9,11-15
+   :emphasize-lines: 9,11-15
 
-  usage: ros2 param [-h] Call `ros2 param <command> -h` for more detailed usage. ...
+   usage: ros2 param [-h] Call `ros2 param <command> -h` for more detailed usage. ...
   
-  Various param related sub-commands
+   Various param related sub-commands
   
-  options:
-    -h, --help            show this help message and exit
+   options:
+     -h, --help            show this help message and exit
   
-  Commands:
-    delete    Delete parameter
-    describe  Show descriptive information about declared parameters
-    dump      Dump the parameters of a node to a yaml file
-    get       Get parameter
-    list      Output a list of available parameters
-    load      Load parameter file for a node
-    set       Set parameter
+   Commands:
+     delete    Delete parameter
+     describe  Show descriptive information about declared parameters
+     dump      Dump the parameters of a node to a yaml file
+     get       Get parameter
+     list      Output a list of available parameters
+     load      Load parameter file for a node
+     set       Set parameter
   
-    Call `ros2 param <command> -h` for more detailed usage.
+     Call `ros2 param <command> -h` for more detailed usage.
 
 As shown in the emphasized lines above, the :program:`ros2 param` tool has a large number of useful commands to interact with parameters.
 
