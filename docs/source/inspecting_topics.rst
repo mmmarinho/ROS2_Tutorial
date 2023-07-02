@@ -84,6 +84,7 @@ showing, in particular, the :code:`/amazing_quote` topic what we were looking fo
         /parameter_events
         /rosout
         
+.. _Grep best friend:
 
 :program:`grep` is your new best friend
 ---------------------------------------
