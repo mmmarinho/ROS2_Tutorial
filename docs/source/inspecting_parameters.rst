@@ -3,11 +3,18 @@
 Inspecting parameters (:program:`ros2 param`)
 =============================================
 
+ROS2 has a tool to interact with launch files called :program:`ros2 param`.
+
+We can obtain more information on it with
+
 .. code-block:: console
 
    ros2 param -h
 
+which returns
+
 .. code-block:: console
+  :emphasize-lines: 9,11-15
 
   usage: ros2 param [-h] Call `ros2 param <command> -h` for more detailed usage. ...
   
@@ -26,6 +33,24 @@ Inspecting parameters (:program:`ros2 param`)
     set       Set parameter
   
     Call `ros2 param <command> -h` for more detailed usage.
+
+As shown in the emphasized lines above, the :program:`ros2 param` tool has a large number of useful commands to interact with parameters.
+
+Lauching the Node with parameters
+---------------------------------
+
+.. hint:
+
+   If you left the Node running from the last section, just keep it that way and skip this.
+
+.. code-block:: console
+
+   ros2 launch python_package_that_uses_parameters_and_launch_files peanut_butter_falcon_quote_publisher_launch.py
+
+List-up parameters with :program:`ros2 param list`
+--------------------------------------------------
+
+Similar to other ROS2 commands, we can get a list of currently loaded parameters with 
 
 .. code-block:: console
 
