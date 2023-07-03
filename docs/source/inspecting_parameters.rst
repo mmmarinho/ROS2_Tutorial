@@ -70,9 +70,15 @@ Similar to other ROS2 commands, we can get a list of currently loaded parameters
 Obtain parameters with :program:`ros2 param get`
 -----------------------------------------------
 
+To obtain the value of a parameter, we can do as follows
+
 .. code-block:: console
 
-   ros2 param get /peanut_butter_falcon_quote_publisher_node quote
+   ros2 param get \
+   /peanut_butter_falcon_quote_publisher_node \
+   quote
+
+which will return the current value of the parameter, in this case the initial value we set in the launch file
 
 .. code-block:: console
 
@@ -83,11 +89,29 @@ Assign values to parameters with :program:`ros2 param set`
 
 .. code-block:: console
 
-   ros2 param set /peanut_butter_falcon_quote_publisher_node quote "You got a good-guy heart. You can't do shit about it, that's just who you are. You're a hero." 
+   ros2 param set \
+   /peanut_butter_falcon_quote_publisher_node \
+   quote \
+   "You got a good-guy heart. You can't do shit about it, that's just who you are. You're a hero." 
+
+If everything is correct, we'll get
 
 .. code-block:: console
 
    Set parameter successful
+
+.. info::
+
+   Some errors are easy to debug, such as when we get the name of the Node wrong
+
+   .. code-block:: console
+   
+      Node not found
+
+   but because of the interaction between the :program:`terminal`, :program:`ros2 param` itself, and the syntax of the services, its easy to find cryptic error messages.
+   At first, always suppose that there's a typo somewhere.
+
+Changing parameters is not instanteneous and, after the change becomes visible in the Node, our Node might have to loop once before it updates itself. We will be able to see that change as follows 
 
 .. code-block:: console
 
