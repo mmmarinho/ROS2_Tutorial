@@ -39,8 +39,7 @@ As shown in the emphasized lines above, the :program:`ros2 param` tool has a lar
 Lauching the Node with parameters
 ---------------------------------
 
-.. hint:
-
+.. hint::
    If you left the Node running from the last section, just keep it that way and skip this.
 
 .. code-block:: console
@@ -50,8 +49,7 @@ Lauching the Node with parameters
 List-up parameters with :program:`ros2 param list`
 --------------------------------------------------
 
-.. hint:
-
+.. hint::
    Remember that :ref:`Grep best friend`.
 
 Similar to other ROS2 commands, we can get a list of currently loaded parameters with 
