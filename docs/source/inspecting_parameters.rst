@@ -94,7 +94,10 @@ Let's check the output of the Node
 
 Before the next step, as we did in the past section, we do, *IN ANOTHER TERMINAL WINDOW*
 
-ros2 topic echo /truly_inspirational_quote
+
+.. code-block:: console
+
+   ros2 topic echo /truly_inspirational_quote
 
 Assign values to parameters with :program:`ros2 param set`
 ----------------------------------------------------------
