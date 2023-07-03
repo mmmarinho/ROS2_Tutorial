@@ -86,6 +86,16 @@ which will return the current value of the parameter, in this case the initial v
 
    String value is: Yeah, you're gonna die, it's a matter of time. That ain't the question. The question's, whether they're gonna have a good story to tell about you when you're gone
 
+Let's check the output of the Node
+----------------------------------
+
+.. hint::
+   If you left :program:`ros2 topic echo` running from the last section, just keep it that way and skip this.
+
+Before the next step, as we did in the past section, we do, *IN ANOTHER TERMINAL WINDOW*
+
+ros2 topic echo /truly_inspirational_quote
+
 Assign values to parameters with :program:`ros2 param set`
 ----------------------------------------------------------
 
@@ -113,7 +123,7 @@ If everything is correct, we'll get
    but because of the interaction between the :program:`terminal`, :program:`ros2 param` itself, and the syntax of the services, its easy to find cryptic error messages.
    At first, always suppose that there's a typo somewhere.
 
-Changing parameters is not instanteneous and, after the change becomes visible in the Node, our Node might have to loop once before it updates itself. We will be able to see that change as follows 
+Changing parameters is not instanteneous and, after the change becomes visible in the Node, our Node might have to loop once before it updates itself. We will be able to see that change as follows in the terminal window running :program:`ros2 topic echo`
 
 .. code-block:: console
 
