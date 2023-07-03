@@ -94,7 +94,7 @@ Let's check the output of the Node
 .. hint::
    If you left :program:`ros2 topic echo` running from the last section, just keep it that way and skip this.
 
-Before the next step, as we did in the past section, we do, *IN ANOTHER TERMINAL WINDOW*
+Before the next step, as we did in the past section, we do, **IN ANOTHER TERMINAL WINDOW**
 
 
 .. code-block:: console
