@@ -60,6 +60,8 @@ Similar to other ROS2 commands, we can get a list of currently loaded parameters
 
    ros2 param list
 
+which returns a well organized list showing the parameters of each active Node
+
 .. code-block:: console
 
   /peanut_butter_falcon_quote_publisher_node:
