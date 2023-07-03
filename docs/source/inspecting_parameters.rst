@@ -44,7 +44,9 @@ Lauching the Node with parameters
 
 .. code-block:: console
 
-   ros2 launch python_package_that_uses_parameters_and_launch_files peanut_butter_falcon_quote_publisher_launch.py
+   ros2 launch \
+   python_package_that_uses_parameters_and_launch_files \
+   peanut_butter_falcon_quote_publisher_launch.py
 
 List-up parameters with :program:`ros2 param list`
 --------------------------------------------------
