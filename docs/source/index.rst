@@ -14,14 +14,14 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 .. toctree::
    :caption: Preamble
-   :maxdepth: 1
+   :maxdepth: 2
 
    preamble/ubuntu
    preamble/python
     
 .. toctree::
    :caption: ROS2 Setup (⭐start here⭐)
-   :maxdepth: 1
+   :maxdepth: 2
 
    installation
    terminator
@@ -29,7 +29,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 .. toctree::
    :caption: ROS2 Python Package/Build Basics
-   :maxdepth: 1
+   :maxdepth: 2
 
    create_packages
    create_python_package
@@ -38,7 +38,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 .. toctree::
    :caption: ROS2 Python Node Basics
-   :maxdepth: 1
+   :maxdepth: 2
    
    running_node
    editing_python_source
@@ -47,14 +47,14 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 .. toctree::
    :caption: ROS2 Python Library Basics
-   :maxdepth: 1
+   :maxdepth: 2
    
    create_python_library
    using_python_library
 
 .. toctree::
    :caption: ROS2 Python Interface Basics
-   :maxdepth: 1
+   :maxdepth: 2
    
    messages
    create_interface_package
@@ -65,7 +65,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 .. toctree::
    :caption: ROS2 Parameter/Launch Basics
-   :maxdepth: 1
+   :maxdepth: 2
 
    parameters_and_launch
    launch_configurable_nodes
@@ -73,7 +73,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 .. toctree::
    :caption: Other content
-   :maxdepth: 1
+   :maxdepth: 2
    
    advanced
    faq
