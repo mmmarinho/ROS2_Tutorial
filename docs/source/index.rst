@@ -17,7 +17,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 .. hint::
 
-   You can download this tutorial as a `PDF <https://ros2-tutorial.readthedocs.io/_/downloads/en/latest/pdf/>`.
+   You can download this tutorial as a `PDF <https://ros2-tutorial.readthedocs.io/_/downloads/en/latest/pdf/>`_.
 
 .. toctree::
    :caption: Preamble
