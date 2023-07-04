@@ -14,7 +14,7 @@ We can obtain more information on it with
 which returns
 
 .. code-block:: console
-   :emphasize-lines: 9,11-15
+   :emphasize-lines: 11-15
 
    usage: ros2 param [-h] Call `ros2 param <command> -h` for more detailed usage. ...
   
