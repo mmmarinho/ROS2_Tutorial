@@ -52,7 +52,7 @@ This shows that with :program:`ros2 interface list` we can get a list of all int
 to get the list of packages with interfaces available, which returns something similar to
  
 .. code-block:: console
-    :emphasize-lines:: 8, 19
+    :emphasize-lines: 8, 19
  
     action_msgs
     action_tutorials_interfaces
