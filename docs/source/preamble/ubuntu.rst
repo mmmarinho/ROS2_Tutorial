@@ -155,6 +155,35 @@ So, enough of this example, let's get rid of everything with
    cd ~
    rm -r a_folder
 
+:program:`bash` redirections
+----------------------------
+
+.. info::
+
+   More info available at the `Bash Reference Manual <https://www.gnu.org/software/bash/manual/html_node/Redirections.html>`_.
+
+.. hint::
+
+   Before defaulting into writing a 300-lines-long Python script for the simplest and most common of tasks, it is always good to check if there is something already available in :program:`bash` that can enable the same thing in a easier and more stable way.
+
+In a time long long ago, before ChatGPT became the new `Deep Magic <https://www.youtube.com/watch?v=Vd6hVYkkq88>`_, :program:`bash` was already tilting heads and leaving Ubuntu users in awe.
+
+Among many powerful features, the *redirection operator*, ``>``, stands out. It can be used to, unsurprisingly, *redirect* the output of a command to a file.
+
+.. warning::
+
+   The operator ``>`` overwrites the target file with the output of the preceeding command, it does not ask for permission, it just goes and does it.
+   The operator ``>>`` appends to the target file with the output of the preceeding command.
+   Don't mix these up, there is no way to undo.
+
+For example, if we want to store the result of the command ``ls`` to a file called ``result_of_ls.txt``, the following will do
+
+.. code-block:: console
+
+   ls > result_of_ls.txt
+
+As a default in this version of Ubuntu, if the file does not exist it is created.
+
 Tab completion
 --------------
 
