@@ -1,3 +1,4 @@
+========================
 (Murilo's) ROS2 Tutorial
 ========================
 
@@ -6,79 +7,51 @@
 
 `ROS2 Humble`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
-Using this tutorial
--------------------
-
 This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`. 
-
-Preamble
---------
-
-Basic content to refresh your memory, such as simple Ubuntu use, Python in Ubuntu, etc.
 
 .. toctree::
    :caption: Preamble
-   :hidden:
+   :maxdepth: 1
 
    preamble/ubuntu
    preamble/python
     
-ROS2 Setup (⭐The ROS2 tutorial starts here⭐)
------------------------------------------------
-
-Setting up a working ROS2 environment properly to follow this tutorial. 
-
 .. toctree::
-   :caption: ROS2 Setup
+   :caption: ROS2 Setup (⭐The ROS2 tutorial starts here⭐)
+   :maxdepth: 1
 
    installation
    terminator
    workspace_setup
 
-ROS2 Python Package/Build Basics
---------------------------------
-
-After setting up, instructions on creating and building your first package and how to build it.
-
 .. toctree::
    :caption: ROS2 Python Package/Build Basics
+   :maxdepth: 1
 
    create_packages
    create_python_package
    create_python_node_with_template
    source_after_build
 
-ROS2 Python Node Basics
------------------------
-
-Instructions on how to create a ROS2 Python node from scratch and how it works.
-
 .. toctree::
    :caption: ROS2 Python Node Basics
+   :maxdepth: 1
    
    running_node
    editing_python_source
    create_python_node_from_scratch
    python_node_explained
 
-ROS2 Python Library Basics
---------------------------
-
-Instructions on how to make a ROS2 Python library to use in another package.
-
 .. toctree::
    :caption: ROS2 Python Library Basics
+   :maxdepth: 1
    
    create_python_library
    using_python_library
 
-ROS2 Python Interface Basics
-----------------------------
-
-ROS2 interfaces, such as messages and services, how to define them and use them in publishers, subscribers, service servers, and service clients.
-
 .. toctree::
    :caption: ROS2 Python Interface Basics
+   :maxdepth: 1
    
    messages
    create_interface_package
@@ -87,23 +60,17 @@ ROS2 interfaces, such as messages and services, how to define them and use them 
    service_servers_and_clients
    inspecting_services
 
-ROS2 Parameter/Launch Basics
-----------------------------
-
-Working with ROS2 parameters and launch files for configurable ROS2 Nodes.
-
 .. toctree::
    :caption: ROS2 Parameter/Launch Basics
+   :maxdepth: 1
 
    parameters_and_launch
    launch_configurable_nodes
    inspecting_parameters
 
-Other content
--------------
-
 .. toctree::
    :caption: Other content
+   :maxdepth: 1
    
    advanced
    faq
