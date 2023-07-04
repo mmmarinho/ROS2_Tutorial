@@ -191,7 +191,9 @@ Tab completion
 
    Use :kbd:`TAB` completion extensively.
 
-Whenever I have to look at a novice's shoulders while they interact with the terminal it gives me a certain level of anxiety. The terminal has :kbd:`TAB` completion, so use it extensively.
+Whenever I have to look at a novice's shoulders while they interact with the terminal it gives me a certain level of anxiety. That is because they are trying to perfectly type even the longest and meanest paths for files, directories, and programs.
+
+The terminal has :kbd:`TAB` completion, so use it extensively.
 You can press :kbd:`TAB` at any time to complete the name of a program, folder, file, or pretty much anything. 
 
 Be careful with :program:`sudo`
