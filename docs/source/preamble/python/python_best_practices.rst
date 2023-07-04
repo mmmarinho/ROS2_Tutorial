@@ -287,7 +287,7 @@ following contents
 Not a matter of taste: Code style
 ---------------------------------
 
-It might be parsing through jibber-jabber l〇〇tcode lessons that gets you through the door into one of those fancy companies with no dress code and free snacks. In the ideal world, at least, writing easy-to-understand code with the proper style is what should keep you in that job.
+It might be parsing through jibber-jabber code in l__tcode lessons with weird C-pointer logic and nested dereference operators that gets you through the door into one of those fancy companies with no dress code and free snacks, perks that `I'm totally not envious of one bit <https://www.youtube.com/watch?v=rkUkVxM6R8o>`_. In the ideal world, at least, writing easy-to-understand code with the proper style is what should keep you in that job.
 
 So, always pay attention to the naming of classes (`PascalCase <https://en.wiktionary.org/wiki/Pascal_case>`_), files and functions (`snake_case <https://en.wikipedia.org/wiki/Snake_case>`_), etc.
 
