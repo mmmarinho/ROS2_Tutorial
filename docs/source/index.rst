@@ -9,16 +9,12 @@
 Using this tutorial
 -------------------
 
-This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/python/python_basics>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, even the :doc:`ROS2 Setup <installation>`. 
+This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`. 
 
-:doc:`Preamble <preamble/ubuntu>`
-    Basic content to refresh your memory, such as simple Ubuntu use, Python in Ubuntu, etc.
-    
-:doc:`ROS2 Setup <installation>` (⭐The ROS2 tutorial starts here⭐)
-    Setting up a working ROS2 environment properly to follow this tutorial. 
+Preamble
+--------
 
-:doc:`ROS2 Python Usage <create_packages>`
-    After setting up, instructions on creating packages, nodes, subscribers, publishers, services, etc.
+Basic content to refresh your memory, such as simple Ubuntu use, Python in Ubuntu, etc.
 
 .. toctree::
    :caption: Preamble
@@ -26,43 +22,63 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
    preamble/ubuntu
    preamble/python
+    
+ROS2 Setup (⭐The ROS2 tutorial starts here⭐)
+-----------------------------------------------
+
+Setting up a working ROS2 environment properly to follow this tutorial. 
 
 .. toctree::
    :caption: ROS2 Setup
-   :hidden:
 
    installation
    terminator
    workspace_setup
 
+ROS2 Python Package/Build Basics
+--------------------------------
+
+After setting up, instructions on creating and building your first package and how to build it.
+
 .. toctree::
    :caption: ROS2 Python Package/Build Basics
-   :hidden:
 
    create_packages
    create_python_package
    create_python_node_with_template
    source_after_build
-   
+
+ROS2 Python Node Basics
+-----------------------
+
+Instructions on how to create a ROS2 Python node from scratch and how it works.
+
 .. toctree::
    :caption: ROS2 Python Node Basics
-   :hidden:
    
    running_node
    editing_python_source
    create_python_node_from_scratch
    python_node_explained
-   
+
+ROS2 Python Library Basics
+--------------------------
+
+Instructions on how to make a ROS2 Python library to use in another package.
+
 .. toctree::
    :caption: ROS2 Python Library Basics
-   :hidden:
    
    create_python_library
    using_python_library
-   
+
+ROS2 Python Interface Basics
+----------------------------
+
+ROS2 interfaces, such as messages and services, how to define them and use them in publishers, subscribers, service servers, and service clients.
+
 .. toctree::
    :caption: ROS2 Python Interface Basics
-   :hidden:
    
    messages
    create_interface_package
@@ -71,17 +87,23 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    service_servers_and_clients
    inspecting_services
 
+ROS2 Parameter/Launch Basics
+----------------------------
+
+Working with ROS2 parameters and launch files for configurable ROS2 Nodes.
+
 .. toctree::
    :caption: ROS2 Parameter/Launch Basics
-   :hidden:
 
    parameters_and_launch
    launch_configurable_nodes
    inspecting_parameters
 
+Other content
+-------------
+
 .. toctree::
    :caption: Other content
-   :hidden:
    
    advanced
    faq
