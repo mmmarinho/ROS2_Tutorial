@@ -63,6 +63,11 @@ Let's start by creating an :file:`amazing_quote_configurable_publisher_node.py` 
 Don't forget to declare the parameter!
 --------------------------------------
 
+.. note::
+
+   According to the `official documentation <https://docs.ros.org/en/humble/Concepts/Basic/About-Parameters.html>`_, it is possible to work with undeclared parameters, but
+   I recommend against for basic usage.
+
 It's easy to forget it, but :code:`Node.get_parameter()` will not work if the parameter was not first declared with :code:`Node.declare_parameter()`. Don't forget it!
 
 One-off parameters
@@ -84,6 +89,11 @@ In this case, we're making the topic name and publication periodicity as one-off
 
 Continuously-obtained parameters
 --------------------------------
+
+.. note::
+
+   According to the `official documentation <https://docs.ros.org/en/humble/Concepts/Basic/About-Parameters.html>`_, it is possible to assign
+   callbacks to manage changes in parameters. It is not the best-documented feature and has some caveats, so we will skip that for now.
 
 For parameters that we obtain continuously through the lifetime of the Node, we can, for example, declare them in the :code:`__init__` method, like so
 
