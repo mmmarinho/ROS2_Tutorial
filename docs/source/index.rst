@@ -20,7 +20,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    preamble/python
     
 .. toctree::
-   :caption: ROS2 Setup (⭐The ROS2 tutorial starts here⭐)
+   :caption: ROS2 Setup (⭐start here⭐)
    :maxdepth: 1
 
    installation
