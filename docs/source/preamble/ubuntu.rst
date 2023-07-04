@@ -5,12 +5,12 @@
 Ubuntu Terminal Basics
 ======================
 
-You already know how to turn your computer and press some keys to make bits flip and colorful pixels shine in your monitor. Here, we'll go through a few tips on Ubuntu.
+You already know how to turn on your computer and press some keys to make bits flip and colorful pixels shine in your monitor. Here, we'll go through a few tips on Ubuntu.
 
 .. note::
 
    The world is full of smart people, and they've done some amazing stuff, like Ubuntu and Linux. There are endless tutorials for those and this
-   one is not a complete one. We'll go through some basic tools available in Ubuntu's terminal that help with our quest to learn/use ROS2.
+   is not a complete one. In this section, we'll go through some basic tools available in Ubuntu's terminal that help with our quest to learn/use ROS2.
 
 
 Who cares about the :program:`terminal` anyways, are you like 100 years old or something?
@@ -22,7 +22,7 @@ the current age of the Universe without relying on Ubuntu's :program:`terminal`.
 :abbr:`GUIs (Graphical User Interfaces)` change faster than long tutorials like this one can keep up with and :program:`terminal` 
 is our reliable partner in crime and unlikely to change much in the foreseable future.
 
-For the whole tutorial, you can copy and paste your commands in :program:`terminal`. If it doesn't work, it's either your fault or mine,
+For the whole tutorial, you can copy and paste the commands in :program:`terminal`. If it doesn't work, it's either your fault or mine,
 but surely not the :program:`terminal`\ 's.
 
 The :program:`terminal`
@@ -37,9 +37,9 @@ The :program:`terminal`
    This is about the default terminal in Ubuntu 22.04. If you prefer to use the :program:`TeRmInAlDeluxeUltiMateHyruleMaster` instead, then this might not be useful to you,
    and you might be happier referring to its documentation instead.
 
-The :program:`terminal` is one of those things with many names. Some call it :program:`shell`, some :program:`console`, some :program:`command line`, some :program:`terminal`. I'm sure there's a person way smarter than me capable of making a copypasta describing in detail what the differences might be. The truth is that, in the wild, those terms are used pretty much as synonyms.
+The :program:`terminal` is one of those things with many names. Some call it :program:`shell`, some :program:`console`, some :program:`command line`, some :program:`terminal`. I'm sure there's someone furiously typing right now saying that I'm wrong and describing in detail what those differences might be. The truth is that, in the wild (a.k.a. the Internet), those terms are used pretty much as synonyms.
 
-For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, we use it to send commands to Ubuntu that make stuff happen.
+For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, we use it to send commands to Ubuntu and make stuff happen.
 
 .. list-table:: (Murilo's) List of Useful Command Line Programs
    :header-rows: 1
@@ -73,7 +73,7 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - Output the lines of :file:`a_file.whatever` that contain the string :code:`robocop`.
    * - :program:`nano`
      - :code:`nano a_file.whatever`
-     - Helps you do edits to a file using a (relatively?) user-friendly program so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
+     - Helps you edit a file using a (relatively?) user-friendly program so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
    * - :program:`apt`
      - :code:`apt install git`
      - Installs Ubuntu packages, in this case, :program:`git`.
@@ -83,7 +83,7 @@ Let's use it. (!?)
 
 The thing is, we'll be using the terminal throughout the entire tutorial, so don't worry about going too deep right now.
 
-To warm up, let's start with creating an empty file inside a new directory, as follows
+To warm up, let's start by creating an empty file inside a new directory, as follows
 
 .. hint::
 
@@ -164,7 +164,7 @@ So, enough of this example, let's get rid of everything with
 
 .. hint::
 
-   Before defaulting into writing a 300-lines-long Python script for the simplest and most common of tasks, it is always good to check if there is something already available in :program:`bash` that can enable the same thing in a easier and more stable way.
+   Before defaulting into writing a 300-lines-long Python script for the simplest and most common of tasks, it is always good to check if there is something already available in :program:`bash` that can do the same thing in a easier and more stable way.
 
 In a time long long ago, before ChatGPT became the new `Deep Magic <https://www.youtube.com/watch?v=Vd6hVYkkq88>`_, :program:`bash` was already tilting heads and leaving Ubuntu users in awe.
 
