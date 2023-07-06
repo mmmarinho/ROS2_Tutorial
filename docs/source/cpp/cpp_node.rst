@@ -7,34 +7,10 @@ Creating C++ Nodes (for :program:`ament_cmake`)
     There are many things to add, but remember that the name of the binary is repeated in 5 different places, as highlighted below.
 
 
-    .. code-block:: CMake
-        :emphasize-lines: 5,10,14,18,20
-
-        ######################
-        # CPP Binary [BEGIN] #
-        # vvvvvvvvvvvvvvvvvv #
-
-        add_executable(sample_cpp_node 
-            src/sample_cpp_node.cpp
-                       
-        )
-
-        target_link_libraries(sample_cpp_node
-
-        )
-
-        target_include_directories(sample_cpp_node PUBLIC
-          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-          $<INSTALL_INTERFACE:include>)
-
-        target_compile_features(sample_cpp_node PUBLIC c_std_99 cxx_std_17)  
-        
-        install(TARGETS sample_cpp_node
-          DESTINATION lib/${PROJECT_NAME})
-
-        # ^^^^^^^^^^^^^^^^ #
-        # CPP BINARY [END] #
-        ####################
+    .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
+       :language: cmake
+       :lines: 12-38
+ 
 
 Create the package
 ------------------
@@ -112,6 +88,7 @@ The :file:`.hpp`
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.hpp
    :language: cpp
    :linenos:
+   :lines: 24-
 
 
 The :file:`.cpp`
@@ -122,6 +99,7 @@ The :file:`.cpp`
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.cpp
    :language: cpp
    :linenos:
+   :lines: 24-
 
 Add a :file:`.placeholder` if your :file:`include/<PACKAGE_NAME>` is empty
 --------------------------------------------------------------------------
