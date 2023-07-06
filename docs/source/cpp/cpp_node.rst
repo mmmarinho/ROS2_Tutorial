@@ -4,12 +4,18 @@ Creating C++ Nodes (for :program:`ament_cmake`)
 .. admonition:: The C++ binary block for :program:`ament_cmake`
 
     When adding a new Node in an existing :file:`CMakeLists.txt`, you might benefit from using the following template.
-    There are many things to add, but remember that the name of the binary is repeated in 5 different places, as highlighted below.
 
+    Remember to:
+
+    #. Change ``print_forever_cpp_node`` to the name of your Node.
+    #. Add all source files to ``add_executable`` 
+    #. Add all ROS2 dependencies of this binary to ``ament_target_dependencies``
+    #. Add any other (**NOT ROS2**) libraries to ``target_link_libraries``
 
     .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
        :language: cmake
-       :lines: 12-40
+       :lines: 12-47
+       :emphasize-lines: 7,12,17,21
  
 
 Create the package
@@ -83,9 +89,9 @@ The ``PrintForeverCPP`` class
 The :file:`.hpp`
 ^^^^^^^^^^^^^^^^
 
-:download:`print_forever_cpp_node.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.hpp>`
+:download:`print_forever.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.hpp>`
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.hpp
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.hpp
    :language: cpp
    :linenos:
    :lines: 24-
@@ -93,6 +99,16 @@ The :file:`.hpp`
 
 The :file:`.cpp`
 ^^^^^^^^^^^^^^^^
+
+:download:`print_forever.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.cpp>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.cpp
+   :language: cpp
+   :linenos:
+   :lines: 24-
+
+The ``main()`` function
+-----------------------
 
 :download:`print_forever_cpp_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.cpp>`
 
