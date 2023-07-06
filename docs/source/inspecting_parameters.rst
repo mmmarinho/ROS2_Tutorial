@@ -172,7 +172,7 @@ While we wait for someone to come and correct me on my claims above, just think 
    /peanut_butter_falcon_quote_publisher_node \
    > peanut_butter_falcon_quote_publisher_node.yaml
 
-where we are using the :code:`>` to overwrite the contents of the :file:`peanut_butter_falcon_quote_publisher_node.yaml` file with the output of :program:`ros2 param dump`, so be careful not to overwrite your precious files by mistake.
+where we are using the :code:`>` (see :ref:`Bash redirections`) to overwrite the contents of the :file:`peanut_butter_falcon_quote_publisher_node.yaml` file with the output of :program:`ros2 param dump`, so be careful not to overwrite your precious files by mistake.
 
 We can inspect the contents of the file with
 
