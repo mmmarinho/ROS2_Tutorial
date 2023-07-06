@@ -9,9 +9,9 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
-######################
-# CPP Binary [BEGIN] #
-# vvvvvvvvvvvvvvvvvv #
+############################
+# CPP Binary Block [BEGIN] #
+# vvvvvvvvvvvvvvvvvvvvvvvv #
 
 add_executable(sample_cpp_node
     src/sample_cpp_node.cpp
@@ -33,9 +33,9 @@ target_compile_features(sample_cpp_node PUBLIC c_std_99 cxx_std_17)
 install(TARGETS sample_cpp_node
   DESTINATION lib/${PROJECT_NAME})
 
-# ^^^^^^^^^^^^^^^^ #
-# CPP BINARY [END] #
-####################
+# ^^^^^^^^^^^^^^^^^^^^^^ #
+# CPP Binary Block [END] #
+##########################
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
