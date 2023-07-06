@@ -1,11 +1,9 @@
-.. include:: ../the_topic_is_under_heavy_construction.rst
-
 .. include:: ../the_section_is_optional.rst
 
 Ubuntu Terminal Basics
 ======================
 
-You already know how to turn on your computer and press some keys to make bits flip and colorful pixels shine in your monitor. Here, we'll go through a few tips on Ubuntu.
+You already know how to turn on your computer and press some keys to make bits flip and colorful pixels shine on your monitor. Here, we'll go through a few tips on Ubuntu.
 
 .. note::
 
@@ -20,7 +18,7 @@ Besides the unintended upside that if you're typing into a terminal fast enough 
 the current age of the Universe without relying on Ubuntu's :program:`terminal`. 
 
 :abbr:`GUIs (Graphical User Interfaces)` change faster than long tutorials like this one can keep up with and :program:`terminal` 
-is our reliable partner in crime and unlikely to change much in the foreseable future.
+is our reliable partner in crime and unlikely to change much in the foreseeable future.
 
 For the whole tutorial, you can copy and paste the commands in :program:`terminal`. If it doesn't work, it's either your fault or mine,
 but surely not the :program:`terminal`\ 's.
@@ -155,16 +153,18 @@ So, enough of this example, let's get rid of everything with
    cd ~
    rm -r a_folder
 
+.. _Bash redirections:
+
 :program:`bash` redirections
 ----------------------------
 
 .. info::
 
-   More info available at the `Bash Reference Manual <https://www.gnu.org/software/bash/manual/html_node/Redirections.html>`_.
+   More info is available at the `Bash Reference Manual <https://www.gnu.org/software/bash/manual/html_node/Redirections.html>`_.
 
 .. hint::
 
-   Before defaulting into writing a 300-lines-long Python script for the simplest and most common of tasks, it is always good to check if there is something already available in :program:`bash` that can do the same thing in a easier and more stable way.
+   Before defaulting to writing a 300-lines-long Python script for the simplest and most common of tasks, it is always good to check if there is something already available in :program:`bash` that can do the same thing in an easier and more stable way.
 
 In a time long long ago, before ChatGPT became the new `Deep Magic <https://www.youtube.com/watch?v=Vd6hVYkkq88>`_, :program:`bash` was already tilting heads and leaving Ubuntu users in awe.
 
@@ -172,8 +172,10 @@ Among many powerful features, the *redirection operator*, ``>``, stands out. It 
 
 .. warning::
 
-   The operator ``>`` overwrites the target file with the output of the preceeding command, it does not ask for permission, it just goes and does it.
-   The operator ``>>`` appends to the target file with the output of the preceeding command.
+   The operator ``>`` overwrites the target file with the output of the preceding command, it does not ask for permission, it just goes and does it.
+
+   The operator ``>>`` appends to the target file with the output of the preceding command.
+
    Don't mix these up, there is no way to undo.
 
 For example, if we want to store the result of the command ``ls`` to a file called ``result_of_ls.txt``, the following will do
