@@ -39,6 +39,9 @@ epub_show_urls = 'footnote'
 # -- Options for hoverxref.extension https://sphinx-hoverxref.readthedocs.io/en/latest/configuration.html
 hoverxref_auto_ref = True
 
+# -- Options for latex https://docs.readthedocs.io/en/stable/guides/pdf-non-ascii-languages.html
+latex_engine = "xelatex"
+
 # -- Fixing table horizontal bar scrolling https://stackoverflow.com/questions/40641252/how-can-i-avoid-the-horizontal-scrollbar-in-a-rest-table
 def setup(app):
         # app.add_stylesheet('custom.css')
