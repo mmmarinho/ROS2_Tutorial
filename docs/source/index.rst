@@ -7,7 +7,7 @@
 
 .. hint::
 
-   You can download this tutorial as a `PDF <https://ros2-tutorial.readthedocs.io/_/downloads/en/latest/pdf/>`_.
+   You can download this tutorial as a `PDF <https://ros2-tutorial.readthedocs.io/_/downloads/en/latest/pdf/>`_ 📀.
 
 📖 **About this tutorial** 
 
@@ -19,13 +19,13 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 🔍 **Quick overview**
 
-𝅘𝅥𝅲 :doc:`Preamble:Ubuntu Basics <preamble/ubuntu>`
+𝅘𝅥𝅲 :doc:`Preamble: Ubuntu Basics <preamble/ubuntu>`
     A few tips on Ubuntu/terminal usage.
 
-𝅘𝅥𝅱 :doc:`Preamble:Python Basics <preamble/python>`
+𝅘𝅥𝅱 :doc:`Preamble: Python Basics <preamble/python>` 
     A quick memory refresher for the Python stuff we'll use in ROS2.
 
-𝅘𝅥𝅰 :doc:`ROS2 Setup <installation>` 
+𝅘𝅥𝅰 :doc:`ROS2 Setup <installation>` (⭐start here⭐)
     Installing ROS2 and setting up its environment for use.
 
 𝅘𝅥𝅯 :doc:`ROS2 Python Package/Build Basics <create_packages>`
