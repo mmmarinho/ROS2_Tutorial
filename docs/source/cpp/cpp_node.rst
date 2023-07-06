@@ -93,7 +93,21 @@ Running C++ Node
 
 .. code-block:: console
 
-   hello world cpp_package_with_a_node package
+    [INFO] [1688620414.406930812] [print_forever_cpp]: Printed 0 times.
+    [INFO] [1688620414.906890884] [print_forever_cpp]: Printed 1 times.
+    [INFO] [1688620415.406907619] [print_forever_cpp]: Printed 2 times.
+    [INFO] [1688620415.906881003] [print_forever_cpp]: Printed 3 times.
+    [INFO] [1688620416.406900108] [print_forever_cpp]: Printed 4 times.
+    [INFO] [1688620416.906886691] [print_forever_cpp]: Printed 5 times.
+    [INFO] [1688620417.406881803] [print_forever_cpp]: Printed 6 times.
+    [INFO] [1688620417.906858551] [print_forever_cpp]: Printed 7 times.
+    [INFO] [1688620418.406894922] [print_forever_cpp]: Printed 8 times.
+
+:kbd:`CTRL+C`
+
+.. code-block:: console
+
+    [INFO] [1688620418.725674401] [rclcpp]: signal_handler(signum=2)
 
 The :file:`package.xml`
 --------------------------
