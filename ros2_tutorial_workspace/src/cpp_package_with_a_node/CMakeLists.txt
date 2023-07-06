@@ -14,11 +14,13 @@ find_package(rclcpp REQUIRED)
 # vvvvvvvvvvvvvvvvvvvvvvvv #
 
 add_executable(sample_cpp_node
-    src/sample_cpp_node.cpp
-    src/print_forever_cpp_node.cpp
+  src/sample_cpp_node.cpp
+  src/print_forever_cpp_node.cpp
 )
 
-ament_target_dependencies(sample_cpp_node rclcpp)
+ament_target_dependencies(sample_cpp_node
+  rclcpp
+)
 
 target_link_libraries(sample_cpp_node
 
