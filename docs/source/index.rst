@@ -9,38 +9,38 @@
 
    You can download this tutorial as a `PDF <https://ros2-tutorial.readthedocs.io/_/downloads/en/latest/pdf/>`_.
 
-**About this tutorial**
+📖 **About this tutorial** 
 
 `ROS2 Humble <https://docs.ros.org/en/humble/>`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
-**Using this tutorial**
+✍ **Using this tutorial** 
 
 This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`. 
 
-**Quick overview**
+🔍 **Quick overview**
 
-:doc:`Preamble:Ubuntu Basics <preamble/ubuntu>`
+𝅘𝅥𝅲 :doc:`Preamble:Ubuntu Basics <preamble/ubuntu>`
     A few tips on Ubuntu/terminal usage.
 
-:doc:`Preamble:Python Basics <preamble/python>`
+𝅘𝅥𝅱 :doc:`Preamble:Python Basics <preamble/python>`
     A quick memory refresher for the Python stuff we'll use in ROS2.
 
-:doc:`ROS2 Setup <installation>`
+𝅘𝅥𝅰 :doc:`ROS2 Setup <installation>` 
     Installing ROS2 and setting up its environment for use.
 
-:doc:`ROS2 Python Package/Build Basics <create_packages>`
+𝅘𝅥𝅯 :doc:`ROS2 Python Package/Build Basics <create_packages>`
     Creating our first ROS2 package with `ament_python` and building it.
 
-:doc:`ROS2 Python Node Basics <running_node>`
+𝅘𝅥𝅮 :doc:`ROS2 Python Node Basics <running_node>`
     Creating a `rclpy` Node and figuring out what all that means.
 
-:doc:`ROS2 Python Library Basics <create_python_library>`
+𝅘𝅥 :doc:`ROS2 Python Library Basics <create_python_library>`
     Create a Python library and importing/using it in another `ament_python` package.
 
-:doc:`ROS2 Python Interface Basics <messages>`
+𝅗𝅥 :doc:`ROS2 Python Interface Basics <messages>`
     Making ROS2 messages, services, publishers, subscribers, service servers, and service clients.
 
-:doc:`ROS2 Parameter/Launch Basics <parameters_and_launch>`
+𝅝 :doc:`ROS2 Parameter/Launch Basics <parameters_and_launch>`
     Making configurable ROS2 Nodes using parameters and launch files.
 
 .. toctree::
