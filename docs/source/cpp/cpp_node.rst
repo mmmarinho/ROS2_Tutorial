@@ -101,4 +101,15 @@ The :file:`package.xml`
 The :file:`CMakeLists.txt`
 --------------------------
 
+Add a :file:`.placeholder` if your :file:`include/<PACKAGE_NAME>` is empty
+--------------------------------------------------------------------------
+
+.. warning::
+
+   If you don't do this and add this package as a git repository without any files on the :file:`include/`, :program:`CMake` might return with an error when trying to compile your package.
+
+Empty directories will `not be tracked by git <https://stackoverflow.com/questions/115983/how-do-i-add-an-empty-directory-to-a-git-repository>`_. A file has to be added to the index. We can create an empty file in the :file:`include` folder as follows
+
+  cd ~/ros2_tutorial_workspace/src/cpp_package_with_a_node/src
+  touch include/cpp_package_with_a_node/.placeholder
 
