@@ -10,7 +10,7 @@ Creating C++ Nodes (for :program:`ament_cmake`)
     #. Change ``print_forever_cpp_node`` to the name of your Node.
     #. Add all source files to ``add_executable`` 
     #. Add all ROS2 dependencies of this binary to ``ament_target_dependencies``
-    #. Add any other (NOT ROS2) libraries to ``target_link_libraries``
+    #. Add any other (**NOT ROS2**) libraries to ``target_link_libraries``
 
     .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
        :language: cmake
