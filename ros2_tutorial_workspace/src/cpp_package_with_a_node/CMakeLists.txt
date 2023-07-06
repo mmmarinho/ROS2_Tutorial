@@ -12,29 +12,36 @@ find_package(rclcpp REQUIRED)
 ############################
 # CPP Binary Block [BEGIN] #
 # vvvvvvvvvvvvvvvvvvvvvvvv #
+# https://ros2-tutorial.readthedocs.io/en/latest/
+# While we cant use blocks https://cmake.org/cmake/help/latest/command/block.html#command:block
+# we use set--unset
+set(RCLCPP_LOCAL_BINARY_NAME sample_cpp_node)
 
-add_executable(sample_cpp_node
+add_executable(${RCLCPP_LOCAL_BINARY_NAME}
   src/sample_cpp_node.cpp
   src/print_forever_cpp_node.cpp
+
 )
 
-ament_target_dependencies(sample_cpp_node
+ament_target_dependencies(${RCLCPP_LOCAL_BINARY_NAME}
   rclcpp
-)
-
-target_link_libraries(sample_cpp_node
 
 )
 
-target_include_directories(sample_cpp_node PUBLIC
+target_link_libraries(${RCLCPP_LOCAL_BINARY_NAME}
+
+)
+
+target_include_directories(${RCLCPP_LOCAL_BINARY_NAME} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
-target_compile_features(sample_cpp_node PUBLIC c_std_99 cxx_std_17)
+target_compile_features(${RCLCPP_LOCAL_BINARY_NAME} PUBLIC c_std_99 cxx_std_17)
 
 install(TARGETS sample_cpp_node
   DESTINATION lib/${PROJECT_NAME})
 
+unset(RCLCPP_LOCAL_BINARY_NAME)
 # ^^^^^^^^^^^^^^^^^^^^^^ #
 # CPP Binary Block [END] #
 ##########################
