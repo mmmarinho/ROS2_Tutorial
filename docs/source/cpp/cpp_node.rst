@@ -15,7 +15,7 @@ Creating C++ Nodes (for :program:`ament_cmake`)
     .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
        :language: cmake
        :lines: 12-47
-       :emphasize-lines: 7,11,16,20
+       :emphasize-lines: 7,12,17,21
  
 
 Create the package
