@@ -168,6 +168,7 @@ While we wait for someone to come and correct me on my claims above, just think 
 .. code-block:: console
    :emphasize-lines: 3
 
+   cd ~/ros2_tutorial_workspace/src
    ros2 param dump \
    /peanut_butter_falcon_quote_publisher_node \
    > peanut_butter_falcon_quote_publisher_node.yaml
@@ -194,3 +195,40 @@ which outputs
        topic_name: truly_inspirational_quote
        use_sim_time: false
 
+Load parameters from a file with :program:`ros2 param load`
+-----------------------------------------------------------
+
+.. warning::
+
+   To proceed, end the ``peanut_butter_falcon_quote_publisher_node`` Node with :kbd:`CTRL+C`.
+
+As in the prior step, suppose that we have a file :file:`peanut_butter_falcon_quote_publisher_node.yaml` with the parameters we love the most. What we can do with :program:`ros2 param load` is load that file. Nicely predictable and understandable naming convention.
+
+We can start the Node with the launch file
+
+.. code-block:: console
+
+   ros2 launch python_package_that_uses_parameters_and_launch_files \
+   peanut_butter_falcon_quote_publisher_launch.py
+
+which, at the beginning, will have the parameters set in the :file:`_launch.py`. We can then 
+
+.. code-block:: console
+   :emphasize-lines: 3
+
+   cd ~/ros2_tutorial_workspace/src
+   ros2 param load \
+   /peanut_butter_falcon_quote_publisher_node \
+   peanut_butter_falcon_quote_publisher_node.yaml
+
+which will return
+
+.. code-block:: console
+
+   Set parameter period successful
+   Set parameter philosopher_name successful
+   Set parameter quote successful
+   Set parameter topic_name successful
+   Set parameter use_sim_time successful
+
+indicating that all parameters defined in the abbr:`YAML (YAML Ain't Markup Language)` were successfully loaded.
