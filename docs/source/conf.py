@@ -1,4 +1,7 @@
 # Configuration file for the Sphinx documentation builder.
+from datetime import datetime
+this_year_str = datetime.today().strftime('%Y')
+today_str = datetime.today().strftime('%y.%m.%d')
 
 # -- Project information
 
@@ -6,8 +9,8 @@ project = 'ROS2 Tutorial'
 copyright = '2023, Murilo M. Marinho'
 author = 'Murilo M. Marinho'
 
-release = '0.1'
-version = '0.1.0'
+release = this_year_str
+version = today_str
 
 # -- General configuration
 
