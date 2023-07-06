@@ -20,8 +20,13 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    You can download this tutorial as a `PDF <https://ros2-tutorial.readthedocs.io/_/downloads/en/latest/pdf/>`_.
 
 .. toctree::
+   :caption: ROS2 Tutorilo
+   :hidden:
+
+.. toctree::
    :caption: Preamble
    :maxdepth: 2
+   :hidden:
 
    preamble/ubuntu
    preamble/python
@@ -29,6 +34,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 .. toctree::
    :caption: ROS2 Setup (⭐start here⭐)
    :maxdepth: 2
+   :hidden:
 
    installation
    terminator
@@ -37,6 +43,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 .. toctree::
    :caption: ROS2 Python Package/Build Basics
    :maxdepth: 2
+   :hidden:
 
    create_packages
    create_python_package
@@ -46,6 +53,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 .. toctree::
    :caption: ROS2 Python Node Basics
    :maxdepth: 2
+   :hidden:
    
    running_node
    editing_python_source
@@ -55,6 +63,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 .. toctree::
    :caption: ROS2 Python Library Basics
    :maxdepth: 2
+   :hidden:
    
    create_python_library
    using_python_library
@@ -62,6 +71,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 .. toctree::
    :caption: ROS2 Python Interface Basics
    :maxdepth: 2
+   :hidden:
    
    messages
    create_interface_package
@@ -73,6 +83,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 .. toctree::
    :caption: ROS2 Parameter/Launch Basics
    :maxdepth: 2
+   :hidden:
 
    parameters_and_launch
    launch_configurable_nodes
@@ -81,6 +92,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 .. toctree::
    :caption: Other content
    :maxdepth: 2
+   :hidden:
    
    advanced
    faq
@@ -96,6 +108,6 @@ By reading and/or using the tutorial in total or in part, you agree to these ter
 
 .. admonition:: `Disclaimer <https://www.southparkstudios.com/legal/thmcbs/show-disclaimer>`_
 
-   ANYTHING ON THIS TUTORIAL--EVEN THINGS THAT ACTUALLY WORK--ARE ENTIRELY FICTIONAL. SOME MEMES ARE ATTEMPTED....POORLY. THE TUTORIAL CONTAINS MISPLACED MOVIE REFERENCES AND DUE TO ITS LOW-HANGING-FRUIT HUMOUR AND IT SHOULD NOT BE READ BY ANYONE.
+   ANYTHING ON THIS TUTORIAL--EVEN THINGS THAT ACTUALLY WORK--ARE ENTIRELY FICTIONAL. SOME MEMES ARE ATTEMPTED....POORLY. THE TUTORIAL CONTAINS MISPLACED MOVIE REFERENCES AND DUE TO ITS LOW-HANGING FRUIT HUMOUR IT SHOULD NOT BE READ BY ANYONE.
 
 .. _`ROS2 Humble`: https://docs.ros.org/en/humble/
