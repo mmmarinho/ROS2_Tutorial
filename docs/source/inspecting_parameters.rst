@@ -231,4 +231,4 @@ which will return
    Set parameter topic_name successful
    Set parameter use_sim_time successful
 
-indicating that all parameters defined in the abbr:`YAML (YAML Ain't Markup Language)` were successfully loaded.
+indicating that all parameters defined in the :abbr:`YAML (YAML Ain't Markup Language)` were successfully loaded.
