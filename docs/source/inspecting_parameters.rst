@@ -159,7 +159,7 @@ Save parameters to a file with :program:`ros2 param dump`
 
 .. warning::
 
-   Despite what the current :program:`ros2 param dump` `description <https://github.com/ros2/ros2cli/blob/86ae3930d4b56171ddff6d12cd467f6570ac6932/ros2param/ros2param/verb/dump.py#L40>`_ currently says, it does not actually dump the parameters to a file. It prints out the parameters in YAML file format to the terminal. See the discussion in `ros2cli/#836 <https://github.com/ros2/ros2cli/issues/836>`_ for possible updates.
+   Despite what the current :program:`ros2 param dump` `description <https://github.com/ros2/ros2cli/blob/86ae3930d4b56171ddff6d12cd467f6570ac6932/ros2param/ros2param/verb/dump.py#L40>`_ says, it does not actually dump the parameters to a file. It prints out the parameters in YAML file format to the terminal. See the discussion in `ros2cli/#836 <https://github.com/ros2/ros2cli/issues/836>`_ for possible updates.
 
 Words are sometimes little happy accidents. This usage of the word dump has no relation whatsoever to, for example, `Peter got dumped by Sarah and went to Hawaii <https://www.imdb.com/title/tt0800039/>`_. Dump files are usually related to `crashes and unresponsive programs <https://learn.microsoft.com/en-us/visualstudio/debugger/using-dump-files?view=vs-2022>`_, so this name puzzles me since ROS: the first.
 
