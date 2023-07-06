@@ -82,7 +82,60 @@ Create the package
         MIT
         MIT-0
 
+The :file:`package.xml`
+--------------------------
 
+:download:`package.xml <../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml
+   :language: xml
+   :linenos:
+   :emphasize-lines: 10
+
+The :file:`CMakeLists.txt`
+--------------------------
+
+:download:`CMakeLists.txt <../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
+   :language: cmake
+   :linenos:
+
+The ``PrintForeverCPP`` class
+-----------------------------
+
+The :file:`.hpp`
+^^^^^^^^^^^^^^^^
+
+:download:`print_forever_cpp_node.hpp <../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.hpp>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.hpp
+   :language: cpp
+   :linenos:
+
+
+The :file:`.cpp`
+^^^^^^^^^^^^^^^^
+
+:download:`print_forever_cpp_node.cpp <../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.cpp>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.cpp
+   :language: cpp
+   :linenos:
+
+Add a :file:`.placeholder` if your :file:`include/<PACKAGE_NAME>` is empty
+--------------------------------------------------------------------------
+
+.. warning::
+
+   If you don't do this and add this package as a git repository without any files on the :file:`include/`, :program:`CMake` might return with an error when trying to compile your package.
+
+Empty directories will `not be tracked by git <https://stackoverflow.com/questions/115983/how-do-i-add-an-empty-directory-to-a-git-repository>`_. A file has to be added to the index. We can create an empty file in the :file:`include` folder as follows
+
+.. code-block:: console
+
+   cd ~/ros2_tutorial_workspace/src/cpp_package_with_a_node/src
+   touch include/cpp_package_with_a_node/.placeholder
 
 Running C++ Node
 ----------------
@@ -108,22 +161,3 @@ Running C++ Node
 .. code-block:: console
 
     [INFO] [1688620418.725674401] [rclcpp]: signal_handler(signum=2)
-
-The :file:`package.xml`
---------------------------
-
-The :file:`CMakeLists.txt`
---------------------------
-
-Add a :file:`.placeholder` if your :file:`include/<PACKAGE_NAME>` is empty
---------------------------------------------------------------------------
-
-.. warning::
-
-   If you don't do this and add this package as a git repository without any files on the :file:`include/`, :program:`CMake` might return with an error when trying to compile your package.
-
-Empty directories will `not be tracked by git <https://stackoverflow.com/questions/115983/how-do-i-add-an-empty-directory-to-a-git-repository>`_. A file has to be added to the index. We can create an empty file in the :file:`include` folder as follows
-
-  cd ~/ros2_tutorial_workspace/src/cpp_package_with_a_node/src
-  touch include/cpp_package_with_a_node/.placeholder
-
