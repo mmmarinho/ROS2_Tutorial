@@ -21,24 +21,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#pragma once
+#include "print_forever.hpp"
 
-#include <memory>
-
-#include <rclcpp/rclcpp.hpp>
+#include <chrono>
 
 /**
- * @brief A ROS2 Node that prints to the console periodically, but in C++.
+ * @brief PrintForeverCPP::PrintForeverCPP.
+ * Default constructor giving default values to the node and members.
  */
-class PrintForeverCPP: public rclcpp::Node
+PrintForever::PrintForever():
+    rclcpp::Node("print_forever_cpp"),
+    timer_period_(0.5),
+    print_count_(0)
 {
-private:
-    double timer_period_;
-    int print_count_;
-    rclcpp::TimerBase::SharedPtr timer_;
+    timer_ = create_wall_timer(
+                std::chrono::milliseconds(long(timer_period_*1e3)),
+                std::bind(&PrintForever::_timer_callback, this)
+                );
+}
 
-    void _timer_callback();
-public:
-    PrintForeverCPP();
-
-};
+/**
+ * @brief PrintForeverCPP::_timer_callback.
+ * Periodically prints using RCLCPP_INFO.
+ */
+void PrintForever::_timer_callback()
+{
+    RCLCPP_INFO_STREAM(get_logger(),
+                       std::string("Printed ") +
+                       std::to_string(print_count_) +
+                       std::string(" times.")
+                       );
+    print_count_++;
+}

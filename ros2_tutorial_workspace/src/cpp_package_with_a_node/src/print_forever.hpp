@@ -21,24 +21,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#pragma once
+
+#include <memory>
+
 #include <rclcpp/rclcpp.hpp>
 
-#include "print_forever_cpp_node.hpp"
-
-int main(int argc, char** argv)
+/**
+ * @brief A ROS2 Node that prints to the console periodically, but in C++.
+ */
+class PrintForever: public rclcpp::Node
 {
-    rclcpp::init(argc,argv);
+private:
+    double timer_period_;
+    int print_count_;
+    rclcpp::TimerBase::SharedPtr timer_;
 
-    try
-    {
-        auto node = std::make_shared<PrintForeverCPP>();
+    void _timer_callback();
+public:
+    PrintForever();
 
-        rclcpp::spin(node);
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << std::string("::Exception::") << e.what();
-    }
-
-    return 0;
-}
+};

@@ -21,35 +21,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "print_forever_cpp_node.hpp"
+#include <rclcpp/rclcpp.hpp>
 
-#include <chrono>
+#include "print_forever.hpp"
 
-/**
- * @brief PrintForeverCPP::PrintForeverCPP.
- * Default constructor giving default values to the node and members.
- */
-PrintForeverCPP::PrintForeverCPP():
-    rclcpp::Node("print_forever_cpp"),
-    timer_period_(0.5),
-    print_count_(0)
+int main(int argc, char** argv)
 {
-    timer_ = create_wall_timer(
-                std::chrono::milliseconds(long(timer_period_*1e3)),
-                std::bind(&PrintForeverCPP::_timer_callback, this)
-                );
-}
+    rclcpp::init(argc,argv);
 
-/**
- * @brief PrintForeverCPP::_timer_callback.
- * Periodically prints using RCLCPP_INFO.
- */
-void PrintForeverCPP::_timer_callback()
-{
-    RCLCPP_INFO_STREAM(get_logger(),
-                       std::string("Printed ") +
-                       std::to_string(print_count_) +
-                       std::string(" times.")
-                       );
-    print_count_++;
+    try
+    {
+        auto node = std::make_shared<PrintForever>();
+
+        rclcpp::spin(node);
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << std::string("::Exception::") << e.what();
+    }
+
+    return 0;
 }

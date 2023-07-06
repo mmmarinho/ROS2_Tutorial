@@ -15,11 +15,11 @@ find_package(rclcpp REQUIRED)
 # https://ros2-tutorial.readthedocs.io/en/latest/
 # While we cant use blocks https://cmake.org/cmake/help/latest/command/block.html#command:block
 # we use set--unset
-set(RCLCPP_LOCAL_BINARY_NAME sample_cpp_node)
+set(RCLCPP_LOCAL_BINARY_NAME print_forever_cpp_node)
 
 add_executable(${RCLCPP_LOCAL_BINARY_NAME}
-  src/sample_cpp_node.cpp
   src/print_forever_cpp_node.cpp
+  src/print_forever.cpp
 
 )
 
@@ -38,7 +38,7 @@ target_include_directories(${RCLCPP_LOCAL_BINARY_NAME} PUBLIC
 
 target_compile_features(${RCLCPP_LOCAL_BINARY_NAME} PUBLIC c_std_99 cxx_std_17)
 
-install(TARGETS sample_cpp_node
+install(TARGETS ${RCLCPP_LOCAL_BINARY_NAME}
   DESTINATION lib/${PROJECT_NAME})
 
 unset(RCLCPP_LOCAL_BINARY_NAME)
