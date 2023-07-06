@@ -4,6 +4,7 @@ Creating C++ Nodes (for :program:`ament_cmake`)
 .. admonition:: The C++ binary block for :program:`ament_cmake`
 
     When adding a new Node in an existing :file:`CMakeLists.txt`, you might benefit from using the following template.
+    There are many things to add, but remember that the name of the binary is repeated in 5 different places, as highlighted below.
 
 
     .. code-block:: CMake
