@@ -1,3 +1,5 @@
+Creating C++ Libraries (for :program:`ament_cmake`)
+===================================================
 
 .. code-block:: console
 
