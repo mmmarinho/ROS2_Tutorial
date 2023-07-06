@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(cpp_package_with_a_node)
+project(cpp_package_with_a_library)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(-Wall -Wextra -Wpedantic)
@@ -9,42 +9,47 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
-############################
-# CPP Binary Block [BEGIN] #
-# vvvvvvvvvvvvvvvvvvvvvvvv #
+####################################
+# CPP Shared Library Block [BEGIN] #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 # https://ros2-tutorial.readthedocs.io/en/latest/
 # While we cant use blocks https://cmake.org/cmake/help/latest/command/block.html#command:block
 # we use set--unset
-set(RCLCPP_LOCAL_BINARY_NAME print_forever_cpp_node)
-
-add_executable(${RCLCPP_LOCAL_BINARY_NAME}
-    src/print_forever_cpp_node.cpp
-    src/print_forever.cpp
+add_library(${PROJECT_NAME} SHARED
+    src/sample_class.cpp
 
     )
 
-ament_target_dependencies(${RCLCPP_LOCAL_BINARY_NAME}
+ament_target_dependencies(${PROJECT_NAME}
     rclcpp
 
     )
 
-target_link_libraries(${RCLCPP_LOCAL_BINARY_NAME}
-
-    )
-
-target_include_directories(${RCLCPP_LOCAL_BINARY_NAME} PUBLIC
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>)
 
-target_compile_features(${RCLCPP_LOCAL_BINARY_NAME} PUBLIC c_std_99 cxx_std_17)
+ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
+ament_export_dependencies(
+    rclcpp
 
-install(TARGETS ${RCLCPP_LOCAL_BINARY_NAME}
-    DESTINATION lib/${PROJECT_NAME})
+    )
 
-unset(RCLCPP_LOCAL_BINARY_NAME)
-# ^^^^^^^^^^^^^^^^^^^^^^ #
-# CPP Binary Block [END] #
-##########################
+target_link_libraries(${PROJECT_NAME}
+
+    )
+
+install(
+    TARGETS ${PROJECT_NAME}
+    EXPORT export_${PROJECT_NAME}
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+    INCLUDES DESTINATION include
+    )
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #
+# CPP Shared Library Block [END] #
+##################################
 
 if(BUILD_TESTING)
     find_package(ament_lint_auto REQUIRED)
