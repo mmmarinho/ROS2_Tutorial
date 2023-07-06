@@ -89,9 +89,9 @@ The ``PrintForeverCPP`` class
 The :file:`.hpp`
 ^^^^^^^^^^^^^^^^
 
-:download:`print_forever_cpp_node.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.hpp>`
+:download:`print_forever.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.hpp>`
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.hpp
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.hpp
    :language: cpp
    :linenos:
    :lines: 24-
@@ -99,6 +99,16 @@ The :file:`.hpp`
 
 The :file:`.cpp`
 ^^^^^^^^^^^^^^^^
+
+:download:`print_forever.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.cpp>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.cpp
+   :language: cpp
+   :linenos:
+   :lines: 24-
+
+The ``main()`` function
+-----------------------
 
 :download:`print_forever_cpp_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.cpp>`
 
