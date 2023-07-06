@@ -24,7 +24,6 @@ SOFTWARE.
 #include "print_forever_cpp_node.hpp"
 
 #include <chrono>
-using namespace std::chrono_literals;
 
 /**
  * @brief PrintForeverCPP::PrintForeverCPP.
