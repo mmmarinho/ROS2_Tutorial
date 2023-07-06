@@ -9,3 +9,4 @@ Forbidden topics
 
    advanced_create_interface_package
    cpp/cpp_node
+   cpp/cpp_library
