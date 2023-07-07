@@ -86,12 +86,16 @@ The :file:`CMakeLists.txt`
 The ``PrintForeverCPP`` class
 -----------------------------
 
+.. admonition:: (Murilo's) ``rclcpp`` best practices 
+
+   Anything that is a subclass of ``rclcpp::Node`` will have the suffix :file:`_node`.
+
 The :file:`.hpp`
 ^^^^^^^^^^^^^^^^
 
-:download:`print_forever.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.hpp>`
+:download:`print_forever.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp>`
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.hpp
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp
    :language: cpp
    :linenos:
    :lines: 24-
@@ -100,9 +104,9 @@ The :file:`.hpp`
 The :file:`.cpp`
 ^^^^^^^^^^^^^^^^
 
-:download:`print_forever.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.cpp>`
+:download:`print_forever.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp>`
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever.cpp
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp
    :language: cpp
    :linenos:
    :lines: 24-
@@ -110,9 +114,13 @@ The :file:`.cpp`
 The ``main()`` function
 -----------------------
 
-:download:`print_forever_cpp_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.cpp>`
+.. admonition:: (Murilo's) ``rclcpp`` best practices 
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_cpp_node.cpp
+   Anything contains the ``main()`` function of a node will have the suffix :file:`_node_main.cpp`.
+
+:download:`print_forever_cpp_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp
    :language: cpp
    :linenos:
    :lines: 24-
@@ -136,19 +144,19 @@ Running C++ Node
 
 .. code-block:: console
 
-   ros2 run cpp_package_with_a_node sample_cpp_node
+   ros2 run cpp_package_with_a_node print_forever_node
 
 .. code-block:: console
 
-    [INFO] [1688620414.406930812] [print_forever_cpp]: Printed 0 times.
-    [INFO] [1688620414.906890884] [print_forever_cpp]: Printed 1 times.
-    [INFO] [1688620415.406907619] [print_forever_cpp]: Printed 2 times.
-    [INFO] [1688620415.906881003] [print_forever_cpp]: Printed 3 times.
-    [INFO] [1688620416.406900108] [print_forever_cpp]: Printed 4 times.
-    [INFO] [1688620416.906886691] [print_forever_cpp]: Printed 5 times.
-    [INFO] [1688620417.406881803] [print_forever_cpp]: Printed 6 times.
-    [INFO] [1688620417.906858551] [print_forever_cpp]: Printed 7 times.
-    [INFO] [1688620418.406894922] [print_forever_cpp]: Printed 8 times.
+    [INFO] [1688620414.406930812] [print_forever_node]: Printed 0 times.
+    [INFO] [1688620414.906890884] [print_forever_node]: Printed 1 times.
+    [INFO] [1688620415.406907619] [print_forever_node]: Printed 2 times.
+    [INFO] [1688620415.906881003] [print_forever_node]: Printed 3 times.
+    [INFO] [1688620416.406900108] [print_forever_node]: Printed 4 times.
+    [INFO] [1688620416.906886691] [print_forever_node]: Printed 5 times.
+    [INFO] [1688620417.406881803] [print_forever_node]: Printed 6 times.
+    [INFO] [1688620417.906858551] [print_forever_node]: Printed 7 times.
+    [INFO] [1688620418.406894922] [print_forever_node]: Printed 8 times.
 
 :kbd:`CTRL+C`
 
