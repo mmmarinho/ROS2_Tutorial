@@ -6,7 +6,7 @@
    Scary things are out there.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    cpp/index
    
