@@ -1,3 +1,16 @@
+Creating C++ Libraries (for :program:`ament_cmake`)
+===================================================
+
+.. admonition:: The C++ library block for :program:`ament_cmake`
+
+    When adding a new Node in an existing :file:`CMakeLists.txt`, you might benefit from using the following template.
+
+    Remember to
+
+    .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt
+       :language: cmake
+       :lines: 12-47
+       :emphasize-lines: 7,12,17,21
 
 .. code-block:: console
 
