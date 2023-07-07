@@ -8,5 +8,4 @@ Forbidden topics
 .. toctree::
 
    advanced_create_interface_package
-   cpp/cpp_node
-   cpp/cpp_library
+   cpp/index
