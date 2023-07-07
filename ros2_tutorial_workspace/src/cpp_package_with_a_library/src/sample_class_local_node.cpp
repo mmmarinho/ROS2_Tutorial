@@ -21,33 +21,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "print_forever.hpp"
-
-#include <chrono>
+#include "sample_class_local_node.hpp"
 
 /**
- * @brief PrintForeverCPP::PrintForeverCPP.
- * Default constructor giving default values to the node and members.
+ * @brief SampleClassLocalNode::SampleClassLocalNode Default constructor.
  */
-PrintForever::PrintForever():
-    rclcpp::Node("print_forever_cpp"),
+SampleClassLocalNode::SampleClassLocalNode():
+    rclcpp::Node("sample_class_local_node"),
     timer_period_(0.5),
     print_count_(0)
 {
     timer_ = create_wall_timer(
                 std::chrono::milliseconds(long(timer_period_*1e3)),
-                std::bind(&PrintForever::_timer_callback, this)
+                std::bind(&SampleClassLocalNode::_timer_callback, this)
                 );
 }
 
 /**
- * @brief PrintForeverCPP::_timer_callback.
- * Periodically prints using RCLCPP_INFO.
+ * @brief SampleClassLocalNode::_timer_callback periodically prints class info using RCLCPP_INFO.
  */
-void PrintForever::_timer_callback()
+void SampleClassLocalNode::_timer_callback()
 {
     RCLCPP_INFO_STREAM(get_logger(),
-                       std::string("Printed ") +
+                       std::string("sum_of_squares = ") +
+                       std::to_string(SampleClass::sum_of_squares(print_count_,print_count_-5))
+                       );
+
+    RCLCPP_INFO_STREAM(get_logger(),
+                       sample_class_.to_string() +
                        std::to_string(print_count_) +
                        std::string(" times.")
                        );

@@ -15,11 +15,11 @@ find_package(rclcpp REQUIRED)
 # https://ros2-tutorial.readthedocs.io/en/latest/
 # While we cant use blocks https://cmake.org/cmake/help/latest/command/block.html#command:block
 # we use set--unset
-set(RCLCPP_LOCAL_BINARY_NAME print_forever_cpp_node)
+set(RCLCPP_LOCAL_BINARY_NAME print_forever_node)
 
 add_executable(${RCLCPP_LOCAL_BINARY_NAME}
-    src/print_forever_cpp_node.cpp
-    src/print_forever.cpp
+    src/print_forever_node_main.cpp
+    src/print_forever_node.cpp
 
     )
 

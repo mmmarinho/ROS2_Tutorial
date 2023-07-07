@@ -21,29 +21,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#pragma once
+#include <rclcpp/rclcpp.hpp>
 
-#include <ostream>
+#include "sample_class_local_node.hpp"
 
-#include <QString>
-#include <eigen3/Eigen/Dense>
-
-class SampleClass
+int main(int argc, char** argv)
 {
-private:
-    int a_private_member_;
-    const QString a_private_qt_string_;
-    const Eigen::MatrixXd a_private_eigen3_matrix_;
+    rclcpp::init(argc,argv);
 
-public:
-    SampleClass();
+    try
+    {
+        auto node = std::make_shared<SampleClassLocalNode>();
 
-    int get_a_private_member() const;
-    void set_a_private_member(int value);
-    std::string to_string() const;
+        rclcpp::spin(node);
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << std::string("::Exception::") << e.what();
+    }
 
-    static double sum_of_squares(const double&a, const double& b);
-};
-
-std::ostream& operator<<(std::ostream& os, const SampleClass& sc);
-
+    return 0;
+}

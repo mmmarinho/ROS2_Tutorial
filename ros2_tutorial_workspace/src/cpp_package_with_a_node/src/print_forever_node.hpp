@@ -23,14 +23,12 @@ SOFTWARE.
 */
 #pragma once
 
-#include <memory>
-
 #include <rclcpp/rclcpp.hpp>
 
 /**
  * @brief A ROS2 Node that prints to the console periodically, but in C++.
  */
-class PrintForever: public rclcpp::Node
+class PrintForeverNode: public rclcpp::Node
 {
 private:
     double timer_period_;
@@ -39,6 +37,6 @@ private:
 
     void _timer_callback();
 public:
-    PrintForever();
+    PrintForeverNode();
 
 };

@@ -23,27 +23,23 @@ SOFTWARE.
 */
 #pragma once
 
-#include <ostream>
+#include <rclcpp/rclcpp.hpp>
+#include <cpp_package_with_a_library/sample_class.hpp>
 
-#include <QString>
-#include <eigen3/Eigen/Dense>
-
-class SampleClass
+/**
+ * @brief A ROS2 Node that uses the SampleClass within the same package.
+ */
+class SampleClassLocalNode: public rclcpp::Node
 {
 private:
-    int a_private_member_;
-    const QString a_private_qt_string_;
-    const Eigen::MatrixXd a_private_eigen3_matrix_;
+    SampleClass sample_class_;
 
+    double timer_period_;
+    int print_count_;
+    rclcpp::TimerBase::SharedPtr timer_;
+
+    void _timer_callback();
 public:
-    SampleClass();
+    SampleClassLocalNode();
 
-    int get_a_private_member() const;
-    void set_a_private_member(int value);
-    std::string to_string() const;
-
-    static double sum_of_squares(const double&a, const double& b);
 };
-
-std::ostream& operator<<(std::ostream& os, const SampleClass& sc);
-
