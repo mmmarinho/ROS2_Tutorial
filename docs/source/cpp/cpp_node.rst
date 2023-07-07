@@ -7,7 +7,7 @@ Creating C++ Nodes (for :program:`ament_cmake`)
 
     Remember to:
 
-    #. Add **ALL** (including ROS2 ones) dependencies with ``find_package``, if applicable.
+    #. Add **ALL** dependencies (including ROS2 ones) with ``find_package``, if applicable.
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
            :language: cmake
