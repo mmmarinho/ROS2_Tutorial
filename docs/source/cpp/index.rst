@@ -13,7 +13,23 @@ For the :program:`ament_cmake` version of this tutorial, I'll suppose you know a
 
    cpp_node
    cpp_library
-  
+
+But with Python, we don't need C++
+----------------------------------
+
+This makes me feel like breaking the news to someone that Santa isn't real, but just as an example, see `numpy <https://numpy.org/doc/stable/user/whatisnumpy.html>`_ and `PyTorch <https://pytorch.org/tutorials/advanced/cpp_frontend.html>`_.
+
+Why is NumPy Fast?
+   [...] these things are taking place, of course, just “behind the scenes” in optimized, pre-compiled C code [...]
+
+Using the PyTorch C++ Frontend
+   [...] While the primary interface to PyTorch naturally is Python, this Python API sits atop a substantial C++ codebase providing foundational data structures and functionality such as tensors and automatic differentiation. [...]
+
+The memefied version of this discussion is
+
+.. image:: ../../images/python_is_cpp.jpg
+   :align: center
+
 Why use C++ if it sucks??
 -------------------------
   
