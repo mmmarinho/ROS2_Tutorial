@@ -41,7 +41,7 @@ C++ is useful only if you write truly object-oriented code?
 But I hate pointers, and pointers hate me: The ballad of ``segmentation fault (core dumped)``
 ---------------------------------------------------------------------------------------------
 
-In things written completely in modern C++ (loosely C++11 and above, but C++14 and above for what I want to say here), you shouldn't see any ``new`` or any loose raw pointer modifiers ``*``.
+In things entirely written in modern C++ (loosely C++11 and above, but C++14 and above for what I want to say here), you shouldn't see any ``new`` or any loose raw pointer modifiers ``*``.
 
 Use `smart pointers <https://en.cppreference.com/w/cpp/memory>`_. In general, `std::shared_ptr <https://en.cppreference.com/w/cpp/memory/shared_ptr>`_ and, if needed, `std::unique_ptr <https://en.cppreference.com/w/cpp/memory/unique_ptr>`_.
 
@@ -82,6 +82,6 @@ because that will create one instance of ``Potato(20.0)``, just to copy it when 
 
    auto potato_ptr = std::make_shared<Potato>(20.0);
 
-by forwarding the constructor instead of calling it explicitly. 
+by forwarding the argument to the constructor instead of calling it explicitly. 
   
-For everything else that you don't want to copy, use ``std::move()``, but you don't see it that much.
+For everything else that you don't want to copy, use ``std::move()``, but you don't see it that much unless you're designing a library.
