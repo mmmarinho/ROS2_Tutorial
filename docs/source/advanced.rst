@@ -3,9 +3,9 @@
 
 .. warning::
 
-   Stuff too work-in-progress to even list up properly.
+   Scary things are out there.
 
 .. toctree::
 
-   advanced_create_interface_package
    cpp/index
+   
