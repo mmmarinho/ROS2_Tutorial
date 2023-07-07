@@ -1,5 +1,5 @@
-Forbidden topics
-================
+☠️Forbidden topics☠️
+=====================
 
 .. warning::
 
