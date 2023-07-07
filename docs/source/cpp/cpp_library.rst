@@ -4,8 +4,16 @@ Creating C++ Libraries (for :program:`ament_cmake`)
 .. admonition:: The C++ library block for :program:`ament_cmake`
 
     When adding a new Node in an existing :file:`CMakeLists.txt`, you might benefit from using the following template.
+    Note that there is, in general, no reason to define multiple libraries. A single shared library can hold all the
+    content that you want to export from a package, hence the library named ``${PROJECT_NAME}``.
 
     Remember to
+
+    #. Add all exported headers to :file:`include/<PACKAGE_NAME>` otherwise other packages cannot see it.
+    #. Add all source files of the library to ``add_library``.
+    #. Add all ROS2 dependencies of this binary to ``ament_target_dependencies``.
+    #. Add **ALL** dependencies for which you used ``find_package`` to ``ament_export_dependencies``.
+    #. Add any other (**NOT ROS2**) libraries to ``target_link_libraries``.
 
     .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt
        :language: cmake
