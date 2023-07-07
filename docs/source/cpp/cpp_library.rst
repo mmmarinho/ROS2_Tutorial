@@ -9,8 +9,8 @@ Creating C++ Libraries (for :program:`ament_cmake`)
 
     .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt
        :language: cmake
-       :lines: 15-63
-       :emphasize-lines: 7,12,17,21
+       :lines: 14-63
+       :emphasize-lines: 9,14,27,32
 
 .. code-block:: console
 
