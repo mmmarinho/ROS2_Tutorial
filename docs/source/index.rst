@@ -19,28 +19,28 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 
 🔍 **Quick overview**
 
-𝅘𝅥𝅲 :doc:`Preamble: Ubuntu Basics <preamble/ubuntu>`
+#. :doc:`Preamble: Ubuntu Basics <preamble/ubuntu>`
     A few tips on Ubuntu/terminal usage.
 
-𝅘𝅥𝅱 :doc:`Preamble: Python Basics <preamble/python>` 
+#. :doc:`Preamble: Python Basics <preamble/python>` 
     A quick memory refresher for the Python stuff we'll use in ROS2.
 
-𝅘𝅥𝅰 :doc:`ROS2 Setup <installation>` (⭐start here⭐)
+#. :doc:`ROS2 Setup <installation>` (⭐start here⭐)
     Installing ROS2 and setting up its environment for use.
 
-𝅘𝅥𝅯 :doc:`ROS2 Python Package/Build Basics <create_packages>`
+#. :doc:`ROS2 Python Package/Build Basics <create_packages>`
     Creating our first ROS2 package with `ament_python` and building it.
 
-𝅘𝅥𝅮 :doc:`ROS2 Python Node Basics <running_node>`
+#. :doc:`ROS2 Python Node Basics <running_node>`
     Creating a `rclpy` Node and figuring out what all that means.
 
-𝅘𝅥 :doc:`ROS2 Python Library Basics <create_python_library>`
+#. :doc:`ROS2 Python Library Basics <create_python_library>`
     Create a Python library and importing/using it in another `ament_python` package.
 
-𝅗𝅥 :doc:`ROS2 Python Interface Basics <messages>`
+#. :doc:`ROS2 Python Interface Basics <messages>`
     Making ROS2 messages, services, publishers, subscribers, service servers, and service clients.
 
-𝅝 :doc:`ROS2 Parameter/Launch Basics <parameters_and_launch>`
+#. :doc:`ROS2 Parameter/Launch Basics <parameters_and_launch>`
     Making configurable ROS2 Nodes using parameters and launch files.
 
 .. toctree::
