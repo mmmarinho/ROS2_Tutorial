@@ -60,7 +60,7 @@ which will result in the output below, meaning the package has been generated su
 
    If you don't explicitly define the mantainer name and email, :program:`ros2 pkg create` will try to:
 
-   #. Define the mantainer name as the currently logged-in user's name (see `source <https://github.com/ros2/ros2cli/blob/cf43e92fb17b5e51c95406f01fa63aeb65adf75f/ros2pkg/ros2pkg/verb/create.py#L82>`_ and `source <https://docs.python.org/3/library/getpass.html#getpass.getuser>`_).
+   #. Define the mantainer's name as the currently logged-in user's name (see `source <https://github.com/ros2/ros2cli/blob/cf43e92fb17b5e51c95406f01fa63aeb65adf75f/ros2pkg/ros2pkg/verb/create.py#L82>`_ and `source <https://docs.python.org/3/library/getpass.html#getpass.getuser>`_).
    #. Define the mantainer's email by getting it from :program:`git` (see `source <https://github.com/ros2/ros2cli/blob/cf43e92fb17b5e51c95406f01fa63aeb65adf75f/ros2pkg/ros2pkg/verb/create.py#L109>`_). It will get whatever is defined with :program:`git config --global user.email`.
 
 We can build the workspace that now has this empty package using :program:`colcon`
