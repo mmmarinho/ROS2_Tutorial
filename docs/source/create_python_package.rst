@@ -15,7 +15,7 @@ Let us build the simplest of Python packages and start from there.
    ros2 pkg create the_simplest_python_package \
    --build-type ament_python
 
-.. info::
+.. hint::
 
    If you don't explicitly define the mantainer name and email, :program:`ros2 pkg create` will try to:
 
