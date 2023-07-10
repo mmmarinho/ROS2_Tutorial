@@ -9,15 +9,22 @@ For pure Python projects, it might be easier to use :program:`ament_python`, so 
 
 Let us build the simplest of Python packages and start from there.
 
-.. code :: console
+.. code-block:: console
 
    cd ~/ros2_tutorial_workspace/src
    ros2 pkg create the_simplest_python_package \
    --build-type ament_python
-   
+
+.. info::
+
+   If you don't explicitly define the mantainer name and email, :program:`ros2 pkg create` will try to:
+
+   #. Define the mantainer's name as the currently logged-in user's name (see `source <https://github.com/ros2/ros2cli/blob/cf43e92fb17b5e51c95406f01fa63aeb65adf75f/ros2pkg/ros2pkg/verb/create.py#L82>`_ and `source <https://docs.python.org/3/library/getpass.html#getpass.getuser>`_).
+   #. Define the mantainer's email by getting it from :program:`git` (see `source <https://github.com/ros2/ros2cli/blob/cf43e92fb17b5e51c95406f01fa63aeb65adf75f/ros2pkg/ros2pkg/verb/create.py#L109>`_). It will get whatever is defined with :program:`git config --global user.email`.
+
 which will result in the output below, meaning the package has been generated successfully.
 
-..  code :: console
+..  code-block:: console
     :emphasize-lines: 7
     
     going to create a new package
@@ -55,13 +62,6 @@ which will result in the output below, meaning the package has been generated su
     LGPL-3.0-only
     MIT
     MIT-0
-
-.. info::
-
-   If you don't explicitly define the mantainer name and email, :program:`ros2 pkg create` will try to:
-
-   #. Define the mantainer's name as the currently logged-in user's name (see `source <https://github.com/ros2/ros2cli/blob/cf43e92fb17b5e51c95406f01fa63aeb65adf75f/ros2pkg/ros2pkg/verb/create.py#L82>`_ and `source <https://docs.python.org/3/library/getpass.html#getpass.getuser>`_).
-   #. Define the mantainer's email by getting it from :program:`git` (see `source <https://github.com/ros2/ros2cli/blob/cf43e92fb17b5e51c95406f01fa63aeb65adf75f/ros2pkg/ros2pkg/verb/create.py#L109>`_). It will get whatever is defined with :program:`git config --global user.email`.
 
 We can build the workspace that now has this empty package using :program:`colcon`
 
