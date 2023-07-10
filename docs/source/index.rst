@@ -29,13 +29,13 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
     Installing ROS2 and setting up its environment for use.
 
 #. :doc:`ROS2 Python Package/Build Basics <create_packages>`
-    Creating our first ROS2 package with `ament_python` and building it.
+    Creating our first ROS2 package with :program:`ament_python` and building it with :program:`colcon`.
 
 #. :doc:`ROS2 Python Node Basics <running_node>`
-    Creating a `rclpy` Node and figuring out what all that means.
+    Creating a ``rclpy`` Node and figuring out what all that means.
 
 #. :doc:`ROS2 Python Library Basics <create_python_library>`
-    Create a Python library and importing/using it in another `ament_python` package.
+    Create a Python library and importing/using it in another :program:`ament_python` package.
 
 #. :doc:`ROS2 Python Interface Basics <messages>`
     Making ROS2 messages, services, publishers, subscribers, service servers, and service clients.
