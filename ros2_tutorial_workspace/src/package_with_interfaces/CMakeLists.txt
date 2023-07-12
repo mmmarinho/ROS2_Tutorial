@@ -32,8 +32,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
 ament_export_dependencies(
   rosidl_default_runtime
-  geometry_msgs
-
 )
 #### ROS2 Interface Directives [END] ####
 
