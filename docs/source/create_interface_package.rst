@@ -156,9 +156,8 @@ What to do when adding new interfaces?
          #. Add new dependencies to :file:`package.xml`
          #. Add each new interface file to :code:`set(interface_files ...)`
          #. Add new dependencies to :code:`rosidl_generate_interfaces(... DEPENDENCIES ...)`
-         #. Add new dependencies to :code:`ament_export_dependencies(...)`
 
-         Yes, you **MUST** add the same dependency in three places!
+         Yes, you **MUST** add the same dependency in two places!
 
 If additional interfaces are required
 
@@ -170,13 +169,6 @@ If additional interfaces are required
       :language: cmake
       :lines: 17-24
       :emphasize-lines: 4, 7
-
-#. Add new dependencies to :code:`rosidl_generate_interfaces(... DEPENDENCIES ...)`
-
-   .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
-      :language: cmake
-      :lines: 26-31
-      :emphasize-lines: 5
 
 .. note::
 
