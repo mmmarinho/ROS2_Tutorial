@@ -156,8 +156,9 @@ What to do when adding new interfaces?
          #. Add new dependencies to :file:`package.xml`
          #. Add each new interface file to :code:`set(interface_files ...)`
          #. Add new dependencies to :code:`rosidl_generate_interfaces(... DEPENDENCIES ...)`
+         #. Add new dependencies to :code:`ament_export_dependencies(...)`
 
-         Yes, you **MUST** add the same dependency in two places!
+         Yes, you **MUST** add the same dependency in three places!
 
 If additional interfaces are required
 
