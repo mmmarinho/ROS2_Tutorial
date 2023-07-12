@@ -39,22 +39,18 @@ class AmazingQuoteSubscriberNode(Node):
 
     def amazing_quote_subscriber_callback(self, msg: AmazingQuote):
         """Method that is periodically called by the timer."""
-        self.get_logger().info("""
+        self.get_logger().info(f"""
         I have received the most amazing of quotes.
         It says
             
-               '{}'
+               '{msg.quote}'
                
         And was thought by the following genius
             
-            -- {}
+            -- {msg.philosopher_name}
             
-        This latest quote had the id={}.
-        """.format(
-            msg.quote,
-            msg.philosopher_name,
-            msg.id
-        ))
+        This latest quote had the id={msg.id}.
+        """)
 
 
 def main(args=None):

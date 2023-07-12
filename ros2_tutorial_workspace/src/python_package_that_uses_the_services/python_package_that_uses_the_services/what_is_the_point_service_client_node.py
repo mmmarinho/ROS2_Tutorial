@@ -42,7 +42,7 @@ class WhatIsThePointServiceClientNode(Node):
             srv_name='/what_is_the_point')
 
         while not self.service_client.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service {} not available, waiting...'.format(self.service_client.srv_name))
+            self.get_logger().info(f'service {self.service_client.srv_name} not available, waiting...')
 
         self.future: Future = None
 
@@ -75,13 +75,11 @@ class WhatIsThePointServiceClientNode(Node):
         """Callback for the future, that will be called when it is done"""
         response = future.result()
         if response is not None:
-            self.get_logger().info(dedent("""
+            self.get_logger().info(dedent(f"""
                 We have thus received the point of our quote.
 
-                            {}
-            """.format(
-                (response.point.x, response.point.y, response.point.z)
-            )))
+                            {(response.point.x, response.point.y, response.point.z)}
+            """))
         else:
             self.get_logger().info(dedent("""
                     The response was None. :(    

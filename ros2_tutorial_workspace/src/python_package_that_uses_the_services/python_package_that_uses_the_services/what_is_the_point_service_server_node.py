@@ -71,20 +71,16 @@ class WhatIsThePointServiceServerNode(Node):
         # Increase the call count
         self.service_server_call_count = self.service_server_call_count + 1
 
-        self.get_logger().info(dedent("""
-            This is the call number {} to this Service Server.
+        self.get_logger().info(dedent(f"""
+            This is the call number {self.service_server_call_count} to this Service Server.
             The analysis of the AmazingQuote below is complete.
             
-                    {}
+                    {request.quote.quote}
             
-            -- {}
+            -- {request.quote.philosopher_name}
             
             The point has been sent back to the client.
-        """.format(
-            self.service_server_call_count,
-            request.quote.quote,
-            request.quote.philosopher_name
-        )))
+        """))
 
         return response
 
