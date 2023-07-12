@@ -35,9 +35,9 @@ def handle_return_callback(tag: str, future: asyncio.Future) -> None:
     :return: Nothing.
     """
     if future is not None and future.done():
-        print("The result of task={} was {}.".format(tag, future.result()))
+        print(f"The result of task={tag} was {future.result()}.")
     else:
-        print("Problem with task={}.".format(tag))
+        print(f"Problem with task={tag}.")
 
 
 async def async_main() -> None:

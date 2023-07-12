@@ -34,14 +34,8 @@ async def unlikely_to_return(tag: str, likelihood: float = 0.1) -> float:
     while True:
         a = random.uniform(0.0, 1.0)
         if a < likelihood:
-            print("{} Done.".format(tag))
+            print(f"{tag} Done.")
             return a
         else:
-            print(dedent("""\
-            {} retry needed (roll = {} > {}).\
-            """).format(
-                tag,
-                a,
-                likelihood
-            ))
+            print(f"{tag} retry needed (roll = {a} > {likelihood})")
             await asyncio.sleep(0.1)

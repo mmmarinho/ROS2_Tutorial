@@ -43,7 +43,7 @@ async def async_main() -> None:
     print("Awaiting for results...")
     for (tag, task) in zip(tags, tasks):
         result = await task
-        print("The result of task={} was {}.".format(tag, result))
+        print(f"The result of task={tag} was {result}.")
 
 
 def main() -> None:
