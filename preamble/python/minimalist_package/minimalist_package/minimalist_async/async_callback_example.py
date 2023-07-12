@@ -57,7 +57,7 @@ async def async_main() -> None:
     # Alternatively, use asyncio.gather()
     # At this point, the functions are already running concurrently. And the result will be processed
     # by the callback AS "SOON" AS THEY ARE AVAILABLE.
-    print("Awaiting for results...")
+    print("Awaiting results...")
     for task in tasks:
         await task
 

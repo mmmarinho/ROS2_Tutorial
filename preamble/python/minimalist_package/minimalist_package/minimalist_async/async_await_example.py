@@ -40,7 +40,7 @@ async def async_main() -> None:
     # Alternatively, use asyncio.gather()
     # At this point, the functions are already running concurrently. We are now (a)waiting for the
     # results, IN THE ORDER OF THE AWAIT, even if the other task ends first.
-    print("Awaiting for results...")
+    print("Awaiting results...")
     for (tag, task) in zip(tags, tasks):
         result = await task
         print(f"The result of task={tag} was {result}.")
