@@ -134,7 +134,7 @@ For the subscriber Node, create a file in :file:`python_package_that_uses_the_me
    :language: python
    :linenos:
    :lines: 24-
-   :emphasize-lines: 3, 11-15, 17-34
+   :emphasize-lines: 3, 11-15, 17-30
    
 Similarly to the publisher, in the subscriber, we start by importing the message in question
 
@@ -148,13 +148,14 @@ Then, in our subclass of :code:`Node`, we call :code:`Node.create_publisher(...)
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :lines: 34-38
+   :emphasize-lines:4
    
 where the only difference with respect to the publisher is the third argument, namely :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
-   :lines: 40-57
-   :emphasize-lines: 15-17
+   :lines: 40-53
+   :emphasize-lines: 7,11,13
 
 That callback method will be automatically called by ROS2, as one of the tasks performed by :code:`rclpy.spin(Node)`. Depending on the :code:`qos_profile`, it will not necessarily be the latest message.
 
