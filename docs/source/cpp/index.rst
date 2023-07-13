@@ -76,6 +76,50 @@ Use `smart pointers <https://en.cppreference.com/w/cpp/memory>`_. In general, `s
 
 If only using smart pointers you still manage to get a segmentation fault, then hats off to you.
 
+But I can get sefaults with ``std::vector``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As a successor of C, the standard library in C++ kept some of its predecessor's behavior of not generating exceptions.
+
+For example, with trigonometric functions in C++, the error handling is `C-like <https://en.cppreference.com/w/cpp/numeric/math/math_errhandling>`_
+
+For instance getting the ``acos`` of 1.1, which is invalid, will fail silently in C++. We must check if the output is ``NaN``, e.g. with
+
+.. code-block:: cpp
+
+   #include <cmath>
+   #include <iostream>
+
+   int main()
+   {
+     auto a = std::acos(1.1);
+     std::cout << std::isnan(a) ? "the output was invalid but no exception was thrown " : a << std::endl;
+   }
+
+the same applies if we try to access beyond a vector's limits with the good and old ``operator[]``.
+Instead of doing that, use the method ``.at()``, which `checks the bounds <https://en.cppreference.com/w/cpp/container/vector/at>`_.
+
+.. code-block:: cpp
+
+   #include <iostream>
+   #include <vector>
+   #include <exception>
+
+   int main()
+   {
+     auto v = {1.0,2.0,3.0,4.0};
+     try
+     {
+       std::cout << v.at(22) << std::endl;
+     }
+     catch (const std::out_of_range& e)
+     {
+       std::cout << e.what() << std::endl;
+     }
+   }  
+
+As a conclusion, find the correct function/method or throw an exception yourself.
+
 But C++ makes too many copies of objects: The sonata of "I don't know `perfect forwarding <https://en.cppreference.com/w/cpp/utility/forward>`_"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
