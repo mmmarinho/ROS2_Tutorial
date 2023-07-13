@@ -9,13 +9,26 @@ For the Python version of this tutorial, we held hands and walked slowly into th
 For the :program:`ament_cmake` version of this tutorial, I'll suppose you know all that and throw in extra info that I suppose is useful. No hand-holding anymore.
 
 .. toctree::
+   :caption: Overview
    :maxdepth: 1
 
    cpp_node
    cpp_library
 
+``#vent`` Demistifying C++
+--------------------------
+
+But, C++ is difficult
+^^^^^^^^^^^^^^^^^^^^^
+
+I think C++ organically follows `Bushnell's Law <https://en.wikipedia.org/wiki/Bushnell%27s_Law>`_, adjusted for the topic
+
+   All the best [programming languages] are easy to learn and difficult to master. They should reward the first quarter and the hundredth.
+
+Beauty is in the eye of the beholder, but soon enough, if you're doing anything state-of-the-art, you'll hit performance bottlenecks with Python (and friends) that will naturally pull you towards C++.
+
 But with Python, we don't need C++
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This makes me feel like breaking the news to someone that Santa isn't real, but just as an example, see `numpy <https://numpy.org/doc/stable/user/whatisnumpy.html>`_ and `PyTorch <https://pytorch.org/tutorials/advanced/cpp_frontend.html>`_.
 
@@ -31,7 +44,7 @@ The memefied version of this discussion is
    :align: center
 
 Why use C++ if it sucks??
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
   
 There's much folklore around C++. "C is faster than C++." "C++ is unsafe" (I'm looking at you, Rust). 
 Anyhow, we'd all benefit if people stopped spreading weird fallacies about the C++ language when the problems they have can usually be attributed instead to a `skill issue <https://knowyourmeme.com/memes/skill-issue-simply-a-difference-in-skill>`_.
@@ -55,7 +68,7 @@ C++ is useful only if you write truly object-oriented code?
 ``<end Stroustrup's FAQ quote>``
   
 But I hate pointers, and pointers hate me: The ballad of ``segmentation fault (core dumped)``
----------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In things entirely written in modern C++ (loosely C++11 and above, but C++14 and above for what I want to say here), you shouldn't see any ``new`` or any loose raw pointer modifiers ``*``.
 
@@ -63,8 +76,8 @@ Use `smart pointers <https://en.cppreference.com/w/cpp/memory>`_. In general, `s
 
 If only using smart pointers you still manage to get a segmentation fault, then hats off to you.
 
-But C++ makes too many copies of objects: The ballad of "I don't know `perfect forwarding <https://en.cppreference.com/w/cpp/utility/forward>`_"
-------------------------------------------------------------------------------------------------------------------------------------------------
+But C++ makes too many copies of objects: The sonata of "I don't know `perfect forwarding <https://en.cppreference.com/w/cpp/utility/forward>`_"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 I see this claim all the time and it has many `skill-issue <https://knowyourmeme.com/memes/skill-issue-simply-a-difference-in-skill>`_\ -related causes, but basically, it shows up more frequently in the constructors of ``std::vector`` and ``std::shared_ptr``.
 
