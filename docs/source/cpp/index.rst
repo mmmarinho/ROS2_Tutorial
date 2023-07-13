@@ -76,8 +76,8 @@ Use `smart pointers <https://en.cppreference.com/w/cpp/memory>`_. In general, `s
 
 If only using smart pointers you still manage to get a segmentation fault, then hats off to you.
 
-But I can get sefaults with ``std::vector``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+But I can get segfaults with ``std::vector``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As a successor of C, the standard library in C++ kept some of its predecessor's behavior of not generating exceptions.
 
