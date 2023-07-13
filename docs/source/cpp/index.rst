@@ -18,6 +18,9 @@ For the :program:`ament_cmake` version of this tutorial, I'll suppose you know a
 ``#vent`` Demistifying C++
 --------------------------
 
+.. warning::
+   Anything below this point is just me venting about topics that frequently come up with C++ is mentioned.
+
 But, C++ is difficult
 ^^^^^^^^^^^^^^^^^^^^^
 
