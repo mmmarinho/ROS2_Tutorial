@@ -101,7 +101,7 @@ The files already exist, we just need to modify them as follows
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/package.xml
            :language: xml
-           :linenos:
+           :linenos: 
 
     .. tab-item:: CMakeLists.txt
 
@@ -148,6 +148,7 @@ Library sources
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/include/cpp_package_with_a_library/sample_class.hpp
            :language: cpp
            :linenos:
+           :lines: 24-
 
     .. tab-item:: sample_class.cpp
 
@@ -156,6 +157,7 @@ Library sources
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class.cpp
            :language: cpp
            :linenos:
+           :lines: 24-
 
 
 Sources for a local node that uses the library
@@ -189,6 +191,7 @@ Just in case you need to have a node, in the same package, that also uses the li
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node.cpp
            :language: cpp
            :linenos:
+           :lines: 24-
 
     .. tab-item:: sample_class_local_node.hpp
 
@@ -197,6 +200,7 @@ Just in case you need to have a node, in the same package, that also uses the li
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node.hpp
            :language: cpp
            :linenos:
+           :lines: 24-
 
     .. tab-item:: sample_class_local_node_main.cpp
 
@@ -205,4 +209,5 @@ Just in case you need to have a node, in the same package, that also uses the li
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node_main.cpp
            :language: cpp
            :linenos:
+           :lines: 24-
 
