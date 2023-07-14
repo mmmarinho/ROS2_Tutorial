@@ -74,8 +74,26 @@ which outputs
         MIT
         MIT-0
 
-Package-related source
-----------------------
+Package-related sources
+-----------------------
+
+.. admonition:: In this step, we'll work on these.
+    
+    .. code-block:: console
+        :emphasize-lines: 2,6
+    
+        cpp_package_with_a_node
+        ├── CMakeLists.txt
+        ├── include
+        │   └── cpp_package_with_a_node
+        │       └── .placeholder
+        ├── package.xml
+        └── src
+            ├── print_forever_node.cpp
+            ├── print_forever_node.hpp
+            └── print_forever_node_main.cpp
+
+The files already exists, we just need to modify them as follows
 
 .. tab-set::
 
@@ -114,7 +132,32 @@ Making C++ ROS2 Nodes
    #. :file:`src/print_forever_node.cpp` with the Node's class implementation.
    #. :file:`src/print_forever_node_main.cpp` with the Node's main function implementation.
 
+.. admonition:: In this step, we'll work on these.
+
+    .. code-block:: console
+        :emphasize-lines: 7-10
+    
+        cpp_package_with_a_node
+        ├── CMakeLists.txt
+        ├── include
+        │   └── cpp_package_with_a_node
+        │       └── .placeholder
+        ├── package.xml
+        └── src
+            ├── print_forever_node.cpp
+            ├── print_forever_node.hpp
+            └── print_forever_node_main.cpp
+
+These files do not exists, so we'll create them.
+
 .. tab-set::
+
+    .. tab-item:: folder
+
+       .. code-block:: console
+
+          cd ~/ros2_tutorial_workspace/src/cpp_package_with_a_node
+          mkdir src
 
     .. tab-item:: src/..._node.hpp
 
@@ -143,6 +186,7 @@ Making C++ ROS2 Nodes
     .. tab-item::  src/..._main.cpp 
 
         Given that we are using ``rclcpp::spin()``, there is nothing special here either. Just remember to not mess up the ``std::make_shared`` and always use perfect forwarding. See :ref:`Perfect forwarding`. 
+        The ``rclcpp::spin()`` handles the ``SIGINT`` when we, for example, press :kbd:`CTRL+C` on the terminal. It is not perfect, but it does the trick for simple nodes like this one.
         
         :download:`print_forever_node_main.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
         
@@ -160,6 +204,20 @@ Add a :file:`.placeholder` if your :file:`include/<PACKAGE_NAME>` is empty
 
    If you don't do this and add this package as a git repository without any files on the :file:`include/`, :program:`CMake` might return with an error when trying to compile your package.
 
+.. code-block:: console
+    :emphasize-lines: 5
+
+    cpp_package_with_a_node
+    ├── CMakeLists.txt
+    ├── include
+    │   └── cpp_package_with_a_node
+    │       └── .placeholder
+    ├── package.xml
+    └── src
+        ├── print_forever_node.cpp
+        ├── print_forever_node.hpp
+        └── print_forever_node_main.cpp
+
 Empty directories will `not be tracked by git <https://stackoverflow.com/questions/115983/how-do-i-add-an-empty-directory-to-a-git-repository>`_. A file has to be added to the index. We can create an empty file in the :file:`include` folder as follows
 
 .. code-block:: console
@@ -170,9 +228,13 @@ Empty directories will `not be tracked by git <https://stackoverflow.com/questio
 Running a C++ Node
 ------------------
 
+As simple as it has always been, see :ref:`Running a node`.
+
 .. code-block:: console
 
    ros2 run cpp_package_with_a_node print_forever_node
+
+which returns
 
 .. code-block:: console
 
@@ -186,7 +248,7 @@ Running a C++ Node
     [INFO] [1688620417.906858551] [print_forever_node]: Printed 7 times.
     [INFO] [1688620418.406894922] [print_forever_node]: Printed 8 times.
 
-:kbd:`CTRL+C`
+and we'll use :kbd:`CTRL+C` to stop the node, resulting in
 
 .. code-block:: console
 
