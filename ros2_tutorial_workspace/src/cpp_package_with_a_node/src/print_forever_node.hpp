@@ -23,6 +23,7 @@ SOFTWARE.
 */
 #pragma once
 
+#include <memory>
 #include <rclcpp/rclcpp.hpp>
 
 /**
@@ -33,7 +34,8 @@ class PrintForeverNode: public rclcpp::Node
 private:
     double timer_period_;
     int print_count_;
-    rclcpp::TimerBase::SharedPtr timer_;
+    //also equivalent to rclcpp::TimerBase::SharedPtr
+    std::shared_ptr<rclcpp::TimerBase> timer_;
 
     void _timer_callback();
 public:
