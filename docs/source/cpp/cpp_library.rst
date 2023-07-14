@@ -20,6 +20,8 @@ Creating C++ Libraries (for :program:`ament_cmake`)
        :lines: 14-63
        :emphasize-lines: 9,14,27,32
 
+The base package can be created with
+
 .. code-block:: console
 
     cd ~/ros2_tutorial_workspace/src
@@ -27,10 +29,12 @@ Creating C++ Libraries (for :program:`ament_cmake`)
     --build-type ament_cmake \
     --dependencies rclcpp
 
+resulting in the following output
 
 .. dropdown:: ros2 pkg create output
 
     .. code-block:: console
+        :emphasize-lines: 16,17,18
     
         ros2 pkg create cpp_package_with_a_library \
         --build-type ament_cmake \
