@@ -1,2 +1,3 @@
 sphinx-hoverxref
 sphinx-copybutton
+sphinx-design
