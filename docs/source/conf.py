@@ -12,7 +12,7 @@ version_str = datetime.today().strftime('%y.%m.%d')
 project = 'ROS2 Tutorial'
 author = 'Murilo M. Marinho'
 
-if this_year_str == '2023:
+if this_year_str == '2023':
     copyright = f'2023, {author}'
 else:
     copyright = f'2023-{this_year_str}, {author}'
