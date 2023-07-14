@@ -93,7 +93,7 @@ Package-related sources
             ├── print_forever_node.hpp
             └── print_forever_node_main.cpp
 
-The files already exists, we just need to modify them as follows
+The files already exist, we just need to modify them as follows
 
 .. tab-set::
 
