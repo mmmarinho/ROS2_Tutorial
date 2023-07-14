@@ -29,6 +29,7 @@ Creating C++ Libraries (for :program:`ament_cmake`)
 
 
 :::{dropdown} ros2 pkg create output
+
 .. code-block:: console
 
     ros2 pkg create cpp_package_with_a_library \
@@ -62,6 +63,7 @@ Creating C++ Libraries (for :program:`ament_cmake`)
     LGPL-3.0-only
     MIT
     MIT-0
+
 :::
 
 
