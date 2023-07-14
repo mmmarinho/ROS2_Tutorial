@@ -3,22 +3,24 @@ Creating C++ Libraries (for :program:`ament_cmake`)
 
 .. admonition:: The C++ library block for :program:`ament_cmake`
 
-    When your project exports a library, you might benefit from using the following template.
-    Note that there is, in general, no reason to define multiple libraries. A single shared library can hold all the
-    content that you want to export from a package, hence the library named ``${PROJECT_NAME}``.
-
-    Remember to
-
-    #. Add all exported headers to :file:`include/<PACKAGE_NAME>` otherwise other packages cannot see it.
-    #. Add all source files of the library to ``add_library``.
-    #. Add all ROS2 dependencies of the library to ``ament_target_dependencies``.
-    #. Add **ALL** dependencies for which you used ``find_package`` to ``ament_export_dependencies``, otherwise dependencies might become complex for projects that use your library.
-    #. Add any other (**NOT ROS2**) libraries to ``target_link_libraries``.
-
-    .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt
-       :language: cmake
-       :lines: 14-63
-       :emphasize-lines: 9,14,27,32
+    .. dropdown:: TL;DR
+    
+        When your project exports a library, you might benefit from using the following template.
+        Note that there is, in general, no reason to define multiple libraries. A single shared library can hold all the
+        content that you want to export from a package, hence the library named ``${PROJECT_NAME}``.
+    
+        Remember to
+    
+        #. Add all exported headers to :file:`include/<PACKAGE_NAME>` otherwise other packages cannot see it.
+        #. Add all source files of the library to ``add_library``.
+        #. Add all ROS2 dependencies of the library to ``ament_target_dependencies``.
+        #. Add **ALL** dependencies for which you used ``find_package`` to ``ament_export_dependencies``, otherwise dependencies might become complex for projects that use your library.
+        #. Add any other (**NOT ROS2**) libraries to ``target_link_libraries``.
+    
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt
+           :language: cmake
+           :lines: 14-63
+           :emphasize-lines: 9,14,27,32
 
 The base package can be created with
 
@@ -95,7 +97,7 @@ The files already exist, we just need to modify them as follows
 
     .. tab-item:: package.xml
 
-        Nothiing new here.
+        Nothing new here.
 
         :download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/package.xml>`
 
@@ -107,7 +109,7 @@ The files already exist, we just need to modify them as follows
 
         A *one-size-fits-most* solution is shown below. We don't need to add multiple libraries, so a single library can hold all the content you might want to export. The user of the library will see it nicely split by your header files, so it will be as neat as you make them.
 
-        Note that, because the local Node dependes on the library being exported by this project, it needs to explicitly link to it.
+        Note that, because the local Node depends on the library being exported by this project, it needs to explicitly link to it.
 
         :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt>`
         
