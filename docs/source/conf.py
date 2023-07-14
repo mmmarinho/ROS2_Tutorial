@@ -1,16 +1,24 @@
 # Configuration file for the Sphinx documentation builder.
+
+# -- Automatic versioning
+
 from datetime import datetime
 this_year_str = datetime.today().strftime('%Y')
-today_str = datetime.today().strftime('%y.%m.%d')
+release_str = datetime.today().strftime('%B %d, %Y')
+version_str = datetime.today().strftime('%y.%m.%d')
 
 # -- Project information
 
 project = 'ROS2 Tutorial'
-copyright = '2023, Murilo M. Marinho'
 author = 'Murilo M. Marinho'
 
-release = this_year_str
-version = today_str
+if this_year_str == '2023:
+    copyright = f'2023, {author}'
+else:
+    copyright = f'2023-{this_year_str}, {author}'
+
+release = release_str
+version = version_str
 
 # -- General configuration
 
@@ -22,6 +30,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'hoverxref.extension', # https://sphinx-hoverxref.readthedocs.io/en/latest/index.html
     'sphinx_copybutton' # https://sphinx-copybutton.readthedocs.io/en/latest/
+    'sphinx_design' # https://sphinx-design.readthedocs.io/en/latest/get_started.html
 ]
 
 intersphinx_mapping = {
