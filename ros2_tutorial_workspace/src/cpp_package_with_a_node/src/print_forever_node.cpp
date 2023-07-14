@@ -31,9 +31,11 @@ PrintForeverNode::PrintForeverNode():
     timer_period_(0.5),
     print_count_(0)
 {
+    //(Smart) pointers at the one thing that it doesn't matter much if they are not initialized in the member initializer list
+    //and this is a bit more readable.
     timer_ = create_wall_timer(
                 std::chrono::milliseconds(long(timer_period_*1e3)),
-                std::bind(&PrintForeverNode::_timer_callback, this)
+                std::bind(&PrintForeverNode::_timer_callback, this) //Note here the use of std::bind to build a single argument
                 );
 }
 
