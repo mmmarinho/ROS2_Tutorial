@@ -141,7 +141,7 @@ Making C++ ROS2 Nodes
 
     .. tab-item::  src/..._main.cpp 
 
-        Given that we are using ``rclcpp::spin()``, there is nothing special here either. Just remember to not mess up the ``std::make_shared`` and always use :ref:`Perfect forwarding`. 
+        Given that we are using ``rclcpp::spin()``, there is nothing special here either. Just remember to not mess up the ``std::make_shared`` and always use perfect forwarding. See :ref:`Perfect forwarding`. 
         
         :download:`print_forever_node_main.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
         
