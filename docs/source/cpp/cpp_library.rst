@@ -107,9 +107,102 @@ The files already exist, we just need to modify them as follows
 
         A *one-size-fits-most* solution is shown below. We don't need to add multiple libraries, so a single library can hold all the content you might want to export. The user of the library will see it nicely split by your header files, so it will be as neat as you make them.
 
+        Note that, because the local Node dependes on the library being exported by this project, it needs to explicitly link to it.
+
         :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt>`
         
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt
            :language: cmake
            :linenos:
            :emphasize-lines: 12-47
+
+
+Library sources
+---------------
+
+.. admonition:: In this step, we'll work on these.
+    
+    .. code-block:: console
+        :emphasize-lines: 5,8
+    
+        cpp_package_with_a_library
+        ├── CMakeLists.txt
+        ├── include
+        │   └── cpp_package_with_a_library
+        │       └── sample_class.hpp
+        ├── package.xml
+        └── src
+            ├── sample_class.cpp
+            ├── sample_class_local_node.cpp
+            ├── sample_class_local_node.hpp
+            └── sample_class_local_node_main.cpp
+
+.. tab-set::
+
+    .. tab-item:: sample_class.hpp  
+
+        A class that does a bunch of nothing, but that depends on Eigen3 and Qt, as an example.
+
+        :download:`sample_class.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/include/cpp_package_with_a_library/sample_class.hpp>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/include/cpp_package_with_a_library/sample_class.hpp
+           :language: cpp
+           :linenos:
+
+    .. tab-item:: sample_class.cpp
+
+        :download:`sample_class.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class.cpp>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class.cpp
+           :language: cpp
+           :linenos:
+
+
+Sources for a local node that uses the library
+----------------------------------------------
+
+.. admonition:: In this step, we'll work on these.
+    
+    .. code-block:: console
+        :emphasize-lines: 9-11
+    
+        cpp_package_with_a_library
+        ├── CMakeLists.txt
+        ├── include
+        │   └── cpp_package_with_a_library
+        │       └── sample_class.hpp
+        ├── package.xml
+        └── src
+            ├── sample_class.cpp
+            ├── sample_class_local_node.cpp
+            ├── sample_class_local_node.hpp
+            └── sample_class_local_node_main.cpp
+
+Just in case you need to have a node, in the same package, that also uses the library exported by this package. Nothing too far from what we have already done.
+
+.. tab-set::
+
+    .. tab-item:: sample_class_local_node.cpp
+
+        :download:`sample_class.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node.cpp>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node.cpp
+           :language: cpp
+           :linenos:
+
+    .. tab-item:: sample_class_local_node.hpp
+
+        :download:`sample_class_local_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node.hpp>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node.hpp
+           :language: cpp
+           :linenos:
+
+    .. tab-item:: sample_class_local_node_main.cpp
+
+        :download:`sample_class.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node_main.cpp>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/src/sample_class_local_node_main.cpp
+           :language: cpp
+           :linenos:
+
