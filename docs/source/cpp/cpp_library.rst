@@ -69,4 +69,47 @@ resulting in the following output
         MIT-0
 
 
+Package-related sources
+-----------------------
 
+.. admonition:: In this step, we'll work on these.
+    
+    .. code-block:: console
+        :emphasize-lines: 2,6
+    
+        cpp_package_with_a_library
+        ├── CMakeLists.txt
+        ├── include
+        │   └── cpp_package_with_a_library
+        │       └── sample_class.hpp
+        ├── package.xml
+        └── src
+            ├── sample_class.cpp
+            ├── sample_class_local_node.cpp
+            ├── sample_class_local_node.hpp
+            └── sample_class_local_node_main.cpp
+
+The files already exist, we just need to modify them as follows
+
+.. tab-set::
+
+    .. tab-item:: package.xml
+
+        Nothiing new here.
+
+        :download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/package.xml>`
+
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/package.xml
+           :language: xml
+           :linenos:
+
+    .. tab-item:: CMakeLists.txt
+
+        A *one-size-fits-most* solution is shown below. We don't need to add multiple libraries, so a single library can hold all the contant you might want to export. The user of the library will see it nicely split by your header files, so it will be as neat as you make them.
+
+        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt
+           :language: cmake
+           :linenos:
+           :emphasize-lines: 12-47
