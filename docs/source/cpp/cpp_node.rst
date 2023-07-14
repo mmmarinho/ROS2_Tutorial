@@ -38,9 +38,13 @@ Create the package
   --build-type ament_cmake \
   --dependencies rclcpp
 
-.. code-block:: console
-  :emphasize-lines: 13-16
+which outputs
 
+.. dropdown:: ros2 pkg create output
+
+    .. code-block:: console
+        :emphasize-lines: 13-16
+    
         going to create a new package
         package name: cpp_package_with_a_node
         destination directory: /home/murilo/ROS2_Tutorial/ros2_tutorial_workspace/src
@@ -70,66 +74,69 @@ Create the package
         MIT
         MIT-0
 
-The :file:`package.xml`
---------------------------
+Package-related source
+----------------------
 
-:download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml>`
+.. tab-set::
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml
-   :language: xml
-   :linenos:
-   :emphasize-lines: 10
+    .. tab-item:: :file:`package.xml`
 
-The :file:`CMakeLists.txt`
---------------------------
+        :download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml>`
 
-:download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt>`
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml
+           :language: xml
+           :linenos:
+           :emphasize-lines: 10
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
-   :language: cmake
-   :linenos:
+    .. tab-item:: :file:`CMakeLists.txt`
 
-The ``PrintForeverCPP`` class
------------------------------
+        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
+           :language: cmake
+           :linenos:
 
-.. admonition:: (Murilo's) ``rclcpp`` best practices 
-
-   Anything that is a subclass of ``rclcpp::Node`` will have the suffix :file:`_node`.
-
-The :file:`.hpp`
-^^^^^^^^^^^^^^^^
-
-:download:`print_forever.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp>`
-
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp
-   :language: cpp
-   :linenos:
-   :lines: 24-
-
-
-The :file:`.cpp`
-^^^^^^^^^^^^^^^^
-
-:download:`print_forever.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp>`
-
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp
-   :language: cpp
-   :linenos:
-   :lines: 24-
-
-The ``main()`` function
------------------------
+Making C++ ROS2 Nodes
+---------------------
 
 .. admonition:: (Murilo's) ``rclcpp`` best practices 
 
-   Anything contains the ``main()`` function of a node will have the suffix :file:`_node_main.cpp`.
+   For each new Node, we make three files following the style below.
 
-:download:`print_forever_cpp_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
+   For a Node called ``print_forever_node`` we have
+   #. :file:`src/print_forever_node.hpp` with the Node's class definition. In general, this is not exported to other packages, so it should not be in the package's :file:`include` folder.
+   #. :file:`src/print_forever_node.cpp` with the Node's class implementation.
+   #. :file:`src/print_forever_node_main.cpp` with the Node's main function implementation.
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp
-   :language: cpp
-   :linenos:
-   :lines: 24-
+.. tab-set::
+
+    .. tab-item:: :file:`src/print_forever_node.hpp`
+
+        :download:`print_forever.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp>`
+
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp
+           :language: cpp
+           :linenos:
+           :lines: 24-
+
+    .. tab-item:: :file:`src/print_forever_node.cpp`
+
+        :download:`print_forever.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp>`
+
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp
+           :language: cpp
+           :linenos:
+           :lines: 24-
+
+    .. tab-item:: :file:`src/print_forever_node_main.cpp`
+        
+        :download:`print_forever_cpp_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp
+           :language: cpp
+           :linenos:
+           :lines: 24-
+
 
 Add a :file:`.placeholder` if your :file:`include/<PACKAGE_NAME>` is empty
 --------------------------------------------------------------------------
@@ -145,8 +152,8 @@ Empty directories will `not be tracked by git <https://stackoverflow.com/questio
    cd ~/ros2_tutorial_workspace/src/cpp_package_with_a_node/src
    touch include/cpp_package_with_a_node/.placeholder
 
-Running C++ Node
-----------------
+Running a C++ Node
+------------------
 
 .. code-block:: console
 
