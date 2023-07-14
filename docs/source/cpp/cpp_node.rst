@@ -109,6 +109,7 @@ Making C++ ROS2 Nodes
    For each new C++ Node, we make three files following the style below.
 
    For a Node called ``print_forever_node`` we have
+
    #. :file:`src/print_forever_node.hpp` with the Node's class definition. In general, this is not exported to other packages, so it should not be in the package's :file:`include` folder.
    #. :file:`src/print_forever_node.cpp` with the Node's class implementation.
    #. :file:`src/print_forever_node_main.cpp` with the Node's main function implementation.
