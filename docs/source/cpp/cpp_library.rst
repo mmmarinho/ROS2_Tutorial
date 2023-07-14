@@ -105,7 +105,7 @@ The files already exist, we just need to modify them as follows
 
     .. tab-item:: CMakeLists.txt
 
-        A *one-size-fits-most* solution is shown below. We don't need to add multiple libraries, so a single library can hold all the contant you might want to export. The user of the library will see it nicely split by your header files, so it will be as neat as you make them.
+        A *one-size-fits-most* solution is shown below. We don't need to add multiple libraries, so a single library can hold all the content you might want to export. The user of the library will see it nicely split by your header files, so it will be as neat as you make them.
 
         :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt>`
         
