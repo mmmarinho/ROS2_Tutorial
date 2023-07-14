@@ -81,27 +81,32 @@ Package-related source
 
     .. tab-item:: package.xml
 
+        The :file:`package.xml` works the same way as in :program:`ament_python`, with the exception of the two lines about :program:`ament_cmake` shown below.
+
         :download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml>`
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml
            :language: xml
            :linenos:
-           :emphasize-lines: 10
+           :emphasize-lines: 10,18
 
     .. tab-item:: CMakeLists.txt
+
+        A *one-size-fits-most* solution is shown below. For each new Node we add a block to the :file:`CMakeLists.txt` with the following format.
 
         :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt>`
         
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
            :language: cmake
            :linenos:
+           :emphasize-lines: 12-47
 
 Making C++ ROS2 Nodes
 ---------------------
 
 .. admonition:: (Murilo's) ``rclcpp`` best practices 
 
-   For each new Node, we make three files following the style below.
+   For each new C++ Node, we make three files following the style below.
 
    For a Node called ``print_forever_node`` we have
    #. :file:`src/print_forever_node.hpp` with the Node's class definition. In general, this is not exported to other packages, so it should not be in the package's :file:`include` folder.
@@ -110,32 +115,41 @@ Making C++ ROS2 Nodes
 
 .. tab-set::
 
-    .. tab-item:: src/print_forever_node.hpp
+    .. tab-item:: src/..._node.hpp
 
-        :download:`print_forever.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp>`
+        Similar to what we did in Python, we inherit from ``rclcpp::Node``. Whatever is different is owing to differences in languages.
+  
+        :download:`print_forever_node.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp>`
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp
            :language: cpp
            :linenos:
            :lines: 24-
+           :emphasize-lines: 8
 
-    .. tab-item:: src/print_forever_node.cpp
+    .. tab-item:: src/..._node.cpp
 
-        :download:`print_forever.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp>`
+        The implementation has nothing special, just don't forget to initialize the parent class, ``rclcpp::Node``, with the name of the node. 
+
+        :download:`print_forever_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp>`
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp
            :language: cpp
            :linenos:
            :lines: 24-
+           :emphasize-lines: 7
 
-    .. tab-item::  src/print_forever_node_main.cpp
+    .. tab-item::  src/..._main.cpp 
+
+        Given that we are using ``rclcpp::spin()``, there is nothing special here either. Just remember to not mess up the ``std::make_shared`` and always use :ref:`Perfect forwarding`. 
         
-        :download:`print_forever_cpp_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
+        :download:`print_forever_node_main.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
         
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp
            :language: cpp
            :linenos:
            :lines: 24-
+           :emphasize-lines: 11
 
 
 Add a :file:`.placeholder` if your :file:`include/<PACKAGE_NAME>` is empty
