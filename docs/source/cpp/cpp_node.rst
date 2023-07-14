@@ -79,7 +79,7 @@ Package-related source
 
 .. tab-set::
 
-    .. tab-item:: :file:`package.xml`
+    .. tab-item:: package.xml
 
         :download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/package.xml>`
 
@@ -88,7 +88,7 @@ Package-related source
            :linenos:
            :emphasize-lines: 10
 
-    .. tab-item:: :file:`CMakeLists.txt`
+    .. tab-item:: CMakeLists.txt
 
         :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt>`
         
@@ -110,7 +110,7 @@ Making C++ ROS2 Nodes
 
 .. tab-set::
 
-    .. tab-item:: :file:`src/print_forever_node.hpp`
+    .. tab-item:: src/print_forever_node.hpp
 
         :download:`print_forever.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp>`
 
@@ -119,7 +119,7 @@ Making C++ ROS2 Nodes
            :linenos:
            :lines: 24-
 
-    .. tab-item:: :file:`src/print_forever_node.cpp`
+    .. tab-item:: src/print_forever_node.cpp
 
         :download:`print_forever.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp>`
 
@@ -128,7 +128,7 @@ Making C++ ROS2 Nodes
            :linenos:
            :lines: 24-
 
-    .. tab-item:: :file:`src/print_forever_node_main.cpp`
+    .. tab-item::  src/print_forever_node_main.cpp
         
         :download:`print_forever_cpp_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
         
