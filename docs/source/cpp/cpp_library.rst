@@ -114,7 +114,7 @@ The files already exist, we just need to modify them as follows
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_library/CMakeLists.txt
            :language: cmake
            :linenos:
-           :emphasize-lines: 12-47
+           :emphasize-lines: 14-46,86
 
 
 Library sources
