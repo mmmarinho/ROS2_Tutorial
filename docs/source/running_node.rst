@@ -1,4 +1,4 @@
-,, _Running a node:
+.. _Running a node:
 
 Running a node (:program:`ros2 run`)
 ====================================
