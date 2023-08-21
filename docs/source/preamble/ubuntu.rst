@@ -47,13 +47,13 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - What it does
    * - :program:`pwd`
      - :code:`pwd`
-     - Output in the absolute path to the current directory.
+     - Outputs the absolute path to the current directory.
    * - :program:`mkdir`
      - :code:`mkdir a_folder`
-     - **M**\ a\ **k**\ es a **dir**\ ectory called :file:`this_is_a_folder` in the current directory. 
+     - **M**\ a\ **k**\ es a **dir**\ ectory called :file:`a_folder` in the current directory. 
    * - :program:`cd`
      - :code:`cd a_folder`
-     - **c**\ hanges **d**\ irectory to a specified target.
+     - **C**\ hanges **d**\ irectory to a specified target.
    * - :program:`touch`
      - :code:`touch a_file.whatever`
      - Creates an empty file called :file:`a_file.whatever`.
@@ -68,7 +68,7 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - **L**\ i\ **s**\ ts the contents of the current directory.
    * - :program:`grep`
      - :code:`cat a_file.whatever | grep robocop`
-     - Output the lines of :file:`a_file.whatever` that contain the string :code:`robocop`.
+     - Outputs the lines of :file:`a_file.whatever` that contain the string :code:`robocop`.
    * - :program:`nano`
      - :code:`nano a_file.whatever`
      - Helps you edit a file using a (relatively?) user-friendly program so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
@@ -226,9 +226,9 @@ File permissions
 
 One of the reasons that using :program:`sudo` indiscriminately will destroy your Ubuntu is `file permissions <https://help.ubuntu.com/community/FilePermissions>`_. For example, if you *simply* open a file and save it as :program:`sudo`, you'll change its permissions, and that might be enough to even block you from logging into Ubuntu via the :abbr:`GUI (Graphics User Interface)`.
 
-I will not get into detail here about programs to change permissions because we won't need them extensively in these tutorials. However, this is important to be aware that this exists and might cause problems.
+I will not get into detail here about programs to change permissions because we won't need them extensively in these tutorials. However, it is important to be aware that this exists and might cause problems.
 
-:program:`nautilus`: browzing files with a :abbr:`GUI (Graphical User Interface)`
+:program:`nautilus`: browsing files with a :abbr:`GUI (Graphical User Interface)`
 ---------------------------------------------------------------------------------
 
 To some extent similar to :program:`explorer` in Windows and :program:`finder` in macOS, :program:`nautilus` is `the default file manager in Ubuntu <https://manpages.ubuntu.com/manpages/jammy/en/man1/nautilus.1.html>`_.
