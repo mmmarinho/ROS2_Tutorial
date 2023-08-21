@@ -247,7 +247,7 @@ Minimalist class: Use classes profusely
               └── minimalist_script.py
               └── _minimalist_class.py 
 
-As you are familiar with object-oriented programing, you know that classes are central to this paradigm.
+As you are familiar with object-oriented programming, you know that classes are central to this paradigm.
 As a memory refresher, let's make a class that honestly does nothing really useful but illustrates all
 the basic points in a Python class.
 
@@ -364,7 +364,7 @@ You do not need to document every single line you code, that would in fact be qu
       # Print warning
       print("Warning")
 
-But, on the other side of the coin, it doesn't take too long for us to forget what the parameters of a function mean. :ref:`Type hints` help a lot,
+But, on the other side of the coin, it doesn't take too long for us to forget what the parameters of a function mean. :ref:`Type hints` helps a lot,
 but additional information is always welcome. If you get used to using docstrings for every new method, your programming will be better in general
 because documenting your code makes you think about it.
 
