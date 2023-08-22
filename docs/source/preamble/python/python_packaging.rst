@@ -47,7 +47,7 @@ First, we create a :file:`setup.py` at :file:`~/ros2_tutorials_preamble/python/m
 
 .. note::
 
-   By no coincidence, the :file:`setup.py` is a Python file. We use Python to interprete it, meaning that we can process information using
+   By no coincidence, the :file:`setup.py` is a Python file. We use Python to interpret it, meaning that we can process information using
    Python to define the arguments for the :code:`setup()` function.
 
 All arguments defined above are quite self-explanatory and are passed to the :code:`setup()` function available at the :code:`setuptools` module built into Python.
