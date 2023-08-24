@@ -20,7 +20,7 @@ which should output
 
    Python 3.10.6
    
-If your version is different from this, in particular, the :code:`3.10` part, get this fixed because this tutorial will not work for you. 
+If the :code:`3.10` part of your version is different (e.g. :code:`3.9` or :code:`3.11`\), get this fixed because this tutorial will not work for you. 
 
 .. warning::
    Note that the command is :program:`python3` and not :program:`python`. In fact, the result of
@@ -54,7 +54,7 @@ which should output something similar to
    Type "help", "copyright", "credits" or "license" for more information.
    >>> 
 
-in particular, if the :code:`[GCC 11.3.0] on linux` is different, then get this fixed because this tutorial will not work for you.
+in particular, if the :code:`GCC 11` is different, e.g. :code:`GCC 9` or :code:`GCC 12`\, then get this fixed because this tutorial will not work for you.
 
 As you already know, to exit the `interative shell <https://docs.python.org/3.10/tutorial/interpreter.html>`_ you can use :kbd:`CTRL+D` or type :code:`quit()` and press :kbd:`ENTER`.
 
