@@ -81,7 +81,7 @@ Let's create a module called :file:`_unlikely_to_return.py` to hold a function u
 Because we're using :code:`await` in the function, we start by defining an :code:`async` function.
 
 .. hint::
-   If the function/method has uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
+   If the function/method uses :code:`await` anywhere, it should be :code:`async` (`More info <https://peps.python.org/pep-0492/>`_).
 
 This function was thought this way to emulate, for example, us waiting for something
 external without actually having to. To do so,  we add a :code:`while True:` and return only with 10% chance. Instead of using a :code:`time.sleep()` we
