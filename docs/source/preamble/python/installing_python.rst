@@ -67,7 +67,7 @@ Some Python packages must be installed through :program:`apt`
 
 For some Python packages to work well with the default Python in Ubuntu, they must be installed through :program:`apt`. If you deviate from this, you can cause issues that might not be easy to recover from.
 
-For the purposes of this tutorial, let us install
+For the purposes of this tutorial, let us install :code:`pip` and :code:`venv`
 
 .. code-block:: console
 
