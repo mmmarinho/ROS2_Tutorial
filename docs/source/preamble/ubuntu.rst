@@ -30,6 +30,10 @@ The :program:`terminal`
 
    Check out `Canonical's Tutorial <https://ubuntu.com/tutorials/command-line-for-beginners>`_ on :program:`terminal` for the complete story.
 
+.. hint:: 
+
+   You can open a new terminal window by pressing :kbd:`CTRL+ALT+T`.
+
 .. warning::
 
    This section is about the default terminal in Ubuntu 22.04. If you prefer to use some other terminal instead (there are many), then this might not be useful to you, and you might be happier referring to its documentation instead.
