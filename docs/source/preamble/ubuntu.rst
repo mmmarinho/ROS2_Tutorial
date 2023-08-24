@@ -32,8 +32,7 @@ The :program:`terminal`
 
 .. warning::
 
-   This is about the default terminal in Ubuntu 22.04. If you prefer to use the :program:`TeRmInAlDeluxeUltiMateHyruleMaster` instead, then this might not be useful to you,
-   and you might be happier referring to its documentation instead.
+   This section is about the default terminal in Ubuntu 22.04. If you prefer to use some other terminal instead (there are many), then this might not be useful to you, and you might be happier referring to its documentation instead.
 
 The :program:`terminal` is one of those things with many names. Some call it :program:`shell`, some :program:`console`, some :program:`command line`, some :program:`terminal`. I'm sure there's someone furiously typing right now saying that I'm wrong and describing in detail what those differences might be. The truth is that, in the wild (a.k.a. the Internet), those terms are used pretty much as synonyms.
 
