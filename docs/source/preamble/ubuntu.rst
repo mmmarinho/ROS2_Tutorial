@@ -185,6 +185,7 @@ For example, if we want to store the result of the command ``ls`` to a file call
 
 .. code-block:: console
 
+   cd ~
    ls > result_of_ls.txt
 
 As a default in this version of Ubuntu, if the file does not exist it is created.
@@ -200,6 +201,24 @@ Whenever I have to look at a novice's shoulders while they interact with the ter
 
 The terminal has :kbd:`TAB` completion, so use it extensively.
 You can press :kbd:`TAB` at any time to complete the name of a program, folder, file, or pretty much anything. 
+
+For example, we can move to a folder
+
+.. code-block:: console
+
+   cd ~
+
+Then type a partial command or a part of its arguments. For example,
+
+.. code-block:: console
+
+   rm result_o
+
+then, by pressing :kbd:`TAB`, it should autocomplete to
+
+.. code-block:: console
+
+   rm result_of_ls.txt
 
 Be careful with :program:`sudo`
 -------------------------------
