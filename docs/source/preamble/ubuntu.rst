@@ -75,9 +75,13 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
    * - :program:`nano`
      - :code:`nano a_file.whatever`
      - Helps you edit a file using a (relatively?) user-friendly program so that you don't `get stuck into vim <https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/>`_.
+   * - :program:`sudo`
+     - :code:`sudo touch a_sudo_made_file.whatever`
+     - With the powers of a **s**\ uper **u**\ ser, **do** something. It allows a given user to modify sensitive files in Ubuntu.
    * - :program:`apt`
-     - :code:`apt install git`
+     - :code:`sudo apt install git`
      - Installs Ubuntu packages, in this case, :program:`git`.
+
 
 Let's use it. (!?)
 ------------------
