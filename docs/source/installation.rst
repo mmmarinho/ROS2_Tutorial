@@ -4,7 +4,7 @@ ROS2 Installation
 =================
 
 .. note:: 
-  This tutorial is an abridged version of the original `ROS 2 Documentation <https://docs.ros.org/en/humble/index.html>`_. This tutorial considers a fresh Ubuntu Desktop 22.04 LTS 64bit installation, that you have super user access and common sense.
+  This tutorial is an abridged version of the original `ROS 2 Documentation <https://docs.ros.org/en/humble/index.html>`_. This tutorial considers a fresh Ubuntu Desktop (not Server) 22.04 LTS x64 (not arm64) installation, that you have super user access and common sense. It might work in other cases, but those have not been tested in this tutorial.
 
 .. warning:: 
   All commands must be followed to the letter, in the precise order described herein. Any deviation from what is described might cause unspecified problems and not all of them are easily solvable.
