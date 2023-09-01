@@ -81,6 +81,9 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
    * - :program:`apt`
      - :code:`sudo apt install git`
      - Installs Ubuntu packages, in this case, :program:`git`.
+   * - :program:`alias`
+     - :code:`alias say_hello="echo hello"`
+     - Creates an alias for a command, i.e. `another way to refer to <https://dictionary.cambridge.org/dictionary/english/alias>`_ it.
 
 
 Let's use it. (!?)
