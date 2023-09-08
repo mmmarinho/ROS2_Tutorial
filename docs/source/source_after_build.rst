@@ -27,7 +27,7 @@ As the workspace grows bigger and the packages more complex, figuring out such e
 
 .. admonition:: Hint for the future you
 
-   In rare cases, the workspace can be left in an unclean state in which older build artifacts cause issues. These might include old files that should have been removed, issues with dependencies and so on. In those cases, it might be good to remove the :file:`build`, :file:`install`, and :file:`log` folders before rebuilding and re-sourcing. 
+   In rare cases, the workspace can be left in an unclean state in which older build artifacts cause build and runtime issues, such as failed builds and programs that do not seem to match their intended source code. These artifacts might include old files that should have been removed, issues with dependencies, and so on. In those cases, it might be good to remove the :file:`build`, :file:`install`, and :file:`log` folders before rebuilding and re-sourcing. 
   
 .. admonition:: Hint for the future you
 
