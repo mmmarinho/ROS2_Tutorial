@@ -37,7 +37,7 @@ Use a :code:`Timer` for periodic work (when using :code:`rclpy.spin()`)
 
 .. admonition:: Tips for the future you
 
-   If the code relies on :code:`rclpy.spin()`, a Timer must be used.
+   If the code relies on :code:`rclpy.spin()`, a Timer must be used for periodic work.
 
 In its most basic usage, periodic tasks in ROS2 must be handled by a `Timer <https://github.com/ros2/rclpy/blob/humble/rclpy/src/rclpy/timer.hpp>`_. 
 
