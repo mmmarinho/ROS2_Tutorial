@@ -19,7 +19,7 @@ As in any Python code, we have to import the libraries that we will use and spec
 Making a subclass of :code:`Node`
 ---------------------------------
 
-The current version of ROS2 behaves better when your custom node is a subclass of :code:`rclpy.node.Node`. That is achieved with 
+The current version of ROS2 behaves better when your custom Node is a subclass of :code:`rclpy.node.Node`. That is achieved with 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
@@ -35,7 +35,11 @@ In more advanced nodes, inheritance does not cut it, but that is an advanced top
 Use a :code:`Timer` for periodic work (when using :code:`rclpy.spin()`)
 -----------------------------------------------------------------------
 
-If the code relies on :code:`rclpy.spin()`, which is usually the easiest way to handle the ROS2 loop, periodic tasks must be handled by a `Timer <https://github.com/ros2/rclpy/blob/humble/rclpy/src/rclpy/timer.hpp>`_. 
+.. admonition:: Tips for the future you
+
+   If the code relies on :code:`rclpy.spin()`, a Timer must be used.
+
+In its most basic usage, periodic tasks in ROS2 must be handled by a `Timer <https://github.com/ros2/rclpy/blob/humble/rclpy/src/rclpy/timer.hpp>`_. 
 
 To do so, have the node create it with the :code:`create_timer()` method, as follows.
 
@@ -44,19 +48,21 @@ To do so, have the node create it with the :code:`create_timer()` method, as fol
    :lines: 31-35
    :emphasize-lines: 4
 
-The method to be called is defined as follows
+The method that is periodically called by the Timer is, in this case, as follows. We use :code:`self.get_logger().info()` to print to the terminal periodically.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 37-39
    :emphasize-lines: 1
    
-In ROS2, the logging methods, i.e. :code:`self.get_logger().info()`, depend on a Node. So, the capability to log using ROS2 Nodes is dependent on the scope in which that Node exists.
+In ROS2, the logging methods, i.e. :code:`self.get_logger().info()`, are methods of the Node itself. So, the capability to log (print to the terminal) using ROS2 Nodes is dependent on the scope in which that Node exists.
    
-Don't forget :code:`rclpy.init()` and :code:`rclpy.spin()` 
-----------------------------------------------------------
+Where the ROS2 magic happens: :code:`rclpy.init()` and :code:`rclpy.spin()` 
+---------------------------------------------------------------------------
 
-Nothing will happen unless these two methods are called. First, :code:`rclpy.init()` is going to initialize a bunch of ROS2 elements behind the curtains, whereas :code:`rclpy.spin()` will block the program. There are alternative ways to :code:`spin()`, but we will not discuss them right now.
+All the ROS2 magic happens in some sort of :code`spin()` method. It is called this way because the :code`spin()` method will constantly loop (or spin) through **items of work**, e.g. scheduled Timer callbacks. All the **items of work** will only be effectively executed when an **executor** runs through it. For simple Nodes, such as the one in this example, the **global** executor is implicitly used. You can read a bit more about that `here <https://docs.ros2.org/foxy/api/rclpy/api/init_shutdown.html>`_.
+
+Anyhow, the point is that nothing related to ROS2 will happen unless the two following methods are called. First, :code:`rclpy.init()` is going to initialize a bunch of ROS2 elements behind the curtains, whereas :code:`rclpy.spin()` will `block <https://en.wikipedia.org/wiki/Blocking_(computing)>`_ the program and, well, **spin** through Timer callbacks forever. There are alternative ways to :code:`spin()`, but we will not discuss them right now.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
