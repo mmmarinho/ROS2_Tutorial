@@ -1,4 +1,4 @@
-Publishers and Subscribers : using messages
+Publishers and Subscribers: using messages
 ===========================================
 
 .. note::
@@ -47,7 +47,7 @@ Before we start exploring the elements of the package, let us
 Create the Node with a publisher
 --------------------------------
 
-.. admonition:: **TL:DR** Creating a publisher
+.. admonition:: **TL;DR** Creating a publisher
 
                #. Add new dependencies to :file:`package.xml`
                #. Import new messages :code:`from <package_name>.msg import <msg_name>`
@@ -115,15 +115,15 @@ Lastly, the message needs to be published using :code:`Node.publish(msg)`.
 Create the Node with a subscriber
 ---------------------------------
 
-.. admonition:: **TL:DR** Creating a subscriber
+.. admonition:: **TL;DR** Creating a subscriber
 
                #. Add new dependencies to :file:`package.xml`
                #. Import new messages :code:`from <package_name>.msg import <msg_name>`
-               #. In a subclass of :code:`Node` 
+               #. In a subclass of :code:`Node`
                
-                      #. Create a callback :code:`def callback(self, msg):`
-                      #. Create a subscriber :code:`self.subscriber = self.create_subscription(...)`
-                      
+                  #. Create a callback :code:`def callback(self, msg):`
+                  #. Create a subscriber :code:`self.subscriber = self.create_subscription(...)`
+                  
                #. Add the new Node to :file:`setup.py`
 
 For the subscriber Node, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_subscriber_node.py`, with the following contents
@@ -148,7 +148,7 @@ Then, in our subclass of :code:`Node`, we call :code:`Node.create_publisher(...)
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :lines: 34-38
-   :emphasize-lines:4
+   :emphasize-lines: 4
    
 where the only difference with respect to the publisher is the third argument, namely :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
 
