@@ -60,7 +60,7 @@ In ROS2, the logging methods, i.e. :code:`self.get_logger().info()`, are methods
 Where the ROS2 magic happens: :code:`rclpy.init()` and :code:`rclpy.spin()` 
 ---------------------------------------------------------------------------
 
-All the ROS2 magic happens in some sort of :code`spin()` method. It is called this way because the :code`spin()` method will constantly loop (or spin) through **items of work**, e.g. scheduled Timer callbacks. All the **items of work** will only be effectively executed when an **executor** runs through it. For simple Nodes, such as the one in this example, the **global** executor is implicitly used. You can read a bit more about that `here <https://docs.ros2.org/foxy/api/rclpy/api/init_shutdown.html>`_.
+All the ROS2 magic happens in some sort of :code:`spin()` method. It is called this way because the :code:`spin()` method will constantly loop (or spin) through **items of work**, e.g. scheduled Timer callbacks. All the **items of work** will only be effectively executed when an **executor** runs through it. For simple Nodes, such as the one in this example, the **global** executor is implicitly used. You can read a bit more about that `here <https://docs.ros2.org/foxy/api/rclpy/api/init_shutdown.html>`_.
 
 Anyhow, the point is that nothing related to ROS2 will happen unless the two following methods are called. First, :code:`rclpy.init()` is going to initialize a bunch of ROS2 elements behind the curtains, whereas :code:`rclpy.spin()` will `block <https://en.wikipedia.org/wiki/Blocking_(computing)>`_ the program and, well, **spin** through Timer callbacks forever. There are alternative ways to :code:`spin()`, but we will not discuss them right now.
 
