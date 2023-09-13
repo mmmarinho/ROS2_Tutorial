@@ -42,8 +42,12 @@ It will output in :program:`PyCharm`'s console
 
 .. _PyCharm is not finding the dependencies:
 
-:program:`PyCharm` is not finding the dependencies
---------------------------------------------------
+What to do when :program:`PyCharm` does not find the dependencies
+-----------------------------------------------------------------
+
+.. note::
+
+   This section is meant to help you troubleshoot if this ever happens to you. It can be safely skipped if you're following the tutorial for the first time.
 
 .. note::
 
