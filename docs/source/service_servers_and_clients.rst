@@ -34,7 +34,7 @@ Before we start exploring the elements of the package, let us
 Create the Node with a Service Server
 -------------------------------------
 
-.. admonition::  **TL:DR** Creating a service server
+.. admonition::  **TL;DR** Creating a service server
       
                #. Add new dependencies to :file:`package.xml`
                #. Import new services :code:`from <package_name>.srv import <srv_name>`
