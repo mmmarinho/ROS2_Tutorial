@@ -467,8 +467,8 @@ which will output
 
 Yay! We've done it!
 
-Always use :code:`unittest`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Start with use :code:`unittest`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
