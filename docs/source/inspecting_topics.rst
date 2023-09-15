@@ -1,7 +1,7 @@
 Inspecting topics (:program:`ros2 topic`)
 =========================================
 
-ROS2 has a tool to help us inspect topics. This is used with considerable frequency in practice to troubleshoot and speed up the development of publishers and subscribers. As usual, we can more information on this tool as follows.
+ROS2 has a tool to help us inspect topics. This is used with considerable frequency in practice to troubleshoot and speed up the development of publishers and subscribers. As usual, we can get more information on this tool as follows.
 
 .. code:: console
 
@@ -108,7 +108,7 @@ which outputs only the lines that contain :code:`quote`, that is
 Getting quick info with :program:`ros2 topic info`
 --------------------------------------------------
 
-To get some quick information on a topic we can run
+To get some quick information on a topic, we can run
 
 .. code:: console
 
