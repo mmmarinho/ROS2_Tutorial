@@ -88,7 +88,7 @@ At the end of the callback, we must return that :code:`WhatIsThePoint.Request`, 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_server_node.py
    :language: python
-   :lines: 89
+   :lines: 85
    :emphasize-lines: 2
 
 The Service Server was quite painless, but it doesn't do much. The Service Client might be a bit more on the painful side for the uninitiated.
@@ -102,7 +102,7 @@ In this tutorial, we briefly introduce unavoidable :code:`async` concepts in :re
 Create the Node with a Service Client (using a :code:`callback`)
 ----------------------------------------------------------------
 
-.. admonition::  **TL:DR** Creating a service client (using a :code:`callback`)
+.. admonition::  **TL;DR** Creating a Service Client (using a :code:`callback`)
 
                #. Add new dependencies to :file:`package.xml`
                #. Import new services :code:`from <package_name>.srv import <srv_name>`
@@ -111,7 +111,7 @@ Create the Node with a Service Client (using a :code:`callback`)
                   #. (*recommended*) wait for service to be available :code:`service_client.wait_for_service(...)`.
                   #. (*if periodic*) add a :code:`Timer` with a proper :code:`timer_callback()`
                   #. create a callback for the future :code:`def service_future_callback(self, future: Future):`
-                  #. create a service client with :code:`self.service_client = self.create_client(...)`
+                  #. create a Service Client with :code:`self.service_client = self.create_client(...)`
       
                #. Add the new Node to :file:`setup.py`
 
@@ -144,7 +144,7 @@ To have access to the service, we import it with :code:`from <package>.srv impor
 Instantiate a Service Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We instanteate a service client with :code:`Node.create_client()`. The values of :code:`srv_type` and :code:`srv_name` must match the ones used in the service server.
+We instantiate a Service Client with :code:`Node.create_client()`. The values of :code:`srv_type` and :code:`srv_name` must match the ones used in the Service Server.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -156,7 +156,7 @@ We instanteate a service client with :code:`Node.create_client()`. The values of
 .. warning::
    The order of execution and speed of Nodes depend on a complicated web of relationships between ROS2, the operating system, and the workload of the machine. It would be naive to expect the server to always be active before the client, even if the server Node is started before the client Node.
 
-In many cases, having the result of the service of particular importance (hence the use of a service and not messages). In that case, we have to wait until :code:`service_client.wait_for_service()`, as shown below.
+In many cases, having the result of the service is of particular importance (hence the use of a service and not messages). In that case, we have to wait until :code:`service_client.wait_for_service()`, as shown below.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -189,7 +189,7 @@ The need for a callback for the :code:`Timer`, should also be no surprise.
 Service Clients use :code:`<srv>.Request()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Given that services work in a request-response model, the service client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call, as shown below. To make the example more interesting, it randomly switches between two possible quotes.
+Given that services work in a request-response model, the Service Client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call, as shown below. To make the example more interesting, it randomly switches between two possible quotes.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/what_is_the_point_service_client_node.py
    :language: python
@@ -274,7 +274,7 @@ In another terminal, we run the :program:`python_package_uses_the_service_node`,
 
     ros2 run python_package_that_uses_the_services what_is_the_point_service_server_node
 
-the server Node will then output, periodically,
+The server Node will then output, periodically,
 
 .. code:: console
 
