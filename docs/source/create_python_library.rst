@@ -82,11 +82,11 @@ We learned the meaning of most of those in the preamble, namely :ref:`Python Bes
    * - File/Directory
      - Meaning
    * - :file:`python_package_with_a_library`
-     - The ROS2 package folder
+     - The ROS2 package folder.
    * - :file:`python_package_with_a_library/python_package_with_a_library`
      - The Python package, as we saw in the preamble.
    * - :file:`sample_python_library`
-     - The module corresponding to our sample library
+     - The module corresponding to our sample library.
    * - :file:`resource/python_package_with_a_library`
      - A file for ROS2 to index this package correctly. See `Resource file <https://answers.ros.org/question/367328/ament_python-package-doesnt-explicitly-install-a-marker-in-the-package-index/>`_.
    * - :file:`test`

@@ -38,7 +38,7 @@ It will output in :program:`PyCharm`'s console
 
 .. note::
 
-   You can read more about debugging with :program:`PyCharm` at the `official documentation <https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html#where-is-the-problem>`_
+   You can read more about debugging with :program:`PyCharm` at the `official documentation <https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html#where-is-the-problem>`_.
 
 .. _PyCharm is not finding the dependencies:
 

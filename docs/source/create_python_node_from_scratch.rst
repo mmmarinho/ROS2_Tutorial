@@ -4,7 +4,7 @@ Creating a Python Node from scratch (for :program:`ament_python`)
 .. admonition:: **TL;DR** Making an :program:`ament_python` Node
          
          #. Modify :file:`package.xml` with any additional dependencies.
-         #. Create the Node
+         #. Create the Node.
          #. Modify the :file:`setup.py` file.
 
 Let us add an additional Node to our :program:`ament_python` package that actually uses ROS2 functionality. 

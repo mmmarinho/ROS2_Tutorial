@@ -171,7 +171,7 @@ These files do not exists, so we'll create them.
            :language: cpp
            :linenos:
            :lines: 24-
-           :emphasize-lines: 8
+           :emphasize-lines: 9
 
     .. tab-item:: src/..._node.cpp
 

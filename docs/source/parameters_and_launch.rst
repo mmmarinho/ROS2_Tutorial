@@ -7,7 +7,7 @@ The Nodes we have made in the past few sections are interesting because they tak
 
 Other capabilities of ROS2 that we must take advantage of are `ROS2 parameters <https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html>`_ and `ROS2 launch files <https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html>`_. We can use them to modify the behavior of Nodes without having to modify their source code. 
 
-For Python users, that might sound less appealing than users of compiled languages. However, users of your package might not want nor be able to modify the source code directly, if the package is installable or part of a larger system with multiple users.
+For Python users, that might sound less appealing than for users of compiled languages. However, users of your package might not want nor be able to modify the source code directly, if the package is installable or part of a larger system with multiple users.
 
   
 Create the package
@@ -34,7 +34,7 @@ Before we start exploring the elements of the package, let us
 Create the Node using parameters
 --------------------------------
 
-.. admonition:: **TL:DR** Using parameters in a Node
+.. admonition:: **TL;DR** Using parameters in a Node
 
                #. Declare the parameter with :code:`Node.declare_parameter()`, usually in the class's :code:`__init__`.
                #. Get the parameter with :code:`Node.get_parameter()` either once or continuously.
@@ -113,7 +113,7 @@ In this example, we are making the :code:`quote` and the :code:`philosopher_name
 Truly configurable: using :file:`_launch.py` files
 --------------------------------------------------
 
-.. admonition:: **TL:DR** Using launch files
+.. admonition:: **TL;DR** Using launch files
 
                #. (Once) Create a :file:`launch` folder in the project.
                #. Create the launch file named as :file:`launch/<something>_launch.py`.
