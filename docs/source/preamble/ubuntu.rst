@@ -101,6 +101,10 @@ To warm up, let's start by creating an empty file inside a new directory, as fol
 
    You can open a new terminal window by pressing :kbd:`CTRL+ALT+T`.
 
+.. warning::
+
+   For copying from the terminal use :kbd:`CTRL+SHIFT+C`. For pasting to the terminal, use :kbd:`CTRL+SHIFT+V`. Be careful with :kbd:`CTRL+C`, in particular. It is used to, in simple terms, close running programs on the terminal.
+
 .. code-block:: console
 
    cd ~
