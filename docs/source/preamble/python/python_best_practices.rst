@@ -63,10 +63,13 @@ Minimalist package: something to start with
 
 First, let's make a folder for our project
 
-.. code-block::
+.. hint::
 
-   cd ~/ros2_tutorials_preamble/python/
-   mkdir minimalist_package
+   The :code:`-p` option for :program:`mkdir` creates all parent folders as well, when they do not exist.
+
+.. code-block:: console
+
+   mkdir -p ~/ros2_tutorials_preamble/python/minimalist_package
 
 Then, let's create a folder with the same name within it for our package. A Python package is a folder that has an :file:`__init__.py`, so for now we add an empty :file:`__init__.py` by doing so
 
