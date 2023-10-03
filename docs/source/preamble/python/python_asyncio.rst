@@ -146,7 +146,7 @@ Ok, enough with the explanation, let's go to the endorphin rush of actually runn
 .. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package/
-python -m minimalist_package.minimalist_async.async_await_example
+ python -m minimalist_package.minimalist_async.async_await_example
 
 Which will result in something like shown below. The function is stochastic, so it might take more or less time to 
 return and the order of the tasks ending might also be different.
