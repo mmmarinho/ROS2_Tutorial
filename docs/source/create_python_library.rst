@@ -128,9 +128,9 @@ All other files and directories will remain as-is, in the way they were generate
 Create the sample function
 --------------------------
 
-Add a new file to :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library` called :file:`_sample_function.py` with the following content.
+Create a new file with the following contents and name.
 
-:download:`_sample_function.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py>`
+:download:`~/ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py
    :language: python
@@ -142,9 +142,9 @@ The function has two parameters, :code:`a` and :code:`b`. For simplicity, we're 
 Create the sample class
 -----------------------
 
-Add a new file to :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library` called :file:`_sample_class.py` with the following content.
+Create a new file with the following contents and name. 
 
-:download:`_sample_class.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py>`
+:download:`~/ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py
    :language: python
@@ -156,9 +156,9 @@ The class is quite simple with a `private data member <https://docs.python.org/3
 Modify the :code:`__init__.py` to export the symbols
 ----------------------------------------------------
 
-With the necessary files created and properly organized, the last step is to :code:`import` the function and the class. We modify the :file:`python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py` to have the following contents.
+With the necessary files created and properly organized, the last step is to :code:`import` the function and the class. We modify proper :file:`__init__.py` file with the following contents.
 
-:download:`__init__.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py>`
+:download:`~/ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py
    :language: python
@@ -175,7 +175,7 @@ Modify the :code:`setup.py` to export the packages
 
    This is a *one-size-fits-most* solution, which might not work for certain Python package structures. As a generic solution, we will export all Python packages in the ROS2 package excluding the `test` directory. For more information on :program:`setuptools`, see the `official Python packaging docs <https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/>`_.
 
-:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/setup.py>`
+:download:`~/ros2_tutorial_workspace/src/python_package_with_a_library/setup.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/setup.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/setup.py
    :language: python
