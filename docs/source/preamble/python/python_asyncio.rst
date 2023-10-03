@@ -146,7 +146,7 @@ Ok, enough with the explanation, let's go to the endorphin rush of actually runn
 .. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package/
- python -m minimalist_package.minimalist_async.async_await_example
+   python3 -m minimalist_package.minimalist_async.async_await_example
 
 Which will result in something like shown below. The function is stochastic, so it might take more or less time to 
 return and the order of the tasks ending might also be different.
@@ -247,8 +247,8 @@ Aside from that, there are only two key differences with the :code:`await` logic
 
 .. code-block:: console
 
-   cd ~/ros2_tutorials_preamble/python/minimalist_package
-   python3 -m minimalist_async.async_callback_example
+   cd ~/ros2_tutorials_preamble/python/
+   python3 -m minimalist_package.minimalist_async.async_callback_example
 
 Depending on our luck, we will have a very illustrative result like the one below. This example shows that, with the :code:`callback` logic, when the second task
 ends before the first one, it will be automatically processed by its :code:`callback`.
