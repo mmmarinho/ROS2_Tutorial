@@ -278,14 +278,14 @@ following contents
 
    When adding imports to the :file:`__init__.py`, the folder that we use to open in Pycharm and that we call to execute
    the scripts is *extremely* relevant. When packages are deployed (e.g. in `PyPI <https://pypi.org/>`_ or ROS2), the "correct"
-   way to import in :file:`__init__.py` is to use :code:`import <PACKAGE_NAME>.<THING_TO_IMPORT>`, which is why we're doing
+   way to import in :file:`__init__.py` is to use :code:`from <PACKAGE_NAME>.<MODULE> import <THING_TO_IMPORT>`, which is why we're doing
    it this way.
 
 .. note::
 
-   Relative imports such as :code:`.<THING_TO_IMPORT>` might work in some cases, and that is fine. It is a supported
-   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc, and generates 
-   a lot of frustration.
+   Relative imports such as :code:`from . import <THING_TO_IMPORT>` might work in some cases, and that is fine. It is a supported
+   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc., and `generates 
+   a lot of frustration <https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time?rq=1>`_.
 
 Not a matter of taste: Code style
 ---------------------------------
