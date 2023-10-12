@@ -143,7 +143,7 @@ Similarly to the publisher, in the subscriber, we start by importing the message
    :lines: 24-26
    :emphasize-lines: 3
 
-Then, in our subclass of :code:`Node`, we call :code:`Node.create_publisher(...)` as follows
+Then, in our subclass of :code:`Node`, we call :code:`Node.create_subscription(...)` as follows
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
