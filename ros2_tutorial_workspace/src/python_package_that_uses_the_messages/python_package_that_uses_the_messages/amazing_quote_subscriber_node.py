@@ -27,7 +27,7 @@ from package_with_interfaces.msg import AmazingQuote
 
 
 class AmazingQuoteSubscriberNode(Node):
-    """A ROS2 Node that receives and prints an amazing quote."""
+    """A ROS2 Node that receives and AmazingQuote and prints out its info."""
 
     def __init__(self):
         super().__init__('amazing_quote_subscriber_node')
@@ -38,7 +38,8 @@ class AmazingQuoteSubscriberNode(Node):
             qos_profile=1)
 
     def amazing_quote_subscriber_callback(self, msg: AmazingQuote):
-        """Method that is periodically called by the timer."""
+        """Method that is called when a new msg is received by the node."""
+        
         self.get_logger().info(f"""
         I have received the most amazing of quotes.
         It says
