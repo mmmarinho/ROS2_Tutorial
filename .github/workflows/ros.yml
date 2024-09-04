@@ -1,0 +1,44 @@
+# https://github.com/ros-tooling/setup-ros
+name: ros
+on: [push,workflow_dispatch]
+jobs:
+  test_docker: 
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ros_distribution:
+          - humble
+          - jazzy
+          - rolling
+
+        include:
+        
+          # Humble Hawksbill (May 2022 - May 2027)
+          - docker_image: ubuntu:jammy
+            ros_distribution: humble
+            ros_version: 2
+            
+          # Jazzy Jalisco (May 2024 - May 2029)
+          - docker_image: ubuntu:noble
+            ros_distribution: jazzy
+            ros_version: 2
+
+          # Rolling Ridley (No End-Of-Life)
+          - docker_image: ubuntu:noble
+            ros_distribution: rolling
+            ros_version: 2
+            
+    container:
+      image: ${{ matrix.docker_image }}
+    steps:
+      - name: setup ROS environment
+        uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: ${{ matrix.ros_distribution }}
+      - name: build and test ROS 2
+        if: ${{ matrix.ros_version == 2 }}
+        uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          package-name: cpp_package_with_a_library
+          target-ros2-distro: ${{ matrix.ros_distribution }}
+          skip-tests: true
