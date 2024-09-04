@@ -39,6 +39,5 @@ jobs:
         if: ${{ matrix.ros_version == 2 }}
         uses: ros-tooling/action-ros-ci@v0.3
         with:
-          package-name: cpp_package_with_a_library
           target-ros2-distro: ${{ matrix.ros_distribution }}
           skip-tests: true
