@@ -1,0 +1,14 @@
+name: Self Hosted ROS
+
+on: [push,workflow_dispatch]
+    
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build with colcon
+      run: |
+        colcon build
