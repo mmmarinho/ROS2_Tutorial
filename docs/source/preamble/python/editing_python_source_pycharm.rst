@@ -5,6 +5,9 @@
 Editing Python source (with :program:`PyCharm`)
 ===============================================
 
+.. note:
+   The program you use to edit sources is an aesthetic/convenience choice. It does not affect how ROS2 works.
+
 There are near-infinite ways to manage your Python code and, in this section, we will use :program:`PyCharm`. Namely, the free community version.
 
 Installing :program:`PyCharm`
