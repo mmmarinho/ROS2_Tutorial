@@ -31,8 +31,20 @@ Running :program:`VS Code`
 
 It will be installed as a regular Ubuntu application, so you can find it by searching for "Visual Studio Code". It is also beneficial to right-click the icon in search and choose "Add to Favourites".
 
-Running :program:`VS Code`
---------------------------
+Adding the ROS plugin to :program:`VS Code`
+-------------------------------------------
 
-Click :kbd:`CTLR` :kbd:`Shift` :kbd:`X` to open extensions.
+Open the extensions tab with :kbd:`CTRL+SHIFT+X`.It will open a tab like so.
 
+.. image:: vscode/vscode_extensions.png
+   :align: center
+
+Search for "ROS" and click "Install". Please be careful to choose the Microsoft plugin. There are many other plugins with the same name, but made by others.
+
+.. image:: vscode/vscode_look_install_ros.png
+   :align: center
+
+After the installation is successful, the menu will change like so. 
+
+.. image:: vscode/vscode_look_ros_installed.png
+   :align: center
