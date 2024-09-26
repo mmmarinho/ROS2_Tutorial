@@ -5,7 +5,7 @@
 Editing Python source (with :program:`PyCharm`)
 ===============================================
 
-There are near-infinite ways to manage your Python code and, for this tutorial, we will use :program:`PyCharm`. Namely, the free community version.
+There are near-infinite ways to manage your Python code and, in this section, we will use :program:`PyCharm`. Namely, the free community version.
 
 Installing :program:`PyCharm`
 ----------------------------
