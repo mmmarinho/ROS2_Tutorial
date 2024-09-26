@@ -12,6 +12,7 @@ Python Basics
    :maxdepth: 2
 
    python/installing_python
+   python/editing_python_source_vscode
    python/editing_python_source_pycharm
    python/python_best_practices
    python/python_asyncio
