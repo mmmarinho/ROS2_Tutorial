@@ -22,7 +22,7 @@ Run
    cd ~
    mkdir ros2_workspace_vscode
    cd ros2_workspace_vscode
-   wget https://update.code.visualstudio.com/1.93.0/linux-deb-arm64/stable
+   wget https://update.code.visualstudio.com/1.93.0/linux-deb-x64/stable
    sudo dpkg -i code_1.93.0*.deb
    
 
