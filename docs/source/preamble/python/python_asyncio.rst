@@ -247,7 +247,7 @@ Aside from that, there are only two key differences with the :code:`await` logic
 
 .. code-block:: console
 
-   cd ~/ros2_tutorials_preamble/python/
+   cd ~/ros2_tutorials_preamble/python/minimalist_package/
    python3 -m minimalist_package.minimalist_async.async_callback_example
 
 Depending on our luck, we will have a very illustrative result like the one below. This example shows that, with the :code:`callback` logic, when the second task
