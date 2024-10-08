@@ -66,13 +66,13 @@ Given that it was created from a template, the file :file:`python_package_that_u
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
    :language: python
    :linenos:
-   :lines: 27-
+   :lines: 24-
 
 Indeed, the most difficult part is to make and configure the library itself. After that, to use it in another package, it is straightforward. We :code:`import` the library.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
    :language: python
-   :lines: 27-29
+   :lines: 24-29
    :emphasize-lines: 3
    
 And then use the symbols we imported as we would with any other Python library.
