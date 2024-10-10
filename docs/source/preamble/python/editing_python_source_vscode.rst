@@ -22,8 +22,8 @@ Run
    cd ~
    mkdir ros2_workspace_vscode
    cd ros2_workspace_vscode
-   wget https://update.code.visualstudio.com/1.93.0/linux-deb-x64/stable
-   sudo dpkg -i code_1.93.0*.deb
+   wget -O code_1.93.0-stable_amd64.deb https://update.code.visualstudio.com/1.93.0/linux-deb-x64/stable
+   sudo dpkg -i code_1.93.0-stable_amd64.deb
    
 
 Running :program:`VS Code`
