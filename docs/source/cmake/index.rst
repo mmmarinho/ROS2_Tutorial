@@ -1,4 +1,4 @@
-Basic CMake stuff for :program:`C++` developments
+Basic CMake tricks for :program:`C++` developments
 ==================================================
 
 Using this section
