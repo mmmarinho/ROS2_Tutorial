@@ -9,4 +9,5 @@
    :maxdepth: 1
 
    cpp/index
+   cmake/index
    
