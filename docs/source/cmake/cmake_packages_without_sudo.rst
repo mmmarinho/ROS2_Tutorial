@@ -1,8 +1,10 @@
 
 
-
 Install a CMake package without sudo privileges
------------------------------------------------
+===============================================
+
+
+Define a directory in your :code:`/home/USERNAME/` folder to install your CMake packages. 
 
 Create a folder :code:`opt` in :code:`/home/USERNAME/` containing the folders :code:`lib` and :code:`include`.
 Then, update the LD_LIBRARY_PATH in :code:`~/.bashrc`.
