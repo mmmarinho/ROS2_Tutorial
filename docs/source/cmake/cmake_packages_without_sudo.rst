@@ -14,16 +14,16 @@ Create a folder :program:`opt` in /home/USERNAME/opt
 
 
 
-
-
 Update the LD_LIBRARY_PATH in :program:`~/.bashrc`
 --------------------------------------------------
 
 .. code-block:: console
 
-    echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/juanjqo_user/opt/lib" >> ~/.bashrc
+    echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/USERNAME/opt/lib" >> ~/.bashrc
     source ~/.bashrc
 
+
+Example:
 
 .. image:: ../../images/cmake_without_sudo_steps.gif
    :align: center    
