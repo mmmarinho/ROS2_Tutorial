@@ -4,24 +4,16 @@
 Install a CMake package without sudo privileges
 -----------------------------------------------
 
-Create a folder :program:`opt` in /home/USERNAME/opt
+Create a folder :code:`opt` in :code:`/home/USERNAME/` containing the folders :code:`lib` and :code:`include`.
+Then, update the LD_LIBRARY_PATH in :code:`~/.bashrc`.
 
 .. code-block:: console
 
     mkdir opt && cd opt
     mkdir include
     mkdir lib
-
-
-
-Update the LD_LIBRARY_PATH in :program:`~/.bashrc`
---------------------------------------------------
-
-.. code-block:: console
-
     echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/USERNAME/opt/lib" >> ~/.bashrc
     source ~/.bashrc
-
 
 Example:
 
