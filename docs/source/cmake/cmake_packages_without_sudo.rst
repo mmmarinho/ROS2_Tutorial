@@ -1,10 +1,10 @@
 
 
 
-Install a CMake package withou sudo privileges
-----------------------------------------------
+Install a CMake package without sudo privileges
+-----------------------------------------------
 
-Create the folder :program:`opt` in /home/USERNAME/opt
+Create a folder :program:`opt` in /home/USERNAME/opt
 
 .. code-block:: console
 
