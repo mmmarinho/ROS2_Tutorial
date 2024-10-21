@@ -1,0 +1,29 @@
+
+
+
+Install a CMake package withou sudo privileges
+----------------------------------------------
+
+Create the folder :program:`opt` in /home/USERNAME/opt
+
+.. code-block:: console
+
+    mkdir opt && cd opt
+    mkdir include
+    mkdir lib
+
+
+
+
+
+Update the LD_LIBRARY_PATH in :program:`~/.bashrc`
+--------------------------------------------------
+
+.. code-block:: console
+
+    echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/juanjqo_user/opt/lib" >> ~/.bashrc
+    source ~/.bashrc
+
+
+.. image:: ../../images/cmake_without_sudo_steps.gif
+   :align: center    
