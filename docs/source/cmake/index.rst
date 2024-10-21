@@ -1,5 +1,5 @@
-Basic C++ stuff with :program:`cmake`
-=====================================
+Basic CMake stuff for :program:`C++` developments
+==================================================
 
 Using this section
 ------------------
