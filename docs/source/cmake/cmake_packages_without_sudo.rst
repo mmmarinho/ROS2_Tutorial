@@ -3,8 +3,8 @@
 Install a CMake package without sudo privileges
 ===============================================
 
-When we install a package or library using CMake, their files are usually copied to folders that only sudo users have access (e.g., :code:`/opt`).
-Therefore, to install them without sudo privileges we define a custom directory in :code:`/home/USERNAME/`.
+To install a CMake package or library without sudo privileges, we need to define a directory to which we have access. For instance, 
+in :code:`/home/USERNAME/`.
 
 In this tutorial, we are going to create and use a custom folder :code:`opt` in :code:`/home/USERNAME/` containing 
 the folders :code:`lib` and :code:`include`.
@@ -28,7 +28,9 @@ Example:
    :align: center    
 
 
+
 To install a CMake package, we set the :code:`CMAKE_INSTALL_PREFIX:PATH` flag with our custom folder (:code:`/home/USERNAME/opt`)
+
 
 .. code-block:: console
 
