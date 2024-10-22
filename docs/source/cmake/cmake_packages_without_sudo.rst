@@ -69,8 +69,6 @@ This example shows how to build and install the DQ robotics library to be used i
 
     .. tab-item:: test_dqrobotics.cpp
 
-        The :file:`package.xml` works the same way as in :program:`ament_python`, with the exception of the two lines about :program:`ament_cmake` shown below.
-
         :download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp>`
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp
@@ -79,8 +77,6 @@ This example shows how to build and install the DQ robotics library to be used i
            :emphasize-lines: 2
 
     .. tab-item:: CMakeLists.txt
-
-        A *one-size-fits-most* solution is shown below. For each new Node we add a block to the :file:`CMakeLists.txt` with the following format.
 
         :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/CMakeLists.txt>`
         
