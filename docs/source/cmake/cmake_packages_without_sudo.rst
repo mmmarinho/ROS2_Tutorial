@@ -10,8 +10,8 @@ in :code:`/home/USERNAME/`.
 Create a custom folder
 ----------------------
 
-In this tutorial, we are going to create and use a custom folder :code:`opt` in :code:`/home/USERNAME/` containing 
-the folders :code:`lib` and :code:`include`.
+In this tutorial, we are going to create a custom folder :code:`/home/USERNAME/opt` containing 
+the folders :code:`lib` and :code:`include`. 
 
 .. code-block:: console
 
@@ -43,5 +43,53 @@ To install a CMake package, we set the :code:`CMAKE_INSTALL_PREFIX:PATH` flag wi
     cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/USERNAME/opt .. 
     make -j16
     make install
+
+
+Example
+--------
+
+This example shows how to build and install the DQ robotics library to be used in your CMake project.
+
+.. warning:: 
+  This example assumes you have git, CMake, Eigen, and a C++ compiler installed in your GNU/Linux distribution.
+
+
+
+.. code-block:: console
+
+    git clone https://github.com/dqrobotics/cpp.git
+    cd cpp
+    mkdir build && cd build
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/USERNAME/opt .. 
+    make -j16
+    make install
+
+
+.. tab-set::
+
+    .. tab-item:: test_dqrobotics.cpp
+
+        The :file:`package.xml` works the same way as in :program:`ament_python`, with the exception of the two lines about :program:`ament_cmake` shown below.
+
+        :download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp>`
+
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp
+           :language: cpp
+           :linenos:
+           :emphasize-lines: 2
+
+    .. tab-item:: CMakeLists.txt
+
+        A *one-size-fits-most* solution is shown below. For each new Node we add a block to the :file:`CMakeLists.txt` with the following format.
+
+        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/CMakeLists.txt>`
+        
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/CMakeLists.txt
+           :language: cmake
+           :linenos:
+           :emphasize-lines: 15,16,17   
+
+
+
 
 
