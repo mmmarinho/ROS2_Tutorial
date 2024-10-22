@@ -87,7 +87,7 @@ This example shows how to build and install the DQ robotics library to be used i
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/CMakeLists.txt
            :language: cmake
            :linenos:
-           :emphasize-lines: 15,16,17   
+           :emphasize-lines: 14,16,17   
 
 
 
