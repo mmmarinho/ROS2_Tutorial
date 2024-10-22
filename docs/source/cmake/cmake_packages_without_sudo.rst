@@ -45,8 +45,8 @@ To install a CMake package, we set the :code:`CMAKE_INSTALL_PREFIX:PATH` flag wi
     make install
 
 
-Example
---------
+Example: DQ robotics library
+-----------------------------
 
 This example shows how to build and install the DQ robotics library to be used in your CMake project.
 
@@ -63,13 +63,16 @@ This example shows how to build and install the DQ robotics library to be used i
     cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/USERNAME/opt .. 
     make -j16
     make install
+    
 
+Example: include and link the DQ robotics in your project
+----------------------------------------------------------
 
 .. tab-set::
 
     .. tab-item:: test_dqrobotics.cpp
 
-        :download:`package.xml <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp>`
+        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp>`
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp
            :language: cpp
