@@ -11,6 +11,7 @@ the folders :code:`lib` and :code:`include`.
 
 .. code-block:: console
 
+    cd ~/
     mkdir opt && cd opt
     mkdir include
     mkdir lib
