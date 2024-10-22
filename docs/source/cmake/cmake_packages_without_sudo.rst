@@ -11,7 +11,12 @@ Create a custom folder
 ----------------------
 
 In this tutorial, we are going to create a custom folder :code:`/home/USERNAME/opt` containing 
-the folders :code:`lib` and :code:`include`. 
+the folders :code:`lib` and :code:`include`. This will be our directory to install all our CMake packages.
+
+.. hint:: 
+  Replace :code:`USERNAME` by your specific username. For instance, if your username is :code:`juanjqo`, your directory will be located 
+  in :code:`/home/juanjqo/opt`
+
 
 .. code-block:: console
 
