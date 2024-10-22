@@ -85,12 +85,12 @@ Example: include and link the DQ robotics in your project
 
     .. tab-item:: test_dqrobotics.cpp
 
-    :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp>`
+        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp>`
 
-    .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp
-        :language: cpp
-        :linenos:
-        :emphasize-lines: 2       
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp
+            :language: cpp
+            :linenos:
+            :emphasize-lines: 2       
 
 
 
