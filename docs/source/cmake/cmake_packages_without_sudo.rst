@@ -41,7 +41,7 @@ To install a CMake package, we set the :code:`CMAKE_INSTALL_PREFIX:PATH` flag wi
 
 .. code-block:: console
 
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/USERNAME/opt .. 
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=~/opt .. 
     make -j16
     make install
 
