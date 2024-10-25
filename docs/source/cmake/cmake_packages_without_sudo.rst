@@ -4,17 +4,14 @@ Install a CMake package without sudo privileges
 ===============================================
 
 To install a CMake package or library without sudo privileges, we need to define a directory to which we have access. For instance, 
-in :code:`/home/USERNAME/`.
+in :code:`~/`.
 
 
 Create a custom folder
 ----------------------
 
-In this tutorial, we are going to create a custom folder :code:`/home/USERNAME/opt` containing 
+In this tutorial, we are going to create a custom folder :code:`~/opt` containing 
 the folders :code:`lib` and :code:`include`. This will be our directory to install all our CMake packages.
-
-.. hint:: 
-  Replace :code:`USERNAME` by your specific username. For instance, if your username is :code:`juanjqo`, your directory will be located in :code:`/home/juanjqo/opt`
 
 
 .. code-block:: console
@@ -28,7 +25,7 @@ Then, we update the LD_LIBRARY_PATH in :code:`~/.bashrc`.
 
 .. code-block:: console
 
-    echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/USERNAME/opt/lib" >> ~/.bashrc
+    echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/opt/lib" >> ~/.bashrc
     source ~/.bashrc
 
 
@@ -64,7 +61,7 @@ This example shows how to build and install the DQ robotics library to be used i
     git clone https://github.com/dqrobotics/cpp.git
     cd cpp
     mkdir build && cd build
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/USERNAME/opt .. 
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=~/opt .. 
     make -j16
     make install
 
