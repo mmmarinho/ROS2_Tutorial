@@ -66,7 +66,7 @@ Don't forget to declare the parameter!
 .. note::
 
    According to the `official documentation <https://docs.ros.org/en/humble/Concepts/Basic/About-Parameters.html>`_, it is possible to work with undeclared parameters, but
-   I recommend against for basic usage.
+   I recommend against this for basic usage.
 
 It's easy to forget it, but :code:`Node.get_parameter()` will not work if the parameter was not first declared with :code:`Node.declare_parameter()`. Don't forget it!
 
@@ -184,19 +184,19 @@ we set for the executable in the :file:`setup.py`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
-   :lines: 8,9
+   :lines: 10,11
 
 Besides the parameters, we can configure the name of the Node, such that each is unique
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
-   :lines: 10
+   :lines: 12
 
 Finally, our parameters are defined using a dictionary within a list, namely
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
-   :lines: 12-16
+   :lines: 14-18
 
 The :file:`setup.py`
 --------------------
