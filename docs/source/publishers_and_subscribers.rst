@@ -88,7 +88,7 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 |:code:`topic`       |  The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.                              |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-|:code:`qos_profile` |  The simplest interpretation for this parameter is the number of messages that will be stored in the :code:`spin(...)` takes too long to process them.   |
+|:code:`qos_profile` |  The simplest interpretation for this parameter is the maximum number of messages that will be stored in a buffer if your node (including :code:`spin(...)`) takes too long to process them.   |
 |                    |  (See more on  `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.)                                 |
 +--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
