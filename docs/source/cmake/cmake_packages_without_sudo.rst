@@ -17,14 +17,15 @@ the folders :code:`lib` and :code:`include`. This will be our directory to insta
 .. code-block:: console
 
     cd ~/
-    mkdir opt && cd opt
-    mkdir include
-    mkdir lib
+    mkdir -p opt && cd opt
+    mkdir -p include
+    mkdir -p lib
 
 Then, we update the LD_LIBRARY_PATH in :code:`~/.bashrc`.    
 
 .. code-block:: console
 
+    echo "# Update the environment variable LD_LIBRARY_PATH to include ~/opt/lib, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
     echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/opt/lib" >> ~/.bashrc
     source ~/.bashrc
 
@@ -42,7 +43,7 @@ To install a CMake package, we set the :code:`CMAKE_INSTALL_PREFIX:PATH` flag wi
 .. code-block:: console
 
     cmake -DCMAKE_INSTALL_PREFIX:PATH=~/opt .. 
-    make -j16
+    make 
     make install
 
 
@@ -62,7 +63,7 @@ This example shows how to build and install the DQ robotics library to be used i
     cd cpp
     mkdir build && cd build
     cmake -DCMAKE_INSTALL_PREFIX:PATH=~/opt .. 
-    make -j16
+    make 
     make install
 
 
