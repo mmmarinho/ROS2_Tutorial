@@ -52,6 +52,11 @@ Example: DQ robotics library
 
 This example shows how to build and install the DQ robotics library to be used in your CMake project.
 
+.. note:: 
+  If you use an active Ubuntu LTS version and have sudo access, you can install the DQ Robotics library using a few
+  commands in the terminal. Check this [link](https://dqrobotics.github.io/). 
+
+
 .. warning:: 
   This example assumes you have git, CMake, Eigen, and a C++ compiler installed in your GNU/Linux distribution.
 
