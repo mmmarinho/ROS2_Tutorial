@@ -64,10 +64,11 @@ Package-related sources
               ├── launch
               │   └── real_robot_launch.py
               ├── package.xml
+              ├── scripts
+              │   └── joint_interface_example.py
               └── src
                   ├── sas_robot_driver_myrobot.cpp
                   └── sas_robot_driver_myrobot_node.cpp
-
 
 The files already exist, we just need to modify them as follows
 
@@ -103,7 +104,7 @@ Making your own ``sas`` robot drivers
    #. :file:`src/sas_robot_driver_myrobot.cpp` with the driver's class implementation. Any internal libraries or drivers must be included here so that they are not externally visible.
    #. :file:`src/sas_robot_driver_myrobot_node.cpp`.
 
-Create all relevant files
+Let's create all the files used in the remainder of this tutorial.
 
 .. code-block:: console
 
@@ -124,19 +125,21 @@ The robot driver class
 .. admonition:: In this step, we'll work on these.
 
     .. code-block:: console
-        :emphasize-lines: 5,10
+          :emphasize-lines: 5,12
 
-  └── sas_robot_driver_myrobot
-      ├── CMakeLists.txt
-      ├── include
-      │   └── sas_robot_driver_myrobot
-      │       └── sas_robot_driver_myrobot.hpp
-      ├── launch
-      │   └── real_robot_launch.py
-      ├── package.xml
-      └── src
-          ├── sas_robot_driver_myrobot.cpp
-          └── sas_robot_driver_myrobot_node.cpp
+          └── sas_robot_driver_myrobot
+              ├── CMakeLists.txt
+              ├── include
+              │   └── sas_robot_driver_myrobot
+              │       └── sas_robot_driver_myrobot.hpp
+              ├── launch
+              │   └── real_robot_launch.py
+              ├── package.xml
+              ├── scripts
+              │   └── joint_interface_example.py
+              └── src
+                  ├── sas_robot_driver_myrobot.cpp
+                  └── sas_robot_driver_myrobot_node.cpp
 
 The example class file has two important design choices to note.
 
@@ -161,12 +164,41 @@ don't have to worry about source files specific to the robot and that your packa
 
     .. tab-item:: sas_robot_driver_myrobot.cpp
 
-        :download:`sas_robot_driver_myrobot.cpp <../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot.cpp`
+        :download:`sas_robot_driver_myrobot.cpp <../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot.cpp>`
 
         .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot.cpp
            :language: cpp
            :linenos:
            :lines: 25-
+
+Writing the ROS2 Node
+---------------------
+
+.. admonition:: In this step, we'll work on this.
+
+    .. code-block:: console
+          :emphasize-lines: 13
+
+          └── sas_robot_driver_myrobot
+              ├── CMakeLists.txt
+              ├── include
+              │   └── sas_robot_driver_myrobot
+              │       └── sas_robot_driver_myrobot.hpp
+              ├── launch
+              │   └── real_robot_launch.py
+              ├── package.xml
+              ├── scripts
+              │   └── joint_interface_example.py
+              └── src
+                  ├── sas_robot_driver_myrobot.cpp
+                  └── sas_robot_driver_myrobot_node.cpp
+
+:download:`sas_robot_driver_myrobot_node.cpp <../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot_node.cpp>`
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot_node.cpp
+   :language: cpp
+   :linenos:
+   :lines: 1-
 
 Contents of the launch file
 ---------------------------
@@ -174,19 +206,21 @@ Contents of the launch file
 .. admonition:: In this step, we'll work on this.
 
     .. code-block:: console
-        :emphasize-lines: 7
+          :emphasize-lines: 7
 
-  └── sas_robot_driver_myrobot
-      ├── CMakeLists.txt
-      ├── include
-      │   └── sas_robot_driver_myrobot
-      │       └── sas_robot_driver_myrobot.hpp
-      ├── launch
-      │   └── real_robot_launch.py
-      ├── package.xml
-      └── src
-          ├── sas_robot_driver_myrobot.cpp
-          └── sas_robot_driver_myrobot_node.cpp
+          └── sas_robot_driver_myrobot
+              ├── CMakeLists.txt
+              ├── include
+              │   └── sas_robot_driver_myrobot
+              │       └── sas_robot_driver_myrobot.hpp
+              ├── launch
+              │   └── real_robot_launch.py
+              ├── package.xml
+              ├── scripts
+              │   └── joint_interface_example.py
+              └── src
+                  ├── sas_robot_driver_myrobot.cpp
+                  └── sas_robot_driver_myrobot_node.cpp
 
 Running the launch file
 -----------------------
@@ -217,3 +251,25 @@ we created so far had any mention to topics or subscribers. All are created by :
   /myrobot_1/set/target_joint_velocities
   /parameter_events
   /rosout
+
+Accessing through Python
+------------------------
+
+.. admonition:: In this step, we'll work on this.
+
+    .. code-block:: console
+          :emphasize-lines: 10
+
+          └── sas_robot_driver_myrobot
+              ├── CMakeLists.txt
+              ├── include
+              │   └── sas_robot_driver_myrobot
+              │       └── sas_robot_driver_myrobot.hpp
+              ├── launch
+              │   └── real_robot_launch.py
+              ├── package.xml
+              ├── scripts
+              │   └── joint_interface_example.py
+              └── src
+                  ├── sas_robot_driver_myrobot.cpp
+                  └── sas_robot_driver_myrobot_node.cpp
