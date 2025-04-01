@@ -1,5 +1,9 @@
 Create the package
-------------------
+==================
+
+The first step is to create the package with the correct dependencies. In this example we depend on
+:program:`sas_core`, :program:`sas_common`, and :program:`sas_robot_driver`. Using :program:`ros2 pkg create`
+we do
 
 .. code-block:: console
 
@@ -92,3 +96,18 @@ Making your own ``sas`` robot drivers
    #. :file:`include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp` with the driver's class definition that that inherits from ``sas_robot_driver``. This file must not include any internal driver or library files because it will be exported.
    #. :file:`src/sas_robot_driver_myrobot.cpp` with the driver's class implementation. Any internal libraries or drivers must be included here so that they are not externally visible.
    #. :file:`src/sas_robot_driver_myrobot_node.cpp`.
+
+Create all relevant files
+
+.. code-block:: console
+
+  cd ~/sas_tutorial_workspace/src/sas_robot_driver_myrobot
+  mkdir -p src
+  touch src/sas_robot_driver_myrobot.cpp
+  touch src/sas_robot_driver_myrobot_node.cpp
+  mkdir -p include/sas_robot_driver_myrobot
+  touch include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
+
+Contents of the header file
+---------------------------
+
