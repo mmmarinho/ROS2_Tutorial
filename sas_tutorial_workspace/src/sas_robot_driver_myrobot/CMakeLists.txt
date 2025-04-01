@@ -124,6 +124,7 @@ install(DIRECTORY
 # vvvvvvvvvvvvvvvvvvvvv #
 install(DIRECTORY
   scripts/
+  FILE_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
   DESTINATION lib/${PROJECT_NAME}
 )
 # ^^^^^^^^^^^^^^^^^^^ #
