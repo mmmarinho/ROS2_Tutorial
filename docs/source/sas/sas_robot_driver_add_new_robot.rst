@@ -93,9 +93,6 @@ The files already exist, we just need to modify them as follows
 In :file:`CMakeLists.txt` we have a sequence of four blocks. These are all directly related to ROS2 and although in
 this tutorial I define a best practice, this is not particular to ``sas``.
 
-
-
-
 Making your own ``sas`` robot drivers
 -------------------------------------
 
@@ -179,7 +176,6 @@ added or removed.
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
    :language: cpp
-   :linenos:
    :lines: 36-40
 
 Second, we rely on the `PIMPL idiom <https://en.cppreference.com/w/cpp/language/pimpl>`_. This idiom is important to
@@ -189,7 +185,6 @@ is an important design aspect and should not be confused simply with aesthetics 
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
    :language: cpp
-   :linenos:
    :lines: 47-49
 
 When using the `PIMPL idiom <https://en.cppreference.com/w/cpp/language/pimpl>`_ it is important not to forget that the
@@ -198,7 +193,6 @@ this will depend heavily on the robot drivers.
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot.cpp
    :language: cpp
-   :linenos:
    :lines: 36-51
 
 Writing the ROS2 Node
@@ -261,11 +255,12 @@ The launch file will be like so.
    :linenos:
    :lines: 5-
 
-The parameters should be no surprise defined as follows.
+The parameters should be no surprise defined as follows. The only one that was not defined by our struct
+``RobotDriverMyrobotConfiguration``, namely ``thread_sampling_time_sec``, is a parameter of ``sas::RobotDriverROSConfiguration``
+that defines the sampling time of the ROS2 loop.
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/launch/real_robot_launch.py
    :language: python
-   :linenos:
    :lines: 18-23
 
 The most memorable aspect with respect to ``sas`` is that the ``name`` will define the topic prefixes. This is important
@@ -273,7 +268,6 @@ to match other elements of ``sas``.
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/launch/real_robot_launch.py
    :language: python
-   :linenos:
    :lines: 17
 
 Running the launch file
