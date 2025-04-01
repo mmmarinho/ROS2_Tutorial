@@ -17,7 +17,6 @@ which outputs
 .. dropdown:: ros2 pkg create output
 
     .. code-block:: console
-        :emphasize-lines: 1-2
     
         going to create a new package
         package name: sas_robot_driver_myrobot
@@ -81,7 +80,6 @@ The files already exist, we just need to modify them as follows
         .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/package.xml
            :language: xml
            :linenos:
-           :emphasize-lines: 10,18
 
     .. tab-item:: CMakeLists.txt
 
@@ -90,7 +88,7 @@ The files already exist, we just need to modify them as follows
         .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
            :language: cmake
            :linenos:
-           :emphasize-lines: 12-47
+           :emphasize-lines: 10,16-132
 
 
 Making your own ``sas`` robot drivers
@@ -100,9 +98,9 @@ Making your own ``sas`` robot drivers
 
    For each new robot called ``myrobot`` we have
 
-   #. :file:`include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp` with the driver's class definition that that inherits from ``sas_robot_driver``. This file must not include any internal driver or library files because it will be exported.
-   #. :file:`src/sas_robot_driver_myrobot.cpp` with the driver's class implementation. Any internal libraries or drivers must be included here so that they are not externally visible.
-   #. :file:`src/sas_robot_driver_myrobot_node.cpp`.
+   #. :file:`sas_robot_driver_myrobot.hpp` with the driver's class definition that that inherits from ``sas_robot_driver``. This file must not include any internal driver or library files because it will be exported.
+   #. :file:`sas_robot_driver_myrobot.cpp` with the driver's class implementation. Any internal libraries or drivers must be included here so that they are not externally visible.
+   #. :file:`sas_robot_driver_myrobot_node.cpp` that configures the driver and calls the ROS2 loop.
 
 Let's create all the files used in the remainder of this tutorial.
 
@@ -221,6 +219,30 @@ Contents of the launch file
               └── src
                   ├── sas_robot_driver_myrobot.cpp
                   └── sas_robot_driver_myrobot_node.cpp
+
+The launch file will be like so.
+
+:download:`real_robot_launch.py <../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/launch/real_robot_launch.py>`
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/launch/real_robot_launch.py
+   :language: python
+   :linenos:
+   :lines: 5-
+
+The parameters should be no surprise defined as follows.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/launch/real_robot_launch.py
+   :language: python
+   :linenos:
+   :lines: 18-23
+
+The most memorable aspect with respect to ``sas`` is that the ``name`` will define the topic prefixes. This is important
+to match other elements of ``sas``.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/launch/real_robot_launch.py
+   :language: python
+   :linenos:
+   :lines: 17
 
 Running the launch file
 -----------------------

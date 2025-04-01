@@ -2,11 +2,8 @@
 Run this script in a different terminal window or tab. Be ready to close this,
 as this activates the real robot if the connection is successful.
 """
-import os.path
-
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
