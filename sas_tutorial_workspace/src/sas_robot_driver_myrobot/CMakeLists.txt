@@ -106,6 +106,19 @@ unset(RCLCPP_LOCAL_BINARY_NAME)
 # CPP Binary Block [END] #
 ##########################
 
+########################
+# Launch Block [BEGIN] #
+# vvvvvvvvvvvvvvvvvvvv #
+# According to https://github.com/SmartArmStack/sas_robot_driver/blob/ros2/CMakeLists.txt
+##### LAUNCH FILES #####
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
+# ^^^^^^^^^^^^^^^^^^ #
+# Launch Block [END] #
+######################
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

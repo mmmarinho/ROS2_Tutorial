@@ -107,6 +107,8 @@ Create all relevant files
   touch src/sas_robot_driver_myrobot_node.cpp
   mkdir -p include/sas_robot_driver_myrobot
   touch include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
+  mkdir -p launch
+  touch launch/real_robot_launch.py
 
 Contents of the header file
 ---------------------------
