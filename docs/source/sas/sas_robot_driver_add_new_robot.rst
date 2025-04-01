@@ -54,14 +54,20 @@ Package-related sources
 .. admonition:: In this step, we'll work on these.
 
     .. code-block:: console
-        :emphasize-lines: 2,6
+        :emphasize-lines: 2,8
 
-        └── sas_robot_driver_myrobot
-            ├── CMakeLists.txt
-            ├── include
-            │   └── sas_robot_driver_myrobot
-            ├── package.xml
-            └── src
+  └── sas_robot_driver_myrobot
+      ├── CMakeLists.txt
+      ├── include
+      │   └── sas_robot_driver_myrobot
+      │       └── sas_robot_driver_myrobot.hpp
+      ├── launch
+      │   └── real_robot_launch.py
+      ├── package.xml
+      └── src
+          ├── sas_robot_driver_myrobot.cpp
+          └── sas_robot_driver_myrobot_node.cpp
+
 
 The files already exist, we just need to modify them as follows
 
@@ -110,6 +116,102 @@ Create all relevant files
   mkdir -p launch
   touch launch/real_robot_launch.py
 
-Contents of the header file
+The robot driver class
+----------------------
+
+.. admonition:: In this step, we'll work on these.
+
+    .. code-block:: console
+        :emphasize-lines: 5,10
+
+  └── sas_robot_driver_myrobot
+      ├── CMakeLists.txt
+      ├── include
+      │   └── sas_robot_driver_myrobot
+      │       └── sas_robot_driver_myrobot.hpp
+      ├── launch
+      │   └── real_robot_launch.py
+      ├── package.xml
+      └── src
+          ├── sas_robot_driver_myrobot.cpp
+          └── sas_robot_driver_myrobot_node.cpp
+
+The example class file has two important design choices to note.
+
+First, we rely on the struct ``RobotDriverMyrobotConfiguration``
+to simplify interaction with the constructor. This reduces the amount of code that needs to be changed if a parameter is
+added or removed.
+
+Second, we rely on the `PIMPL idiom <https://en.cppreference.com/w/cpp/language/pimpl>`_. This idiom is important to
+prevent driver internals to pollute the exported header. This is a very important step to guarantee that your users
+don't have to worry about source files specific to the robot and that your package is correctly self-contained.
+
+.. tab-set::
+
+    .. tab-item:: sas_robot_driver_myrobot.hpp
+
+        :download:`sas_robot_driver_myrobot.hpp <../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp>`
+
+        .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
+           :language: cpp
+           :linenos:
+           :lines: 26-
+
+    .. tab-item:: sas_robot_driver_myrobot.cpp
+
+        :download:`sas_robot_driver_myrobot.cpp <../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot.cpp`
+
+        .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot.cpp
+           :language: cpp
+           :linenos:
+           :lines: 25-
+
+Contents of the launch file
 ---------------------------
 
+.. admonition:: In this step, we'll work on this.
+
+    .. code-block:: console
+        :emphasize-lines: 7
+
+  └── sas_robot_driver_myrobot
+      ├── CMakeLists.txt
+      ├── include
+      │   └── sas_robot_driver_myrobot
+      │       └── sas_robot_driver_myrobot.hpp
+      ├── launch
+      │   └── real_robot_launch.py
+      ├── package.xml
+      └── src
+          ├── sas_robot_driver_myrobot.cpp
+          └── sas_robot_driver_myrobot_node.cpp
+
+Running the launch file
+-----------------------
+
+.. code-block:: console
+
+  ros2 launch sas_robot_driver_myrobot real_robot_launch.py
+
+In another terminal
+
+.. code-block:: console
+
+  ros2 topic list
+
+will show all the available topics that were created for you, freely. Notice that in none of the source files
+we created so far had any mention to topics or subscribers. All are created by :program:`sas`.
+
+.. code-block:: console
+
+  /myrobot_1/get/home_states
+  /myrobot_1/get/joint_positions_max
+  /myrobot_1/get/joint_positions_min
+  /myrobot_1/get/joint_states
+  /myrobot_1/set/clear_positions
+  /myrobot_1/set/homing_signal
+  /myrobot_1/set/target_joint_forces
+  /myrobot_1/set/target_joint_positions
+  /myrobot_1/set/target_joint_velocities
+  /parameter_events
+  /rosout

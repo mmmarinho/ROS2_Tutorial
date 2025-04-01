@@ -117,7 +117,7 @@ void RobotDriverMyrobot::connect()
 
     //Usually after the connection is established we can read joint positions
     //but not all drivers work like this
-    impl_->joint_positions_ << 0, 0, 0, 0, 0, 0;
+    impl_->joint_positions_ = (VectorXd(6) << 0, 0, 0, 0, 0, 0).finished();
 }
 
 /**

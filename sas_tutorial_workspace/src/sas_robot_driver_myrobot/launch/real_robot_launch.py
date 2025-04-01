@@ -17,7 +17,7 @@ def generate_launch_description():
             emulate_tty=True,
             package='sas_robot_driver_myrobot',
             executable='sas_robot_driver_myrobot_node',
-            name='ur_1',
+            name='myrobot_1',
             parameters=[{
                 "ip": "127.0.0.1",
                 "joint_limits_min": [-360.0, -360.0, -360.0, -360.0, -360.0, -720.0],
