@@ -119,6 +119,17 @@ install(DIRECTORY
 # Launch Block [END] #
 ######################
 
+#########################
+# Scripts Block [BEGIN] #
+# vvvvvvvvvvvvvvvvvvvvv #
+install(DIRECTORY
+  scripts/
+  DESTINATION lib/${PROJECT_NAME}
+)
+# ^^^^^^^^^^^^^^^^^^^ #
+# Scripts Block [END] #
+#######################
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

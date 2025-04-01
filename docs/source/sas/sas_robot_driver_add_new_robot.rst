@@ -54,19 +54,19 @@ Package-related sources
 .. admonition:: In this step, we'll work on these.
 
     .. code-block:: console
-        :emphasize-lines: 2,8
+          :emphasize-lines: 2,8
 
-  └── sas_robot_driver_myrobot
-      ├── CMakeLists.txt
-      ├── include
-      │   └── sas_robot_driver_myrobot
-      │       └── sas_robot_driver_myrobot.hpp
-      ├── launch
-      │   └── real_robot_launch.py
-      ├── package.xml
-      └── src
-          ├── sas_robot_driver_myrobot.cpp
-          └── sas_robot_driver_myrobot_node.cpp
+          └── sas_robot_driver_myrobot
+              ├── CMakeLists.txt
+              ├── include
+              │   └── sas_robot_driver_myrobot
+              │       └── sas_robot_driver_myrobot.hpp
+              ├── launch
+              │   └── real_robot_launch.py
+              ├── package.xml
+              └── src
+                  ├── sas_robot_driver_myrobot.cpp
+                  └── sas_robot_driver_myrobot_node.cpp
 
 
 The files already exist, we just need to modify them as follows
@@ -115,6 +115,8 @@ Create all relevant files
   touch include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
   mkdir -p launch
   touch launch/real_robot_launch.py
+  mkdir -p scripts
+  touch scripts/joint_interface_example.py
 
 The robot driver class
 ----------------------
