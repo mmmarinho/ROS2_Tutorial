@@ -90,17 +90,27 @@ The files already exist, we just need to modify them as follows
            :linenos:
            :emphasize-lines: 10,16-132
 
+In :file:`CMakeLists.txt` we have a sequence of four blocks. These are all directly related to ROS2 and although in
+this tutorial I define a best practice, this is not particular to ``sas``.
+
+
+
 
 Making your own ``sas`` robot drivers
 -------------------------------------
 
 .. admonition:: (Murilo's) ``sas_robot_driver`` best practices
 
-   For each new robot called ``myrobot`` we have
+   For each new robot called ``myrobot`` we have the three steps below as a must
 
    #. :file:`sas_robot_driver_myrobot.hpp` with the driver's class definition that that inherits from ``sas_robot_driver``. This file must not include any internal driver or library files because it will be exported.
    #. :file:`sas_robot_driver_myrobot.cpp` with the driver's class implementation. Any internal libraries or drivers must be included here so that they are not externally visible.
    #. :file:`sas_robot_driver_myrobot_node.cpp` that configures the driver and calls the ROS2 loop.
+
+   The creation of the following two is trivial
+
+   #. :file:`real_robot_launch.py` a suitable launch file to properly configure :file:`sas_robot_driver_myrobot_node.cpp`.
+   #. :file:`joint_interface_example.py` a Python script to control the C++ node (if needed).
 
 Let's create all the files used in the remainder of this tutorial.
 
@@ -139,15 +149,7 @@ The robot driver class
                   ├── sas_robot_driver_myrobot.cpp
                   └── sas_robot_driver_myrobot_node.cpp
 
-The example class file has two important design choices to note.
-
-First, we rely on the struct ``RobotDriverMyrobotConfiguration``
-to simplify interaction with the constructor. This reduces the amount of code that needs to be changed if a parameter is
-added or removed.
-
-Second, we rely on the `PIMPL idiom <https://en.cppreference.com/w/cpp/language/pimpl>`_. This idiom is important to
-prevent driver internals to pollute the exported header. This is a very important step to guarantee that your users
-don't have to worry about source files specific to the robot and that your package is correctly self-contained.
+The files in question are as follows.
 
 .. tab-set::
 
@@ -168,6 +170,36 @@ don't have to worry about source files specific to the robot and that your packa
            :language: cpp
            :linenos:
            :lines: 25-
+
+The example class file has two important design choices to note.
+
+First, we rely on the struct ``RobotDriverMyrobotConfiguration``
+to simplify interaction with the constructor. This reduces the amount of code that needs to be changed if a parameter is
+added or removed.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
+   :language: cpp
+   :linenos:
+   :lines: 36-40
+
+Second, we rely on the `PIMPL idiom <https://en.cppreference.com/w/cpp/language/pimpl>`_. This idiom is important to
+prevent driver internals to pollute the exported header. This is a very important step to guarantee that your users
+don't have to worry about source files specific to the robot and that your package is correctly self-contained. This
+is an important design aspect and should not be confused simply with aesthetics or my constant need to sound smart.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
+   :language: cpp
+   :linenos:
+   :lines: 47-49
+
+When using the `PIMPL idiom <https://en.cppreference.com/w/cpp/language/pimpl>`_ it is important not to forget that the
+definition of the implementation class is made in the source. In this example, it is simply a dummy, but in practice
+this will depend heavily on the robot drivers.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot.cpp
+   :language: cpp
+   :linenos:
+   :lines: 36-51
 
 Writing the ROS2 Node
 ---------------------
@@ -196,7 +228,7 @@ Writing the ROS2 Node
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot_node.cpp
    :language: cpp
    :linenos:
-   :lines: 1-
+   :lines: 25-
 
 Contents of the launch file
 ---------------------------
