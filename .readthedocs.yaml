@@ -27,3 +27,6 @@ formats:
 python:
    install:
    - requirements: docs/source/requirements.txt
+
+submodules:
+  include: all
