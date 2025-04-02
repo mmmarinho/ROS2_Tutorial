@@ -116,28 +116,28 @@ to other packages. We don't need direct access to this class in other ``sas`` pa
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
    :language: cmake
-   :emphasize-lines: 16-67
+   :lines: 16-67
 
 The second block, below, is made to compile the binary ``sas_robot_driver_myrobot_node`` which is the ROS2 node that manages
 the driver for us in ROS2. We will create this file in the following sections.
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
    :language: cmake
-   :emphasize-lines: 69-107
+   :lines: 69-107
 
 The third block, below, is meant to install any launch files that we add to the folder ``launch``. Remember that if these
 files are not installed we won't be able to call them with :program:`ros2 launch`.
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
    :language: cmake
-   :emphasize-lines: 109-119
+   :lines: 109-119
 
 Lastly, the forth block, below, is meant to install any Python files in the folder ``scripts``. Notice that we need to
 change the permissions for the files to be executable otherwise we won't be able to find them with :program:`ros2 run`.
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
    :language: cmake
-   :emphasize-lines: 121-132
+   :lines: 121-132
 
 TD;DR
 -----

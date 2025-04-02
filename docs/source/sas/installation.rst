@@ -30,3 +30,11 @@ Clone the sas repository
 
   cd ~/sas_tutorial_workspace/src
   git clone --recurse-submodules -b jazzy https://github.com/SmartArmStack/smart_arm_stack_ROS2.git sas
+
+Developer environment
+---------------------
+
+It is recommended to use the latest versions of
+
+1. `PyCharm Community <https://www.jetbrains.com/pycharm/download/?section=linux>`_
+2. `QtCreator <https://www.qt.io/download-qt-installer-oss>`_
