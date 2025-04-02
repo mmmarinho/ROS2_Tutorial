@@ -348,7 +348,15 @@ to match other elements of ``sas``.
    :lines: 17
 
 Running the launch file
-+++++++++++++++++++++++
+-----------------------
+
+Before running the launch file, remember to build and source
+
+.. code-block:: console
+
+    cd ~/sas_tutorial_workspace
+    colcon build
+    source install/setup.bash
 
 .. code-block:: console
 
@@ -407,15 +415,19 @@ Accessing through Python
    :linenos:
    :lines: 1, 27-
 
-
-
 With the :file:`launch` file running in one terminal, open another one and run
 
 .. code-block:: console
 
   ros2 topic echo /myrobot_1/get/joint_states
 
-Then, in yet another terminal, run the sample Python script
+Then, in yet another terminal, run the sample Python script. Before running the script, remember to build and source
+
+.. code-block:: console
+
+    cd ~/sas_tutorial_workspace
+    colcon build
+    source install/setup.bash
 
 .. code-block:: console
 
