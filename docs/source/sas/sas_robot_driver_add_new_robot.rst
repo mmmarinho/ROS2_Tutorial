@@ -405,7 +405,7 @@ Accessing through Python
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/scripts/joint_interface_example.py
    :language: python
    :linenos:
-   :lines: 27-
+   :lines: 1, 27-
 
 
 
