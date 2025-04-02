@@ -132,21 +132,21 @@ files are not installed we won't be able to call them with :program:`ros2 launch
    :language: cmake
    :lines: 109-119
 
-Lastly, the forth block, below, is meant to install any Python files in the folder ``scripts``. Notice that we need to
+Lastly, the fourth block, below, is meant to install any Python files in the folder ``scripts``. Notice that we need to
 change the permissions for the files to be executable otherwise we won't be able to find them with :program:`ros2 run`.
 
 .. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
    :language: cmake
    :lines: 121-132
 
-TD;DR
+TL;DR
 -----
 
 .. admonition:: (Murilo's) ``sas_robot_driver`` best practices
 
    For each new robot called ``myrobot`` we have the three steps below as a must
 
-   #. :file:`sas_robot_driver_myrobot.hpp` with the driver's class definition that that inherits from ``sas_robot_driver``. This file must not include any internal driver or library files because it will be exported.
+   #. :file:`sas_robot_driver_myrobot.hpp` with the driver's class definition that inherits from ``sas_robot_driver``. This file must not include any internal driver or library files because it will be exported.
    #. :file:`sas_robot_driver_myrobot.cpp` with the driver's class implementation. Any internal libraries or drivers must be included here so that they are not externally visible.
    #. :file:`sas_robot_driver_myrobot_node.cpp` that configures the driver and calls the ROS2 loop.
 
