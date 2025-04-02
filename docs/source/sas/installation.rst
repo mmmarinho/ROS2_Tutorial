@@ -1,6 +1,12 @@
 Pre-requisites
 --------------
 
+.. warning::
+
+   These instructions are for Ubuntu 24.04 and ROS2 Jazzy. You might be able to make this run in other settings,
+   but I am currently unable to provide support for those.
+
+
 1. `ROS2 Jazzy <https://docs.ros.org/en/jazzy/Installation/Alternatives/Ubuntu-Development-Setup.html>`_
 2. `dqrobotics CPP devel <https://dqroboticsgithubio.readthedocs.io/en/latest/installation/cpp.html#development-ppa>`_
 
