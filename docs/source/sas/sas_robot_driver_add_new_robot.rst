@@ -1,5 +1,21 @@
-Create the package
-==================
+Creating a new ``sas_robot_driver`` package
+=======================================
+
+Fortunately, ``sas`` already has a good number of drivers for popular robotic manipulators. Nonetheless, it is common to
+need the integration with new robotic systems. This tutorial will assist you in creating a suitable package.
+
+You might be wondering why go through the trouble of doing this. Simply put, creating a suitable ``sas`` package that has
+a subclass of ``sas::RobotDriver`` will allow you to
+
+#. Expose joint states and robot control inputs in ROS2 without programming a single subscriber, publisher, or service.
+#. Access a C++ driver via Python without any particular Python code for the new robot.
+#. Integrate with all other packages of ``sas``, such as the teleoperation packages.
+
+It's not too late to turn back now. Once you taste the forbidden ``sas`` fruit you will not want to go back to writing
+ROS2 publishers and subscribers by yourself.
+
+Creating the package
+--------------------
 
 The first step is to create the package with the correct dependencies. In this example we depend on
 :program:`sas_core`, :program:`sas_common`, and :program:`sas_robot_driver`. Using :program:`ros2 pkg create`
@@ -91,10 +107,40 @@ The files already exist, we just need to modify them as follows
            :emphasize-lines: 10,16-132
 
 In :file:`CMakeLists.txt` we have a sequence of four blocks. These are all directly related to ROS2 and although in
-this tutorial I define a best practice, this is not particular to ``sas``.
+this tutorial I define a best practice, this is not particular to ``sas``. My advice is to always rely on these blocks
+because :file:`CMakeLists.txt` can quickly become impossible to maintain if it is not organized.
 
-Making your own ``sas`` robot drivers
--------------------------------------
+The first block, below, is made to create a C++ library that will contain all the necessary driver information and our
+new ``sas::RobotDriver`` subclass. Doing so allows this project to have organized access to this library and exposes it
+to other packages. We don't need direct access to this class in other ``sas`` packages, but it is important to have this freedom.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
+   :language: cmake
+   :emphasize-lines: 16-67
+
+The second block, below, is made to compile the binary ``sas_robot_driver_myrobot_node`` which is the ROS2 node that manages
+the driver for us in ROS2. We will create this file in the following sections.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
+   :language: cmake
+   :emphasize-lines: 69-107
+
+The third block, below, is meant to install any launch files that we add to the folder ``launch``. Remember that if these
+files are not installed we won't be able to call them with :program:`ros2 launch`.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
+   :language: cmake
+   :emphasize-lines: 109-119
+
+Lastly, the forth block, below, is meant to install any Python files in the folder ``scripts``. Notice that we need to
+change the permissions for the files to be executable otherwise we won't be able to find them with :program:`ros2 run`.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/CMakeLists.txt
+   :language: cmake
+   :emphasize-lines: 121-132
+
+TD;DR
+-----
 
 .. admonition:: (Murilo's) ``sas_robot_driver`` best practices
 
@@ -108,6 +154,9 @@ Making your own ``sas`` robot drivers
 
    #. :file:`real_robot_launch.py` a suitable launch file to properly configure :file:`sas_robot_driver_myrobot_node.cpp`.
    #. :file:`joint_interface_example.py` a Python script to control the C++ node (if needed).
+
+Creating the ROS2 package
+-------------------------
 
 Let's create all the files used in the remainder of this tutorial.
 
@@ -124,8 +173,8 @@ Let's create all the files used in the remainder of this tutorial.
   mkdir -p scripts
   touch scripts/joint_interface_example.py
 
-The robot driver class
-----------------------
+The subclass of ``sas::RobotDriver``
+------------------------------------
 
 .. admonition:: In this step, we'll work on these.
 
@@ -168,9 +217,19 @@ The files in question are as follows.
            :linenos:
            :lines: 25-
 
-The example class file has two important design choices to note.
 
-First, we rely on the struct ``RobotDriverMyrobotConfiguration``
+The example class file has three important design choices to note.
+
+First, although self evident, we rely on subclass polymorphism to integrate new classes using the same code. To that end,
+our class inherits from ``sas::RobotDriver``. You will notice that ``sas::RobotDriver`` is defined in the package ``sas_core``. This is because the package ``sas_core``
+holds every code that does not depend on ROS2. Eventually the idea is to make a standalone package for this part of ``sas``.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/include/sas_robot_driver_myrobot/sas_robot_driver_myrobot.hpp
+   :language: cpp
+   :lines: 29-42
+   :emphasize-lines: 1,15
+
+Second, we rely on the struct ``RobotDriverMyrobotConfiguration``
 to simplify interaction with the constructor. This reduces the amount of code that needs to be changed if a parameter is
 added or removed.
 
@@ -178,7 +237,7 @@ added or removed.
    :language: cpp
    :lines: 36-40
 
-Second, we rely on the `PIMPL idiom <https://en.cppreference.com/w/cpp/language/pimpl>`_. This idiom is important to
+Third, we rely on the `PIMPL idiom <https://en.cppreference.com/w/cpp/language/pimpl>`_. This idiom is important to
 prevent driver internals to pollute the exported header. This is a very important step to guarantee that your users
 don't have to worry about source files specific to the robot and that your package is correctly self-contained. This
 is an important design aspect and should not be confused simply with aesthetics or my constant need to sound smart.
@@ -223,6 +282,24 @@ Writing the ROS2 Node
    :language: cpp
    :linenos:
    :lines: 25-
+
+There are two notable steps for this integration.
+
+First, we configure our newly created ``RobotDriverMyrobotConfiguration`` and the existing ``sas::RobotDriverROSConfiguration``
+by obtaining parameters from ROS2. Using ``sas::get_ros_parameter`` to do that reduces the amount of code to write and
+allows Exception generation and handling.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot_node.cpp
+   :language: cpp
+   :lines: 57-71
+
+Second, we create an instance of ``sas::RobotDriverROS``. This class will manage the creation of all ROS2 elements, such
+as publishers and subscribers, and loop through our ``sas::RobotDriver`` subclass. Notice that it has a smart pointer
+parameter of ``sas::RobotDriver``, so we just need to add as argument any suitable pointer to a subclass of it.
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/src/sas_robot_driver_myrobot_node.cpp
+   :language: cpp
+   :lines: 73-82
 
 Contents of the launch file
 ---------------------------
