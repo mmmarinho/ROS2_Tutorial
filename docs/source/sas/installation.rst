@@ -8,7 +8,7 @@ Pre-requisites
 
   sudo add-apt-repository ppa:dqrobotics-dev/development
   sudo apt-get update
-  sudo apt-get install libdqrobotics libdqrobotics-interface-json11 libdqrobotics-interface-coppeliasim libdqrobotics-interface-coppeliasim-zmq
+  sudo apt-get install libdqrobotics libdqrobotics-interface-json11 libdqrobotics-interface-coppeliasim libdqrobotics-interface-coppeliasim-zmq libdqrobotics-interface-vrep
 
 3. `dqrobotics Python devel <https://dqroboticsgithubio.readthedocs.io/en/latest/installation/python.html#installation-development>`_
 
