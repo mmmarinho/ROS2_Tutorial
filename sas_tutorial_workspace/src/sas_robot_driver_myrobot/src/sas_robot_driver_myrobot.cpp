@@ -41,7 +41,7 @@ public:
     bool motor_on{false};
 
     VectorXd joint_positions_;
-    VectorXd target_joint_positions_;
+
 
     Impl()
         {
@@ -93,7 +93,7 @@ void RobotDriverMyrobot::set_target_joint_positions(const VectorXd &desired_join
     if(desired_joint_positions_rad.size() != 6)
         throw std::runtime_error("Incorrect vector size in RobotDriverMyrobot::set_target_joint_positions");
 
-    impl_->target_joint_positions_ = desired_joint_positions_rad;
+    impl_->joint_positions_ = desired_joint_positions_rad;
 }
 
 /**
@@ -133,7 +133,7 @@ void RobotDriverMyrobot::initialize()
 {
     impl_->motor_on = true;
 
-    impl_->target_joint_positions_ = impl_->joint_positions_;
+
 }
 
 /**
@@ -143,7 +143,7 @@ void RobotDriverMyrobot::initialize()
 void RobotDriverMyrobot::deinitialize()
 {
     impl_->motor_on = false;
-    impl_->target_joint_positions_ = VectorXd();
+
 }
 
 /**

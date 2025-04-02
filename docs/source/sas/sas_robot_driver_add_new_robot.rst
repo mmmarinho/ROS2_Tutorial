@@ -348,7 +348,7 @@ to match other elements of ``sas``.
    :lines: 17
 
 Running the launch file
------------------------
++++++++++++++++++++++++
 
 .. code-block:: console
 
@@ -398,3 +398,99 @@ Accessing through Python
               └── src
                   ├── sas_robot_driver_myrobot.cpp
                   └── sas_robot_driver_myrobot_node.cpp
+
+
+:download:`joint_interface_example.py <../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/scripts/joint_interface_example.py>`
+
+.. literalinclude:: ../../../sas_tutorial_workspace/src/sas_robot_driver_myrobot/scripts/joint_interface_example.py
+   :language: python
+   :linenos:
+   :lines: 27-
+
+
+
+With the :file:`launch` file running in one terminal, open another one and run
+
+.. code-block:: console
+
+  ros2 topic echo /myrobot_1/get/joint_states
+
+Then, in yet another terminal, run the sample Python script
+
+.. code-block:: console
+
+  ros2 run sas_robot_driver_myrobot joint_interface_example.py
+
+The output of :file:`joint_interface_example.py` will be only descriptive.
+
+.. dropdown:: joint_interface_example.py output
+
+    .. code-block:: console
+
+        **************************************************************************
+        sas::Clock (c) Murilo M. Marinho (murilomarinho.info) 2016-2023 LGPLv3
+        **************************************************************************
+        **************************************************************************************
+        sas::RobotDriverClient (c) Murilo M. Marinho (murilomarinho.info) 2016-2023 LGPLv3
+        **************************************************************************************
+        [INFO] [1743579389.703532605] [sas_robot_driver_myrobot_joint_space_example_node_cpp]: ::Initializing RobotDriverClient with prefix myrobot_1
+        topic prefix = myrobot_1
+        joint positions = [0. 0. 0. 0. 0. 0.]
+
+
+While the magic happens in ROS2, therefore in the terminal in which we executed ``ros2 topic echo``
+
+.. dropdown:: ros2 topic echo output
+
+    .. code-block:: console
+
+        header:
+          stamp:
+            sec: 1743579392
+            nanosec: 471990465
+          frame_id: ''
+        name: []
+        position:
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        velocity: []
+        effort: []
+        ---
+        header:
+          stamp:
+            sec: 1743579392
+            nanosec: 474015460
+          frame_id: ''
+        name: []
+        position:
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        velocity: []
+        effort: []
+        ---
+        header:
+          stamp:
+            sec: 1743579392
+            nanosec: 475985122
+          frame_id: ''
+        name: []
+        position:
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        - 0.17141407117840998
+        velocity: []
+        effort: []
+
+
+
