@@ -1,5 +1,5 @@
 Creating a new ``sas_robot_driver`` package
-=======================================
+===========================================
 
 Fortunately, ``sas`` already has a good number of drivers for popular robotic manipulators. Nonetheless, it is common to
 need the integration with new robotic systems. This tutorial will assist you in creating a suitable package.
