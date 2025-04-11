@@ -56,29 +56,29 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    :maxdepth: 2
    :hidden:
 
-   setup/installation
-   setup/terminator
-   setup/workspace_setup
+   installation
+   terminator
+   workspace_setup
 
 .. toctree::
    :caption: ROS2 Python Package/Build Basics
    :maxdepth: 2
    :hidden:
 
-   python_packages_and_build/create_packages
-   python_packages_and_build/create_python_package
-   python_packages_and_build/create_python_node_with_template
-   python_packages_and_build/source_after_build
+   create_packages
+   create_python_package
+   create_python_node_with_template
+   source_after_build
 
 .. toctree::
    :caption: ROS2 Python Node Basics
    :maxdepth: 2
    :hidden:
    
-   python_node_basics/running_node
-   python_node_basics/editing_python_source
-   python_node_basics/create_python_node_from_scratch
-   python_node_basics/python_node_explained
+   running_node
+   editing_python_source
+   create_python_node_from_scratch
+   python_node_explained
 
 .. toctree::
    :caption: ROS2 Python Library Basics
