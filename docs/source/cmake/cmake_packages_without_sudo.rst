@@ -92,7 +92,7 @@ Example: include and link the DQ robotics in your project
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/CMakeLists.txt
            :language: cmake
            :linenos:
-           :emphasize-lines: 14,16,17   
+           :emphasize-lines: 17   
 
     .. tab-item:: test_dqrobotics.cpp
 
