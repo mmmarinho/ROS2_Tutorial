@@ -150,7 +150,7 @@ Making C++ ROS2 Nodes
             ├── print_forever_node.hpp
             └── print_forever_node_main.cpp
 
-These files do not exists, so we'll create them.
+These files do not exist, so we'll create them.
 
 .. tab-set::
 

@@ -110,11 +110,29 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    inspecting_parameters
 
 .. toctree::
+   :caption: ROS2 C++ Basics
+   :maxdepth: 2
+   :hidden:
+   
+   cpp/index
+   cpp/cpp_node
+   cpp/cpp_library
+   cpp/cpp_vent
+
+.. toctree::
+   :caption: SAS Basics
+   :maxdepth: 2
+   :hidden:
+   
+   sas/index
+   sas/installation
+   sas/sas_robot_driver_add_new_robot
+
+.. toctree::
    :caption: Other content
    :maxdepth: 2
    :hidden:
    
-   advanced
    faq
 
 Warnings

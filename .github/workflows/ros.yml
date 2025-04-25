@@ -35,6 +35,12 @@ jobs:
         uses: ros-tooling/setup-ros@v0.7
         with:
           required-ros-distributions: ${{ matrix.ros_distribution }}
+      - name: install DQ Robotics Devel
+        run: |
+          sudo apt-get -y install software-properties-common
+          sudo add-apt-repository ppa:dqrobotics-dev/development
+          sudo apt-get update
+          sudo apt-get -y install libdqrobotics libdqrobotics-interface-json11 libdqrobotics-interface-coppeliasim libdqrobotics-interface-coppeliasim-zmq 
       - name: build and test ROS 2
         if: ${{ matrix.ros_version == 2 }}
         uses: ros-tooling/action-ros-ci@v0.3
