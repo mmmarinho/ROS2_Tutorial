@@ -21,13 +21,21 @@ the folders :code:`lib` and :code:`include`. This will be our directory to insta
     mkdir -p include
     mkdir -p lib
 
-Then, we update the LD_LIBRARY_PATH in :code:`~/.bashrc`.    
+Then, we update the LD_LIBRARY_PATH, LIBRARY_PATH, and CPATH in :code:`~/.bashrc`.    
 
 .. code-block:: console
 
     echo "# Update the environment variable LD_LIBRARY_PATH to include ~/opt/lib, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
     echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/opt/lib" >> ~/.bashrc
+
+    echo "# Update the environment variable LIBRARY_PATH to include ~/opt/lib, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
+    echo "export LIBRARY_PATH=$LIBRARY_PATH:~/opt/lib" >> ~/.bashrc
+
+    echo "# Update the environment variable CPATH to include ~/opt/include, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
+    echo "export CPATH=$CPATH:~/opt/include" >> ~/.bashrc
+
     source ~/.bashrc
+
 
 
 .. image:: ../../images/cmake_without_sudo_steps.gif
