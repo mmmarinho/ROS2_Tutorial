@@ -9,9 +9,5 @@
    :maxdepth: 2
 
    cpp/index
-<<<<<<< HEAD
-   cmake/index
-=======
    sas/index
->>>>>>> origin/main
    
