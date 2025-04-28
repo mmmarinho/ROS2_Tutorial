@@ -90,18 +90,18 @@ Example: include and link the ProxSuite in your project
 
     .. tab-item:: CMakeLists.txt
 
-        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases/CMakeLists.txt>`
+        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt>`
         
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases/CMakeLists.txt
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt
            :language: cmake
            :linenos:
            :emphasize-lines: 17   
 
     .. tab-item:: test_qpoases.cpp
 
-        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases/src/test_qpoases.cpp>`
+        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp>`
 
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases/src/test_qpoases.cpp
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp
             :language: cpp
             :linenos:
             :emphasize-lines: 2,3   
