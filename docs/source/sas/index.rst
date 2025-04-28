@@ -19,4 +19,4 @@ Quick overview
     Setting up your system to use `SAS`.
 
 #. :doc:`Creating a new SASRobotDriver <sas_robot_driver_add_new_robot>` 
-    A quick memory refresher for the Python stuff we'll use in ROS2. First shown in `SAS` Workshop 2.
+    Creating a new subclass of `SASRobotDriver` and use it in `SAS`. First shown in `SAS` Workshop 2.
