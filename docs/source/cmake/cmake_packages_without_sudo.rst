@@ -53,14 +53,13 @@ To install a CMake package, we set the :code:`CMAKE_INSTALL_PREFIX:PATH` flag wi
     make install
 
 
-Example: DQ robotics library
------------------------------
+Example: Installing `ProxSuite <https://github.com/Simple-Robotics/proxsuite>`_
+-------------------------------------------------------------------------------
 
-This example shows how to build and install the DQ robotics library to be used in your CMake project.
+This example shows how to build and install the ProxSuite to be used in your CMake project.
 
 .. note:: 
-  If you use an active Ubuntu LTS version and have sudo access, you can install the DQ Robotics library using a few
-  commands in the terminal, as shown `here <https://dqrobotics.github.io/>`_. 
+  Check the `official documentation <https://github.com/Simple-Robotics/proxsuite>`_ to customize your ProxSuite installation . 
 
 
 .. warning:: 
@@ -70,11 +69,12 @@ This example shows how to build and install the DQ robotics library to be used i
 
 .. code-block:: console
 
-    git clone https://github.com/dqrobotics/cpp.git
-    cd cpp
+    cd ~/Downloads
+    git clone https://github.com/Simple-Robotics/proxsuite.git --recursive
+    cd proxsuite
     mkdir build && cd build
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=~/opt .. 
-    make 
+    cmake .. -DCMAKE_INSTALL_PREFIX:PATH=~/opt -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DBUILD_WITH_VECTORIZATION_SUPPORT=OFF 
+    make
     make install
 
 
@@ -85,16 +85,16 @@ Example: include and link the DQ robotics in your project
 
     .. tab-item:: CMakeLists.txt
 
-        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/CMakeLists.txt>`
+        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/CMakeLists.txt>`
         
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/CMakeLists.txt
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/CMakeLists.txt
            :language: cmake
            :linenos:
            :emphasize-lines: 17   
 
-    .. tab-item:: test_dqrobotics.cpp
+    .. tab-item:: test_proxsuite.cpp
 
-        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp>`
+        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/src/test_proxsuite.cpp>`
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp
             :language: cpp
