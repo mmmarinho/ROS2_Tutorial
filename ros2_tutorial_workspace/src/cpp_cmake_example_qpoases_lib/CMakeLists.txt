@@ -10,7 +10,6 @@ ADD_COMPILE_OPTIONS(-Werror=return-type
                     -Wall -Wextra -Wmissing-declarations
                     -Wredundant-decls -Woverloaded-virtual)
 
-       
 add_executable(${PROJECT_NAME}
                ${PROJECT_NAME}.cpp)
                

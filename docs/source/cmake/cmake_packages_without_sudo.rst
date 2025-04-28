@@ -67,7 +67,7 @@ This example shows how to build and install the qpOASES to be used in your CMake
 
 
 To install qpOASES as a shared library, we use the instructions provided by the DQ Robotics in \
-`cpp-interface-qpoase <https://github.com/dqrobotics/cpp-interface-qpoases>`_ specifying the
+`cpp-interface-qpoases <https://github.com/dqrobotics/cpp-interface-qpoases>`_ specifying the
 installation directory. 
 
 .. code-block:: console
@@ -83,7 +83,7 @@ installation directory.
     make install
 
 
-Example: include and link the ProxSuite in your project
+Example: include and link the qpOASES in your project
 -------------------------------------------------------
 
 .. tab-set::
@@ -107,6 +107,13 @@ Example: include and link the ProxSuite in your project
             :emphasize-lines: 2,3   
 
 
+ .. warning::
+
+    If you have the library installed in two directories, you need to ensure you are linking
+    the library you want. 
+
+For instance, let's say you have the DQ Robotics library installed globally (i.e., /usr/local/lib/) and locally (i.e., ~/opt/lib.), 
+and you want to use the local one.
 
 
 
