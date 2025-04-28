@@ -108,7 +108,6 @@ Example: include and link the qpOASES in your project
 
 
  .. warning::
-
     If you have the library installed in two directories, you need to ensure you are linking
     the library you want. 
 
