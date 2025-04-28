@@ -13,6 +13,7 @@ Create a custom folder
 In this tutorial, we are going to create a custom folder :code:`~/opt` containing 
 the folders :code:`lib` and :code:`include`. This will be our directory to install all our CMake packages.
 
+Run the following commands,
 
 .. code-block:: console
 
@@ -21,7 +22,9 @@ the folders :code:`lib` and :code:`include`. This will be our directory to insta
     mkdir -p include
     mkdir -p lib
 
-Then, we update the LD_LIBRARY_PATH, LIBRARY_PATH, and CPATH in :code:`~/.bashrc`.    
+Then, we update the LD_LIBRARY_PATH, LIBRARY_PATH, and CPATH in :code:`~/.bashrc`. 
+
+Do the following just once, so that all terminal windows automatically source this new workspace for you.
 
 .. code-block:: console
 
@@ -35,12 +38,7 @@ Then, we update the LD_LIBRARY_PATH, LIBRARY_PATH, and CPATH in :code:`~/.bashrc
     echo "export CPATH=$CPATH:~/opt/include" >> ~/.bashrc
 
     source ~/.bashrc
-
-
-
-.. image:: ../../images/cmake_without_sudo_steps.gif
-   :align: center    
-
+  
 
 Install a CMake package
 -----------------------
