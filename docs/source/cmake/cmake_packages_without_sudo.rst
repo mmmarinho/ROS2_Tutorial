@@ -56,10 +56,10 @@ To install a CMake package, we set the :code:`CMAKE_INSTALL_PREFIX:PATH` flag wi
 Example: Installing `qpOASES <https://github.com/coin-or/qpOASES>`_
 -------------------------------------------------------------------------------
 
-This example shows how to build and install the ProxSuite to be used in your CMake project.
+This example shows how to build and install the qpOASES to be used in your CMake project.
 
 .. note:: 
-  Check the `official documentation <https://github.com/coin-or/qpOASES>`_ for more details. 
+  Check the `official qpOASES documentation <https://github.com/coin-or/qpOASES>`_ for more details. 
 
 
 .. warning:: 
@@ -90,18 +90,18 @@ Example: include and link the ProxSuite in your project
 
     .. tab-item:: CMakeLists.txt
 
-        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/CMakeLists.txt>`
+        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases/CMakeLists.txt>`
         
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/CMakeLists.txt
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases/CMakeLists.txt
            :language: cmake
            :linenos:
            :emphasize-lines: 17   
 
-    .. tab-item:: test_proxsuite.cpp
+    .. tab-item:: test_qpoases.cpp
 
-        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/src/test_proxsuite.cpp>`
+        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases/src/test_qpoases.cpp>`
 
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/src/test_dqrobotics.cpp
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases/src/test_qpoases.cpp
             :language: cpp
             :linenos:
             :emphasize-lines: 2,3   
