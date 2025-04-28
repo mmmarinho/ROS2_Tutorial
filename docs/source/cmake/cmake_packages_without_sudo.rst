@@ -53,33 +53,38 @@ To install a CMake package, we set the :code:`CMAKE_INSTALL_PREFIX:PATH` flag wi
     make install
 
 
-Example: Installing `ProxSuite <https://github.com/Simple-Robotics/proxsuite>`_
+Example: Installing `qpOASES <https://github.com/coin-or/qpOASES>`_
 -------------------------------------------------------------------------------
 
 This example shows how to build and install the ProxSuite to be used in your CMake project.
 
 .. note:: 
-  Check the `official documentation <https://github.com/Simple-Robotics/proxsuite>`_ to customize your ProxSuite installation . 
+  Check the `official documentation <https://github.com/coin-or/qpOASES>`_ for more details. 
 
 
 .. warning:: 
   This example assumes you have git, CMake, Eigen, and a C++ compiler installed in your GNU/Linux distribution.
 
 
+To install qpOASES as a shared library, we use the instructions provided by the DQ Robotics \
+(`cpp-interface-qpoase<https://github.com/dqrobotics/cpp-interface-qpoases>`_) specifying the
+installation directory. 
 
 .. code-block:: console
 
     cd ~/Downloads
-    git clone https://github.com/Simple-Robotics/proxsuite.git --recursive
-    cd proxsuite
-    mkdir build && cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX:PATH=~/opt -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DBUILD_WITH_VECTORIZATION_SUPPORT=OFF 
-    make
+    git clone https://github.com/coin-or/qpOASES.git
+    cd qpOASES
+    sed -i -e 's/option(BUILD_SHARED_LIBS "If ON, build shared library instead of static" OFF)/option(BUILD_SHARED_LIBS "If ON, build shared library instead of static" ON)/g' CMakeLists.txt
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX:PATH=~/opt
+    make 
     make install
 
 
-Example: include and link the DQ robotics in your project
-----------------------------------------------------------
+Example: include and link the ProxSuite in your project
+-------------------------------------------------------
 
 .. tab-set::
 
@@ -96,10 +101,10 @@ Example: include and link the DQ robotics in your project
 
         :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/src/test_proxsuite.cpp>`
 
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_dqrobotics/src/test_dqrobotics.cpp
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_proxsuite/src/test_dqrobotics.cpp
             :language: cpp
             :linenos:
-            :emphasize-lines: 2       
+            :emphasize-lines: 2,3   
 
 
 
