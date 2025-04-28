@@ -67,7 +67,7 @@ This example shows how to build and install the qpOASES to be used in your CMake
 
 
 To install qpOASES as a shared library, we use the instructions provided by the DQ Robotics in \
-`cpp-interface-qpoase<https://github.com/dqrobotics/cpp-interface-qpoases>`_ specifying the
+`cpp-interface-qpoase <https://github.com/dqrobotics/cpp-interface-qpoases>`_ specifying the
 installation directory. 
 
 .. code-block:: console
