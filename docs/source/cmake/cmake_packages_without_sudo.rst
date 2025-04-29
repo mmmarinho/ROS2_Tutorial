@@ -110,7 +110,7 @@ Example: include and link the qpOASES in your project
 .. warning:: 
   If you have the library installed in two directories, you need to ensure you are linking the library you want. 
 
-For instance, let's say you have the DQ Robotics library installed globally (i.e., /usr/local/lib/) and locally (i.e., ~/opt/lib.), 
+For instance, let's say you have the DQ Robotics library installed globally (i.e., :code:`/usr/local/lib/`) and locally (i.e., :code:`~/opt/lib`), 
 and you want to use the local one. Then, you can use :code:`find_library` with the :code:`NO_DEFAULT_PATH` flag.
 
 
