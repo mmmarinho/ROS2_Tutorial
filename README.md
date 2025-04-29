@@ -21,4 +21,38 @@ Contributors
 ------------
 
 <!-- readme: contributors -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/mmmarinho">
+                    <img src="https://avatars.githubusercontent.com/u/46012516?v=4" width="100;" alt="mmmarinho"/>
+                    <br />
+                    <sub><b>Murilo M Marinho</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/anachristinaac">
+                    <img src="https://avatars.githubusercontent.com/u/50972618?v=4" width="100;" alt="anachristinaac"/>
+                    <br />
+                    <sub><b>anachristinaac</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Joshua-Bettles">
+                    <img src="https://avatars.githubusercontent.com/u/60298391?v=4" width="100;" alt="Joshua-Bettles"/>
+                    <br />
+                    <sub><b>Joshua Bettles</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/juanjqo">
+                    <img src="https://avatars.githubusercontent.com/u/23158313?v=4" width="100;" alt="juanjqo"/>
+                    <br />
+                    <sub><b>Juan José Quiroz Omaña</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: contributors -end -->
