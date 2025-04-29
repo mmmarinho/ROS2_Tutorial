@@ -114,19 +114,8 @@ For instance, let's say you have the DQ Robotics library installed globally (i.e
 and you want to use the local one. Then, you can use :code:`find_library` with the :code:`NO_DEFAULT_PATH` flag.
 
 
-.. code-block:: console
-
-    find_library(my_local_dqrobotics 
-                NAMES dqrobotics
-                PATHS ~/opt/lib
-                NO_DEFAULT_PATH
-                )  
-    if (my_local_dqrobotics)
-        message(STATUS "Local DQ Robotics installed in ${my_local_dqrobotics}")
-        target_link_libraries(${PROJECT_NAME}
-                                ${my_local_dqrobotics})
-    else()
-        message(FATAL_ERROR "Local DQ Robotics not found!")
-    endif() 
-
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/examples/CMakeLists.txt
+    :language: cmake
+    :linenos:
+    :emphasize-lines: 3,4,9   
 
