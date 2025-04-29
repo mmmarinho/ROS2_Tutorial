@@ -133,6 +133,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    :maxdepth: 2
    :hidden:
    
+   cmake/index
    faq
 
 Warnings
