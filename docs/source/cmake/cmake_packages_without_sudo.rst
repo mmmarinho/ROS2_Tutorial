@@ -90,7 +90,7 @@ Example: include and link the qpOASES in your project
 
     .. tab-item:: CMakeLists.txt
 
-        :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt>`
+        :download:`CMakeLists.txt <../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt>`
         
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt
            :language: cmake
@@ -99,7 +99,7 @@ Example: include and link the qpOASES in your project
 
     .. tab-item:: test_qpoases.cpp
 
-        :download:`test_dqrobotics.cpp <../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp>`
+        :download:`test_dqrobotics.cpp <../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp>`
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp
             :language: cpp
@@ -114,7 +114,7 @@ For instance, let's say you have the DQ Robotics library installed globally (i.e
 and you want to use the local one. Then, you can use :code:`find_library` with the :code:`NO_DEFAULT_PATH` flag.
 
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/examples/CMakeLists.txt
+.. literalinclude:: ../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/examples/CMakeLists.txt
     :language: cmake
     :linenos:
     :emphasize-lines: 3,4,9   
