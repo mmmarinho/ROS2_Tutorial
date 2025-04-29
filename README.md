@@ -16,3 +16,9 @@ About 📖
 Note
 ----
 If you're looking for the official documentation, this is **NOT** it. For the official ROS documentation, refer to this [link](https://docs.ros.org).
+
+Contributors
+------------
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
