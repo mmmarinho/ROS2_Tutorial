@@ -92,7 +92,7 @@ Example: include and link the qpOASES in your project
 
         :download:`CMakeLists.txt <../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt>`
         
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt
+        .. literalinclude:: ../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt
            :language: cmake
            :linenos:
            :emphasize-lines: 17   
@@ -101,7 +101,7 @@ Example: include and link the qpOASES in your project
 
         :download:`test_dqrobotics.cpp <../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp>`
 
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp
+        .. literalinclude:: ../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp
             :language: cpp
             :linenos:
             :emphasize-lines: 2,3   
