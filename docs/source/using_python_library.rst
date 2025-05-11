@@ -3,7 +3,9 @@ Using a Python Library from another package (for :program:`ament_python`)
 
 Let us create a package with a Node that uses the library we created in the prior example. 
 
-Note that we must add the :code:`python_package_with_a_library` as a dependency to our new package. The easiest way to do so is through :program:`ros2 pkg create`. We also add :code:`rclcpp` as a dependency so that our Node can do something useful.
+Note that we must add the :code:`python_package_with_a_library` as a dependency to our new package. The easiest way to
+do so is through :program:`ros2 pkg create`. We also add :code:`rclpy` as a dependency so that our Node can do something useful.
+
 
 .. code :: console
 

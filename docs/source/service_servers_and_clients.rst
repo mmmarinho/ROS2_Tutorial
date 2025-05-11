@@ -268,7 +268,7 @@ when running the client Node, the server is still not active. In that case, the 
     [INFO] [1684293009.890589539] [what_is_the_point_service_client]: service /what_is_the_point not available, waiting...
     [INFO] [1684293010.892778194] [what_is_the_point_service_client]: service /what_is_the_point not available, waiting...
 
-In another terminal, we run the :program:`python_package_uses_the_service_node`, as follows
+In another terminal, we run the :program:`what_is_the_point_service_server_node`, as follows
 
 .. code:: console
 
