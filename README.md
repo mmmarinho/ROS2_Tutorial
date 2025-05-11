@@ -56,3 +56,9 @@ Contributors
 	<tbody>
 </table>
 <!-- readme: contributors -end -->
+
+Community engagement acknowledgements
+-------------------------------------
+To celebrate community engagement that was not done directly via GitHub.
+
+- May 11, 2025. Alexander G. and Alisa Z., who kindly noticed the two typos fixed in 382dd8f.
