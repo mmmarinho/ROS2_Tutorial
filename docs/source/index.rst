@@ -22,6 +22,7 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
 - Leaving your feedback in this `form <https://forms.cloud.microsoft/e/ztSddfQLSN>`_.
 - Adding a star to `the repository <https://github.com/mmmarinho/ROS2_Tutorial>`_.
 - Contributing with feedback to the `issue tracker <https://github.com/mmmarinho/ROS2_Tutorial/issues>`_.
+- Sending me an e-mail at murilo.marinho@manchester.ac.uk.
 
 🔍 **Quick overview**
 
