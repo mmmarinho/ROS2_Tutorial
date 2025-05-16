@@ -17,7 +17,7 @@
 
 This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`. 
 
-❤️ ** Showing some love **
+❤️ **Showing some love**
 
 You can show love by
 
