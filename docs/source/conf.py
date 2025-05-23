@@ -43,7 +43,8 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
-html_theme = 'furo'
+html_theme = 'sphinx_rtd_theme'
+# Tried with `furo` on May 23, 2025, but somehow it didn't look right. In particular the download button wasn't as clear.
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
@@ -53,7 +54,7 @@ hoverxref_auto_ref = True
 
 # -- Options for latex https://docs.readthedocs.io/en/stable/guides/pdf-non-ascii-languages.html
 # latex_engine = "xelatex"
-# By using this, the UTF emojis became question marks in the pdf.
+# By using this, the UTF emojis became question marks in the PDF.
 
 # -- Fixing table horizontal bar scrolling https://stackoverflow.com/questions/40641252/how-can-i-avoid-the-horizontal-scrollbar-in-a-rest-table
 def setup(app):

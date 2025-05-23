@@ -2,4 +2,3 @@ sphinx-hoverxref
 sphinx-copybutton
 sphinx-design
 sphinx-rtd-theme
-furo
