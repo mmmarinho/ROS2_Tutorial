@@ -130,7 +130,7 @@ We start by importing the :code:`async` method we defined in the other module
    :language: python
    :lines: 25
 
-The function will be run by an instance of :code:`asyncio.Task`. When the task is created, it is equivalent to calling the function and it starts running concurrently to the script that created the task. The example is a bit on the fancy side to make it easier to read and mantain, but the concept is simple. When using the :code:`await` paradigm, focus on the following
+The function will be run by an instance of :code:`asyncio.Task`. When the task is created, it is equivalent to calling the function and it starts running concurrently to the script that created the task. The example is a bit on the fancy side to make it easier to read and maintain, but the concept is simple. When using the :code:`await` paradigm, focus on the following
 
 #. Make the function it should run, like our :code:`unlikely_to_return()`.
 #. Run all concurrent tasks and keep a reference to them as :code:`asyncio.Task`.

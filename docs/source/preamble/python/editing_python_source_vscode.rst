@@ -13,7 +13,7 @@ There are near-infinite ways to manage your Python code and, in this section, we
 Installing :program:`VS Code`
 ----------------------------
 
-It is important to have a predicable enviroment for the tutorial, therefore we will download a particular version of :program:`VS Code`.
+It is important to have a predicable environment for the tutorial, therefore we will download a particular version of :program:`VS Code`.
   
 Run
 

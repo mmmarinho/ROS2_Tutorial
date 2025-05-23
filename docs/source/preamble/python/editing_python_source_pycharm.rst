@@ -60,22 +60,22 @@ For consistency, until I upgrade this tutorial to the new version of ROS2, the v
 
 .. code :: console
 
-   CompileCommand: exclude com/intellij/openapi/vfs/impl/FilePartNodeRoot.trieDescend
-   Error occurred during initialization of VM
-   java.lang.UnsupportedClassVersionError: com/intellij/util/lang/PathClassLoader has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 55.0
-   	at java.lang.ClassLoader.defineClass1(java.base@11.0.24/Native Method)
-   	at java.lang.ClassLoader.defineClass(java.base@11.0.24/ClassLoader.java:1022)
-   	at java.security.SecureClassLoader.defineClass(java.base@11.0.24/SecureClassLoader.java:174)
-   	at jdk.internal.loader.BuiltinClassLoader.defineClass(java.base@11.0.24/BuiltinClassLoader.java:800)
-   	at jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(java.base@11.0.24/BuiltinClassLoader.java:698)
-   	at jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(java.base@11.0.24/BuiltinClassLoader.java:621)
-   	at jdk.internal.loader.BuiltinClassLoader.loadClass(java.base@11.0.24/BuiltinClassLoader.java:579)
-   	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(java.base@11.0.24/ClassLoaders.java:178)
-   	at java.lang.ClassLoader.loadClass(java.base@11.0.24/ClassLoader.java:527)
-   	at java.lang.Class.forName0(java.base@11.0.24/Native Method)
-   	at java.lang.Class.forName(java.base@11.0.24/Class.java:398)
-   	at java.lang.ClassLoader.initSystemClassLoader(java.base@11.0.24/ClassLoader.java:1981)
-   	at java.lang.System.initPhase3(java.base@11.0.24/System.java:2091)
+      CompileCommand: exclude com/intellij/openapi/vfs/impl/FilePartNodeRoot.trieDescend
+      Error occurred during initialization of VM
+      java.lang.UnsupportedClassVersionError: com/intellij/util/lang/PathClassLoader has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 55.0
+      at java.lang.ClassLoader.defineClass1(java.base@11.0.24/Native Method)
+      at java.lang.ClassLoader.defineClass(java.base@11.0.24/ClassLoader.java:1022)
+      at java.security.SecureClassLoader.defineClass(java.base@11.0.24/SecureClassLoader.java:174)
+      at jdk.internal.loader.BuiltinClassLoader.defineClass(java.base@11.0.24/BuiltinClassLoader.java:800)
+      at jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(java.base@11.0.24/BuiltinClassLoader.java:698)
+      at jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(java.base@11.0.24/BuiltinClassLoader.java:621)
+      at jdk.internal.loader.BuiltinClassLoader.loadClass(java.base@11.0.24/BuiltinClassLoader.java:579)
+      at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(java.base@11.0.24/ClassLoaders.java:178)
+      at java.lang.ClassLoader.loadClass(java.base@11.0.24/ClassLoader.java:527)
+      at java.lang.Class.forName0(java.base@11.0.24/Native Method)
+      at java.lang.Class.forName(java.base@11.0.24/Class.java:398)
+      at java.lang.ClassLoader.initSystemClassLoader(java.base@11.0.24/ClassLoader.java:1981)
+      at java.lang.System.initPhase3(java.base@11.0.24/System.java:2091)
 
 My java version before updating is
 

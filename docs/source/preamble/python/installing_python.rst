@@ -56,7 +56,7 @@ which should output something similar to
 
 in particular, if the :code:`GCC 11` is different, e.g. :code:`GCC 9` or :code:`GCC 12`\, then get this fixed because this tutorial will not work for you.
 
-As you already know, to exit the `interative shell <https://docs.python.org/3.10/tutorial/interpreter.html>`_ you can use :kbd:`CTRL+D` or type :code:`quit()` and press :kbd:`ENTER`.
+As you already know, to exit the `interactive shell <https://docs.python.org/3.10/tutorial/interpreter.html>`_ you can use :kbd:`CTRL+D` or type :code:`quit()` and press :kbd:`ENTER`.
 
 Some Python packages must be installed through :program:`apt`
 -------------------------------------------------------------

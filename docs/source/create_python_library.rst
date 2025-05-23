@@ -90,7 +90,7 @@ We learned the meaning of most of those in the preamble, namely :ref:`Python Bes
    * - :file:`resource/python_package_with_a_library`
      - A file for ROS2 to index this package correctly. See `Resource file <https://answers.ros.org/question/367328/ament_python-package-doesnt-explicitly-install-a-marker-in-the-package-index/>`_.
    * - :file:`test`
-     - The folder contaning the tests, as we already saw in the preamble.
+     - The folder containing the tests, as we already saw in the preamble.
    * - :file:`setup.cfg`
      - Used by setup.py, see `setup.cfg docs <https://docs.python.org/3.10/distutils/configfile.html>`_.
    * - :file:`setup.py`
