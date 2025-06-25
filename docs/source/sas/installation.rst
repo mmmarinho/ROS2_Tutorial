@@ -1,41 +1,39 @@
-Pre-requisites
---------------
+Overview
+========
 
 .. warning::
 
    These instructions are for Ubuntu 24.04 and ROS2 Jazzy. You might be able to make this run in other settings,
    but I am currently unable to provide support for those.
 
+Docker image
+------------
 
-1. `ROS2 Jazzy <https://docs.ros.org/en/jazzy/Installation/Alternatives/Ubuntu-Development-Setup.html>`_
-2. `dqrobotics CPP devel <https://dqroboticsgithubio.readthedocs.io/en/latest/installation/cpp.html#development-ppa>`_
+.. note::
 
-.. code-block:: console
+   Information is centralised in https://smartarmstack.github.io.
 
-  sudo add-apt-repository ppa:dqrobotics-dev/development
-  sudo apt-get update
-  sudo apt-get install libdqrobotics libdqrobotics-interface-json11 libdqrobotics-interface-coppeliasim libdqrobotics-interface-coppeliasim-zmq
+A docker image with all `sas` software is available as follows
 
-3. `dqrobotics Python devel <https://dqroboticsgithubio.readthedocs.io/en/latest/installation/python.html#installation-development>`_
+.. code-block::
 
-.. code-block:: console
+  docker run murilomarinho/sas_ros_jazzy:latest
 
-  python3 -m pip install dqrobotics --pre --break-system-packages
+From source
+-----------
+
+Please see the information at
+
+https://smartarmstack.github.io/installation
 
 Create the tutorial folder
 --------------------------
 
+Below, we make the directory used throughout the tutorial
+
 .. code-block:: console
 
   mkdir -p ~/sas_tutorial_workspace/src
-
-Clone the sas repository
-------------------------
-
-.. code-block:: console
-
-  cd ~/sas_tutorial_workspace/src
-  git clone --recurse-submodules -b jazzy https://github.com/SmartArmStack/smart_arm_stack_ROS2.git sas
 
 Developer environment
 ---------------------
