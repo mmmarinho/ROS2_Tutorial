@@ -2,48 +2,15 @@
 name: ros
 on: [push, workflow_dispatch, pull_request]
 jobs:
-  test_docker: 
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ros_distribution:
-          - humble
-          - jazzy
-          - rolling
+    ros:
+      runs-on: ${{ matrix.os }}
+      strategy:
+        matrix:
+          os: ['ubuntu-24.04', 'ubuntu-24.04-arm']
+      container:
+        image: murilomarinho/sas_ros_jazzy:latest
+      steps:
+        - name: Build colcon
+          run: |
+            colcon build
 
-        include:
-        
-          # Humble Hawksbill (May 2022 - May 2027)
-          - docker_image: ubuntu:jammy
-            ros_distribution: humble
-            ros_version: 2
-            
-          # Jazzy Jalisco (May 2024 - May 2029)
-          - docker_image: ubuntu:noble
-            ros_distribution: jazzy
-            ros_version: 2
-
-          # Rolling Ridley (No End-Of-Life)
-          - docker_image: ubuntu:noble
-            ros_distribution: rolling
-            ros_version: 2
-            
-    container:
-      image: ${{ matrix.docker_image }}
-    steps:
-      - name: setup ROS environment
-        uses: ros-tooling/setup-ros@v0.7
-        with:
-          required-ros-distributions: ${{ matrix.ros_distribution }}
-      - name: install DQ Robotics Devel
-        run: |
-          sudo apt-get -y install software-properties-common
-          sudo add-apt-repository ppa:dqrobotics-dev/development
-          sudo apt-get update
-          sudo apt-get -y install libdqrobotics libdqrobotics-interface-json11 libdqrobotics-interface-coppeliasim libdqrobotics-interface-coppeliasim-zmq 
-      - name: build and test ROS 2
-        if: ${{ matrix.ros_version == 2 }}
-        uses: ros-tooling/action-ros-ci@v0.3
-        with:
-          target-ros2-distro: ${{ matrix.ros_distribution }}
-          skip-tests: true
