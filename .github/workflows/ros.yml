@@ -10,6 +10,8 @@ jobs:
       container:
         image: murilomarinho/sas_ros_jazzy:latest
       steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
         - name: Build colcon
           run: |
             colcon build
