@@ -13,7 +13,7 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v4
         - name: Build colcon
+          shell: bash
           run: |
-            . /opt/ros/jazzy/setup.bash
             colcon build
 
