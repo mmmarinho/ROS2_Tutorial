@@ -6,25 +6,42 @@ Overview
    These instructions are for Ubuntu 24.04 and ROS2 Jazzy. You might be able to make this run in other settings,
    but I am currently unable to provide support for those.
 
-Docker image
-------------
-
 .. note::
 
    Information is centralised in https://smartarmstack.github.io.
 
-A docker image with all `sas` software is available as follows
+Docker image
+------------
+
+.. seealso::
+
+   https://smartarmstack.github.io/#docker
+
+A docker image with all `sas` software is available as follows.
 
 .. code-block::
 
-  docker run murilomarinho/sas_ros_jazzy:latest
+  docker run -it murilomarinho/sas:latest
 
-From source
------------
+Installing on a given system
+----------------------------
 
-Please see the information at
+.. seealso::
 
-https://smartarmstack.github.io/installation
+   https://smartarmstack.github.io/#installation
+
+Setting up PPA
+++++++++++++++
+
+.. code-block::
+
+    curl -s --compressed "https://smartarmstack.github.io/smart_arm_stack_ROS2/KEY.gpg" \
+    | gpg --dearmor \
+    | sudo tee /etc/apt/trusted.gpg.d/smartarmstack_lgpl.gpg >/dev/null
+    sudo curl -s --compressed -o /etc/apt/sources.list.d/smartarmstack_lgpl.list \
+    "https://smartarmstack.github.io/smart_arm_stack_ROS2/smartarmstack_lgpl.list"
+    sudo apt update
+    sudo apt-get install ros-jazzy-sas-*
 
 Create the tutorial folder
 --------------------------
