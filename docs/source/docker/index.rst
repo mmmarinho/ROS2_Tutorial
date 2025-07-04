@@ -1,6 +1,10 @@
 How is Murilo using :program:`docker`
 =====================================
 
+.. important::
+
+    This section is a working draft.
+
 Installation
 ------------
 .. note::
@@ -101,12 +105,13 @@ Docker compose
 ++++++++++++++
 
 If your host does not have :program:`ROS2` you can also have multiple containers communicating with each
-other without any direct involvement of the host. For instance with the following compose file.
+other without any direct involvement of the host. For instance with the following compose file named
+:file:`compose.yml` below.
 
 .. literalinclude:: scripts/composer/simple_example/compose.yml
    :language: yaml
 
-That we can execute with the following command
+In the folder where :file:`compose.yml` exists, we do
 
 .. code-block::
 
@@ -118,6 +123,9 @@ That we can execute with the following command
     around for docker compose to do something similar to ``--rm`` as in :program:`docker`. In tutorials it
     is convenient to always start frash but this will cause data to be lost in the container when it's closed.
 
+This will show the output of the two images communicating over :program:`ROS2`. Notice that there is no input
+from the host and no complicated network setup involved.
+
 You can stop the process with ``CTRL+C``. Note that we are using ``stop_signal: SIGINT`` in the docker compose
 file because otherwise it will send ``SIGTERM``. In this toy example this is not an issue, but this is a major
 issue for nodes that control real resources. This can mean that a robot will not be safely disconnected before
@@ -125,6 +133,11 @@ the container is destroyed leaving it in an undetermined state. For the same rea
 to give the container enough time to close safely. Depending on your resource you'd prefer to have a larger
 value so that it is not escalated into a ``SIGTERM`` or ``SIGKILL`` before your container had enough time to
 sort out its shutdown procedure.
+
+Docker container in a realtime kernel
+-------------------------------------
+
+TODO
 
 Common mistakes
 ---------------
