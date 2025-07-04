@@ -5,6 +5,9 @@ How is Murilo using :program:`docker`
 
     This section is a working draft.
 
+    It is an Ubuntu 24.04 host tutorial. It might work in other host systems in some cases
+    but the support is finicky for more advanced elements.
+
 Installation
 ------------
 .. note::
@@ -31,13 +34,28 @@ Adding user to docker group
    Further, users' home folders should probably be encrypted to prevent private
    projects and data from being readable by unauthorised users.
 
-You can either set manually ``$USER_TO_ADD`` in the script below
+
+You can add the user to ``docker`` group by downloading this helper script
+
+.. code-block:: console
+
+    mkdir -p ~/ros2_tutorial_workspace/docker
+    cd ~/ros2_tutorial_workspace/docker
+    curl -OL https://raw.githubusercontent.com/mmmarinho/ROS2_Tutorial/refs/heads/main/docs/source/docker/scripts/set_docker_user.sh
+    chmod +x set_docker_user.sh
+
+then
+
+.. code-block:: console
+
+    cd ~/ros2_tutorial_workspace/docker
+    ./set_docker_user.sh $USER
+
+If you're curious, here are the main contents of the script.
 
 .. literalinclude:: scripts/set_docker_user.sh
    :language: bash
-   :lines: 13-
-
-or use the script in this folder with the user as the argument.
+   :lines: 16-
 
 Basic testing
 -------------

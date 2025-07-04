@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 # https://docs.docker.com/engine/install/linux-postinstall/
+# If there are errors with docker.json
+# sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+# sudo chmod g+rwx "$HOME/.docker" -R
 
 echo "Working with user $1."
 if id "$1" >/dev/null 2>&1; then
@@ -20,7 +23,3 @@ sudo usermod -aG docker "${USER_TO_ADD}"
 newgrp docker
 # Check if it works without sudo
 docker run hello-world
-
-# If there are errors with docker.json
-# sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-# sudo chmod g+rwx "$HOME/.docker" -R
