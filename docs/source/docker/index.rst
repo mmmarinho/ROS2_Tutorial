@@ -102,6 +102,9 @@ Docker compose
 If your host does not have :program:`ROS2` you can also have multiple containers communicating with each
 other without any direct involvement of the host. For instance with the following compose file.
 
+.. literalinclude:: scripts/composer/simple_example/compose.yml
+   :language: yaml
+
 That we can execute with the following command
 
 .. code-block::
