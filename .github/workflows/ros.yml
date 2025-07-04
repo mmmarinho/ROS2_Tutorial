@@ -8,7 +8,7 @@ jobs:
         matrix:
           os: ['ubuntu-24.04', 'ubuntu-24.04-arm']
       container:
-        image: murilomarinho/sas_ros_jazzy:latest
+        image: murilomarinho/sas:latest
       steps:
         - name: Checkout repository
           uses: actions/checkout@v4
