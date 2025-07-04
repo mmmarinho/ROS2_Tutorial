@@ -54,6 +54,7 @@ We can start with the simple
    docker run -it --rm murilomarinho/sas
 
 Where the flags
+
 #. ``-it`` will open an interactive shell and
 #. ``--rm`` will remove all changes and return the image to its fresh initial state after we're done.
 
@@ -148,6 +149,7 @@ However, it will not run for interactive shells and aliases that we define will 
 Noninteractive shells by default do not expand aliases.
 
 The "easiest" solution is
+
 #. Set your :file:`Dockerfile` to source /etc/bash_env`
 #. Add ``source source /etc/bash_env`` to your :file:`~/.bashrc` exactly once.
 
@@ -175,6 +177,4 @@ things to work but with rootless docker there was a consistent difficulty with
 things such as.
 
 #. ROS2 discovery. Settings become more difficult although can be circumvented.
-#. Port exposure and external access. Some robotic systems need to open reverse
-sockets with the host and networking becomes more difficult that it should otherwise
-be in rootless docker.
+#. Port exposure and external access. Some robotic systems need to open reverse sockets with the host and networking becomes more difficult that it should otherwise be in rootless docker.
