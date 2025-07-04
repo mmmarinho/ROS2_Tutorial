@@ -121,7 +121,9 @@ In the folder where :file:`compose.yml` exists, we do
 
     The ``--force-recreate`` and ``-V`` are an overkill for this toy problem but that is the best equivalent
     around for docker compose to do something similar to ``--rm`` as in :program:`docker`. In tutorials it
-    is convenient to always start frash but this will cause data to be lost in the container when it's closed.
+    is convenient to always start fresh.
+
+    Notice that this will cause data to be lost in the container when it's closed.
 
 This will show the output of the two images communicating over :program:`ROS2`. Notice that there is no input
 from the host and no complicated network setup involved.
@@ -142,8 +144,7 @@ TODO
 Common mistakes
 ---------------
 
-This documents part of my own misunderstandings when getting used to
-docker (which is an ongoing process) and other difficulties that are
+This documents part of my own misunderstandings when getting used to docker (which is an ongoing process) and other difficulties that are
 contributed by others.
 
 The standard shell is not interactive
