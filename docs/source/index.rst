@@ -139,7 +139,8 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    :caption: Other content
    :maxdepth: 2
    :hidden:
-   
+
+   docker/index
    cmake/index
    faq
 
