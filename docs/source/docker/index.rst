@@ -22,8 +22,10 @@ Adding user to docker group
    Adding a user to the `docker` group is a security concern. The users can easily share
    protected volumes and wipe out a whole shared computer. There does not seem to be a
    viable alternative currently so the system manager should be aware of this when adding
-   users to the `docker` group. Further, users' home folders should probably be encrypted to prevent
-   projects from being accessible by unauthorised users.
+   users to the `docker` group.
+
+   Further, users' home folders should probably be encrypted to prevent private
+   projects and data from being readable by unauthorised users.
 
 You can either set manually `$USER_TO_ADD` in the script below
 
@@ -32,6 +34,32 @@ You can either set manually `$USER_TO_ADD` in the script below
    :lines: 13-
 
 or use the script in this folder with the user as the argument.
+
+Common mistakes
+---------------
+
+This documents part of my own misunderstandings when getting used to
+docker (which is an ongoing process) and other difficulties that are
+contributed by others.
+
+The standard shell is not interactive
++++++++++++++++++++++++++++++++++++++
+
+When we start using :program:`ROS2` we get used to rely on `~/.bashrc` to define
+environment variables and sometimes aliases.
+
+Unless explicitly said with flags such as :program:`-it`, docker does not run
+bash in interactive mode. This means that it will not execute anything in `~/.bashrc`.
+It does not matter what you add, because the first few lines of `~/.bashrc` check if
+the shell is interactive and return if it's not.
+
+This example image that we use will run `source /etc/bash_env` in noninteractive shells.
+However, it will not run for interactive shells and `aliases` that we define will not work.
+Noninteractive shells by default do not expand aliases.
+
+The "easiest" solution is
+- Set your `Dockerfile` to source /etc/bash_env`
+- Add `source source /etc/bash_env` to your `~/.bashrc` exactly once.
 
 Notes on rootless docker
 ------------------------
