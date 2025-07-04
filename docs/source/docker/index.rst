@@ -78,18 +78,49 @@ Then, in the container and in the host we do as follows.
             export ROS_DOMAIN_ID=1
             ros2 topic echo /chatter
 
+.. tip::
+
+    You can close an interactive session on a container by typing on that terminal.
+
+    .. code-block::
+
+        exit
+
 .. note::
 
    In the container we have ``ROS_DOMAIN_ID=1``. If this is modified in the container, this must
    be also modified in the host or they will not find and communicate with each other.
 
-Notice that it will communicate without any issues. Changing the network settings of the
+Notice that host and container will communicate without any issues. Changing the network settings of the
 docker container may cause this to stop working. For instance, a very popular setting is to use
 ``--net=host``. This is not recommended unless strictly necessary because it will generate issues
-with ROS2 networking.
+with :program:`ROS2` networking.
 
 Docker compose
 ++++++++++++++
+
+If your host does not have :program:`ROS2` you can also have multiple containers communicating with each
+other without any direct involvement of the host. For instance with the following compose file.
+
+That we can execute with the following command
+
+.. code-block::
+
+    docker compose up --force-recreate -V
+
+.. tip::
+
+    The ``--force-recreate`` and ``-V`` are an overkill for this toy problem but that is the best equivalent
+    around for docker compose to do something similar to ``--rm`` as in :program:`docker`. In tutorials it
+    is convenient to always start frash but this will cause data to be lost in the container when it's closed.
+
+You can stop the process with ``CTRL+C``. Note that we are using ``stop_signal: SIGINT`` in the docker compose
+file because otherwise it will send ``SIGTERM``. In this toy example this is not an issue, but this is a major
+issue for nodes that control real resources. This can mean that a robot will not be safely disconnected before
+the container is destroyed leaving it in an undetermined state. For the same reason we have ``stop_grace_period``
+to give the container enough time to close safely. Depending on your resource you'd prefer to have a larger
+value so that it is not escalated into a ``SIGTERM`` or ``SIGKILL`` before your container had enough time to
+sort out its shutdown procedure.
 
 Common mistakes
 ---------------
@@ -121,7 +152,7 @@ The "easiest" solution is
 ++++++++++
 
 Although this command can help in some situations it is not recommended unless strictly
-necessary. It can for instance cause :`ros2` to no longer be able to communicate between
+necessary. It can for instance cause :program:`ros2` to no longer be able to communicate between
 host and container. There are workarounds but those further expose resources that should
 only be exposed if strictly required.
 
@@ -140,7 +171,7 @@ not adding more docker directives or requirements than those strictly need for
 things to work but with rootless docker there was a consistent difficulty with
 things such as.
 
-- ROS2 discovery. Settings become more difficult although can be circumvented.
-- Port exposure and external access. Some robotic systems need to open reverse
+#. ROS2 discovery. Settings become more difficult although can be circumvented.
+#. Port exposure and external access. Some robotic systems need to open reverse
 sockets with the host and networking becomes more difficult that it should otherwise
 be in rootless docker.

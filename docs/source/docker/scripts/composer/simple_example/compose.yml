@@ -1,0 +1,16 @@
+services:
+  talker:
+    image: murilomarinho/sas
+    stop_signal: SIGINT
+    stop_grace_period: 1m
+    command: /bin/bash -c "
+      ros2 run demo_nodes_cpp talker
+      "
+
+  listener:
+    image: murilomarinho/sas
+    stop_signal: SIGINT
+    stop_grace_period: 1m
+    command: /bin/bash -c "
+      ros2 topic echo /chatter
+      "
