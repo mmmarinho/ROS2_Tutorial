@@ -30,7 +30,8 @@ extensions = [
     'sphinx.ext.intersphinx',
     'hoverxref.extension', # https://sphinx-hoverxref.readthedocs.io/en/latest/index.html
     'sphinx_copybutton', # https://sphinx-copybutton.readthedocs.io/en/latest/
-    'sphinx_design' # https://sphinx-design.readthedocs.io/en/latest/get_started.html
+    'sphinx_design', # https://sphinx-design.readthedocs.io/en/latest/get_started.html
+    "sphinxext.remoteliteralinclude" # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
 ]
 
 intersphinx_mapping = {
