@@ -19,15 +19,15 @@ Adding user to docker group
 
 .. warning::
 
-   Adding a user to the `docker` group is a security concern. The users can easily share
+   Adding a user to the ``docker`` group is a security concern. The users can easily share
    protected volumes and wipe out a whole shared computer. There does not seem to be a
    viable alternative currently so the system manager should be aware of this when adding
-   users to the `docker` group.
+   users to the ``docker`` group.
 
    Further, users' home folders should probably be encrypted to prevent private
    projects and data from being readable by unauthorised users.
 
-You can either set manually `$USER_TO_ADD` in the script below
+You can either set manually ``$USER_TO_ADD`` in the script below
 
 .. literalinclude:: scripts/set_docker_user.sh
    :language: bash
@@ -39,7 +39,7 @@ Basic testing
 -------------
 
 For the purposes of this illustration we will use the image 
-`murilomarinho/sas`.
+``murilomarinho/sas``.
 
 Docker run interactively
 ++++++++++++++++++++++++
@@ -54,10 +54,10 @@ We can start with the simple
    docker run -it --rm murilomarinho/sas
 
 Where the flags
-- :`-it` will open an interactive shell and
-- :`--rm` will remove all changes and return the image to its fresh initial state after we're done.
+#. ``-it`` will open an interactive shell and
+#. ``--rm`` will remove all changes and return the image to its fresh initial state after we're done.
 
-The terminal in which you ran the :`docker run` command should now be logged inside the container.
+The terminal in which you ran the ``docker run`` command should now be logged inside the container.
 The computer from which you ran is called the host. We will use this terminology to help explain where
 each command should be used.
 
@@ -67,15 +67,11 @@ Then, in the container and in the host we do as follows.
 
     .. tab-item:: Container
 
-        Running `ROS2` sample talker node.
-
         .. code-block:: console
 
             ros2 run demo_nodes_cpp talker
 
     .. tab-item:: Host
-
-        Connecting to it in the host.
 
         .. code-block:: console
 
@@ -84,12 +80,12 @@ Then, in the container and in the host we do as follows.
 
 .. note::
 
-   In the container we have `ROS_DOMAIN_ID=1`. If this is modified in the container, this must
+   In the container we have ``ROS_DOMAIN_ID=1``. If this is modified in the container, this must
    be also modified in the host or they will not find and communicate with each other.
 
 Notice that it will communicate without any issues. Changing the network settings of the
 docker container may cause this to stop working. For instance, a very popular setting is to use
-`--net=host`. This is not recommended unless strictly necessary because it will generate issues
+``--net=host``. This is not recommended unless strictly necessary because it will generate issues
 with ROS2 networking.
 
 Docker compose
@@ -108,18 +104,18 @@ The standard shell is not interactive
 When we start using :program:`ROS2` we get used to rely on `~/.bashrc` to define
 environment variables and sometimes aliases.
 
-Unless explicitly said with flags such as :program:`-it`, docker does not run
-bash in interactive mode. This means that it will not execute anything in `~/.bashrc`.
-It does not matter what you add, because the first few lines of `~/.bashrc` check if
+Unless explicitly said with flags such as ``-it``, docker does not run
+bash in interactive mode. This means that it will not execute anything in :file:`~/.bashrc`.
+It does not matter what you add, because the first few lines of :file:`~/.bashrc` check if
 the shell is interactive and return if it's not.
 
-This example image that we use will run `source /etc/bash_env` in noninteractive shells.
-However, it will not run for interactive shells and `aliases` that we define will not work.
+This example image that we use will run ``source /etc/bash_env`` in noninteractive shells.
+However, it will not run for interactive shells and aliases that we define will not work.
 Noninteractive shells by default do not expand aliases.
 
 The "easiest" solution is
-- Set your `Dockerfile` to source /etc/bash_env`
-- Add `source source /etc/bash_env` to your `~/.bashrc` exactly once.
+#. Set your :file:`Dockerfile` to source /etc/bash_env`
+#. Add ``source source /etc/bash_env`` to your :file:`~/.bashrc` exactly once.
 
 --net=host
 ++++++++++
