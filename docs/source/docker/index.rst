@@ -35,6 +35,61 @@ You can either set manually `$USER_TO_ADD` in the script below
 
 or use the script in this folder with the user as the argument.
 
+Basic testing
+-------------
+
+For the purposes of this illustration we will use the image 
+`murilomarinho/sas`.
+
+Docker run
+++++++++++
+
+Firstly it would be easier to tackle docker in simple commands before tackling complex
+scenarios.
+
+We can start with the simple
+
+.. code-block:: console
+
+   docker run -it --rm murilomarinho/sas
+
+Where the flags
+- :`-it` will open an interactive shell and
+- :`--rm` will remove all changes and return the image to its fresh initial state after we're done.
+
+The terminal in which you ran the :`docker run` command should now be logged inside the container.
+The computer from which you ran is called the host. We will use this terminology to help explain where
+each command should be used.
+
+Then, in the container and in the host we do as follows.
+
+.. tab-set::
+
+    .. tab-item:: Container
+
+        Running `ROS2` sample talker node.
+
+        .. code-block:: console
+
+            ros2 run demo_nodes_cpp talker
+
+    .. tab-item:: Host
+
+        Connecting to it in the host.
+
+        .. code-block:: console
+
+            export ROS_DOMAIN_ID=1
+            ros2 topic echo /chatter
+
+And notice that it will communicate without any issues. Changing the network settings of the
+docker image may cause this to stop working. For instance, a very popular setting is to use
+`--net=host`. This is not recommended unless strictly necessary because it will generate issues
+with ROS2 networking.
+
+Docker compose
+++++++++++++++
+
 Common mistakes
 ---------------
 
@@ -61,8 +116,16 @@ The "easiest" solution is
 - Set your `Dockerfile` to source /etc/bash_env`
 - Add `source source /etc/bash_env` to your `~/.bashrc` exactly once.
 
+--net=host
+++++++++++
+
+Although this command can help in some situations it is not recommended unless strictly
+necessary. It can for instance cause :`ros2` to no longer be able to communicate between
+host and container. There are workarounds but those further expose resources that should
+only be exposed if strictly required.
+
 Notes on rootless docker
-------------------------
+++++++++++++++++++++++++
 
 .. note::
 
