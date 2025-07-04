@@ -41,8 +41,8 @@ Basic testing
 For the purposes of this illustration we will use the image 
 `murilomarinho/sas`.
 
-Docker run
-++++++++++
+Docker run interactively
+++++++++++++++++++++++++
 
 Firstly it would be easier to tackle docker in simple commands before tackling complex
 scenarios.
@@ -82,8 +82,13 @@ Then, in the container and in the host we do as follows.
             export ROS_DOMAIN_ID=1
             ros2 topic echo /chatter
 
-And notice that it will communicate without any issues. Changing the network settings of the
-docker image may cause this to stop working. For instance, a very popular setting is to use
+.. note::
+
+   In the container we have `ROS_DOMAIN_ID=1`. If this is modified in the container, this must
+   be also modified in the host or they will not find and communicate with each other.
+
+Notice that it will communicate without any issues. Changing the network settings of the
+docker container may cause this to stop working. For instance, a very popular setting is to use
 `--net=host`. This is not recommended unless strictly necessary because it will generate issues
 with ROS2 networking.
 
