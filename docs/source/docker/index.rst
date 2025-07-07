@@ -21,6 +21,12 @@ https://docs.docker.com/engine/install/ubuntu/
    :language: bash
    :lines: 5-
 
+.. warning::
+
+    It's best not to call ``sudo docker ...`` to test it yet. If you're adding your user to the ``docker`` group,
+    running ``docker`` as ``sudo`` once will change the access properties of the socket. It's best to test it after
+    adding your user to the ``docker`` group.
+
 Adding user to docker group
 ---------------------------
 
@@ -61,8 +67,16 @@ If you're curious, here are the main contents of the script.
    :language: bash
    :lines: 16-
 
+
 Basic testing
 -------------
+
+.. code-block:: console
+
+    docker run hello-world
+
+SAS testing
+-----------
 
 For the purposes of this illustration we will use the image 
 ``murilomarinho/sas``.
