@@ -53,7 +53,7 @@ then
 
 .. important::
 
-    A reboot of the system is recommended so that the group addition is propagated when you open a new terminal.
+    A reboot of the system is in general needed so that the group addition is propagated when you open a new terminal.
 
 If you're curious, here are the main contents of the script.
 
@@ -162,6 +162,28 @@ Docker container in a realtime kernel
 -------------------------------------
 
 TODO
+
+Install PREEMPT_RT
+++++++++++++++++++
+
+.. seealso::
+
+    *. https://ubuntu.com/real-time
+    *. https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/
+
+.. code-block:: console
+
+    sudo pro attach
+    sudo apt update && sudo apt install ubuntu-advantage-tools
+    sudo pro enable realtime-kernel
+
+.. tip::
+
+    You can check if a process has properly been elevated to ``SCHED_FIFO`` with the following command.
+
+    .. code-block:: console
+
+        ps -eLfc | grep FF
 
 Common issues
 -------------
