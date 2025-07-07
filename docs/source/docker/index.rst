@@ -51,6 +51,10 @@ then
     cd ~/ros2_tutorial_workspace/docker
     ./set_docker_user.sh $USER
 
+.. important::
+
+    A reboot of the system is recommended so that the group addition is propagated when you open a new terminal.
+
 If you're curious, here are the main contents of the script.
 
 .. literalinclude:: scripts/set_docker_user.sh
@@ -159,8 +163,8 @@ Docker container in a realtime kernel
 
 TODO
 
-Common mistakes
----------------
+Common issues
+-------------
 
 This documents part of my own misunderstandings when getting used to docker (which is an ongoing process) and other difficulties that are
 contributed by others.
@@ -188,10 +192,63 @@ The "easiest" solution is
 --net=host
 ++++++++++
 
+.. seealso::
+
+    *. https://robotics.stackexchange.com/questions/98161/ros2-foxy-nodes-cant-communicate-through-docker-container-border
+    *. https://github.com/rosblox/ros-template
+    *. https://github.com/eProsima/Fast-DDS/issues/1750
+
 Although this command can help in some situations it is not recommended unless strictly
 necessary. It can for instance cause :program:`ros2` to no longer be able to communicate between
-host and container. There are workarounds but those further expose resources that should
-only be exposed if strictly required.
+host and container.
+
+The reason for this is that the current version of :program:`ROS2` is based on ``FASTRTPS``. When
+``--net=host`` is defined, ``FASTRTPS`` tries to communicate via shared memory.
+
+There are two ways of solving this issue.
+
+#. Adjust the docker/linux settings via various mechanisms to expose the shared memory.
+#. Adjusting the ``FASTRTPS`` profile so that the nodes communicate via ``UDP``.
+
+The main difficulty with the first solution is when the user calling the container is not ``root``. There are many
+cases in which this won't be true, for instance for shared systems in which docker users are simply added to the
+``docker`` group. In addition, calling ``ros2`` programs with ``sudo`` can cause many issues with permissions and
+further complicate the use of ``ros2`` in the host. There are `smart solutions <https://github.com/rosblox/ros-template>`_ to aid
+in setting up the user properly. But I would only recommend going this route if the shared memory communication
+is paramount for performance which usually is not the case.
+
+Alternatively, my suggested solution is to modify the container to force it to communicate over UDP. This has been
+well described in `this issue <https://github.com/eProsima/Fast-DDS/issues/1750>`_.
+
+This can be done by copying the contents below in the file :file:`~/ros2_tutorial_workspace/docker/fastrtps_profile.xml`.
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles" >
+        <transport_descriptors>
+            <transport_descriptor>
+                <transport_id>CustomUdpTransport</transport_id>
+                <type>UDPv4</type>
+            </transport_descriptor>
+        </transport_descriptors>
+
+        <participant profile_name="participant_profile" is_default_profile="true">
+            <rtps>
+                <userTransports>
+                    <transport_id>CustomUdpTransport</transport_id>
+                </userTransports>
+
+                <useBuiltinTransports>false</useBuiltinTransports>
+            </rtps>
+        </participant>
+    </profiles>
+
+Then, in the container, you can set before the nodes.
+
+.. code-block:: console
+
+    export FASTRTPS_DEFAULT_PROFILES_FILE="~/ros2_tutorial_workspace/docker/fastrtps_profile.xml"
 
 Notes on rootless docker
 ++++++++++++++++++++++++
