@@ -29,11 +29,11 @@ which will result in the output below, meaning the package has been generated su
     
     going to create a new package
     package name: the_simplest_python_package
-    destination directory: /home/murilo/ros2_tutorial_workspace/src
+    destination directory: /root/ros2_tutorial_workspace/src
     package format: 3
     version: 0.0.0
     description: TODO: Package description
-    maintainer: ['murilo <murilomarinho@ieee.org>']
+    maintainer: ['root <murilo.marinho@manchester.ac.uk>']
     licenses: ['TODO: License declaration']
     build type: ament_python
     dependencies: []
@@ -52,7 +52,7 @@ which will result in the output below, meaning the package has been generated su
     creating ./the_simplest_python_package/test/test_pep257.py
 
     [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
-    It is recommended to use one of the ament license identitifers:
+    It is recommended to use one of the ament license identifiers:
     Apache-2.0
     BSL-1.0
     BSD-2.0
@@ -75,24 +75,8 @@ which will now output
 .. code :: console
 
     Starting >>> the_simplest_python_package
-    --- stderr: the_simplest_python_package                   
-    /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
-      warnings.warn(
-    ---
-    Finished <<< the_simplest_python_package [1.72s]
+    Finished <<< the_simplest_python_package [0.49s]
 
-    Summary: 1 package finished [1.89s]
-      1 package had stderr output: the_simplest_python_package
+    Summary: 1 package finished [0.55s]
 
 meaning that :program:`colcon` successfully built the example package.
-
-.. warning::
-
-   In this version of ROS2, all :program:`ament_python` packages will output a :code:`SetuptoolsDeprecationWarning`.
-   This is related to `this issue on Github <https://github.com/colcon/colcon-core/issues/454#issuecomment-1262592774>`_. Until that is fixed, just ignore it.
-
-
-
-
-
-
