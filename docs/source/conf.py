@@ -1,5 +1,12 @@
 # Configuration file for the Sphinx documentation builder.
 
+# -- Older version
+
+rst_prolog = """.. attention::
+    This is older information related to ROS2 Humble. Newer versions, such as Jazzy, are part
+    of the ongoing versions of this tutorial.
+"""
+
 # -- Automatic versioning
 
 from datetime import datetime
