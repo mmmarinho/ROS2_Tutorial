@@ -70,10 +70,11 @@ By now, this should be enough for you to be able to run the node in :program:`Py
 
 .. code :: console
 
-    [INFO] [1683009340.877110693] [print_forever]: Printed 0 times.
-    [INFO] [1683009341.336559942] [print_forever]: Printed 1 times.
-    [INFO] [1683009341.836334639] [print_forever]: Printed 2 times.
-    [INFO] [1683009342.336555088] [print_forever]: Printed 3 times.
+    [INFO] [1753518435.025424000] [print_forever]: Printed 0 times.
+    [INFO] [1753518435.509299083] [print_forever]: Printed 1 times.
+    [INFO] [1753518436.009566292] [print_forever]: Printed 2 times.
+    [INFO] [1753518436.509644292] [print_forever]: Printed 3 times.
+    [INFO] [1753518437.009296251] [print_forever]: Printed 4 times.
 
 To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2` on :program:`PyCharm`. The node will exit gracefully with
 
@@ -124,9 +125,10 @@ which will output, as expected
  
 .. code :: console
  
-    [INFO] [1683010987.130432622] [print_forever]: Printed 0 times.
-    [INFO] [1683010987.622780292] [print_forever]: Printed 1 times.
-    [INFO] [1683010988.122731296] [print_forever]: Printed 2 times.
-    [INFO] [1683010988.622735422] [print_forever]: Printed 3 times.
+    [INFO] [1753518652.646459087] [print_forever]: Printed 0 times.
+    [INFO] [1753518653.131078795] [print_forever]: Printed 1 times.
+    [INFO] [1753518653.632436004] [print_forever]: Printed 2 times.
+    [INFO] [1753518654.132090212] [print_forever]: Printed 3 times.
+    [INFO] [1753518654.630924338] [print_forever]: Printed 4 times.
 
 To stop, press :kbd:`CTRL+C` on the terminal and the Node will return gracefully.
