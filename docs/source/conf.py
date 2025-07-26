@@ -9,7 +9,7 @@ version_str = datetime.today().strftime('%y.%m.%d')
 
 # -- Project information
 
-project = 'ROS2 Tutorial'
+project = "(Murilo's) ROS2 Tutorial"
 author = 'Murilo M. Marinho'
 
 if this_year_str == '2023':
@@ -46,6 +46,11 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_book_theme'
 # Tried with `furo` on May 23, 2025, but somehow it didn't look right. In particular the download button wasn't as clear.
+html_theme_options = {
+   "announcement": "The documentation is being updated to Jazzy in this branch. "
+                   "See <a href='https://ros2-tutorial.readthedocs.io/en/humble/'>Humble Docs</a> for the stable ones",
+}
+html_title = project
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
