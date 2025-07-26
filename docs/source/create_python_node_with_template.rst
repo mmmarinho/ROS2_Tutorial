@@ -26,11 +26,11 @@ Which will output many things in common with the prior example, but with two maj
 
    going to create a new package
    package name: python_package_with_a_node
-   destination directory: ~/ros2_tutorial_workspace/src
+   destination directory: /root/ros2_tutorial_workspace/src
    package format: 3
    version: 0.0.0
    description: TODO: Package description
-   maintainer: ['murilo <murilomarinho@ieee.org>']
+   maintainer: ['root <murilo.marinho@manchester.ac.uk>']
    licenses: ['TODO: License declaration']
    build type: ament_python
    dependencies: []
@@ -51,7 +51,7 @@ Which will output many things in common with the prior example, but with two maj
    creating ./python_package_with_a_node/python_package_with_a_node/sample_python_node.py
 
    [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
-   It is recommended to use one of the ament license identitifers:
+   It is recommended to use one of the ament license identifiers:
    Apache-2.0
    BSL-1.0
    BSD-2.0
@@ -73,18 +73,9 @@ which will result in going through the package we created in the prior example a
 
 .. code :: console
 
-    Starting >>> python_package_with_a_node
-    Starting >>> the_simplest_python_package
-    --- stderr: python_package_with_a_node                                   
-    /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
-      warnings.warn(
-    ---
-    Finished <<< python_package_with_a_node [1.16s]
-    --- stderr: the_simplest_python_package
-    /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
-      warnings.warn(
-    ---
-    Finished <<< the_simplest_python_package [1.17s]
+   Starting >>> python_package_with_a_node
+   Starting >>> the_simplest_python_package
+   Finished <<< the_simplest_python_package [0.56s]
+   Finished <<< python_package_with_a_node [0.56s]
 
-    Summary: 2 packages finished [1.36s]
-      2 packages had stderr output: python_package_with_a_node the_simplest_python_package
+   Summary: 2 packages finished [0.62s]
