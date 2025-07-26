@@ -44,7 +44,7 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_book_theme'
 # Tried with `furo` on May 23, 2025, but somehow it didn't look right. In particular the download button wasn't as clear.
 
 # -- Options for EPUB output
