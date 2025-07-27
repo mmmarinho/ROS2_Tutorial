@@ -1,5 +1,5 @@
 Create packages (:program:`ros2 pkg create`)
----------------
+--------------------------------------------
 
 ROS2 has a tool to help create package templates. We can get all available options by running
 
