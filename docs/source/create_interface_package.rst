@@ -28,14 +28,14 @@ which again shows our beloved wall of text, with a few highlighted differences b
 
     going to create a new package
     package name: package_with_interfaces
-    destination directory: /home/murilo/git/ROS2_Tutorial/ros2_tutorial_workspace/src
+    destination directory: /root/ros2_tutorial_workspace/src
     package format: 3
     version: 0.0.0
     description: TODO: Package description
-    maintainer: ['murilo <murilomarinho@ieee.org>']
+    maintainer: ['root <murilo.marinho@manchester.ac.uk>']
     licenses: ['TODO: License declaration']
     build type: ament_cmake
-    dependencies: [geometry_msgs]
+    dependencies: ['geometry_msgs']
     creating folder ./package_with_interfaces
     creating ./package_with_interfaces/package.xml
     creating source and include folder
@@ -44,7 +44,7 @@ which again shows our beloved wall of text, with a few highlighted differences b
     creating ./package_with_interfaces/CMakeLists.txt
 
     [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
-    It is recommended to use one of the ament license identitifers:
+    It is recommended to use one of the ament license identifiers:
     Apache-2.0
     BSL-1.0
     BSD-2.0
@@ -63,7 +63,7 @@ The :file:`package.xml` dependencies
 Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely, the ones highlighted below.
 Edit the :file:`package_with_interfaces/package.xml` like so
 
-:download:`package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml
    :language: xml
@@ -98,7 +98,7 @@ Let us create a message file to transfer inspirational quotes between Nodes. For
 There are many ways to represent this, but for the sake of the example let us give each message an :code:`id` and two rather obvious fields.
 Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we just created with the following contents.
 
-:download:`AmazingQuote.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
@@ -123,7 +123,7 @@ With the :file:`AmazingQuote.msg`, we have seen how to use built-in types. Let's
 
 Add the file :file:`WhatIsThePoint.srv` in the :file:`srv` folder with the following contents
 
-:download:`WhatIsThePoint.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv>`
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv
    :language: yaml
@@ -141,7 +141,7 @@ The :file:`CMakeLists.txt` directives
 If a package is dedicated to interfaces, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
 Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 
-:download:`CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
