@@ -62,6 +62,7 @@ hoverxref_auto_ref = True
 
 # https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
 mermaid_params = ['-p' 'puppeteer-config.json']
+mermaid_output_format = ['png']
 
 # -- Options for latex https://docs.readthedocs.io/en/stable/guides/pdf-non-ascii-languages.html
 # latex_engine = "xelatex"
