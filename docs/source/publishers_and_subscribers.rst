@@ -5,17 +5,30 @@ Publishers and Subscribers: using messages
    
    Except for the particulars of the :file:`setup.py` file, the way that publishers and subscribers in ROS2 work in Python, i.e. the explanation in this section, does not depend on :program:`ament_python` or :program:`ament_cmake`.
 
-Finally, we reached the point where ROS2 becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
+Finally, we reached the point where :program:`ROS2` becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
 We can use those to provide `interprocess communication <https://en.wikipedia.org/wiki/Inter-process_communication>`_, i.e. two different programs talking to each other, which otherwise can be error-prone and very difficult to implement.
 
-ROS2 works on a model in which any number of processes can communicate over a :code:`Topic` that only accepts one message type. Each topic is uniquely identified by a string.
+:program:`ROS2` messages work on a model in which any number of processes can communicate over a :code:`Topic` that only accepts one message type. Each topic is uniquely identified by a string.
 
 Then
 
-- A program that sends (publishes) information to the topic has a :code:`Publisher`.
-- A program that reads (subscribes) information from a topic has a :code:`Subscriber`.
+- A program that sends (publishes) information to the topic has one or more :code:`Publisher` \(s).
+- A program that reads (subscribes) information from a topic has one or more :code:`Subscriber` \(s).
 
-Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and a combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_.
+Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and a combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_. An example is shown below.
+
+.. mermaid::
+
+    %%{init: { "theme" : "dark" }}%%
+    graph LR;
+    A[Publisher #1] --> B[Topic]
+    C[Publisher #2] --> B
+    B --> D[Subscriber #1]
+
+.. note::
+
+   This is an abstraction. As long as the information flows in this manner, it does not mean that an entity called ``topic`` must exist.
+   In :program:`ROS2`, this type of communication happens, in fact, peer-to-peer.
 
 Create the package
 ------------------

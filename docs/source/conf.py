@@ -31,8 +31,8 @@ extensions = [
     'hoverxref.extension', # https://sphinx-hoverxref.readthedocs.io/en/latest/index.html
     'sphinx_copybutton', # https://sphinx-copybutton.readthedocs.io/en/latest/
     'sphinx_design', # https://sphinx-design.readthedocs.io/en/latest/get_started.html
-    "sphinxext.remoteliteralinclude" # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
-
+    'sphinxext.remoteliteralinclude', # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
+    'sphinxcontrib.mermaid' #https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
 ]
 
 intersphinx_mapping = {
@@ -59,6 +59,9 @@ epub_show_urls = 'footnote'
 
 # -- Options for hoverxref.extension https://sphinx-hoverxref.readthedocs.io/en/latest/configuration.html
 hoverxref_auto_ref = True
+
+# https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
+mermaid_params = ['-p' 'puppeteer-config.json']
 
 # -- Options for latex https://docs.readthedocs.io/en/stable/guides/pdf-non-ascii-languages.html
 # latex_engine = "xelatex"
