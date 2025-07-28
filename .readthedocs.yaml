@@ -14,9 +14,10 @@ build:
     nodejs: "19"
     # rust: "1.64"
     # golang: "1.19"
+  apt_packages:
+    - libasound2 # For mermaid rendering in PDFs
   jobs:
     post_install:
-      - apt-get install libasound2
       - npm install -g @mermaid-js/mermaid-cli
 
 # Build documentation in the docs/ directory with Sphinx
