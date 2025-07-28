@@ -292,6 +292,6 @@ which outputs
    
 .. warning::
 
-   Unless instructed otherwise, the publisher does **NOT** wait for a subscriber to connect before it starts publishing the messages. As shown in the case above, the first message we received started with `id=3`. If we delayed longer to start the publisher, we would have received later messages only.
+   Unless instructed otherwise, the publisher does **NOT** wait for a subscriber to connect before it starts publishing the messages. As shown in the case above, the first message we received started with `id>0`. If we delayed longer to start the publisher, we would have received later messages only.
    
 Let's close each node with :kbd:`CTRL+C` on each terminal before we proceed to the next tutorial.
