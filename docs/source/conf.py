@@ -36,7 +36,7 @@ extensions = [
 ]
 
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/3.10/', None),
+    'python': ('https://docs.python.org/3.12/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
 }
 intersphinx_disabled_domains = ['std']
@@ -48,8 +48,8 @@ templates_path = ['_templates']
 html_theme = 'sphinx_book_theme'
 # Tried with `furo` on May 23, 2025, but somehow it didn't look right. In particular the download button wasn't as clear.
 html_theme_options = {
-   "announcement": "The documentation is being updated to Jazzy in this branch. "
-                   "See <a href='https://ros2-tutorial.readthedocs.io/en/humble/'>Humble Docs</a> for the stable ones. "
+   "announcement": "This tutorial has been updated to ROS2 Jazzy. "
+                   "See <a href='https://ros2-tutorial.readthedocs.io/en/humble/'>Humble Docs</a> for the previous version. "
                    "Create an <a href='https://github.com/mmmarinho/ROS2_Tutorial/issues'>issue</a> for inconsistencies.",
 }
 html_title = project
