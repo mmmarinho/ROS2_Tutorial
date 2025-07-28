@@ -6,6 +6,10 @@ At your Service: Servers and Clients
    Except for the particulars of the :file:`setup.py` file, the way that services in ROS2 work in Python, i.e. the explanation in this section, does not depend on :program:`ament_python` or :program:`ament_cmake`.
 
 
+.. seealso::
+
+   The contents of this session were simplified in this version. A more complex example is shown in https://ros2-tutorial.readthedocs.io/en/humble/service_servers_and_clients.html.
+
 In some cases, we need means of communication in which each command has an associated response. That is where :code:`Services` come into play.
 
 Create the package
@@ -19,6 +23,46 @@ We start by creating a package to use the :code:`Service` we first created in :r
     ros2 pkg create python_package_that_uses_the_services \
     --build-type ament_python \
     --dependencies rclpy package_with_interfaces
+
+.. dropdown:: ros2 pkg create output
+
+   .. code :: console
+
+        going to create a new package
+        package name: python_package_that_uses_the_services
+        destination directory: /root/ros2_tutorial_workspace/src
+        package format: 3
+        version: 0.0.0
+        description: TODO: Package description
+        maintainer: ['root <murilo.marinho@manchester.ac.uk>']
+        licenses: ['TODO: License declaration']
+        build type: ament_python
+        dependencies: ['rclpy', 'package_with_interfaces']
+        creating folder ./python_package_that_uses_the_services
+        creating ./python_package_that_uses_the_services/package.xml
+        creating source folder
+        creating folder ./python_package_that_uses_the_services/python_package_that_uses_the_services
+        creating ./python_package_that_uses_the_services/setup.py
+        creating ./python_package_that_uses_the_services/setup.cfg
+        creating folder ./python_package_that_uses_the_services/resource
+        creating ./python_package_that_uses_the_services/resource/python_package_that_uses_the_services
+        creating ./python_package_that_uses_the_services/python_package_that_uses_the_services/__init__.py
+        creating folder ./python_package_that_uses_the_services/test
+        creating ./python_package_that_uses_the_services/test/test_copyright.py
+        creating ./python_package_that_uses_the_services/test/test_flake8.py
+        creating ./python_package_that_uses_the_services/test/test_pep257.py
+
+        [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+        It is recommended to use one of the ament license identifiers:
+        Apache-2.0
+        BSL-1.0
+        BSD-2.0
+        BSD-2-Clause
+        BSD-3-Clause
+        GPL-3.0-only
+        LGPL-3.0-only
+        MIT
+        MIT-0
 
 Overview
 --------
