@@ -33,7 +33,7 @@ class AddPointsServiceServerNode(Node):
     """A ROS2 Node with a Service Server for AddPoints."""
 
     def __init__(self):
-        super().__init__('what_is_the_point_service_server')
+        super().__init__('add_points_service_server')
 
         self.service_server = self.create_service(
             srv_type=AddPoints,
