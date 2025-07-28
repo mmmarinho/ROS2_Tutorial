@@ -1,16 +1,16 @@
 Messages and Services (:program:`ros2 interface`)
 =================================================
 
-If by now you haven't particularly fallen in love with ROS2, fear not. Indeed, we haven't done much so far that couldn't be achieved more easily by other means.
+If by now you haven't particularly fallen in love with :program:`ROS2`, fear not. Indeed, we haven't done much so far that couldn't be achieved more easily by other means.
 
-ROS2 begins to shine most in its interprocess communication, through what are called `ROS2 interfaces <https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html>`_. In particular, the fact that we can easily interface Nodes written in Python and C++ is a strong selling point.
+:program:`ROS2` begins to shine most in its interprocess communication, through what are called `ROS2 interfaces <https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html>`_. In particular, the fact that we can easily interface Nodes written in Python and C++ is a strong selling point.
 
 :code:`Messages` are one of the three types of ROS2 interfaces. This will most likely be the standard of communication between Nodes in your packages. We will also see the bidirectional :code:`Services` now. The last type of interface, :code:`Actions`, is left for another section.
 
 Description
 -----------
 
-In ROS2, interfaces are files written in the ROS2 :abbr:`IDL (Interface Description Language)`. Each type of interface is described in a :file:`.msg` file (or :file:`.srv` file), which is then built by :program:`colcon` into libraries that can be imported into your Python programs.
+In :program:`ROS2`, interfaces are files written in the ROS2 :abbr:`IDL (Interface Description Language)`. Each type of interface is described in a :file:`.msg` file (or :file:`.srv` file), which is then built by :program:`colcon` into libraries that can be imported into your Python programs.
 
 When dealing with common robotics concepts such as geometric and sensor messages, it is good practice to use interfaces that already exist in ROS2, instead of creating new ones that serve the exact same purpose. In addition, for complicated interfaces, we can combine existing ones for simplicity. 
 
@@ -52,7 +52,7 @@ This shows that with :program:`ros2 interface list` we can get a list of all int
 to get the list of packages with interfaces available, which returns something similar to
  
 .. code-block:: console
-    :emphasize-lines: 8, 19
+    :emphasize-lines: 8, 21
  
     action_msgs
     action_tutorials_interfaces
@@ -66,13 +66,16 @@ to get the list of packages with interfaces available, which returns something s
     logging_demo
     map_msgs
     nav_msgs
+    package_with_interfaces
     pcl_msgs
     pendulum_msgs
     rcl_interfaces
     rmw_dds_common
     rosbag2_interfaces
     rosgraph_msgs
+    sas_msgs
     sensor_msgs
+    service_msgs
     shape_msgs
     statistics_msgs
     std_msgs
@@ -81,6 +84,7 @@ to get the list of packages with interfaces available, which returns something s
     tf2_msgs
     trajectory_msgs
     turtlesim
+    type_description_interfaces
     unique_identifier_msgs
     visualization_msgs
 
@@ -101,39 +105,39 @@ which returns
 
 .. code:: console
 
-    example_interfaces/msg/String
-    example_interfaces/srv/AddTwoInts
-    example_interfaces/srv/SetBool
-    example_interfaces/msg/UInt8
-    example_interfaces/msg/Int64MultiArray
-    example_interfaces/msg/Byte
-    example_interfaces/msg/Float32
-    example_interfaces/msg/Int64
-    example_interfaces/msg/UInt32MultiArray
-    example_interfaces/msg/Int32MultiArray
-    example_interfaces/msg/Empty
-    example_interfaces/msg/Float32MultiArray
-    example_interfaces/msg/Int16MultiArray
-    example_interfaces/action/Fibonacci
-    example_interfaces/msg/UInt16MultiArray
-    example_interfaces/msg/Int8MultiArray
-    example_interfaces/msg/Bool
-    example_interfaces/msg/ByteMultiArray
-    example_interfaces/msg/MultiArrayLayout
-    example_interfaces/msg/UInt8MultiArray
     example_interfaces/msg/UInt16
-    example_interfaces/msg/Int16
+    example_interfaces/msg/Empty
+    example_interfaces/action/Fibonacci
+    example_interfaces/msg/String
+    example_interfaces/msg/Int32
+    example_interfaces/msg/UInt32MultiArray
+    example_interfaces/msg/Float64MultiArray
+    example_interfaces/msg/Float32MultiArray
+    example_interfaces/srv/AddTwoInts
+    example_interfaces/msg/UInt8MultiArray
     example_interfaces/msg/Int8
+    example_interfaces/msg/Int16MultiArray
+    example_interfaces/msg/UInt32
+    example_interfaces/srv/SetBool
+    example_interfaces/msg/Int64
     example_interfaces/msg/MultiArrayDimension
-    example_interfaces/msg/Char
-    example_interfaces/msg/Float64
+    example_interfaces/msg/Int8MultiArray
+    example_interfaces/msg/ByteMultiArray
+    example_interfaces/msg/Int32MultiArray
     example_interfaces/srv/Trigger
+    example_interfaces/msg/Int64MultiArray
+    example_interfaces/msg/Float64
+    example_interfaces/msg/Byte
+    example_interfaces/msg/Int16
+    example_interfaces/msg/UInt16MultiArray
+    example_interfaces/msg/UInt64MultiArray
+    example_interfaces/msg/Char
+    example_interfaces/msg/UInt8
+    example_interfaces/msg/Bool
     example_interfaces/msg/UInt64
     example_interfaces/msg/WString
-    example_interfaces/msg/Int32
-    example_interfaces/msg/Float64MultiArray
-    example_interfaces/msg/UInt64MultiArray
-    example_interfaces/msg/UInt32
+    example_interfaces/msg/MultiArrayLayout
+    example_interfaces/msg/Float32
 
 Messages
 --------

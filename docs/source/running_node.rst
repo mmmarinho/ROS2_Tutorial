@@ -27,8 +27,7 @@ which returns the most relevant arguments :code:`package_name` and :code:`execut
 
    options:
      -h, --help       show this help message and exit
-     --prefix PREFIX  Prefix command, which should go before the executable. Command must be wrapped
-                      in quotes if it contains spaces (e.g. --prefix 'gdb -ex run --args').
+     --prefix PREFIX  Prefix command, which should go before the executable. Command must be wrapped in quotes if it contains spaces (e.g. --prefix 'gdb -ex run --args').
 
 
 Back to our example, with a properly sourced terminal, the example node can be executed with

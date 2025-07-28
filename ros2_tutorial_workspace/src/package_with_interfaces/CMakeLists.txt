@@ -17,9 +17,10 @@ find_package(rosidl_default_generators REQUIRED)
 set(interface_files
   # Messages
   "msg/AmazingQuote.msg"
+  "msg/AmazingQuoteStamped.msg"
   
   # Services
-  "srv/WhatIsThePoint.srv"
+  "srv/AddPoints.srv"
 
 )
 

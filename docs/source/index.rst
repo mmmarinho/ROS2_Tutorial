@@ -11,7 +11,7 @@
 
 📖 **About this tutorial** 
 
-`ROS2 Humble <https://docs.ros.org/en/humble/>`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 22.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://github.com/SmartArmStack>`_ and the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
+`ROS2 Jazzy <https://docs.ros.org/en/jazzy/>`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 24.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://smartarmstack.github.io>`_ also used in the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
 🤟 **Using this tutorial** 
 

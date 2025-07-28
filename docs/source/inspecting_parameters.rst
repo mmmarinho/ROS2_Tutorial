@@ -1,5 +1,3 @@
-.. include:: the_topic_is_under_heavy_construction.rst
-
 Inspecting parameters (:program:`ros2 param`)
 =============================================
 
@@ -26,17 +24,13 @@ which returns
    Commands:
      delete    Delete parameter
      describe  Show descriptive information about declared parameters
-     dump      Dump the parameters of a node to a yaml file
+     dump      Show all of the parameters of a node in a YAML file format
      get       Get parameter
      list      Output a list of available parameters
      load      Load parameter file for a node
      set       Set parameter
   
      Call `ros2 param <command> -h` for more detailed usage.
-
-.. note::
-
-   By the time you try this out, the documentation of :program:`ros2 param dump` might have changed. See `ros2/ros2cli/#835 <https://github.com/ros2/ros2cli/issues/836>`_.
 
 As shown in the emphasized lines above, the :program:`ros2 param` tool has a large number of useful commands to interact with parameters.
 
@@ -160,10 +154,6 @@ Changing parameters is not instantaneous and, after the change becomes visible i
 
 Save parameters to a file with :program:`ros2 param dump`
 ---------------------------------------------------------
-
-.. warning::
-
-   At the time I was writing this part of the tutorial, `the description <https://github.com/ros2/ros2cli/blob/86ae3930d4b56171ddff6d12cd467f6570ac6932/ros2param/ros2param/verb/dump.py#L40>`_ of :program:`ros2 param dump` was outdated.    By the time you try this out, it might have been corrected. See `ros2/ros2cli/#836 <https://github.com/ros2/ros2cli/issues/836>`_ for more info.
 
 Words are sometimes little happy accidents. This usage of the word dump has no relation whatsoever to, for example, `Peter got dumped by Sarah and went to Hawaii <https://www.imdb.com/title/tt0800039/>`_. Dump files are usually related to `crashes and unresponsive programs <https://learn.microsoft.com/en-us/visualstudio/debugger/using-dump-files?view=vs-2022>`_, so this name puzzles me since ROS: the first.
 

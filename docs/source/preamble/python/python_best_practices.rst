@@ -162,7 +162,7 @@ because our file does not have the permission to run as an executable. To give i
 
 and now we can run it properly with
 
-.. code-block:: commandline
+.. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package
    ./minimalist_script.py
@@ -448,14 +448,14 @@ For a quick jolt of instant gratification, let's run the tests before we proceed
 
 There are many ways to run tests written with :code:`unittest`. The following will run all tests found in the folder :file:`test`
 
-.. code-block:: commandLine
+.. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python/minimalist_package
    python -m unittest discover -v test
 
 which will output
 
-.. code-block:: commandLine
+.. code-block:: console
    
    test_attribute (test_minimalist_class.TestMinimalistClass) ... ok
    test_get_set_private_attribute (test_minimalist_class.TestMinimalistClass) ... ok

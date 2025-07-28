@@ -5,17 +5,30 @@ Publishers and Subscribers: using messages
    
    Except for the particulars of the :file:`setup.py` file, the way that publishers and subscribers in ROS2 work in Python, i.e. the explanation in this section, does not depend on :program:`ament_python` or :program:`ament_cmake`.
 
-Finally, we reached the point where ROS2 becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
+Finally, we reached the point where :program:`ROS2` becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
 We can use those to provide `interprocess communication <https://en.wikipedia.org/wiki/Inter-process_communication>`_, i.e. two different programs talking to each other, which otherwise can be error-prone and very difficult to implement.
 
-ROS2 works on a model in which any number of processes can communicate over a :code:`Topic` that only accepts one message type. Each topic is uniquely identified by a string.
+:program:`ROS2` messages work on a model in which any number of processes can communicate over a :code:`Topic` that only accepts one message type. Each topic is uniquely identified by a string.
 
 Then
 
-- A program that sends (publishes) information to the topic has a :code:`Publisher`.
-- A program that reads (subscribes) information from a topic has a :code:`Subscriber`.
+- A program that sends (publishes) information to the topic has one or more :code:`Publisher` \(s).
+- A program that reads (subscribes) information from a topic has one or more :code:`Subscriber` \(s).
 
-Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and a combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_.
+Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and a combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_. An example is shown below.
+
+.. mermaid::
+
+    %%{init: { "theme" : "dark" }}%%
+    graph LR;
+    A[Publisher #1] --> B[Topic]
+    C[Publisher #2] --> B
+    B --> D[Subscriber #1]
+
+.. note::
+
+   This is an abstraction. As long as the information flows in this manner, it does not mean that an entity called ``topic`` must exist.
+   In :program:`ROS2`, this type of communication happens, in fact, peer-to-peer.
 
 Create the package
 ------------------
@@ -28,6 +41,46 @@ First, let us create an :program:`ament_python` package that depends on our newl
   ros2 pkg create python_package_that_uses_the_messages \
   --build-type ament_python \
   --dependencies rclpy package_with_interfaces
+
+.. dropdown:: ros2 pkg create output
+
+   .. code :: console
+
+        going to create a new package
+        package name: python_package_that_uses_the_messages
+        destination directory: /root/ros2_tutorial_workspace/src
+        package format: 3
+        version: 0.0.0
+        description: TODO: Package description
+        maintainer: ['root <murilo.marinho@manchester.ac.uk>']
+        licenses: ['TODO: License declaration']
+        build type: ament_python
+        dependencies: ['rclpy', 'package_with_interfaces']
+        creating folder ./python_package_that_uses_the_messages
+        creating ./python_package_that_uses_the_messages/package.xml
+        creating source folder
+        creating folder ./python_package_that_uses_the_messages/python_package_that_uses_the_messages
+        creating ./python_package_that_uses_the_messages/setup.py
+        creating ./python_package_that_uses_the_messages/setup.cfg
+        creating folder ./python_package_that_uses_the_messages/resource
+        creating ./python_package_that_uses_the_messages/resource/python_package_that_uses_the_messages
+        creating ./python_package_that_uses_the_messages/python_package_that_uses_the_messages/__init__.py
+        creating folder ./python_package_that_uses_the_messages/test
+        creating ./python_package_that_uses_the_messages/test/test_copyright.py
+        creating ./python_package_that_uses_the_messages/test/test_flake8.py
+        creating ./python_package_that_uses_the_messages/test/test_pep257.py
+
+        [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+        It is recommended to use one of the ament license identifiers:
+        Apache-2.0
+        BSL-1.0
+        BSD-2.0
+        BSD-2-Clause
+        BSD-3-Clause
+        GPL-3.0-only
+        LGPL-3.0-only
+        MIT
+        MIT-0
 
 Overview
 --------
@@ -134,7 +187,7 @@ For the subscriber Node, create a file in :file:`python_package_that_uses_the_me
    :language: python
    :linenos:
    :lines: 24-
-   :emphasize-lines: 3, 11-15, 17-30
+   :emphasize-lines: 3, 11-15, 17-31
    
 Similarly to the publisher, in the subscriber, we start by importing the message in question
 
@@ -155,7 +208,7 @@ where the only difference with respect to the publisher is the third argument, n
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :lines: 40-53
-   :emphasize-lines: 7,11,13
+   :emphasize-lines: 8,12,14
 
 That callback method will be automatically called by ROS2, as one of the tasks performed by :code:`rclpy.spin(Node)`. Depending on the :code:`qos_profile`, it will not necessarily be the latest message.
 
@@ -207,41 +260,30 @@ which outputs
 
 .. code:: console
 
-   [INFO] [1684215672.344532584] [amazing_quote_subscriber_node]: 
-        I have received the most amazing of quotes.
-        It says
+    [INFO] [1753664072.638312553] [amazing_quote_subscriber_node]:
+            I have received the most amazing of quotes.
+            It says
 
-               'Use the force, Pikachu!'
+                   'Use the force, Pikachu!'
 
-        And was thought by the following genius
+            And was thought by the following genius
 
-            -- Uncle Ben
+                -- Uncle Ben
 
-        This latest quote had the id=3.
+            This latest quote had the id=37.
 
-   [INFO] [1684215672.844618237] [amazing_quote_subscriber_node]: 
-        I have received the most amazing of quotes.
-        It says
+    [INFO] [1753664073.121886428] [amazing_quote_subscriber_node]:
+            I have received the most amazing of quotes.
+            It says
 
-               'Use the force, Pikachu!'
+                   'Use the force, Pikachu!'
 
-        And was thought by the following genius
+            And was thought by the following genius
 
-            -- Uncle Ben
+                -- Uncle Ben
 
-        This latest quote had the id=4.
+            This latest quote had the id=38.
 
-   [INFO] [1684215673.344514856] [amazing_quote_subscriber_node]: 
-        I have received the most amazing of quotes.
-        It says
-
-               'Use the force, Pikachu!'
-
-        And was thought by the following genius
-
-            -- Uncle Ben
-
-        This latest quote had the id=5.
 
 
 .. note::

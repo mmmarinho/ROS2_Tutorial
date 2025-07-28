@@ -1,0 +1,6 @@
+# AddPoints.srv from https://ros2-tutorial.readthedocs.io
+# Adds the values of points `a` and `b` to give the output `result`
+geometry_msgs/Point a
+geometry_msgs/Point b
+---
+geometry_msgs/Point result

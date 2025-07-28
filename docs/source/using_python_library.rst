@@ -22,11 +22,11 @@ resulting in yet another version of our favorite wall of text
 
    going to create a new package
    package name: python_package_that_uses_the_library
-   destination directory: /home/murilo/ros2_tutorial_workspace/src
+   destination directory: /root/ros2_tutorial_workspace/src
    package format: 3
    version: 0.0.0
    description: TODO: Package description
-   maintainer: ['murilo <murilomarinho@ieee.org>']
+   maintainer: ['root <murilo.marinho@manchester.ac.uk>']
    licenses: ['TODO: License declaration']
    build type: ament_python
    dependencies: ['rclpy', 'python_package_with_a_library']
@@ -47,7 +47,7 @@ resulting in yet another version of our favorite wall of text
    creating ./python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
 
    [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
-   It is recommended to use one of the ament license identitifers:
+   It is recommended to use one of the ament license identifiers:
    Apache-2.0
    BSL-1.0
    BSD-2.0
@@ -105,10 +105,12 @@ Which outputs something similar to the shown below, but with different numbers a
 
 .. code :: console
 
-   [INFO] [1683598288.149167944] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.19395834493833486,1.3891603395040568) returned 2.506264769030609.
-   [INFO] [1683598288.149643378] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned qyOXLBEtzZ.
-   [INFO] [1683598288.616095880] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.7387236329957096,1.7650481260672202) returned 6.2688730214810775.
-   [INFO] [1683598288.616604769] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned LCFNFyzwhk.
-   [INFO] [1683598289.116050219] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.003813494022560704,1.7056916575839387) returned 2.9224078633691604.
-   [INFO] [1683598289.116553899] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned wrtTlOdanZ.
+   [INFO] [1753585839.509922172] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.9787232004970391,1.7320908702316369) returned 7.348512926060575.
+   [INFO] [1753585839.510400755] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned GQkUZgSkje.
+   [INFO] [1753585839.993999505] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.7637556876478347,1.0377535114838756) returned 3.2454353945561767.
+   [INFO] [1753585839.994351922] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned EztAWYuFMB.
+   [INFO] [1753585840.494895006] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.26638758438777976,1.1809445792770386) returned 2.0947703919786846.
+   [INFO] [1753585840.495950422] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned ITLIHPOMgv.
+   [INFO] [1753585840.994468589] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.5244531764161572,1.7524376840394509) returned 5.184231990426279.
+   [INFO] [1753585840.994695797] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned LGtybBngKv.
     

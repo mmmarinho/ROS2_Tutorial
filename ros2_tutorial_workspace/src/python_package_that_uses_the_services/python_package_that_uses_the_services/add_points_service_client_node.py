@@ -1,7 +1,7 @@
 """
 MIT LICENSE
 
-Copyright (C) 2023 Murilo Marques Marinho (www.murilomarinho.info)
+Copyright (C) 2023-2025 Murilo Marques Marinho (www.murilomarinho.info)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,18 +28,18 @@ import rclpy
 from rclpy.task import Future
 from rclpy.node import Node
 
-from package_with_interfaces.srv import WhatIsThePoint
+from package_with_interfaces.srv import AddPoints
 
 
-class WhatIsThePointServiceClientNode(Node):
-    """A ROS2 Node with a Service Client for WhatIsThePoint."""
+class AddPointsServiceClientNode(Node):
+    """A ROS2 Node with a Service Client for AddPoints."""
 
     def __init__(self):
-        super().__init__('what_is_the_point_service_client')
+        super().__init__('add_points_service_client')
 
         self.service_client = self.create_client(
-            srv_type=WhatIsThePoint,
-            srv_name='/what_is_the_point')
+            srv_type=AddPoints,
+            srv_name='/add_points')
 
         while not self.service_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info(f'service {self.service_client.srv_name} not available, waiting...')
@@ -54,19 +54,19 @@ class WhatIsThePointServiceClientNode(Node):
     def timer_callback(self):
         """Method that is periodically called by the timer."""
 
-        request = WhatIsThePoint.Request()
-        if random.uniform(0, 1) < 0.5:
-            request.quote.quote = "I wonder about the Ultimate Question of Life, the Universe, and Everything."
-            request.quote.philosopher_name = "Creators of Deep Thought"
-            request.quote.id = 1979
-        else:
-            request.quote.quote = """[...] your living... it is always potatoes. I dream of potatoes."""
-            request.quote.philosopher_name = "a young Maltese potato farmer"
-            request.quote.id = 2013
+        request = AddPoints.Request()
+
+        request.a.x = random.uniform(0, 1000)
+        request.a.y = random.uniform(0, 1000)
+        request.a.y = random.uniform(0, 1000)
+
+        request.b.x = random.uniform(0, 1000)
+        request.b.y = random.uniform(0, 1000)
+        request.b.z = random.uniform(0, 1000)
 
         if self.future is not None and not self.future.done():
             self.future.cancel()  # Cancel the future. The callback will be called with Future.result == None.
-            self.get_logger().info("Service Future canceled. The Node took too long to process the service call."
+            self.get_logger().warn("Service Future canceled. The Node took too long to process the service call."
                                    "Is the Service Server still alive?")
         self.future = self.service_client.call_async(request)
         self.future.add_done_callback(self.process_response)
@@ -75,15 +75,9 @@ class WhatIsThePointServiceClientNode(Node):
         """Callback for the future, that will be called when it is done"""
         response = future.result()
         if response is not None:
-            self.get_logger().info(dedent(f"""
-                We have thus received the point of our quote.
-
-                            {(response.point.x, response.point.y, response.point.z)}
-            """))
+            self.get_logger().info(f"The result was {(response.result.x, response.result.y, response.result.z)}")
         else:
-            self.get_logger().info(dedent("""
-                    The response was None. :(    
-            """))
+            self.get_logger().info("The response was None.")
 
 
 def main(args=None):
@@ -95,9 +89,9 @@ def main(args=None):
     try:
         rclpy.init(args=args)
 
-        what_is_the_point_service_client_node = WhatIsThePointServiceClientNode()
+        add_points_service_client_node = AddPointsServiceClientNode()
 
-        rclpy.spin(what_is_the_point_service_client_node)
+        rclpy.spin(add_points_service_client_node)
     except KeyboardInterrupt:
         pass
     except Exception as e:

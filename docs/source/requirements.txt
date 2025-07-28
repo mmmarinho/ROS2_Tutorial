@@ -4,3 +4,4 @@ sphinx-design
 sphinx-rtd-theme
 sphinxext-remoteliteralinclude
 sphinx-book-theme
+sphinxcontrib-mermaid

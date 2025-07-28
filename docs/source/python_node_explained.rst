@@ -76,7 +76,9 @@ Have a :code:`try-catch` block for :code:`KeyboardInterrupt`
 
    You can see more about this topic at :ref:`Python try catch`, in the preamble.
 
-In the current version of the `official ROS2 examples <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_, for reasons beyond my comprehension, this step is not followed.
+.. important::
+
+    In the current version of the `official ROS2 examples <https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html>`_, for reasons beyond my comprehension, this step is not followed.
 
 However, when running Nodes either in the terminal or in :program:`PyCharm`, catching a :code:`KeyboardInterrupt` is the only reliable way to finish the Nodes cleanly. A :code:`KeyboardInterrupt` is emitted at a terminal by pressing :kbd:`CTRL+C`, whereas it is emitted by :program:`PyCharm` when pressing :guilabel:`Stop`.
 
@@ -86,6 +88,20 @@ That is particularly important when real robots need to be gracefully shut down 
    :language: python
    :lines: 43-58
    :emphasize-lines: 7,13
+
+.. important::
+
+    Despite what is shown in the official ROS2 examples, do not add these to your code. This will cause the node to crash when
+    shutting down and not return 0 as expected by anything automatic running your nodes. This can cause many confusing behaviours.
+
+    .. code-block:: python
+
+        # Destroy the node explicitly
+        # (optional - otherwise it will be done automatically
+        # when the garbage collector destroys the node object)
+        minimal_publisher.destroy_node()
+        rclpy.shutdown()
+
 
 Document your code with Docstrings
 ----------------------------------

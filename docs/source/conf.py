@@ -9,7 +9,7 @@ version_str = datetime.today().strftime('%y.%m.%d')
 
 # -- Project information
 
-project = 'ROS2 Tutorial'
+project = "(Murilo's) ROS2 Tutorial"
 author = 'Murilo M. Marinho'
 
 if this_year_str == '2023':
@@ -31,7 +31,8 @@ extensions = [
     'hoverxref.extension', # https://sphinx-hoverxref.readthedocs.io/en/latest/index.html
     'sphinx_copybutton', # https://sphinx-copybutton.readthedocs.io/en/latest/
     'sphinx_design', # https://sphinx-design.readthedocs.io/en/latest/get_started.html
-    "sphinxext.remoteliteralinclude" # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
+    'sphinxext.remoteliteralinclude', # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
+    'sphinxcontrib.mermaid' #https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
 ]
 
 intersphinx_mapping = {
@@ -46,12 +47,21 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_book_theme'
 # Tried with `furo` on May 23, 2025, but somehow it didn't look right. In particular the download button wasn't as clear.
+html_theme_options = {
+   "announcement": "The documentation is being updated to Jazzy in this branch. "
+                   "See <a href='https://ros2-tutorial.readthedocs.io/en/humble/'>Humble Docs</a> for the stable ones. "
+                   "Create an <a href='https://github.com/mmmarinho/ROS2_Tutorial/issues'>issue</a> for inconsistencies.",
+}
+html_title = project
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
 # -- Options for hoverxref.extension https://sphinx-hoverxref.readthedocs.io/en/latest/configuration.html
 hoverxref_auto_ref = True
+
+# https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
+mermaid_params = ['-p' 'puppeteer-config.json']
 
 # -- Options for latex https://docs.readthedocs.io/en/stable/guides/pdf-non-ascii-languages.html
 # latex_engine = "xelatex"

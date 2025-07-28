@@ -5,6 +5,10 @@ Creating a dedicated package for custom interfaces
 
    Despite this push in ROS2 towards having the users define even the simplest of message types, to define new interfaces in ROS2 we must use an :program:`ament_cmake` package. It **cannot** be done with an :program:`ament_python` package.
 
+.. seealso::
+
+   The contents of this session were simplified in this version. A more complex example is shown in https://ros2-tutorial.readthedocs.io/en/humble/service_servers_and_clients.html.
+
 All interfaces in ROS2 must be made in an :program:`ament_cmake` package. We have so far not needed it, but for this scenario we cannot escape. Thankfully, for this we don't need to dig too deep into :program:`CMake`, so fear not.
 
 Creating the package
@@ -28,14 +32,14 @@ which again shows our beloved wall of text, with a few highlighted differences b
 
     going to create a new package
     package name: package_with_interfaces
-    destination directory: /home/murilo/git/ROS2_Tutorial/ros2_tutorial_workspace/src
+    destination directory: /root/ros2_tutorial_workspace/src
     package format: 3
     version: 0.0.0
     description: TODO: Package description
-    maintainer: ['murilo <murilomarinho@ieee.org>']
+    maintainer: ['root <murilo.marinho@manchester.ac.uk>']
     licenses: ['TODO: License declaration']
     build type: ament_cmake
-    dependencies: [geometry_msgs]
+    dependencies: ['geometry_msgs']
     creating folder ./package_with_interfaces
     creating ./package_with_interfaces/package.xml
     creating source and include folder
@@ -44,7 +48,7 @@ which again shows our beloved wall of text, with a few highlighted differences b
     creating ./package_with_interfaces/CMakeLists.txt
 
     [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
-    It is recommended to use one of the ament license identitifers:
+    It is recommended to use one of the ament license identifiers:
     Apache-2.0
     BSL-1.0
     BSD-2.0
@@ -63,7 +67,7 @@ The :file:`package.xml` dependencies
 Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely, the ones highlighted below.
 Edit the :file:`package_with_interfaces/package.xml` like so
 
-:download:`package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml
    :language: xml
@@ -98,11 +102,27 @@ Let us create a message file to transfer inspirational quotes between Nodes. For
 There are many ways to represent this, but for the sake of the example let us give each message an :code:`id` and two rather obvious fields.
 Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we just created with the following contents.
 
-:download:`AmazingQuote.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
    :linenos:
+
+Re-using a message from the same package
+++++++++++++++++++++++++++++++++++++++++
+
+With the :file:`AmazingQuote.msg`, we have seen how to use built-in types. Let's use another message, :file:`AmazingQuoteStamped.msg`,  to learn two more possibilities, namely using messages from the same package and messages defined elsewhere.
+
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg
+   :language: yaml
+   :linenos:
+
+Note that if the message is defined in the same package, the package name does not appear in the message (or service) definition. If the message is defined elsewhere, we have to fully specify the package.
+
+In many :program:`ROS2` packages, messages with the suffix ``Stamped`` exist. As a rule, those are the same messages but with a additional
+``std_msgs/Header`` so that they can be timestamped.
 
 The service folder
 ------------------
@@ -119,17 +139,18 @@ The convention is to add all services to a folder called :file:`srv`. Let's foll
 The service file
 ----------------
 
-With the :file:`AmazingQuote.msg`, we have seen how to use built-in types. Let's use the service to learn two more possibilities. Let us use a message from the same package and a message from another package. Services cannot be used to define other services.
+.. note::
 
-Add the file :file:`WhatIsThePoint.srv` in the :file:`srv` folder with the following contents
+   Services cannot be used to define other services.
 
-:download:`WhatIsThePoint.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv>`
+Add the file :file:`AddPoints.srv` in the :file:`srv` folder with the following contents
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/WhatIsThePoint.srv
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv
    :language: yaml
    :linenos:
 
-Note that if the message is defined in the same package, the package name does not appear in the service or message definition. If the message is defined elsewhere, we have to specify it.
 
 The :file:`CMakeLists.txt` directives
 -------------------------------------
@@ -141,12 +162,12 @@ The :file:`CMakeLists.txt` directives
 If a package is dedicated to interfaces, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
 Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 
-:download:`CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
-   :emphasize-lines: 14-36
+   :emphasize-lines: 14-37
 
 What to do when adding new interfaces?
 --------------------------------------
@@ -167,8 +188,8 @@ If additional interfaces are required
 
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
-      :lines: 17-24
-      :emphasize-lines: 4, 7
+      :lines: 17-25
+      :emphasize-lines: 5, 8
 
 .. note::
 
@@ -196,8 +217,9 @@ returns
 
 .. code:: console
 
-   package_with_interfaces/srv/WhatIsThePoint
-   package_with_interfaces/msg/AmazingQuote
+    package_with_interfaces/msg/AmazingQuote
+    package_with_interfaces/msg/AmazingQuoteStamped
+    package_with_interfaces/srv/AddPoints
    
 and we can further get more specific info on :file:`AmazingQuote.msg`
 
@@ -210,26 +232,29 @@ which returns
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
 
-alternatively, we can do the same for :file:`WhatIsThePoint.srv`
+alternatively, we can do the same for :file:`AddPoints.srv`
 
 .. code:: console
 
-   ros2 interface show package_with_interfaces/srv/WhatIsThePoint
+   ros2 interface show package_with_interfaces/srv/AddPoints
    
 which returns expanded information on each field of the service
 
-
 .. code:: yaml
 
-   # WhatIsThePoint.srv from https://ros2-tutorial.readthedocs.io
-   # Receives an AmazingQuote and returns what is the point
-   AmazingQuote quote
-      int32 id
-      string quote
-      string philosopher_name
-   ---
-   geometry_msgs/Point point
-      float64 x
-      float64 y
-      float64 z
+    # AddPoints.srv from https://ros2-tutorial.readthedocs.io
+    # Adds the values of points `a` and `b` to give the output `result`
+    geometry_msgs/Point a
+            float64 x
+            float64 y
+            float64 z
+    geometry_msgs/Point b
+            float64 x
+            float64 y
+            float64 z
+    ---
+    geometry_msgs/Point result
+            float64 x
+            float64 y
+            float64 z
 

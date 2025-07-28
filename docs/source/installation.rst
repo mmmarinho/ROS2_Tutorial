@@ -4,7 +4,7 @@ ROS2 Installation
 =================
 
 .. note:: 
-  This tutorial is an abridged version of the original `ROS 2 Documentation <https://docs.ros.org/en/humble/index.html>`_. This tutorial considers a fresh Ubuntu Desktop (not Server) 22.04 LTS x64 (not arm64) installation, that you have super user access and common sense. It might work in other cases, but those have not been tested in this tutorial.
+  This tutorial is an abridged version of the original `ROS 2 Documentation <https://docs.ros.org/en/jazzy/index.html>`_. This tutorial considers a fresh Ubuntu Desktop (not Server) 24.04 LTS installation, that you have super user access and common sense. It might work in other cases, but those have not been tested in this tutorial.
 
 .. warning:: 
   All commands must be followed to the letter, in the precise order described herein. Any deviation from what is described might cause unspecified problems and not all of them are easily solvable.
@@ -47,8 +47,9 @@ The following commands will do all that magic.
 .. code-block:: console
 
    sudo add-apt-repository universe
-   sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+   export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
+   curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb" # If using Ubuntu derivates use $UBUNTU_CODENAME
+   sudo dpkg -i /tmp/ros2-apt-source.deb
    sudo apt update && sudo apt upgrade -y
 
 Install ROS2 packages
@@ -58,7 +59,7 @@ There are plenty of ways to install ROS2, the following will suffice for now.
 
 .. code-block:: console
 
-   sudo apt install -y ros-humble-desktop ros-dev-tools 
+   sudo apt install -y ros-jazzy-desktop ros-dev-tools
 
 Set up system environment to find ROS2
 -------------------------------------
@@ -71,8 +72,8 @@ The :code:`~/.bashrc` file can be used for that exact purpose as, in Ubuntu, tha
 
 .. code-block:: console
 
-   echo "# Source ROS2 Humble, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
-   echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+   echo "# Source ROS2 Jazzy, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
+   echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
    source ~/.bashrc
    
 Check if it works
@@ -88,18 +89,14 @@ outputs something similar to what is shown below, then it worked! Otherwise, it 
 
 .. code-block:: console
 
-       usage: ros2 [-h] [--use-python-default-buffering]
-                Call `ros2 <command> -h` for more detailed usage. ...
+    usage: ros2 [-h] [--use-python-default-buffering] Call `ros2 <command> -h` for more detailed usage. ...
 
     ros2 is an extensible command-line tool for ROS 2.
 
     options:
       -h, --help            show this help message and exit
       --use-python-default-buffering
-                            Do not force line buffering in stdout and instead use
-                            the python default buffering, which might be affected
-                            by PYTHONUNBUFFERED/-u and depends on whatever stdout
-                            is interactive or not
+                            Do not force line buffering in stdout and instead use the python default buffering, which might be affected by PYTHONUNBUFFERED/-u and depends on whatever stdout is interactive or not
 
     Commands:
       action     Various action related sub-commands
@@ -121,8 +118,6 @@ outputs something similar to what is shown below, then it worked! Otherwise, it 
       wtf        Use `wtf` as alias to `doctor`
 
       Call `ros2 <command> -h` for more detailed usage.
-
-
 
 .. _software-properties-common: https://askubuntu.com/questions/1000118/what-is-software-properties-common
 .. _curl: https://curl.se/
