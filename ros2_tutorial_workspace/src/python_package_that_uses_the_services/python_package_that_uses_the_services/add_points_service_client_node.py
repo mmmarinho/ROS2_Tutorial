@@ -55,8 +55,14 @@ class AddPointsServiceClientNode(Node):
         """Method that is periodically called by the timer."""
 
         request = AddPoints.Request()
-        request.a = random.uniform(0, 1000)
-        request.b = random.uniform(0, 1000)
+
+        request.a.x = random.uniform(0, 1000)
+        request.a.y = random.uniform(0, 1000)
+        request.a.y = random.uniform(0, 1000)
+
+        request.b.x = random.uniform(0, 1000)
+        request.b.y = random.uniform(0, 1000)
+        request.b.z = random.uniform(0, 1000)
 
         if self.future is not None and not self.future.done():
             self.future.cancel()  # Cancel the future. The callback will be called with Future.result == None.
