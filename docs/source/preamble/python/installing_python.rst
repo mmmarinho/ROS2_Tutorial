@@ -7,7 +7,7 @@ Installing Python on Ubuntu
    If you change or try to tinker with the default Python version of Ubuntu, your system will most likely **BREAK COMPLETELY**. 
    Do not play around with the default Python installation, because Ubuntu depends on it to work properly (or work at all).
    
-In Ubuntu 22.04, Python is already installed!
+In Ubuntu, Python is already installed!
 In fact, Ubuntu would not work without it. Let's check its version by running
 
 .. code-block:: console
@@ -18,9 +18,9 @@ which should output
 
 .. code-block:: console
 
-   Python 3.10.6
+   Python 3.12.3
    
-If the :code:`3.10` part of your version is different (e.g. :code:`3.9` or :code:`3.11`\), get this fixed because this tutorial will not work for you. 
+If the :code:`3.12` part of your version is different, this tutorial might not work for you. Please make sure to use the default Python in your Ubuntu.
 
 .. warning::
    Note that the command is :program:`python3` and not :program:`python`. In fact, the result of
@@ -50,13 +50,13 @@ which should output something similar to
 
 .. code-block:: console
 
-   Python 3.10.6 (main, Mar 10 2023, 10:55:28) [GCC 11.3.0] on linux
+   Python 3.12.3 (main, Jun 18 2025, 17:59:45) [GCC 13.3.0] on linux
    Type "help", "copyright", "credits" or "license" for more information.
    >>> 
 
-in particular, if the :code:`GCC 11` is different, e.g. :code:`GCC 9` or :code:`GCC 12`\, then get this fixed because this tutorial will not work for you.
+in particular, if the :code:`GCC 13` is different, then this tutorial might not work for you.
 
-As you already know, to exit the `interactive shell <https://docs.python.org/3.10/tutorial/interpreter.html>`_ you can use :kbd:`CTRL+D` or type :code:`quit()` and press :kbd:`ENTER`.
+As you already know, to exit the `interactive shell <https://docs.python.org/3.12/tutorial/interpreter.html>`_ you can use :kbd:`CTRL+D` or type :code:`quit()` and press :kbd:`ENTER`.
 
 Some Python packages must be installed through :program:`apt`
 -------------------------------------------------------------
@@ -83,7 +83,7 @@ When you want to isolate your environment, use :program:`venv`
    Until that is handled, we are not going to use :program:`venv` for the ROS2 tutorials. 
    However, we will use :program:`venv` to protect our ROS2 environment from these Python preamble tutorials.
  
-Using :program:`venv` (`More info <https://docs.python.org/3.10/library/venv.html>`_) is quite straightforward. 
+Using :program:`venv` (`More info <https://docs.python.org/3.12/library/venv.html>`_) is quite straightforward.
 
 Create a :file:`venv`
 ^^^^^^^^^^^^^^^^^^^^^
@@ -151,20 +151,20 @@ then, we install
 
 .. code-block:: console
 
-   python3 -m pip install dqrobotics
+   python3 -m pip install dqrobotics --break-system-packages
    
 which will result in something similar to (might change depending on future versions)
 
 .. code-block:: console
 
-   Collecting dqrobotics
-   Downloading dqrobotics-23.4.0a15-cp310-cp310-manylinux1_x86_64.whl (551 kB)
-        ---------------------------------------- 551.4/551.4 KB 6.3 MB/s eta 0:00:00
-   Collecting numpy
-     Downloading numpy-1.25.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.6 MB)
-        ---------------------------------------- 17.6/17.6 MB 7.4 MB/s eta 0:00:00
-   Installing collected packages: numpy, dqrobotics
-   Successfully installed dqrobotics-23.4.0a15 numpy-1.25.0
+    Collecting dqrobotics
+      Downloading dqrobotics-25.4.0a17-cp312-cp312-manylinux2014_aarch64.whl.metadata (2.9 kB)
+    Requirement already satisfied: numpy in /usr/lib/python3/dist-packages (from dqrobotics) (1.26.4)
+    Downloading dqrobotics-25.4.0a17-cp312-cp312-manylinux2014_aarch64.whl (512 kB)
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 512.5/512.5 kB 14.0 MB/s eta 0:00:00
+    [...]
+    Installing collected packages: dqrobotics
+    Successfully installed dqrobotics-25.4.0a17
 
 Removing libraries (installed with :program:`pip`)
 --------------------------------------------------
@@ -173,18 +173,18 @@ We can remove the library we just installed with
 
 .. code-block:: console
 
-   python3 -m pip uninstall dqrobotics
+   python3 -m pip uninstall dqrobotics --break-system-packages
 
 resulting in
 
 .. code-block:: console
    
-   Found existing installation: dqrobotics 23.4.0a15
-   Uninstalling dqrobotics-23.4.0a15:
-     Would remove:
-       /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/dqrobotics-23.4.0a15.dist-info/*
-       /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/dqrobotics/*
-   Proceed (Y/n)?
+    Found existing installation: dqrobotics 25.4.0a7
+    Uninstalling dqrobotics-25.4.0a7:
+      Would remove:
+        /usr/local/lib/python3.12/dist-packages/dqrobotics-25.4.0a7.dist-info/*
+        /usr/local/lib/python3.12/dist-packages/dqrobotics/*
+    Proceed (Y/n)?
 
 .. hint::
 
@@ -195,7 +195,7 @@ Then, press :kbd:`ENTER`, which results in
 
 .. code-block:: console
 
-     Successfully uninstalled dqrobotics-23.4.0a15
+     Successfully uninstalled dqrobotics-25.4.0a7
 
 When using :program:`pip`, do **NOT** use :code:`sudo`
 ------------------------------------------------------
