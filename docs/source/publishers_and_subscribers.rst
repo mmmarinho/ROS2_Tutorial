@@ -42,6 +42,46 @@ First, let us create an :program:`ament_python` package that depends on our newl
   --build-type ament_python \
   --dependencies rclpy package_with_interfaces
 
+.. dropdown:: ros2 pkg create output
+
+   .. code :: console
+
+        going to create a new package
+        package name: python_package_that_uses_the_messages
+        destination directory: /root/ros2_tutorial_workspace/src
+        package format: 3
+        version: 0.0.0
+        description: TODO: Package description
+        maintainer: ['root <murilo.marinho@manchester.ac.uk>']
+        licenses: ['TODO: License declaration']
+        build type: ament_python
+        dependencies: ['rclpy', 'package_with_interfaces']
+        creating folder ./python_package_that_uses_the_messages
+        creating ./python_package_that_uses_the_messages/package.xml
+        creating source folder
+        creating folder ./python_package_that_uses_the_messages/python_package_that_uses_the_messages
+        creating ./python_package_that_uses_the_messages/setup.py
+        creating ./python_package_that_uses_the_messages/setup.cfg
+        creating folder ./python_package_that_uses_the_messages/resource
+        creating ./python_package_that_uses_the_messages/resource/python_package_that_uses_the_messages
+        creating ./python_package_that_uses_the_messages/python_package_that_uses_the_messages/__init__.py
+        creating folder ./python_package_that_uses_the_messages/test
+        creating ./python_package_that_uses_the_messages/test/test_copyright.py
+        creating ./python_package_that_uses_the_messages/test/test_flake8.py
+        creating ./python_package_that_uses_the_messages/test/test_pep257.py
+
+        [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+        It is recommended to use one of the ament license identifiers:
+        Apache-2.0
+        BSL-1.0
+        BSD-2.0
+        BSD-2-Clause
+        BSD-3-Clause
+        GPL-3.0-only
+        LGPL-3.0-only
+        MIT
+        MIT-0
+
 Overview
 --------
 
@@ -147,7 +187,7 @@ For the subscriber Node, create a file in :file:`python_package_that_uses_the_me
    :language: python
    :linenos:
    :lines: 24-
-   :emphasize-lines: 3, 11-15, 17-30
+   :emphasize-lines: 3, 11-15, 17-31
    
 Similarly to the publisher, in the subscriber, we start by importing the message in question
 
@@ -168,7 +208,7 @@ where the only difference with respect to the publisher is the third argument, n
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :lines: 40-53
-   :emphasize-lines: 7,11,13
+   :emphasize-lines: 8,12,14
 
 That callback method will be automatically called by ROS2, as one of the tasks performed by :code:`rclpy.spin(Node)`. Depending on the :code:`qos_profile`, it will not necessarily be the latest message.
 
@@ -220,41 +260,30 @@ which outputs
 
 .. code:: console
 
-   [INFO] [1684215672.344532584] [amazing_quote_subscriber_node]: 
-        I have received the most amazing of quotes.
-        It says
+    [INFO] [1753664072.638312553] [amazing_quote_subscriber_node]:
+            I have received the most amazing of quotes.
+            It says
 
-               'Use the force, Pikachu!'
+                   'Use the force, Pikachu!'
 
-        And was thought by the following genius
+            And was thought by the following genius
 
-            -- Uncle Ben
+                -- Uncle Ben
 
-        This latest quote had the id=3.
+            This latest quote had the id=37.
 
-   [INFO] [1684215672.844618237] [amazing_quote_subscriber_node]: 
-        I have received the most amazing of quotes.
-        It says
+    [INFO] [1753664073.121886428] [amazing_quote_subscriber_node]:
+            I have received the most amazing of quotes.
+            It says
 
-               'Use the force, Pikachu!'
+                   'Use the force, Pikachu!'
 
-        And was thought by the following genius
+            And was thought by the following genius
 
-            -- Uncle Ben
+                -- Uncle Ben
 
-        This latest quote had the id=4.
+            This latest quote had the id=38.
 
-   [INFO] [1684215673.344514856] [amazing_quote_subscriber_node]: 
-        I have received the most amazing of quotes.
-        It says
-
-               'Use the force, Pikachu!'
-
-        And was thought by the following genius
-
-            -- Uncle Ben
-
-        This latest quote had the id=5.
 
 
 .. note::
