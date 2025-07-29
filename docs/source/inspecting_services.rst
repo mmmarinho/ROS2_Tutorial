@@ -10,7 +10,7 @@ Inspecting services (:program:`ros2 service`)
 which outputs the detailed information of the tool, as shown below. In particular, the highlighted fields are used quite frequently in practice.
 
 .. code-block:: console
-    :emphasize-lines: 13,15
+    :emphasize-lines: 11,15
 
     usage: ros2 service [-h] [--include-hidden-services] Call `ros2 service <command> -h` for more detailed usage. ...
 
@@ -105,3 +105,19 @@ Testing your service clients???
 -------------------------------
 
 To the best of my knowledge, there is no tool inside :program:`ros2 service` to allow us to experiment with the service clients. For service clients, apparently, the only way to test them is to make a minimal service server to interact with them. We've already done that, so this topic ends here.
+
+How about :program:`ros2 service echo`
+--------------------------------------
+
+.. seealso::
+
+   - https://docs.ros.org/en/jazzy/Tutorials/Demos/Service-Introspection.html
+   - https://github.com/ros2/demos/blob/rolling/demo_nodes_py/demo_nodes_py/services/introspection.py
+
+
+It is important to know of the existence of ``service introspection``. Although it seems to work the documentation might be ongoing https://github.com/ros-infrastructure/rep/pull/360>_
+
+After proper configuration of the server and client, :program:`ros2 service echo` allows us to look at what information is being exchanged between participants. It helps not having to
+add endless ``print`` functions throughout the code that hurt performance.
+
+

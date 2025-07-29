@@ -1,7 +1,7 @@
 """
 MIT LICENSE
 
-Copyright (C) 2023-25 Murilo Marques Marinho (www.murilomarinho.info)
+Copyright (C) 2023-2025 Murilo Marques Marinho (www.murilomarinho.info)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,38 +21,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+from .add_points_service_client_node import AddPointsServiceClientNode
+
 import rclpy
-from rclpy.node import Node
-from package_with_interfaces.srv import AddPoints
+from rclpy.service import ServiceIntrospectionState
+from rclpy.qos import qos_profile_system_default
 
-
-class AddPointsServiceServerNode(Node):
-    """A ROS2 Node with a Service Server for AddPoints."""
+class AddPointsServiceClientIntrospectionNode(AddPointsServiceClientNode):
 
     def __init__(self):
-        super().__init__('add_points_service_server')
+        super().__init__()
 
-        self.service_server = self.create_service(
-            srv_type=AddPoints,
-            srv_name='/add_points',
-            callback=self.add_points_service_callback)
-
-        self.service_server_call_count: int = 0
-
-    def add_points_service_callback(self,
-                                   request: AddPoints.Request,
-                                   response: AddPoints.Response
-                                   ) -> AddPoints.Response:
-        """
-        Adds the two points `a` and `b` in the request and returns the `result`.
-        """
-
-        response.result.x = request.a.x + request.b.x
-        response.result.y = request.a.y + request.b.y
-        response.result.z = request.a.z + request.b.z
-
-        return response
-
+        # https://github.com/ros2/demos/blob/rolling/demo_nodes_py/demo_nodes_py/services/introspection.py
+        self.service_client.configure_introspection(
+            clock=self.get_clock(),
+            service_event_qos_profile=qos_profile_system_default,
+            introspection_state=ServiceIntrospectionState.CONTENTS)
 
 def main(args=None):
     """
@@ -63,9 +47,9 @@ def main(args=None):
     try:
         rclpy.init(args=args)
 
-        add_points_service_server_node = AddPointsServiceServerNode()
+        add_points_service_client_introspection_node = AddPointsServiceClientIntrospectionNode()
 
-        rclpy.spin(add_points_service_server_node)
+        rclpy.spin(add_points_service_client_introspection_node)
     except KeyboardInterrupt:
         pass
     except Exception as e:

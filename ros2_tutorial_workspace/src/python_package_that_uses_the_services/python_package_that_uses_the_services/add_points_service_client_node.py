@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import random
-from textwrap import dedent  # https://docs.python.org/3/library/textwrap.html#textwrap.dedent
 
 import rclpy
 from rclpy.task import Future
