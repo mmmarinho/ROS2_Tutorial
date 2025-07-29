@@ -102,19 +102,19 @@ The code begins with an import to the service we created. No surprise here.
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py
    :language: python
    :lines: 24-29
-   :emphasize-lines: 6
+   :emphasize-lines: 3
 
 The Service Server must be initialised with the :code:`create_service()`, as follows, with parameters that should by now be quite obvious to us.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py
    :language: python
-   :lines: 38-41
+   :lines: 35-38
 
 The Service Server receives a :code:`AddPoints.Request` and returns a :code:`AddPoints.Response`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py
    :language: python
-   :lines: 45-52
+   :lines: 42-48
    :emphasize-lines: 2,4
 
 .. warning::
@@ -132,7 +132,7 @@ At the end of the callback, we must return that :code:`AddPoints.Request`, like 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py
    :language: python
-   :lines: 57
+   :lines: 54
 
 The Service Server was quite painless, but it doesn't do much. The Service Client might be a bit more on the painful side for the uninitiated.
 
