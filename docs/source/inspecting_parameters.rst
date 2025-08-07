@@ -117,7 +117,7 @@ If everything is correct, we'll get
 
    Set parameter successful
 
-.. info::
+.. important::
 
    Some errors are easy to debug, such as when we get the name of the Node wrong
 

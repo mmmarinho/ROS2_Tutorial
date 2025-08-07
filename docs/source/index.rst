@@ -116,6 +116,13 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    inspecting_parameters
 
 .. toctree::
+   :caption: Gazebo Basics
+   :maxdepth: 2
+   :hidden:
+
+   gazebo/installation
+
+.. toctree::
    :caption: ROS2 C++ Basics
    :maxdepth: 2
    :hidden:

@@ -47,7 +47,7 @@ Then, you can run :program:`PyCharm` with
 
     pycharm_ros2
 
-.. info::
+.. important::
    We use :program:`pycharm_ros2` instead of :program:`pycharm` on purpose. This prevents our alias from misbehaving if you have another version of :program:`PyCharm` installed.
 
 2024.09 Update

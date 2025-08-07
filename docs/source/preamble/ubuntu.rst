@@ -172,7 +172,7 @@ So, enough of this example, let's get rid of everything with
 :program:`bash` redirections
 ----------------------------
 
-.. info::
+.. important::
 
    More info is available at the `Bash Reference Manual <https://www.gnu.org/software/bash/manual/html_node/Redirections.html>`_.
 
