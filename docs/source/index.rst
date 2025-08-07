@@ -13,15 +13,20 @@
 
 `ROS2 Jazzy <https://docs.ros.org/en/jazzy/>`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 24.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://smartarmstack.github.io>`_ also used in the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
+These tutorials have been the backbone of `EEEN62021 Software for Robotics <https://www.manchester.ac.uk/study/masters/courses/list/20967/msc-robotics/course-details/EEEN62021>`_, one of the units of the `MSc Robotics <https://www.manchester.ac.uk/study/masters/courses/list/20967/msc-robotics/>`_ at the `University of Manchester <https://www.manchester.ac.uk>`_.
+
 🤟 **Using this tutorial** 
 
-This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`. 
+This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`.
+
+It is expected that the user will be working directly on an Ubuntu machine. :program:`Docker` images are available but no compatibility with host systems other than Ubuntu have been attempted.
 
 ❤️ **Ways to show love**
 
-- ⭐ starring `the repository <https://github.com/mmmarinho/ROS2_Tutorial>`_.
-- Contributing with feedback to the `issue tracker <https://github.com/mmmarinho/ROS2_Tutorial/issues>`_.
-- Sending me an e-mail at murilo.marinho@manchester.ac.uk.
+If you enjoyed this tutorial, please
+
+- ⭐ star `the repository <https://github.com/mmmarinho/ROS2_Tutorial>`_ or,
+- contribute with feedback to the `issue tracker <https://github.com/mmmarinho/ROS2_Tutorial/issues>`_.
 
 🔍 **Quick overview**
 
@@ -149,15 +154,6 @@ This is a tutorial that supposes that the user will follow it linearly. Some rea
    docker/index
    cmake/index
    faq
-
-Warnings
---------
-
-.. warning::
-   If you're using macOS or Windows, this is **NOT** the guide for you. There might be a lot of overlap, but none of the code shown here has been tested on those operating systems.
-
-.. warning::
-   This project is under active development and is currently a draft.
 
 Disclaimers
 -----------
