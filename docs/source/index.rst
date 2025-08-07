@@ -18,6 +18,8 @@
 
 `Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <https://creativecommons.org/licenses/by-nc-nd/4.0/>`_
 
+The example code have their own License headers, usually `MIT Licensed <https://opensource.org/license/mit>`_.
+
 📖 **About this tutorial** 
 
 `ROS2 Jazzy <https://docs.ros.org/en/jazzy/>`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 24.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://smartarmstack.github.io>`_ also used in the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
