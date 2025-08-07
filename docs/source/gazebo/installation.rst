@@ -13,7 +13,7 @@ Here is the description of the packages we are installing. You can notice that t
 
 ===========================   ================================================================================================================================================
 curl_                         Helps download files from the terminal.
-`lsb-release`_                  The lsb_release command is a simple tool to help identify the Linux distribution being used and its compliance with the Linux Standard Base
+`lsb-release`_                The lsb_release command is a simple tool to help identify the Linux distribution being used and its compliance with the Linux Standard Base
 gnupg_                        :program:`GnuPG` is an universal crypto engine which can be used directly from a command line prompt, from shell scripts, or from other programs.
 ===========================   ================================================================================================================================================
 
