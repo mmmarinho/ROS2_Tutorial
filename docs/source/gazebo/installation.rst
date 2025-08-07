@@ -48,7 +48,10 @@ Basic functionality of :program:`Gazebo`
 .. note::
 
    Apply Force Torque Plugin
-   https://gazebosim.org/api/sim/8/apply_force_torque.html
+   https://gazebosim.org/api/sim/8/apply_force_torque.htm
+
+   Mouse Drag
+   https://gazebosim.org/api/sim/8/mouse_drag.html
 
 We can start by choosing the file :file:`ackermann_steering.sdf`
 
