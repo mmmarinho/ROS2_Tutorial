@@ -35,6 +35,17 @@ After installation, :program:`Gazebo Harmonic` can be run with the following com
 
     gz sim
 
+Which should result in something similar to the following, if the installation went well.
+I would recommend strongly against letting the curiosity get the best of you and clicking on the ``3d_shapes.sdf`` given that it's current freezing my virtual machines.
+Other
+
+.. image:: images/screen_quickstart.png
+    :width: 100%
+
+Basic functionality of :program:`Gazebo`
+----------------------------------------
+
+We can start by choosing the file :file:`ackermann_steering.sdf`
 
 .. _curl: https://curl.se/
 .. _`lsb-release`: https://packages.debian.org/sid/lsb-release
