@@ -45,6 +45,11 @@ Other
 Basic functionality of :program:`Gazebo`
 ----------------------------------------
 
+.. note::
+
+   Apply Force Torque Plugin
+   https://gazebosim.org/api/sim/8/apply_force_torque.html
+
 We can start by choosing the file :file:`ackermann_steering.sdf`
 
 .. _curl: https://curl.se/
