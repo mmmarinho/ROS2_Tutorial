@@ -143,7 +143,9 @@ If you enjoyed this tutorial, please
    :maxdepth: 2
    :hidden:
 
+   gazebo/about
    gazebo/installation
+   gazebo/quickstart
 
 .. toctree::
    :caption: ROS2 C++ Basics
