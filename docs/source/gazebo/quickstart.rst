@@ -1,23 +1,17 @@
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-:program:`Gazebo` Quickstart
-============================
+Using :program:`Gazebo`
+=======================
 
-Running :program:`Gazebo`
--------------------------
+.. hint::
 
-After installation, :program:`Gazebo Harmonic` can be run with the following command
+    You can start the simulator with
 
-.. code-block:: console
+    .. code-block:: console
 
-    gz sim
+        gz sim
 
-Which should result in something similar to the following, if the installation went well.
-I would recommend strongly against letting the curiosity get the best of you and clicking on the ``3d_shapes.sdf`` given that it's current freezing all my machines.
-Other scenes seem to be working in general.
-
-.. image:: images/screen_quickstart.png
-    :width: 100%
+In this section we will see the basic operations related to :program:`Gazebo` and create our own :file:`sdf` file.
 
 Basic functionality
 -------------------

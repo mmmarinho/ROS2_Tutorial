@@ -17,3 +17,5 @@ For :program:`ROS2 Jazzy`, we use :program:`Gazebo Harmonic`. This replicates th
 
 Beauty and usability are in the eyes of the beholder. That said, one major improvement in :program:`Gazebo` is the motion towards not needing two robot description formats. It has always been the case that a robot would have to be described twice, once for :program:`ROS2` and another for :program:`Gazebo Classic`.
 Although this switch might still be ongoing and some more advanced functionalities might be missing, we will work with a single ``.sdf`` file as much as possible in these tutorials.
+
+If some of these terms are not clear to you now, worry not. They will become clearer as we progress in the tutorials.

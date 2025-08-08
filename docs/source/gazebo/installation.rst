@@ -19,3 +19,18 @@ curl_                         Helps download files from the terminal.
 gnupg_                        :program:`GnuPG` is an universal crypto engine which can be used directly from a command line prompt, from shell scripts, or from other programs.
 ===========================   =================================================================================================================================================
 
+Running :program:`Gazebo`
+-------------------------
+
+After installation, :program:`Gazebo Harmonic` can be run with the following command
+
+.. code-block:: console
+
+    gz sim
+
+Which should result in something similar to the following, if the installation went well.
+I would recommend strongly against letting the curiosity get the best of you and clicking on the ``3d_shapes.sdf`` given that it's current freezing all my machines.
+Other scenes seem to be working in general.
+
+.. image:: images/screen_quickstart.png
+    :width: 100%
