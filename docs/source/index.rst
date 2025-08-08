@@ -132,6 +132,13 @@ If you enjoyed this tutorial, please
    inspecting_parameters
 
 .. toctree::
+   :caption: rviz2 Basics
+   :maxdepth: 2
+   :hidden:
+
+   rviz/index
+
+.. toctree::
    :caption: Gazebo Basics
    :maxdepth: 2
    :hidden:
