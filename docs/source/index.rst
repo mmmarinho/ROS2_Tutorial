@@ -44,26 +44,30 @@ If you enjoyed this tutorial, please
 #. :doc:`Preamble: Ubuntu Basics <preamble/ubuntu>`
     A few tips on Ubuntu/terminal usage.
 
-#. :doc:`Preamble: Python Basics <preamble/python>` 
+#. :doc:`Preamble: Python Best Practices <preamble/python>`
     A quick memory refresher for the Python stuff we'll use in ROS2.
 
 #. :doc:`ROS2 Setup <installation>` (⭐start here⭐)
     Installing ROS2 and setting up its environment for use.
 
-#. :doc:`ROS2 Python Package/Build Basics <create_packages>`
+#. :doc:`ROS2 Python Package/Build <create_packages>`
     Creating our first ROS2 package with :program:`ament_python` and building it with :program:`colcon`.
 
-#. :doc:`ROS2 Python Node Basics <running_node>`
+#. :doc:`ROS2 Python Node <running_node>`
     Creating a ``rclpy`` Node and figuring out what all that means.
 
-#. :doc:`ROS2 Python Library Basics <create_python_library>`
+#. :doc:`ROS2 Python Library <create_python_library>`
     Create a Python library and importing/using it in another :program:`ament_python` package.
 
-#. :doc:`ROS2 Python Interface Basics <messages>`
-    Making ROS2 messages, services, publishers, subscribers, service servers, and service clients.
+#. :doc:`ROS2 Messages with Python <messages>`
+    Writing and using ROS2 messages, publishers, and subscribers.
 
-#. :doc:`ROS2 Parameter/Launch Basics <parameters_and_launch>`
+#. :doc:`ROS2 Parameter/Launch <parameters_and_launch>`
     Making configurable ROS2 Nodes using parameters and launch files.
+
+#. :doc:`ROS2 Services with Python <service_servers_and_clients>`
+    Writing ROS2 services, service servers, and service clients.
+
 
 .. toctree::
    :caption: Preamble
@@ -83,7 +87,7 @@ If you enjoyed this tutorial, please
    workspace_setup
 
 .. toctree::
-   :caption: ROS2 Python Package/Build Basics
+   :caption: ROS2 Python Package/Build
    :maxdepth: 2
    :hidden:
 
@@ -93,7 +97,7 @@ If you enjoyed this tutorial, please
    source_after_build
 
 .. toctree::
-   :caption: ROS2 Python Node Basics
+   :caption: ROS2 Python Node
    :maxdepth: 2
    :hidden:
    
@@ -103,7 +107,7 @@ If you enjoyed this tutorial, please
    python_node_explained
 
 .. toctree::
-   :caption: ROS2 Python Library Basics
+   :caption: ROS2 Python Library
    :maxdepth: 2
    :hidden:
    
@@ -111,25 +115,37 @@ If you enjoyed this tutorial, please
    using_python_library
 
 .. toctree::
-   :caption: ROS2 Python Interface Basics
+   :caption: ROS2 Interfaces
+   :maxdepth: 2
+   :hidden:
+
+   messages
+   create_interface_package
+
+.. toctree::
+   :caption: ROS2 Messages in Python
    :maxdepth: 2
    :hidden:
    
-   messages
-   create_interface_package
    publishers_and_subscribers
    inspecting_topics
-   service_servers_and_clients
-   inspecting_services
 
 .. toctree::
-   :caption: ROS2 Parameter/Launch Basics
+   :caption: ROS2 Parameter/Launch
    :maxdepth: 2
    :hidden:
 
    parameters_and_launch
    launch_configurable_nodes
    inspecting_parameters
+
+.. toctree::
+   :caption: ROS2 Services in Python
+   :maxdepth: 2
+   :hidden:
+
+   service_servers_and_clients
+   inspecting_services
 
 .. toctree::
    :caption: Gazebo Basics
@@ -183,3 +199,12 @@ By reading and/or using this tutorial in total or in part, you agree to these te
 
    THIS TUTORIAL AND RELATED SOFTWARE ARE PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE AND/OR TUTORIAL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    
+Changelog
+---------
+
+2025/08
++++++++
+
+- Updated to ROS2 Jazzy.
+- Updated theme to ``sphinx_book_theme``.
+- Moved ROS2 parameter and launch to before the services.
