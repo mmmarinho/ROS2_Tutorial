@@ -13,12 +13,20 @@
 🧑‍⚖️ **License**
 
 .. image:: ../images/by-nc-nd.png
-   :width: 100
+   :width: 150
    :alt: License shield
+\
 
-`Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <https://creativecommons.org/licenses/by-nc-nd/4.0/>`_
+This tutorial is licensed under `Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <https://creativecommons.org/licenses/by-nc-nd/4.0/>`_.
 
 The example code have their own License headers, usually `MIT Licensed <https://opensource.org/license/mit>`_.
+
+.. attention:: Generative AI training with this content must follow the `license restrictions <https://creativecommons.org/using-cc-licensed-works-for-ai-training-2/>`_.
+   In particular, please refer to the excerpt below.
+
+   *If AI training data includes the NonCommercial restriction,
+   then following the NC restriction would require that all stages,
+   from copying the data during training to sharing the trained model, must not be for commercial gain.*
 
 📖 **About this tutorial** 
 
@@ -59,7 +67,10 @@ If you enjoyed this tutorial, please
 #. :doc:`ROS2 Python Library <create_python_library>`
     Create a Python library and importing/using it in another :program:`ament_python` package.
 
-#. :doc:`ROS2 Messages with Python <messages>`
+#. :doc:`ROS2 Interfaces <messages>`
+    ROS2 interfaces and creating custom interface packages.
+
+#. :doc:`ROS2 Messages with Python <publishers_and_subscribers>`
     Writing and using ROS2 messages, publishers, and subscribers.
 
 #. :doc:`ROS2 Parameter/Launch <parameters_and_launch>`

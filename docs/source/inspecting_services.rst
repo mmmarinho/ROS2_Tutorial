@@ -101,38 +101,62 @@ which results in
     response:
     package_with_interfaces.srv.AddPoints_Response(result=geometry_msgs.msg.Point(x=0.0, y=1.0, z=34.0))
 
-Testing your service clients???
--------------------------------
+Testing your service clients
+----------------------------
 
-To the best of my knowledge, there is no tool inside :program:`ros2 service` to allow us to experiment with the service clients. For service clients, apparently, the only way to test them is to make a minimal service server to interact with them. We've already done that, so this topic ends here.
+To the best of my knowledge, there is no tool inside :program:`ros2 service` to allow us to experiment with the service clients. For service clients the only way to test them is to make a minimal service server to interact with them. We've already done that, so this topic ends here.
 
 How about :program:`ros2 service echo`
 --------------------------------------
 
+.. versionadded:: Jazzy
+
+   Added this section about service introspection using :program:`ros2 service echo`.
+
+
 .. seealso::
 
-   - https://docs.ros.org/en/jazzy/Tutorials/Demos/Service-Introspection.html
+   - `Official tutorial on service introspection <https://docs.ros.org/en/jazzy/Tutorials/Demos/Service-Introspection.html>`_
    - https://github.com/ros2/demos/blob/rolling/demo_nodes_py/demo_nodes_py/services/introspection.py
 
+.. admonition:: We'll be working in these files
 
-It is important to know of the existence of ``service introspection``. Although it seems to work the documentation might be ongoing https://github.com/ros-infrastructure/rep/pull/360>_
+    .. code-block:: console
+        :emphasize-lines: 5,7
+
+        python_package_that_uses_the_services
+        |-- package.xml
+        |-- python_package_that_uses_the_services
+        |   |-- __init__.py
+        |   |-- add_points_service_client_introspection_node.py
+        |   |-- add_points_service_client_node.py
+        |   |-- add_points_service_server_introspection_node.py
+        |   `-- add_points_service_server_node.py
+        |-- resource
+        |   `-- python_package_that_uses_the_services
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
+
+
+It is important to know of the existence of ``service introspection``. Although it seems to work the documentation might be ongoing, according to this discussion: https://github.com/ros-infrastructure/rep/pull/360.
 
 After proper configuration of the server and client, :program:`ros2 service echo` allows us to look at what information is being exchanged between participants. It helps not having to
 add endless ``print`` functions throughout the code that hurt performance.
 
-We'll be working in these files
-
-.. code-block:: console
-
-    python_package_that_uses_the_services
-    `-- python_package_that_uses_the_services
-        |-- add_points_service_client_introspection_node.py
-        `-- add_points_service_server_introspection_node.py
-
+In the folder :file:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services` we add the following two files.
+Note that we are using inheritance from the previously written :code:`AddPointsServiceClientNode` and :code:`AddPointsServiceServerNode` to minimize code replication.
 
 .. tab-set::
 
     .. tab-item:: Introspection Client
+
+        For the :code:`Node` with the service client, we must use the :code:`configure_introspection` method. The argument requires a :code:`service_event_qos_profile` and a :code:`introspection_state`.
+        The quality-of-service profile is within the same scope as the quality-of-service for messages and has a similar meaning. The :code:`introspection_state` defines how much of the service can be introspected.
+        Less information can be made accesible if that is necessary.
 
         :download:`add_points_service_client_introspection_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py>`
 
@@ -140,8 +164,11 @@ We'll be working in these files
            :language: python
            :linenos:
            :lines: 24-
+           :emphasize-lines: 4,5,12-16
 
     .. tab-item:: Introspection Server
+
+        The service server has the same syntax and requirements to activate introspection as the service client.
 
         :download:`add_points_service_server_introspection_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py>`
 
@@ -149,3 +176,4 @@ We'll be working in these files
            :language: python
            :linenos:
            :lines: 24-
+           :emphasize-lines: 4,5,12-16
