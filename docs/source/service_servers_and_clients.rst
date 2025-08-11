@@ -12,6 +12,15 @@ At your Service: Servers and Clients
 
 In some cases, we need means of communication in which each command has an associated response. That is where :code:`Services` come into play.
 
+.. mermaid::
+
+    %%{init: { "theme" : "dark" }}%%
+    graph LR;
+    A[Service Client #1] --> B[Service Server]
+    C[Service Client #2] --> B
+    B --> A
+    B --> C
+
 Create the package
 ------------------
 
