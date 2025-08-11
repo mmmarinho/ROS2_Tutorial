@@ -1,17 +1,21 @@
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
+.. versionadded:: Jazzy
+
+   Added this section.
+
 .. _Gazebo installation:
 
 :program:`Gazebo` Installation
 ==============================
 
-The following command will install :program:`Gazebo Harmonic` and all the pairing libraries for :program:`ROS2 Jazzy`.
+The following command will install :program:`Gazebo Harmonic` and all the pairing libraries for :program:`ROS2 Jazzy`. Please do not attempt to install it following another documentation. This could lead to a different version being installed.
 
 .. rli:: https://raw.githubusercontent.com/UoMMScRobotics/SFR_Gazebo/refs/heads/main/install_gazebo.sh
    :language: bash
    :lines: 5-15
 
-Here is the description of the packages we are installing. You can notice that the packages are being used in the commands to add the :program:`Gazebo Harmonic` packages to our :program:`apt` sources.
+Here is the description of the packages we are installing. You can notice that the packages are being used in the commands to add the :program:`Gazebo Harmonic` packages to our :program:`apt` sources. We're just telling :program:`apt` where to find the packages and install those.
 
 ===========================   =================================================================================================================================================
 curl_                         Helps download files from the terminal.
@@ -29,7 +33,7 @@ After installation, :program:`Gazebo Harmonic` can be run with the following com
     gz sim
 
 Which should result in something similar to the following, if the installation went well.
-I would recommend strongly against letting the curiosity get the best of you and clicking on the ``3d_shapes.sdf`` given that it's current freezing all my machines.
+I would recommend strongly against letting the curiosity get the best of you and clicking on the ``3k_shapes.sdf`` given that it's current freezing all my machines.
 Other scenes seem to be working in general.
 
 .. image:: images/screen_quickstart.png

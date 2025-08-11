@@ -1,5 +1,5 @@
-Parameters: creating configurable Nodes
-=======================================
+Parameters and launch files: creating configurable Nodes
+========================================================
 
 The Nodes we have made in the past few sections are interesting because they take advantage of the interprocess communication provided by ROS2. 
 

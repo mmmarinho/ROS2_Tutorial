@@ -159,11 +159,13 @@ If you enjoyed this tutorial, please
    inspecting_services
 
 .. toctree::
-   :caption: Gazebo Basics
+   :caption: Gazebo
    :maxdepth: 2
    :hidden:
 
+   gazebo/about
    gazebo/installation
+   gazebo/quickstart
 
 .. toctree::
    :caption: ROS2 C++ Basics
