@@ -10,7 +10,11 @@ At your Service: Servers and Clients
 
    The contents of this session were simplified in this version. A more complex example is shown in https://ros2-tutorial.readthedocs.io/en/humble/service_servers_and_clients.html.
 
-In some cases, we need means of communication in which each command has an associated response. That is where :code:`Services` come into play.
+In some cases, we need means of communication in which each command has an associated response. That is where :code:`Services` come into play. We use services :code:`Services` by creating a :code:`ServiceServer`.
+The :code:`ServiceServer` will provide a service that can be accessed by one or more :code:`ServiceClient`\s.
+
+In this sense, a :code:`Service` is much less of an abstract entity than a :code:`Topic`.
+Each :code:`Service` should only have a single :code:`ServiceServer` that will receive a :code:`Request` and provide a :code:`Response`.
 
 .. mermaid::
 
@@ -76,6 +80,30 @@ We start by creating a package to use the :code:`Service` we first created in :r
 Overview
 --------
 
+.. admonition:: File structure
+
+    This will be the file structure for the :code:`Service` tutorial. Highlighted are the main files for the :code:`ServiceServer` and :code:`ServiceClient`.
+
+    .. code-block:: console
+        :emphasize-lines: 6,8
+
+        python_package_that_uses_the_services
+        |-- package.xml
+        |-- python_package_that_uses_the_services
+        |   |-- __init__.py
+        |   |-- add_points_service_client_introspection_node.py
+        |   |-- add_points_service_client_node.py
+        |   |-- add_points_service_server_introspection_node.py
+        |   `-- add_points_service_server_node.py
+        |-- resource
+        |   `-- python_package_that_uses_the_services
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
+
 Before we start exploring the elements of the package, let us
 
 #. Create the Node with a Service Server.
@@ -98,9 +126,9 @@ Create the Node with a Service Server
       
                #. Add the new Node to :file:`setup.py`
 
-Let's start by creating a :file:`add_points_service_server_node.py` in :file:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services` with the following contents
+Let's start by creating a :file:`add_points_service_server_node.py`.
 
-:download:`add_points_service_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py>`
+:download:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py
    :language: python
@@ -148,8 +176,13 @@ The Service Server was quite painless, but it doesn't do much. The Service Clien
 Service Clients
 ---------------
 
-ROS2 :code:`rclpy` Service Clients are implemented using an :code:`asyncio` logic (`More info <https://docs.python.org/3.10/library/asyncio.html>`_).
-In this tutorial, we briefly introduce unavoidable :code:`async` concepts in :ref:`Asyncio`, but for any extra understanding, it's better to check the official documentation.
+In :code:`rclpy`, service clients are implemented using an :code:`asyncio` logic (`more info <https://docs.python.org/3.12/library/asyncio.html>`_).
+In this tutorial, we briefly introduce unavoidable :code:`async` concepts in :ref:`Asyncio`. For extra understanding, please check the official documentation.
+
+The reasons for :code:`asyncio` are very simple. We do not know when the :code:`Response` of a service will be available. Then, when a service is called, we do not want our :code:`Node` with a :code:`ServiceClient` to get stuck while waiting for it.
+Using :code:`asyncio` allows the :code:`Node` to do other things while the :code:`Response` is received and processed.
+
+In contrast with a :code:`Message`, we need to worry about blocking the :code:`Node` with a :code:`ServiceServer` because a :code:`Service` demands a response.
 
 Create the Node with a Service Client (using a :code:`callback`)
 ----------------------------------------------------------------
@@ -191,7 +224,8 @@ To have access to the service, we import it with :code:`from <package>.srv impor
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 31
+   :lines: 24-30
+   :emphasize-lines: 5,7
 
 Instantiate a Service Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -200,7 +234,7 @@ We instantiate a Service Client with :code:`Node.create_client()`. The values of
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 40-42
+   :lines: 39-41
 
 (Recommended) Wait for the Service Server to be available
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -212,7 +246,7 @@ In many cases, having the result of the service is of particular importance (hen
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 44,45
+   :lines: 43,44
 
 Instantiate a :code:`Future` as a class attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -221,7 +255,7 @@ As part of the :code:`async` framework, we instantiate a :code:`Future` (`More i
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 47
+   :lines: 46
 
 Instantiate a Timer
 ^^^^^^^^^^^^^^^^^^^
@@ -230,13 +264,13 @@ Whenever periodic work must be done, it is recommended to use a :code:`Timer`, a
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 49-52
+   :lines: 48-51
 
 The need for a callback for the :code:`Timer`, should also be no surprise.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 54-55
+   :lines: 53-54
 
 Service Clients use :code:`<srv>.Request()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,7 +279,7 @@ Given that services work in a request-response model, the Service Client must in
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 57-65
+   :lines: 56-64
 
 Make service calls with :code:`call_async()`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -264,14 +298,14 @@ The benefit of this is that the callback will not block our resources until the 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 67-72
+   :lines: 66-71
    :emphasize-lines: 5,6
 
 Given that we are periodically calling the service, before replace the class :code:`Future` with the next service call, we can check if the service call was done with :code:`Future.done()`. If it is not done, we can use :code:`Future.cancel()` so that our callback can handle this case as well. For instance, if the Service Server has been shutdown, the :code:`Future` would never be done.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 67-72
+   :lines: 66-71
    :emphasize-lines: 1-4
 
 The Future callback
@@ -283,7 +317,7 @@ The result of the :code:`Future` is obtained using :code:`Future.result()`. The 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
-   :lines: 74-88
+   :lines: 73-79
    :emphasize-lines: 1,3,4
 
 Update the :file:`setup.py`
