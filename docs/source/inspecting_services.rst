@@ -120,21 +120,32 @@ It is important to know of the existence of ``service introspection``. Although 
 After proper configuration of the server and client, :program:`ros2 service echo` allows us to look at what information is being exchanged between participants. It helps not having to
 add endless ``print`` functions throughout the code that hurt performance.
 
+We'll be working in these files
+
+.. code-block:: console
+
+    python_package_that_uses_the_services
+    `-- python_package_that_uses_the_services
+        |-- add_points_service_client_introspection_node.py
+        `-- add_points_service_server_introspection_node.py
+
 
 .. tab-set::
 
-    .. tab-item:: add_points_service_client_introspection_node.py
+    .. tab-item:: Introspection Client
 
-        :download:`add_points_service_client_introspection_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py>`
+        :download:`add_points_service_client_introspection_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py>`
 
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py
+        .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py
            :language: python
            :linenos:
+           :lines: 24-
 
-    .. tab-item:: add_points_service_server_introspection_node.py
+    .. tab-item:: Introspection Server
 
-        :download:`add_points_service_server_introspection_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py>`
+        :download:`add_points_service_server_introspection_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py>`
 
-        .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py
+        .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py
            :language: python
            :linenos:
+           :lines: 24-

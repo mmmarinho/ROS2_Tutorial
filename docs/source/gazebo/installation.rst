@@ -1,16 +1,9 @@
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-:program:`Gazebo` quickstart
-============================
-
-.. note::
-
-   Here are the `official docs <https://gazebosim.org/docs/harmonic/getstarted/>`_ from the developers of :program:`Gazebo`.
-
 .. _Gazebo installation:
 
 :program:`Gazebo` Installation
-------------------------------
+==============================
 
 The following command will install :program:`Gazebo Harmonic` and all the pairing libraries for :program:`ROS2 Jazzy`.
 
@@ -35,7 +28,9 @@ After installation, :program:`Gazebo Harmonic` can be run with the following com
 
     gz sim
 
+Which should result in something similar to the following, if the installation went well.
+I would recommend strongly against letting the curiosity get the best of you and clicking on the ``3d_shapes.sdf`` given that it's current freezing all my machines.
+Other scenes seem to be working in general.
 
-.. _curl: https://curl.se/
-.. _`lsb-release`: https://packages.debian.org/sid/lsb-release
-.. _gnupg: https://gnupg.org/download/
+.. image:: images/screen_quickstart.png
+    :width: 100%
