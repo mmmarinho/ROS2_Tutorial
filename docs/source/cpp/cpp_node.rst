@@ -156,6 +156,8 @@ These files do not exist, so we'll create them.
 
     .. tab-item:: folder
 
+       Create the folder.
+
        .. code-block:: console
 
           cd ~/ros2_tutorial_workspace/src/cpp_package_with_a_node
@@ -187,7 +189,7 @@ These files do not exist, so we'll create them.
 
     .. tab-item::  src/..._main.cpp 
 
-        Given that we are using ``rclcpp::spin()``, there is nothing special here either. Just remember to not mess up the ``std::make_shared`` and always use perfect forwarding. See :ref:`Perfect forwarding`. 
+        Given that we are using ``rclcpp::spin()``, there is nothing special here either. Just remember to not mess up the ``std::make_shared`` and always use perfect forwarding.
         The ``rclcpp::spin()`` handles the ``SIGINT`` when we, for example, press :kbd:`CTRL+C` on the terminal. It is not perfect, but it does the trick for simple nodes like this one.
         
         :download:`print_forever_node_main.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`

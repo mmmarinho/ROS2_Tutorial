@@ -171,7 +171,6 @@ If you enjoyed this tutorial, please
    :maxdepth: 2
    :hidden:
    
-   cpp/index
    cpp/cpp_node
    cpp/cpp_library
    cpp/cpp_vent
