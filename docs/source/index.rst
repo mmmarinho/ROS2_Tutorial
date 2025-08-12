@@ -49,11 +49,11 @@ If you enjoyed this tutorial, please
 
 🔍 **Quick overview**
 
-#. :doc:`Preamble: Ubuntu Basics <preamble/ubuntu>`
-    A few tips on Ubuntu/terminal usage.
+#. :doc:`Preamble: Ubuntu and Python <preamble/ubuntu>`
+    A few tips on Ubuntu terminal and checking your Python installation.
 
-#. :doc:`Preamble: Python Best Practices <preamble/python>`
-    A quick memory refresher for the Python stuff we'll use in ROS2.
+#. :doc:`Preamble: Python Best Practices <preamble/python/python_best_practices>`
+    A quick memory refresher for the Python stuff useful in ROS2.
 
 #. :doc:`ROS2 Setup <installation>` (⭐start here⭐)
     Installing ROS2 and setting up its environment for use.
