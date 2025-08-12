@@ -1,14 +1,13 @@
+.. versionchanged:: Jazzy
+
+   The contents of this session were expanded and the example simplified. The previous version is available at the `Humble tutorials <https://ros2-tutorial.readthedocs.io/en/humble/service_servers_and_clients.html>`_.
+
 At your Service: Servers and Clients
 ====================================
 
 .. note::
 
    Except for the particulars of the :file:`setup.py` file, the way that services in ROS2 work in Python, i.e. the explanation in this section, does not depend on :program:`ament_python` or :program:`ament_cmake`.
-
-
-.. versionchanged:: Jazzy
-
-   The contents of this session were expanded and the example simplified. The previous version is available at the `Humble tutorials <https://ros2-tutorial.readthedocs.io/en/humble/service_servers_and_clients.html>`_.
 
 In some cases, we need means of communication in which each command has an associated response. That is where :code:`Services` come into play. We use services :code:`Services` by creating a :code:`ServiceServer`.
 The :code:`ServiceServer` will provide a service that can be accessed by one or more :code:`ServiceClient`\s.
