@@ -52,11 +52,22 @@ Minimalist package: something to start with
 .. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 2,3
+      :emphasize-lines: 1-4
       
-      python/minimalist_package/
-        └── minimalist_package/
-              └── __init__.py
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
 
 
 First, let's make a folder for our project
@@ -94,19 +105,30 @@ The (empty) package is done!
 Minimalist script
 -----------------
 
-.. admonition:: In this step, we'll work on this.
+.. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 4
-      
-      python/minimalist_package/
-        └── minimalist_package/
-              └── __init__.py
-              └── minimalist_script.py
+      :emphasize-lines: 11
+
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
 
 Let's start with a minimalist script that prints a string periodically,
-as follows. Create a file in :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package` called :file:`minimalist_script.py` with the following
-contents.
+as follows.
+
+In the directory :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package`, create the following file.
 
 :download:`minimalist_script.py <../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py>`
 
@@ -240,20 +262,29 @@ Minimalist class: Use classes profusely
 .. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 3,5
-      
-      python/minimalist_package/
-        └── minimalist_package/
-              └── __init__.py
-              └── minimalist_script.py
-              └── _minimalist_class.py 
+      :emphasize-lines: 4,5
+
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
+
 
 As you are familiar with object-oriented programming, you know that classes are central to this paradigm.
 As a memory refresher, let's make a class that honestly does nothing really useful but illustrates all
 the basic points in a Python class.
 
-Create a file in :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package` called :file:`_minimalist_class.py` with the following
-contents.
+Create the file below in the directory :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package`.
 
 :download:`_minimalist_class.py <../../../../preamble/python/minimalist_package/minimalist_package/_minimalist_class.py>`
 
@@ -292,7 +323,7 @@ It might be parsing through jibber-jabber code in l__tcode lessons with weird C-
 
 So, always pay attention to the naming of classes (`PascalCase <https://en.wiktionary.org/wiki/Pascal_case>`_), files and functions (`snake_case <https://en.wikipedia.org/wiki/Snake_case>`_), etc.
 
-Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PEP (Python Enhancement Proposal)`, such as `PEP8 <https://peps.python.org/pep-0008/>`_. Take this time to read it and get inspired by `The Zen of Python <https://peps.python.org/pep-0020/>`_
+Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PEP (Python Enhancement Proposal)`, such as `PEP8 <https://peps.python.org/pep-0008/>`_. Take this time to read it and get inspired by `The Zen of Python <https://peps.python.org/pep-0020/>`_.
 
 .. _Type hints:
 
@@ -375,15 +406,22 @@ Unit tests: always test your code
 .. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 6,7
-      
-      python/minimalist_package/
-        └── minimalist_package/
-              └── __init__.py
-              └── minimalist_script.py
-              └── _minimalist_class.py
-        └── test/
-              └── test_minimalist_class.py
+      :emphasize-lines: 13,14
+
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
 
 `Unit testing <https://en.wikipedia.org/wiki/Unit_testing>`_ is a flag that has been waved by programming enthusiasts 
 and is often a good measurement of code maturity.
