@@ -5,8 +5,7 @@ You already know how to turn on your computer and press some keys to make bits f
 
 .. note::
 
-   The world is full of smart people, and they've done some amazing stuff, like Ubuntu and Linux. There are endless tutorials for those and this
-   is not a complete one. In this section, we'll go through some basic tools available in Ubuntu's terminal that help with our quest to learn/use ROS2.
+   In this section, we'll go through some basic tools available in Ubuntu's terminal that help with our quest to learn/use ROS2. This is not a complete tutorial on Ubuntu.
 
 
 Who cares about the :program:`terminal` anyways, are you like 100 years old or something?

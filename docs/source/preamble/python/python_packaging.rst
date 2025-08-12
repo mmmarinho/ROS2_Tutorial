@@ -3,11 +3,10 @@
 Making your Python package installable
 ======================================
 
-.. warning::
+.. caution::
 
-   There is some movement towards having Python deployable packages configurable with :file:`pyproject.toml` as a default.
-   However, in ROS2 and many other frameworks, the :file:`setup.py` approach using setuptools is ingrained.
-   So, we'll do that for these tutorials but it doesn't necessarily mean it's the best approach.
+   Projects with a :file:`pyproject.toml` are currently the default for pure Python projects.
+   In :program:`ROS2`, currently we fully rely on :file:`setup.py` approach using setuptools therefore that's what I discuss herein.
 
 
 Use a :code:`venv`
@@ -27,14 +26,27 @@ The :file:`setup.py`
 .. admonition:: In this step, we'll work on this.
 
    .. code-block:: console
-      :emphasize-lines: 2
+      :emphasize-lines: 12
       
-      python/minimalist_package/
-        setup.py
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
+
 
 Has `Python Packaging <https://packaging.python.org/en/latest/>`_ ever looked daunting to you? Of course not, but let's go through a quick overview of how we can get this done.
 
-First, we create a :file:`setup.py` at :file:`~/ros2_tutorials_preamble/python/minimalist_package` with the following contents
+First, in the following directory, :file:`~/ros2_tutorials_preamble/python/minimalist_package` we create the file below.
 
 :download:`setup.py <../../../../preamble/python/minimalist_package/setup.py>`
 

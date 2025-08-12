@@ -86,7 +86,10 @@ If you enjoyed this tutorial, please
    :hidden:
 
    preamble/ubuntu
-   preamble/python
+   preamble/python/installing_python
+   preamble/python/python_best_practices
+   preamble/python/python_asyncio
+   preamble/python/python_packaging
     
 .. toctree::
    :caption: ROS2 Setup (⭐start here⭐)
