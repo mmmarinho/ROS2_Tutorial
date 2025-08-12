@@ -29,11 +29,22 @@ Create the :file:`minimalist_async` package
 .. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 2,3
-      
-      python/minimalist_package/minimalist_package/
-        └── minimalist_async/
-              └── __init__.py
+      :emphasize-lines: 6,7
+
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
 
 As we learned in :ref:`Python package`, let's make a package called :file:`minimalist_async`.
 
@@ -55,15 +66,25 @@ we then create an :file:`__init__.py` file with the following contents
 Create the :code:`async` function
 ---------------------------------
 
-.. admonition:: In this step, we'll work on this.
+.. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 4
-      
-      python/minimalist_package/minimalist_package/
-        └── minimalist_async/
-              └── __init__.py
-              └── _unlikely_to_return.py
+      :emphasize-lines: 8
+
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
 
 
 Let's create a module called :file:`_unlikely_to_return.py` to hold a function used for this example at the :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package/minimalist_async` folder with the following contents
@@ -96,16 +117,25 @@ Using :code:`await`
    #. Run multiple :code:`Task`\ s.
    #. Use :code:`await` for them, **after they were executed**.
 
-.. admonition:: In this step, we'll work on this.
+.. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 5
-      
-      python/minimalist_package/minimalist_package/
-        └── minimalist_async/
-              └── __init__.py
-              └── _unlikely_to_return.py
-              └── async_await_example.py
+      :emphasize-lines: 9
+
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
 
 Differently from synchronous programming, using :code:`async` needs us to reflect on several tasks being executed at the same time(-ish).
 The main use case is for programs with multiple tasks that can run concurrently and, at some point, we need the result of those tasks to either
@@ -194,16 +224,25 @@ Using :code:`callback`
    #. Add a :code:`callback` to handle the result **as soon as it is ready**.
    #. Use :code:`await` for each :code:`Task` just so that the main loop does not return prematurely.
 
-.. admonition:: In this step, we'll work on this.
+.. admonition:: In this step, we'll work on these.
 
    .. code-block:: console
-      :emphasize-lines: 5
-      
-      python/minimalist_package/minimalist_package/
-        └── minimalist_async/
-              └── __init__.py
-              └── async_await_example.py
-              └── async_callback_example.py
+      :emphasize-lines: 10
+
+        python/
+        `-- minimalist_package
+            |-- minimalist_package
+            |   |-- __init__.py
+            |   |-- _minimalist_class.py
+            |   |-- minimalist_async
+            |   |   |-- __init__.py
+            |   |   |-- _unlikely_to_return.py
+            |   |   |-- async_await_example.py
+            |   |   `-- async_callback_example.py
+            |   `-- minimalist_script.py
+            |-- setup.py
+            `-- test
+                `-- test_minimalist_class.py
 
 Differently from :code:`await`\ ing for each task and then processing their result, we can define :code:`callbacks`
 in such a way that each result will be processed as they come. In that way, the results can be processed in an arbitrary
