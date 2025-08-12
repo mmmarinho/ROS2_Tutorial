@@ -113,7 +113,6 @@ If you enjoyed this tutorial, please
    :hidden:
    
    running_node
-   editing_python_source
    create_python_node_from_scratch
    python_node_explained
 

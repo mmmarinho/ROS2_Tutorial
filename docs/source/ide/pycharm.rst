@@ -1,6 +1,8 @@
-.. include:: ../../the_section_is_optional.rst
+.. deprecated:: jazzy
 
-.. _Editing Python source:
+    :program:`PyCharm` has changed considerably in the last few years. This is likely to not work in the same way.
+
+.. _PyCharm:
 
 Editing Python source (with :program:`PyCharm`)
 ===============================================
@@ -26,21 +28,21 @@ Run
    cd ros2_workspace_pycharm
    wget https://download.jetbrains.com/python/pycharm-community-2023.1.1.tar.gz
    tar -xzvf pycharm-community-2023.1.1.tar.gz
-   
+
 Create an alias for :program:`pycharm_ros2`
 -------------------------------------------
 
 .. note:
-   Starting :program:`PyCharm` from the terminal has the added benefit of easily recognizing our ROS2, as long as it has been started from a properly sourced terminal. 
+   Starting :program:`PyCharm` from the terminal has the added benefit of easily recognizing our ROS2, as long as it has been started from a properly sourced terminal.
 
-To simplify the use of this version of :program:`PyCharm`, let us create a :program:`bash` alias for it. 
+To simplify the use of this version of :program:`PyCharm`, let us create a :program:`bash` alias for it.
 
 .. code :: console
 
    echo "# Alias for PyCharm, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
    echo "alias pycharm_ros2=~/ros2_workspace_pycharm/pycharm-community-2023.1.1/bin/pycharm.sh" >> ~/.bashrc
    source ~/.bashrc
-   
+
 Then, you can run :program:`PyCharm` with
 
 .. code :: console
@@ -56,7 +58,7 @@ Then, you can run :program:`PyCharm` with
 .. note:
    This is a troubleshooting section. You do not need to cover this if you don't have problems with the previous section.
 
-For consistency, until I upgrade this tutorial to the new version of ROS2, the version of :program:`pycharm` will remain the same. I have identified the following problem when running it on an `arm64` Ubuntu VM. 
+For consistency, until I upgrade this tutorial to the new version of ROS2, the version of :program:`pycharm` will remain the same. I have identified the following problem when running it on an `arm64` Ubuntu VM.
 
 .. code :: console
 
@@ -92,3 +94,73 @@ This can be solved by adding `java 17`, because that is what the `class file ver
 
    sudo apt install openjdk-17-jre
 
+Using :program:`PyCharm` for ROS2 sources
+-----------------------------------------
+
+With :program:`PyCharm` opened as instructed in :ref:`Editing Python source`, here are a few tips to make your life easier.
+
+1. Go to :menuselection:`File --> Open...` and browse to our workspace folder :file:`~/ros2_tutorial_workspace`
+2. Right-click the folder :file:`install` and choose :menuselection:`Mark Directory as --> Excluded`. Do the same for :file:`build` and :file:`log`
+
+Your project view should look like so
+
+.. image:: ../images/pycharm_project.png
+   :align: center
+
+
+Running a Node from :program:`PyCharm`
+-------------------------------------
+
+With the project correctly configured, you can
+
+1. move to :menuselection:`src --> python_package_with_a_node --> python_package_with_a_node`.
+2. double (left) click :program:`sample_python_node.py` to open the source code, showing the contents of the Node. It is minimal to the point that it doesn't have anything related to :program:`ROS` at all.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/sample_python_node.py
+   :language: python
+   :linenos:
+
+3. right click :program:`sample_python_node.py` and choose :menuselection:`Debug sample_python_node`
+
+It will output in :program:`PyCharm`'s console
+
+.. code :: console
+   
+    Hi from python_package_with_a_node.
+    
+.. note:: 
+
+   You should extensively use the Debugger in :program:`PyCharm` when developing code. If you're still adding :code:`print` functions to figure out what is wrong with your code, now is the opportunity you always needed to stop doing that and join the adult table.
+
+.. note::
+
+   You can read more about debugging with :program:`PyCharm` at the `official documentation <https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html#where-is-the-problem>`_.
+
+.. _PyCharm is not finding the dependencies:
+
+What to do when :program:`PyCharm` does not find the dependencies
+-----------------------------------------------------------------
+
+.. note::
+
+   This section is meant to help you troubleshoot if this ever happens to you. It can be safely skipped if you're following the tutorial for the first time.
+
+.. note::
+
+   There might be ways to adjust the settings of :program:`PyCharm` or other IDEs to save us from the trouble of having to do this. Nonetheless, this is the *one-size-fits-most* solution, which should work for all past and future versions of :program:`PyCharm`.
+
+If you have ruled out all issues related to your own code, it might be the case that the terminal in which you initially ran :program:`PyCharm` is unaware of certain changes to your ROS2 workspace.
+
+To be sure that the current :program:`PyCharm` session is updated without changes to any settings, do
+
+#. Close :program:`PyCharm`.
+#. Build and source the ROS2 workspace.
+  
+   .. include:: the_canonical_build_command.rst
+   
+#. Re-open :program:`PyCharm`.
+
+   .. code :: console
+
+    pycharm_ros2
+   

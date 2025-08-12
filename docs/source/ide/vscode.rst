@@ -1,6 +1,8 @@
-.. include:: ../../the_section_is_optional.rst
+.. deprecated:: jazzy
 
-.. _Editing Python source:
+    :program:`VSCode` might have changed.
+
+.. _VSCode:
 
 Editing Python source (with :program:`VS Code`)
 ===============================================

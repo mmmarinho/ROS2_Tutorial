@@ -1,5 +1,3 @@
-.. include:: ../../the_section_is_optional.rst
-
 .. _Asyncio:
 
 Python's :code:`asyncio`

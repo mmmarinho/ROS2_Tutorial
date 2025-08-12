@@ -1,5 +1,3 @@
-.. include:: ../../the_section_is_optional.rst
-
 .. _Python Best Practices:
 
 (Murilo's) Python Best Practices
@@ -8,7 +6,7 @@
 .. warning::
    This tutorial expects prior knowledge in Python and object-oriented programming.
    As such, this section is not meant to be a comprehensive Python tutorial. You have better resources
-   made by smarter people available online, e.g. `The Python Tutorial <https://docs.python.org/3.10/tutorial/index.html>`_.
+   made by smarter people available online, e.g. `The Python Tutorial <https://docs.python.org/3.12/tutorial/index.html>`_.
 
 .. _Python Terminology:
 
@@ -17,7 +15,7 @@ Terminology
 
 Let's go through the Python terminology used in this tutorial. This terminology is not necessarily uniform with other
 sources/tutorials you might find elsewhere. It is based on my interpretation of
-`The Python Tutorial on Modules <https://docs.python.org/3.10/tutorial/modules.html>`_, the `Python Glossary <https://docs.python.org/3.10/glossary.html>`_, and my own experience.
+`The Python Tutorial on Modules <https://docs.python.org/3.12/tutorial/modules.html>`_, the `Python Glossary <https://docs.python.org/3.12/glossary.html>`_, and my own experience.
 
 .. list-table:: (Murilo's) Python Glossary
    :header-rows: 1
@@ -296,28 +294,6 @@ So, always pay attention to the naming of classes (`PascalCase <https://en.wikti
 
 Thankfully, Python has a bunch of style rules builtin the language and :abbr:`PEP (Python Enhancement Proposal)`, such as `PEP8 <https://peps.python.org/pep-0008/>`_. Take this time to read it and get inspired by `The Zen of Python <https://peps.python.org/pep-0020/>`_
 
-.. 
-
-   | *Beautiful is better than ugly.*
-   | *Explicit is better than implicit.*
-   | *Simple is better than complex.*
-   | *Complex is better than complicated.*
-   | *Flat is better than nested.*
-   | *Sparse is better than dense.*
-   | *Readability counts.*
-   | *Special cases aren't special enough to break the rules.*
-   | *Although practicality beats purity.*
-   | *Errors should never pass silently.*
-   | *Unless explicitly silenced.*
-   | *In the face of ambiguity, refuse the temptation to guess.*
-   | *There should be one-- and preferably only one --obvious way to do it.*
-   | *Although that way may not be obvious at first* `*unless you're Dutch* <https://stackoverflow.com/questions/2470761/what-does-this-sentence-mean-in-the-zen-of-python>`_.
-   | *Now is better than never.*
-   | *Although never is often better than *right* now.*
-   | *If the implementation is hard to explain, it's a bad idea.*
-   | *If the implementation is easy to explain, it may be a good idea.*
-   | *Namespaces are one honking great idea -- let's do more of those!*
-
 .. _Type hints:
 
 Take the (type) hint: Always use type hints
@@ -394,7 +370,7 @@ Unit tests: always test your code
 
 .. note::
 
-   For a comprehensive tutorial on unit testing go through the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
+   For a comprehensive tutorial on unit testing go through the `unittest docs <https://docs.python.org/3.12/library/unittest.html>`_.
 
 .. admonition:: In this step, we'll work on these.
 
@@ -477,7 +453,7 @@ Start with use :code:`unittest`
 
    ROS2 uses :code:`pytest` as default, but that doesn't mean you also have to use it in every Python code you ever write.
 
-There are many test frameworks for Python. Nonetheless, the `unittest module <https://docs.python.org/3.10/library/unittest.html>`_
+There are many test frameworks for Python. Nonetheless, the `unittest module <https://docs.python.org/3.12/library/unittest.html>`_
 is built into Python so, unless you have a very good reason not to use it, `just [use] it <https://www.youtube.com/watch?v=ZXsQAXx_ao0>`_.
 
 We import the :code:`unittest` module along with the class that we want to test, namely :code:`MinimalistClass`.
@@ -495,7 +471,7 @@ Test them all
    you too much information, whereas a failed test of a lower-level (more fundamental) function will allow you to pinpoint the issue.
 
 Unit tests are somewhat like insurance. The more coverage you have, the better. In this example, we test all the 
-elements in the class. Each test will be based on one or more asserts. For more info check the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
+elements in the class. Each test will be based on one or more asserts. For more info check the `unittest docs <https://docs.python.org/3.12/library/unittest.html>`_.
 
 In a few words, we make a subclass of :code:`unittest.TestCase` and create methods within it that test one part
 of the code, hence the name unit tests. 
@@ -510,7 +486,7 @@ The test's main function
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Generally, a test script based on `unittest` will have the following main function. It will run all available tests in our test class.
-For more info and alternatives check the `unittest docs <https://docs.python.org/3.10/library/unittest.html>`_.
+For more info and alternatives check the `unittest docs <https://docs.python.org/3.12/library/unittest.html>`_.
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
