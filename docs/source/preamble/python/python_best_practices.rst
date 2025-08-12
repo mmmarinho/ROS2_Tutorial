@@ -230,7 +230,7 @@ It's dangerous to go alone: Always wrap the contents of :code:`main` function on
 
 It is good practice to wrap the contents of :code:`main()` call in a :code:`try--except` block
 with at least the :code:`KeyboardInterrupt` clause. This allows the user to shutdown
-the module cleanly either through the terminal or through :program:`PyCharm`. We have done so in the example as follows
+the module cleanly. We have done so in the example as follows
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
@@ -282,7 +282,7 @@ Minimalist class: Use classes profusely
 
 As you are familiar with object-oriented programming, you know that classes are central to this paradigm.
 As a memory refresher, let's make a class that honestly does nothing really useful but illustrates all
-the basic points in a Python class.
+the basics of a Python class.
 
 Create the file below in the directory :file:`~/ros2_tutorials_preamble/python/minimalist_package/minimalist_package`.
 
