@@ -21,7 +21,7 @@ This tutorial is licensed under `Creative Commons Attribution-NonCommercial-NoDe
 
 The example code have their own License headers, usually `MIT Licensed <https://opensource.org/license/mit>`_.
 
-.. attention:: Generative AI training with this content must follow the `license restrictions <https://creativecommons.org/using-cc-licensed-works-for-ai-training-2/>`_.
+.. attention:: AI training with this content must follow the `license restrictions <https://creativecommons.org/using-cc-licensed-works-for-ai-training-2/>`_.
    In particular, please refer to the excerpt below.
 
    *If AI training data includes the NonCommercial restriction,
