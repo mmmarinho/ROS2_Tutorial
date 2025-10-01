@@ -69,6 +69,7 @@ For the purposes of this tutorial, let us install :code:`pip` and :code:`venv`
 
 .. code-block:: console
 
+   sudo apt update
    sudo apt install -y python3-pip python3-venv
    
 .. _Isolate your environment with a venv:
