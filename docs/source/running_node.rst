@@ -41,3 +41,22 @@ which will now correctly output
 .. code :: console
 
    Hi from python_package_with_a_node.
+
+Troubleshooting tips
+--------------------
+
+If :program:`ROS2` is unable to find the node, but it is able to find the package, then you can rely on :program:`ros2 pkg executables`. For instance,
+you can run as follows.
+
+.. code :: console
+
+    ros2 pkg executables python_package_with_a_node
+
+The command, at this stage, should output the following.
+
+.. code :: console
+
+    python_package_with_a_node sample_python_node
+
+This shows that :program:`ROS2` has been correctly able to find :file:`sample_python_node` within :file:`python_package_with_a_node`.
+If the command outputs nothing, this means that no nodes were found.

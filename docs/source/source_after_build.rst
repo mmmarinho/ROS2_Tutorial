@@ -40,13 +40,13 @@ if you are looking for :file:`python_package_with_a_node` you can do as follows.
 
 .. code :: console
 
-   ros2 pkg list | grep the_simplest_python_package
+   ros2 pkg list | grep python_package_with_a_node
 
 This will either output nothing if the package is not found or it will output the name of the package, as follows.
 
 .. code :: console
 
-   grep the_simplest_python_package
+   grep python_package_with_a_node
 
 .. admonition:: Hint for the future you
 
