@@ -11,6 +11,25 @@ Creating a dedicated package for custom interfaces
 
 All interfaces in ROS2 must be made in an :program:`ament_cmake` package. We have so far not needed it, but for this scenario we cannot escape. Thankfully, for this we don't need to dig too deep into :program:`CMake`, so fear not.
 
+Overview
+--------
+
+We will create a package with the following structure. Besides our good and old :file:`package.xml`, everything else
+might be unfamiliar. We will go through those in detail.
+
+.. code:: console
+
+    package_with_interfaces/
+    |-- CMakeLists.txt
+    |-- action
+    |   `-- MoveStraightIn2D.action
+    |-- msg
+    |   |-- AmazingQuote.msg
+    |   `-- AmazingQuoteStamped.msg
+    |-- package.xml
+    `-- srv
+        `-- AddPoints.srv
+
 Creating the package
 --------------------
 
