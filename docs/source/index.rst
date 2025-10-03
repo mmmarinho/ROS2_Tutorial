@@ -109,13 +109,13 @@ If you enjoyed this tutorial, please
    create_python_package
    create_python_node_with_template
    source_after_build
+   running_node
 
 .. toctree::
    :caption: ROS2 Python Node
    :maxdepth: 2
    :hidden:
    
-   running_node
    create_python_node_from_scratch
    python_node_explained
 
