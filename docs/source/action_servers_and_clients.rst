@@ -65,3 +65,21 @@ We start by creating a package to use the :code:`Service` we first created in :r
         LGPL-3.0-only
         MIT
         MIT-0
+
+
+Overview
+--------
+
+.. admonition:: File structure
+
+    This will be the file structure for the :code:`Action` tutorial. Highlighted are the main files for the :code:`ActionServer` and :code:`ActionClient`.
+
+    .. code-block:: console
+
+        TODO
+
+Before we start exploring the elements of the package, let us
+
+#. Create the Node with an :code:`ActionServer`.
+#. Create the Node with an :code:`ActionClient`.
+#. Update the :file:`setup.py` so that :program:`ros2 run` finds these programs.
