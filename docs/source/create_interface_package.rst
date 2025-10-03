@@ -248,7 +248,7 @@ returns
     package_with_interfaces/action/MoveStraightIn2D
     package_with_interfaces/srv/AddPoints
    
-and we can further get more specific info on :file:`AmazingQuote.msg`
+and we can further get more specific info on :file:`AmazingQuote` (or :file:`AmazingQuoteStamped`)
 
 .. code:: console
 
@@ -259,7 +259,7 @@ which returns
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
 
-alternatively, we can do the same for :file:`AddPoints.srv`
+alternatively, we can do the same for :file:`AddPoints`
 
 .. code:: console
 
@@ -290,7 +290,7 @@ Lastly, we can do the same for :file:`MoveStraightIn2D`
 
 .. code:: console
 
-   ros2 interface show package_with_interfaces/action/MoveStraightIn2D 
+   ros2 interface show package_with_interfaces/action/MoveStraightIn2D
 
 which returns expanded information about all fields of the action
 
