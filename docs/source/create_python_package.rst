@@ -79,4 +79,4 @@ which will now output
 
     Summary: 1 package finished [0.55s]
 
-meaning that :program:`colcon` successfully built the example package.
+meaning that :program:`colcon` successfully built the example package. It is important to note that :program:`ROS2` does not know this package exists yet.
