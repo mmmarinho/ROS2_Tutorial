@@ -141,13 +141,39 @@ The service file
 
 .. note::
 
-   Services cannot be used to define other services.
+   Services cannot be used to define other interfaces.
 
 Add the file :file:`AddPoints.srv` in the :file:`srv` folder with the following contents
 
 :download:`~/ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv
+   :language: yaml
+   :linenos:
+
+The action folder
+-----------------
+
+The convention is to add all actions to a folder called :file:`action`. Let's follow that convention.
+
+.. code:: console
+
+   cd ~/ros2_tutorial_workspace/src/package_with_interfaces
+   mkdir action
+
+
+The action file
+---------------
+
+.. note::
+
+   Actions cannot be used to define other interfaces.
+
+Add the file :file:`MoveStraightIn2D.action` in the :file:`action` folder with the following contents
+
+:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action <../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action>`
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action
    :language: yaml
    :linenos:
 
@@ -167,7 +193,7 @@ Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
-   :emphasize-lines: 14-37
+   :emphasize-lines: 14-40
 
 What to do when adding new interfaces?
 --------------------------------------
@@ -188,8 +214,8 @@ If additional interfaces are required
 
    .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
-      :lines: 17-25
-      :emphasize-lines: 5, 8
+      :lines: 17-28
+      :emphasize-lines: 5,8,11
 
 .. note::
 
@@ -219,6 +245,7 @@ returns
 
     package_with_interfaces/msg/AmazingQuote
     package_with_interfaces/msg/AmazingQuoteStamped
+    package_with_interfaces/action/MoveStraightIn2D
     package_with_interfaces/srv/AddPoints
    
 and we can further get more specific info on :file:`AmazingQuote.msg`
@@ -258,3 +285,29 @@ which returns expanded information on each field of the service
             float64 y
             float64 z
 
+
+Lastly, we can do the same for :file:`MoveStraightIn2D`
+
+.. code:: console
+
+   ros2 interface show package_with_interfaces/action/MoveStraightIn2D 
+
+which returns expanded information about all fields of the action
+
+.. code:: yaml
+
+    # MoveStraightIn2D.action from https://ros2-tutorial.readthedocs.io
+    # Attempts to move from initial position to `desired_position`.
+    # Returns `final_position` achieved.
+    # Feedback is the norm of the error between `initial_position` and the current position.
+    geometry_msgs/Point desired_position
+            float64 x
+            float64 y
+            float64 z
+    ---
+    geometry_msgs/Point final_position
+            float64 x
+            float64 y
+            float64 z
+    ---
+    float32 error_norm

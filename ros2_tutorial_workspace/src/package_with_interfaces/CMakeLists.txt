@@ -22,6 +22,9 @@ set(interface_files
   # Services
   "srv/AddPoints.srv"
 
+  # Actions
+  "action/MoveStraightIn2D.action"
+
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
