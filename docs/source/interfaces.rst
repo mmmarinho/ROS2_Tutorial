@@ -1,3 +1,8 @@
+.. versionchanged:: Jazzy
+
+   Added actions.
+
+
 ROS2 Interfaces (:program:`ros2 interface`)
 ===========================================
 

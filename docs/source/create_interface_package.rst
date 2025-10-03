@@ -1,3 +1,7 @@
+.. versionchanged:: Jazzy
+
+   Added :file:`AmazingQuoteStamped.msg`, :file:`MoveStraightIn2D.action` and simplified service discussion to use :file:`AddPoints.srv`.
+
 Creating a dedicated package for custom interfaces
 ==================================================
 
