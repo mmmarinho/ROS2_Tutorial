@@ -25,6 +25,29 @@ As the workspace grows bigger and the packages more complex, figuring out such e
     colcon build
     source install/setup.bash
 
+Troubleshooting tips
+--------------------
+
+One important tool to assist in case your package is not found is :program:`ros2 pkg list`. It can be called as follows.
+
+.. code :: console
+
+   ros2 pkg list
+
+It will output a large number of packages even for the most basic installations of :program:`ROS2`. If you are looking for
+a particular package, you can use :program:`grep` which is more actively used (and explained) in other parts of this tutorial. For instance,
+if you are looking for :file:`python_package_with_a_node` you can do as follows.
+
+.. code :: console
+
+   ros2 pkg list | grep the_simplest_python_package
+
+This will either output nothing if the package is not found or it will output the name of the package, as follows.
+
+.. code :: console
+
+   grep the_simplest_python_package
+
 .. admonition:: Hint for the future you
 
    In rare cases, the workspace can be left in an unclean state in which older build artifacts cause build and runtime issues, such as failed builds and programs that do not seem to match their intended source code. These artifacts might include old files that should have been removed, issues with dependencies, and so on. In those cases, it might be good to remove the :file:`build`, :file:`install`, and :file:`log` folders before rebuilding and re-sourcing. 

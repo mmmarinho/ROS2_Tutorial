@@ -1,6 +1,9 @@
 Create packages (:program:`ros2 pkg create`)
 --------------------------------------------
 
+:program:`ROS2` packages are the most basic element in the :program:`ROS2` infrastructure. You must be able to create them correctly and consistently.
+Everything else that :program:`ROS2` can offer rotates about the effective use of packages.
+
 ROS2 has a tool to help create package templates. We can get all available options by running
 
 .. code-block:: console
@@ -10,7 +13,7 @@ ROS2 has a tool to help create package templates. We can get all available optio
 which outputs a list of handy options to populate the package template with useful files. Namely, the four emphasized ones.
 
 .. code-block:: console
-   :emphasize-lines: 19,21,27, 29
+   :emphasize-lines: 19,21,27,29
 
    usage: ros2 pkg create [-h] [--package-format {2,3}] [--description DESCRIPTION] [--license LICENSE] [--destination-directory DESTINATION_DIRECTORY] [--build-type {cmake,ament_cmake,ament_python}]
                     [--dependencies DEPENDENCIES [DEPENDENCIES ...]] [--maintainer-email MAINTAINER_EMAIL] [--maintainer-name MAINTAINER_NAME] [--node-name NODE_NAME] [--library-name LIBRARY_NAME]
@@ -42,3 +45,7 @@ which outputs a list of handy options to populate the package template with usef
                            name of the empty executable
      --library-name LIBRARY_NAME
                            name of the empty library
+
+Although it is recommended to use some of the other options as well, such as :code:`--license`, :code:`--maintainer-email`,
+and :code:`--maintainer-name`, they would make the commands too long for the purposes of this tutorial. Remember to choose
+the most suitable values for your application.
