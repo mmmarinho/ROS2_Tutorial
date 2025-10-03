@@ -1,16 +1,18 @@
-Messages and Services (:program:`ros2 interface`)
-=================================================
+ROS2 Interfaces (:program:`ros2 interface`)
+===========================================
 
 If by now you haven't particularly fallen in love with :program:`ROS2`, fear not. Indeed, we haven't done much so far that couldn't be achieved more easily by other means.
 
 :program:`ROS2` begins to shine most in its interprocess communication, through what are called `ROS2 interfaces <https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html>`_. In particular, the fact that we can easily interface Nodes written in Python and C++ is a strong selling point.
 
-:code:`Messages` are one of the three types of ROS2 interfaces. This will most likely be the standard of communication between Nodes in your packages. We will also see the bidirectional :code:`Services` now. The last type of interface, :code:`Actions`, is left for another section.
+:code:`Messages` are one of the three types of ROS2 interfaces. This will most likely be the standard of communication between Nodes in your packages. We will also see the bidirectional :code:`Services` and :code:`Actions`.
 
 Description
 -----------
 
-In :program:`ROS2`, interfaces are files written in the ROS2 :abbr:`IDL (Interface Description Language)`. Each type of interface is described in a :file:`.msg` file (or :file:`.srv` file), which is then built by :program:`colcon` into libraries that can be imported into your Python programs.
+In :program:`ROS2`, interfaces are files written in the ROS2 :abbr:`IDL (Interface Description Language)`. Each type of
+interface is described in a :file:`.msg`, :file:`.srv`, or :file:`.action` file, which is then built by :program:`colcon`
+into libraries that can be imported into your :program:`ROS` programs.
 
 When dealing with common robotics concepts such as geometric and sensor messages, it is good practice to use interfaces that already exist in ROS2, instead of creating new ones that serve the exact same purpose. In addition, for complicated interfaces, we can combine existing ones for simplicity. 
 
@@ -185,3 +187,31 @@ that results in
    int64 sum
 
 Notice that the :code:`---` is what separates the :code:`Request`, above, from the :code:`Response` below. Anyone using this service would expect that the result would be :math:`sum = a + b`, but this logic needs to be implemented on the Node. The service itself is just a way of bidirectional communication.
+
+Actions
+-------
+
+In the case of an action, let's look up the contents of :file:`example_interfaces/action/Fibonacci`.
+
+We run
+
+.. code:: console
+
+   ros2 interface show example_interfaces/action/Fibonacci
+
+that results in
+
+.. code-block:: yaml
+    :emphasize-lines: 3,6
+
+    # Goal
+    int32 order
+    ---
+    # Result
+    int32[] sequence
+    ---
+    # Feedback
+    int32[] sequence
+
+Notice that the two :code:`---` are separators to show us the :code:`Goal`, :code:`Result`, and :code:`Feedback` components of the action.
+Despite the descriptive name of :file:`Fibonacci`, the :file:`.action` file by itself does nothing. The logic must be implemented on the Node.

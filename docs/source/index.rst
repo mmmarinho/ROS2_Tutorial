@@ -132,7 +132,7 @@ If you enjoyed this tutorial, please
    :maxdepth: 2
    :hidden:
 
-   messages
+   interfaces
    create_interface_package
 
 .. toctree::
