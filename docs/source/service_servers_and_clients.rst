@@ -5,7 +5,7 @@
 At your Service: Servers and Clients
 ====================================
 
-In some cases, we need means of communication in which each command has an associated response. That is where :code:`Services` come into play. We use services :code:`Services` by creating a :code:`ServiceServer`.
+In some cases, we need means of communication in which each command has an associated response. That is where :code:`Services` come into play. We use :code:`Services` by creating a :code:`ServiceServer`.
 The :code:`ServiceServer` will provide a service that can be accessed by one or more :code:`ServiceClient`\s.
 
 In this sense, a :code:`Service` is much less of an abstract entity than a :code:`Topic`.
