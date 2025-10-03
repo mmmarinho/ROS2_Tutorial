@@ -67,7 +67,7 @@ If you enjoyed this tutorial, please
 #. :doc:`ROS2 Python Library <create_python_library>`
     Create a Python library and importing/using it in another :program:`ament_python` package.
 
-#. :doc:`ROS2 Interfaces <messages>`
+#. :doc:`ROS2 Interfaces <interfaces>`
     ROS2 interfaces and creating custom interface packages.
 
 #. :doc:`ROS2 Messages with Python <publishers_and_subscribers>`
@@ -159,6 +159,13 @@ If you enjoyed this tutorial, please
 
    service_servers_and_clients
    inspecting_services
+
+.. toctree::
+   :caption: ROS2 Actions in Python
+   :maxdepth: 2
+   :hidden:
+
+   action_servers_and_clients
 
 .. toctree::
    :caption: Gazebo
