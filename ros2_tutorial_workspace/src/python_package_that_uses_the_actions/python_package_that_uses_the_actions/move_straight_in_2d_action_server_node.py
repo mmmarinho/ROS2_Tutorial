@@ -77,7 +77,7 @@ class MoveStraightIn2DActionServerNode(Node):
         self.current_position.y += y_dir * desired_speed
 
 
-    def execute_callback(self, goal: MoveStraightIn2D.ActionGoalHandle) -> MoveStraightIn2D.Result:
+    def execute_callback(self, goal) -> MoveStraightIn2D.Result:
         desired_position = goal.request.desired_position
 
         self.get_logger().info(f'Target set to {desired_position}...')
@@ -123,3 +123,12 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
+
+ros2 action send_goal /move_straight_in_2d package_with_interfaces/action/MoveStraightIn2D \
+'{
+desired_position:{
+    x: 1.0,
+    y: 0.0,
+    z: 0.0}
+}'
