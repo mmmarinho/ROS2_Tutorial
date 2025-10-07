@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import time
-from math import sqrt, fabs
+from math import sqrt
 
 import rclpy
 from rclpy.action import ActionServer
@@ -70,7 +70,7 @@ class MoveStraightIn2DActionServerNode(Node):
         """
         error_norm = self.get_error_norm(desired_position)
         # Prevent us from dividing by zero or a small number we currently do not care about
-        if fabs(error_norm) < 0.01:
+        if error_norm < 0.01:
             return
 
         x_dir = (self.current_position.x - desired_position.x) / error_norm
