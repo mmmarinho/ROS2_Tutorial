@@ -52,8 +52,7 @@ class MoveStraightIn2DActionServerNode(Node):
 
     def get_error_norm(self, desired_position: Point) -> float:
         """
-        Calculates the error norm between the current position and the desired position.
-
+        Calculates the error norm (e.g. Euclidean distance) between the current position and the desired position.
         Notice that we have chosen to ignore the z-axis as this is a 2D motion.
         """
 
@@ -64,7 +63,11 @@ class MoveStraightIn2DActionServerNode(Node):
 
         return sqrt((x - xd) ** 2 + (y - yd) ** 2)
 
-    def move_the_object_with_speed(self, desired_position: Point, desired_speed: float = 0.01) -> None:
+    def move_the_object_with_velocity(self, desired_position: Point, desired_speed: float = 0.01) -> None:
+        """
+        Moves the object with the desired speed for one iteration. Must be called until objective is reached or
+        the controller times out.
+        """
         error_norm = self.get_error_norm(desired_position)
         # Prevent us from dividing by zero or a small number we currently do not care about
         if fabs(error_norm) < 0.01:
@@ -79,6 +82,11 @@ class MoveStraightIn2DActionServerNode(Node):
 
 
     def execute_callback(self, goal: ServerGoalHandle) -> MoveStraightIn2D.Result:
+        """
+        To be attached to the Action as its callback. Receives a goal position and tries to move to that position.
+        It will return the Euclidean distance between the current position and the desired position as the feedback.
+        If the goal is reached within a given threshold it will succeed, otherwise it will abort.
+        """
         desired_position = goal.request.desired_position
 
         self.get_logger().info(f'current_position is {self.current_position}.')
@@ -92,7 +100,7 @@ class MoveStraightIn2DActionServerNode(Node):
             feedback_msg.error_norm = error_norm
             goal.publish_feedback(feedback_msg)
 
-            self.move_the_object_with_speed(desired_position)
+            self.move_the_object_with_velocity(desired_position)
 
             # We define a threshold to see if it managed to reach the goal or not.
             if error_norm < 0.01:
@@ -110,8 +118,7 @@ class MoveStraightIn2DActionServerNode(Node):
 def main(args=None):
     """
     The main function.
-    :param args: Not used directly by the user, but used by ROS2 to configure
-    certain aspects of the Node.
+    :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.
     """
     try:
         rclpy.init(args=args)
