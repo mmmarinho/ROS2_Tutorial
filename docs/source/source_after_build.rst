@@ -46,7 +46,7 @@ This will either output nothing if the package is not found or it will output th
 
 .. code :: console
 
-   grep python_package_with_a_node
+   python_package_with_a_node
 
 .. admonition:: Hint for the future you
 
