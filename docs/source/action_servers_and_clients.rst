@@ -175,16 +175,16 @@ can be mathematically described as follows.
 
 .. math::
 
-    x(k+1) = x(k) - s\left(\frac{x - x_d}{d}\right),
+    p(k+1) = p(k) - s\left(\frac{p - p_d}{d}\right),
 
-where in the :math:`k`\-ith iteration :math:`x(k+1)` represents the next position, :math:`x(k)` the current position, and :math:`s \in \mathbb{R}` is the desired speed.
+where in the :math:`k`\-ith iteration :math:`p(k+1)` represents the next position, :math:`p(k)` the current position, and :math:`s \in \mathbb{R}` is the desired speed.
 This is represented by the following piece of code.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
    :lines: 66-81
 
-Note that we use an arbitrary minimum distance as stop criteria. Do not expect the distance to ever be zero, given
+Note that we use an arbitrary minimum distance as stop criterium. Do not expect the distance to ever be zero, given
 that we are using floating point representation for the numbers. If you do not add a stopping range it is likely
 that your node will be stuck forever.
 
