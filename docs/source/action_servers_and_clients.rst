@@ -7,17 +7,19 @@
 Call for Actions: Servers and Clients
 =====================================
 
-What about a mixture of :code:`Messages` and :code:`Services`? That is where :code:`Actions` come into play.
+What about a mixture of messages and services? That is where actions come into play.
 
-We use :code:`Actions` by creating an :code:`ActionServer`. The :code:`ActionServer` will provide an action that can be accessed by one or more :code:`ActionClient`\s.
+We use actions by creating an :code:`ActionServer`. The :code:`ActionServer` called by one or more :code:`ActionClient`\s.
 
-Similarly to a :code:`Service`, each :code:`Action` should only have a single :code:`ActionServer` that will receive a :code:`Goal` and provide a :code:`Result`.
-The :code:`Feedback` topic is XYZ.
+Similarly to a service, each action should only have a single :code:`ActionServer` that will receive a :code:`Goal` and provide a :code:`Result`.
+It will also provide :code:`Feedback` through a suitable topic. It can be argued that the main difference between a service
+and an action is the capability of providing feedback while the action is performed. A service, in contrast, only outputs
+a single, final result of the service call.
 
 Create the package
 ------------------
 
-We start by creating a package to use the :code:`Service` we first created in :ref:`The service file`.
+We start by creating a package to use the action we first created in :ref:`The action file`.
 
 .. code-block:: console
 
