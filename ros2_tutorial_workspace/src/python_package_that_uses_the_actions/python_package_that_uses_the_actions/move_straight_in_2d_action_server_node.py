@@ -26,6 +26,7 @@ from math import sqrt, fabs
 
 import rclpy
 from rclpy.action import ActionServer
+from rclpy.action.server import ServerGoalHandle
 from rclpy.node import Node
 
 from geometry_msgs.msg import Point
@@ -73,22 +74,25 @@ class MoveStraightIn2DActionServerNode(Node):
         y_dir = (self.current_position.y - desired_position.y) / error_norm
 
         # Apply new position based on the desired velocity and direction
-        self.current_position.x += x_dir * desired_speed
-        self.current_position.y += y_dir * desired_speed
+        self.current_position.x -= x_dir * desired_speed
+        self.current_position.y -= y_dir * desired_speed
 
 
-    def execute_callback(self, goal) -> MoveStraightIn2D.Result:
+    def execute_callback(self, goal: ServerGoalHandle) -> MoveStraightIn2D.Result:
         desired_position = goal.request.desired_position
 
-        self.get_logger().info(f'Target set to {desired_position}...')
+        self.get_logger().info(f'current_position is {self.current_position}.')
+        self.get_logger().info(f'desired_position set to {desired_position}.')
 
         feedback_msg = MoveStraightIn2D.Feedback()
-        error_norm = self.get_error_norm(desired_position)
 
         # Let's limit the maximum number of iterations this can accept
         for i in range(self.MAX_ITERATIONS):
+            error_norm = self.get_error_norm(desired_position)
             feedback_msg.error_norm = error_norm
             goal.publish_feedback(feedback_msg)
+
+            self.move_the_object_with_speed(desired_position)
 
             # We define a threshold to see if it managed to reach the goal or not.
             if error_norm < 0.01:
@@ -123,12 +127,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
-
-ros2 action send_goal /move_straight_in_2d package_with_interfaces/action/MoveStraightIn2D \
-'{
-desired_position:{
-    x: 1.0,
-    y: 0.0,
-    z: 0.0}
-}'
