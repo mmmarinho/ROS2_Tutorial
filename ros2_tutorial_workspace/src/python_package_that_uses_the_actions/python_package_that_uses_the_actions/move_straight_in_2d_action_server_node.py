@@ -21,7 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import math
+import time
+from math import sqrt, fabs
 
 import rclpy
 from rclpy.action import ActionServer
@@ -38,6 +39,7 @@ class MoveStraightIn2DActionServerNode(Node):
         super().__init__('move_straight_in_2d_action_server')
 
         self.current_position = Point()
+        self.MAX_ITERATIONS = 100
 
         self.action_server = ActionServer(
             self,
@@ -45,25 +47,56 @@ class MoveStraightIn2DActionServerNode(Node):
             'move_straight_in_2d',
             self.execute_callback)
 
-    def get_error_norm(self, desired_position):
-        print("TODO")
+
+
+    def get_error_norm(self, desired_position: Point) -> float:
+        """
+        Calculates the error norm between the current position and the desired position.
+
+        Notice that we have chosen to ignore the z-axis as this is a 2D motion.
+        """
+
+        x = self.current_position.x
+        y = self.current_position.y
+        xd = desired_position.x
+        yd = desired_position.y
+
+        return sqrt((x - xd) ** 2 + (y - yd) ** 2)
+
+    def move_the_object_with_speed(self, desired_position: Point, desired_speed: float = 0.01) -> None:
+        error_norm = self.get_error_norm(desired_position)
+        # Prevent us from dividing by zero or a small number we currently do not care about
+        if fabs(error_norm) < 0.01:
+            return
+
+        x_dir = (self.current_position.x - desired_position.x) / error_norm
+        y_dir = (self.current_position.y - desired_position.y) / error_norm
+
+        # Apply new position based on the desired velocity and direction
+        self.current_position.x += x_dir * desired_speed
+        self.current_position.y += y_dir * desired_speed
+
 
     def execute_callback(self, goal: MoveStraightIn2D.ActionGoalHandle) -> MoveStraightIn2D.Result:
         desired_position = goal.request.desired_position
 
         self.get_logger().info(f'Target set to {desired_position}...')
 
-        feedback_msg = Fibonacci.Feedback()
-        feedback_msg.partial_sequence = [0, 1]
+        feedback_msg = MoveStraightIn2D.Feedback()
+        error_norm = self.get_error_norm(desired_position)
 
-        for i in range(1, goal_handle.request.order):
-            feedback_msg.partial_sequence.append(
-                feedback_msg.partial_sequence[i] + feedback_msg.partial_sequence[i-1])
-            self.get_logger().info('Feedback: {0}'.format(feedback_msg.partial_sequence))
-            goal_handle.publish_feedback(feedback_msg)
-            time.sleep(1)
+        # Let's limit the maximum number of iterations this can accept
+        for i in range(self.MAX_ITERATIONS):
+            feedback_msg.error_norm = error_norm
+            goal.publish_feedback(feedback_msg)
 
-        goal.succeed()
+            # We define a threshold to see if it managed to reach the goal or not.
+            if error_norm < 0.01:
+                goal.succeed()
+                break
+
+            # A sleep illustrating the time it would take in real life for a robot to move
+            time.sleep(0.01)
 
         result = MoveStraightIn2D.Result()
         result.final_position = self.current_position
