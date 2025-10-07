@@ -91,7 +91,7 @@ Test with
     ros2 action send_goal /move_straight_in_2d package_with_interfaces/action/MoveStraightIn2D \
     '{
     desired_position:{
-        x: 1.0,
+        x: -1.0,
         y: 0.0,
         z: 0.0}
     }'

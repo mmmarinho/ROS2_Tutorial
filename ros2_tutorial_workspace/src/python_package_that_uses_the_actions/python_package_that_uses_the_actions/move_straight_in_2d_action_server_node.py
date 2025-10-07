@@ -50,7 +50,7 @@ class MoveStraightIn2DActionServerNode(Node):
 
 
 
-    def get_error_norm(self, desired_position: Point) -> float:
+    def get_distance(self, desired_position: Point) -> float:
         """
         Calculates the error norm (e.g. Euclidean distance) between the current position and the desired position.
         Notice that we have chosen to ignore the z-axis as this is a 2D motion.
@@ -68,17 +68,17 @@ class MoveStraightIn2DActionServerNode(Node):
         Moves the object with the desired speed for one iteration. Must be called until objective is reached or
         the controller times out.
         """
-        error_norm = self.get_error_norm(desired_position)
+        distance = self.get_distance(desired_position)
         # Prevent us from dividing by zero or a small number we currently do not care about
-        if error_norm < 0.01:
+        if distance < 0.01:
             return
 
-        x_dir = (self.current_position.x - desired_position.x) / error_norm
-        y_dir = (self.current_position.y - desired_position.y) / error_norm
+        x_direction = (self.current_position.x - desired_position.x) / distance
+        y_direction = (self.current_position.y - desired_position.y) / distance
 
         # Apply new position based on the desired velocity and direction
-        self.current_position.x -= x_dir * desired_speed
-        self.current_position.y -= y_dir * desired_speed
+        self.current_position.x -= x_direction * desired_speed
+        self.current_position.y -= y_direction * desired_speed
 
 
     def execute_callback(self, goal: ServerGoalHandle) -> MoveStraightIn2D.Result:
@@ -96,14 +96,14 @@ class MoveStraightIn2DActionServerNode(Node):
 
         # Let's limit the maximum number of iterations this can accept
         for i in range(self.MAX_ITERATIONS):
-            error_norm = self.get_error_norm(desired_position)
-            feedback_msg.error_norm = error_norm
+            distance = self.get_distance(desired_position)
+            feedback_msg.distance = distance
             goal.publish_feedback(feedback_msg)
 
             self.move_the_object_with_velocity(desired_position)
 
             # We define a threshold to see if it managed to reach the goal or not.
-            if error_norm < 0.01:
+            if distance < 0.01:
                 goal.succeed()
                 break
 
