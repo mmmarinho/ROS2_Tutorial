@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'move_straight_in_2d_action_server_node = python_package_that_uses_the_actions.move_straight_in_2d_action_server_node:main',
         ],
     },
 )
