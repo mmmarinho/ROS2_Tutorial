@@ -1,3 +1,3 @@
 .. warning::
 
-   This topic is under heavy construction. Don't forget your :abbr:`PPE (Personal Protective Equipment)` if you're venturing forward.
+   This topic is under construction and has not yet reached its final format.
