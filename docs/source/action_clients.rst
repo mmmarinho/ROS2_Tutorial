@@ -15,6 +15,11 @@ that when deploying actions in real applications they will be part of a more com
 publishers, subscribers, service servers/clients, and other actions server/clients. Therefore it is important to take
 this complexity in consideration when designing your packages to make sure that an :code:`Action` is the best way to communicate.
 
+Diagram
+-------
+
+This is the sequence diagram from the point of view of the action client.
+
 .. mermaid::
 
     ---
@@ -33,6 +38,9 @@ this complexity in consideration when designing your packages to make sure that 
         Action Server -->> Action Client: ActionClientNode.action_feedback_callback()
       end
       Action Server -->>- Action Client: ActionClientNode.action_result_callback()
+
+Overview
+--------
 
 #. Create the Node with an :code:`ActionClient`.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds the node (if needed).
