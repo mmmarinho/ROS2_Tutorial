@@ -11,14 +11,27 @@ The :code:`ServiceServer` will provide a service that can be accessed by one or 
 In this sense, a :code:`Service` is much less of an abstract entity than a :code:`Topic`.
 Each :code:`Service` should only have a single :code:`ServiceServer` that will receive a :code:`Request` and provide a :code:`Response`.
 
-.. mermaid:: Action client and server sequence diagram.
+Diagram
+-------
 
-    %%{init: { "theme" : "dark" }}%%
-    graph LR;
-    A[Service Client #1] --> B[Service Server]
-    C[Service Client #2] --> B
-    B --> A
-    B --> C
+.. mermaid::
+
+    ---
+    config:
+      theme: redux-dark-color
+      look: neo
+    ---
+    sequenceDiagram
+      Service Client 1 ->>+ Service Server: service_client.call_async()
+      loop
+        Service Client 1-->Service Client 1: rclpy.spin()
+      end
+      Service Server -->>- Service Client 1: ServiceServerNode.service_callback()
+      Service Client 2 ->>+ Service Server: service_client.call_async()
+      loop
+        Service Client 2-->Service Client 2: rclpy.spin()
+      end
+      Service Server -->>- Service Client 2: ServiceServerNode.service_callback()
 
 Create the package
 ------------------
