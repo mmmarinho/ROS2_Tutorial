@@ -74,10 +74,23 @@ Overview
     This will be the file structure for the :code:`Action` tutorial. Highlighted are the main files for the :code:`ActionServer` and :code:`ActionClient`.
 
     .. code-block:: console
+        :emphasize-lines: 5
 
-        TODO
+        python_package_that_uses_the_actions/
+        |-- package.xml
+        |-- python_package_that_uses_the_actions
+        |   |-- __init__.py
+        |   `-- move_straight_in_2d_action_server_node.py
+        |-- resource
+        |   `-- python_package_that_uses_the_actions
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
 
-Before we start exploring the elements of the package, let us
+Before we start exploring the elements of the package, let us do the following.
 
 #. Create the Node with an :code:`ActionServer`.
 #. Create the Node with an :code:`ActionClient`.
@@ -126,12 +139,7 @@ in the action file description, therefore we populate it as needed.
    :emphasize-lines: 1, 7, 12, 18, 24, 30, 32
 
 The other methods are to support the important aspects of the action server. The :code:`get_distance` method will compute
-the Euclidean distance between :code:`current_position` and :code:`desired_position`. The distance :math:`d` will be calculated
-from the terms :math:`x`, :math:`x_d`, :math:`y`, and :math:`y_d`, as follows.
-
-.. math::
-
-    d = \sqrt{(x-x_d)^2 + (y-y_d)^2}.
+the Euclidean distance between :code:`current_position` and :code:`desired_position`.
 
 This is represented by the following piece of code.
 
@@ -140,14 +148,7 @@ This is represented by the following piece of code.
    :lines: 53-64
    :emphasize-lines: 1, 12
 
-The action server will update the :code:`current_position` based on a simple constant speed motion of the point. This
-can be mathematically described as follows.
-
-.. math::
-
-    p(k+1) = p(k) - s\left(\frac{p - p_d}{d}\right),
-
-where in the :math:`k`\-ith iteration :math:`p(k+1)` represents the next position, :math:`p(k)` the current position, and :math:`s \in \mathbb{R}` is the desired speed.
+The action server will update the :code:`current_position` based on a simple constant speed motion of the point.
 This is represented by the following piece of code.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
