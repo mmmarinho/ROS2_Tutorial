@@ -42,30 +42,28 @@ class MoveStraightIn2DActionClientNode(Node):
         while not self.action_client.wait_for_server(timeout_sec=1.0):
             self.get_logger().info(f'service {self.action_client.action_name} not available, waiting...')
 
-        self.send_goal_future = self._action_client.send_goal_async(goal_msg, feedback_callback=self.feedback_callback)
-
+        self.send_goal_future = self._action_client.send_goal_async(goal_msg, feedback_callback=self.action_feedback_callback)
         self.send_goal_future.add_done_callback(self.goal_response_callback)
 
     def goal_response_callback(self, future):
         goal_handle = future.result()
-        if not goal_handle.accepted:
-            self.get_logger().info('Goal rejected :(')
-            return
+        self.get_logger().info(f'The class of the future.result() is {goal_handle.__class__}')
 
-        self.get_logger().info('Goal accepted :)')
+        if not goal_handle.accepted:
+            self.get_logger().info('Goal was rejected by the server.')
+            return
+        self.get_logger().info('Goal was accepted by the server.')
 
         self.get_result_future = goal_handle.get_result_async()
-        self.get_result_future.add_done_callback(self.get_result_callback)
+        self.get_result_future.add_done_callback(self.action_result_callback)
 
-    def get_result_callback(self, future):
+    def action_result_callback(self, future):
         result = future.result().result
-        self.get_logger().info('Result: {0}'.format(result.sequence))
-        rclpy.shutdown()
+        self.get_logger().info('Result: {0}'.format(result.final_position))
 
-    def feedback_callback(self, feedback_msg):
+    def action_feedback_callback(self, feedback_msg):
         feedback = feedback_msg.feedback
-        self.get_logger().info('Received feedback: {0}'.format(feedback.partial_sequence))
-
+        self.get_logger().info('Received feedback: {0}'.format(feedback.distance))
 
 
 def main(args=None):
@@ -77,6 +75,12 @@ def main(args=None):
         rclpy.init(args=args)
 
         node = MoveStraightIn2DActionClientNode()
+
+        # Send the goal once and then do nothing until the user shuts this node down.
+        desired_position = Point()
+        desired_position.x = 1.0
+        desired_position.y = -1.0
+        node.send_goal(desired_position)
 
         rclpy.spin(node)
     except KeyboardInterrupt:
