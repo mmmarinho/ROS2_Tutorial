@@ -17,15 +17,22 @@ this complexity in consideration when designing your packages to make sure that 
 
 .. mermaid::
 
-    %%{init: { "theme" : "dark" }}%%
+    ---
+    config:
+      theme: redux-dark-color
+      look: neo
+    ---
     sequenceDiagram
-        Action Client->>+Action Server: action_client.send_goal_async()
-        Action Server-->>-Action Client: ActionClientNode.goal_response_callback()
-        Action Client->>+Action Server: action_client.get_result_async()
-            loop While action has not ended
-            Action Server-->>Action Client: ActionClientNode.action_feedback_callback()
-        end
-        Action Server-->>-Action Client: ActionClientNode.action_result_callback()
+      participant Action Client as Action Client
+      participant Action Server as Action Server
+      autonumber
+      Action Client ->>+ Action Server: action_client.send_goal_async()
+      Action Server -->>- Action Client: ActionClientNode.goal_response_callback()
+      Action Client ->>+ Action Server: action_client.get_result_async()
+      loop While action has not ended
+        Action Server -->> Action Client: ActionClientNode.action_feedback_callback()
+      end
+      Action Server -->>- Action Client: ActionClientNode.action_result_callback()
 
 #. Create the Node with an :code:`ActionClient`.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds the node (if needed).
