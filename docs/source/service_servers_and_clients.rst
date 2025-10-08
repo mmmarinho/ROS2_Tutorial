@@ -154,17 +154,11 @@ The Service Server receives a :code:`AddPoints.Request` and returns a :code:`Add
    The API for the Service Server callback is a bit weird in that needs the :code:`Response` as an argument.
    This API `might change <https://github.com/ros2/rclpy/issues/464>`_, but for now this is what we got.
 
-We use the members of :code:`AddPoints.Request` to calculate and populate the :code:`AddPoints.Response`, as follows
+We use the members of :code:`AddPoints.Request` to calculate and populate the :code:`AddPoints.Response`. At the end of the callback, we must return that :code:`AddPoints.Request`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py
    :language: python
-   :lines: 53-55
-
-At the end of the callback, we must return that :code:`AddPoints.Request`, like so 
-
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py
-   :language: python
-   :lines: 54
+   :lines: 50-54
 
 The Service Server was quite painless, but it doesn't do much. The Service Client might be a bit more on the painful side for the uninitiated.
 

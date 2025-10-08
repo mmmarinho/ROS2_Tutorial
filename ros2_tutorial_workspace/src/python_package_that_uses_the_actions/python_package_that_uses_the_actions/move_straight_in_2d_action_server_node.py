@@ -45,7 +45,7 @@ class MoveStraightIn2DActionServerNode(Node):
         self.action_server = ActionServer(
             self,
             MoveStraightIn2D,
-            'move_straight_in_2d',
+            '/move_straight_in_2d',
             self.execute_callback)
 
 

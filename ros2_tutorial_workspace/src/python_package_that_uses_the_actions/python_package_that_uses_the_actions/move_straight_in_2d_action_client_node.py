@@ -33,7 +33,7 @@ class MoveStraightIn2DActionClientNode(Node):
 
     def __init__(self):
         super().__init__('move_straight_in_2d_action_client')
-        self.action_client = ActionClient(self, MoveStraightIn2D, 'move_straight_in_2d')
+        self.action_client = ActionClient(self, MoveStraightIn2D, '/move_straight_in_2d')
 
     def send_goal(self, desired_position: Point):
         goal_msg = MoveStraightIn2D.Goal()
