@@ -16,6 +16,29 @@ While being conscious of our objectives, for any action server, it is important 
 #. Publish feedback as it becomes available. Without feedback, an Action might always be replaced more effectively by a Service.
 #. Set the final state of the goal and send a Result.
 
+
+Diagram
+-------
+
+This is the sequence diagram from the point of view of the action server. The major difference with a service server
+is the need to process and send feedback until the action is completed or aborted.
+
+.. mermaid::
+
+    %%{init: { "theme" : "dark" }}%%
+    sequenceDiagram
+        participant Action Client as Action Client
+        participant Action Server as Action Server
+        autonumber
+        Action Client ->>+ Action Server: ActionServer.callback(ServerGoalHandle)
+        loop While action has not ended
+        Action Server -->> Action Client: ServerGoalHandle.publish_feedback()
+        end
+        Action Server -->>- Action Client: return Action.Result()
+
+Action Server
+-------------
+
 In this section, we will do the following.
 
 #. Create the node with an :code:`ActionServer`.

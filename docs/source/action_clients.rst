@@ -36,8 +36,8 @@ calls for the goal and the result, the node is free to do other tasks while thos
       end
       Action Server -->>- Action Client: ActionClientNode.action_result_callback()
 
-Overview
---------
+Action Client
+-------------
 
 #. Create the Node with an :code:`ActionClient`.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds the node (if needed).
