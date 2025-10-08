@@ -80,6 +80,15 @@ Note that we use an arbitrary minimum distance as stop criterion. Do not expect 
 that we are using floating point representation for the numbers. If you do not add a stopping range it is likely
 that your node will be stuck forever.
 
+Adjusting the :file:`setup.py`
+------------------------------
+
+This file will include the directives for the server and client. The one for the server is highlighted below.
+
+.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/setup.py
+   :language: python
+   :emphasize-lines: 23
+
 Testing the Action Server
 -------------------------
 
