@@ -70,7 +70,7 @@ This is represented by the following piece of code.
    :emphasize-lines: 1, 12
 
 The action server will update the :code:`current_position` based on a simple constant speed motion of the point.
-Remember :ref:`The distance equation <eq:actions_controller>`. This is represented by the following piece of code.
+Remember :ref:`The controller equation <eq:actions_controller>`. This is represented by the following piece of code.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
