@@ -154,7 +154,7 @@ Remember :ref:`The distance equation <eq:actions_controller>`. This is represent
    :language: python
    :lines: 66-81
 
-Note that we use an arbitrary minimum distance as stop criterium. Do not expect the distance to ever be zero, given
+Note that we use an arbitrary minimum distance as stop criterion. Do not expect the distance to ever be zero, given
 that we are using floating point representation for the numbers. If you do not add a stopping range it is likely
 that your node will be stuck forever.
 
