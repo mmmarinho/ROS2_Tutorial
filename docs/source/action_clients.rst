@@ -8,3 +8,5 @@ Action Clients
 ==============
 
 TODO
+
+#. Create the Node with an :code:`ActionClient`.

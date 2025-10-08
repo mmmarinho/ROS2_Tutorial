@@ -54,3 +54,81 @@ This can be mathematically described as follows.
     \boldsymbol{p}(k+1) = \boldsymbol{p}(k) - s\left(\frac{\boldsymbol{p} - \boldsymbol{p}_d}{d}\right),
 
 where :math:`\boldsymbol{p}(k+1)` represents the next position and :math:`\boldsymbol{p}(k)` the current position.
+
+Create the package
+------------------
+
+We start by creating a package to use the action we first created in :ref:`The action file`.
+
+.. code-block:: console
+
+    cd ~/ros2_tutorial_workspace/src
+    ros2 pkg create python_package_that_uses_the_actions \
+    --build-type ament_python \
+    --dependencies rclpy package_with_interfaces
+
+.. dropdown:: ros2 pkg create output
+
+   .. code :: console
+
+        going to create a new package
+        package name: python_package_that_uses_the_actions
+        destination directory: ~/ros2_tutorial_workspace/src
+        package format: 3
+        version: 0.0.0
+        description: TODO: Package description
+        maintainer: ['root <murilo.marinho@manchester.ac.uk>']
+        licenses: ['TODO: License declaration']
+        build type: ament_python
+        dependencies: ['rclpy', 'package_with_interfaces']
+        creating folder ./python_package_that_uses_the_actions
+        creating ./python_package_that_uses_the_actions/package.xml
+        creating source folder
+        creating folder ./python_package_that_uses_the_actions/python_package_that_uses_the_actions
+        creating ./python_package_that_uses_the_actions/setup.py
+        creating ./python_package_that_uses_the_actions/setup.cfg
+        creating folder ./python_package_that_uses_the_actions/resource
+        creating ./python_package_that_uses_the_actions/resource/python_package_that_uses_the_actions
+        creating ./python_package_that_uses_the_actions/python_package_that_uses_the_actions/__init__.py
+        creating folder ./python_package_that_uses_the_actions/test
+        creating ./python_package_that_uses_the_actions/test/test_copyright.py
+        creating ./python_package_that_uses_the_actions/test/test_flake8.py
+        creating ./python_package_that_uses_the_actions/test/test_pep257.py
+
+        [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+        It is recommended to use one of the ament license identifiers:
+        Apache-2.0
+        BSL-1.0
+        BSD-2.0
+        BSD-2-Clause
+        BSD-3-Clause
+        GPL-3.0-only
+        LGPL-3.0-only
+        MIT
+        MIT-0
+
+
+Overview
+--------
+
+This will be the file structure for the :code:`Action` tutorial. Highlighted are the main files for the :code:`ActionServer` and :code:`ActionClient`.
+
+.. admonition:: File structure
+
+    .. code-block:: console
+        :emphasize-lines: 5,6
+
+        python_package_that_uses_the_actions/
+        |-- package.xml
+        |-- python_package_that_uses_the_actions
+        |   |-- __init__.py
+        |   |-- move_straight_in_2d_action_client_node.py
+        |   `-- move_straight_in_2d_action_server_node.py
+        |-- resource
+        |   `-- python_package_that_uses_the_actions
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
