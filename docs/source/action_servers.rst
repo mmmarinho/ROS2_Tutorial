@@ -13,7 +13,7 @@ While being conscious of our objectives, for any action server, it is important 
 #. Publish feedback as it becomes available. Without feedback, an Action might always be replaced more effectively by a Service.
 #. Set the final state of the goal and send a Result.
 
-Before we start exploring the elements of the package, let us do the following.
+In this section, we will do the following.
 
 #. Create the node with an :code:`ActionServer`.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds the node.

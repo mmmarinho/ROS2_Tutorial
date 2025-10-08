@@ -40,9 +40,9 @@ class MoveStraightIn2DActionClientNode(Node):
         goal_msg.desired_position = desired_position
 
         while not self.action_client.wait_for_server(timeout_sec=1.0):
-            self.get_logger().info(f'service {self.action_client.action_name} not available, waiting...')
+            self.get_logger().info(f'service {self.action_client} not available, waiting...')
 
-        self.send_goal_future = self._action_client.send_goal_async(goal_msg, feedback_callback=self.action_feedback_callback)
+        self.send_goal_future = self.action_client.send_goal_async(goal_msg, feedback_callback=self.action_feedback_callback)
         self.send_goal_future.add_done_callback(self.goal_response_callback)
 
     def goal_response_callback(self, future):
@@ -59,11 +59,11 @@ class MoveStraightIn2DActionClientNode(Node):
 
     def action_result_callback(self, future):
         result = future.result().result
-        self.get_logger().info('Result: {0}'.format(result.final_position))
+        self.get_logger().info(f'Result: {result.final_position}')
 
     def action_feedback_callback(self, feedback_msg):
         feedback = feedback_msg.feedback
-        self.get_logger().info('Received feedback: {0}'.format(feedback.distance))
+        self.get_logger().info(f'Received feedback: {feedback.distance}')
 
 
 def main(args=None):
