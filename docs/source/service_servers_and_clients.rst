@@ -11,7 +11,7 @@ The :code:`ServiceServer` will provide a service that can be accessed by one or 
 In this sense, a :code:`Service` is much less of an abstract entity than a :code:`Topic`.
 Each :code:`Service` should only have a single :code:`ServiceServer` that will receive a :code:`Request` and provide a :code:`Response`.
 
-.. mermaid::
+.. mermaid:: Action client and server sequence diagram.
 
     %%{init: { "theme" : "dark" }}%%
     graph LR;
