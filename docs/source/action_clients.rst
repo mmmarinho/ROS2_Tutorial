@@ -18,15 +18,12 @@ this complexity in consideration when designing your packages to make sure that 
 Diagram
 -------
 
-This is the sequence diagram from the point of view of the action client.
+This is the sequence diagram from the point of view of the action client. Note that because we are using :code:`async`
+calls for the goal and the result, the node is free to do other tasks while those do not arrive.
 
 .. mermaid::
 
-    ---
-    config:
-      theme: redux-dark-color
-      look: neo
-    ---
+    %%{init: { "theme" : "redux-dark-color" }}%%
     sequenceDiagram
       participant Action Client as Action Client
       participant Action Server as Action Server

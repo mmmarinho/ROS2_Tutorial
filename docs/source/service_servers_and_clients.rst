@@ -16,11 +16,7 @@ Diagram
 
 .. mermaid::
 
-    ---
-    config:
-      theme: redux-dark-color
-      look: neo
-    ---
+    %%{init: { "theme" : "redux-dark-color" }}%%
     sequenceDiagram
       Service Client 1 ->>+ Service Server: service_client.call_async()
       loop
