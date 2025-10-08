@@ -139,8 +139,7 @@ in the action file description, therefore we populate it as needed.
    :emphasize-lines: 1, 7, 12, 18, 24, 30, 32
 
 The other methods are to support the important aspects of the action server. The :code:`get_distance` method will compute
-the Euclidean distance between :code:`current_position` and :code:`desired_position`.
-
+the Euclidean distance between :code:`current_position` and :code:`desired_position`. Remember :ref:`The distance equation <eq:actions_distance>`.
 This is represented by the following piece of code.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
@@ -149,7 +148,7 @@ This is represented by the following piece of code.
    :emphasize-lines: 1, 12
 
 The action server will update the :code:`current_position` based on a simple constant speed motion of the point.
-This is represented by the following piece of code.
+Remember :ref:`The distance equation <eq:actions_controller>`. This is represented by the following piece of code.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python

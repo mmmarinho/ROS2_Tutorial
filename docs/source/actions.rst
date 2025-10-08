@@ -41,6 +41,7 @@ The distance :math:`d` will be calculated
 from the terms :math:`x`, :math:`x_d`, :math:`y`, and :math:`y_d`, as follows.
 
 .. math::
+    :name: eq:actions_distance
 
     d = \sqrt{(x-x_d)^2 + (y-y_d)^2}.
 
@@ -48,6 +49,7 @@ The action server will update the position :math:`\boldsymbol{p}(k)` based on a 
 This can be mathematically described as follows.
 
 .. math::
+    :name: eq:actions_controller
 
     \boldsymbol{p}(k+1) = \boldsymbol{p}(k) - s\left(\frac{\boldsymbol{p} - \boldsymbol{p}_d}{d}\right),
 
