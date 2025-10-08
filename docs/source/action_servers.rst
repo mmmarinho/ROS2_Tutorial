@@ -89,6 +89,13 @@ This file will include the directives for the server and client. The one for the
    :language: python
    :emphasize-lines: 23
 
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: the_canonical_build_command.rst
+
 Testing the Action Server
 -------------------------
 
