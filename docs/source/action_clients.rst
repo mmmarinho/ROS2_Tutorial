@@ -23,7 +23,7 @@ calls for the goal and the result, the node is free to do other tasks while thos
 
 .. mermaid::
 
-    %%{init: { "theme" : "redux-dark-color" }}%%
+    %%{init: { "theme" : "dark" }}%%
     sequenceDiagram
       participant Action Client as Action Client
       participant Action Server as Action Server

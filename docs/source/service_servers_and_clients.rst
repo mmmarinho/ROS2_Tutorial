@@ -5,19 +5,23 @@
 At your Service: Servers and Clients
 ====================================
 
-In some cases, we need means of communication in which each command has an associated response. That is where :code:`Services` come into play. We use :code:`Services` by creating a :code:`ServiceServer`.
-The :code:`ServiceServer` will provide a service that can be accessed by one or more :code:`ServiceClient`\s.
+In some cases, we need means of communication in which each command has an associated response. That is where services come into play.
+We provide services by creating a :code:`ServiceServer`. The service server will provide a service that can be accessed by one or more :code:`ServiceClient`\s.
 
-In this sense, a :code:`Service` is much less of an abstract entity than a :code:`Topic`.
-Each :code:`Service` should only have a single :code:`ServiceServer` that will receive a :code:`Request` and provide a :code:`Response`.
+In this sense, a service is much less of an abstract entity than a topic.
+Each service should only have a single service server that will receive a :code:`Request` and provide a :code:`Response`.
 
 Diagram
 -------
 
 .. mermaid::
 
-    %%{init: { "theme" : "redux-dark-color" }}%%
+    %%{init: { "theme" : "dark" }}%%
     sequenceDiagram
+      participant Service Client 1 as Service Client 1
+      participant Service Server as Service Server
+      participant Service Client 2 as Service Client 2
+      autonumber
       Service Client 1 ->>+ Service Server: service_client.call_async()
       loop
         Service Client 1-->Service Client 1: rclpy.spin()
