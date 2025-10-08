@@ -37,7 +37,7 @@ Suppose that we want to design an action server that takes this robot-like objec
 towards the goal :math:`\boldsymbol{p}_d` with a speed :math:`s \in \mathbb{R}`. As feedback, it gives us the distance :math:`d \in \mathbb{R}` between the current
 position and the desired position.
 
-The distance :math:`d \in \mathbb{R}` will be calculated
+The distance :math:`d` will be calculated
 from the terms :math:`x`, :math:`x_d`, :math:`y`, and :math:`y_d`, as follows.
 
 .. math::
@@ -51,4 +51,4 @@ This can be mathematically described as follows.
 
     \boldsymbol{p}(k+1) = \boldsymbol{p}(k) - s\left(\frac{\boldsymbol{p} - \boldsymbol{p}_d}{d}\right),
 
-where in the :math:`k`\-ith iteration :math:`\boldsymbol{p}(k+1)` represents the next position, :math:`\boldsymbol{p}(k)` the current position, and :math:`s \in \mathbb{R}` is the desired speed.
+where :math:`\boldsymbol{p}(k+1)` represents the next position and :math:`\boldsymbol{p}(k)` the current position.
