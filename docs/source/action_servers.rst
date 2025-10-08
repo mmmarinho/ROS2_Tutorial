@@ -7,6 +7,9 @@
 Action Servers
 ==============
 
+Action servers will rely indirectly on our capabilities of working well with messages and services. Although actions are unique in
+the way they work, they will repeat many of the structures we used so far. The action server, for instance, will be very much like a service server.
+
 While being conscious of our objectives, for any action server, it is important to:
 
 #. Receive the goal and process it in a meaningful way.

@@ -7,7 +7,25 @@
 Action Clients
 ==============
 
-TODO
+An action client will be much like a service client, but more complicated. For instance, they will use :code:`async` and :code:`Future`\s.
+The reason for that is that processing the :code:`Action` requires multiple steps.
+
+To simplify the action server, our example code will only call the :code:`Action` once and do nothing else. Remember
+that when deploying actions in real applications they will be part of a more complex :code:`Node` that might include
+publishers, subscribers, service servers/clients, and other actions server/clients. Therefore it is important to take
+this complexity in consideration when designing your packages to make sure that an :code:`Action` is the best way to communicate.
+
+.. mermaid::
+
+    %%{init: { "theme" : "dark" }}%%
+    sequenceDiagram;
+    Action Client->>+Action Server: action_client.send_goal_async()
+    Action Server-->>-Action Client: ActionClientNode.goal_response_callback()
+    Action Client->>+Action Server: action_client.get_result_async()
+        loop While action has not ended
+        Action Server-->>Action Client: ActionClientNode.action_feedback_callback()
+    end
+    Action Server-->>-Action Client: ActionClientNode.action_result_callback()
 
 #. Create the Node with an :code:`ActionClient`.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds the node (if needed).
