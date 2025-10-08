@@ -165,7 +165,9 @@ If you enjoyed this tutorial, please
    :maxdepth: 2
    :hidden:
 
-   action_servers_and_clients
+   actions
+   action_servers
+   action_clients
 
 .. toctree::
    :caption: Gazebo

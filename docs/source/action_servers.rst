@@ -4,17 +4,14 @@
 
    Added this section.
 
-Call for Actions: Servers and Clients
-=====================================
+Action Servers
+==============
 
-What about a mixture of messages and services? That is where actions come into play.
+While being conscious of our objectives, for any action server, it is important to:
 
-We use actions by creating an :code:`ActionServer`. The :code:`ActionServer` called by one or more :code:`ActionClient`\s.
-
-Similarly to a service, each action should only have a single :code:`ActionServer` that will receive a :code:`Goal` and provide a :code:`Result`.
-It will also provide :code:`Feedback` through a suitable topic. It can be argued that the main difference between a service
-and an action is the capability of providing feedback while the action is performed. A service, in contrast, only outputs
-a single, final result of the service call.
+#. Receive the goal and process it in a meaningful way.
+#. Publish feedback as it becomes available. Without feedback, an Action might always be replaced more effectively by a Service.
+#. Set the final state of the goal and send a Result.
 
 Create the package
 ------------------
@@ -86,33 +83,6 @@ Before we start exploring the elements of the package, let us
 #. Create the Node with an :code:`ActionClient`.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds these programs.
 
-Action Server
--------------
-
-We can use an Action to represent the first robot-like behavior in an illustrative manner. Suppose that we have a simple
-robot that moves in 2D space and whose orientation is not important. Let it have a current position with respect to the
-:math:`k`\-ith iteration represented by
-
-.. math::
-
-    \boldsymbol{p}(k)  =\begin{bmatrix}x(k) \\ y(k)\end{bmatrix}
-
-and a desired position given by
-
-.. math::
-
-    \boldsymbol{p}_d  =\begin{bmatrix}x_d \\ y_d\end{bmatrix}.
-
-Suppose that we want to design an action server that takes this robot-like object from its current position :math:`\boldsymbol{p}` and moves it
-towards the goal :math:`\boldsymbol{p}_d` with a speed :math:`s \in \mathbb{R}`. As feedback, it gives us the distance :math:`d \in \mathbb{R}` between the current
-position and the desired position.
-
-While being conscious of our objectives, for any action server, it is important to:
-
-#. Receive the goal and process it in a meaningful way.
-#. Publish feedback as it becomes available. Without feedback, an Action might always be replaced more effectively by a Service.
-#. Set the final state of the goal and send a Result.
-
 Let us create the action server as follows.
 
 :download:`move_straight_in_2d_action_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py>`
@@ -157,11 +127,11 @@ in the action file description, therefore we populate it as needed.
 
 The other methods are to support the important aspects of the action server. The :code:`get_distance` method will compute
 the Euclidean distance between :code:`current_position` and :code:`desired_position`. The distance :math:`d` will be calculated
-from the terms :math:`x`, :math:`x_d`, :math:`y`, and :math:`y_d`.
+from the terms :math:`x`, :math:`x_d`, :math:`y`, and :math:`y_d`, as follows.
 
 .. math::
 
-    d = \sqrt{(x-x_d)^2 + (y-y_d)^2}
+    d = \sqrt{(x-x_d)^2 + (y-y_d)^2}.
 
 This is represented by the following piece of code.
 
