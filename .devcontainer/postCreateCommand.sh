@@ -8,10 +8,10 @@ pip install -r docs/source/requirements.txt
 pip install sphinx-autobuild
 chmod +x .devcontainer/serve_sphinx.sh
 
-# Adding other useful packages
-sudo apt-get install tree
-
 # Making mermaid graphs work
 sudo apt-get update
 sudo apt-get install -y npm
 npm install -g @mermaid-js/mermaid-cli
+
+# Adding other useful packages
+sudo apt-get install -y tree
