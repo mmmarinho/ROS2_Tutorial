@@ -40,12 +40,23 @@ Create the Node using parameters
 .. admonition:: In this step, we'll work on this.
 
    .. code-block:: console
-      :emphasize-lines: 4
+      :emphasize-lines: 7
       
-      src/python_package_that_uses_parameters_and_launch_files
-        └── python_package_that_uses_parameters_and_launch_files/
-              └── __init__.py
-              └── amazing_quote_configurable_publisher_node.py
+        python_package_that_uses_parameters_and_launch_files/
+        |-- launch
+        |   `-- peanut_butter_falcon_quote_publisher_launch.py
+        |-- package.xml
+        |-- python_package_that_uses_parameters_and_launch_files
+        |   |-- __init__.py
+        |   `-- amazing_quote_configurable_publisher_node.py
+        |-- resource
+        |   `-- python_package_that_uses_parameters_and_launch_files
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
 
 For the sake of the example, let us suppose that we want to make an :code:`AmazingQuote` publisher that is, now, configurable.
 
@@ -130,13 +141,23 @@ Differently from ROS1, in ROS2 we can use Python launch files. They are quite po
 .. admonition:: In this step, we'll work on this.
 
    .. code-block:: console
-      :emphasize-lines: 5
+      :emphasize-lines: 2
       
-      src/python_package_that_uses_parameters_and_launch_files
-        └── python_package_that_uses_parameters_and_launch_files/
-              └── __init__.py
-              └── amazing_quote_configurable_publisher_node.py
-        └── launch
+        python_package_that_uses_parameters_and_launch_files/
+        |-- launch
+        |   `-- peanut_butter_falcon_quote_publisher_launch.py
+        |-- package.xml
+        |-- python_package_that_uses_parameters_and_launch_files
+        |   |-- __init__.py
+        |   `-- amazing_quote_configurable_publisher_node.py
+        |-- resource
+        |   `-- python_package_that_uses_parameters_and_launch_files
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
 
 Well, without further ado
 
@@ -151,14 +172,23 @@ Create the :file:`launch` file
 .. admonition:: In this step, we'll work on this.
 
    .. code-block:: console
-      :emphasize-lines: 6
+      :emphasize-lines: 3
       
-      src/python_package_that_uses_parameters_and_launch_files
-        └── python_package_that_uses_parameters_and_launch_files/
-              └── __init__.py
-              └── amazing_quote_configurable_publisher_node.py
-        └── launch
-              └── peanut_butter_falcon_quote_publisher_launch.py
+        python_package_that_uses_parameters_and_launch_files/
+        |-- launch
+        |   `-- peanut_butter_falcon_quote_publisher_launch.py
+        |-- package.xml
+        |-- python_package_that_uses_parameters_and_launch_files
+        |   |-- __init__.py
+        |   `-- amazing_quote_configurable_publisher_node.py
+        |-- resource
+        |   `-- python_package_that_uses_parameters_and_launch_files
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
 
 .. warning:
    The Python launch file **MUST** have the suffix :file:`_launch.py`. It will be used by the :file:`setup.py` to install it correctly.
@@ -202,15 +232,23 @@ The :file:`setup.py`
 .. admonition:: In this step, we'll work on this.
 
    .. code-block:: console
-      :emphasize-lines: 7
+      :emphasize-lines: 11
       
-      src/python_package_that_uses_parameters_and_launch_files
-        └── python_package_that_uses_parameters_and_launch_files/
-              └── __init__.py
-              └── amazing_quote_configurable_publisher_node.py
-        └── launch
-              └── peanut_butter_falcon_quote_publisher_launch.py
-        setup.py
+        python_package_that_uses_parameters_and_launch_files/
+        |-- launch
+        |   `-- peanut_butter_falcon_quote_publisher_launch.py
+        |-- package.xml
+        |-- python_package_that_uses_parameters_and_launch_files
+        |   |-- __init__.py
+        |   `-- amazing_quote_configurable_publisher_node.py
+        |-- resource
+        |   `-- python_package_that_uses_parameters_and_launch_files
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
 
 Modify the :file:`setup.py` to look like this
 
