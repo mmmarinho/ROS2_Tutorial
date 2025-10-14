@@ -172,11 +172,12 @@ Modify the :file:`__init__.py`
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py
    :language: python
    :linenos:
-   :lines: 26-
+   :lines: 24-
 
-The :file:`__init__.py` file should import from the internal files to expose them to other packages. The absolute path
-in terms of :program:`ROS2` is needed to guarantee this will work well. It is clever to stay away from relative
-path resolvers in this case.
+The :file:`__init__.py` file should import from the internal modules to expose their contents to other packages.
+
+The absolute path in terms of :program:`ROS2` is needed to guarantee this will work well. It is clever to stay away from
+`package relative imports <https://docs.python.org/3/reference/import.html#package-relative-imports>`_ in this case.
 
 Build and source
 ----------------
