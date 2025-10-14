@@ -111,7 +111,7 @@ How about :program:`ros2 service echo`
 
 .. versionadded:: Jazzy
 
-   Added this section about service introspection using :program:`ros2 service echo`.
+   Added this section.
 
 
 .. seealso::

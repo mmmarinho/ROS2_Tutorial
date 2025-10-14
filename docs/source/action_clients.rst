@@ -1,11 +1,11 @@
+Action Clients
+==============
+
 .. include:: the_topic_is_under_heavy_construction.rst
 
 .. versionadded:: Jazzy
 
    Added this section.
-
-Action Clients
-==============
 
 An action client will be much like a service client, but more complicated. For instance, they will use :code:`async` and :code:`Future`\s.
 The reason for that is that processing the :code:`Action` requires multiple steps.

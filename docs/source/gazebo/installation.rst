@@ -1,13 +1,13 @@
+.. _Gazebo installation:
+
+:program:`Gazebo` Installation
+==============================
+
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
 .. versionadded:: Jazzy
 
    Added this section.
-
-.. _Gazebo installation:
-
-:program:`Gazebo` Installation
-==============================
 
 The following command will install :program:`Gazebo Harmonic` and all the pairing libraries for :program:`ROS2 Jazzy`. Please do not attempt to install it following another documentation. This could lead to a different version being installed.
 

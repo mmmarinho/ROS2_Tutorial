@@ -1,11 +1,11 @@
+Call for Actions: Action Servers and Clients
+============================================
+
 .. include:: the_topic_is_under_heavy_construction.rst
 
 .. versionadded:: Jazzy
 
    Added this section.
-
-Call for Actions: Action Servers and Clients
-============================================
 
 What about a mixture of messages and services? That is where actions come into play.
 

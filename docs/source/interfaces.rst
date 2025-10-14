@@ -1,10 +1,9 @@
+ROS2 Interfaces (:program:`ros2 interface`)
+===========================================
+
 .. versionchanged:: Jazzy
 
    Added actions.
-
-
-ROS2 Interfaces (:program:`ros2 interface`)
-===========================================
 
 If by now you haven't particularly fallen in love with :program:`ROS2`, fear not. Indeed, we haven't done much so far that couldn't be achieved more easily by other means.
 

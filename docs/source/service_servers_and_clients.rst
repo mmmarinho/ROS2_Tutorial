@@ -1,9 +1,9 @@
+At your Service: Servers and Clients
+====================================
+
 .. versionchanged:: Jazzy
 
    The contents of this session were expanded and the example simplified. The previous version is available at the `Humble tutorials <https://ros2-tutorial.readthedocs.io/en/humble/service_servers_and_clients.html>`_.
-
-At your Service: Servers and Clients
-====================================
 
 In some cases, we need means of communication in which each command has an associated response. That is where services come into play.
 We provide services by creating a :code:`ServiceServer`. The service server will provide a service that can be accessed by one or more :code:`ServiceClient`\s.
