@@ -13,6 +13,9 @@ Then
 
 Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and a combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_. An example is shown below.
 
+Diagram
+-------
+
 .. mermaid::
 
     %%{init: { "theme" : "dark" }}%%
@@ -25,6 +28,30 @@ Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and 
 
    This is an abstraction. As long as the information flows in this manner, it does not mean that an entity called ``topic`` must exist.
    In :program:`ROS2`, this type of communication happens, in fact, peer-to-peer.
+
+Package structure
+-----------------
+
+This will be the structure of the package. The main elements are highlighted.
+
+.. code-block:: console
+    :emphasize-lines: 5,6
+
+        python_package_that_uses_the_messages/
+        |-- package.xml
+        |-- python_package_that_uses_the_messages
+        |   |-- __init__.py
+        |   |-- amazing_quote_publisher_node.py
+        |   `-- amazing_quote_subscriber_node.py
+        |-- resource
+        |   `-- python_package_that_uses_the_messages
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
+
 
 Create the package
 ------------------
