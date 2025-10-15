@@ -57,11 +57,33 @@ resulting in yet another version of our favorite wall of text
    LGPL-3.0-only
    MIT
    MIT-0
-   
+
+Package structure
+-----------------
+
+We'll be working on the following file structure.
+
+.. code-block:: console
+    :emphasize-lines: 5
+
+    python_package_that_uses_the_library/
+    |-- package.xml
+    |-- python_package_that_uses_the_library
+    |   |-- __init__.py
+    |   `-- node_that_uses_the_library.py
+    |-- resource
+    |   `-- python_package_that_uses_the_library
+    |-- setup.cfg
+    |-- setup.py
+    `-- test
+        |-- test_copyright.py
+        |-- test_flake8.py
+        `-- test_pep257.py
+
 The sample Node
 ---------------
 
-Given that it was created from a template, the file :file:`python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py` is currently *mostly* empty. Let us replace its contents with 
+Given that it was created from a template, the file :file:`node_that_uses_the_library.py` is currently *mostly* empty. Let us replace its contents with
 
 :download:`node_that_uses_the_library.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py>`
 
