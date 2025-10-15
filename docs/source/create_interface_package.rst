@@ -1,9 +1,9 @@
+Creating a dedicated package for custom interfaces
+==================================================
+
 .. versionchanged:: Jazzy
 
    Added :file:`AmazingQuoteStamped.msg`, :file:`MoveStraightIn2D.action` and simplified service discussion to use :file:`AddPoints.srv`.
-
-Creating a dedicated package for custom interfaces
-==================================================
 
 .. warning::
 
@@ -134,6 +134,11 @@ Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we 
 Re-using a message from the same package
 ++++++++++++++++++++++++++++++++++++++++
 
+.. note::
+
+   Only messages can be used to define other interfaces. For instance, they can be used to define other messages, services,
+   and actions.
+
 With the :file:`AmazingQuote.msg`, we have seen how to use built-in types. Let's use another message, :file:`AmazingQuoteStamped.msg`,  to learn two more possibilities, namely using messages from the same package and messages defined elsewhere.
 
 :download:`~/ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg>`
@@ -162,10 +167,6 @@ The convention is to add all services to a folder called :file:`srv`. Let's foll
 The service file
 ----------------
 
-.. note::
-
-   Services cannot be used to define other interfaces.
-
 Add the file :file:`AddPoints.srv` in the :file:`srv` folder with the following contents
 
 :download:`~/ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv>`
@@ -188,10 +189,6 @@ The convention is to add all actions to a folder called :file:`action`. Let's fo
 
 The action file
 ---------------
-
-.. note::
-
-   Actions cannot be used to define other interfaces.
 
 Add the file :file:`MoveStraightIn2D.action` in the :file:`action` folder with the following contents
 
