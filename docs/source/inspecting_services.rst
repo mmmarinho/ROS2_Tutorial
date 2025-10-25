@@ -104,7 +104,9 @@ which results in
 Testing your service clients
 ----------------------------
 
-To the best of my knowledge, there is no tool inside :program:`ros2 service` to allow us to experiment with the service clients. For service clients the only way to test them is to make a minimal service server to interact with them. We've already done that, so this topic ends here.
+To the best of my knowledge, there is no tool inside :program:`ros2 service` to allow us to experiment with service clients.
+For service clients the only way to test them is to make a minimal service server to interact with them.
+We've already done that, so this topic ends here.
 
 How about :program:`ros2 service echo`
 --------------------------------------
@@ -142,10 +144,11 @@ How about :program:`ros2 service echo`
             `-- test_pep257.py
 
 
-It is important to know of the existence of ``service introspection``. Although it seems to work the documentation might be ongoing, according to this discussion: https://github.com/ros-infrastructure/rep/pull/360.
+It might be good to know of the existence of *service introspection*.
+Although it seems to work the documentation might be ongoing, according to this discussion: https://github.com/ros-infrastructure/rep/pull/360.
 
-After proper configuration of the server and client, :program:`ros2 service echo` allows us to look at what information is being exchanged between participants. It helps not having to
-add endless ``print`` functions throughout the code that hurt performance.
+After proper configuration of the server and client, :program:`ros2 service echo` allows us to look at what information is being exchanged between participants.
+It helps not having to add endless ``print`` functions throughout the code that hurt performance.
 
 In the folder :file:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services` we add the following two files.
 Note that we are using inheritance from the previously written :code:`AddPointsServiceClientNode` and :code:`AddPointsServiceServerNode` to minimize code replication.
@@ -156,7 +159,7 @@ Note that we are using inheritance from the previously written :code:`AddPointsS
 
         For the :code:`Node` with the service client, we must use the :code:`configure_introspection` method. The argument requires a :code:`service_event_qos_profile` and a :code:`introspection_state`.
         The quality-of-service profile is within the same scope as the quality-of-service for messages and has a similar meaning. The :code:`introspection_state` defines how much of the service can be introspected.
-        Less information can be made accesible if that is necessary.
+        Less information can be made accessible if that is necessary.
 
         :download:`add_points_service_client_introspection_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py>`
 
@@ -177,3 +180,195 @@ Note that we are using inheritance from the previously written :code:`AddPointsS
            :linenos:
            :lines: 24-
            :emphasize-lines: 4,5,12-16
+
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: the_canonical_build_command.rst
+
+Finally the :program:`ros2 service echo`
+----------------------------------------
+
+To be able to use :program:`ros2 service echo`, we must be sure that the service server and :program:`ros2 service echo`
+are active before the service client requests the service we want to inspect the entire exchange.
+
+It might be a bit of a handful, but we will need three (properly sourced) terminals. In this order.
+
+.. tab-set::
+
+    .. tab-item:: (1) service server
+
+        .. code-block:: console
+
+            ros2 run python_package_that_uses_the_services add_points_service_server_introspection_node
+
+    .. tab-item:: (2) ros2 service echo
+
+        .. code-block:: console
+
+            ros2 service echo /add_points
+
+    .. tab-item:: (3) service client
+
+        .. code-block:: console
+
+            ros2 run python_package_that_uses_the_services add_points_service_client_introspection_node
+
+Each program will have it's own output, shown below. For the purposes of this section we can focus on the output of
+:program:`ros2 service echo`. The other two outputs repeat what we have seen in the previous session, further guaranteeing
+that the introspection works without affecting the overall behavior of the nodes too much.
+
+.. tab-set::
+
+    .. tab-item:: ros2 service echo output
+
+        As you can see, we will receive a profoundly detailed output showing all aspects of the service, including
+        the request sent, an acknowledgement of what was received, what was replied, and the acknowledgement of the reply!
+
+        .. code-block:: console
+
+            info:
+              event_type: REQUEST_SENT
+              stamp:
+                sec: 1761419221
+                nanosec: 796638805
+              client_gid:
+              - 1
+              - 15
+              - 235
+              - 125
+              - 217
+              - 40
+              - 45
+              - 142
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 20
+              - 3
+              sequence_number: 1
+            request:
+            - a:
+                x: 104.79864813644902
+                y: 422.844185397337
+                z: 0.0
+              b:
+                x: 531.6723658565676
+                y: 761.3967957778456
+                z: 357.29827376582836
+            response: []
+            ---
+            info:
+              event_type: REQUEST_RECEIVED
+              stamp:
+                sec: 1761419221
+                nanosec: 800073888
+              client_gid:
+              - 1
+              - 15
+              - 235
+              - 125
+              - 217
+              - 40
+              - 45
+              - 142
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 19
+              - 4
+              sequence_number: 1
+            request:
+            - a:
+                x: 104.79864813644902
+                y: 422.844185397337
+                z: 0.0
+              b:
+                x: 531.6723658565676
+                y: 761.3967957778456
+                z: 357.29827376582836
+            response: []
+            ---
+            info:
+              event_type: RESPONSE_SENT
+              stamp:
+                sec: 1761419221
+                nanosec: 801308763
+              client_gid:
+              - 1
+              - 15
+              - 235
+              - 125
+              - 217
+              - 40
+              - 45
+              - 142
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 19
+              - 4
+              sequence_number: 1
+            request: []
+            response:
+            - result:
+                x: 636.4710139930166
+                y: 1184.2409811751827
+                z: 357.29827376582836
+            ---
+            info:
+              event_type: RESPONSE_RECEIVED
+              stamp:
+                sec: 1761419221
+                nanosec: 801765763
+              client_gid:
+              - 1
+              - 15
+              - 235
+              - 125
+              - 217
+              - 40
+              - 45
+              - 142
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 0
+              - 20
+              - 3
+              sequence_number: 1
+            request: []
+            response:
+            - result:
+                x: 636.4710139930166
+                y: 1184.2409811751827
+                z: 357.29827376582836
+            ---
+
+
+    .. tab-item:: service client output
+
+        For the service client, the output is the same as with the service client without introspection.
+
+        .. code-block:: console
+
+            [INFO] [1761419221.816188138] [add_points_service_client]: The result was (636.4710139930166, 1184.2409811751827, 357.29827376582836)
+
+    .. tab-item:: service server output
+
+        Nothing is output in the service server, because our service server is not supposed to output anything to the
+        screen.
+
