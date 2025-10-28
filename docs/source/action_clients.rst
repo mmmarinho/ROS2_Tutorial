@@ -7,12 +7,15 @@ Action Clients
 
    Added this section.
 
-An action client will be much like a service client, but more complicated. For instance, they will use :code:`async` and :code:`Future`\s.
+An action client will be much like a service client, but more complicated. There are at least three callbacks and
+two futures involved.
+
 The reason for that is that processing the :code:`Action` requires multiple steps.
 
-To simplify the action server, our example code will only call the :code:`Action` once and do nothing else. Remember
-that when deploying actions in real applications they will be part of a more complex :code:`Node` that might include
-publishers, subscribers, service servers/clients, and other actions server/clients. Therefore it is important to take
+To simplify the action server, our example code will only call the :code:`Action` once and do nothing else.
+
+Remember that when deploying actions in real applications they will be part of a more complex :code:`Node` that might include
+publishers, subscribers, service servers/clients, and other actions server/clients. This means that it is important to take
 this complexity in consideration when designing your packages to make sure that an :code:`Action` is the best way to communicate.
 
 Diagram
