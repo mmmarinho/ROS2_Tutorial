@@ -34,7 +34,7 @@ is the need to process and send feedback until the action is completed or aborte
         loop While action has not ended
         Action Server -->> Action Client: ServerGoalHandle.publish_feedback()
         end
-        Action Server -->>- Action Client: return Action.Result()
+        Action Server -->>- Action Client: return <action>.Result()
 
 Action Server
 -------------
