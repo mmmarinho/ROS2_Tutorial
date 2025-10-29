@@ -173,12 +173,19 @@ The output in each window should be something similar to
 
     .. tab-item:: Terminal 1: action server output
 
+        The action server will make the point move towards the goal. If it does not manage to reach the desired threshold
+        within the allocated time, it will show, in this case, a warning that it was implicitly aborted.
+
         .. code-block:: console
 
             [INFO] [1761753120.100902419] [move_straight_in_2d_action_server]: current_position is geometry_msgs.msg.Point(x=0.0, y=0.0, z=0.0).
             [INFO] [1761753120.101090669] [move_straight_in_2d_action_server]: desired_position set to geometry_msgs.msg.Point(x=1.0, y=-1.0, z=0.0).
+            [WARN] [1761753121.235096837] [move_straight_in_2d_action_server.action_server]: Goal state not set, assuming aborted. Goal ID: [  9  49  65  27 156  53  65  61 134 216 224 156 147 240 198  62]
 
     .. tab-item:: Terminal 2: action output
+
+        The action client will show the feedback as it happens and the final state of the action when the action server
+        stops processing this goal. 
 
         .. code-block:: console
 
