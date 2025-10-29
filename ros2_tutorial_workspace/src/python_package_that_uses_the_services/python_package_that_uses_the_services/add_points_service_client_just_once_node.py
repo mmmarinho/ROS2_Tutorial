@@ -65,7 +65,11 @@ class AddPointsServiceClientJustOnceNode(Node):
         """Callback for the future, that will be called when it is done."""
         response = future.result()
         if response is not None:
-            self.get_logger().info(f"The result was {(response.result.x, response.result.y, response.result.z)}")
+            self.get_logger().info(f"The result was "
+                                   f"{(response.result.x, 
+                                       response.result.y, 
+                                       response.result.z)
+                                   }")
         else:
             self.get_logger().info("The response was None.")
 

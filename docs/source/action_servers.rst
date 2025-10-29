@@ -36,6 +36,32 @@ is the need to process and send feedback until the action is completed or aborte
         end
         Action Server -->>- Action Client: return <action>.Result()
 
+Files
+-----
+
+The highlighted files below will be modified or created in this section.
+
+
+.. admonition:: File structure
+
+    .. code-block:: console
+        :emphasize-lines: 6,10
+
+        python_package_that_uses_the_actions/
+        |-- package.xml
+        |-- python_package_that_uses_the_actions
+        |   |-- __init__.py
+        |   |-- move_straight_in_2d_action_client_node.py
+        |   `-- move_straight_in_2d_action_server_node.py
+        |-- resource
+        |   `-- python_package_that_uses_the_actions
+        |-- setup.cfg
+        |-- setup.py
+        `-- test
+            |-- test_copyright.py
+            |-- test_flake8.py
+            `-- test_pep257.py
+
 Action Server
 -------------
 
