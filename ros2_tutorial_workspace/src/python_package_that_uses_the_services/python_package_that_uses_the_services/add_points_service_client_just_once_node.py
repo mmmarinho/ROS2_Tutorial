@@ -34,7 +34,7 @@ class AddPointsServiceClientJustOnceNode(Node):
     """A ROS2 Node with a Service Client for AddPoints, just once."""
 
     def __init__(self):
-        super().__init__('add_points_service_client')
+        super().__init__('add_points_service_client_just_once')
 
         self.service_client = self.create_client(
             srv_type=AddPoints,
