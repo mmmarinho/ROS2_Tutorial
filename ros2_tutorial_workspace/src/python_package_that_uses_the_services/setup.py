@@ -22,6 +22,8 @@ setup(
         'console_scripts': [
             'add_points_service_client_node = '
             'python_package_that_uses_the_services.add_points_service_client_node:main',
+            'add_points_service_client_just_once_node = '
+            'python_package_that_uses_the_services.add_points_service_client_just_once_node:main',
             'add_points_service_server_node = '
             'python_package_that_uses_the_services.add_points_service_server_node:main',
             'add_points_service_client_introspection_node = '

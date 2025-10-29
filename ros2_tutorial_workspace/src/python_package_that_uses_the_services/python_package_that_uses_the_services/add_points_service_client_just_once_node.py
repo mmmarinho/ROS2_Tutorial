@@ -30,8 +30,8 @@ from rclpy.node import Node
 from package_with_interfaces.srv import AddPoints
 
 
-class AddPointsServiceClientNode(Node):
-    """A ROS2 Node with a Service Client for AddPoints, that call the service periodically."""
+class AddPointsServiceClientJustOnceNode(Node):
+    """A ROS2 Node with a Service Client for AddPoints, just once."""
 
     def __init__(self):
         super().__init__('add_points_service_client')
@@ -43,16 +43,10 @@ class AddPointsServiceClientNode(Node):
         while not self.service_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info(f'service {self.service_client.srv_name} not available, waiting...')
 
+        # Create the future in the correct scope. It needs to be an attribute of the instance.
         self.future: Future = None
 
-        timer_period: float = 0.5
-        self.timer = self.create_timer(
-            timer_period_sec=timer_period,
-            callback=self.timer_callback)
-
-    def timer_callback(self):
-        """Method that is periodically called by the timer."""
-
+        # Create service request
         request = AddPoints.Request()
 
         request.a.x = random.uniform(0, 1000)
@@ -63,15 +57,12 @@ class AddPointsServiceClientNode(Node):
         request.b.y = random.uniform(0, 1000)
         request.b.z = random.uniform(0, 1000)
 
-        if self.future is not None and not self.future.done():
-            self.future.cancel()  # Cancel the future. The callback will be called with Future.result == None.
-            self.get_logger().warn("Service Future canceled. The Node took too long to process the service call."
-                                   "Is the Service Server still alive?")
+        # Call the service async and set the done callback
         self.future = self.service_client.call_async(request)
         self.future.add_done_callback(self.process_response)
 
     def process_response(self, future: Future):
-        """Callback for the future, that will be called when it is done"""
+        """Callback for the future, that will be called when it is done."""
         response = future.result()
         if response is not None:
             self.get_logger().info(f"The result was {(response.result.x, response.result.y, response.result.z)}")
@@ -88,9 +79,9 @@ def main(args=None):
     try:
         rclpy.init(args=args)
 
-        add_points_service_client_node = AddPointsServiceClientNode()
+        node = AddPointsServiceClientJustOnceNode()
 
-        rclpy.spin(add_points_service_client_node)
+        rclpy.spin(node)
     except KeyboardInterrupt:
         pass
     except Exception as e:
