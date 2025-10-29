@@ -1,7 +1,7 @@
-.. include:: ../the_topic_is_under_heavy_construction.rst
-
 :program:`rviz2` quickstart
 ============================
+
+.. include:: ../the_topic_is_under_heavy_construction.rst
 
 :program:`rviz2` Installation
 ------------------------------
