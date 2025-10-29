@@ -6,4 +6,8 @@
 
 .. note::
 
-   If you don't remember why we're building with these commands, see :ref:`Always source after you build`.
+   For additional explanation and troubleshooting tips, see :ref:`Always source after you build`.
+
+.. warning::
+
+    :program:`colcon` will *not* work properly if your terminal has an active :program:`venv`.
