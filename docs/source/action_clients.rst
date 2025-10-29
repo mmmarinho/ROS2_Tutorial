@@ -185,7 +185,7 @@ The output in each window should be something similar to
     .. tab-item:: Terminal 2: action output
 
         The action client will show the feedback as it happens and the final state of the action when the action server
-        stops processing this goal. 
+        stops processing this goal.
 
         .. code-block:: console
 
