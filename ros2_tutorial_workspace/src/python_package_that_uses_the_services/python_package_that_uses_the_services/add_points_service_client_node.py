@@ -57,7 +57,7 @@ class AddPointsServiceClientNode(Node):
 
         request.a.x = random.uniform(0, 1000)
         request.a.y = random.uniform(0, 1000)
-        request.a.y = random.uniform(0, 1000)
+        request.a.z = random.uniform(0, 1000)
 
         request.b.x = random.uniform(0, 1000)
         request.b.y = random.uniform(0, 1000)
