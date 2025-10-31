@@ -41,6 +41,31 @@ where :math:`\norm{v}=1`. It reads as follows
     r defined as cosine of phi over two plus v times sine of phi over two, where norm of v equals one.
     
   
+The easiest way to think about a rotation using quaternions is to think about the axis of rotation :math:`\boldsymbol{v}` and the angle of rotation :math:`\phi`. Then, you construct the quaternion with the rotation quaternion formation law I showed above.
+
+For example, suppose that we have a rotation of :math:`\pi` radians (angles always in radians, don't forget!). If we want it to be about the x-axis, we choose :math:`v_1=\imath`. Therefore, this rotation would be correctly represented by  
+
+
+.. math::
+
+    \boldsymbol{r}_1 \triangleq \cos(\frac{\pi}{2}) + \imath\sin(\frac{\pi}{2}).
+    
+If we want it to be about the z-axis, we choose :math:`v_2=\hat{k}`, correctly represented by
+
+
+.. math::
+
+    \boldsymbol{r}_1 \triangleq \cos(\frac{\pi}{2}) + \hat{k}\sin(\frac{\pi}{2}).
+
+
+
+But bro, I don't care about your maths
+--------------------------------------
+
+.. caution::
+
+    Not caring about maths might be reason number one for "unexplainable" issues with robots.
+
 
 
 
