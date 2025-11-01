@@ -205,6 +205,10 @@ If you enjoyed this tutorial, please
    gazebo/installation
    gazebo/quickstart
 
+   transformations/rotations
+   transformations/rviz
+   transformations/tf2
+
 
 Disclaimers
 -----------
