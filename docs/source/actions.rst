@@ -21,6 +21,11 @@ only outputs a single, final result of the service call.
 Objective
 ---------
 
+.. note::
+
+    Unless otherwise explicitly stated, we will always follow the `International System of Units <https://en.wikipedia.org/wiki/International_System_of_Units>`_.
+    This means distances in meters, angles in radians, time in seconds, and so on.
+
 We can use an action to represent the first robot-like behavior of this tutorial in an illustrative manner.
 
 Suppose that we have a simple robot that moves in 2D space and whose orientation is not important. Let it have a current position with respect to the
@@ -37,7 +42,7 @@ and a desired position given by
     \mathbb{R}^2 \ni \boldsymbol{p}_d  =\begin{bmatrix}x_d \\ y_d\end{bmatrix}.
 
 Suppose that we want to design an action server that takes this robot-like object from its current position :math:`\boldsymbol{p}` and moves it
-towards the goal :math:`\boldsymbol{p}_d` with a speed :math:`s \in \mathbb{R}`. As feedback, it gives us the distance :math:`d \in \mathbb{R}` between the current
+towards the goal :math:`\boldsymbol{p}_d` with a speed :math:`s \in \mathbb{R}` (in [m/s]). As feedback, it gives us the distance :math:`d \in \mathbb{R}` between the current
 position and the desired position.
 
 The (Euclidean) distance :math:`d` will be calculated
@@ -54,9 +59,10 @@ This can be mathematically described as follows.
 .. math::
     :name: eq:actions_controller
 
-    \boldsymbol{p}(k+1) = \boldsymbol{p}(k) - s\left(\frac{\boldsymbol{p} - \boldsymbol{p}_d}{d}\right),
+    \boldsymbol{p}(k+1) = \boldsymbol{p}(k) - s\left(\frac{\boldsymbol{p} - \boldsymbol{p}_d}{d}\right)T,
 
-where :math:`\boldsymbol{p}(k+1)` represents the next position and :math:`\boldsymbol{p}(k)` the current position.
+where :math:`\boldsymbol{p}(k+1)` represents the next position, :math:`\boldsymbol{p}(k)` the current position,
+and :math:`T` is the sampling time.
 
 Create the package
 ------------------

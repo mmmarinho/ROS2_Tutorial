@@ -38,9 +38,9 @@ class MoveStraightIn2DActionServerNode(Node):
 
     def __init__(self):
         super().__init__('move_straight_in_2d_action_server')
-
         self.current_position = Point()
-        self.MAX_ITERATIONS = 100
+        self.MAX_ITERATIONS: int  = 100
+        self.sampling_time: float = 0.01
 
         self.action_server = ActionServer(
             self,
@@ -63,7 +63,7 @@ class MoveStraightIn2DActionServerNode(Node):
 
         return sqrt((x - xd) ** 2 + (y - yd) ** 2)
 
-    def move_the_object_with_velocity(self, desired_position: Point, desired_speed: float = 0.01) -> None:
+    def move_the_object_with_velocity(self, desired_position: Point, desired_speed: float = 1.0) -> None:
         """
         Moves the object with the desired speed for one iteration. Must be called until objective is reached or
         the controller times out.
@@ -77,8 +77,8 @@ class MoveStraightIn2DActionServerNode(Node):
         y_direction = (self.current_position.y - desired_position.y) / distance
 
         # Apply new position based on the desired velocity and direction
-        self.current_position.x -= x_direction * desired_speed
-        self.current_position.y -= y_direction * desired_speed
+        self.current_position.x -= x_direction * desired_speed * self.sampling_time
+        self.current_position.y -= y_direction * desired_speed * self.sampling_time
 
 
     def execute_callback(self, goal: ServerGoalHandle) -> MoveStraightIn2D.Result:
@@ -108,7 +108,7 @@ class MoveStraightIn2DActionServerNode(Node):
                 break
 
             # A sleep illustrating the time it would take in real life for a robot to move
-            time.sleep(0.01)
+            time.sleep(self.sampling_time)
 
         result = MoveStraightIn2D.Result()
         result.final_position = self.current_position
