@@ -170,15 +170,6 @@ If you enjoyed this tutorial, please
    action_clients
 
 .. toctree::
-   :caption: Gazebo
-   :maxdepth: 2
-   :hidden:
-
-   gazebo/about
-   gazebo/installation
-   gazebo/quickstart
-
-.. toctree::
    :caption: ROS2 C++ Basics
    :maxdepth: 2
    :hidden:
@@ -204,6 +195,16 @@ If you enjoyed this tutorial, please
    docker/index
    cmake/index
    faq
+
+.. toctree::
+   :caption: Unstable
+   :maxdepth: 2
+   :hidden:
+
+   gazebo/about
+   gazebo/installation
+   gazebo/quickstart
+
 
 Disclaimers
 -----------
