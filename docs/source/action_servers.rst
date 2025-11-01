@@ -151,38 +151,48 @@ Before we proceed, let us build and source once.
 Testing the Action Server
 -------------------------
 
-Run the action server with the following command.
+We will be working with two terminal windows. The first will run the action server.
+The second, :program:`ros2 action send_goal`.
 
-.. code-block:: console
+.. tab-set::
 
-    ros2 run python_package_that_uses_the_actions move_straight_in_2d_action_server_node
+    .. tab-item:: Terminal 1: run action server
 
-In another terminal, run the following command to test the action server.
+        .. code-block:: console
 
-.. code-block:: console
+            ros2 run python_package_that_uses_the_actions move_straight_in_2d_action_server_node
 
-    ros2 action send_goal --feedback \
-    /move_straight_in_2d \
-    package_with_interfaces/action/MoveStraightIn2D \
-    '{
-    desired_position:{
-        x: 1.0,
-        y: 0.0,
-        z: 0.0}
-    }'
+    .. tab-item:: Terminal 2: ros2 action send_goal
+
+        Please note the :code:`--feedback` flag, used to allow us to see the feedback that comes from the server.
+        Aside from that, the formation of the command is similar to topics and services.
+
+        .. code-block:: console
+
+            ros2 action send_goal --feedback \
+            /move_straight_in_2d \
+            package_with_interfaces/action/MoveStraightIn2D \
+            '{
+            desired_position:{
+                x: 1.0,
+                y: 0.0,
+                z: 0.0}
+            }'
+
+
 
 This is what will be shown in each terminal
 
 .. tab-set::
 
-    .. tab-item:: ros2 run output
+    .. tab-item:: Terminal 1: action server output
 
         .. code-block:: console
 
             [INFO] [1759841973.596577423] [move_straight_in_2d_action_server]: current_position is geometry_msgs.msg.Point(x=0.0, y=0.0, z=0.0).
             [INFO] [1759841973.596757548] [move_straight_in_2d_action_server]: desired_position set to geometry_msgs.msg.Point(x=1.0, y=0.0, z=0.0).
 
-    .. tab-item:: ros2 action send_goal output
+    .. tab-item:: Terminal 2: ros2 action send_goal output
 
         .. code-block:: console
 
@@ -504,12 +514,12 @@ This is what will be shown in each terminal
             Goal finished with status: SUCCEEDED
 
 
-You can try with different positions. As long as the action server node is not closed, it will keep the state.
+You can try :program:`send_goal` with various positions. As long as the action server node is not closed, it will keep the state.
 As soon as the action server is closed, it will lose any internal state.
 
 If the action server is unable to reach the desired goal within the time allowed in the action server, the goal
 will finish with status :code:`ABORTED`. For instance, the last lines for a goal that is too far from the current position
-would be as follows.
+would be as follows. Even then, the node will not crash, and will accept further commands that might succeed or fail.
 
 .. code-block:: console
 
