@@ -311,10 +311,11 @@ Lastly, we have, for a ``rotation``,
 Turning these into code
 -----------------------
 
-In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations. But I got you covered.
+In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations. But I got you covered. Kinda. It's more use at your
+own risk type of arrangement.
 
-Installing the support library ``nottf2``
-+++++++++++++++++++++++++++++++++++++++++
+Installing a support library ``nottf2``
++++++++++++++++++++++++++++++++++++++++
 
 .. caution::
 
@@ -322,7 +323,7 @@ Installing the support library ``nottf2``
 
     The creator of ``nottf2``, me, will not accept any blame or liability for any issues, including but limited to broken
     robots or broken code in your assignments. If you feel it's insufficient or unreliable, please create and use your own
-    implementation.
+    implementation, or someone else's that fits your needs.
 
 
 For the library to be properly found in our environment, it needs to be installed in the system's Python.
@@ -331,3 +332,57 @@ We can do so as follows.
 .. code-block:: console
 
     python3 -m pip install nottf2 --break-system-packages
+
+
+Example :program:`ros2` package that uses ``nottf2``
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Let's first create our sample package, as follows.
+
+.. code-block:: console
+
+    cd ~/ros2_tutorial_workspace/src
+    ros2 pkg create python_package_that_uses_nottf2 \
+    --build-type ament_python
+
+We will be presented with the usual output.
+
+.. dropdown:: ros2 pkg create output
+
+    .. code-block:: console
+
+        going to create a new package
+        package name: python_package_that_uses_nottf2
+        destination directory: ~/ros2_tutorial_workspace/src
+        package format: 3
+        version: 0.0.0
+        description: TODO: Package description
+        maintainer: ['root <murilo.marinho@manchester.ac.uk>']
+        licenses: ['TODO: License declaration']
+        build type: ament_python
+        dependencies: []
+        creating folder ./python_package_that_uses_nottf2
+        creating ./python_package_that_uses_nottf2/package.xml
+        creating source folder
+        creating folder ./python_package_that_uses_nottf2/python_package_that_uses_nottf2
+        creating ./python_package_that_uses_nottf2/setup.py
+        creating ./python_package_that_uses_nottf2/setup.cfg
+        creating folder ./python_package_that_uses_nottf2/resource
+        creating ./python_package_that_uses_nottf2/resource/python_package_that_uses_nottf2
+        creating ./python_package_that_uses_nottf2/python_package_that_uses_nottf2/__init__.py
+        creating folder ./python_package_that_uses_nottf2/test
+        creating ./python_package_that_uses_nottf2/test/test_copyright.py
+        creating ./python_package_that_uses_nottf2/test/test_flake8.py
+        creating ./python_package_that_uses_nottf2/test/test_pep257.py
+
+        [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+        It is recommended to use one of the ament license identifiers:
+        Apache-2.0
+        BSL-1.0
+        BSD-2.0
+        BSD-2-Clause
+        BSD-3-Clause
+        GPL-3.0-only
+        LGPL-3.0-only
+        MIT
+        MIT-0
