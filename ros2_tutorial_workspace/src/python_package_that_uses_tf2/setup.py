@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            "tf2_broadcaster_node = python_package_that_uses_tf2.tf2_broadcaster_node:main",
+            "tf2_listener_node = python_package_that_uses_tf2.tf2_listener_node:main"
         ],
     },
 )

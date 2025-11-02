@@ -28,7 +28,7 @@ import rclpy
 from rclpy.node import Node
 
 import tf2_ros
-import nottf2 as ntf2
+import marinholab.nottf2 as ntf2
 
 class TF2BroadcasterNode(Node):
     """A ROS2 Node that broadcasts a TransformStamped in compliance with `tf2_ros2`."""
@@ -49,32 +49,32 @@ class TF2BroadcasterNode(Node):
 
     def timer_callback(self):
         # We define some parameters of our trajectory.
-        # Let's make the translation be a circle in 2D with radius of 0.2 meters and frequency of 1 Hz.
+        # Let's make the translation be a circle in 2D with radius of 0.2 meters and frequency of 0.1 Hz.
         # The rotation will be the robot spinning about the z-axis with the same frequency.
         trajectory_radius = 0.2
-        trajectory_frequency = 1
+        trajectory_frequency = 0.1
 
         # Create an instance of a TransformStamped, used by the broadcaster
-        tf = TransformStamped()
+        tfs = TransformStamped()
 
         ## Initialize header with
         # Timestamp equal to the current clock time
-        tf.header.stamp = self.get_clock().now().to_msg()
+        tfs.header.stamp = self.get_clock().now().to_msg()
         # Frame of reference equals `world`
-        tf.header.frame_id = 'world'
+        tfs.header.frame_id = 'world'
         # This frame of reference
-        tf.child_frame_id = self.robot_name
+        tfs.child_frame_id = self.robot_name
 
         # Set the translation of the transform
-        tf.transform.translation.x = trajectory_radius * cos(2 * pi * trajectory_frequency * self.timer_elapsed_time)
-        tf.transform.translation.y = trajectory_radius * sin(2 * pi * trajectory_frequency * self.timer_elapsed_time)
-        tf.transform.translation.z = 0.0
+        tfs.transform.translation.x = trajectory_radius * cos(2 * pi * trajectory_frequency * self.timer_elapsed_time)
+        tfs.transform.translation.y = trajectory_radius * sin(2 * pi * trajectory_frequency * self.timer_elapsed_time)
+        tfs.transform.translation.z = 0.0
 
         # Set the rotation (Quaternion) of the transform
-        tf.rotation = ntf2.rz(phi= 2 * pi * trajectory_frequency * self.timer_elapsed_time)
+        tfs.transform.rotation = ntf2.rz(phi= 2 * pi * trajectory_frequency * self.timer_elapsed_time)
 
         # Send the transformation
-        self.transform_broadcaster.sendTransform(tf)
+        self.transform_broadcaster.sendTransform(tfs)
 
         # Update internal time counter
         self.timer_elapsed_time += self.timer_period
