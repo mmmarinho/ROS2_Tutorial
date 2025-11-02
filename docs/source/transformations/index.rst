@@ -311,4 +311,23 @@ Lastly, we have, for a ``rotation``,
 Turning these into code
 -----------------------
 
-In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations.
+In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations. But I got you covered.
+
+Installing the support library ``nottf2``
++++++++++++++++++++++++++++++++++++++++++
+
+.. caution::
+
+    The ``nottf2`` library is provided as-is, with no warranty. Use at your own risk (See ``MIT`` license for more details).
+
+    The creator of ``nottf2``, me, will not accept any blame or liability for any issues, including but limited to broken
+    robots or broken code in your assignments. If you feel it's insufficient or unreliable, please create and use your own
+    implementation.
+
+
+For the library to be properly found in our environment, it needs to be installed in the system's Python.
+We can do so as follows.
+
+.. code-block:: console
+
+    python3 -m pip install nottf2 --break-system-packages
