@@ -28,13 +28,13 @@ import marinholab.nottf2 as ntf2
 def main():
     phi: float = pi
 
-    r1: Quaternion = ntf2.rotx(phi=phi)
+    r1: Quaternion = ntf2.rx(phi=phi)
     print(f"The rotation of {phi} radians about the x-axis is r1={r1}.")
 
     r1_conj : Quaternion = ntf2.rotation_inverse(r1)
     print(f"The inverse rotation of r1 is r1_conj={r1_conj}.")
 
-    r2: Quaternion = ntf2.rotz(phi=phi)
+    r2: Quaternion = ntf2.rz(phi=phi)
     print(f"The rotation of {phi} radians about the z-axis is r2={r2}.")
 
     r12: Quaternion = ntf2.quaternion_multiply(r1, r2)

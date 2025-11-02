@@ -1,15 +1,20 @@
-Package :file:`tf2`
-===================
+Using :file:`tf2`
+=================
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
+.. note::
+
+    In :program:`ROS2`, the package for ``tf2`` is called ``tf2_ros``.
+
 .. hint::
 
-    An official :program:`tf2` user guide is available here https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html.
+    An official ``tf2`` user guide is available here https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html.
 
+Perhaps the most important benefit of ``tf2`` is how it connects with other :program:`ROS2` parts, such as ``rviz2``.
 
-https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html
-
+Create the package
+------------------
 
 .. code-block:: console
 
@@ -18,7 +23,7 @@ https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Br
     --build-type ament_python \
     --dependencies geometry_msgs tf2_ros
 
-.. dropdown::
+.. dropdown:: ros2 pkg create output
 
     .. code-block:: console
 
@@ -61,9 +66,8 @@ https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Br
 References
 ----------
 
-I have not been an avid user of :code:`tf` myself. I can somewhat see the appeal at an attempt to abstract away some of the mathematics of pose transformations.
-
-
-The resource mentioned below when accessed for the purposes of this tutorial was in an incomplete state.
-    An official resource using  :program:`tf2` for quaternions is  https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.html.
-
+I have not been an avid user of :code:`tf2` myself.
+I can somewhat see the appeal at an attempt to abstract away some of the mathematics of pose transformations,
+but perhaps the most important aspects are how it connects with other :program:`ROS2` parts, such as ``rviz2``.
+- https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html
+- https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html

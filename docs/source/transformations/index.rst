@@ -324,6 +324,10 @@ Installing a support library ``nottf2``
     Handling headers can be done rather easily. Dealing with quaternions can be more complicated if a support library
     is not used to keep the code clean.
 
+    If you're interested, here's the quaternion explanation available in the official documentation instead.
+    -  https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.html.
+
+
 In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations. But I got you covered. Kinda. It's more use at your
 own risk type of arrangement.
 
