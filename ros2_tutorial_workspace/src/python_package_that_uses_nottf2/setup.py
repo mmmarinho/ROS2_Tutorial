@@ -21,6 +21,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'operations_showcase = python_package_that_uses_nottf2.operations_showcase:main',
         ],
     },
 )
