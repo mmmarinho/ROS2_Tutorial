@@ -35,13 +35,9 @@ class TF2ListenerNode(Node):
         self.transform_listener_buffer = tf2_ros.Buffer()
         self.transform_listener = tf2_ros.TransformListener(self.transform_listener_buffer, self)
 
-        # Robot name
+        # Information about the transform we want to listen to
         self.parent_name = "world"
         self.child_name = "robot_1"
-
-        # Initialize the transform listener
-        ## Note that this object is part of `tf2_ros`, not `rclpy`
-        self.transform_broadcaster = tf2_ros.TransformBroadcaster(self)
 
         self.timer_period: float = 0.1
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
@@ -53,8 +49,11 @@ class TF2ListenerNode(Node):
                     self.parent_name,
                     self.child_name,
                     rclpy.time.Time())
+
             self.get_logger().info(f"Transform: {tfs}")
+
         except tf2_ros.TransformException as e:
+            
             self.get_logger().error(
                 f'Could get transform from `{self.parent_name}` to `{self.child_name}`: {e}')
 

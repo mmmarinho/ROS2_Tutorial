@@ -10,7 +10,7 @@ Using :file:`tf2`
 Perhaps the most important benefit of ``tf2`` is how it connects with other :program:`ROS2` parts, such as ``rviz2``.
 It is a common language used across well-established :program:`ROS2` packages.
 
-The usage is not too far from what you have learned so far, but there a few aspects that differ. 
+The usage is not too far from what you have learned so far, but there a few aspects that differ.
 
 Create the package
 ------------------
