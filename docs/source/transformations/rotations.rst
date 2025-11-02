@@ -1,5 +1,5 @@
-Representing rotations
-======================
+Representing Frame Transformations
+==================================
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
@@ -14,8 +14,23 @@ and orientation/rotation used interchangeably.
 Please allow me to use only the terms *translation* and *rotation* henceforth to keep the discussion consistent
 with how it is utilised in :program:`ROS2`.
 
-Quaternions
------------
+Translations
+------------
+
+Translations :math:`\boldsymbol{t} \in \mathbb{R}^3` can be easily represented using imaginary numbers, such as
+
+.. math::
+    :name: eq:translation_formation
+
+    \boldsymbol{t} \triangleq t_x\hat{\imath} + t_y\hat{\jmath} + t_z\hat{k},
+
+
+where :math:`\hat{\imath}^2 = \hat{\jmath}^2 = \hat{k}^2 = \hat{\imath} \hat{\jmath} \hat{k} = -1`.
+
+If you thought this would never be useful, think again. It's about to be!
+
+Rotations: Quaternions
+----------------------
 
 .. note::
 
@@ -24,17 +39,6 @@ Quaternions
 
 Whereas translations are intuitive and can be easily processed with A-levels mathematics, rotations demand extra thought.
 However, the complexity is exaggerated to some extent.
-
-Translations :math:`\boldsymbol{t} \in \mathbb{R}^3` can be easily represented using imaginary numbers, such as
-
-.. math::
-
-    \boldsymbol{t} \triangleq t_x\hat{\imath} + t_y\hat{\jmath} + t_z\hat{k},
-
-
-where :math:`\hat{\imath}^2 = \hat{\jmath}^2 = \hat{k}^2 = \hat{\imath} \hat{\jmath} \hat{k} = -1`.
-If you thought this would never be useful, think again. It's about to be!
-
 
 In :program:`ROS2`, rotations are represented as quaternions.
 They have several benefits over other representations, which you can see in related literature on quaternions.
@@ -48,17 +52,12 @@ Let's rip the trademarked plaster brand out. The following equation represents t
 
     \boldsymbol{r} \triangleq \cos\left(\frac{\phi}{2}\right) + \boldsymbol{v}\sin\left(\frac{\phi}{2}\right),
     
-where :math:`||\boldsymbol{v}||=1`. It reads as follows
-
-.. code:: console
-
-    r defined as cosine of phi over two plus v times sine of phi over two, where norm of v equals one.
-    
+where :math:`||\boldsymbol{v}||=1`.
   
 The easiest way to think about a rotation using quaternions is to think about the axis of rotation :math:`\boldsymbol{v}` and the angle of rotation :math:`\phi`.
 Then, you construct the quaternion with the :ref:`rotation quaternion formation law <eq:rotation_formation>`.
 
-.. admonition:: Example
+.. admonition:: Examples
 
     Suppose that we have a rotation of :math:`\phi=\pi` radians (angles always in radians, don't forget!).
 
@@ -82,21 +81,150 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
          \boldsymbol{r}_3 \triangleq \cos\left(\frac{\pi}{2}\right) + \left(-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}\right)\sin\left(\frac{\pi}{2}\right).
 
 
+Transformations in :program:`ROS2`
+----------------------------------
 
-But bro, I don't care about your maths
---------------------------------------
+Let us take a look at message most commonly used in :program:`ROS2` to represent translation and rotation,
+:file:`TransformStamped.msg`, part of the package :file:`geometry_msgs`.
 
-.. caution::
+We can see its contents with
 
-    Not caring about maths might be reason number one for "unexplainable" issues with robots.
+.. code-block:: console
 
-References
-----------
+    ros2 interface show geometry_msgs/msg/TransformStamped
 
-I have not been an avid user of :code:`tf` myself. I can somewhat see the appeal at an attempt to abstract away some of the mathematics of pose transformations. 
+resulting in a slightly intricate message.
+
+.. dropdown:: ros2 interface show output
+
+    .. code-block:: yaml
+
+        # This expresses a transform from coordinate frame header.frame_id
+        # to the coordinate frame child_frame_id at the time of header.stamp
+        #
+        # This message is mostly used by the
+        # <a href="https://docs.ros.org/en/rolling/p/tf2/">tf2</a> package.
+        # See its documentation for more information.
+        #
+        # The child_frame_id is necessary in addition to the frame_id
+        # in the Header to communicate the full reference for the transform
+        # in a self contained message.
+
+        # The frame id in the header is used as the reference frame of this transform.
+        std_msgs/Header header
+                builtin_interfaces/Time stamp
+                        int32 sec
+                        uint32 nanosec
+                string frame_id
+
+        # The frame id of the child frame to which this transform points.
+        string child_frame_id
+
+        # Translation and rotation in 3-dimensions of child_frame_id from header.frame_id.
+        Transform transform
+                Vector3 translation
+                        float64 x
+                        float64 y
+                        float64 z
+                Quaternion rotation
+                        float64 x 0
+                        float64 y 0
+                        float64 z 0
+                        float64 w 1
+
+To simplify the discussion, these are the contents of :file:`TransformStamped.msg`.
+
+.. rli:: https://raw.githubusercontent.com/ros2/common_interfaces/refs/heads/jazzy/geometry_msgs/msg/TransformStamped.msg
+   :language: yaml
+
+Note that it is a message composed of two other messages, and a built-in.
+
+The :file:`Header` is an essential timestamp used throughout :program:`ROS2`. We can see its contents with
+
+.. code-block:: console
+
+    ros2 interface show std_msgs/msg/Header
+
+resulting in
+
+.. code-block:: yaml
+
+    # Standard metadata for higher-level stamped data types.
+    # This is generally used to communicate timestamped data
+    # in a particular coordinate frame.
+
+    # Two-integer timestamp that is expressed as seconds and nanoseconds.
+    builtin_interfaces/Time stamp
+            int32 sec
+            uint32 nanosec
+
+    # Transform frame with which this data is associated.
+    string frame_id
+
+The elements :code:`stamp` and :code:`frame_id` are used by many popular packages :program:`ROS2` to display and
+relate translational and rotational data of robots and objects.
+
+Then, to the most important part of this section, we have the :file:`Transform.msg`, whose contents can be obtained
+with
+
+.. code-block:: console
+
+    ros2 interface show geometry_msgs/msg/Transform
+
+resulting in
+
+.. code-block:: yaml
+
+    # This represents the transform between two coordinate frames in free space.
+
+    Vector3 translation
+            float64 x
+            float64 y
+            float64 z
+    Quaternion rotation
+            float64 x 0
+            float64 y 0
+            float64 z 0
+            float64 w 1
+
+in which the :code:`translation` and :code:`rotation` can be clearly seen.
+
+Connecting these ideas
+----------------------
+
+For the purposes of this section, we want to connect a :code:`translation` (in the code) to a :ref:`translation<eq:translation_formation>` (from the equation)
+and a :code:`rotation` (in the code) to a :ref:`rotation <eq:rotation_formation>` (from the equation).
+
+For a ``translation``, we have the following.
+
+- ``x`` will store the value of the term related to :math:`\hat{\imath}` in :math:`\boldsymbol{t}`, that is :math:`t_x`.
+- ``y`` will store the value of the term is related to :math:`\hat{\jmath}` in :math:`\boldsymbol{t}`, that is :math:`t_y`.
+- ``z`` will store the value of the term is related to :math:`\hat{k}` in :math:`\boldsymbol{t}`, that is :math:`t_z`.
+
+.. admonition:: Example
+
+    TODO
+
+Similarly, for a ``rotation``, we have the following.
+
+- ``x`` will store the value of the term related to :math:`\hat{\imath}` in :math:`\boldsymbol{r}`.
+- ``y`` will store the value of the term is related to :math:`\hat{\jmath}` in :math:`\boldsymbol{r}`.
+- ``z`` will store the value of the term is related to :math:`\hat{k}` in :math:`\boldsymbol{r}`.
+
+Lastly, we have, for a ``rotation``,
+
+- ``w`` will store the value of the term not related to any imaginary unit.
+
+.. admonition:: Example
+
+    To represent the following elementary rotation about the x-axis
+
+    .. math::
+
+        \boldsymbol{r}_1 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right),
 
 
-The resource mentioned below when accessed for the purposes of this tutorial was in an incomplete state.
-    An official resource using  :program:`tf2` for quaternions is  https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.html.
+    we would assign ``w = cos(pi/2)``, ``x = sin(pi/2)``, ``y = 0``, and ``z = 0`` in our program.
+
 
 
