@@ -15,3 +15,4 @@ npm install -g @mermaid-js/mermaid-cli
 
 # Adding other useful packages
 sudo apt-get install -y tree
+pip install nottf2

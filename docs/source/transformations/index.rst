@@ -52,35 +52,43 @@ Let's rip the trademarked plaster brand out. The following equation represents t
 
     \boldsymbol{r} \triangleq \cos\left(\frac{\phi}{2}\right) + \boldsymbol{v}\sin\left(\frac{\phi}{2}\right),
     
-where :math:`||\boldsymbol{v}||=1`.
+where :math:`\boldsymbol{v}\boldsymbol{v}=-1`. The condition of the rotation axis also implies that :math:`||\boldsymbol{v}||=1`.
   
 The easiest way to think about a rotation using quaternions is to think about the axis of rotation :math:`\boldsymbol{v}` and the angle of rotation :math:`\phi`.
 Then, you construct the quaternion with the :ref:`rotation quaternion formation law <eq:rotation_formation>`.
 
 .. admonition:: Examples
 
-    Suppose that we have a rotation of :math:`\phi=\pi` radians (angles always in radians, don't forget!).
+    We can choose :math:`\phi=0` and see how what quaternion represents no rotation. For any rotation axis, this results in
+
+        .. math::
+
+            \boldsymbol{r}_0 &\triangleq \cos\left(\frac{0}{2}\right) + \boldsymbol{v}\sin\left(\frac{0}{2}\right) \\
+                             &= 1.
+
+    Now, suppose that we have a rotation of :math:`\phi=\pi` radians (angles always in radians, don't forget!).
 
     If we want such a rotation about the x-axis, we choose :math:`\boldsymbol{v}_1=\hat{\imath}`. Therefore, this rotation would be correctly represented by
 
         .. math::
 
-            \boldsymbol{r}_1 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right).
+            \boldsymbol{r}_1 &\triangleq \cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right) \\
+                             &= \hat{\imath}.
 
     If we want such a rotation about the z-axis, we choose :math:`\boldsymbol{v}_2=\hat{k}`, correctly represented by
 
         .. math::
 
-            \boldsymbol{r}_2 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right).
+            \boldsymbol{r}_2 &\triangleq \cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right) \\
+                             &= \hat{k}.
 
-    Any :math:`\boldsymbol{v}` is acceptable as long as the norm is one. For instance, :math:`\boldsymbol{v}_3=-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}`
+    Any :math:`\phi \in \mathbb{R}` is acceptable and, more importantly, any :math:`\boldsymbol{v}` is acceptable as long as the norm is one. For instance, :math:`\boldsymbol{v}_3=-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}`
     leads to the valid rotation quaternion
 
         .. math::
 
-             \boldsymbol{r}_3 \triangleq \cos\left(\frac{\pi}{2}\right) + \left(-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}\right)\sin\left(\frac{\pi}{2}\right).
-
-
+             \boldsymbol{r}_3 &\triangleq \cos\left(\frac{\pi}{2}\right) + \left(-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}\right)\sin\left(\frac{\pi}{2}\right) \\
+                              &= \left(-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}\right).
 
 
 .. error::
@@ -100,6 +108,46 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
             \boldsymbol{r}_5 \triangleq \cos\left(\frac{\pi}{4}\right) + \hat{\jmath}\sin\left(\frac{\pi}{4}\right),
 
         represents a rotation of :math:`\frac{\pi}{2}` about the y-axis, **not** :math:`\frac{\pi}{4}`.
+
+
+Sequential rotations
+++++++++++++++++++++
+
+Sequential rotations can be obtained via the quaternion multiplication. For instance, to obtain the result of a rotation
+of :math:`\phi=\pi` about the x-axis followed by a rotation of the same angle about the z-axis, we do
+
+.. math::
+
+    \boldsymbol{r}_{12} \triangleq \boldsymbol{r}_1\boldsymbol{r}_2
+
+which becomes
+
+.. math::
+
+    \boldsymbol{r}_{12} &= \left[\cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right)\right]\left[\cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right)\right] \\
+                        &= \hat{\imath}\hat{k} \\
+                        &= -\hat{\jmath}
+
+Inverse rotations
++++++++++++++++++
+
+The inverse rotation can be obtained by flipping the axis of rotation. This is equivalent to obtaining the so-called quaternion
+conjugate.
+
+.. math::
+    :name: eq:rotation_inverse
+
+    \boldsymbol{r}^{*} \triangleq \cos\left(\frac{\phi}{2}\right) - \boldsymbol{v}\sin\left(\frac{\phi}{2}\right),
+
+We can see that this is indeed the rotation by noticing that
+
+.. math::
+
+    \boldsymbol{r}\boldsymbol{r}^{*} = \boldsymbol{r}^{*}\boldsymbol{r} &= \left[\cos\left(\frac{\phi}{2}\right) - \boldsymbol{v}\sin\left(\frac{\phi}{2}\right)\right]\left[\cos\left(\frac{\phi}{2}\right) + \boldsymbol{v}\sin\left(\frac{\phi}{2}\right)\right] \\
+                                     &= \cos^2\left(\frac{\phi}{2}\right) - \boldsymbol{v}\boldsymbol{v}\sin^2\left(\frac{\phi}{2}\right) \\
+                                     &= \cos^2\left(\frac{\phi}{2}\right) - (-1)\sin^2\left(\frac{\phi}{2}\right) \\
+                                     &= \cos^2\left(\frac{\phi}{2}\right) + \sin^2\left(\frac{\phi}{2}\right) \\
+                                     &= 1.
 
 
 Transformations in :program:`ROS2`
@@ -260,4 +308,7 @@ Lastly, we have, for a ``rotation``,
     we would assign ``rotation.w = cos(pi/2)``, ``rotation.x = sin(pi/2)``, ``rotation.y = 0``, and ``rotation.z = 0`` in our program.
 
 
+Turning these into code
+-----------------------
 
+In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations.
