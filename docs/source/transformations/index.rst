@@ -307,15 +307,25 @@ Lastly, we have, for a ``rotation``,
 
     we would assign ``rotation.w = cos(pi/2)``, ``rotation.x = sin(pi/2)``, ``rotation.y = 0``, and ``rotation.z = 0`` in our program.
 
+Installing a support library ``nottf2``
+---------------------------------------
 
-Turning these into code
------------------------
+.. note::
+
+    You might be wondering.
+
+        Why do I need this?
+
+    When using ``tf2`` there are only two complexities.
+
+    #. Handling ``std_msgs/msg/Header``
+    #. Handling ``geometry_msgs/msg/Quaternion``
+
+    Handling headers can be done rather easily. Dealing with quaternions can be more complicated if a support library
+    is not used to keep the code clean. 
 
 In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations. But I got you covered. Kinda. It's more use at your
 own risk type of arrangement.
-
-Installing a support library ``nottf2``
-+++++++++++++++++++++++++++++++++++++++
 
 .. caution::
 
@@ -334,8 +344,8 @@ We can do so as follows.
     python3 -m pip install nottf2 --break-system-packages
 
 
-Example :program:`ros2` package that uses ``nottf2``
-++++++++++++++++++++++++++++++++++++++++++++++++++++
+Create :program:`ros2` package that uses ``nottf2``
+---------------------------------------------------
 
 Let's first create our sample package, as follows, that will depend on ``geometry_msgs``.
 
@@ -387,3 +397,75 @@ We will be presented with the usual output.
         LGPL-3.0-only
         MIT
         MIT-0
+
+Package structure
+-----------------
+
+Below are the files that we will create or modify.
+
+.. code-block:: console
+    :emphasize-lines: 5, 9
+
+    python_package_that_uses_nottf2/
+    |-- package.xml
+    |-- python_package_that_uses_nottf2
+    |   |-- __init__.py
+    |   `-- operations_showcase.py
+    |-- resource
+    |   `-- python_package_that_uses_nottf2
+    |-- setup.cfg
+    |-- setup.py
+    `-- test
+        |-- test_copyright.py
+        |-- test_flake8.py
+        `-- test_pep257.py
+
+Add sample code for ``nottf2``
+------------------------------
+
+Create the following sample Python script. It will serve to show the operations we did earlier mathematically.
+
+:download:`operations_showcase.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/python_package_that_uses_nottf2/operations_showcase.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/python_package_that_uses_nottf2/operations_showcase.py
+   :language: python
+   :lines: 24-
+   :linenos:
+
+As usual, we add the necessary entry point in :file:`setup.py`. We also add ``nottf2`` as an usual Python dependency.
+
+:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/setup.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/setup.py
+   :language: python
+   :emphasize-lines: 15,24
+
+
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: ../the_canonical_build_command.rst
+
+Run Example
+-----------
+
+We run our newly created program as follows.
+
+.. code-block:: console
+
+    ros2 run python_package_that_uses_nottf2 operations_showcase
+
+The result will be as follows.
+
+.. code-block:: console
+
+    The rotation of 3.141592653589793 radians about the x-axis is r1=geometry_msgs.msg.Quaternion(x=1.0, y=0, z=0, w=6.123233995736766e-17).
+    The inverse rotation of r1 is r1_conj=geometry_msgs.msg.Quaternion(x=-1.0, y=0, z=0, w=6.123233995736766e-17).
+    The rotation of 3.141592653589793 radians about the z-axis is r2=geometry_msgs.msg.Quaternion(x=0, y=0, z=1.0, w=6.123233995736766e-17).
+    The quaternion multiplication of r12=r1r2 is r12=geometry_msgs.msg.Quaternion(x=6.123233995736766e-17, y=-1.0, z=6.123233995736766e-17, w=3.749399456654644e-33).
+
+Note that the results are reasonably close to the ones we calculated mathematically. However, given the limitations
+on current computers related to floating point accuracy, you can **always** expect a level of inaccuracy. This is **not**
+limited or affected by the use of quaternions, this is an inherent limitation of our computers.
