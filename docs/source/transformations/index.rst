@@ -322,7 +322,7 @@ Installing a support library ``nottf2``
     #. Handling ``geometry_msgs/msg/Quaternion``
 
     Handling headers can be done rather easily. Dealing with quaternions can be more complicated if a support library
-    is not used to keep the code clean. 
+    is not used to keep the code clean.
 
 In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations. But I got you covered. Kinda. It's more use at your
 own risk type of arrangement.

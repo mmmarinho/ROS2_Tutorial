@@ -10,6 +10,54 @@ Package :file:`tf2`
 
 https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html
 
+
+.. code-block:: console
+
+    cd ~/ros2_tutorial_workspace/src
+    ros2 pkg create python_package_that_uses_tf2 \
+    --build-type ament_python \
+    --dependencies geometry_msgs tf2_ros
+
+.. dropdown::
+
+    .. code-block:: console
+
+        going to create a new package
+        package name: python_package_that_uses_tf2
+        destination directory: ~/ros2_tutorial_workspace/src
+        package format: 3
+        version: 0.0.0
+        description: TODO: Package description
+        maintainer: ['root <murilo.marinho@manchester.ac.uk>']
+        licenses: ['TODO: License declaration']
+        build type: ament_python
+        dependencies: ['geometry_msgs', 'tf2_ros']
+        creating folder ./python_package_that_uses_tf2
+        creating ./python_package_that_uses_tf2/package.xml
+        creating source folder
+        creating folder ./python_package_that_uses_tf2/python_package_that_uses_tf2
+        creating ./python_package_that_uses_tf2/setup.py
+        creating ./python_package_that_uses_tf2/setup.cfg
+        creating folder ./python_package_that_uses_tf2/resource
+        creating ./python_package_that_uses_tf2/resource/python_package_that_uses_tf2
+        creating ./python_package_that_uses_tf2/python_package_that_uses_tf2/__init__.py
+        creating folder ./python_package_that_uses_tf2/test
+        creating ./python_package_that_uses_tf2/test/test_copyright.py
+        creating ./python_package_that_uses_tf2/test/test_flake8.py
+        creating ./python_package_that_uses_tf2/test/test_pep257.py
+
+        [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+        It is recommended to use one of the ament license identifiers:
+        Apache-2.0
+        BSL-1.0
+        BSD-2.0
+        BSD-2-Clause
+        BSD-3-Clause
+        GPL-3.0-only
+        LGPL-3.0-only
+        MIT
+        MIT-0
+
 References
 ----------
 
