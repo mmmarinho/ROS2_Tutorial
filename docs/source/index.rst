@@ -79,6 +79,8 @@ If you enjoyed this tutorial, please
 #. :doc:`ROS2 Services with Python <service_servers_and_clients>`
     Writing ROS2 services, service servers, and service clients.
 
+#. :doc:`ROS2 Actions with Python <actions>`
+    Writing ROS2 actions, action servers, and action clients.
 
 .. toctree::
    :caption: Preamble
