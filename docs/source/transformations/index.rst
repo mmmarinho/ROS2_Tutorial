@@ -337,13 +337,14 @@ We can do so as follows.
 Example :program:`ros2` package that uses ``nottf2``
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Let's first create our sample package, as follows.
+Let's first create our sample package, as follows, that will depend on ``geometry_msgs``.
 
 .. code-block:: console
 
     cd ~/ros2_tutorial_workspace/src
     ros2 pkg create python_package_that_uses_nottf2 \
-    --build-type ament_python
+    --build-type ament_python \
+    --dependencies geometry_msgs
 
 We will be presented with the usual output.
 

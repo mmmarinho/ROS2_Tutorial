@@ -7,6 +7,8 @@
   <maintainer email="murilo.marinho@manchester.ac.uk">root</maintainer>
   <license>TODO: License declaration</license>
 
+  <depend>geometry_msgs</depend>
+
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
