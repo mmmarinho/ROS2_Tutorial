@@ -3,18 +3,22 @@ Using :file:`tf2`
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-.. note::
-
-    In :program:`ROS2`, the package for ``tf2`` is called ``tf2_ros``.
-
 .. hint::
 
     An official ``tf2`` user guide is available here https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html.
 
 Perhaps the most important benefit of ``tf2`` is how it connects with other :program:`ROS2` parts, such as ``rviz2``.
+It is a common language used across well-established :program:`ROS2` packages.
+
+The usage is not too far from what you have learned so far, but there a few aspects that differ. 
 
 Create the package
 ------------------
+
+.. note::
+
+    The package is called ``tf2_ros`` in :program:`ROS2`.
+
 
 We start by creating the :file:`python_package_that_uses_tf2` package. Please note that it must depend on ``tf2_ros``.
 
@@ -131,7 +135,7 @@ and ``child_frame_id`` as this robot's frame.
    :lines: 57-74
 
 Finally, we send the transform with ``transform_broadcaster.sendTransform`` and update the local time counter for
-the trajectory. 
+the trajectory.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
@@ -148,6 +152,9 @@ The listener is made with the following piece of code.
    :language: python
    :lines: 24-
    :linenos:
+
+The :file:`setup.py`
+--------------------
 
 We add the usual entry points. The addition of ``nottf2`` in the dependencies is purely cosmetic.
 

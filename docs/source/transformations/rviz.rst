@@ -13,7 +13,7 @@
 :program:`rviz2` Installation
 -----------------------------
 
-:program:`rviz2` has already been installed in previous steps.
+:program:`rviz2` has already been installed in :ref:`ROS2 installation`.
 
 What is :program:`rviz2`?
 -------------------------
@@ -64,6 +64,12 @@ will make two modifications to be able to visualize the output of our :file:`tf2
 This should be enough to start showing the frames. Using the mouse, you zoom in and rotate the window to focus
 on the transforms you want to see. This is summarised in the video below, in which I briefly show some functionalities
 of other items in the menus.
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/jMxvI_EdlIc?si=a3cGn8wnjIHe8-fp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+If everything worked as expected, you should see a ``robot_1`` frame rotating about a ``world`` frame.
 
 Now, you can easily visualize the frames indicating that the frame marked by ``robot_1`` indeed moves in circles, with
 the rotational frame also rotating in the same frequency.
