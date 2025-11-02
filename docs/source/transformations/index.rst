@@ -1,5 +1,5 @@
-Representing Frame Transformations
-==================================
+Frame Transformations
+=====================
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
@@ -63,22 +63,43 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
 
     If we want such a rotation about the x-axis, we choose :math:`\boldsymbol{v}_1=\hat{\imath}`. Therefore, this rotation would be correctly represented by
 
-    .. math::
+        .. math::
 
-        \boldsymbol{r}_1 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right).
+            \boldsymbol{r}_1 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right).
 
     If we want such a rotation about the z-axis, we choose :math:`\boldsymbol{v}_2=\hat{k}`, correctly represented by
 
-    .. math::
+        .. math::
 
-        \boldsymbol{r}_2 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right).
+            \boldsymbol{r}_2 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right).
 
     Any :math:`\boldsymbol{v}` is acceptable as long as the norm is one. For instance, :math:`\boldsymbol{v}_3=-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}`
     leads to the valid rotation quaternion
 
-    .. math::
+        .. math::
 
-         \boldsymbol{r}_3 \triangleq \cos\left(\frac{\pi}{2}\right) + \left(-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}\right)\sin\left(\frac{\pi}{2}\right).
+             \boldsymbol{r}_3 \triangleq \cos\left(\frac{\pi}{2}\right) + \left(-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}\right)\sin\left(\frac{\pi}{2}\right).
+
+
+
+
+.. error::
+
+    There are also common pitfalls.
+
+    #. Using a rotation axis that is not unit norm does **not** represent a rotation quaternion.
+
+        Using :math:`\boldsymbol{v}_4=-\hat{\imath} + \hat{k}` is **not** a valid rotation quaternion because its norm is not one, :math:`||\boldsymbol{v}_4||=\sqrt{2}`.
+
+    #. Misunderstanding the rotation angle.
+
+        Note that, inside the quaternion, we have :math:`\frac{\phi}{2}`. For instance, the quaternion
+
+        .. math::
+
+            \boldsymbol{r}_5 \triangleq \cos\left(\frac{\pi}{4}\right) + \hat{\jmath}\sin\left(\frac{\pi}{4}\right),
+
+        represents a rotation of :math:`\frac{\pi}{2}` about the y-axis, **not** :math:`\frac{\pi}{4}`.
 
 
 Transformations in :program:`ROS2`
@@ -203,7 +224,13 @@ For a ``translation``, we have the following.
 
 .. admonition:: Example
 
-    TODO
+    To represent the following translation,
+
+    .. math::
+
+        \boldsymbol{t}_1 \triangleq 1\hat{\imath} + 2\hat{\jmath} + 3\hat{k},
+
+    we would assign ``translation.x = 1``, ``translation.y = 2``, and ``translation.z = 3`` in our program.
 
 Similarly, for a ``rotation``, we have the following.
 
@@ -215,6 +242,12 @@ Lastly, we have, for a ``rotation``,
 
 - ``w`` will store the value of the term not related to any imaginary unit.
 
+.. note::
+
+    You might be wondering why ``w``, when the other dimensions might be already natural to you.
+    We need to give it a name in our programs so that we can store its data.
+    In alphabetical order, ``w`` comes before the letters we usually use for the x, y, and z dimensions.
+
 .. admonition:: Example
 
     To represent the following elementary rotation about the x-axis
@@ -224,7 +257,7 @@ Lastly, we have, for a ``rotation``,
         \boldsymbol{r}_1 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right),
 
 
-    we would assign ``w = cos(pi/2)``, ``x = sin(pi/2)``, ``y = 0``, and ``z = 0`` in our program.
+    we would assign ``rotation.w = cos(pi/2)``, ``rotation.x = sin(pi/2)``, ``rotation.y = 0``, and ``rotation.z = 0`` in our program.
 
 
 
