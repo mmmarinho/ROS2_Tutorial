@@ -16,6 +16,8 @@ Perhaps the most important benefit of ``tf2`` is how it connects with other :pro
 Create the package
 ------------------
 
+We start by creating the :file:`python_package_that_uses_tf2` package. Please note that it must depend on ``tf2_ros``.
+
 .. code-block:: console
 
     cd ~/ros2_tutorial_workspace/src
@@ -63,14 +65,97 @@ Create the package
         MIT
         MIT-0
 
+Package structure
+-----------------
+
+In this section, we will create or modify the following files.
+
+.. code-block:: console
+    :emphasize-lines: 5,6,10
+
+    python_package_that_uses_tf2/
+    |-- package.xml
+    |-- python_package_that_uses_tf2
+    |   |-- __init__.py
+    |   |-- tf2_broadcaster_node.py
+    |   `-- tf2_listener_node.py
+    |-- resource
+    |   `-- python_package_that_uses_tf2
+    |-- setup.cfg
+    |-- setup.py
+    `-- test
+        |-- test_copyright.py
+        |-- test_flake8.py
+        `-- test_pep257.py
+
+Creating the broadcaster
+------------------------
+
+The broadcaster is made with the following piece of code.
+
+:download:`tf2_broadcaster_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py>`
+
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
    :lines: 24-
    :linenos:
 
+Most of this should be familiar by now.
+
+Focusing on the main novelty, we create the broadcaster with ``tf2_ros.TransformBroadcaster``. We need to input a
+``rclpy.node.Node`` for the constructor, so we input it as ``self``.
+
+As minor things, we have a tag for this frame as ``robot_name``. This could, for example, be a :program:`ros2`.
+We leave it hard-coded for simplicity. We also keep time in the object's scope with ``timer_elapsed_time`` so that
+it persists across callback calls.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
+   :language: python
+   :lines: 36-48
+   :emphasize-lines: 5,9,12
+
+We add two parameters to be able to adjust the trajectory properties if desired. Again, these could be configurable
+parameters but we leave them hard-coded for simplicity.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
+   :language: python
+   :lines: 51-55
+   :emphasize-lines: 4,5
+
+We create the ``TransformStamped`` as follows. We use ``marinholab.nottf2`` to help create the Quaternion for the
+rotation, but it also can be easily created directly. We set the reference frame, ``header.frame_id``, as ``world``
+and ``child_frame_id`` as this robot's frame.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
+   :language: python
+   :lines: 57-74
+
+Finally, we send the transform with ``transform_broadcaster.sendTransform`` and update the local time counter for
+the trajectory. 
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
+   :language: python
+   :lines: 76-80
+
+Creating the listener
+---------------------
+
+The listener is made with the following piece of code.
+
+:download:`tf2_listener_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_listener_node.py>`
+
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_listener_node.py
    :language: python
    :lines: 24-
+   :linenos:
+
+We add the usual entry points. The addition of ``nottf2`` in the dependencies is purely cosmetic.
+
+:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/setup.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/setup.py
+   :language: python
+   :emphasize-lines: 14,27,28
    :linenos:
 
 Build and source
