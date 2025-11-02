@@ -1,26 +1,69 @@
-:program:`rviz2` quickstart
+:program:`rviz2` for ``tf2``
 ============================
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-:program:`rviz2` Installation
-------------------------------
+.. hint::
 
-:program:`rviz2` has already been installed in previous steps!
+    Official documentation includes:
+
+    - The :program:`ROS1` version's documentation: https://wiki.ros.org/rviz.
+    - An official :program:`rviz2` user guide: https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html.
+
+:program:`rviz2` Installation
+-----------------------------
+
+:program:`rviz2` has already been installed in previous steps.
 
 What is :program:`rviz2`?
 -------------------------
-
-.. hint::
-
-    :program:`rviz2` official documentation has not yet been made available for its :program:`ROS2` version.
-    Check this link https://wiki.ros.org/rviz for the :program:`ROS1` version's documentation.
-
-.. hint::
-
-    An official :program:`rviz2` user guide is available here https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html.
 
 .. important::
 
     In :program:`ROS2` the program has been renamed to :program:`rviz2` and has been ported from :program:`rviz` originally in :program:`ROS1`.
 
+Possibly the easiest description for ``rviz``, available from https://github.com/ros2/rviz, is *ROS 3D Robot Visualizer*.
+
+Given that ``rviz`` lacks any integration with simulation engines, it wouldn't be usually called a robotics simulator.
+Nonetheless, for most robotics applications in their initial stages of development, a visualization is an important step forward.
+
+Using :program:`rviz2` with ``tf2``
+-----------------------------------
+
+One interesting capability of :program:`rviz2` is the visualization of ``tf2`` in a relatively friendly manner.
+
+We can test that quickly with the example we developed in the previous section. Up until now, I showered you with
+equations that you might or might not have understood. After showing you how it works in :program:`rviz2`, hopefully
+you will `begin to believe <https://youtu.be/aXNLdw9CUgE?si=E0bfNXsXn3afTLsz>`_ me.
+
+.. tab-set::
+
+    .. tab-item:: Terminal 1: tf2 broadcaster
+
+        From our previous example of ``tf2``.
+
+        .. code-block:: console
+
+            ros2 run python_package_that_uses_tf2 tf2_broadcaster_node
+
+    .. tab-item:: Terminal 2: rviz2
+
+        We run ``rviz2`` with the following command.
+
+        .. code-block:: console
+
+            ros2 run rviz2 rviz2
+
+
+The user interface of ``rviz2`` should appear. However, it still does not know what you are trying to do with it, so we
+will make two modifications to be able to visualize the output of our :file:`tf2_broadcaster_node`.
+
+#. We change in ``Displays`` > ``Fixed Frame`` from ``map`` to ``world``.
+#. We click the button ``Add`` and inside ``rviz_default_plugins`` we scroll down and choose ``TF``.
+
+This should be enough to start showing the frames. Using the mouse, you zoom in and rotate the window to focus
+on the transforms you want to see. This is summarised in the video below, in which I briefly show some functionalities
+of other items in the menus.
+
+Now, you can easily visualize the frames indicating that the frame marked by ``robot_1`` indeed moves in circles, with
+the rotational frame also rotating in the same frequency.

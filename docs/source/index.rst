@@ -208,9 +208,8 @@ If you enjoyed this tutorial, please
    gazebo/quickstart
 
    transformations/index
-   transformations/rviz
    transformations/tf2
-
+   transformations/rviz
 
 Disclaimers
 -----------

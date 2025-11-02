@@ -63,11 +63,58 @@ Create the package
         MIT
         MIT-0
 
-References
-----------
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
+   :language: python
+   :lines: 24-
+   :linenos:
 
-I have not been an avid user of :code:`tf2` myself.
-I can somewhat see the appeal at an attempt to abstract away some of the mathematics of pose transformations,
-but perhaps the most important aspects are how it connects with other :program:`ROS2` parts, such as ``rviz2``.
-- https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html
-- https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_listener_node.py
+   :language: python
+   :lines: 24-
+   :linenos:
+
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: ../the_canonical_build_command.rst
+
+Run Example
+-----------
+
+We can show the integrated example as follows.
+
+.. tab-set::
+
+    .. tab-item:: Terminal 1: tf2 broadcaster
+
+        We start by running the broadcaster.
+
+        .. code-block:: console
+
+            ros2 run python_package_that_uses_tf2 tf2_broadcaster_node
+
+    .. tab-item:: Terminal 2: tf2 listener
+
+        Then, we run the listener.
+
+        .. code-block:: console
+
+            ros2 run python_package_that_uses_tf2 tf2_listener_node
+
+
+Our broadcaster won't output anything to the screen.
+
+The output of the listener will be as long as you allow it to be. The first line indicates a normal behavior, in which
+subscribers to not have instant access to topics. That is properly handled by our listener. When available, you can see
+the output.
+
+.. code-block:: console
+
+    [ERROR] [1762112353.248708886] [tf2_listener_node]: Could not transform world to robot_1: "world" passed to lookupTransform argument target_frame does not exist.
+    [INFO] [1762112353.340386011] [tf2_listener_node]: Transform: geometry_msgs.msg.TransformStamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1762112353, nanosec=335937928), frame_id='world'), child_frame_id='robot_1', transform=geometry_msgs.msg.Transform(translation=geometry_msgs.msg.Vector3(x=0.11448642511890406, y=-0.16399042186510032, z=0.0), rotation=geometry_msgs.msg.Quaternion(x=0.0, y=0.0, z=-0.46236775104102995, w=0.8866882557005366)))
+    [INFO] [1762112353.440609636] [tf2_listener_node]: Transform: geometry_msgs.msg.TransformStamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1762112353, nanosec=436304803), frame_id='world'), child_frame_id='robot_1', transform=geometry_msgs.msg.Transform(translation=geometry_msgs.msg.Vector3(x=0.12455755609760884, y=-0.1564781621153285, z=0.0), rotation=geometry_msgs.msg.Quaternion(x=0.0, y=0.0, z=-0.43428804928984416, w=0.9007740506053791)))
+
+For now, you have to believe I'm right and that this means the broadcaster is sending a circular trajectory. We will
+see more about this in visualization and simulation.
