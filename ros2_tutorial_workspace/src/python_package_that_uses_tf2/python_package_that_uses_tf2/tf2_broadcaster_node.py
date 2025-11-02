@@ -43,9 +43,9 @@ class TF2BroadcasterNode(Node):
         ## Note that this object is part of `tf2_ros`, not `rclpy`
         self.transform_broadcaster = tf2_ros.TransformBroadcaster(self)
 
-        timer_period: float = 0.01
-        timer_elapsed_time: float = 0
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer_period: float = 0.01
+        self.timer_elapsed_time: float = 0
+        self.timer = self.create_timer(self.timer_period, self.timer_callback)
 
     def timer_callback(self):
         # We define some parameters of our trajectory.
@@ -66,15 +66,18 @@ class TF2BroadcasterNode(Node):
         tf.child_frame_id = self.robot_name
 
         # Set the translation of the transform
-        tf.transform.translation.x = trajectory_radius * cos(2*pi*trajectory_frequency)
-        tf.transform.translation.y = trajectory_radius * sin(2*pi*trajectory_frequency)
+        tf.transform.translation.x = trajectory_radius * cos(2 * pi * trajectory_frequency * self.timer_elapsed_time)
+        tf.transform.translation.y = trajectory_radius * sin(2 * pi * trajectory_frequency * self.timer_elapsed_time)
         tf.transform.translation.z = 0.0
 
         # Set the rotation (Quaternion) of the transform
-        tf.rotation = ntf2
+        tf.rotation = ntf2.rz(phi= 2 * pi * trajectory_frequency * self.timer_elapsed_time)
 
         # Send the transformation
         self.transform_broadcaster.sendTransform(tf)
+
+        # Update internal time counter
+        self.timer_elapsed_time += self.timer_period
 
 
 def main(args=None):
