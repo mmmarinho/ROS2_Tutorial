@@ -5,7 +5,9 @@ Using :file:`tf2`
 
 .. hint::
 
-    An official ``tf2`` user guide is available here https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html.
+    An official ``tf2`` user guide is available at
+
+    - https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html.
 
 Perhaps the most important benefit of ``tf2`` is how it connects with other :program:`ROS2` parts, such as ``rviz2``.
 It is a common language used across well-established :program:`ROS2` packages.
@@ -156,7 +158,7 @@ The listener is made with the following piece of code.
 The :file:`setup.py`
 --------------------
 
-We add the usual entry points. 
+We add the usual entry points.
 
 :download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/setup.py>`
 

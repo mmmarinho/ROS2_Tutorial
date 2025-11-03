@@ -325,6 +325,7 @@ Installing a support library ``nottf2``
     is not used to keep the code clean.
 
     If you're interested, here's the quaternion explanation available in the official documentation instead.
+
     -  https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.html.
 
 
@@ -427,6 +428,11 @@ Below are the files that we will create or modify.
 Add sample code for ``nottf2``
 ------------------------------
 
+.. danger::
+
+    You do not need this support library if you're just creating basic rotations. It becomes useful if you need to,
+    for instance, multiply quaternions to obtain relative rotations with ``quaternion_multiply``.
+
 Create the following sample Python script. It will serve to show the operations we did earlier mathematically.
 
 :download:`operations_showcase.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/python_package_that_uses_nottf2/operations_showcase.py>`
@@ -436,7 +442,11 @@ Create the following sample Python script. It will serve to show the operations 
    :lines: 24-
    :linenos:
 
-As usual, we add the necessary entry point in :file:`setup.py`. We also add ``nottf2`` as an usual Python dependency.
+Update the :file:`setup.py`
+---------------------------
+
+As usual, we add the necessary entry point in :file:`setup.py`. We also add ``nottf2`` as an usual Python dependency, although,
+in :program:`colcon`, this currently seems to be mostly cosmetic.
 
 :download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/setup.py>`
 
