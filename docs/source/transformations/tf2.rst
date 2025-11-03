@@ -126,20 +126,20 @@ parameters but we leave them hard-coded for simplicity.
    :lines: 51-55
    :emphasize-lines: 4,5
 
-We create the ``TransformStamped`` as follows. We use ``marinholab.nottf2`` to help create the Quaternion for the
-rotation, but it also can be easily created directly. We set the reference frame, ``header.frame_id``, as ``world``
+We create the ``TransformStamped`` as follows. Our rotation is simple so we build Quaternion for the
+rotation directly. We set the reference frame, ``header.frame_id``, as ``world``
 and ``child_frame_id`` as this robot's frame.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
-   :lines: 57-74
+   :lines: 57-77
 
 Finally, we send the transform with ``transform_broadcaster.sendTransform`` and update the local time counter for
 the trajectory.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
-   :lines: 76-80
+   :lines: 79-83
 
 Creating the listener
 ---------------------
@@ -156,7 +156,7 @@ The listener is made with the following piece of code.
 The :file:`setup.py`
 --------------------
 
-We add the usual entry points. The addition of ``nottf2`` in the dependencies is purely cosmetic.
+We add the usual entry points. 
 
 :download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/setup.py>`
 

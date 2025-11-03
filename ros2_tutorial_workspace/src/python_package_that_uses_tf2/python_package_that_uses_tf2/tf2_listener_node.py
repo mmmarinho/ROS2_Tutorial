@@ -53,7 +53,7 @@ class TF2ListenerNode(Node):
             self.get_logger().info(f"Transform: {tfs}")
 
         except tf2_ros.TransformException as e:
-            
+
             self.get_logger().error(
                 f'Could get transform from `{self.parent_name}` to `{self.child_name}`: {e}')
 

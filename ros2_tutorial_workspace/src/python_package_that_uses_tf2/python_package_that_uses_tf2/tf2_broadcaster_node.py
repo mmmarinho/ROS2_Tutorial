@@ -28,7 +28,6 @@ import rclpy
 from rclpy.node import Node
 
 import tf2_ros
-import marinholab.nottf2 as ntf2
 
 class TF2BroadcasterNode(Node):
     """A ROS2 Node that broadcasts a TransformStamped in compliance with `tf2_ros2`."""
@@ -65,13 +64,17 @@ class TF2BroadcasterNode(Node):
         # This frame of reference
         tfs.child_frame_id = self.robot_name
 
-        # Set the translation of the transform
+        # Set the translation of the transform as a circle in the x-y plane
         tfs.transform.translation.x = trajectory_radius * cos(2 * pi * trajectory_frequency * self.timer_elapsed_time)
         tfs.transform.translation.y = trajectory_radius * sin(2 * pi * trajectory_frequency * self.timer_elapsed_time)
         tfs.transform.translation.z = 0.0
 
-        # Set the rotation (Quaternion) of the transform
-        tfs.transform.rotation = ntf2.rz(phi= 2 * pi * trajectory_frequency * self.timer_elapsed_time)
+        # Set the rotation (Quaternion) of the transform as a rotation about the z-axis
+        phi: float = 2.0 * pi * trajectory_frequency * self.timer_elapsed_time
+        tfs.transform.rotation.w = cos(phi/2.0)
+        tfs.transform.rotation.x = 0.0
+        tfs.transform.rotation.y = 0.0
+        tfs.transform.rotation.z = sin(phi/2.0)
 
         # Send the transformation
         self.transform_broadcaster.sendTransform(tfs)
