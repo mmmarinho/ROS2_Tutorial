@@ -42,7 +42,7 @@ and a desired position given by
     \mathbb{R}^2 \ni \boldsymbol{p}_d  =\begin{bmatrix}x_d \\ y_d\end{bmatrix}.
 
 Suppose that we want to design an action server that takes this robot-like object from its current position :math:`\boldsymbol{p}` and moves it
-towards the goal :math:`\boldsymbol{p}_d` with a speed :math:`s \in \mathbb{R}` (in [m/s]). As feedback, it gives us the distance :math:`d \in \mathbb{R}` between the current
+towards the goal :math:`\boldsymbol{p}_d` with a speed :math:`s \in \mathbb{R}`. As feedback, it gives us the distance :math:`d \in \mathbb{R}` between the current
 position and the desired position.
 
 The (Euclidean) distance :math:`d` will be calculated
