@@ -314,4 +314,87 @@ Lastly, we have, for a ``rotation``,
 
     we would assign ``rotation.w = cos(pi/2)``, ``rotation.x = sin(pi/2)``, ``rotation.y = 0``, and ``rotation.z = 0`` in our program.
 
+Create the package
+------------------
+
+To see how this would work, programmatically, we start by creating the :file:`python_package_that_uses_geometry_msgs` package.
+Note that it must depend on ``geometry_msgs``.
+
+.. code-block:: console
+
+    cd ~/ros2_tutorial_workspace/src
+    ros2 pkg create python_package_that_uses_geometry_msgs \
+    --build-type ament_python \
+    --dependencies geometry_msgs
+
+.. dropdown:: ros2 pkg create output
+
+    .. code-block:: console
+
+        going to create a new package
+        package name: python_package_that_uses_geometry_msgs
+        destination directory: ~/ros2_tutorial_workspace/src
+        package format: 3
+        version: 0.0.0
+        description: TODO: Package description
+        maintainer: ['root <murilo.marinho@manchester.ac.uk>']
+        licenses: ['TODO: License declaration']
+        build type: ament_python
+        dependencies: ['geometry_msgs']
+        creating folder ./python_package_that_uses_geometry_msgs
+        creating ./python_package_that_uses_geometry_msgs/package.xml
+        creating source folder
+        creating folder ./python_package_that_uses_geometry_msgs/python_package_that_uses_geometry_msgs
+        creating ./python_package_that_uses_geometry_msgs/setup.py
+        creating ./python_package_that_uses_geometry_msgs/setup.cfg
+        creating folder ./python_package_that_uses_geometry_msgs/resource
+        creating ./python_package_that_uses_geometry_msgs/resource/python_package_that_uses_geometry_msgs
+        creating ./python_package_that_uses_geometry_msgs/python_package_that_uses_geometry_msgs/__init__.py
+        creating folder ./python_package_that_uses_geometry_msgs/test
+        creating ./python_package_that_uses_geometry_msgs/test/test_copyright.py
+        creating ./python_package_that_uses_geometry_msgs/test/test_flake8.py
+        creating ./python_package_that_uses_geometry_msgs/test/test_pep257.py
+
+        [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+        It is recommended to use one of the ament license identifiers:
+        Apache-2.0
+        BSL-1.0
+        BSD-2.0
+        BSD-2-Clause
+        BSD-3-Clause
+        GPL-3.0-only
+        LGPL-3.0-only
+        MIT
+        MIT-0
+
+Package structure
+-----------------
+
+Add sample code
+---------------
+
+Update the :file:`setup.py`
+---------------------------
+
+Build and source
+----------------
+
+Before we proceed, let us build and source once.
+
+.. include:: ../the_canonical_build_command.rst
+
+Run Example
+-----------
+
+We run our newly created program as follows.
+
+.. code-block:: console
+
+    asd
+
+The result will be as follows.
+
+.. code-block:: console
+
+    asd
 
