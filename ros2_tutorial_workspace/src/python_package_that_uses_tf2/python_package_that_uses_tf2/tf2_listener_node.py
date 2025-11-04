@@ -32,6 +32,7 @@ class TF2ListenerNode(Node):
     def __init__(self):
         super().__init__('tf2_listener_node')
 
+        # Setting up the TransformListener
         self.transform_listener_buffer = tf2_ros.Buffer()
         self.transform_listener = tf2_ros.TransformListener(self.transform_listener_buffer, self)
 

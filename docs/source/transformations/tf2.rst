@@ -155,6 +155,30 @@ The listener is made with the following piece of code.
    :lines: 24-
    :linenos:
 
+We use an instance of ``tf2_ros.TransformListener`` to manage the interaction with ``tf2`` for us. The only step that
+might be unfamiliar is that you need to create an instance to a buffer which is used in the initializer of ``TransformListener``.
+
+We also add the frame information that we want to listen to. This will be used in another step. One extension of this
+would be to make this configurable as a parameter. We do not do that here to not increase complexity.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_listener_node.py
+   :language: python
+   :lines: 35-41
+   :emphasize-lines: 2
+
+We then create an instance of ``Timer`` and add the callback. In the callback, we use the buffer we created in the
+previous step. We will call ``lookup_transform`` and it will need the parent frame tag, the child name tag,
+and the time of lookup. We add exception handling in case the transform is not available or not available
+in the time requested.
+
+The object created with ``rclpy.time.Time()`` is `equivalent to a time of zero <https://github.com/ros2/rclpy/blob/938f4968bc742a77169e5d73d46619db34dbcc50/rclpy/rclpy/time.py#L43>`_, and ``lookup_transform`` `returns the latest transformation available <https://docs.ros2.org/foxy/api/tf2_ros/classtf2__ros_1_1Buffer.html#a3ab502cc1e8b608957a96ad350815aee>`_.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_listener_node.py
+   :language: python
+   :lines: 46-59
+   :emphasize-lines: 4-7
+
+
 The :file:`setup.py`
 --------------------
 
