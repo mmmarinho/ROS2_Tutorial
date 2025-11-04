@@ -5,10 +5,9 @@
 
 .. hint::
 
-    Official documentation includes:
+    An official :program:`rviz2` user guide is available at:
 
-    - The :program:`ROS1` version's documentation: https://wiki.ros.org/rviz.
-    - An official :program:`rviz2` user guide: https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html.
+    - https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html.
 
 :program:`rviz2` Installation
 -----------------------------
@@ -18,22 +17,18 @@
 What is :program:`rviz2`?
 -------------------------
 
-.. important::
+Possibly the easiest description for :program:`rviz2`, available from https://github.com/ros2/rviz, is *ROS 3D Robot Visualizer*.
 
-    In :program:`ROS2` the program has been renamed to :program:`rviz2` and has been ported from :program:`rviz` originally in :program:`ROS1`.
-
-Possibly the easiest description for ``rviz``, available from https://github.com/ros2/rviz, is *ROS 3D Robot Visualizer*.
-
-Given that ``rviz`` lacks any integration with simulation engines, it wouldn't be usually called a robotics simulator.
+Given that :program:`rviz2` lacks any integration with simulation engines, it wouldn't be usually called a robotics simulator.
 Nonetheless, for most robotics applications in their initial stages of development, a visualization is an important step forward.
 
 Using :program:`rviz2` with ``tf2``
 -----------------------------------
 
 One interesting capability of :program:`rviz2` is the visualization of ``tf2`` in a relatively friendly manner.
+We can test that quickly with the ``tf2`` example we developed in the previous section.
 
-We can test that quickly with the example we developed in the previous section. Up until now, I showered you with
-equations that you might or might not have understood. After showing you how it works in :program:`rviz2`, hopefully
+Up until now, I showered you with equations that you might or might not have understood. After showing you how it works in :program:`rviz2`, hopefully
 you will `begin to believe <https://youtu.be/aXNLdw9CUgE?si=E0bfNXsXn3afTLsz>`_ me.
 
 .. tab-set::
@@ -48,28 +43,31 @@ you will `begin to believe <https://youtu.be/aXNLdw9CUgE?si=E0bfNXsXn3afTLsz>`_ 
 
     .. tab-item:: Terminal 2: rviz2
 
-        We run ``rviz2`` with the following command.
+        We run :program:`rviz2` with the following command.
 
         .. code-block:: console
 
             ros2 run rviz2 rviz2
 
 
-The user interface of ``rviz2`` should appear. However, it still does not know what you are trying to do with it, so we
+The user interface of :program:`rviz2` should appear. However, it still does not know what you are trying to do with it, so we
 will make two modifications to be able to visualize the output of our :file:`tf2_broadcaster_node`.
 
-#. We change in ``Displays`` > ``Fixed Frame`` from ``map`` to ``world``.
-#. We click the button ``Add`` and inside ``rviz_default_plugins`` we scroll down and choose ``TF``.
+#. In :menuselection:`Displays --> Fixed Frame`, we change the text from *map* to *world*.
+#. Then, we add the ``tf2`` visualisation with the sequence  :menuselection:`Add --> rviz_default_plugins --> TF`.
 
-This should be enough to start showing the frames. Using the mouse, you zoom in and rotate the window to focus
-on the transforms you want to see. This is summarised in the video below, in which I briefly show some functionalities
-of other items in the menus.
+This is summarised in the video below.
 
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/jMxvI_EdlIc?si=a3cGn8wnjIHe8-fp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-If everything worked as expected, you should see a ``robot_1`` frame rotating about a ``world`` frame.
+This should be enough to start showing the frames. Using the mouse, can you zoom in and rotate the window to focus
+on the transforms of interest.
 
+If everything worked as expected, you should see a ``robot_1`` frame rotating about a ``world`` frame.
 Now, you can easily visualize the frames indicating that the frame marked by ``robot_1`` indeed moves in circles, with
 the rotational frame also rotating in the same frequency.
+
+With these settings, additional broadcast transforms will also be visible. Using :program:`rviz2` menus, you can filter
+the transforms that are relevant for you at any given point.

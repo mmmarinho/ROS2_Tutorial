@@ -82,6 +82,9 @@ If you enjoyed this tutorial, please
 #. :doc:`ROS2 Actions with Python <actions>`
     Writing ROS2 actions, action servers, and action clients.
 
+#. :doc:`Frame Transformations <transformations/index>`
+    Frame transformations, the ``TransformStamped`` message, and ``tf2``.
+
 .. toctree::
    :caption: Preamble
    :maxdepth: 2
@@ -172,6 +175,16 @@ If you enjoyed this tutorial, please
    action_clients
 
 .. toctree::
+   :caption: Frame transformations and tf2
+   :maxdepth: 2
+   :hidden:
+
+   transformations/index
+   transformations/tf2
+   transformations/rviz
+   transformations/nottf2
+
+.. toctree::
    :caption: ROS2 C++ Basics
    :maxdepth: 2
    :hidden:
@@ -207,9 +220,6 @@ If you enjoyed this tutorial, please
    gazebo/installation
    gazebo/quickstart
 
-   transformations/index
-   transformations/tf2
-   transformations/rviz
 
 Disclaimers
 -----------

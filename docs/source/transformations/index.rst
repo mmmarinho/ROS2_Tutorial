@@ -8,9 +8,10 @@ Unless made of flexible materials, the robots we use and the objects they intera
 Terminology dictates that a *position* and an *orientation* are inherent elements of rigid bodies, related to information about their instantaneous reference frames.
 In this sense, a *rotation* and a *translation* would represent the position and the orientation of a rigid body with respect to a reference frame and that implies dislocation.
 
-However, mathematically, every position and orientation is *always* represented with respect to a reference frame.
-I believe that, because of this, in robotics and computer science, you will often see position/translation
+However, mathematically, positions and orientations are *always* represented with respect to a reference frame.
+I believe that, because of this, beyond this tutorial, in robotics and computer science, you will often see position/translation
 and orientation/rotation used interchangeably.
+
 Please allow me to use only the terms *translation* and *rotation* henceforth to keep the discussion consistent
 with how it is utilised in :program:`ROS2`.
 
@@ -52,14 +53,15 @@ Let's rip the trademarked plaster brand out. The following equation represents t
 
     \boldsymbol{r} \triangleq \cos\left(\frac{\phi}{2}\right) + \boldsymbol{v}\sin\left(\frac{\phi}{2}\right),
     
-where :math:`\boldsymbol{v}\boldsymbol{v}=-1`. The condition of the rotation axis also implies that :math:`||\boldsymbol{v}||=1`.
+where :math:`\boldsymbol{v}^2=-1`. This means that the rotation axis :math:`\boldsymbol{v}` can be any imaginary number
+such that :math:`||\boldsymbol{v}||=1`.
   
 The easiest way to think about a rotation using quaternions is to think about the axis of rotation :math:`\boldsymbol{v}` and the angle of rotation :math:`\phi`.
 Then, you construct the quaternion with the :ref:`rotation quaternion formation law <eq:rotation_formation>`.
 
 .. admonition:: Examples
 
-    We can choose :math:`\phi=0` and see how what quaternion represents no rotation. For any rotation axis, this results in
+    We can choose :math:`\phi=0` and see how a quaternion represents no rotation. regardless of rotation axis, this results in
 
         .. math::
 
@@ -82,8 +84,8 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
             \boldsymbol{r}_2 &\triangleq \cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right) \\
                              &= \hat{k}.
 
-    Any :math:`\phi \in \mathbb{R}` is acceptable and, more importantly, any :math:`\boldsymbol{v}` is acceptable as long as the norm is one. For instance, :math:`\boldsymbol{v}_3=-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}`
-    leads to the valid rotation quaternion
+    Any :math:`\phi \in \mathbb{R}` is acceptable and, more importantly, any :math:`\boldsymbol{v}` is acceptable as long as it is imaginary and has norm one.
+    For instance, :math:`\boldsymbol{v}_3=-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}` leads to the valid rotation quaternion
 
         .. math::
 
@@ -113,33 +115,38 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
 Sequential rotations
 ++++++++++++++++++++
 
-Sequential rotations can be obtained via the quaternion multiplication. For instance, to obtain the result of a rotation
+Sequential rotations can be obtained via quaternion multiplication. For instance, to obtain the result of a rotation
 of :math:`\phi=\pi` about the x-axis followed by a rotation of the same angle about the z-axis, we do
 
 .. math::
 
-    \boldsymbol{r}_{12} \triangleq \boldsymbol{r}_1\boldsymbol{r}_2
+    \boldsymbol{r}_{12} \triangleq \boldsymbol{r}_1\boldsymbol{r}_2,
 
-which becomes
+which results, in this case,
 
 .. math::
 
     \boldsymbol{r}_{12} &= \left[\cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right)\right]\left[\cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right)\right] \\
                         &= \hat{\imath}\hat{k} \\
-                        &= -\hat{\jmath}
+                        &= -\hat{\jmath}.
+
+The product of any two quaternions can always be done algebraically, by respecting the `multiplication between the basis elements <https://en.wikipedia.org/wiki/Quaternion#Multiplication_of_basis_elements>`_.
+The result can be generalised by the `quaternion multiplication <https://en.wikipedia.org/wiki/Quaternion#Hamilton_product>`_.
+This generalization will not be repeated here as we will do it programmatically later.
 
 Inverse rotations
 +++++++++++++++++
 
 The inverse rotation can be obtained by flipping the axis of rotation. This is equivalent to obtaining the so-called quaternion
-conjugate.
+conjugate of unit-norm quaternions.
 
 .. math::
     :name: eq:rotation_inverse
 
-    \boldsymbol{r}^{*} \triangleq \cos\left(\frac{\phi}{2}\right) - \boldsymbol{v}\sin\left(\frac{\phi}{2}\right),
+    \boldsymbol{r}^{*} \triangleq \cos\left(\frac{\phi}{2}\right) - \boldsymbol{v}\sin\left(\frac{\phi}{2}\right).
 
-We can see that this is indeed the rotation by noticing that
+We can see that this is indeed the inverse rotation by noticing that the rotation multiplied by its conjugate results
+in :math:`1`, that is, the non rotation.
 
 .. math::
 
@@ -307,179 +314,4 @@ Lastly, we have, for a ``rotation``,
 
     we would assign ``rotation.w = cos(pi/2)``, ``rotation.x = sin(pi/2)``, ``rotation.y = 0``, and ``rotation.z = 0`` in our program.
 
-Installing a support library ``nottf2``
----------------------------------------
 
-.. note::
-
-    You might be wondering.
-
-        Why do I need this?
-
-    When using ``tf2`` there are only two complexities.
-
-    #. Handling ``std_msgs/msg/Header``
-    #. Handling ``geometry_msgs/msg/Quaternion``
-
-    Handling headers can be done rather easily. Dealing with quaternions can be more complicated if a support library
-    is not used to keep the code clean.
-
-    If you're interested, here's the quaternion explanation available in the official documentation instead.
-
-    -  https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.html.
-
-
-In ``rclpy``, ``tf2`` does not (currently?) have quaternion operations. But I got you covered. Kinda. It's more use at your
-own risk type of arrangement.
-
-.. caution::
-
-    The ``nottf2`` library is provided as-is, with no warranty. Use at your own risk (See ``MIT`` license for more details).
-
-    The creator of ``nottf2``, me, will not accept any blame or liability for any issues, including but limited to broken
-    robots or broken code in your assignments. If you feel it's insufficient or unreliable, please create and use your own
-    implementation, or someone else's that fits your needs.
-
-
-For the library to be properly found in our environment, it needs to be installed in the system's Python.
-We can do so as follows.
-
-.. code-block:: console
-
-    python3 -m pip install nottf2 --break-system-packages
-
-
-Create :program:`ros2` package that uses ``nottf2``
----------------------------------------------------
-
-Let's first create our sample package, as follows, that will depend on ``geometry_msgs``.
-
-.. code-block:: console
-
-    cd ~/ros2_tutorial_workspace/src
-    ros2 pkg create python_package_that_uses_nottf2 \
-    --build-type ament_python \
-    --dependencies geometry_msgs
-
-We will be presented with the usual output.
-
-.. dropdown:: ros2 pkg create output
-
-    .. code-block:: console
-
-        going to create a new package
-        package name: python_package_that_uses_nottf2
-        destination directory: ~/ros2_tutorial_workspace/src
-        package format: 3
-        version: 0.0.0
-        description: TODO: Package description
-        maintainer: ['root <murilo.marinho@manchester.ac.uk>']
-        licenses: ['TODO: License declaration']
-        build type: ament_python
-        dependencies: []
-        creating folder ./python_package_that_uses_nottf2
-        creating ./python_package_that_uses_nottf2/package.xml
-        creating source folder
-        creating folder ./python_package_that_uses_nottf2/python_package_that_uses_nottf2
-        creating ./python_package_that_uses_nottf2/setup.py
-        creating ./python_package_that_uses_nottf2/setup.cfg
-        creating folder ./python_package_that_uses_nottf2/resource
-        creating ./python_package_that_uses_nottf2/resource/python_package_that_uses_nottf2
-        creating ./python_package_that_uses_nottf2/python_package_that_uses_nottf2/__init__.py
-        creating folder ./python_package_that_uses_nottf2/test
-        creating ./python_package_that_uses_nottf2/test/test_copyright.py
-        creating ./python_package_that_uses_nottf2/test/test_flake8.py
-        creating ./python_package_that_uses_nottf2/test/test_pep257.py
-
-        [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
-        It is recommended to use one of the ament license identifiers:
-        Apache-2.0
-        BSL-1.0
-        BSD-2.0
-        BSD-2-Clause
-        BSD-3-Clause
-        GPL-3.0-only
-        LGPL-3.0-only
-        MIT
-        MIT-0
-
-Package structure
------------------
-
-Below are the files that we will create or modify.
-
-.. code-block:: console
-    :emphasize-lines: 5, 9
-
-    python_package_that_uses_nottf2/
-    |-- package.xml
-    |-- python_package_that_uses_nottf2
-    |   |-- __init__.py
-    |   `-- operations_showcase.py
-    |-- resource
-    |   `-- python_package_that_uses_nottf2
-    |-- setup.cfg
-    |-- setup.py
-    `-- test
-        |-- test_copyright.py
-        |-- test_flake8.py
-        `-- test_pep257.py
-
-Add sample code for ``nottf2``
-------------------------------
-
-.. danger::
-
-    You do not need this support library if you're just creating basic rotations. It becomes useful if you need to,
-    for instance, multiply quaternions to obtain relative rotations with ``quaternion_multiply``.
-
-Create the following sample Python script. It will serve to show the operations we did earlier mathematically.
-
-:download:`operations_showcase.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/python_package_that_uses_nottf2/operations_showcase.py>`
-
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/python_package_that_uses_nottf2/operations_showcase.py
-   :language: python
-   :lines: 24-
-   :linenos:
-
-Update the :file:`setup.py`
----------------------------
-
-As usual, we add the necessary entry point in :file:`setup.py`. We also add ``nottf2`` as an usual Python dependency, although,
-in :program:`colcon`, this currently seems to be mostly cosmetic.
-
-:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/setup.py>`
-
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nottf2/setup.py
-   :language: python
-   :emphasize-lines: 15,24
-
-
-Build and source
-----------------
-
-Before we proceed, let us build and source once.
-
-.. include:: ../the_canonical_build_command.rst
-
-Run Example
------------
-
-We run our newly created program as follows.
-
-.. code-block:: console
-
-    ros2 run python_package_that_uses_nottf2 operations_showcase
-
-The result will be as follows.
-
-.. code-block:: console
-
-    The rotation of 3.141592653589793 radians about the x-axis is r1=geometry_msgs.msg.Quaternion(x=1.0, y=0, z=0, w=6.123233995736766e-17).
-    The inverse rotation of r1 is r1_conj=geometry_msgs.msg.Quaternion(x=-1.0, y=0, z=0, w=6.123233995736766e-17).
-    The rotation of 3.141592653589793 radians about the z-axis is r2=geometry_msgs.msg.Quaternion(x=0, y=0, z=1.0, w=6.123233995736766e-17).
-    The quaternion multiplication of r12=r1r2 is r12=geometry_msgs.msg.Quaternion(x=6.123233995736766e-17, y=-1.0, z=6.123233995736766e-17, w=3.749399456654644e-33).
-
-Note that the results are reasonably close to the ones we calculated mathematically. However, given the limitations
-on current computers related to floating point accuracy, you can **always** expect a level of inaccuracy. This is **not**
-limited or affected by the use of quaternions, this is an inherent limitation of our computers.
