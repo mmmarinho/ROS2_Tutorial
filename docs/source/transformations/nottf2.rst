@@ -84,7 +84,7 @@ We will be presented with the usual output.
 Package structure
 -----------------
 
-Below are the files that we will create or modify.
+Highlighted below are the files that we will create or modify.
 
 .. code-block:: console
     :emphasize-lines: 5, 9

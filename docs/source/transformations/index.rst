@@ -317,6 +317,9 @@ Lastly, we have, for a ``rotation``,
 Create the package
 ------------------
 
+We will create a package to showcase the transformations from the previous section. We use ``TransformedStamped`` as
+it will be useful right away, when we talk about ``tf2``.
+
 To see how this would work, programmatically, we start by creating the :file:`python_package_that_uses_geometry_msgs` package.
 Note that it must depend on ``geometry_msgs``.
 
@@ -370,11 +373,60 @@ Note that it must depend on ``geometry_msgs``.
 Package structure
 -----------------
 
+Highlighted below are the files that we will create or modify.
+
+.. code-block:: console
+    :emphasize-lines: 5,9
+
+    python_package_that_uses_geometry_msgs/
+    |-- package.xml
+    |-- python_package_that_uses_geometry_msgs
+    |   |-- __init__.py
+    |   `-- create_stamped_transforms_node.py
+    |-- resource
+    |   `-- python_package_that_uses_geometry_msgs
+    |-- setup.cfg
+    |-- setup.py
+    `-- test
+        |-- test_copyright.py
+        |-- test_flake8.py
+        `-- test_pep257.py
+
 Add sample code
 ---------------
 
+Create the following sample Python script. It will serve to show the operations we did earlier mathematically.
+
+:download:`create_stamped_transforms_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_geometry_msgs/python_package_that_uses_geometry_msgs/create_stamped_transforms_node.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_geometry_msgs/python_package_that_uses_geometry_msgs/create_stamped_transforms_node.py
+   :language: python
+   :lines: 24-
+   :linenos:
+
+Note that the only novelty will be the excerpt below. We create an instance of ``TransformStamped`` and start by
+adding information related to the header. Each transform has a frame of reference, called ``header.frame_id``. Then,
+the actual frame this transform represents is held by ``child_frame_id``.
+
+The values corresponding to example translation :math:`\boldsymbol{t}_1 \triangleq 1\hat{\imath} + 2\hat{\jmath} + 3\hat{k}` and the
+example rotation :math:`\boldsymbol{r}_1 \triangleq \cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right)`
+are assigned in the highlight lines below.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_geometry_msgs/python_package_that_uses_geometry_msgs/create_stamped_transforms_node.py
+   :language: python
+   :lines: 36-60
+   :emphasize-lines: 15,16,17,20,21,22,23
+
 Update the :file:`setup.py`
 ---------------------------
+
+As usual, we add the necessary entry point in :file:`setup.py`.
+
+:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_geometry_msgs/setup.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_geometry_msgs/setup.py
+   :language: python
+   :emphasize-lines: 15,24
 
 Build and source
 ----------------
@@ -390,11 +442,14 @@ We run our newly created program as follows.
 
 .. code-block:: console
 
-    asd
+    ros2 run python_package_that_uses_geometry_msgs create_stamped_transforms_node
 
 The result will be as follows.
 
 .. code-block:: console
 
-    asd
+    This transform has translation: geometry_msgs.msg.Vector3(x=1.0, y=2.0, z=3.0) and rotation: geometry_msgs.msg.Quaternion(x=1.0, y=0.0, z=0.0, w=6.123233995736766e-17).
 
+Note that the results are reasonably close to the ones we calculated mathematically.
+However, given the limitations on current computers related to floating point accuracy, you can always expect a level of inaccuracy.
+This is not limited or affected by the use of quaternions, this is an inherent limitation of our computers.
