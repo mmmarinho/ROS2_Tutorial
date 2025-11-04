@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "create_stamped_transforms = python_package_that_uses_geometry_msgs.create_stamped_transforms:main",
+            "create_stamped_transforms_node = python_package_that_uses_geometry_msgs.create_stamped_transforms_node:main",
         ],
     },
 )
