@@ -61,7 +61,7 @@ class TF2BroadcasterNode(Node):
         tfs.header.stamp = self.get_clock().now().to_msg()
         # Frame of reference equals `world`
         tfs.header.frame_id = 'world'
-        # This frame of reference
+        # The transform will be of the frame will be of this tag
         tfs.child_frame_id = self.robot_name
 
         # Set the translation of the transform as a circle in the x-y plane
