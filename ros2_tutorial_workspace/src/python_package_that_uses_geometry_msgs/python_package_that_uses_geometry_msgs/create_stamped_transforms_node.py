@@ -57,10 +57,10 @@ class CreateStampedTransformsNode(Node):
         tfs.transform.rotation.y = 0.0
         tfs.transform.rotation.z = 0.0
 
-        print(f"This transform has translation:"
-              f" {tfs.transform.translation} "
-              f"and rotation:"
-              f" {tfs.transform.rotation}.")
+        self.get_logger().info(f"This transform has translation:"
+                               f" {tfs.transform.translation} "
+                               f"and rotation:"
+                               f" {tfs.transform.rotation}.")
 
 def main(args=None):
     """
