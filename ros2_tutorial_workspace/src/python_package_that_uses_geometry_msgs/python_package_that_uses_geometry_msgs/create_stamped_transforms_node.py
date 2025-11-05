@@ -51,13 +51,16 @@ class CreateStampedTransformsNode(Node):
         tfs.transform.translation.y = 2.0
         tfs.transform.translation.z = 3.0
 
-        # Set the rotation (Quaternion) of the transform as a rotation about the z-axis
+        # Set the rotation (Quaternion) of the transform as a rotation about the x-axis
         tfs.transform.rotation.w = cos(pi / 2.0)
         tfs.transform.rotation.x = sin(pi / 2.0)
         tfs.transform.rotation.y = 0.0
         tfs.transform.rotation.z = 0.0
 
-        print(f"This transform has translation: {tfs.transform.translation} and rotation: {tfs.transform.rotation}.")
+        print(f"This transform has translation:"
+              f" {tfs.transform.translation} "
+              f"and rotation:"
+              f" {tfs.transform.rotation}.")
 
 def main(args=None):
     """
