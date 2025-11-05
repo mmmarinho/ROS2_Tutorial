@@ -15,6 +15,117 @@ and orientation/rotation used interchangeably.
 Please allow me to use only the terms *translation* and *rotation* henceforth to keep the discussion consistent
 with how it is utilised in :program:`ROS2`.
 
+We start by looking at how it is done in :program:`ROS2`, go through the related mathematics, then create an example
+to show how to create these transformations.
+
+Transformations in :program:`ROS2`
+----------------------------------
+
+Let us take a look at message most commonly used in :program:`ROS2` to represent translation and rotation,
+:file:`TransformStamped.msg`, part of the package :file:`geometry_msgs`.
+
+We can see its contents with
+
+.. code-block:: console
+
+    ros2 interface show geometry_msgs/msg/TransformStamped
+
+resulting in a slightly intricate message.
+
+.. dropdown:: ros2 interface show output
+
+    .. code-block:: yaml
+
+        # This expresses a transform from coordinate frame header.frame_id
+        # to the coordinate frame child_frame_id at the time of header.stamp
+        #
+        # This message is mostly used by the
+        # <a href="https://docs.ros.org/en/rolling/p/tf2/">tf2</a> package.
+        # See its documentation for more information.
+        #
+        # The child_frame_id is necessary in addition to the frame_id
+        # in the Header to communicate the full reference for the transform
+        # in a self contained message.
+
+        # The frame id in the header is used as the reference frame of this transform.
+        std_msgs/Header header
+                builtin_interfaces/Time stamp
+                        int32 sec
+                        uint32 nanosec
+                string frame_id
+
+        # The frame id of the child frame to which this transform points.
+        string child_frame_id
+
+        # Translation and rotation in 3-dimensions of child_frame_id from header.frame_id.
+        Transform transform
+                Vector3 translation
+                        float64 x
+                        float64 y
+                        float64 z
+                Quaternion rotation
+                        float64 x 0
+                        float64 y 0
+                        float64 z 0
+                        float64 w 1
+
+To simplify the discussion, these are the contents of :file:`TransformStamped.msg`.
+
+.. rli:: https://raw.githubusercontent.com/ros2/common_interfaces/refs/heads/jazzy/geometry_msgs/msg/TransformStamped.msg
+   :language: yaml
+
+Note that it is a message composed of two other messages, and a built-in.
+
+The :file:`Header` is an essential timestamp used throughout :program:`ROS2`. We can see its contents with
+
+.. code-block:: console
+
+    ros2 interface show std_msgs/msg/Header
+
+resulting in
+
+.. code-block:: yaml
+
+    # Standard metadata for higher-level stamped data types.
+    # This is generally used to communicate timestamped data
+    # in a particular coordinate frame.
+
+    # Two-integer timestamp that is expressed as seconds and nanoseconds.
+    builtin_interfaces/Time stamp
+            int32 sec
+            uint32 nanosec
+
+    # Transform frame with which this data is associated.
+    string frame_id
+
+The elements :code:`stamp` and :code:`frame_id` are used by many popular packages :program:`ROS2` to display and
+relate translational and rotational data of robots and objects.
+
+Then, to the most important part of this section, we have the :file:`Transform.msg`, whose contents can be obtained
+with
+
+.. code-block:: console
+
+    ros2 interface show geometry_msgs/msg/Transform
+
+resulting in
+
+.. code-block:: yaml
+
+    # This represents the transform between two coordinate frames in free space.
+
+    Vector3 translation
+            float64 x
+            float64 y
+            float64 z
+    Quaternion rotation
+            float64 x 0
+            float64 y 0
+            float64 z 0
+            float64 w 1
+
+in which the :code:`translation` and :code:`rotation` can be clearly seen.
+
 Translations
 ------------
 
@@ -155,115 +266,6 @@ in :math:`1`, that is, the non rotation.
                                      &= \cos^2\left(\frac{\phi}{2}\right) - (-1)\sin^2\left(\frac{\phi}{2}\right) \\
                                      &= \cos^2\left(\frac{\phi}{2}\right) + \sin^2\left(\frac{\phi}{2}\right) \\
                                      &= 1.
-
-
-Transformations in :program:`ROS2`
-----------------------------------
-
-Let us take a look at message most commonly used in :program:`ROS2` to represent translation and rotation,
-:file:`TransformStamped.msg`, part of the package :file:`geometry_msgs`.
-
-We can see its contents with
-
-.. code-block:: console
-
-    ros2 interface show geometry_msgs/msg/TransformStamped
-
-resulting in a slightly intricate message.
-
-.. dropdown:: ros2 interface show output
-
-    .. code-block:: yaml
-
-        # This expresses a transform from coordinate frame header.frame_id
-        # to the coordinate frame child_frame_id at the time of header.stamp
-        #
-        # This message is mostly used by the
-        # <a href="https://docs.ros.org/en/rolling/p/tf2/">tf2</a> package.
-        # See its documentation for more information.
-        #
-        # The child_frame_id is necessary in addition to the frame_id
-        # in the Header to communicate the full reference for the transform
-        # in a self contained message.
-
-        # The frame id in the header is used as the reference frame of this transform.
-        std_msgs/Header header
-                builtin_interfaces/Time stamp
-                        int32 sec
-                        uint32 nanosec
-                string frame_id
-
-        # The frame id of the child frame to which this transform points.
-        string child_frame_id
-
-        # Translation and rotation in 3-dimensions of child_frame_id from header.frame_id.
-        Transform transform
-                Vector3 translation
-                        float64 x
-                        float64 y
-                        float64 z
-                Quaternion rotation
-                        float64 x 0
-                        float64 y 0
-                        float64 z 0
-                        float64 w 1
-
-To simplify the discussion, these are the contents of :file:`TransformStamped.msg`.
-
-.. rli:: https://raw.githubusercontent.com/ros2/common_interfaces/refs/heads/jazzy/geometry_msgs/msg/TransformStamped.msg
-   :language: yaml
-
-Note that it is a message composed of two other messages, and a built-in.
-
-The :file:`Header` is an essential timestamp used throughout :program:`ROS2`. We can see its contents with
-
-.. code-block:: console
-
-    ros2 interface show std_msgs/msg/Header
-
-resulting in
-
-.. code-block:: yaml
-
-    # Standard metadata for higher-level stamped data types.
-    # This is generally used to communicate timestamped data
-    # in a particular coordinate frame.
-
-    # Two-integer timestamp that is expressed as seconds and nanoseconds.
-    builtin_interfaces/Time stamp
-            int32 sec
-            uint32 nanosec
-
-    # Transform frame with which this data is associated.
-    string frame_id
-
-The elements :code:`stamp` and :code:`frame_id` are used by many popular packages :program:`ROS2` to display and
-relate translational and rotational data of robots and objects.
-
-Then, to the most important part of this section, we have the :file:`Transform.msg`, whose contents can be obtained
-with
-
-.. code-block:: console
-
-    ros2 interface show geometry_msgs/msg/Transform
-
-resulting in
-
-.. code-block:: yaml
-
-    # This represents the transform between two coordinate frames in free space.
-
-    Vector3 translation
-            float64 x
-            float64 y
-            float64 z
-    Quaternion rotation
-            float64 x 0
-            float64 y 0
-            float64 z 0
-            float64 w 1
-
-in which the :code:`translation` and :code:`rotation` can be clearly seen.
 
 Connecting these ideas
 ----------------------
