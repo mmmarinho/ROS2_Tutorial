@@ -416,8 +416,8 @@ are assigned in the highlight lines below.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_geometry_msgs/python_package_that_uses_geometry_msgs/create_stamped_transforms_node.py
    :language: python
-   :lines: 36-60
-   :emphasize-lines: 15,16,17,20,21,22,23
+   :lines: 36-63
+   :emphasize-lines: 15-17,20-23
 
 Update the :file:`setup.py`
 ---------------------------
@@ -428,7 +428,7 @@ As usual, we add the necessary entry point in :file:`setup.py`.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_geometry_msgs/setup.py
    :language: python
-   :emphasize-lines: 15,24
+   :emphasize-lines: 23
 
 Build and source
 ----------------
