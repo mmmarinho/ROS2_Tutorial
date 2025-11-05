@@ -188,7 +188,7 @@ We add the usual entry points.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/setup.py
    :language: python
-   :emphasize-lines: 14,27,28
+   :emphasize-lines: 27,28
    :linenos:
 
 Build and source
