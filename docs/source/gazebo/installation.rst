@@ -19,7 +19,7 @@ Here is the description of the packages we are installing. You can notice that t
 
 ===========================   =================================================================================================================================================
 curl_                         Helps download files from the terminal.
-`lsb-release`_                The lsb_release command is a simple tool to help identify the Linux distribution being used and its compliance with the Linux Standard Base
+lsb-release_                  The lsb_release command is a simple tool to help identify the Linux distribution being used and its compliance with the Linux Standard Base
 gnupg_                        :program:`GnuPG` is an universal crypto engine which can be used directly from a command line prompt, from shell scripts, or from other programs.
 ===========================   =================================================================================================================================================
 
@@ -33,8 +33,30 @@ After installation, :program:`Gazebo Harmonic` can be run with the following com
     gz sim
 
 Which should result in something similar to the following, if the installation went well.
-I would recommend strongly against letting the curiosity get the best of you and clicking on the ``3k_shapes.sdf`` given that it's current freezing all my machines.
-Other scenes seem to be working in general.
+
+.. note::
+
+    The command below might not work if you have issues in your network configuration. You might need to enable this through your firewall.
+    Do *not* do that unless the command ``gz sim`` did not work
+
+    .. code-block:: console
+
+        sudo ufw allow 10317:10318/udp
+
+
+    Content from: ROS 2 Networking and Communication
+
+        https://github.com/UoMMScRobotics/UOMDocumentationForLeoRover/blob/main/Further_reading/Networking.m
+        by https://github.com/Https404PaigeNotFound
+
+.. caution::
+
+    I would recommend strongly against clicking on the ``3k_shapes.sdf`` given that it's current freezing all my machines.
+    Other scenes seem to be working in general.
 
 .. image:: images/screen_quickstart.png
     :width: 100%
+
+.. _curl: https://curl.se/
+.. _lsb-release: https://packages.debian.org/sid/lsb-release
+.. _gnupg: https://gnupg.org/download/

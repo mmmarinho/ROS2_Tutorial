@@ -216,7 +216,7 @@ If you enjoyed this tutorial, please
    :maxdepth: 2
    :hidden:
 
-   gazebo/about
+   gazebo/index
    gazebo/installation
    gazebo/quickstart
 
