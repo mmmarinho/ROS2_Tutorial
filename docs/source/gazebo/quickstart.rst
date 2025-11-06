@@ -23,14 +23,14 @@ Basic functionality
 .. hint::
 
     In the ``Understanding the GUI`` tutorial, you can skip the part about using ``--force-version``.
-    The current version of :program:`Gazebo Harmonic` is ``8.9.0`` so the command would be changed to
+    The version changes quite frequently. It could be safely changed to.
 
     .. code-block:: console
 
-        gz sim --force-version 8.9.0 shapes.sdf
+        gz sim --force-version 8 shapes.sdf
 
 
-    But you should not have multiple versions of :program:`Gazebo` installed anyway!
+    But you probably should not have multiple versions of :program:`Gazebo` installed anyway!
 
 These two official tutorials cover the basic functionality of :program:`Gazebo`.
 They are very well made with up-to-date images and videos. Please go through them to familiarise yourself with the basic functionality.
