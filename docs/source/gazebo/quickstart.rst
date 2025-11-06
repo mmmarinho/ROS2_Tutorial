@@ -53,12 +53,12 @@ Even simple world files can have a relatively complex format. Even :file:`shapes
 objects, is difficult to parse visually. For most things, it is easier to use :program:`Gazebo` itself and limit
 and direct changes in :file:`.sdf` files.
 
-.. dropdown:: Contents of :file:`shapes.sdf`
+This example is `available in the official repository <https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/shapes.sdf>`_.
 
-    This example is `available in the official repository <https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/shapes.sdf>`_.
+.. dropdown:: shapes.sdf
 
     .. rli:: https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/shapes.sdf
-        :language: xml
+    :language: xml
 
 .. important::
 
@@ -136,7 +136,12 @@ You can verify all files usable for :program:`Gazebo` demos in the following fol
 The current file structure is shown in the dropdown below. There are many launch files, :program:`rviz` configuration files, and a few
 :file:`.sdf` models.
 
-.. dropdown:: Contents of :file:`ros_gz_sim_demos`
+.. note::
+
+    The contents below are not retrieved automatically so they might not represent the latest version of the repository.
+    See https://github.com/gazebosim/ros_gz/tree/jazzy/ros_gz_sim_demos .
+
+.. dropdown:: ros_gz_sim_demos
 
     .. code-block:: console
 
@@ -260,18 +265,49 @@ showing that the information is correctly flowing through :program:`ROS2`.
 
     Some unused topics such as ``/tf`` are defined in :file:`camera.rviz`, but don't worry about those.
 
-These are the contents of `the launch file <https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_sim_demos/launch/camera.launch.py>`_.
+Below are the contents of `the launch file <https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_sim_demos/launch/camera.launch.py>`_.
 
-.. rli:: https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_sim_demos/launch/camera.launch.py
-    :language: python
-    :linenos:
+.. dropdown:: ros_gz_sim_demos/launch/camera.launch.py
 
-The launch file mentions the package :file:`ros_gz_bridge`, described below.
+    .. rli:: https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_sim_demos/launch/camera.launch.py
+        :language: python
+        :linenos:
+
+Below are the contents of `the rviz file <https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_sim_demos/rviz/camera.rviz>`_.
+
+.. dropdown:: ros_gz_sim_demos/rviz/camera.rviz
+
+    .. rli:: https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_sim_demos/rviz/camera.rviz
+        :language: xml
+        :linenos:
+
+The launch file mentions the package :file:`ros_gz_bridge`, described below, which is used to create the interfaces,
+for instance topics, between :program:`Gazebo` and :program:`ROS2`.
 
 Using ``ros_gz_bridge``
 -----------------------
 
+.. tab-set::
 
+    .. tab-item:: Terminal 1: Start :program:`Gazebo`
+
+        Note that the images will only start to be published after the simulation is started in :program:`Gazebo`.
+
+        .. code-block:: console
+
+            gz sim sensors_demo.sdf
+
+    .. tab-item:: Terminal 2: Run the bridge
+
+        .. code-block:: console
+
+            ros2 run ros_gz_bridge parameter_bridge /rgbd_camera/image@sensor_msgs/msg/Image@gz.msgs.Image
+
+    .. tab-item:: Terminal 3: Show the images
+
+        .. code-block:: console
+
+            ros2 run rqt_image_view rqt_image_view /rgbd_camera/image
 
 
 
@@ -287,4 +323,5 @@ References
     - https://gazebosim.org/docs/harmonic/ros2_spawn_model/
     - https://gazebosim.org/docs/harmonic/ros2_interop/
     - https://gazebosim.org/docs/harmonic/ros_gz_project_template_guide/
+    - https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_bridge/README.md
 

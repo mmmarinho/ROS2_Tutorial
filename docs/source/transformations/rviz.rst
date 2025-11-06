@@ -71,3 +71,49 @@ the rotational frame also rotating in the same frequency.
 
 With these settings, additional broadcast transforms will also be visible. Using :program:`rviz2` menus, you can filter
 the transforms that are relevant for you at any given point.
+
+Other visualisation tools
+-------------------------
+
+Depending on the sensorial information, :program:`rviz2` can be the correct tool. It is important, however, to know
+that it is not the only tool. One convenient tool for visualizing images is :program:`rqt_image_view`.
+
+The integrated sample can be executed as follows.
+
+.. danger::
+
+    Please note that the (Lena or Lenna) image has been banned by most publishers. Do not use it in your
+    reports or conference submissions. This is part of the integrated sample, therefore shown here, but this usage is not endorsed or recommended.
+
+    - https://www.nature.com/articles/s41565-018-0337-2
+    - https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/create-graphics-for-your-article/
+
+    Nature:
+
+        We would like to let our authors, reviewers and readers know that, with immediate effect, we no longer consider submissions containing the Lena (sometimes ‘Lenna’) image. This decision was taken in consultation with relevant journal editors and affects all Nature Research journals.
+
+    IEEE:
+
+        Lena Image
+
+        IEEE’s diversity statement and supporting policies such as the IEEE Code of Ethics speak to IEEE’s commitment to
+        promoting an inclusive and equitable culture that welcomes all.  In alignment with this culture and with respect
+        to the wishes of the subject of the image, Lena Forsén, IEEE will no longer accept submitted papers which include the “Lena image.”
+
+
+.. tab-set::
+
+    .. tab-item:: Terminal 1: Publish sample images.
+
+        .. code-block:: console
+
+            ros2 run rqt_image_view image_publisher
+
+    .. tab-item:: Terminal 2: Run the bridge
+
+        .. code-block:: console
+
+            ros2 run rqt_image_view rqt_image_view /images
+
+It should work by showing color variations of the controversial image. We will use the visualiser, not the publisher,
+in some examples in future sections.
