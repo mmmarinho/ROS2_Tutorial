@@ -297,6 +297,13 @@ Using ``ros_gz_bridge``
 
             gz sim sensors_demo.sdf
 
+        This example is `available in the official repository <https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf>`_.
+
+        .. dropdown:: sensors_demo.sdf
+
+            .. rli:: https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf
+                :language: xml
+
     .. tab-item:: Terminal 2: Run the bridge
 
         .. code-block:: console
@@ -310,6 +317,16 @@ Using ``ros_gz_bridge``
             ros2 run rqt_image_view rqt_image_view /rgbd_camera/image
 
 
+These are the internal :program:`Gazebo` topics created in this scene for each sensor.
+
+===============  ================ ==========================================================================================
+camera           camera_alone     https://github.com/gazebosim/ros_gz/blob/ros2/ros_gz_sim_demos/launch/image_bridge.launch.py
+depth_camera     depth_camera
+gpu_lidar        lidar            https://github.com/gazebosim/ros_gz/blob/ros2/ros_gz_sim_demos/launch/gpu_lidar.launch.py
+thermal_camera   thermal_camera
+rgbd_camera      rgbd_camera      https://github.com/gazebosim/ros_gz/blob/ros2/ros_gz_sim_demos/launch/rgbd_camera.launch.py
+===============  ================ ==========================================================================================
+
 
 References
 ----------
@@ -318,6 +335,7 @@ References
     borrowed from.
 
 
+    - https://gazebosim.org/docs/harmonic/sensors/
     - https://gazebosim.org/docs/harmonic/ros2_launch_gazebo/
     - https://gazebosim.org/docs/harmonic/ros2_integration/
     - https://gazebosim.org/docs/harmonic/ros2_spawn_model/
