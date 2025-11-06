@@ -453,89 +453,157 @@ You can verify all files usable for :program:`Gazebo` demos in the following fol
     cd $(ros2 pkg prefix --share ros_gz_sim_demos)
     nautilus .
 
-Currently, this is the file structure. There are many launch files, :program:`rviz` configuration files, and a few
+The current file structure is shown in the dropdown below. There are many launch files, :program:`rviz` configuration files, and a few
 :file:`.sdf` models.
+
+.. dropdown:: Contents of :file:`ros_gz_sim_demos`
+
+    .. code-block:: console
+
+        /opt/ros/jazzy/share/ros_gz_sim_demos
+        ├── cmake
+        │   ├── ros_gz_sim_demosConfig.cmake
+        │   └── ros_gz_sim_demosConfig-version.cmake
+        ├── environment
+        │   ├── ament_prefix_path.dsv
+        │   ├── ament_prefix_path.sh
+        │   ├── path.dsv
+        │   ├── path.sh
+        │   └── ros_gz_sim_demos.dsv
+        ├── launch
+        │   ├── air_pressure.launch.py
+        │   ├── battery.launch.py
+        │   ├── camera.launch.py
+        │   ├── depth_camera.launch.py
+        │   ├── diff_drive.launch.py
+        │   ├── gpu_lidar_bridge.launch.py
+        │   ├── gpu_lidar.launch.py
+        │   ├── image_bridge.launch.py
+        │   ├── imu.launch.py
+        │   ├── joint_states.launch.py
+        │   ├── magnetometer.launch.py
+        │   ├── navsat_gpsfix.launch.py
+        │   ├── navsat.launch.py
+        │   ├── rgbd_camera_bridge.launch.py
+        │   ├── rgbd_camera.launch.py
+        │   ├── robot_description_publisher.launch.py
+        │   ├── sdf_parser.launch.py
+        │   ├── tf_bridge.launch.py
+        │   └── triggered_camera.launch.py
+        ├── local_setup.bash
+        ├── local_setup.dsv
+        ├── local_setup.sh
+        ├── local_setup.zsh
+        ├── models
+        │   ├── cardboard_box
+        │   │   ├── materials
+        │   │   │   └── textures
+        │   │   │       └── cardboard_box.png
+        │   │   ├── meshes
+        │   │   │   └── cardboard_box.dae
+        │   │   ├── model.config
+        │   │   ├── model.sdf
+        │   │   └── thumbnails
+        │   │       ├── 1.png
+        │   │       ├── 2.png
+        │   │       ├── 3.png
+        │   │       ├── 4.png
+        │   │       └── 5.png
+        │   ├── double_pendulum_model.sdf
+        │   ├── rrbot.xacro
+        │   └── vehicle
+        │       ├── model.config
+        │       └── model.sdf
+        ├── package.dsv
+        ├── package.xml
+        ├── rviz
+        │   ├── camera.rviz
+        │   ├── depth_camera.rviz
+        │   ├── diff_drive.rviz
+        │   ├── gpu_lidar_bridge.rviz
+        │   ├── gpu_lidar.rviz
+        │   ├── imu.rviz
+        │   ├── joint_states.rviz
+        │   ├── rgbd_camera_bridge.rviz
+        │   ├── rgbd_camera.rviz
+        │   ├── robot_description_publisher.rviz
+        │   ├── tf_bridge.rviz
+        │   └── vehicle.rviz
+        └── worlds
+            ├── default.sdf
+            └── vehicle.sdf
+
+The :file:`camera.launch.py` demo
++++++++++++++++++++++++++++++++++
+
+Before we move on with the integration between :program:`Gazebo` and :program:`ROS2`, let's run an illustrative
+official demo. We can run it with the following command.
 
 .. code-block:: console
 
-    /opt/ros/jazzy/share/ros_gz_sim_demos
-    ├── cmake
-    │   ├── ros_gz_sim_demosConfig.cmake
-    │   └── ros_gz_sim_demosConfig-version.cmake
-    ├── environment
-    │   ├── ament_prefix_path.dsv
-    │   ├── ament_prefix_path.sh
-    │   ├── path.dsv
-    │   ├── path.sh
-    │   └── ros_gz_sim_demos.dsv
-    ├── launch
-    │   ├── air_pressure.launch.py
-    │   ├── battery.launch.py
-    │   ├── camera.launch.py
-    │   ├── depth_camera.launch.py
-    │   ├── diff_drive.launch.py
-    │   ├── gpu_lidar_bridge.launch.py
-    │   ├── gpu_lidar.launch.py
-    │   ├── image_bridge.launch.py
-    │   ├── imu.launch.py
-    │   ├── joint_states.launch.py
-    │   ├── magnetometer.launch.py
-    │   ├── navsat_gpsfix.launch.py
-    │   ├── navsat.launch.py
-    │   ├── rgbd_camera_bridge.launch.py
-    │   ├── rgbd_camera.launch.py
-    │   ├── robot_description_publisher.launch.py
-    │   ├── sdf_parser.launch.py
-    │   ├── tf_bridge.launch.py
-    │   └── triggered_camera.launch.py
-    ├── local_setup.bash
-    ├── local_setup.dsv
-    ├── local_setup.sh
-    ├── local_setup.zsh
-    ├── models
-    │   ├── cardboard_box
-    │   │   ├── materials
-    │   │   │   └── textures
-    │   │   │       └── cardboard_box.png
-    │   │   ├── meshes
-    │   │   │   └── cardboard_box.dae
-    │   │   ├── model.config
-    │   │   ├── model.sdf
-    │   │   └── thumbnails
-    │   │       ├── 1.png
-    │   │       ├── 2.png
-    │   │       ├── 3.png
-    │   │       ├── 4.png
-    │   │       └── 5.png
-    │   ├── double_pendulum_model.sdf
-    │   ├── rrbot.xacro
-    │   └── vehicle
-    │       ├── model.config
-    │       └── model.sdf
-    ├── package.dsv
-    ├── package.xml
-    ├── rviz
-    │   ├── camera.rviz
-    │   ├── depth_camera.rviz
-    │   ├── diff_drive.rviz
-    │   ├── gpu_lidar_bridge.rviz
-    │   ├── gpu_lidar.rviz
-    │   ├── imu.rviz
-    │   ├── joint_states.rviz
-    │   ├── rgbd_camera_bridge.rviz
-    │   ├── rgbd_camera.rviz
-    │   ├── robot_description_publisher.rviz
-    │   ├── tf_bridge.rviz
-    │   └── vehicle.rviz
-    └── worlds
-        ├── default.sdf
-        └── vehicle.sdf
+    ros2 launch ros_gz_sim_demos camera.launch.py
+
+This will show :program:`Gazebo`, with a couple of objects and a camera. The camera view is being rendered
+by :program:`Gazebo`. The simulation is started. At the same time, :program:`rviz2` is executed. This demo is
+important because cameras are difficult to simulate otherwise and being able to access them via :program:`ROS2`
+allows you to create powerful image-based robot controllers and planners.
+
+We can take a look at the topics created, while those programs are running, with the following command.
+
+.. code-block:: console
+
+    ros2 topic list
+
+This will output the following.
+
+.. code-block:: console
+
+    /camera
+    /camera_info
+    /clicked_point
+    /initialpose
+    /move_base_simple/goal
+    /parameter_events
+    /rosout
+    /tf
+    /tf_static
+
+The launch file, :file:`camera.launch.py`, is currently performing the following steps.
+
+- Starting :program:`Gazebo` with the built-in scene :file:`camera_sensor.sdf`.
+- Running :program:`rviz2` with the configuration file :file:`camera.rviz`.
+- Running ``ros_gz_bridge`` with the correct parameters to expose the camera sensor from :program:`Gazebo` to :program:`ROS2`.
+
+This demo shows the camera simulation results on :program:`rviz2` because it's possibly the most convenient way of
+showing that the information is correctly flowing through :program:`ROS2`.
+
+.. note::
+
+    Some unused topics such as ``/tf`` are defined in :file:`camera.rviz`, but don't worry about those.
+
+These are the contents of the launch file.
+
+.. rli:: https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_sim_demos/launch/camera.launch.py
+    :language: python
+    :linenos:
 
 
 Using ``ros_gz_bridge``
 -----------------------
 
+.. tab-set::
 
+    .. tab-item:: Terminal 1: Run camera demo
+
+        .. code-block:: console
+
+            ros2 launch ros_gz_sim_demos camera.launch.py
+
+    .. tab-item:: Terminal 2: action output
+
+        .. code-block:: console
+
+            ros2 topic list
 
 Spawn models
 ++++++++++++
