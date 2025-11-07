@@ -218,7 +218,7 @@ If you enjoyed this tutorial, please
 
    gazebo/index
    gazebo/installation
-   gazebo/quickstart
+   gazebo/usage
 
 
 Disclaimers

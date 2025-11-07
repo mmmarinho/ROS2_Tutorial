@@ -58,7 +58,7 @@ This example is `available in the official repository <https://raw.githubusercon
 .. dropdown:: shapes.sdf
 
     .. rli:: https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/shapes.sdf
-    :language: xml
+        :language: xml
 
 .. important::
 
@@ -93,15 +93,19 @@ You can use the following command to spawn models in :program:`Gazebo`.
 
         .. code-block:: console
 
-            os2 launch ros_gz_sim gz_sim.launch.py gz_args:=shapes.sdf
+            ros2 launch ros_gz_sim gz_sim.launch.py gz_args:=shapes.sdf
 
     .. tab-item:: Terminal 2: Spawn model
-
-        Note that as arguments we have the model file, a name, and the position of the model.
 
         .. code-block:: console
 
             ros2 launch ros_gz_sim gz_spawn_model.launch.py world:=shapes file:=$(ros2 pkg prefix --share ros_gz_sim_demos)/models/vehicle/model.sdf entity_name:=my_vehicle x:=5.0 y:=5.0 z:=0.5
+
+        As arguments we have the
+
+        - model filename
+        - name for the entity inside :program:`Gazebo`
+        - position coordinates of the model
 
 .. note::
 
@@ -287,6 +291,8 @@ for instance topics, between :program:`Gazebo` and :program:`ROS2`.
 Using ``ros_gz_bridge``
 -----------------------
 
+An effective scene that showcases the many uses of ``ros_gz_brige`` is :file:`sensors_demo.sdf`.
+
 .. tab-set::
 
     .. tab-item:: Terminal 1: Start :program:`Gazebo`
@@ -317,15 +323,26 @@ Using ``ros_gz_bridge``
             ros2 run rqt_image_view rqt_image_view /rgbd_camera/image
 
 
-These are the internal :program:`Gazebo` topics created in this scene for each sensor.
+These are the internal :program:`Gazebo` topics created in this scene for each sensor. Here are some pairings with
+example launch files, although the mapping is not always one-to-one.
 
-===============  ================ ==========================================================================================
-camera           camera_alone     https://github.com/gazebosim/ros_gz/blob/ros2/ros_gz_sim_demos/launch/image_bridge.launch.py
-depth_camera     depth_camera
-gpu_lidar        lidar            https://github.com/gazebosim/ros_gz/blob/ros2/ros_gz_sim_demos/launch/gpu_lidar.launch.py
-thermal_camera   thermal_camera
-rgbd_camera      rgbd_camera      https://github.com/gazebosim/ros_gz/blob/ros2/ros_gz_sim_demos/launch/rgbd_camera.launch.py
-===============  ================ ==========================================================================================
+===============  ================ ===============================================================================================================================
+Sensor type      Topic name       Demo
+===============  ================ ===============================================================================================================================
+camera           camera_alone     `image_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/image_bridge.launch.py>`_
+depth_camera     depth_camera     `depth_camera.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/depth_camera.launch.py>`_
+gpu_lidar        lidar            `gpu_lidar_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/gpu_lidar_bridge.launch.py>`_
+thermal_camera   thermal_camera   **N/A**
+rgbd_camera      rgbd_camera      `rgbd_camera_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/rgbd_camera_bridge.launch.py>`_
+===============  ================ ===============================================================================================================================
+
+Each :program:`Gazebo` message
+must be paired with a correct :program:`ROS2` message if you want to access these outside :program:`Gazebo`.
+
+.. caution::
+
+    Internal :program:`Gazebo` topics are not the same as :program:`ROS2` topics. We must use ``ros_gz_brige`` to
+    expose the interfaces through :program:`ROS2`.
 
 
 References
