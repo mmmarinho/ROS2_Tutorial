@@ -117,7 +117,7 @@ it persists across callback calls.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
-   :lines: 36-48
+   :lines: 35-48
    :emphasize-lines: 5,9,12
 
 We add two parameters to be able to adjust the trajectory properties if desired. Again, these could be configurable
@@ -125,7 +125,7 @@ parameters but we leave them hard-coded for simplicity.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
-   :lines: 51-55
+   :lines: 50-54
    :emphasize-lines: 4,5
 
 We create the ``TransformStamped`` as follows. Our rotation is simple so we build Quaternion for the
