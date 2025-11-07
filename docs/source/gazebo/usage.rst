@@ -51,7 +51,8 @@ World files :file:`.sdf`
 
 Even simple world files can have a relatively complex format. Even :file:`shapes.sdf`, that has only a few simple
 objects, is difficult to parse visually. For most things, it is easier to use :program:`Gazebo` itself and limit
-and direct changes in :file:`.sdf` files.
+and direct changes in :file:`.sdf` files. The format is :file:`xml`, which should be a familiar file format by now.
+
 
 This example is `available in the official repository <https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/shapes.sdf>`_.
 
@@ -282,7 +283,7 @@ Below are the contents of `the rviz file <https://raw.githubusercontent.com/gaze
 .. dropdown:: ros_gz_sim_demos/rviz/camera.rviz
 
     .. rli:: https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_sim_demos/rviz/camera.rviz
-        :language: xml
+        :language: yaml
         :linenos:
 
 The launch file mentions the package :file:`ros_gz_bridge`, described below, which is used to create the interfaces,
