@@ -500,6 +500,13 @@ Using the logic above, we have that
 
 Let's see some examples.
 
+Sensors
++++++++
+
+Simulated sensor information is becoming evermore useful. In simulators, one of the main aspects making them useful
+will be our ability to obtain their data through :program:`ROS2`. Cameras are likely to be the most common, but
+other sensors, such as lidars, are frequently used.
+
 For each of these subsections, suppose that we have the :file:`sensors_demo.sdf` scene always open. Don't forget to
 start the simulation as well!
 
@@ -511,8 +518,8 @@ start the simulation as well!
 
     Sensor information will only start to be published after the simulation is started in :program:`Gazebo`.
 
-rgbd_camera
-+++++++++++
+gz.msgs.Image
+~~~~~~~~~~~~~
 
 In a previous section, we have seen that the :program:`Gazebo` topic ``/rgbd_camera/image`` exists and has
 transport type ``gz.msgs.Image``. Looking at the pairing table, we notice that the pairing :program:`ROS2` message
@@ -536,41 +543,58 @@ will be replicated into a :program:`ROS2` topic with the same name.
 This will show the image obtained from :program:`Gazebo` in :program:`rqt_image_view`, effectively showing that these
 two are paired.
 
-.. admonition:: Exercise
+.. admonition:: Exercises
 
-    Can you do the same for the ``/depth_camera`` internal :program:`Gazebo` topic available in the same scene?
-    What steps would you take to show the images available in :program:`Gazebo` into :program:`rqt_image_view`.
+    Can you do the same for the ``/depth_camera`` or ``/thermal_camera`` internal :program:`Gazebo` topic available in the same scene?
+    What steps would you take to show the images available in :program:`Gazebo` into :program:`rqt_image_view`?
 
-gpu_lidar
-+++++++++
+gz.msgs.LaserScan
+~~~~~~~~~~~~~~~~~
 
-With the scene :file:`sensors_demo.sdf` opened and running, we can do.
+We have already listed the :program:`Gazebo` topics for this scene, so we know that there is a topic called
+``\lidar``. We can obtain the related information with the following command.
 
-.. tab-set::
+.. code-block::
 
-    .. tab-item:: Terminal 1: Run the bridge
+    gz topic -i --topic /lidar
 
-        .. code-block:: console
+This will output the following.
 
-            ros2 run ros_gz_bridge parameter_bridge /lidar@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan
+.. code-block::
 
-    .. tab-item:: Terminal 2: Visualise on rviz2
+    Publishers [Address, Message Type]:
+      tcp://172.16.191.128:40679, gz.msgs.LaserScan
+    No subscribers on topic [/lidar]
 
-        .. code-block:: console
+By looking at the pairing table, we find that ``gz.msgs.LaserScan`` should be paired with a ``sensor_msgs/msg/LaserScan``.
+Therefore, we can run the bridge as follows.
 
-            ros2 run rviz2 rviz2 -f camera_with_lidar/link/gpu_lidar
+.. code-block:: console
 
-        Then,
+    ros2 run ros_gz_bridge \
+    parameter_bridge \
+    /lidar@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan
 
-            - Add > rviz_default_plugins > LaserScan > OK
-            - LaserScan > topic > choose \lidar > ENTER
+One convenient way to visualise this messages is through :program:`rviz2`. We can do so as follows.
 
+.. code-block:: console
 
+    ros2 run rviz2 rviz2 -f camera_with_lidar/link/gpu_lidar
+
+.. note::
+
+    We are starting :program:`rviz2` with the reference frame ``camera_with_lidar/link/gpu_lidar`` because that is
+    the frame shown in the topic ``/lidar``.
+
+We can then define the proper :program:`rviz2` view so be able to visualise the laser scan results.
+
+#. :menuselection:`Add --> rviz_default_plugins --> LaserScan --> OK`.
+#. :menuselection:`Displays --> LaserScan --> topic --> \lidar --> Press ENTER`.
 
 References
 ----------
 
-    The official documentation for ``gazebo`` is very good. Here are some main topics where this tutorial
+    The official documentation for :program:`Gazebo` is overall good. Here are some main topics where this tutorial
     borrowed from.
 
 

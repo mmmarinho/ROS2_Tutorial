@@ -56,6 +56,14 @@ will make two modifications to be able to visualize the output of our :file:`tf2
 #. In :menuselection:`Displays --> Fixed Frame`, we change the text from *map* to *world*.
 #. Then, we add the ``tf2`` visualisation with the sequence  :menuselection:`Add --> rviz_default_plugins --> TF`.
 
+.. note::
+
+    Starting :program:`rviz2` with the following command allows you to skip the first step.
+
+    .. code-block:: console
+
+        ros2 run rviz2 rviz2 -f world
+
 This is summarised in the video below.
 
 .. raw:: html
