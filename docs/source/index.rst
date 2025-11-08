@@ -219,6 +219,7 @@ If you enjoyed this tutorial, please
    gazebo/index
    gazebo/installation
    gazebo/usage
+   gazebo/ros_gz_bridge
 
 
 Disclaimers
