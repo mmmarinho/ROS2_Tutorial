@@ -292,7 +292,8 @@ for instance topics, between :program:`Gazebo` and :program:`ROS2`.
 Using ``ros_gz_bridge``
 -----------------------
 
-An effective scene that showcases the many uses of ``ros_gz_brige`` is :file:`sensors_demo.sdf`.
+An effective scene that showcases the many uses of ``ros_gz_brige`` is :file:`sensors_demo.sdf`. For the *rgbd_camera*,
+we can obtain its image as follows.
 
 .. tab-set::
 
@@ -344,6 +345,52 @@ must be paired with a correct :program:`ROS2` message if you want to access thes
 
     Internal :program:`Gazebo` topics are not the same as :program:`ROS2` topics. We must use ``ros_gz_brige`` to
     expose the interfaces through :program:`ROS2`.
+
+Therefore, for this scene, we can have
+
+depth_camera
+++++++++++++
+
+With the scene :file:`sensors_demo.sdf` opened and running, we can do.
+
+.. tab-set::
+
+    .. tab-item:: Terminal 1: Run the bridge
+
+        .. code-block:: console
+
+            ros2 run ros_gz_bridge parameter_bridge /depth_camera@sensor_msgs/msg/Image@gz.msgs.Image
+
+    .. tab-item:: Terminal 2: Show the images
+
+        .. code-block:: console
+
+            ros2 run rqt_image_view rqt_image_view /rgbd_camera/image
+
+gpu_lidar
++++++++++
+
+With the scene :file:`sensors_demo.sdf` opened and running, we can do.
+
+.. tab-set::
+
+    .. tab-item:: Terminal 1: Run the bridge
+
+        .. code-block:: console
+
+            ros2 run ros_gz_bridge parameter_bridge /lidar@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan
+
+    .. tab-item:: Terminal 2: Visualise on rviz2
+
+        .. code-block:: console
+
+            ros2 run rviz2 rviz2 -f camera_with_lidar/link/gpu_lidar
+
+        Then,
+
+            - Add > rviz_default_plugins > LaserScan > OK
+            - LaserScan > topic > choose \lidar > ENTER
+
 
 
 References

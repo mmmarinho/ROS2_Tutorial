@@ -2,6 +2,29 @@
 :program:`Gazebo` and :program:`ROS2` structure
 -----------------------------------------------
 
+Or as a point cloud
+
+.. tab-set::
+
+    .. tab-item:: Terminal 1: Run the bridge
+
+        .. code-block:: console
+
+            ros2 run ros_gz_bridge parameter_bridge /lidar/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked
+
+    .. tab-item:: Terminal 2: Visualise on rviz2
+
+        .. code-block:: console
+
+            ros2 run rviz2 rviz2 -f camera_with_lidar/link/gpu_lidar
+
+        Then,
+
+            - Add > rviz_default_plugins > LaserScan > OK
+            - LaserScan > topic > choose \lidar > ENTER
+
+tf tools such as ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map camera_with_lidar/link/gpu_lidar
+
 A :program:`Gazebo`\-related development in :program:`ROS2` will generally have four packages for each robot or system.
 One example is shown below, in the official https://github.com/gazebosim/ros_gz_project_template.
 
