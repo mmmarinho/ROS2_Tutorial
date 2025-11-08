@@ -591,6 +591,7 @@ We can then define the proper :program:`rviz2` view so be able to visualise the 
 #. :menuselection:`Add --> rviz_default_plugins --> LaserScan --> OK`.
 #. :menuselection:`Displays --> LaserScan --> topic --> \lidar --> Press ENTER`.
 
+
 References
 ----------
 

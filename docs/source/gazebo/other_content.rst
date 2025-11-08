@@ -108,3 +108,74 @@ If you explore the :program:`ROS` packages made avialable by vendors, you will n
 .. code-block:: console
 
    ros2 launch ros_gz_example_bringup diff_drive.launch.py
+
+
+Entities
+++++++++
+
+gz service -i --service /world/shapes/set_pose/blocking
+
+Service providers [Address, Request Message Type, Response Message Type]:
+  tcp://172.16.191.128:36717, gz.msgs.Pose, gz.msgs.Boolean
+
+ros2 run ros_gz_bridge \
+parameter_bridge \
+/world/shapes/set_pose/blocking@geometry_msgs/msg/PoseStamped]gz.msgs.Pose
+
+Getting entity pose information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+https://github.com/gazebosim/gz-sim/blob/gz-sim8/examples/worlds/pose_publisher.sdf
+
+Add a ``Pose Publisher`` to the entity and don't define a name. You can find the new topic by looking through the
+output of :program:`gz topic list` and you will find the following topic.
+
+    /world/shapes/model/sphere/pose
+
+Then, we check the :program:`Gazebo` message type with the following command.
+
+.. code-block::
+
+    gz topic -i --topic /world/shapes/model/sphere/pose
+
+The result of the command will be the following.
+
+.. code-block::
+
+    Publishers [Address, Message Type]:
+      tcp://172.16.191.128:33987, gz.msgs.Pose
+    No subscribers on topic [/world/shapes/model/sphere/pose]
+
+Because this will be an unilateral bridge from :program:`Gazebo` to :program:`ROS2`, we use the ``[`` instead of ``@``
+as follows.
+
+.. code-block::
+
+    ros2 run ros_gz_bridge \
+    parameter_bridge \
+    /world/shapes/model/sphere/pose@geometry_msgs/msg/Pose[gz.msgs.Pose
+
+We can see the contents of the topic with the following command.
+
+.. code-block::
+
+    ros2 topic echo /world/shapes/model/sphere/pose
+
+Which will result in the following output, showing the pose of the ``sphere`` entity.
+
+.. code-block::
+
+    ---
+    position:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+
+.. admonition:: Exercises
+
+    Can you do the same for the other shapes available in the scene? For example, for 
