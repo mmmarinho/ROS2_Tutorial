@@ -591,6 +591,158 @@ We can then define the proper :program:`rviz2` view so be able to visualise the 
 #. :menuselection:`Add --> rviz_default_plugins --> LaserScan --> OK`.
 #. :menuselection:`Displays --> LaserScan --> topic --> \lidar --> Press ENTER`.
 
+Getting entity pose information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One important aspect of entities in any simulation is their pose. We must be able to obtain them to define the behavior
+of our robots. For instance, if a box in a simulation moves, the controller might need this information to define
+evasive maneuvers.
+
+The most basic manner to be able to obtain the pose of an entity externally is to add the following to a model, in
+the :file:`.sdf` scene.
+
+.. code-block:: xml
+
+    <plugin
+            filename="gz-sim-pose-publisher-system"
+            name="gz::sim::systems::PosePublisher">
+        <publish_link_pose>false</publish_link_pose>
+        <publish_collision_pose>false</publish_collision_pose>
+        <publish_visual_pose>false</publish_visual_pose>
+        <publish_nested_model_pose>true</publish_nested_model_pose>
+    </plugin>
+
+.. note::
+
+    Settings will vary for more advanced use, but for basic shapes this will be enough.
+
+To show how this works, let us create a folder for our modified :file:`shapes.sdf` scene.
+
+.. code-block:: console
+
+    mkdir -p ~/gazebo_tutorial_workspace/scenes
+    cd ~/gazebo_tutorial_workspace/scenes
+
+In this case, the file is quite large, so I suggest downloading :file:`shapes_with_pose_publisher.sdf` and adding it to the folder above.
+
+:download:`shapes_with_pose_publisher.sdf <../../../gazebo_tutorial_workspace/scenes/shapes_with_pose_publisher.sdf>`
+
+.. dropdown:: Contents of :file:`shapes_with_pose_publisher.sdf`
+
+    You will note that this is simply the default :file:`shapes.sdf` with the plugin added to each entity.
+
+    .. literalinclude:: ../../../gazebo_tutorial_workspace/scenes/shapes_with_pose_publisher.sdf
+       :language: xml
+       :linenos:
+       :emphasize-lines: 95-102,144-151,191-198,239-246,285-292,326-333
+
+We open :program:`Gazebo` with this scene, as follows, then run the simulation by clicking the run button.
+
+.. code-block:: console
+
+    gz sim ~/gazebo_tutorial_workspace/scenes/shapes_with_pose_publisher.sdf
+
+.. note::
+
+    Don't forget to run the simulation otherwise most information will not be available.
+
+The plugin for each entity will create a ``pose`` topic. We can verify that with the following command.
+
+.. code-block:: console
+
+    gz topic -l
+
+The result will be as follows, where the relevant topics are highlighted.
+
+.. code-block:: console
+    :emphasize-lines: 6-11
+
+    /clock
+    /gazebo/resource_paths
+    /gui/camera/pose
+    /gui/currently_tracked
+    /gui/track
+    /model/box/pose
+    /model/capsule/pose
+    /model/cone/pose
+    /model/cylinder/pose
+    /model/ellipsoid/pose
+    /model/sphere/pose
+    /stats
+    /world/shapes_with_pose_publisher/clock
+    /world/shapes_with_pose_publisher/dynamic_pose/info
+    /world/shapes_with_pose_publisher/pose/info
+    /world/shapes_with_pose_publisher/scene/deletion
+    /world/shapes_with_pose_publisher/scene/info
+    /world/shapes_with_pose_publisher/state
+    /world/shapes_with_pose_publisher/stats
+    /world/shapes_with_pose_publisher/light_config
+    /world/shapes_with_pose_publisher/material_color
+
+As always, we can investigate the :program:`Gazebo` type these topics, as we expect all of them to be the same as they
+come from the same plugin. Let's choose the *box* as it's the first entity on the list.
+
+We use the following command.
+
+.. code-block:: console
+
+    gz topic -i --topic /model/box/pose
+
+It will output the type.
+
+.. code-block:: console
+
+    Publishers [Address, Message Type]:
+      tcp://172.16.191.128:41611, gz.msgs.Pose
+    No subscribers on topic [/model/box/pose]
+
+Because this will be an unilateral bridge from :program:`Gazebo` to :program:`ROS2`, we use the ``[`` instead of ``@``
+as follows.
+
+.. code-block:: console
+
+    ros2 run ros_gz_bridge \
+    parameter_bridge \
+    /model/box/pose@geometry_msgs/msg/Pose[gz.msgs.Pose
+
+We can see the contents of the topic with the following command. It will show the real-time information of the entity,
+even if you move it around within Gazebo.
+
+.. code-block:: console
+
+    ros2 topic echo /model/box/pose
+
+We can see how fast your bridge is running with the usual command below.
+
+.. code-block:: console
+
+    ros2 topic hz /model/box/pose
+
+Depending on the quality of your machine, your results will very, but you should expect this frequency to be quite
+high.
+
+.. code-block:: console
+
+    average rate: 799.066
+        min: 0.000s max: 0.009s std dev: 0.00142s window: 800
+    average rate: 824.706
+        min: 0.000s max: 0.009s std dev: 0.00129s window: 1652
+    average rate: 811.552
+        min: 0.000s max: 0.010s std dev: 0.00131s window: 2439
+    average rate: 815.633
+        min: 0.000s max: 0.010s std dev: 0.00129s window: 3267
+
+.. admonition:: Exercises
+
+    I have shown how to obtain the pose of the ``box`` entity. This scene has other five topics, namely.
+
+    - /model/capsule/pose
+    - /model/cone/pose
+    - /model/cylinder/pose
+    - /model/ellipsoid/pose
+    - /model/sphere/pose
+
+    Can you run the bridge of each one of these and see the results of each of these entities?
 
 References
 ----------

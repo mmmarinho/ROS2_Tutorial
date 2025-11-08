@@ -178,4 +178,4 @@ Which will result in the following output, showing the pose of the ``sphere`` en
 
 .. admonition:: Exercises
 
-    Can you do the same for the other shapes available in the scene? For example, for 
+    Can you do the same for the other shapes available in the scene? For example, for
