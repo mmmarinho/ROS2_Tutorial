@@ -2,6 +2,20 @@
 :program:`Gazebo` and :program:`ROS2` structure
 -----------------------------------------------
 
+These are the internal :program:`Gazebo` topics created in this scene for each sensor. Here are some pairings with
+example launch files, although the mapping is not always one-to-one.
+
+===============  ================ ===============================================================================================================================
+Sensor type      Topic name       Demo
+===============  ================ ===============================================================================================================================
+camera           camera_alone     `image_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/image_bridge.launch.py>`_
+depth_camera     depth_camera     `depth_camera.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/depth_camera.launch.py>`_
+gpu_lidar        lidar            `gpu_lidar_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/gpu_lidar_bridge.launch.py>`_
+thermal_camera   thermal_camera   **N/A**
+rgbd_camera      rgbd_camera      `rgbd_camera_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/rgbd_camera_bridge.launch.py>`_
+===============  ================ ===============================================================================================================================
+
+
 Or as a point cloud
 
 .. tab-set::

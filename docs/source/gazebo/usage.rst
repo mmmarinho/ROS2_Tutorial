@@ -289,62 +289,238 @@ Below are the contents of `the rviz file <https://raw.githubusercontent.com/gaze
 The launch file mentions the package :file:`ros_gz_bridge`, described below, which is used to create the interfaces,
 for instance topics, between :program:`Gazebo` and :program:`ROS2`.
 
+Gazebo topics and services
+--------------------------
+
+.. caution::
+
+    Internal :program:`Gazebo` topics and services are **not** the same as :program:`ROS2` topics and services.
+
+A :program:`Gazebo` scene will have a number of internal topics and services. For instance, let us refer to the following
+scene.
+
+.. dropdown:: sensors_demo.sdf
+
+    .. rli:: https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf
+        :language: xml
+
+For this section, suppose that we have the scene always open with
+
+.. code-block:: console
+
+    gz sim sensors_demo.sdf
+
+A frequently used tool to allow us to inspect internal Gazebo topics will be, in another terminal,
+
+.. code-block:: console
+
+    gz topic -l
+
+With the following result for this scene
+
+.. dropdown:: Result of :program:`gz topic -l` for ``sensors_demo.sdf``
+
+    .. code-block:: console
+
+        /camera
+        /camera_alone
+        /camera_info
+        /clock
+        /depth_camera
+        /depth_camera/performance_metrics
+        /depth_camera/points
+        /gazebo/resource_paths
+        /gui/camera/pose
+        /gui/currently_tracked
+        /gui/track
+        /lidar
+        /lidar/points
+        /rgbd_camera/camera_info
+        /rgbd_camera/depth_image
+        /rgbd_camera/image
+        /rgbd_camera/performance_metrics
+        /rgbd_camera/points
+        /sensors/marker
+        /stats
+        /thermal_camera
+        /world/lidar_sensor/clock
+        /world/lidar_sensor/dynamic_pose/info
+        /world/lidar_sensor/pose/info
+        /world/lidar_sensor/scene/deletion
+        /world/lidar_sensor/scene/info
+        /world/lidar_sensor/state
+        /world/lidar_sensor/stats
+        /world/lidar_sensor/light_config
+        /world/lidar_sensor/material_color
+
+Further information can be obtained about topics, for instance, the type of message that flows through them. We can check
+what is the message type used in one of the sensors as follows.
+
+.. code-block::
+
+    gz topic -i --topic /rgbd_camera/image
+
+This results in
+
+.. code-block:: console
+
+    Publishers [Address, Message Type]:
+      tcp://172.16.191.128:40679, gz.msgs.Image
+    Subscribers [Address, Message Type]:
+      tcp://172.16.191.128:40229, gz.msgs.Image
+
+Information about services, similarly, can be obtained with the following command.
+
+.. code-block::
+
+    gz service -l
+
+Resulting in the following output.
+
+.. dropdown:: Result of :program:`gz service -l` for ``sensors_demo.sdf``
+
+    .. code-block:: console
+
+        /camera/set_rate
+        /camera_alone/set_rate
+        /depth_camera/set_rate
+        /gazebo/resource_paths/add
+        /gazebo/resource_paths/get
+        /gazebo/resource_paths/resolve
+        /gazebo/worlds
+        /gui/camera/view_control
+        /gui/camera/view_control/reference_visual
+        /gui/camera/view_control/sensitivity
+        /gui/follow
+        /gui/follow/offset
+        /gui/move_to
+        /gui/move_to/pose
+        /lidar/set_rate
+        /rgbd_camera/set_rate
+        /sensors/marker
+        /sensors/marker/list
+        /sensors/marker_array
+        /server_control
+        /thermal_camera/set_rate
+        /world/lidar_sensor/control
+        /world/lidar_sensor/control/state
+        /world/lidar_sensor/create
+        /world/lidar_sensor/create/blocking
+        /world/lidar_sensor/create_multiple
+        /world/lidar_sensor/create_multiple/blocking
+        /world/lidar_sensor/declare_parameter
+        /world/lidar_sensor/disable_collision
+        /world/lidar_sensor/disable_collision/blocking
+        /world/lidar_sensor/enable_collision
+        /world/lidar_sensor/enable_collision/blocking
+        /world/lidar_sensor/entity/system/add
+        /world/lidar_sensor/generate_world_sdf
+        /world/lidar_sensor/get_parameter
+        /world/lidar_sensor/gui/info
+        /world/lidar_sensor/level/set_performer
+        /world/lidar_sensor/light_config
+        /world/lidar_sensor/light_config/blocking
+        /world/lidar_sensor/list_parameters
+        /world/lidar_sensor/playback/control
+        /world/lidar_sensor/remove
+        /world/lidar_sensor/remove/blocking
+        /world/lidar_sensor/scene/graph
+        /world/lidar_sensor/scene/info
+        /world/lidar_sensor/set_parameter
+        /world/lidar_sensor/set_physics
+        /world/lidar_sensor/set_physics/blocking
+        /world/lidar_sensor/set_pose
+        /world/lidar_sensor/set_pose/blocking
+        /world/lidar_sensor/set_pose_vector
+        /world/lidar_sensor/set_pose_vector/blocking
+        /world/lidar_sensor/set_spherical_coordinates
+        /world/lidar_sensor/set_spherical_coordinates/blocking
+        /world/lidar_sensor/state
+        /world/lidar_sensor/state_async
+        /world/lidar_sensor/system/info
+        /world/lidar_sensor/visual_config
+        /world/lidar_sensor/visual_config/blocking
+        /world/lidar_sensor/wheel_slip
+        /world/lidar_sensor/wheel_slip/blocking
+
+We can also obtain information about each service. For instance, with the command.
+
+.. code-block::
+
+    gz service -i --service /rgbd_camera/set_rate
+
+Resulting in the following output.
+
+.. code-block::
+
+    Service providers [Address, Request Message Type, Response Message Type]:
+      tcp://172.16.191.128:36013, gz.msgs.Double, gz.msgs.Empty
+
+There are multiple ways to interact with the :program:`Gazebo` internal topics. This can be, for instance, done
+through the commandline using similar commands to the ones we have shown so far. Nonetheless, if you have spent
+so much time larning :program:`ROS2`, it would be more convenient to find a way to **bridge** the topics and services
+from :program:`Gazebo` and :program:`ROS2`. This motivates the following section.
+
 Using ``ros_gz_bridge``
 -----------------------
 
-An effective scene that showcases the many uses of ``ros_gz_brige`` is :file:`sensors_demo.sdf`. For the *rgbd_camera*,
-we can obtain its image as follows.
+.. caution::
+
+    Internal :program:`Gazebo` topics are not the same as :program:`ROS2` topics. We must use ``ros_gz_brige`` to
+    expose the interfaces through :program:`ROS2`.
+
+Each :program:`Gazebo` message must be paired with a correct :program:`ROS2` message if you want to access these outside :program:`Gazebo`.
+The file `ros_gz_bridge/README.md <https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_bridge/README.md>`_
+in the official documentation shows the mappings.
+
+Here is the current table.
+
+.. rli:: https://raw.githubusercontent.com/gazebosim/ros_gz/refs/heads/jazzy/ros_gz_bridge/README.md
+    :language: markdown
+    :lines: 6-82
+
+We will be using mostly :program:`parameter_bridge`, which is part of :file:`ros_gz_bridge` to make these connections.
+More information about the tool can be obtained with the help command.
+
+.. code-block::
+
+    ros2 run ros_gz_bridge parameter_bridge -h
+
+To summarise the output, it is expected that we run
+
+    ros2 run ros_gz_bridge parameter_bridge ``<Gazebo Topic>``\ @\ ``<ROS Type>``\ @\ ``<Gazebo Transport Type>``
+
+where ``<Gazebo Topic>`` is whatever we defined for the entity on Gazebo, and can be obtained with ``gz topic -l``. The
+next information we obtain is the last in the command, with ``gz topic -i --topic topic_name`` to see what is the
+``<Gazebo Transport Type>`` of a given topic. Lastly, we check the pairing table, above, and see what ``<ROS Type>``
+matches the ``<Gazebo Transport Type>`` we found.
+
+Let's see some examples.
+
+rgbd_camera
++++++++++++
+
+.. note::
+
+    Sensor information will only start to be published after the simulation is started in :program:`Gazebo`.
+
+For the *rgbd_camera*, we can obtain its image as follows.
 
 .. tab-set::
 
-    .. tab-item:: Terminal 1: Start :program:`Gazebo`
-
-        Note that the images will only start to be published after the simulation is started in :program:`Gazebo`.
-
-        .. code-block:: console
-
-            gz sim sensors_demo.sdf
-
-        This example is `available in the official repository <https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf>`_.
-
-        .. dropdown:: sensors_demo.sdf
-
-            .. rli:: https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf
-                :language: xml
-
-    .. tab-item:: Terminal 2: Run the bridge
+    .. tab-item:: Terminal 1: Run the bridge
 
         .. code-block:: console
 
             ros2 run ros_gz_bridge parameter_bridge /rgbd_camera/image@sensor_msgs/msg/Image@gz.msgs.Image
 
-    .. tab-item:: Terminal 3: Show the images
+    .. tab-item:: Terminal 2: Show the images
 
         .. code-block:: console
 
             ros2 run rqt_image_view rqt_image_view /rgbd_camera/image
 
 
-These are the internal :program:`Gazebo` topics created in this scene for each sensor. Here are some pairings with
-example launch files, although the mapping is not always one-to-one.
-
-===============  ================ ===============================================================================================================================
-Sensor type      Topic name       Demo
-===============  ================ ===============================================================================================================================
-camera           camera_alone     `image_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/image_bridge.launch.py>`_
-depth_camera     depth_camera     `depth_camera.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/depth_camera.launch.py>`_
-gpu_lidar        lidar            `gpu_lidar_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/gpu_lidar_bridge.launch.py>`_
-thermal_camera   thermal_camera   **N/A**
-rgbd_camera      rgbd_camera      `rgbd_camera_bridge.launch.py <https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_sim_demos/launch/rgbd_camera_bridge.launch.py>`_
-===============  ================ ===============================================================================================================================
-
-Each :program:`Gazebo` message
-must be paired with a correct :program:`ROS2` message if you want to access these outside :program:`Gazebo`.
-
-.. caution::
-
-    Internal :program:`Gazebo` topics are not the same as :program:`ROS2` topics. We must use ``ros_gz_brige`` to
-    expose the interfaces through :program:`ROS2`.
 
 Therefore, for this scene, we can have
 
