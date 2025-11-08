@@ -466,7 +466,7 @@ Using ``ros_gz_bridge``
 
 .. caution::
 
-    Internal :program:`Gazebo` topics are not the same as :program:`ROS2` topics. We must use ``ros_gz_brige`` to
+    Internal :program:`Gazebo` topics are not the same as :program:`ROS2` topics. We must use ``ros_gz_bridge`` to
     expose the interfaces through :program:`ROS2`.
 
 Each :program:`Gazebo` message must be paired with a correct :program:`ROS2` message if you want to access these outside :program:`Gazebo`.
@@ -488,60 +488,58 @@ More information about the tool can be obtained with the help command.
 
 To summarise the output, it is expected that we run
 
-    ros2 run ros_gz_bridge parameter_bridge ``<Gazebo Topic>``\ @\ ``<ROS Type>``\ @\ ``<Gazebo Transport Type>``
+    ros2 run ros_gz_bridge \
+    parameter_bridge \
+    ``<Gazebo Topic>``\ @\ ``<ROS Type>``\ @\ ``<Gazebo Transport Type>``
 
-where ``<Gazebo Topic>`` is whatever we defined for the entity on Gazebo, and can be obtained with ``gz topic -l``. The
-next information we obtain is the last in the command, with ``gz topic -i --topic topic_name`` to see what is the
-``<Gazebo Transport Type>`` of a given topic. Lastly, we check the pairing table, above, and see what ``<ROS Type>``
-matches the ``<Gazebo Transport Type>`` we found.
+Using the logic above, we have that
+
+- ``<Gazebo Topic>`` defined for the entity on Gazebo and can be obtained with ``gz topic -l``.
+- We can find ``<Gazebo Transport Type>`` with ``gz topic -i --topic <Gazebo Topic>``.
+- Lastly, we check the pairing table and see what ``<ROS Type>`` matches the ``<Gazebo Transport Type>``.
 
 Let's see some examples.
 
-rgbd_camera
-+++++++++++
+For each of these subsections, suppose that we have the :file:`sensors_demo.sdf` scene always open. Don't forget to
+start the simulation as well!
+
+.. code-block:: console
+
+    gz sim sensors_demo.sdf
 
 .. note::
 
     Sensor information will only start to be published after the simulation is started in :program:`Gazebo`.
 
-For the *rgbd_camera*, we can obtain its image as follows.
+rgbd_camera
++++++++++++
 
-.. tab-set::
+In a previous section, we have seen that the :program:`Gazebo` topic ``/rgbd_camera/image`` exists and has
+transport type ``gz.msgs.Image``. Looking at the pairing table, we notice that the pairing :program:`ROS2` message
+type is ``sensor_msgs/msg/Image``.
 
-    .. tab-item:: Terminal 1: Run the bridge
+We can run, therefore in one terminal, the following command.
 
-        .. code-block:: console
+.. code-block:: console
 
-            ros2 run ros_gz_bridge parameter_bridge /rgbd_camera/image@sensor_msgs/msg/Image@gz.msgs.Image
+    ros2 run ros_gz_bridge \
+    parameter_bridge \
+    /rgbd_camera/image@sensor_msgs/msg/Image@gz.msgs.Image
 
-    .. tab-item:: Terminal 2: Show the images
+To show the images, we can use :program:`rqt_image_view`. Notice that the internal :program:`Gazebo` topic name
+will be replicated into a :program:`ROS2` topic with the same name.
 
-        .. code-block:: console
+.. code-block:: console
 
-            ros2 run rqt_image_view rqt_image_view /rgbd_camera/image
+    ros2 run rqt_image_view rqt_image_view /rgbd_camera/image
 
+This will show the image obtained from :program:`Gazebo` in :program:`rqt_image_view`, effectively showing that these
+two are paired.
 
+.. admonition:: Exercise
 
-Therefore, for this scene, we can have
-
-depth_camera
-++++++++++++
-
-With the scene :file:`sensors_demo.sdf` opened and running, we can do.
-
-.. tab-set::
-
-    .. tab-item:: Terminal 1: Run the bridge
-
-        .. code-block:: console
-
-            ros2 run ros_gz_bridge parameter_bridge /depth_camera@sensor_msgs/msg/Image@gz.msgs.Image
-
-    .. tab-item:: Terminal 2: Show the images
-
-        .. code-block:: console
-
-            ros2 run rqt_image_view rqt_image_view /rgbd_camera/image
+    Can you do the same for the ``/depth_camera`` internal :program:`Gazebo` topic available in the same scene?
+    What steps would you take to show the images available in :program:`Gazebo` into :program:`rqt_image_view`.
 
 gpu_lidar
 +++++++++
