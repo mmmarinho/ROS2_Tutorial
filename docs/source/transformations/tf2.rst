@@ -275,13 +275,15 @@ You might be asking yourself the following.
     I also didn't define no topic ``tf2``?????
 
 You will notice that although ``tf2`` uses topics, publishers, and subscribers, it has another layer of complexity. For
-instance, most of the time we can expect many frames to be published at the same time, making a regular subscriber
-not as useful and too busy.
+instance, most of the time we can expect many frames (think of dozens or hundreds) to be published in the same topic,
+making a regular subscriber not as useful and too busy.
 
-The broadcaster and listener, although using a ``geometry_msgs/msg/PoseStamped`` in our nodes, will convert those into
-``tf2_msgs/msg/TFMessage`` when interacting with the topic ``\tf``. Also, because of that, you can think of the topic
-``\tf`` as a *protected* topic, although no such concept seems to exist in :program:`ROS2`. Basically, in this context,
-it means that if you attempt to use ``\tf`` without using ``tf2_ros`` facilities, you are likely to be disappointed.
+The broadcaster and listener, although using a ``geometry_msgs/msg/PoseStamped`` in our nodes, will convert back-and-forth between
+``tf2_msgs/msg/TFMessage`` and ``geometry_msgs/msg/PoseStamped`` when interacting with the topic ``\tf``. Also, because of that, you can think of the topic
+``\tf`` as a *protected* topic. No such concept of *protected* topics seems to exist in :program:`ROS2`, so that is not enforced,
+you can publish and subscribe normally to that topic.
+Basically, in this context, I mean to say that if you attempt to use ``\tf`` without using ``tf2_ros`` facilities,
+you are likely to be disappointed.
 
 Either way, there is not reason to fear. You will notice that ``tf2_msgs/msg/TFMessage`` is simply an array of
 ``geometry_msgs/msg/PoseStamped``.
@@ -317,6 +319,6 @@ This should result in the following, where the important line is highlighted.
                             float64 z 0
                             float64 w 1
 
-There will be a degree of pointlessness it attempting to parse through the ``tf2`` topic output in the terminal. We will
-also not attempt to do that here. To help you with that, we will have visualisation and simulation tools shown in 
+There will be a degree of pointlessness when attempting to parse through the ``\tf`` output in the terminal. We will
+also not attempt to do that here. To help you with that, we will have visualisation and simulation tools shown in
 following sections.
