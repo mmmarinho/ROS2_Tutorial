@@ -286,3 +286,30 @@ high.
     - /model/sphere/pose
 
     Can you run the bridge of each one of these and see the results of each of these entities?
+
+Transforms
+----------
+
+.. warning::
+
+    You'll notice that each scene creates a :program:`Gazebo` topic called :file:`/world/<SCENE>/pose/info` where
+    :file:`<SCENE>` is the name of the active scene. Although this publishes useful information when checking through
+    :program:`Gazebo` topics, it does not play well with :program:`ros_gz_bridge`. You can get the transform information
+    without the headers, which in :program:`ROS2` is not useful.
+
+    .. seealso::
+
+        https://github.com/gazebosim/ros_gz/issues/172
+
+.. code-block:: console
+
+    ros2 run ros_gz_bridge \
+    parameter_bridge \
+    --ros-args -p \
+    config_file:=$HOME/gazebo_tutorial_workspace/bridge_config/transforms.yaml
+
+.. code-block:: console
+
+    ros2 run ros_gz_bridge \
+    parameter_bridge \
+    /tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V
