@@ -417,12 +417,12 @@ file.
     config_file:=$HOME/gazebo_tutorial_workspace/bridge_config/transforms.yaml
 
 In the messages published to ``tf2`` by gazebo, you will notice that the frame of reference is the name of the scene.
-In this case, ``shapes_with_pose_publisher``. Therefore, to see that the frames are correctly published via :program:`ROS2`,
+In this case, ``shapes_with_tf2_publisher``. Therefore, to see that the frames are correctly published via :program:`ROS2`,
 we can see them in :program:`rviz2` with the following command.
 
 .. code-block:: console
 
-    ros2 run rviz2 rviz2 -f shapes_with_pose_publisher
+    ros2 run rviz2 rviz2 -f shapes_with_tf2_publisher
 
 After adding the ``TF`` display, you'll be able to see all the relevant frames.
 
