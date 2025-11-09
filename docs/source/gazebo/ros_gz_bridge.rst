@@ -413,7 +413,7 @@ file.
 
 In the messages published to ``tf2`` by gazebo, you will notice that the frame of reference is the name of the scene.
 In this case, ``shapes_with_pose_publisher``. Therefore, to see that the frames are correctly published via :program:`ROS2`,
-we can see them in :program:`rviz2`.
+we can see them in :program:`rviz2` with the following command.
 
 .. code-block:: console
 
