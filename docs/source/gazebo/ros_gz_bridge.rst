@@ -142,7 +142,7 @@ We can then define the proper :program:`rviz2` view so be able to visualise the 
 #. :menuselection:`Add --> rviz_default_plugins --> LaserScan --> OK`.
 #. :menuselection:`Displays --> LaserScan --> topic --> \lidar --> Press ENTER`.
 
-Getting Pose Information
+Getting pose information
 ------------------------
 
 One important aspect of entities in any simulation is their pose. We must be able to obtain poses to define the behavior

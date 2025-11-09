@@ -41,7 +41,7 @@ They are very well made with up-to-date images and videos. Please go through the
 Fun with plugins
 ----------------
 
-Check the guides below for basic functionality. I advise starting by choosing the file :file:`ackermann_steering.sdf` in these plugins.
+Check the guides below for basic functionality.
 
 - `Apply force torque plugin <https://gazebosim.org/api/sim/8/apply_force_torque.html>`_.
 - `Mouse drag plugin <https://gazebosim.org/api/sim/8/mouse_drag.html>`_.
