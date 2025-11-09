@@ -7,6 +7,10 @@ Using ``ros_gz_bridge``
 
    Added this section.
 
+.. seealso::
+
+    Official documentation: https://docs.ros.org/en/jazzy/p/ros_gz_bridge/
+
 We have seen how to see internal :program:`Gazebo` topics through the command line. This is not yet very useful to us,
 because we want to be able to integrate :program:`Gazebo` with our own, custom :program:`ROS2` nodes.
 
@@ -45,6 +49,10 @@ Let's see some examples.
 
 Sensors
 -------
+
+.. seealso::
+
+    Official documentation: https://gazebosim.org/docs/harmonic/sensors/
 
 Simulated sensor information is becoming evermore useful. In simulators, one of the main aspects making them useful
 will be our ability to obtain their data through :program:`ROS2`. Cameras are likely to be the most common, but
