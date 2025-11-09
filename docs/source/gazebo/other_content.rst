@@ -179,3 +179,25 @@ Which will result in the following output, showing the pose of the ``sphere`` en
 .. admonition:: Exercises
 
     Can you do the same for the other shapes available in the scene? For example, for
+
+
+Setting the pose
+----------------
+
+.. code-block:: console
+
+    gz service -s /world/shapes_with_pose_publisher/set_pose \
+    --reqtype gz.msgs.Pose \
+    --reptype gz.msgs.Boolean \
+    --timeout 2000 \
+    --req 'data: "Hello"'
+
+
+https://docs.ros.org/en/rolling/p/ros_gz_sim_demos/
+
+run ros_gz_bridge parameter_bridge /world/default/set_pose@ros_gz_interfaces/srv/SetEntityPose
+
+
+
+ros2 run ros_gz_sim set_entity_pose [--name NAME | --id ID] [--type TYPE] [--pos X Y Z] [--quat X Y Z W | --euler ROLL PITCH YAW]
+

@@ -26,6 +26,11 @@ Here is the current table.
     :language: markdown
     :lines: 6-82
 
+.. important::
+
+    Some of these messages are part of the package ``ros_gz_interfaces``. You can see more details about these
+    in the `official repository <https://github.com/gazebosim/ros_gz/tree/jazzy/ros_gz_interfaces>`_.
+
 We will be using mostly :program:`parameter_bridge`, which is part of :file:`ros_gz_bridge` to make these connections.
 More information about the tool can be obtained with the help command.
 
@@ -426,16 +431,6 @@ After adding the ``TF`` display, you'll be able to see all the relevant frames.
     Suppose that you added a new model to :file:`shapes_with_tf2_publisher.sdf` and you wanted to publish that information
     to ``\tf`` as well. What files would you modify and what steps would you take to make that possible?
 
-
-Setting the pose
-----------------
-
-.. code-block:: console
-
-    gz service -s /world/shapes_with_pose_publisher/set_pose \
-    --reqtype gz.msgs.Pose \
-    --reptype gz.msgs.Boolean \
-    --timeout 2000 \
-    --req 'data: "Hello"'
-
+So far, we have seen the basics of :program:`ros_gz_bridge`, mostly allowing us to expose :program:`Gazebo` information in
+:program:`ROS2`. We haven't used any of these in our own nodes, so we will do that in the following section.
 

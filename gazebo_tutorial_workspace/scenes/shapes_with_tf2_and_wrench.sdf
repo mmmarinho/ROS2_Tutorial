@@ -8,7 +8,21 @@
                --reqtype gz.msgs.Pose --reptype gz.msgs.Boolean \
                --timeout 300 --req 'name: "box", position: {z: 5.0}'
   ]]>
-    <world name="shapes_with_tf2_publisher">
+    <world name="shapes_with_tf2_and_wrench">
+
+
+        <plugin
+                filename="gz-sim-scene-broadcaster-system"
+                name="gz::sim::systems::SceneBroadcaster">
+        </plugin>
+        <plugin
+                filename="gz-sim-apply-link-wrench-system"
+                name="gz::sim::systems::ApplyLinkWrench">
+        </plugin>
+        <plugin
+                filename="gz-sim-user-commands-system"
+                name="gz::sim::systems::UserCommands">
+        </plugin>
 
         <scene>
             <ambient>1.0 1.0 1.0</ambient>
@@ -339,5 +353,8 @@
             </plugin>
 
         </model>
+
     </world>
+
+
 </sdf>
