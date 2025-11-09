@@ -498,7 +498,7 @@ Below are the contents of `the rviz file <https://raw.githubusercontent.com/gaze
 The launch file uses the package :file:`ros_gz_bridge`, which is used to create the interfaces,
 for instance topics, between :program:`Gazebo` and :program:`ROS2`.
 
-We will see this package in more detail in the following section. 
+We will see this package in more detail in the following section.
 
 
 References

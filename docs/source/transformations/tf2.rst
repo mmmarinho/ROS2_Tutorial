@@ -236,3 +236,87 @@ the output.
 
 For now, you have to believe I'm right and that this means the broadcaster is sending a circular trajectory. We will
 see more about this in visualization and simulation.
+
+What is happening?
+------------------
+
+The broadcaster and listener are communicating through a :program:`ROS2` topic. We can check that with the following command.
+Please ensure that both nodes are running before checking this.
+
+.. code-block:: console
+
+    ros2 topic list
+
+This should output the following.
+
+.. code-block:: console
+
+    /parameter_events
+    /rosout
+    /tf
+
+We can obtain more information about the ``/tf`` topic with the following command.
+
+.. code-block:: console
+
+    ros2 topic info /tf
+
+The output of the command should be as follows.
+
+.. code-block:: console
+
+    Type: tf2_msgs/msg/TFMessage
+    Publisher count: 1
+    Subscription count: 1
+
+You might be asking yourself the following.
+
+    What nonsense is this? Wasn't it supposed to be a ``geometry_msgs/msg/PoseStamped``??
+    I also didn't define no topic ``tf2``?????
+
+You will notice that although ``tf2`` uses topics, publishers, and subscribers, it has another layer of complexity. For
+instance, most of the time we can expect many frames to be published at the same time, making a regular subscriber
+not as useful and too busy.
+
+The broadcaster and listener, although using a ``geometry_msgs/msg/PoseStamped`` in our nodes, will convert those into
+``tf2_msgs/msg/TFMessage`` when interacting with the topic ``\tf``. Also, because of that, you can think of the topic
+``\tf`` as a *protected* topic, although no such concept seems to exist in :program:`ROS2`. Basically, in this context,
+it means that if you attempt to use ``\tf`` without using ``tf2_ros`` facilities, you are likely to be disappointed.
+
+Either way, there is not reason to fear. You will notice that ``tf2_msgs/msg/TFMessage`` is simply an array of
+``geometry_msgs/msg/PoseStamped``.
+
+You can see that with the following command.
+
+.. code-block:: console
+
+    ros2 interface show tf2_msgs/msg/TFMessage
+
+This should result in the following, where the important line is highlighted.
+
+.. code-block:: console
+    :emphasize-lines: 1
+
+    geometry_msgs/TransformStamped[] transforms
+            #
+            #
+            std_msgs/Header header
+                    builtin_interfaces/Time stamp
+                            int32 sec
+                            uint32 nanosec
+                    string frame_id
+            string child_frame_id
+            Transform transform
+                    Vector3 translation
+                            float64 x
+                            float64 y
+                            float64 z
+                    Quaternion rotation
+                            float64 x 0
+                            float64 y 0
+                            float64 z 0
+                            float64 w 1
+
+There will be a degree of pointlessness it attempting to parse through the ``tf2`` topic output in the terminal. We will
+also not attempt to do that here. To help you with that, we will have visualisation and simulation tools shown in 
+following sections.
