@@ -418,3 +418,16 @@ After adding the ``TF`` display, you'll be able to see all the relevant frames.
     Suppose that you added a new model to :file:`shapes_with_tf2_publisher.sdf` and you wanted to publish that information
     to ``\tf`` as well. What files would you modify and what steps would you take to make that possible?
 
+
+Setting the pose
+----------------
+
+.. code-block:: console
+
+    gz service -s /world/shapes_with_pose_publisher/set_pose \
+    --reqtype gz.msgs.Pose \
+    --reptype gz.msgs.Boolean \
+    --timeout 2000 \
+    --req 'data: "Hello"'
+
+
