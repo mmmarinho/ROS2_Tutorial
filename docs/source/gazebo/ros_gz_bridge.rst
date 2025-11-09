@@ -301,7 +301,80 @@ Transforms
 
         https://github.com/gazebosim/ros_gz/issues/172
 
+Integration with other parts of :program:`ROS2` is important, therefore it could be useful to have all poses of relevant
+objects available for ``tf2``. In this case, we need to modify the message that is published by :program:`Gazebo`, but
+otherwise there is no big difference.
+
+Our use of ``gz::sim::systems::PosePublisher`` will be slightly modified to have ``<use_pose_vector_msg>true</use_pose_vector_msg>``,
+highlighted below.
+
+.. code-block:: xml
+    :emphasize-lines: 4
+
+    <plugin
+            filename="gz-sim-pose-publisher-system"
+            name="gz::sim::systems::PosePublisher">
+        <use_pose_vector_msg>true</use_pose_vector_msg>
+        <publish_link_pose>false</publish_link_pose>
+        <publish_collision_pose>false</publish_collision_pose>
+        <publish_visual_pose>false</publish_visual_pose>
+        <publish_nested_model_pose>true</publish_nested_model_pose>
+    </plugin>
+
+Add the following file to your :file:`~/gazebo_tutorial_workspace/scenes` folder.
+
+:download:`shapes_with_tf2_publisher.sdf <../../../gazebo_tutorial_workspace/scenes/shapes_with_tf2_publisher.sdf>`
+
+.. dropdown:: Contents of :file:`shapes_with_tf2_publisher.sdf`
+
+    This is :file:`shapes_with_pose_publisher.sdf` with one additional line in each ``gz::sim::systems::PosePublisher``
+    plugin.
+
+    .. literalinclude:: ../../../gazebo_tutorial_workspace/scenes/shapes_with_tf2_publisher.sdf
+       :language: xml
+       :linenos:
+       :emphasize-lines: 98,148,196,245,292,334
+
+We open :program:`Gazebo` with this scene, as follows, then run the simulation by clicking the run button.
+
 .. code-block:: console
+
+    gz sim ~/gazebo_tutorial_workspace/scenes/shapes_with_tf2_publisher.sdf
+
+.. note::
+
+    Don't forget to run the simulation otherwise most information will not be available.
+
+.. code-block:: console
+
+    gz topic -i --topic /model/box/pose
+
+.. code-block:: console
+
+    Publishers [Address, Message Type]:
+      tcp://172.16.191.128:34555, gz.msgs.Pose_V
+    Subscribers [Address, Message Type]:
+      tcp://172.16.191.128:37389, gz.msgs.Pose_V
+
+
+:download:`transforms.yaml <../../../gazebo_tutorial_workspace/bridge_config/transforms.yaml>`
+
+.. literalinclude:: ../../../gazebo_tutorial_workspace/bridge_config/transforms.yaml
+   :language: yaml
+   :linenos:
+
+To show how this works, let us create a folder for our :file:`.yaml` bridge files.
+
+.. code-block:: console
+
+    mkdir -p ~/gazebo_tutorial_workspace/bridge_config
+    cd ~/gazebo_tutorial_workspace/bridge_config
+
+Note that some :program:`bash` commands will not expand ``~`` into the home folder. We can replace those instances safely
+with ``$HOME``.
+
+.. code-block:: console
+    :emphasize-lines: 3,4
 
     ros2 run ros_gz_bridge \
     parameter_bridge \
@@ -310,6 +383,4 @@ Transforms
 
 .. code-block:: console
 
-    ros2 run ros_gz_bridge \
-    parameter_bridge \
-    /tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V
+    ros2 run rviz2 rviz2 -f shapes_with_pose_publisher
