@@ -134,8 +134,8 @@ We can then define the proper :program:`rviz2` view so be able to visualise the 
 #. :menuselection:`Add --> rviz_default_plugins --> LaserScan --> OK`.
 #. :menuselection:`Displays --> LaserScan --> topic --> \lidar --> Press ENTER`.
 
-Pose Information
-----------------
+Getting Pose Information
+------------------------
 
 One important aspect of entities in any simulation is their pose. We must be able to obtain poses to define the behavior
 of our robots. For instance, if a box in a simulation moves, the controller might need this information to define
@@ -287,8 +287,8 @@ high.
 
     Can you run the bridge of each one of these and see the results of each of these entities?
 
-Transforms
-----------
+Getting transforms
+------------------
 
 .. warning::
 
@@ -345,9 +345,14 @@ We open :program:`Gazebo` with this scene, as follows, then run the simulation b
 
     Don't forget to run the simulation otherwise most information will not be available.
 
+In another terminal, we can check the type of message being used to publish poses.
+
 .. code-block:: console
 
     gz topic -i --topic /model/box/pose
+
+The output will be similar to the one below. Our modification in the plugin makes the :program:`Gazebo` topic use a different
+message type, ``gz.msgs.Pose_V``.
 
 .. code-block:: console
 
@@ -356,12 +361,17 @@ We open :program:`Gazebo` with this scene, as follows, then run the simulation b
     Subscribers [Address, Message Type]:
       tcp://172.16.191.128:37389, gz.msgs.Pose_V
 
+The idea now is to bridge that type of message with ``tf2``. Beyond simply bridging the topics, we have to make sure that
+these two points are correct.
 
-:download:`transforms.yaml <../../../gazebo_tutorial_workspace/bridge_config/transforms.yaml>`
+- All transforms are published to a topic named ``/tf``, for compatibility with ``tf2``.
+- The clock used in :program:`ROS2` matches the one used in :program:`Gazebo`. This will make sure that when we look
+  up transforms the timestamp will make sense.
 
-.. literalinclude:: ../../../gazebo_tutorial_workspace/bridge_config/transforms.yaml
-   :language: yaml
-   :linenos:
+Now, because we have seven topics to bridge, it would not be practical to have that done through the command line. In addition
+we need topics that have different names in :program:`Gazebo` and :program:`ROS2`.
+
+We can take advantage of :file:`.yaml` configuration files that are supported by :program:`ros_gz_bridge`.
 
 To show how this works, let us create a folder for our :file:`.yaml` bridge files.
 
@@ -370,8 +380,20 @@ To show how this works, let us create a folder for our :file:`.yaml` bridge file
     mkdir -p ~/gazebo_tutorial_workspace/bridge_config
     cd ~/gazebo_tutorial_workspace/bridge_config
 
-Note that some :program:`bash` commands will not expand ``~`` into the home folder. We can replace those instances safely
-with ``$HOME``.
+We add the following file to the newly created folder. The ``/clock`` bridge and the ``/tf`` bridge elements that are new
+are highlighted.
+
+:download:`transforms.yaml <../../../gazebo_tutorial_workspace/bridge_config/transforms.yaml>`
+
+.. literalinclude:: ../../../gazebo_tutorial_workspace/bridge_config/transforms.yaml
+   :language: yaml
+   :emphasize-lines: 1-5,7,13,19,25,31,37
+   :linenos:
+
+We now have to call :program:`ros_gz_bridge` using this newly created file. Note that some :program:`bash` commands will
+not expand ``~`` into the home folder. We can replace those instances safely with ``$HOME``. We send any configuration we
+want with the flag ``--ros-args -p``, then set the parameter ``config_file`` to have a path to our newly created configuration
+file.
 
 .. code-block:: console
     :emphasize-lines: 3,4
@@ -381,6 +403,18 @@ with ``$HOME``.
     --ros-args -p \
     config_file:=$HOME/gazebo_tutorial_workspace/bridge_config/transforms.yaml
 
+In the messages published to ``tf2`` by gazebo, you will notice that the frame of reference is the name of the scene.
+In this case, ``shapes_with_pose_publisher``. Therefore, to see that the frames are correctly published via :program:`ROS2`,
+we can see them in :program:`rviz2`.
+
 .. code-block:: console
 
     ros2 run rviz2 rviz2 -f shapes_with_pose_publisher
+
+After adding the ``TF`` display, you'll be able to see all the relevant frames.
+
+.. admonition:: Exercise
+
+    Suppose that you added a new model to :file:`shapes_with_tf2_publisher.sdf` and you wanted to publish that information
+    to ``\tf`` as well. What files would you modify and what steps would you take to make that possible?
+
