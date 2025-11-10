@@ -10,19 +10,15 @@
   ]]>
     <world name="shapes_with_tf2_and_wrench">
 
-
-        <plugin
-                filename="gz-sim-scene-broadcaster-system"
-                name="gz::sim::systems::SceneBroadcaster">
-        </plugin>
-        <plugin
-                filename="gz-sim-apply-link-wrench-system"
-                name="gz::sim::systems::ApplyLinkWrench">
-        </plugin>
-        <plugin
-                filename="gz-sim-user-commands-system"
-                name="gz::sim::systems::UserCommands">
-        </plugin>
+        <physics type="ode">
+          <max_step_size>0.004</max_step_size>
+          <real_time_factor>1.0</real_time_factor>
+          <real_time_update_rate>250</real_time_update_rate>
+        </physics>
+        <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
+        <plugin filename="gz-sim-scene-broadcaster-system"  name="gz::sim::systems::SceneBroadcaster"/>
+        <plugin filename="gz-sim-apply-link-wrench-system"  name="gz::sim::systems::ApplyLinkWrench"/>
+        <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
 
         <scene>
             <ambient>1.0 1.0 1.0</ambient>
