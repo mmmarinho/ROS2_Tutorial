@@ -4,7 +4,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     
-    send_poses = Node(
+    node = Node(
             output='screen',
             emulate_tty=True,
             package='python_package_that_uses_gazebo',
@@ -20,6 +20,6 @@ def generate_launch_description():
     )
     
     return LaunchDescription([
-        send_poses,
+        node,
         bridge
     ])
