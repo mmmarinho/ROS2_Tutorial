@@ -76,7 +76,8 @@ def main(args=None):
         rclpy.init(args=args)
 
         node = SendPosesToGazeboNode()
-        rclpy.spin_until_future_complete(node, node.send_pose_to_gazebo())
+        future = node.send_pose_to_gazebo()
+        rclpy.spin_until_future_complete(node, future)
 
     except KeyboardInterrupt:
         pass
