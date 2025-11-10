@@ -57,7 +57,7 @@ class SendWrenchesToGazeboNode(Node):
 
         ew = EntityWrench()
 
-        # Add the entity id. It does not seem to work only with the name.
+        # Add the entity id. The entity.name is currently ignored by Gazebo.
         ew.entity.id = 9
 
         # Set the force
