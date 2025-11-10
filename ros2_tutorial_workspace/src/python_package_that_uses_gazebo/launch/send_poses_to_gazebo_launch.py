@@ -15,7 +15,7 @@ def generate_launch_description():
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
-        arguments=['/world/shapes_with_tf2_and_wrench/set_pose@roz_gz_interfaces/srv/SetEntityPose'],
+        arguments=['/world/shapes_with_tf2_and_wrench/set_pose@ros_gz_interfaces/srv/SetEntityPose'],
         output='screen'
     )
     
