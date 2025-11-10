@@ -16,3 +16,8 @@ npm install -g @mermaid-js/mermaid-cli
 # Adding other useful packages
 sudo apt-get install -y tree
 pip install nottf2
+
+# Install gazebo
+curl -OL https://raw.githubusercontent.com/UoMMScRobotics/sfr_gazebo_nav2/refs/heads/main/install_gazebo.sh
+chmod +x install_gazebo.sh
+. install_gazebo.sh

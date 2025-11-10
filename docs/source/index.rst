@@ -220,6 +220,7 @@ If you enjoyed this tutorial, please
    gazebo/installation
    gazebo/usage
    gazebo/ros_gz_bridge
+   gazebo/custom_nodes
 
 
 Disclaimers
@@ -242,9 +243,11 @@ By reading and/or using this tutorial in total or in part, you agree to these te
 Changelog
 ---------
 
-2025/08
-+++++++
+2025/08-2025/12
++++++++++++++++
 
 - Updated to ROS2 Jazzy.
 - Updated theme to ``sphinx_book_theme``.
 - Moved ROS2 parameter and launch to before the services.
+- Added a section mostly about ROS2 Actions.
+- Added a section mostly about ``tf2``.

@@ -76,7 +76,8 @@ You will notice in this file some of the most common elements of :file:`.sdf`. T
 list is not meant to be comprehensive.
 
 - ``<sdf>`` is the highest-level element, defining the entire :file:`.sdf`.
-- ``<world name>`` encloses the elements in this world and gives it a name.
+- ``<world name="world_name">`` encloses the elements in this world and gives it a name. This name, rather than the name
+  of the file, will be used when exposing topics and services.
 - ``<scene>`` has broad elements of the scene, such as background color.
 - Entities can include:
     - ``<light>`` a source of light
@@ -262,7 +263,7 @@ Resulting in the following output.
 
 There are multiple ways to interact with the :program:`Gazebo` internal topics. This can be, for instance, done
 through the commandline using similar commands to the ones we have shown so far. Nonetheless, if you have spent
-so much time larning :program:`ROS2`, it would be more convenient to find a way to **bridge** the topics and services
+so much time learning :program:`ROS2`, it would be more convenient to find a way to **bridge** the topics and services
 from :program:`Gazebo` and :program:`ROS2`.
 
 Nonetheless, when some piece of information is not flowing as expected, remember these commands to help troubleshoot.
