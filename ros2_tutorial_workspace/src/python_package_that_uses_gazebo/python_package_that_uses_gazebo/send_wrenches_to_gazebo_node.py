@@ -47,8 +47,8 @@ class SendWrenchesToGazeboNode(Node):
 
         ew = EntityWrench()
 
-        # Add the entity name
-        ew.entity.name = "box_link"
+        # Add the entity id. It does not seem to work only with the name
+        ew.entity.id = 9
 
         # Set the force
         ew.wrench.force.x = 1000.0
@@ -67,6 +67,12 @@ class SendWrenchesToGazeboNode(Node):
 
 
         self.entity_wrench_publisher.publish(ew)
+        """
+        gz topic -t \
+        /world/shapes_with_tf2_and_wrench/wrench \
+        -m gz.msgs.EntityWrench \
+        -p  'entity: {id: 9}, wrench: {force: {x: 1000.0, y: 0.0, z: 0.0}, torque: {x: 0.0, y: 0.0, z: 0.0}}'
+        """
 
 def main(args=None):
     """
