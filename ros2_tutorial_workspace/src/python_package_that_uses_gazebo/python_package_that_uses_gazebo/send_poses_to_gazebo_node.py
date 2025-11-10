@@ -31,7 +31,12 @@ class SendPosesToGazeboNode(Node):
     """A ROS2 Node that sends poses to Gazebo.
 
     This Node must be paired with ros_gz_bridge to be able to send poses to Gazebo from ROS2.
-
+    
+    gz service -s \
+    /world/shapes_with_tf2_and_wrench/set_pose \
+    --reqtype gz.msgs.Pose \
+    --reptype gz.msgs.Boolean \
+    --req 'name: "box", position: {x: 0.0, y: 0.0, z: 50}'
     """
 
     def __init__(self):
@@ -50,13 +55,13 @@ class SendPosesToGazeboNode(Node):
 
         request = SetEntityPose.Request()
 
-        # Add the entity id. The entity.name is currently ignored by Gazebo.
-        request.entity.id = 9
+        # Add the entity name. For this one, Gazebo accepts the name. :)
+        request.entity.name = "box"
 
         # Set the position
-        request.pose.position.x = 20.0
+        request.pose.position.x = 0.0
         request.pose.position.y = 0.0
-        request.pose.position.z = 0.0
+        request.pose.position.z = 50.0
 
         # Set the orientation
         request.pose.orientation.x = 0.0
