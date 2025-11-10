@@ -43,7 +43,7 @@ class SendWrenchesToGazeboNode(Node):
     def __init__(self):
         super().__init__('send_wrenches_to_gazebo_node')
 
-        self.entity_wrench_publisher = self.create_publisher(
+        self.publisher = self.create_publisher(
             msg_type=EntityWrench,
             topic='/world/shapes_with_tf2_and_wrench/wrench',
             qos_profile=1)
@@ -76,7 +76,7 @@ class SendWrenchesToGazeboNode(Node):
                                f" {ew.wrench.torque}.")
 
 
-        self.entity_wrench_publisher.publish(ew)
+        self.publisher.publish(ew)
 
 
 def main(args=None):

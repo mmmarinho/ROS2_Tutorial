@@ -23,7 +23,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "send_wrenches_to_gazebo_node = python_package_that_uses_gazebo.send_wrenches_to_gazebo_node:main"
+            "send_wrenches_to_gazebo_node = python_package_that_uses_gazebo.send_wrenches_to_gazebo_node:main",
+            "send_poses_to_gazebo_node = python_package_that_uses_gazebo.send_poses_to_gazebo_node:main",
         ],
     },
 )
