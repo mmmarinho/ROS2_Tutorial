@@ -49,13 +49,13 @@ class ControlShapeThurstNode(Node):
         self.transform_listener = tf2_ros.TransformListener(self.transform_listener_buffer, self)
 
         # Information about the transform we want to listen to
-        self.parent_name = "world"
-        self.child_name = "robot_1"
+        self.parent_name = "shapes_with_tf2_and_wrench"
+        self.child_name = "box"
 
-        self.timer_period: float = 0.1
+        self.timer_period: float = 0.001
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
 
-    def send_wrench_to_gazebo(self):
+    def send_wrench_to_gazebo(self, force_x: float = 0.0):
         """Basic method showing the creation of Wrenches objects."""
 
         ew = EntityWrench()
@@ -64,7 +64,7 @@ class ControlShapeThurstNode(Node):
         ew.entity.id = 9
 
         # Set the force
-        ew.wrench.force.x = 1000.0
+        ew.wrench.force.x = force_x
         ew.wrench.force.y = 0.0
         ew.wrench.force.z = 0.0
 
@@ -73,13 +73,9 @@ class ControlShapeThurstNode(Node):
         ew.wrench.torque.y = 0.0
         ew.wrench.torque.z = 0.0
 
-        self.get_logger().info(f"This sent entity {ew.entity.name} a wrench with force:"
-                               f" {ew.wrench.force} "
-                               f"and torque:"
-                               f" {ew.wrench.torque}.")
+        #self.get_logger().info(f"Sent wrench!")
 
-
-        self.publisher.publish(ew)
+        self.wrench_publisher.publish(ew)
 
     def timer_callback(self):
 
@@ -88,8 +84,13 @@ class ControlShapeThurstNode(Node):
                     self.parent_name,
                     self.child_name,
                     rclpy.time.Time())
+                    
+            target_x = 0.0
+            current_x = tfs.transform.translation.x
+            error_x = current_x - target_x
+            proportional_gain = 10.0
 
-            self.get_logger().info(f"Transform: {tfs}")
+            self.send_wrench_to_gazebo(-proportional_gain * error_x)
 
         except tf2_ros.TransformException as e:
 
