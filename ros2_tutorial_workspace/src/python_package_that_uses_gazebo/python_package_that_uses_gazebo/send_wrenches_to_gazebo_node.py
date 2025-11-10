@@ -48,7 +48,7 @@ class SendWrenchesToGazeboNode(Node):
         ew = EntityWrench()
 
         # Add the entity name
-        ew.entity.name = "box"
+        ew.entity.name = "box_link"
 
         # Set the force
         ew.wrench.force.x = 1000.0
