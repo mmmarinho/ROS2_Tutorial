@@ -54,15 +54,15 @@ class SendPosesToGazeboNode(Node):
         request.entity.id = 9
 
         # Set the position
-        request.position.x = 20.0
-        request.position.y = 0.0
-        request.position.z = 0.0
+        request.pose.position.x = 20.0
+        request.pose.position.y = 0.0
+        request.pose.position.z = 0.0
 
         # Set the orientation
-        request.orientation.x = 0.0
-        request.orientation.y = 0.0
-        request.orientation.z = 0.0
-        request.orientation.w = 1.0
+        request.pose.orientation.x = 0.0
+        request.pose.orientation.y = 0.0
+        request.pose.orientation.z = 0.0
+        request.pose.orientation.w = 1.0
 
         return self.service_client.call_async(request)
 
