@@ -112,6 +112,15 @@ Let us use an example with sensors. This example is `available in the official r
 
 For this section, suppose that we have the scene always open with the following command.
 
+.. tip::
+
+    You will see online, very frequently, the command using ``-v4``. For instance, as follows. This allows :program:`Gazebo`
+    to output many messages to the terminal in which it was opened to help you understand what is happening.
+
+    .. code-block::
+
+        gz sim -v4 sensors_demo.sdf
+
 .. code-block:: console
 
     gz sim sensors_demo.sdf

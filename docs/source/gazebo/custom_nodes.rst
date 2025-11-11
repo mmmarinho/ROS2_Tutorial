@@ -12,7 +12,9 @@ Interface :program:`Gazebo` with custom :program:`ROS2` nodes
     This would be the official way: https://gazebosim.org/docs/harmonic/ros_gz_project_template_guide/
 
 In this section, our intention is to control things in :program:`Gazebo` from a :program:`ROS2` package, using nodes
-and launch files as needed.
+and launch files as needed. For things that are well supported in :program:`Gazebo`, this will work fine. For anything
+new, you might need to dive more deeply into :program:`Gazebo` plugins, which is considerably outside the scope of a
+tutorial like this one.
 
 There is a lot of sample code available online for :program:`Gazebo` integration. You will also see frequent patterns of
 having multiple packages in a single project, to correctly organize the package according to :program:`Gazebo` logic.
@@ -43,29 +45,29 @@ We will use two systems in this example. We will use ``gz::sim::systems::UserCom
 entities and ``gz::sim::systems::ApplyLinkWrench`` to allow us to set wrenches to links. This is illustrative because
 poses use :program:`Gazebo` services and wrenches use :program:`Gazebo` topics.
 
-.. important::
-
-    The scene with a :file:`gz::sim::systems::ApplyLinkWrench` will also need to have a ``gz::sim::systems::SceneBroadcaster``
-    or the scene will not load.
-
 We will modify our ``shapes_with_tf2_publisher.sdf`` to add the following lines inside the ``<world>`` tag.
 
-.. code-block:: xml
+.. literalinclude:: ../../../gazebo_tutorial_workspace/scenes/shapes_with_tf2_and_wrench.sdf
+   :language: xml
+   :lines: 13-21
 
-    <plugin
-            filename="gz-sim-scene-broadcaster-system"
-            name="gz::sim::systems::SceneBroadcaster">
-    </plugin>
-    <plugin
-            filename="gz-sim-apply-link-wrench-system"
-            name="gz::sim::systems::ApplyLinkWrench">
-    </plugin>
-    <plugin
-            filename="gz-sim-user-commands-system"
-            name="gz::sim::systems::UserCommands">
-    </plugin>
+Here's a brief explanation of why we need each one of these.
 
-Add the following file to your :file:`~/gazebo_tutorial_workspace/scenes` folder.
+.. note::
+
+    More information is available in the :file:`gz-sim/src/systems` folder at https://github.com/gazebosim/gz-sim/tree/gz-sim8/src/systems.
+
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+|``gz::sim::systems::Physics``          |  The physics behavior needed by the other systems.                                                                                         |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+|``gz::sim::systems::SceneBroadcaster`` |  Needed by the other systems `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/scene_broadcaster/SceneBroadcaster.hh>`_.|
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+|``gz::sim::systems::ApplyLinkWrench``  |  Creates the ``/wrench`` topic `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/user_commands/UserCommands.hh>`_.      |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+|``gz::sim::systems::UserCommands``     |  Creates the ``/set_pose`` topic `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/user_commands/UserCommands.hh>`_.    |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+
+We start by adding the following file to your :file:`~/gazebo_tutorial_workspace/scenes` folder.
 
 :download:`shapes_with_tf2_and_wrench.sdf <../../../gazebo_tutorial_workspace/scenes/shapes_with_tf2_and_wrench.sdf>`
 
@@ -74,7 +76,7 @@ Add the following file to your :file:`~/gazebo_tutorial_workspace/scenes` folder
     .. literalinclude:: ../../../gazebo_tutorial_workspace/scenes/shapes_with_tf2_and_wrench.sdf
        :language: xml
        :linenos:
-       :emphasize-lines: 14-25
+       :emphasize-lines: 13-21
 
 We can open this scene in :program:`Gazebo` with the following command.
 
@@ -144,25 +146,26 @@ Objective
 
 Our objectives in this section will be as follows.
 
-1. Send :program:`ROS2` messages to the ``[...]/wrench`` :program:`Gazebo` topic.
-    - It uses ``gz.msgs.EntityWrench``, therefore the pairing message is ``ros_gz_interfaces/msg/EntityWrench``.
-2. Use a :program:`ROS2` service to call the ``[...]/set_pose`` :program:`Gazebo` service.
-    - It uses ``gz.msgs.Pose`` for the request, therefore the pairing message can be ``geometry_msgs/msg/Pose``.
-    - It uses ``gz.msgs.Boolean`` for the response, therefore the pairing message is ``std_msgs/msg/Bool``.
+1. Send :program:`ROS2` messages to the ``[...]/wrench`` :program:`Gazebo` topic. It uses ``gz.msgs.EntityWrench``,
+   therefore the pairing message is ``ros_gz_interfaces/msg/EntityWrench``.
+2. Use a :program:`ROS2` service to call the ``[...]/set_pose`` :program:`Gazebo` service. The interface is not listed in
+   the official list, but we will use ``ros_gz_interfaces/srv/SetEntityPose``. See the official
+   repository: https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_interfaces/srv/SetEntityPose.srv.
 
+The pose messages will be processed by ``tf2``.
 
 Create the package
 ------------------
 
-We start by creating a package that depends on the interface packages mentioned above, namely ``ros_gz_interfaces``,
-``geometry_msgs``, and ``std_msgs``.
+We start by creating a package that depends on the interface packages mentioned above, namely ``ros_gz_interfaces`` and
+``tf2_ros``.
 
 .. code-block:: console
 
     cd ~/ros2_tutorial_workspace/src
     ros2 pkg create python_package_that_uses_gazebo \
     --build-type ament_python \
-    --dependencies rclpy ros_gz_interfaces geometry_msgs std_msgs
+    --dependencies rclpy ros_gz_interfaces tf2_ros
 
 .. dropdown:: ros2 pkg create output
 
@@ -207,17 +210,139 @@ We start by creating a package that depends on the interface packages mentioned 
 Files
 -----
 
-Nodes that interface with :program:`Gazebo`
--------------------------------------------
+We will be working on the following files.
+
+.. code-block:: console
+    :emphasize-lines: 3,5-7,11-13,17
+
+    python_package_that_uses_gazebo/
+    |-- config_bridge
+    |   `-- control_shape_thrust.yaml
+    |-- launch
+    |   |-- control_shape_thrust_launch.py
+    |   |-- send_poses_to_gazebo_launch.py
+    |   `-- send_wrenches_to_gazebo_launch.py
+    |-- package.xml
+    |-- python_package_that_uses_gazebo
+    |   |-- __init__.py
+    |   |-- control_shape_thrust_node.py
+    |   |-- send_poses_to_gazebo_node.py
+    |   `-- send_wrenches_to_gazebo_node.py
+    |-- resource
+    |   `-- python_package_that_uses_gazebo
+    |-- setup.cfg
+    |-- setup.py
+    `-- test
+        |-- test_copyright.py
+        |-- test_flake8.py
+        `-- test_pep257.py
+
+Sending poses to :program:`Gazebo`
+----------------------------------
+
+.. admonition:: Summary
+
+    We will make a node that does the following for us, but through :program:`ROS2`.
+
+    .. code-block:: console
+
+            gz service -s \
+            /world/shapes_with_tf2_and_wrench/set_pose \
+            --reqtype gz.msgs.Pose \
+            --reptype gz.msgs.Boolean \
+            --req 'name: "box", position: {x: 0.0, y: 0.0, z: 50}'
+
+We'll be able to send poses to :program:`Gazebo` with the following node. It is a relatively simple node with a
+service client.
+
+:download:`send_poses_to_gazebo_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
+   :language: python
+   :lines: 24-
+   :linenos:
+
+There are perhaps only two unfamiliar aspects of this node by now. First, that we need to send the correct entity
+name for :program:`Gazebo` to know which entity to set the pose. This name can be obtained in :program:`Gazebo`\`s GUI.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
+   :language: python
+   :lines: 44-63
+   :emphasize-lines: 7
+
+The second possibly unfamiliar is the choice of ``rclpy.spin_until_future_complete`` to illustrate calling the service
+client only once.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
+   :language: python
+   :lines: 66-81
+   :emphasize-lines: 11
+
+The launch file
++++++++++++++++
+
+This node will not work without a pairing ``parameter_bridge``. We add the following launch file to the :file:`launch`
+folder.
+
+:download:`send_poses_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/send_poses_to_gazebo_launch.py
+   :language: python
+   :linenos:
+
+Sending wrenches to :program:`Gazebo`
+-------------------------------------
+
+:download:`send_wrenches_to_gazebo_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_node.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_node.py
+   :language: python
+   :lines: 24-
+   :linenos:
+
+The launch file
++++++++++++++++
+
+This node will not work without a pairing ``parameter_bridge``. We add the following launch file to the :file:`launch`
+folder.
+
+:download:`send_wrenches_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_launch.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/send_wrenches_to_gazebo_launch.py
+   :language: python
+   :linenos:
+
+Controlling thrust of shapes
+----------------------------
+
+:download:`send_poses_to_gazebo_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
+   :language: python
+   :lines: 24-
+   :linenos:
+
+The launch file
++++++++++++++++
+
+:download:`send_poses_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_launch.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/control_shape_thrust_launch.py
+   :language: python
+   :linenos:
+
 
 Adjusting the :file:`setup.py`
 ------------------------------
 
 This file will include the directives for the server and client. The one for the server is highlighted below.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/setup.py
+:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/setup.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/setup.py
    :language: python
-   :emphasize-lines: 23
+   :emphasize-lines: 1,2,15,16,27-29
+   :linenos:
 
 Build and source
 ----------------

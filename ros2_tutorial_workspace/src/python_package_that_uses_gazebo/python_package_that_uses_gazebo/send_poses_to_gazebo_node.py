@@ -28,16 +28,7 @@ import rclpy
 from rclpy.node import Node
 
 class SendPosesToGazeboNode(Node):
-    """A ROS2 Node that sends poses to Gazebo.
-
-    This Node must be paired with ros_gz_bridge to be able to send poses to Gazebo from ROS2.
-    
-    gz service -s \
-    /world/shapes_with_tf2_and_wrench/set_pose \
-    --reqtype gz.msgs.Pose \
-    --reptype gz.msgs.Boolean \
-    --req 'name: "box", position: {x: 0.0, y: 0.0, z: 50}'
-    """
+    """A ROS2 Node that sends poses to Gazebo"""
 
     def __init__(self):
         super().__init__('send_poses_to_gazebo_node')
