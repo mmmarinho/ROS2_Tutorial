@@ -36,6 +36,7 @@ class ControlShapeThrustNode(Node):
     def __init__(self):
         super().__init__('control_shape_thurst_node')
 
+        # Structured easily to be changed into configurable parameters
         self._gazebo_world_name = "shapes_with_tf2_and_wrench"
         self._wrench_topic = f'/world/{self._gazebo_world_name}/wrench'
         self._gazebo_entity_name = "box"
@@ -64,8 +65,13 @@ class ControlShapeThrustNode(Node):
         self.timer_period: float = 0.001
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
 
+    def compute_control_action(self, current, target, proportional_gain:float = 5.0) -> float:
+        """A simple proportional controller"""
+        error = current - target
+        return -proportional_gain * error
+
     def send_force_to_gazebo(self, force: tuple[float, float, float] = (0, 0, 0)) -> None:
-        """Basic method to send wrench to an entity."""
+        """Basic method to send force to an entity."""
 
         ew = EntityWrench()
 
@@ -85,6 +91,7 @@ class ControlShapeThrustNode(Node):
         self.wrench_publisher.publish(ew)
 
     def timer_callback(self):
+        """The timer callback will look up the transforms and send the next control action."""
 
         try:
             tfs =   self.transform_listener_buffer.lookup_transform(
@@ -92,14 +99,11 @@ class ControlShapeThrustNode(Node):
                     self.child_name,
                     rclpy.time.Time())
 
-            # A simple proportional controller with feedforward action to counter-balance the gravity force
-            target_x = -3.0
-            current_x = tfs.transform.translation.x
-            error_x = current_x - target_x
-            proportional_gain = 5.0
-            control_signal: float = -proportional_gain * error_x
+            # A simple proportional controller for the x-axis force
+            u = self.compute_control_action(tfs.transform.translation.x, -3.0)
+
             self.send_force_to_gazebo(
-                (control_signal,
+                (u,
                  0.0,
                  0.0)
             )
