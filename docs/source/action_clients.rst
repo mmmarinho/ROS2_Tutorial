@@ -31,13 +31,13 @@ calls for the goal and the result, the node is free to do other tasks while thos
       participant Action Client as Action Client
       participant Action Server as Action Server
       autonumber
-      Action Client ->>+ Action Server: action_client.send_goal_async()
-      Action Server -->>- Action Client: ActionClientNode.goal_response_callback()
-      Action Client ->>+ Action Server: action_client.get_result_async()
+      Action Client ->>+ Action Server: Send Goal
+      Action Server -->>- Action Client: Receive Goal Response
+      Action Client ->>+ Action Server: Request Result
       loop While action has not ended
-        Action Server -->> Action Client: ActionClientNode.action_feedback_callback()
+        Action Server -->> Action Client: Receive Feedback
       end
-      Action Server -->>- Action Client: ActionClientNode.action_result_callback()
+      Action Server -->>- Action Client: Receive Result
 
 Files
 -----

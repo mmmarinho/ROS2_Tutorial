@@ -46,7 +46,7 @@ class MoveStraightIn2DActionClientNode(Node):
         goal_msg.desired_position = desired_position
 
         while not self.action_client.wait_for_server(timeout_sec=1.0):
-            self.get_logger().info(f'service {self.action_client} not available, waiting...')
+            self.get_logger().info(f'action {self.action_client} not available, waiting...')
 
         self.get_logger().info(f'Sending goal: {desired_position}.')
 

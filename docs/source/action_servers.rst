@@ -30,11 +30,11 @@ is the need to process and send feedback until the action is completed or aborte
         participant Action Client as Action Client
         participant Action Server as Action Server
         autonumber
-        Action Client ->>+ Action Server: ActionServer.callback(ServerGoalHandle)
+        Action Client ->>+ Action Server: Receive Goal
         loop While action has not ended
-        Action Server -->> Action Client: ServerGoalHandle.publish_feedback()
+        Action Server -->> Action Client: Publish Feedback
         end
-        Action Server -->>- Action Client: return <action>.Result()
+        Action Server -->>- Action Client: Send Result
 
 Files
 -----
