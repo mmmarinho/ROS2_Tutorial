@@ -26,7 +26,7 @@ setup(
         'console_scripts': [
             "send_wrenches_to_gazebo_node = python_package_that_uses_gazebo.send_wrenches_to_gazebo_node:main",
             "send_poses_to_gazebo_node = python_package_that_uses_gazebo.send_poses_to_gazebo_node:main",
-            "control_shape_thurst_node = python_package_that_uses_gazebo.control_shape_thurst_node:main"
+            "control_shape_thrust_node = python_package_that_uses_gazebo.control_shape_thrust_node:main"
         ],
     },
 )
