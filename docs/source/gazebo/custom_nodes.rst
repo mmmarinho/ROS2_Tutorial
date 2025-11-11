@@ -278,6 +278,14 @@ client only once.
    :lines: 66-81
    :emphasize-lines: 11
 
+.. admonition:: Exercises
+
+    How would you approach this node if you had to, for instance.
+
+    - Accept the entity information as a parameter for the node.
+    - Accept the pose as a parameter from the node.
+    - Set the pose of multiple entities.
+
 The launch file
 +++++++++++++++
 
@@ -327,6 +335,16 @@ and :program:`Gazebo` won't recognise it.
 
     Yes, for wrenches, we need the ``id``. For the pose, we use the ``name``. Such is life.
 
+.. admonition:: Exercises
+
+    How would you approach this node if you had to, for instance.
+
+    - Accept the entity information as a parameter for the node.
+    - Accept the wrench as a parameter from the node.
+    - Publish the wrench of multiple entities.
+    - Define the wrench based on other information?
+        - The next section shows one example of it.
+
 The launch file
 +++++++++++++++
 
@@ -353,6 +371,16 @@ This example highlights one possible way of interacting with :program:`Gazebo`.
    :language: python
    :lines: 24-
    :linenos:
+
+.. admonition:: Exercises
+
+    How would you approach this node if you had to, for instance.
+
+    - Accept relevant information as a parameter for the node.
+    - Control the shape via thrusts in the 2D plane.
+    - Add derivative and integral control actions.
+    - Control the shape in 3D.
+        - How would the gravity be counterbalanced?
 
 The bridge file
 +++++++++++++++
