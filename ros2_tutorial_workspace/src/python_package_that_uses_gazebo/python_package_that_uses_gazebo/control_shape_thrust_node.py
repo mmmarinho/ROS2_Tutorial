@@ -41,7 +41,6 @@ class ControlShapeThrustNode(Node):
         self._wrench_topic = f'/world/{self._gazebo_world_name}/wrench'
         self._gazebo_entity_name = "box" # Find this in Gazebo
         self._gazebo_entity_id = 9 # Find this in Gazebo
-        self._gazebo_entity_mass = 0.1
 
         # Set up the wrench publisher
         self.wrench_publisher = self.create_publisher(

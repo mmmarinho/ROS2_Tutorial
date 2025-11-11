@@ -372,6 +372,31 @@ This example highlights one possible way of interacting with :program:`Gazebo`.
    :lines: 24-
    :linenos:
 
+We start by having multiple hard-coded values to configure the node. This is illustrative and because of how this is
+organised it would be easier to turn them into configurable parameters.
+
+As you have seen in previous examples, ``_gazebo_world_name`` is used to define the topic name for the wrench and
+also the parent reference frame for ``tf2``. The ``_gazebo_entity_name`` is used to get the child frame for ``tf2``.
+Lastly, `_gazebo_entity_id` is used to send the wrench to the correct entity.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
+   :language: python
+   :lines: 39-43
+
+There is also a simple proportional controller in one dimension.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
+   :language: python
+   :lines: 67-70
+
+Lastly, in the ``timer_callback``, we use the current coordinate value to compute the control action and send it to
+:program:`Gazebo`.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
+   :language: python
+   :emphasize-lines: 11,13
+   :lines: 92-113
+
 .. admonition:: Exercises
 
     How would you approach this node if you had to, for instance.
