@@ -242,7 +242,7 @@ Sending poses to :program:`Gazebo`
 
 .. admonition:: Summary
 
-    We will make a node that does the following for us, but through :program:`ROS2`.
+    We will make a node that does the following for us through :program:`ROS2`.
 
     .. code-block:: console
 
@@ -293,12 +293,39 @@ folder.
 Sending wrenches to :program:`Gazebo`
 -------------------------------------
 
+.. admonition:: Summary
+
+    We will make a node that does the following for us through :program:`ROS2`.
+
+    .. code-block:: console
+
+            gz topic -t \
+            /world/shapes_with_tf2_and_wrench/wrench \
+            -m gz.msgs.EntityWrench \
+            -p  'entity: {id: 9}, wrench: {force: {x: 1000.0, y: 0.0, z: 0.0}, torque: {x: 0.0, y: 0.0, z: 0.0}}'
+
+We'll be able to send poses to :program:`Gazebo` with the following node. It is a relatively simple node with a
+publisher.
+
 :download:`send_wrenches_to_gazebo_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_node.py>`
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_node.py
    :language: python
    :lines: 24-
    :linenos:
+
+The only unfamiliar aspect is shown below. The ``id`` of the :program:`Gazebo` entity must be sent. You can obtain
+that information from :program:`Gazebo`\'s GUI. Note that here, trying to send a ``name`` instead is inconsequential
+and :program:`Gazebo` won't recognise it.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_node.py
+   :language: python
+   :lines: 45-69
+   :emphasize-lines: 7
+
+.. admonition:: Wait... what?
+
+    Yes, for wrenches, we need the ``id``. For the pose, we use the ``name``. Such is life.
 
 The launch file
 +++++++++++++++
@@ -315,6 +342,11 @@ folder.
 Controlling thrust of shapes
 ----------------------------
 
+Lastly, we can have a slightly more complex example. In this example, we read the poses through ``tf2``. Then, using
+that pose information, we publish a wrench. This way, we can attempt to move a shape to a given place in the scene.
+
+This example highlights one possible way of interacting with :program:`Gazebo`.
+
 :download:`send_poses_to_gazebo_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py>`
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
@@ -322,8 +354,22 @@ Controlling thrust of shapes
    :lines: 24-
    :linenos:
 
+The bridge file
++++++++++++++++
+
+The bridge file, added to the folder :file:`config_bridge`, will manage bridging the topics with ``tf2`` and the wrench.
+
+:download:`send_poses_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/config_bridge/control_shape_thrust.yaml>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/config_bridge/control_shape_thrust.yaml
+   :language: yaml
+   :linenos:
+
 The launch file
 +++++++++++++++
+
+This node will not work without a pairing ``parameter_bridge``. We add the following launch file to the :file:`launch`
+folder.
 
 :download:`send_poses_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_launch.py>`
 
@@ -335,7 +381,9 @@ The launch file
 Adjusting the :file:`setup.py`
 ------------------------------
 
-This file will include the directives for the server and client. The one for the server is highlighted below.
+This file will include the directives for all the three nodes, added in ``entry_points``. We also have on L15
+the directive for the launch files. Lastly, on L16, we have a directive to install the bridge configuration file
+which is used by :file:`control_shape_thrust_launch.py`.
 
 :download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/setup.py>`
 
@@ -349,7 +397,7 @@ Build and source
 
 Before we proceed, let us build and source once.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 Testing
 -------

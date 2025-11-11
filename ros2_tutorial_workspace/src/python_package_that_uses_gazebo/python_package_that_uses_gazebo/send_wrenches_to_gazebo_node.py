@@ -28,17 +28,7 @@ import rclpy
 from rclpy.node import Node
 
 class SendWrenchesToGazeboNode(Node):
-    """A ROS2 Node that sends wrenches to Gazebo.
-
-    This Node must be paired with ros_gz_bridge to be able to send wrenches to Gazebo from ROS2.
-
-    This is the equivalent protobuf message sent to Gazebo, considering possible changes in values.
-
-        gz topic -t \
-        /world/shapes_with_tf2_and_wrench/wrench \
-        -m gz.msgs.EntityWrench \
-        -p  'entity: {id: 9}, wrench: {force: {x: 1000.0, y: 0.0, z: 0.0}, torque: {x: 0.0, y: 0.0, z: 0.0}}'
-    """
+    """A ROS2 Node that sends wrenches to Gazebo."""
 
     def __init__(self):
         super().__init__('send_wrenches_to_gazebo_node')
@@ -53,7 +43,7 @@ class SendWrenchesToGazeboNode(Node):
             time.sleep(1)
 
     def send_wrench_to_gazebo(self):
-        """Basic method showing the creation of Wrenches objects."""
+        """Basic method publishing wrenches to Gazebo."""
 
         ew = EntityWrench()
 
