@@ -461,11 +461,28 @@ We first open and run the simulation.
 
     gz sim $HOME/gazebo_tutorial_workspace/scenes/shapes_with_tf2_and_wrench.sdf
 
-We can run the first example with the following command.
+It is possible to run each of these examples in this particular order and see their effects.
+
+We can run the first example with the following command. Then,
 
 .. code-block:: console
 
     ros2 launch python_package_that_uses_gazebo send_poses_to_gazebo_launch.py
+
+.. dropdown::
+
+    .. code-block::
+
+        [INFO] [launch]: All log files can be found below /home/murilo/.ros/log/2025-11-12-10-29-03-415524-murilo-VMware20-1-6420
+        [INFO] [launch]: Default logging verbosity is set to INFO
+        [INFO] [send_poses_to_gazebo_node-1]: process started with pid [6423]
+        [INFO] [parameter_bridge-2]: process started with pid [6424]
+        [parameter_bridge-2] [INFO] [1762943343.652578097] [ros_gz_bridge]: Creating ROS->GZ service bridge [/world/shapes_with_tf2_and_wrench/set_pose (ros_gz_interfaces/srv/SetEntityPose -> /)]
+        [INFO] [send_poses_to_gazebo_node-1]: process has finished cleanly [pid 6423]
+        ^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+        [parameter_bridge-2] [INFO] [1762943347.930139121] [rclcpp]: signal_handler(signum=2)
+        [INFO] [parameter_bridge-2]: process has finished cleanly [pid 6424]
+
 
 We can run the second example with the following command.
 
@@ -473,8 +490,46 @@ We can run the second example with the following command.
 
     ros2 launch python_package_that_uses_gazebo send_wrenches_to_gazebo_launch.py
 
+.. dropdown::
+
+    .. code-block::
+
+        [INFO] [launch]: All log files can be found below /home/murilo/.ros/log/2025-11-12-10-29-35-514265-murilo-VMware20-1-6504
+        [INFO] [launch]: Default logging verbosity is set to INFO
+        [INFO] [send_wrenches_to_gazebo_node-1]: process started with pid [6507]
+        [INFO] [parameter_bridge-2]: process started with pid [6508]
+        [parameter_bridge-2] [INFO] [1762943375.599973888] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/world/shapes_with_tf2_and_wrench/wrench (ros_gz_interfaces/msg/EntityWrench) -> /world/shapes_with_tf2_and_wrench/wrench (gz.msgs.EntityWrench)] (Lazy 0)
+        [send_wrenches_to_gazebo_node-1] Waiting for subscriber to be connected...
+        [send_wrenches_to_gazebo_node-1] [INFO] [1762943376.818068638] [send_wrenches_to_gazebo_node]: This sent entity  a wrench with force: geometry_msgs.msg.Vector3(x=1000.0, y=0.0, z=0.0) and torque: geometry_msgs.msg.Vector3(x=0.0, y=0.0, z=0.0).
+        [parameter_bridge-2] [INFO] [1762943376.824228506] [ros_gz_bridge]: Passing message from ROS ros_gz_interfaces/msg/EntityWrench to Gazebo gz.msgs.EntityWrench (showing msg only once per type)
+        ^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+        [parameter_bridge-2] [INFO] [1762943378.394190781] [rclcpp]: signal_handler(signum=2)
+        [INFO] [parameter_bridge-2]: process has finished cleanly [pid 6508]
+        [INFO] [send_wrenches_to_gazebo_node-1]: process has finished cleanly [pid 6507]
+
+
 We can run the third example with the following command.
+
 
 .. code-block:: console
 
     ros2 launch python_package_that_uses_gazebo control_shape_thrust_launch.py
+
+.. dropdown::
+
+    .. code-block::
+
+        [INFO] [launch]: All log files can be found below /home/murilo/.ros/log/2025-11-12-10-30-17-199931-murilo-VMware20-1-6604
+        [INFO] [launch]: Default logging verbosity is set to INFO
+        /home/murilo/git_another/ROS2_Tutorial/ros2_tutorial_workspace/install/python_package_that_uses_gazebo/share/python_package_that_uses_gazebo/config_bridge/control_shape_thrust.yaml
+        [INFO] [control_shape_thrust_node-1]: process started with pid [6607]
+        [INFO] [parameter_bridge-2]: process started with pid [6608]
+        [control_shape_thrust_node-1] Waiting for subscriber to be connected to /world/shapes_with_tf2_and_wrench/wrench...
+        [parameter_bridge-2] [INFO] [1762943418.299653851] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+        [parameter_bridge-2] [INFO] [1762943418.304154168] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/model/box/pose (gz.msgs.Pose_V) -> /tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+        [parameter_bridge-2] [INFO] [1762943418.316157126] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/world/shapes_with_tf2_and_wrench/wrench (ros_gz_interfaces/msg/EntityWrench) -> /world/shapes_with_tf2_and_wrench/wrench (gz.msgs.EntityWrench)] (Lazy 0)
+        [parameter_bridge-2] [INFO] [1762943418.596583200] [ros_gz_bridge]: Passing message from ROS ros_gz_interfaces/msg/EntityWrench to Gazebo gz.msgs.EntityWrench (showing msg only once per type)
+        ^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+        [parameter_bridge-2] [INFO] [1762943424.457110149] [rclcpp]: signal_handler(signum=2)
+        [INFO] [parameter_bridge-2]: process has finished cleanly [pid 6608]
+        [INFO] [control_shape_thrust_node-1]: process has finished cleanly [pid 6607]
