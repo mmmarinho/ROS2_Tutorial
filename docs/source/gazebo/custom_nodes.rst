@@ -454,3 +454,27 @@ Before we proceed, let us build and source once.
 
 Testing
 -------
+
+We first open and run the simulation.
+
+.. code-block:: console
+
+    gz sim $HOME/gazebo_tutorial_workspace/scenes/shapes_with_tf2_and_wrench.sdf
+
+We can run the first example with the following command.
+
+.. code-block:: console
+
+    ros2 launch python_package_that_uses_gazebo send_poses_to_gazebo_launch.py
+
+We can run the second example with the following command.
+
+.. code-block:: console
+
+    ros2 launch python_package_that_uses_gazebo send_wrenches_to_gazebo_launch.py
+
+We can run the third example with the following command.
+
+.. code-block:: console
+
+    ros2 launch python_package_that_uses_gazebo control_shape_thrust_launch.py
