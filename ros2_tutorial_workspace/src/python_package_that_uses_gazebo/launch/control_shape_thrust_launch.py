@@ -7,8 +7,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     
     this_package_share_directory = get_package_share_directory('python_package_that_uses_gazebo')
-    print(os.path.join(this_package_share_directory, 'config_bridge', 'control_shape_thrust.yaml'))
-    
+
     node = Node(
             output='screen',
             emulate_tty=True,

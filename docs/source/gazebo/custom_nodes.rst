@@ -469,7 +469,7 @@ We can run the first example with the following command. Then,
 
     ros2 launch python_package_that_uses_gazebo send_poses_to_gazebo_launch.py
 
-.. dropdown::
+.. dropdown:: Output for :file:`send_poses_to_gazebo_launch.py`
 
     .. code-block::
 
@@ -490,7 +490,7 @@ We can run the second example with the following command.
 
     ros2 launch python_package_that_uses_gazebo send_wrenches_to_gazebo_launch.py
 
-.. dropdown::
+.. dropdown:: Output for :file:`send_wrenches_to_gazebo_launch.py`
 
     .. code-block::
 
@@ -515,7 +515,7 @@ We can run the third example with the following command.
 
     ros2 launch python_package_that_uses_gazebo control_shape_thrust_launch.py
 
-.. dropdown::
+.. dropdown:: Output for :file:`control_shape_thrust_launch.py`
 
     .. code-block::
 
