@@ -100,7 +100,8 @@ Gazebo topics and services
     Internal :program:`Gazebo` topics and services are **not** the same as :program:`ROS2` topics and services.
 
 A :program:`Gazebo` scene will have a number of internal topics and services. We can interact with them using :program:`gz`
-commands.
+commands. The messages that flow through :program:`Gazebo` are based on `protobuf <https://protobuf.dev>`_, not
+:program:`ROS2` IDL.
 
 Let us use an example with sensors. This example is `available in the official repository
 <https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf>`_.
