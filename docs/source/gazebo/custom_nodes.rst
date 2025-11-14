@@ -542,4 +542,5 @@ We can run the third example with the following command.
 This is illustrated in the video below.
 
 .. raw:: html
+
     <iframe width="560" height="315" src="https://www.youtube.com/embed/q6PAvz1eZ6k?si=cIVOKH_LjfuHaLBP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
