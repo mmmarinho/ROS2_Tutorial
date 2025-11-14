@@ -85,6 +85,9 @@ If you enjoyed this tutorial, please
 #. :doc:`Frame Transformations <transformations/index>`
     Frame transformations, the ``TransformStamped`` message, and ``tf2``.
 
+#. :doc:`Gazebo and ROS2 <gazebo/index>`
+    :program:`Gazebo` installation, basic usage, and integration examples with ROS2.
+
 .. toctree::
    :caption: Preamble
    :maxdepth: 2
@@ -185,6 +188,17 @@ If you enjoyed this tutorial, please
    transformations/nottf2
 
 .. toctree::
+   :caption: Gazebo
+   :maxdepth: 2
+   :hidden:
+
+   gazebo/index
+   gazebo/installation
+   gazebo/usage
+   gazebo/ros_gz_bridge
+   gazebo/custom_nodes
+
+.. toctree::
    :caption: ROS2 C++ Basics
    :maxdepth: 2
    :hidden:
@@ -216,11 +230,7 @@ If you enjoyed this tutorial, please
    :maxdepth: 2
    :hidden:
 
-   gazebo/index
-   gazebo/installation
-   gazebo/usage
-   gazebo/ros_gz_bridge
-   gazebo/custom_nodes
+   navigation/index
 
 
 Disclaimers
