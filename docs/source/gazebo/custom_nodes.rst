@@ -538,3 +538,8 @@ We can run the third example with the following command.
         [parameter_bridge-2] [INFO] [1762943424.457110149] [rclcpp]: signal_handler(signum=2)
         [INFO] [parameter_bridge-2]: process has finished cleanly [pid 6608]
         [INFO] [control_shape_thrust_node-1]: process has finished cleanly [pid 6607]
+
+This is illustrated in the video below.
+
+.. raw:: html
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/q6PAvz1eZ6k?si=cIVOKH_LjfuHaLBP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
