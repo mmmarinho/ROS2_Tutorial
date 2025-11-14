@@ -468,7 +468,7 @@ We first open and run the simulation.
 
 It is possible to run each of these examples in this particular order and see their effects.
 
-We can run the first example with the following command. Then,
+We can run the first example with the following command. Then, stop it with :kbd:`CTRL+C` before moving to the following one.
 
 .. code-block:: console
 
@@ -489,7 +489,7 @@ We can run the first example with the following command. Then,
         [INFO] [parameter_bridge-2]: process has finished cleanly [pid 6424]
 
 
-We can run the second example with the following command.
+We can run the second example with the following command. Then, stop it with :kbd:`CTRL+C` before moving to the following one.
 
 .. code-block:: console
 
@@ -513,7 +513,7 @@ We can run the second example with the following command.
         [INFO] [send_wrenches_to_gazebo_node-1]: process has finished cleanly [pid 6507]
 
 
-We can run the third example with the following command.
+We can run the third example with the following command. Then, stop it with :kbd:`CTRL+C`.
 
 
 .. code-block:: console

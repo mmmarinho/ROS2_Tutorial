@@ -405,6 +405,11 @@ are highlighted.
    :emphasize-lines: 1-5,7,13,19,25,31,37
    :linenos:
 
+.. note::
+
+    You will see that bridge files allow more flexibility. For instance, we are able to bridge topics in that have
+    different names in :program:`Gazebo` and :program:`ROS2`.
+
 We now have to call :program:`ros_gz_bridge` using this newly created file. Note that some :program:`bash` commands will
 not expand ``~`` into the home folder. We can replace those instances safely with ``$HOME``. We send any configuration we
 want with the flag ``--ros-args -p``, then set the parameter ``config_file`` to have a path to our newly created configuration
