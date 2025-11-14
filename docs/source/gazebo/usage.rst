@@ -103,14 +103,23 @@ A :program:`Gazebo` scene will have a number of internal topics and services. We
 commands.
 
 Let us use an example with sensors. This example is `available in the official repository
-<https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf>`_
+<https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf>`_.
 
 .. dropdown:: Contents of :file:`sensors_demo.sdf`
 
     .. rli:: https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf
         :language: xml
+        :linenos:
 
-For this section, suppose that we have the scene always open with the following command.
+To enable physical simulation, including sensor, we can see that a new tag, ``<plugins>`` is added. These are paramount
+to guarantee that sensors will work. Further, they create important topics and services in :program:`Gazebo`. Here are
+the plugins active on this file.
+
+.. rli:: https://raw.githubusercontent.com/gazebosim/gz-sim/refs/heads/gz-sim8/examples/worlds/sensors_demo.sdf
+    :language: xml
+    :lines: 7-27
+
+We will now start to interact with :program:`Gazebo`. For this section, suppose that we have the scene always open with the following command.
 
 .. tip::
 
@@ -127,6 +136,10 @@ For this section, suppose that we have the scene always open with the following 
 
 A frequently used tool to allow us to inspect internal Gazebo topics will be, in another terminal, to run the following
 command. The ``-l`` flag allows us to list :program:`Gazebo` topics.
+
+.. caution::
+
+    :program:`Gazebo` topics and services are **not** the same as :program:`ROS2` topics and services.
 
 .. code-block:: console
 
@@ -285,7 +298,8 @@ The package :file:`ros_gz_sim`
     The official repository: https://github.com/gazebosim/ros_gz/tree/jazzy/ros_gz_sim
 
 The package :file:`ros_gz_sim` has a few tools allowing us to control :program:`Gazebo` over :program:`ROS2`.
-Namely, the ability to start :program:`Gazebo` and spawn (add) objects.
+Namely, the ability to start :program:`Gazebo` and spawn (add) objects. These might depend on :program:`Gazebo`
+topics and services, therefore make sure that the necessary plugins are enabled.
 
 Launching :program:`Gazebo`
 +++++++++++++++++++++++++++
@@ -360,12 +374,7 @@ You can verify all files usable for :program:`Gazebo` demos in the following fol
 The current file structure is shown in the dropdown below. There are many launch files, :program:`rviz` configuration files, and a few
 :file:`.sdf` models.
 
-.. note::
-
-    The contents below are not retrieved automatically so they might not represent the latest version of the repository.
-    See https://github.com/gazebosim/ros_gz/tree/jazzy/ros_gz_sim_demos .
-
-.. dropdown:: ros_gz_sim_demos
+.. dropdown:: The structure of ``ros_gz_sim_demos``.
 
     .. code-block:: console
 
@@ -441,6 +450,11 @@ The current file structure is shown in the dropdown below. There are many launch
         └── worlds
             ├── default.sdf
             └── vehicle.sdf
+
+.. note::
+
+    The contents above are not retrieved automatically so they might not represent the latest version of the repository.
+    See https://github.com/gazebosim/ros_gz/tree/jazzy/ros_gz_sim_demos .
 
 The :file:`camera.launch.py` demo
 +++++++++++++++++++++++++++++++++

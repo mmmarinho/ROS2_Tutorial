@@ -31,7 +31,12 @@ new plugins when they become available.
 
     I haven't yet found a comprehensive list of :program:`Gazebo` plugins and their pairing ``xml`` descriptions to add them to a ``.sdf``.
     Most of the information is spread around examples and takes a bit a trial-and-error to find dependencies between
-    plugins as error messages and warnings are not currently output by default.
+    plugins.
+
+    Some common patterns
+    - Information as comments of the ``.hh`` files, see `this example <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/user_commands/UserCommands.hh>`_.
+    - Information available when you run :program:`Gazebo` with ``gz sim -v4`` in a more verbose mode.
+
 
     Please feel free to correct me `here <https://github.com/mmmarinho/ROS2_Tutorial/issues/new>`_.
 

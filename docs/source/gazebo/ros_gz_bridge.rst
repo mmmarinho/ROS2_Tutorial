@@ -49,6 +49,8 @@ Using the logic above, we have that
 - ``<Gazebo Topic>`` defined for the entity on Gazebo and can be obtained with ``gz topic -l``.
 - We can find ``<Gazebo Transport Type>`` with ``gz topic -i --topic <Gazebo Topic>``.
 - Lastly, we check the pairing table and see what ``<ROS Type>`` matches the ``<Gazebo Transport Type>``.
+- The second **@** means a bidirectional bridge. It can also be **[** or **]** to indicate a single direction. Some
+  official examples are relatively lax with this rule.
 
 Let's see some examples.
 
@@ -87,7 +89,7 @@ We can run, therefore in one terminal, the following command.
 
     ros2 run ros_gz_bridge \
     parameter_bridge \
-    /rgbd_camera/image@sensor_msgs/msg/Image@gz.msgs.Image
+    /rgbd_camera/image@sensor_msgs/msg/Image[gz.msgs.Image
 
 To show the images, we can use :program:`rqt_image_view`. Notice that the internal :program:`Gazebo` topic name
 will be replicated into a :program:`ROS2` topic with the same name.
@@ -108,7 +110,7 @@ gz.msgs.LaserScan
 +++++++++++++++++
 
 We have already listed the :program:`Gazebo` topics for this scene, so we know that there is a topic called
-``\lidar``. We can obtain the related information with the following command.
+``/lidar``. We can obtain the related information with the following command.
 
 .. code-block::
 
@@ -129,7 +131,7 @@ Therefore, we can run the bridge as follows.
 
     ros2 run ros_gz_bridge \
     parameter_bridge \
-    /lidar@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan
+    /lidar@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan
 
 One convenient way to visualise this messages is through :program:`rviz2`. We can do so as follows.
 
@@ -429,7 +431,7 @@ After adding the ``TF`` display, you'll be able to see all the relevant frames.
 .. admonition:: Exercise
 
     Suppose that you added a new model to :file:`shapes_with_tf2_publisher.sdf` and you wanted to publish that information
-    to ``\tf`` as well. What files would you modify and what steps would you take to make that possible?
+    to ``/tf`` as well. What files would you modify and what steps would you take to make that possible?
 
 So far, we have seen the basics of :program:`ros_gz_bridge`, mostly allowing us to expose :program:`Gazebo` information in
 :program:`ROS2`. We haven't used any of these in our own nodes, so we will do that in the following section.
