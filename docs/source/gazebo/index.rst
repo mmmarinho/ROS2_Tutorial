@@ -15,7 +15,7 @@ About :program:`Gazebo`
 projects although there are `clear connections <https://gazebosim.org/docs/latest/ros_installation/#summary-of-compatible-ros-and-gazebo-combinations>`_.
 
 Until :program:`ROS2 Humble`, :program:`Gazebo` worked in a different way and had a different name. The older project has been renamed to :program:`Gazebo Classic`.
-You can see more about the reasons behind the announcement `"A new era for Gazebo" <https://discourse.openrobotics.org/t/a-new-era-for-gazebo-cross-post/25012>`_.
+You can see more about the reasons behind this in the announcement `"A new era for Gazebo" <https://discourse.openrobotics.org/t/a-new-era-for-gazebo-cross-post/25012>`_.
 
 .. warning::
 
