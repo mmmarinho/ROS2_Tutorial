@@ -62,13 +62,13 @@ If you enjoyed this tutorial, please
     Creating our first ROS2 package with :program:`ament_python` and building it with :program:`colcon`.
 
 #. :doc:`ROS2 Python Node <running_node>`
-    Creating a ``rclpy`` Node and figuring out what all that means.
+    Creating ``rclpy`` Nodes and figuring out what all that means.
 
 #. :doc:`ROS2 Python Library <create_python_library>`
-    Create a Python library and importing/using it in another :program:`ament_python` package.
+    Create Python librarys and importing/using it in another :program:`ament_python` package.
 
 #. :doc:`ROS2 Interfaces <interfaces>`
-    ROS2 interfaces and creating custom interface packages.
+    ROS2 interfaces, i.e., messages ``.msg``, services ``.srv``, and actions ``.action``. Creating custom interface packages.
 
 #. :doc:`ROS2 Messages with Python <publishers_and_subscribers>`
     Writing and using ROS2 messages, publishers, and subscribers.
