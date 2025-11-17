@@ -3,11 +3,10 @@
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-.. hint::
+.. seealso::
 
     An official :program:`rviz2` user guide is available at:
-
-    - https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html.
+    https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html.
 
 :program:`rviz2` Installation
 -----------------------------

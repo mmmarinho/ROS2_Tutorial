@@ -3,11 +3,10 @@ Using :file:`tf2`
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-.. hint::
+.. seealso::
 
     An official ``tf2`` user guide is available at
-
-    - https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html.
+    https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html.
 
 Perhaps the most important benefit of ``tf2`` is how it connects with other :program:`ROS2` parts, such as ``rviz2``.
 It is a common language used across well-established :program:`ROS2` packages.
@@ -271,22 +270,22 @@ The output of the command should be as follows.
 
 You might be asking yourself the following.
 
-    What nonsense is this? Wasn't it supposed to be a ``geometry_msgs/msg/PoseStamped``??
+    What nonsense is this? Wasn't it supposed to be a ``geometry_msgs/msg/TransformStamped``??
     I also didn't define no topic ``/tf``?????
 
 You will notice that although ``tf2`` uses topics, publishers, and subscribers, it has another layer of complexity. For
 instance, most of the time we can expect many frames (think of dozens or hundreds) to be published in the same topic,
 making a regular subscriber not as useful and too busy.
 
-The broadcaster and listener, although using a ``geometry_msgs/msg/PoseStamped`` in our nodes, will convert back-and-forth between
-``tf2_msgs/msg/TFMessage`` and ``geometry_msgs/msg/PoseStamped`` when interacting with the topic ``/tf``. Also, because of that, you can think of the topic
+The broadcaster and listener, although using a ``geometry_msgs/msg/TransformStamped`` in our nodes, will convert back-and-forth between
+``tf2_msgs/msg/TFMessage`` and ``geometry_msgs/msg/TransformStamped`` when interacting with the topic ``/tf``. Also, because of that, you can think of the topic
 ``/tf`` as a *protected* topic. No such concept of *protected* topics seems to exist in :program:`ROS2`, so that is not enforced,
 you can publish and subscribe normally to that topic.
 Basically, in this context, I mean to say that if you attempt to use ``/tf`` without using ``tf2_ros`` facilities,
 you are likely to be disappointed.
 
 Either way, there is not reason to fear. You will notice that ``tf2_msgs/msg/TFMessage`` is simply an array of
-``geometry_msgs/msg/PoseStamped``.
+``geometry_msgs/msg/TransformStamped``.
 
 You can see that with the following command.
 
