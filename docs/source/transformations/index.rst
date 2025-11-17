@@ -13,7 +13,7 @@ I believe that, because of this, beyond this tutorial, in robotics and computer 
 and orientation/rotation used interchangeably.
 
 Please allow me to use only the terms *translation* and *rotation* henceforth to keep the discussion consistent
-with how it is utilised in :program:`ROS2`.
+with how it is utilised in ``tf2``, namely, as a ``geometry_msgs/msg/TransformStamped``.
 
 We start by looking at how it is done in :program:`ROS2`, go through the related mathematics, then create an example
 to show how to create these transformations.
@@ -24,15 +24,15 @@ Transformations in :program:`ROS2`
 Let us take a look at message most commonly used in :program:`ROS2` to represent translation and rotation,
 :file:`TransformStamped.msg`, part of the package :file:`geometry_msgs`.
 
-We can see its contents with
+We can see its contents with the following command.
 
 .. code-block:: console
 
     ros2 interface show geometry_msgs/msg/TransformStamped
 
-resulting in a slightly intricate message.
+It results in the slightly intricate message below.
 
-.. dropdown:: ros2 interface show output
+.. dropdown:: Results for ``geometry_msgs/msg/TransformStamped``.
 
     .. code-block:: yaml
 
@@ -76,13 +76,14 @@ To simplify the discussion, these are the contents of :file:`TransformStamped.ms
 
 Note that it is a message composed of two other messages, and a built-in.
 
-The :file:`Header` is an essential timestamp used throughout :program:`ROS2`. We can see its contents with
+The :file:`Header` is an essential timestamp used throughout :program:`ROS2`. We can see its contents with the following
+command.
 
 .. code-block:: console
 
     ros2 interface show std_msgs/msg/Header
 
-resulting in
+The command results in the following output.
 
 .. code-block:: yaml
 
@@ -102,13 +103,13 @@ The elements :code:`stamp` and :code:`frame_id` are used by many popular package
 relate translational and rotational data of robots and objects.
 
 Then, to the most important part of this section, we have the :file:`Transform.msg`, whose contents can be obtained
-with
+with the following command.
 
 .. code-block:: console
 
     ros2 interface show geometry_msgs/msg/Transform
 
-resulting in
+The command outputs the following.
 
 .. code-block:: yaml
 
@@ -124,7 +125,7 @@ resulting in
             float64 z 0
             float64 w 1
 
-in which the :code:`translation` and :code:`rotation` can be clearly seen.
+In this message type, the :code:`translation` and :code:`rotation` can be clearly seen.
 
 Translations
 ------------
@@ -150,14 +151,14 @@ Rotations: Quaternions
     so this knowledge is needed in the short term as well.
 
 Whereas translations are intuitive and can be easily processed with A-levels mathematics, rotations demand extra thought.
-However, the complexity is exaggerated to some extent.
+However, the complexity is exaggerated in multiple sources to some extent.
 
 In :program:`ROS2`, rotations are represented as quaternions.
 They have several benefits over other representations, which you can see in related literature on quaternions.
 For robotics, it is easier to think of rotations directly in quaternions instead of relying on intermediary ways, such as Euler angles.
-The reason is that the particularities of quaternions will eventually catch up to you, no matter how long and how far one might try to run away from it.
+The reason is that the particularities of quaternions will eventually catch up to you, no matter how long and how far one might try to run away from them.
 
-Let's rip the trademarked plaster brand out. The following equation represents the formation of a rotation quaternion:
+Let's rip the trademarked plaster brand out. The following equation represents the formation of a rotation quaternion.
 
 .. math::
     :name: eq:rotation_formation
@@ -167,12 +168,13 @@ Let's rip the trademarked plaster brand out. The following equation represents t
 where :math:`\boldsymbol{v}^2=-1`. This means that the rotation axis :math:`\boldsymbol{v}` can be any imaginary number
 such that :math:`||\boldsymbol{v}||=1`.
   
-The easiest way to think about a rotation using quaternions is to think about the axis of rotation :math:`\boldsymbol{v}` and the angle of rotation :math:`\phi`.
+The easiest way to think about a rotation using quaternions is to think about the axis of rotation :math:`\boldsymbol{v}`
+and the angle of rotation :math:`\phi`.
 Then, you construct the quaternion with the :ref:`rotation quaternion formation law <eq:rotation_formation>`.
 
 .. admonition:: Examples
 
-    We can choose :math:`\phi=0` and see how a quaternion represents no rotation. regardless of rotation axis, this results in
+    We can choose :math:`\phi=0` and see how a quaternion represents no rotation. Regardless of rotation axis, this results in
 
         .. math::
 
@@ -181,7 +183,8 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
 
     Now, suppose that we have a rotation of :math:`\phi=\pi` radians (angles always in radians, don't forget!).
 
-    If we want such a rotation about the x-axis, we choose :math:`\boldsymbol{v}_1=\hat{\imath}`. Therefore, this rotation would be correctly represented by
+    If we want such a rotation about the x-axis, we choose :math:`\boldsymbol{v}_1=\hat{\imath}`.
+    Therefore, this rotation would be correctly represented by
 
         .. math::
 
@@ -195,7 +198,8 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
             \boldsymbol{r}_2 &\triangleq \cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right) \\
                              &= \hat{k}.
 
-    Any :math:`\phi \in \mathbb{R}` is acceptable and, more importantly, any :math:`\boldsymbol{v}` is acceptable as long as it is imaginary and has norm one.
+    Any :math:`\phi \in \mathbb{R}` is acceptable and, more importantly, any :math:`\boldsymbol{v}` is acceptable as long
+    as it is imaginary and has norm one.
     For instance, :math:`\boldsymbol{v}_3=-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}` leads to the valid rotation quaternion
 
         .. math::
@@ -220,7 +224,7 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
 
             \boldsymbol{r}_5 \triangleq \cos\left(\frac{\pi}{4}\right) + \hat{\jmath}\sin\left(\frac{\pi}{4}\right),
 
-        represents a rotation of :math:`\frac{\pi}{2}` about the y-axis, **not** :math:`\frac{\pi}{4}`.
+        represents a rotation of :math:`\phi_{5} = \frac{\pi}{2}` about the y-axis, **not** :math:`\frac{\pi}{4}`.
 
 
 Sequential rotations
@@ -231,13 +235,13 @@ of :math:`\phi=\pi` about the x-axis followed by a rotation of the same angle ab
 
 .. math::
 
-    \boldsymbol{r}_{12} \triangleq \boldsymbol{r}_1\boldsymbol{r}_2,
+    \boldsymbol{r}_{1,2} \triangleq \boldsymbol{r}_1\boldsymbol{r}_2,
 
 which results, in this case,
 
 .. math::
 
-    \boldsymbol{r}_{12} &= \left[\cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right)\right]\left[\cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right)\right] \\
+    \boldsymbol{r}_{1,2} &= \left[\cos\left(\frac{\pi}{2}\right) + \hat{\imath}\sin\left(\frac{\pi}{2}\right)\right]\left[\cos\left(\frac{\pi}{2}\right) + \hat{k}\sin\left(\frac{\pi}{2}\right)\right] \\
                         &= \hat{\imath}\hat{k} \\
                         &= -\hat{\jmath}.
 
