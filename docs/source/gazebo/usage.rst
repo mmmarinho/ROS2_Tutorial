@@ -1,15 +1,15 @@
 Using :program:`Gazebo`
 =======================
 
-.. include:: ../the_topic_is_under_heavy_construction.rst
-
 .. versionadded:: Jazzy
 
-   Added this section.
+   This section.
+
+.. include:: ../the_topic_is_under_heavy_construction.rst
 
 .. hint::
 
-    You can start the simulator with
+    You can start the simulator with the following command.
 
     .. code-block:: console
 
@@ -137,10 +137,6 @@ We will now start to interact with :program:`Gazebo`. For this section, suppose 
 
 A frequently used tool to allow us to inspect internal Gazebo topics will be, in another terminal, to run the following
 command. The ``-l`` flag allows us to list :program:`Gazebo` topics.
-
-.. caution::
-
-    :program:`Gazebo` topics and services are **not** the same as :program:`ROS2` topics and services.
 
 .. code-block:: console
 

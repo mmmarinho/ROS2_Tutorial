@@ -1,15 +1,15 @@
 Interface :program:`Gazebo` with custom :program:`ROS2` nodes
 =============================================================
 
-.. include:: ../the_topic_is_under_heavy_construction.rst
-
 .. versionadded:: Jazzy
 
-   Added this section.
+   This section.
+
+.. include:: ../the_topic_is_under_heavy_construction.rst
 
 .. seealso::
 
-    This would be the official way: https://gazebosim.org/docs/harmonic/ros_gz_project_template_guide/
+    Official documentation: https://gazebosim.org/docs/harmonic/ros_gz_project_template_guide/
 
 In this section, our intention is to control things in :program:`Gazebo` from a :program:`ROS2` package, using nodes
 and launch files as needed. For things that are well supported in :program:`Gazebo`, this will work fine. For anything
@@ -33,9 +33,10 @@ new plugins when they become available.
     Most of the information is spread around examples and takes a bit a trial-and-error to find dependencies between
     plugins.
 
-    Some common patterns
+    Some common patterns are:
+
     - Information as comments of the ``.hh`` files, see `this example <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/user_commands/UserCommands.hh>`_.
-    - Information available when you run :program:`Gazebo` with ``gz sim -v4`` in a more verbose mode.
+    - Information available when you run :program:`Gazebo` with ``gz sim -v4``.
 
 
     Please feel free to correct me `here <https://github.com/mmmarinho/ROS2_Tutorial/issues/new>`_.
@@ -297,7 +298,7 @@ The launch file
 This node will not work without a pairing ``parameter_bridge``. We add the following launch file to the :file:`launch`
 folder.
 
-:download:`send_poses_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py>`
+:download:`send_poses_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/send_poses_to_gazebo_launch.py>`
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/send_poses_to_gazebo_launch.py
    :language: python
@@ -356,7 +357,7 @@ The launch file
 This node will not work without a pairing ``parameter_bridge``. We add the following launch file to the :file:`launch`
 folder.
 
-:download:`send_wrenches_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_launch.py>`
+:download:`send_wrenches_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/send_wrenches_to_gazebo_launch.py>`
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/send_wrenches_to_gazebo_launch.py
    :language: python
@@ -370,7 +371,7 @@ that pose information, we publish a wrench. This way, we can attempt to move a s
 
 This example highlights one possible way of interacting with :program:`Gazebo`.
 
-:download:`send_poses_to_gazebo_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py>`
+:download:`control_shape_thrust_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py>`
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
    :language: python
@@ -417,7 +418,7 @@ The bridge file
 
 The bridge file, added to the folder :file:`config_bridge`, will manage bridging the topics with ``tf2`` and the wrench.
 
-:download:`send_poses_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/config_bridge/control_shape_thrust.yaml>`
+:download:`control_shape_thrust.yaml <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/config_bridge/control_shape_thrust.yaml>`
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/config_bridge/control_shape_thrust.yaml
    :language: yaml
@@ -429,7 +430,7 @@ The launch file
 This node will not work without a pairing ``parameter_bridge``. We add the following launch file to the :file:`launch`
 folder.
 
-:download:`send_poses_to_gazebo_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_launch.py>`
+:download:`control_shape_thrust_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/control_shape_thrust_launch.py>`
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/launch/control_shape_thrust_launch.py
    :language: python
