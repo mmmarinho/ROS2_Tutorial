@@ -284,7 +284,7 @@ you can publish and subscribe normally to that topic.
 Basically, in this context, I mean to say that if you attempt to use ``/tf`` without using ``tf2_ros`` facilities,
 you are likely to be disappointed.
 
-Either way, there is not reason to fear. You will notice that ``tf2_msgs/msg/TFMessage`` is simply an array of
+Either way, there is no reason to fear. You will notice that ``tf2_msgs/msg/TFMessage`` is simply an array of
 ``geometry_msgs/msg/TransformStamped``.
 
 You can see that with the following command.
