@@ -200,12 +200,12 @@ Then, you construct the quaternion with the :ref:`rotation quaternion formation 
 
     Any :math:`\phi \in \mathbb{R}` is acceptable and, more importantly, any :math:`\boldsymbol{v}` is acceptable as long
     as it is imaginary and has norm one.
-    For instance, :math:`\boldsymbol{v}_3=-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}` leads to the valid rotation quaternion
+    For instance, :math:`\boldsymbol{v}_3=-\frac{\sqrt{2}}{2}\hat{\imath} + \frac{\sqrt{2}}{2}\hat{k}` leads to the valid rotation quaternion
 
         .. math::
 
-             \boldsymbol{r}_3 &\triangleq \cos\left(\frac{\pi}{2}\right) + \left(-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}\right)\sin\left(\frac{\pi}{2}\right) \\
-                              &= \left(-\sqrt{2}\hat{\imath} + \sqrt{2}\hat{k}\right).
+             \boldsymbol{r}_3 &\triangleq \cos\left(\frac{\pi}{2}\right) + \left(-\frac{\sqrt{2}}{2}\hat{\imath} + \frac{\sqrt{2}}{2}\hat{k}\right)\sin\left(\frac{\pi}{2}\right) \\
+                              &= \left(-\frac{\sqrt{2}}{2}\hat{\imath} + \frac{\sqrt{2}}{2}\hat{k}\right).
 
 
 .. error::
