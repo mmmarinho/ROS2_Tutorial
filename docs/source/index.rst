@@ -136,7 +136,7 @@ If you enjoyed this tutorial, please
    using_python_library
 
 .. toctree::
-   :caption: ROS2 Interfaces
+   :caption: ROS2 Interfaces: Messages, Services, and Actions
    :maxdepth: 2
    :hidden:
 
