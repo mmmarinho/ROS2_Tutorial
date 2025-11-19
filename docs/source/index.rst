@@ -82,7 +82,7 @@ If you enjoyed this tutorial, please
 #. :doc:`ROS2 Actions in Python <actions>`
     Writing ROS2 actions, action servers, and action clients.
 
-#. :doc:`Frame Transformations <transformations/index> `
+#. :doc:`Frame Transformations <transformations/index>`
     Frame transformations, the ``TransformStamped`` message, and ``tf2``.
 
 #. :doc:`Gazebo and ROS2 <gazebo/index>`
