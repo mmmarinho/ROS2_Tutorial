@@ -68,21 +68,21 @@ If you enjoyed this tutorial, please
     Create Python librarys and importing/using it in another :program:`ament_python` package.
 
 #. :doc:`ROS2 Interfaces <interfaces>`
-    ROS2 interfaces, i.e., messages ``.msg``, services ``.srv``, and actions ``.action``. Creating custom interface packages.
+    ROS2 interfaces, i.e., messages ``.msg``, services ``.srv``, and actions ``.action``. Creating custom interface packages with :program:`ament_cmake`.
 
-#. :doc:`ROS2 Messages with Python <publishers_and_subscribers>`
+#. :doc:`ROS2 Messages in Python <publishers_and_subscribers>`
     Writing and using ROS2 messages, publishers, and subscribers.
 
 #. :doc:`ROS2 Parameter/Launch <parameters_and_launch>`
     Making configurable ROS2 Nodes using parameters and launch files.
 
-#. :doc:`ROS2 Services with Python <service_servers_and_clients>`
+#. :doc:`ROS2 Services in Python <service_servers_and_clients>`
     Writing ROS2 services, service servers, and service clients.
 
-#. :doc:`ROS2 Actions with Python <actions>`
+#. :doc:`ROS2 Actions in Python <actions>`
     Writing ROS2 actions, action servers, and action clients.
 
-#. :doc:`Frame Transformations <transformations/index>`
+#. :doc:`Frame Transformations <transformations/index> `
     Frame transformations, the ``TransformStamped`` message, and ``tf2``.
 
 #. :doc:`Gazebo and ROS2 <gazebo/index>`
