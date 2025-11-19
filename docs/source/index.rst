@@ -261,3 +261,4 @@ Changelog
 - Moved ROS2 parameter and launch to before the services.
 - Added a section mostly about ROS2 Actions.
 - Added a section mostly about ``tf2``.
+- Added a section mostly about program:`Gazebo`.
