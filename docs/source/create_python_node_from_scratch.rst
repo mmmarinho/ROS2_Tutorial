@@ -1,6 +1,11 @@
 Creating a Python Node from scratch (for :program:`ament_python`)
 =================================================================
 
+.. seealso::
+         
+          The official API documentation: https://docs.ros.org/en/jazzy/p/rclpy/rclpy.html
+
+
 .. admonition:: **TL;DR** Making an :program:`ament_python` Node
          
          #. Modify :file:`package.xml` with any additional dependencies.
