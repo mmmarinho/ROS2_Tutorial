@@ -231,6 +231,7 @@ If you enjoyed this tutorial, please
    :hidden:
 
    navigation/index
+   navigation/installation
 
 
 Disclaimers
