@@ -232,6 +232,7 @@ If you enjoyed this tutorial, please
 
    navigation/index
    navigation/installation
+   navigation/usage
 
 
 Disclaimers

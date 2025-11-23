@@ -11,12 +11,14 @@ Installation
 
     Official documentation: https://docs.nav2.org/getting_started/index.html
 
+We will install ``nav2``, a few example packages, and the ``slam-toolbox`` with the following command.
+
 .. rli:: https://raw.githubusercontent.com/UoMMScRobotics/SFR_Gazebo/refs/heads/main/install_nav2.sh
    :language: bash
    :lines: 5-14
 
 The package ``ros-jazzy-navigation2`` contains most of ``nav2``. However, we have to install ``ros-jazzy-nav2-bringup``
-separately owing to "recursive dependencies". See below.
+separately owing to "recursive dependencies". See below all the packages that are installed with ``ros-jazzy-navigation2``.
 
 .. dropdown:: Contents of ``ros-jazzy-navigation2``
 
@@ -25,14 +27,15 @@ separately owing to "recursive dependencies". See below.
        :lines: 15-48
 
 The last package related to ``nav2``, ``ros-jazzy-nav2-minimal-tb*`` has a wildcard that will expand, currently,
-to install the following packages.
+to install the following packages. These are optional packages that will give us some infrastructure to work on the
+tutorial.
 
     - ros-jazzy-nav2-minimal-tb3-sim - Nav2 Minimum TurtleBot3 Simulation
     - ros-jazzy-nav2-minimal-tb4-description - Nav2's minimum Turtlebot4 Description package
     - ros-jazzy-nav2-minimal-tb4-sim - Nav2 Minimum TurtleBot4 Simulation
 
 For illustrative purposes, we also add ``ros-jazzy-slam-toolbox``. Please note that navigation is complementary to
-localisation and mapping, but both can be done in isolation too.
+localisation and mapping. Both can be done in isolation too.
 
 .. admonition:: References
 

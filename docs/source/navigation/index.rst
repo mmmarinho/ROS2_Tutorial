@@ -22,7 +22,7 @@ so far in :program:`ROS2` will allow us to understand and interact with ``nav2``
 Nonetheless, there are sizable tutorials dedicated exclusively to navigation. This will not be the case here. The
 focus will be on linking the concepts learned so far and showcasing how they can be combined to interact with existing
 packages from the community. Conceptually, interacting with existing packages should be easy. However, going beyond
-using existing examples will require, possibly, all the knowledge acquired in previous sections. 
+using existing examples will require, possibly, all the knowledge acquired in previous sections.
 
 For illustrative purposes, we will also use the ``slam_toolbox``, meant for simultaneous localisation and mapping (SLAM).
 Whenever a concept from SLAM coincides with a navigation topic, this will be highlighted. However, going into detail
