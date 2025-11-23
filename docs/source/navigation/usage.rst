@@ -246,6 +246,18 @@ these three states.
 
 .. image:: tb3_sandbox.png
 
+Given that we are unable to fully entrust the safety of the robot to our carefully-drawn maps, ``nav2`` also allows the use
+of a ``nav2_costmap_2d::ObstacleLayer``. This will be tied to one of the robot sensors, for instance, a laser scanner.
+This will allow the robot to avoid obstacles when the map itself was inaccurate, for instance, if an obstacle has not
+been accounted for, or account for inaccuracies in the localisation itself. The ``nav2_costmap_2d::VoxelLayer`` is used
+in this example for a similar purpose, with the different that the sensor relays 3D information that is then transformed
+into relevant 2D information.
+
+Lastly, there will be the ``nav2_costmap_2d::InflationLayer``. Given that the maps hold only three possible states for
+each pixel, the changes are sudden. The inflation layer will behave similarly to a smoother. The region around each occupied
+cell in the grid will be modified to show that, although that is indeed free space, the robot should not be going through
+there. By assigning these costs when approaching an obstacle, planners and controllers can devise better trajectories.
+
 The navigation file also had a local costmap, which works similarly, but can have different parameter and accept data
 from different sources. The reason for this is that it is more convenient to have individual parameters for the planner
 and the controller.
