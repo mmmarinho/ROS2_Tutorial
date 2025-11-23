@@ -55,8 +55,152 @@ the navigation should work fine.
 
 .. warning::
 
-    The ``jazzy`` version of this example shows a number of errors when shutting down. This seems to be causing issues
+    The ``jazzy`` version of this example shows a number of errors when shutting down. This might cause issues
     when the example is run repeatedly.
+
+
+Unpacking the example
+---------------------
+
+Locally, you can navigate to the package using the following command.
+
+.. code-block::
+
+    cd $(ros2 pkg prefix nav2_bringup --share)
+
+The installed folder will have the following structure.
+
+.. code-block:: console
+
+    nav2_bringup/
+    ├── cmake
+    │   ├── nav2_bringupConfig.cmake
+    │   └── nav2_bringupConfig-version.cmake
+    ├── environment
+    │   ├── ament_prefix_path.dsv
+    │   ├── ament_prefix_path.sh
+    │   ├── path.dsv
+    │   └── path.sh
+    ├── launch
+    │   ├── bringup_launch.py
+    │   ├── cloned_multi_tb3_simulation_launch.py
+    │   ├── localization_launch.py
+    │   ├── navigation_launch.py
+    │   ├── rviz_launch.py
+    │   ├── slam_launch.py
+    │   ├── tb3_loopback_simulation.launch.py
+    │   ├── tb3_simulation_launch.py
+    │   ├── tb4_loopback_simulation.launch.py
+    │   ├── tb4_simulation_launch.py
+    │   └── unique_multi_tb3_simulation_launch.py
+    ├── local_setup.bash
+    ├── local_setup.dsv
+    ├── local_setup.sh
+    ├── local_setup.zsh
+    ├── maps
+    │   ├── depot.pgm
+    │   ├── depot.yaml
+    │   ├── tb3_sandbox.pgm
+    │   ├── tb3_sandbox.yaml
+    │   ├── warehouse.pgm
+    │   └── warehouse.yaml
+    ├── package.dsv
+    ├── package.xml
+    ├── params
+    │   ├── nav2_multirobot_params_1.yaml
+    │   ├── nav2_multirobot_params_2.yaml
+    │   ├── nav2_multirobot_params_all.yaml
+    │   └── nav2_params.yaml
+    └── rviz
+        ├── nav2_default_view.rviz
+        └── nav2_namespaced_view.rviz
+
+
+The launch file we executed in this example is shown below. A launch file that is general will tend to have a proportional
+level of complexity. We are not currently interested in dissecting all elements of this file. Rather, our interest is to
+take a look at the relevant files used and what they mean. By understanding these, we would be a step closer to be able to
+modify this example for our own purposes.
+
+.. dropdown:: Contents of :file:`tb3_simulation_launch.py`
+
+    .. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/launch/tb3_simulation_launch.py
+        :language: python
+        :linenos:
+        :emphasize-lines: 92,103,153,163,167
+
+The highlighted lines point out to these important files.
+
+- :file:`maps/tb3_sandbox.yaml`
+- :file:`params/nav2_params.yaml`
+- :file:`worlds/tb3_sandbox.sdf.xacro`
+- :file:`urdf/gz_waffle.sdf.xacro`
+- :file:`urdf/turtlebot3_waffle.urdf`
+
+.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/maps/tb3_sandbox.yaml
+    :language: yaml
+    :linenos:
+
+
+
+.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/worlds/tb3_sandbox.sdf.xacro
+    :language: xml
+    :linenos:
+
+.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/urdf/gz_waffle.sdf.xacro
+    :language: xml
+    :linenos:
+
+.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/urdf/turtlebot3_waffle.urdf
+    :language: xml
+    :linenos:
+
+Navigation
+----------
+
+.. seealso::
+
+    Official documentation: https://docs.nav2.org/configuration/index.html
+
+In the example, the navigation is defined in the following configuration file.
+
+.. dropdown:: Contents of :file:`nav2_params.yaml`
+
+    .. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/params/nav2_params.yaml
+        :language: yaml
+        :linenos:
+
+Once more, there is a trade-off between generality and the complexity of the configuration file. We can unpack the major
+elements of the configuration in the table below.
+
+In ``nav2``, each functionality is divided into a so-called *server*. Each server will have its own set of parameters and
+will communicate with other servers. In this topology, ideally one functionality can be modified withouts affecting
+other servers.
+
+===================== ================================= =============================================================================
+Server                TL;DR                             Link
+===================== ================================= =============================================================================
+``amcl``              Adaptive Monte-Carlo Localiser    `docs <https://docs.nav2.org/configuration/packages/configuring-amcl.html>`_
+``bt_navigator``      Behavior tree navigator           `docs <https://docs.nav2.org/configuration/packages/configuring-bt-navigator.html>`_
+``controller_server`` Controller server                 `docs <https://docs.nav2.org/configuration/packages/configuring-controller-server.html>`_
+``local_costmap``     A 2D costmap                      `docs <https://docs.nav2.org/configuration/packages/configuring-costmaps.html>`_
+``global_costmap``    A 2D costmap                      `docs <https://docs.nav2.org/configuration/packages/configuring-costmaps.html>`_
+``planner_server``    Calculates path to goal           `docs <https://docs.nav2.org/configuration/packages/configuring-planner-server.html>`_
+``smoother_server``   Keeps path smooth                 `docs <https://docs.nav2.org/configuration/packages/configuring-smoother-server.html>`_
+``behavior_server``   Defines basic robot behaviors     `docs <https://docs.nav2.org/configuration/packages/configuring-behavior-server.html>`_
+``route_server``      Handles pre-defined routes        `docs <https://docs.nav2.org/configuration/packages/configuring-route-server.html>`_
+``velocity_smoother`` Smooth velocities sent to robots  `docs <https://docs.nav2.org/configuration/packages/configuring-velocity-smoother.html>`_
+``collision_monitor`` Extra layer of safety             `docs <https://docs.nav2.org/configuration/packages/configuring-collision-monitor.html>`_
+===================== ================================= =============================================================================
+
+Each server will be attached to one or more ``nav2`` *plugins*. The plugins will define the
+
+.. seealso::
+    Official documentation: https://docs.nav2.org/plugins/index.html
+
+Our navigator uses Adaptive Monte-Carlo Localiser (`AMCL <https://docs.nav2.org/configuration/packages/configuring-amcl.html>`_).
+Planner ``nav2_navfn_planner::NavfnPlanner`` https://docs.nav2.org/configuration/packages/configuring-navfn.html
+Controller Model Predictive Path Integral Controller ``nav2_mppi_controller::MPPIController`` https://docs.nav2.org/configuration/packages/configuring-mppic.html
+
 
 
 Navigation with SLAM
