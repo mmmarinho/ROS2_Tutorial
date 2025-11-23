@@ -19,8 +19,8 @@ Navigation on a known map
 
 In this example, our interest is looking at how navigation can be done with built-in tools, using a known *map*. A
 map will have many definitions and the literature about it is extensive. For now, we can think of the map as something
-usual. It points out where things are, where passable (such as roads) regions are, and possibly hazards and other
-relevant objects.
+usual. It points out where things are, for instance, where passable regions (such as roads) are, and possibly hazards,
+obstacles, and other relevant objects.
 
 In this example, a `TurtleBot3 <https://www.turtlebot.com/turtlebot3/>`_ will be used. As part of ``nav2_bringup``, there
 is a rather complete example that we can utilize, namely :file:`tb3_simulation_launch.py`.
@@ -36,10 +36,27 @@ is a rather complete example that we can utilize, namely :file:`tb3_simulation_l
 
     ros2 launch nav2_bringup tb3_simulation_launch.py use_sim_time:=True headless:=False sigterm_timeout:=120
 
+We use ``headless:=False`` for the launch file to spawn :program:`Gazebo`. We use ``use_sim_time:=True`` to make sure
+that :program:`Gazebo`\'s clock will be used an prevent timing issues with `/tf`.
+
+This example will create a large number of nodes and open two screens. One of these will be for :program:`Gazebo` and
+another for :program:`rviz2`. In this example, there are two actions expected from the user.
+
+#. Set the initial *2D Pose Estimate*. This can be done through :program:`rviz2`, or :program:`ROS2` interfaces.
+#. Send one or more *Nav2 Goal* \s.
+
+An example of how to do so is shown in the video below. Please note that although I adjust :program:`Gazebo` to line
+up with the :program:`rviz2` view, this is for my convenience. As long as your initial estimate is fairly accurate
+the navigation should work fine.
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/eoZ6lu1YWQo?si=vDkECcj_1oQtgHcl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 .. warning::
 
     The ``jazzy`` version of this example shows a number of errors when shutting down. This seems to be causing issues
-    when the example is run repeatedly. 
+    when the example is run repeatedly.
 
 
 Navigation with SLAM
