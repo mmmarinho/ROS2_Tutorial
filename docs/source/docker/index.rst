@@ -208,6 +208,32 @@ contributed by others.
 The standard shell is not interactive
 +++++++++++++++++++++++++++++++++++++
 
+.. seealso::
+
+    https://github.com/traefik/traefik/issues/12253#issuecomment-3515555316
+
+Error type
+
+    com.github.dockerjava.api.exception.DockerException: Status 400: client version 1.24 is too old. Minimum supported API version is 1.44, please upgrade your client to a newer version. To fix it, change the project interpreter or check settings.
+
+.. code-block::
+
+    sudo systemctl edit docker.service
+
+Add this line.
+
+.. code-block::
+
+    [Service]
+    Environment=DOCKER_MIN_API_VERSION=1.24
+
+.. code-block::
+
+    systemctl restart docker
+
+The standard shell is not interactive
++++++++++++++++++++++++++++++++++++++
+
 When we start using :program:`ROS2` we get used to rely on `~/.bashrc` to define
 environment variables and sometimes aliases.
 
