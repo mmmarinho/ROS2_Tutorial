@@ -19,8 +19,8 @@ Navigation on a known map
 
 In this example, our interest is looking at how navigation can be done with built-in tools, using a known *map*. A
 map will have many definitions and the literature about it is extensive. For now, we can think of the map as something
-usual. It points out where things are, where passable (such as roads) regions are, and possibly hazards and other
-relevant objects.
+usual. It points out where things are, for instance, where passable regions (such as roads) are, and possibly hazards,
+obstacles, and other relevant objects.
 
 In this example, a `TurtleBot3 <https://www.turtlebot.com/turtlebot3/>`_ will be used. As part of ``nav2_bringup``, there
 is a rather complete example that we can utilize, namely :file:`tb3_simulation_launch.py`.
@@ -35,6 +35,9 @@ is a rather complete example that we can utilize, namely :file:`tb3_simulation_l
 .. code-block:: console
 
     ros2 launch nav2_bringup tb3_simulation_launch.py use_sim_time:=True headless:=False sigterm_timeout:=120
+
+We use ``headless:=False`` for the launch file to spawn :program:`Gazebo`. We use ``use_sim_time:=True`` to make sure
+that :program:`Gazebo`\'s clock will be used an prevent timing issues with `/tf`.
 
 This example will create a large number of nodes and open two screens. One of these will be for :program:`Gazebo` and
 another for :program:`rviz2`. In this example, there are two actions expected from the user.
