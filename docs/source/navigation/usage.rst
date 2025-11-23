@@ -128,25 +128,13 @@ modify the example or interact with it for your own purposes.
         :linenos:
         :emphasize-lines: 92,103,153,163,167
 
-The highlighted lines point out to these important files.
+The highlighted lines point out to these important files. These will guide the upcoming discussion.
 
-- :file:`maps/tb3_sandbox.yaml`
 - :file:`params/nav2_params.yaml`
+- :file:`maps/tb3_sandbox.yaml`
 - :file:`worlds/tb3_sandbox.sdf.xacro`
 - :file:`urdf/gz_waffle.sdf.xacro`
 - :file:`urdf/turtlebot3_waffle.urdf`
-
-.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/worlds/tb3_sandbox.sdf.xacro
-    :language: xml
-    :linenos:
-
-.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/urdf/gz_waffle.sdf.xacro
-    :language: xml
-    :linenos:
-
-.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/urdf/turtlebot3_waffle.urdf
-    :language: xml
-    :linenos:
 
 Navigation
 ----------
@@ -261,6 +249,28 @@ there. By assigning these costs when approaching an obstacle, planners and contr
 The navigation file also had a local costmap, which works similarly, but can have different parameter and accept data
 from different sources. The reason for this is that it is more convenient to have individual parameters for the planner
 and the controller.
+
+World and robot definition files
+--------------------------------
+
+
+.. dropdown:: The contents of ``tb3_sandbox.sdf.xacro``.
+
+    .. rli:: https://raw.githubusercontent.com/ros-navigation/nav2_minimal_turtlebot_simulation/refs/heads/jazzy/nav2_minimal_tb3_sim/worlds/tb3_sandbox.sdf.xacro
+        :language: xml
+        :linenos:
+
+.. dropdown:: The contents of ``gz_waffle.sdf.xacro``.
+
+    .. rli:: https://raw.githubusercontent.com/ros-navigation/nav2_minimal_turtlebot_simulation/refs/heads/jazzy/nav2_minimal_tb3_sim/urdf/gz_waffle.sdf.xacro
+        :language: xml
+        :linenos:
+
+.. dropdown:: The contents of ``turtlebot3_waffle.urdf``.
+
+    .. rli:: https://raw.githubusercontent.com/ros-navigation/nav2_minimal_turtlebot_simulation/refs/heads/jazzy/nav2_minimal_tb3_sim/urdf/turtlebot3_waffle.urdf
+        :language: xml
+        :linenos:
 
 Navigation with SLAM
 ++++++++++++++++++++
