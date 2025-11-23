@@ -36,6 +36,12 @@ is a rather complete example that we can utilize, namely :file:`tb3_simulation_l
 
     ros2 launch nav2_bringup tb3_simulation_launch.py use_sim_time:=True headless:=False sigterm_timeout:=120
 
+.. warning::
+
+    The ``jazzy`` version of this example shows a number of errors when shutting down. This seems to be causing issues
+    when the example is run repeatedly. 
+
+
 Navigation with SLAM
 ++++++++++++++++++++
 
