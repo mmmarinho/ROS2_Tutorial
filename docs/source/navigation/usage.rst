@@ -119,7 +119,7 @@ The installed folder will have the following structure.
 The launch file we executed in this example is shown below. A launch file that is general will tend to have a proportional
 level of complexity. We are not currently interested in dissecting all elements of this file. Rather, our interest is to
 take a look at the relevant files used and what they mean. By understanding these, we would be a step closer to be able to
-modify this example for our own purposes.
+modify the example or interact with it for your own purposes.
 
 .. dropdown:: Contents of :file:`tb3_simulation_launch.py`
 
@@ -136,12 +136,6 @@ The highlighted lines point out to these important files.
 - :file:`urdf/gz_waffle.sdf.xacro`
 - :file:`urdf/turtlebot3_waffle.urdf`
 
-.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/maps/tb3_sandbox.yaml
-    :language: yaml
-    :linenos:
-
-
-
 .. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/worlds/tb3_sandbox.sdf.xacro
     :language: xml
     :linenos:
@@ -154,8 +148,8 @@ The highlighted lines point out to these important files.
     :language: xml
     :linenos:
 
-Navigation
-----------
+Navigation :file:`nav2_params.yaml`
+-----------------------------------
 
 .. seealso::
 
@@ -173,8 +167,8 @@ Once more, there is a trade-off between generality and the complexity of the con
 elements of the configuration in the table below.
 
 In ``nav2``, each functionality is divided into a so-called *server*. Each server will have its own set of parameters and
-will communicate with other servers. In this topology, ideally one functionality can be modified withouts affecting
-other servers.
+will communicate with other servers. In this topology, ideally one functionality can be modified without affecting
+other servers. These are not all servers available in ``nav2``, but all the servers used in this example.
 
 ===================== ================================= =============================================================================
 Server                TL;DR                             Link
@@ -192,16 +186,43 @@ Server                TL;DR                             Link
 ``collision_monitor`` Extra layer of safety             `docs <https://docs.nav2.org/configuration/packages/configuring-collision-monitor.html>`_
 ===================== ================================= =============================================================================
 
-Each server will be attached to one or more ``nav2`` *plugins*. The plugins will define the
+Each server can be attached to one or more ``nav2`` *plugins*. The plugins will define important aspects of the
+server and plugins will have their own parameters.
 
 .. seealso::
     Official documentation: https://docs.nav2.org/plugins/index.html
 
-Our navigator uses Adaptive Monte-Carlo Localiser (`AMCL <https://docs.nav2.org/configuration/packages/configuring-amcl.html>`_).
-Planner ``nav2_navfn_planner::NavfnPlanner`` https://docs.nav2.org/configuration/packages/configuring-navfn.html
-Controller Model Predictive Path Integral Controller ``nav2_mppi_controller::MPPIController`` https://docs.nav2.org/configuration/packages/configuring-mppic.html
+In ``nav2``, mainly, there will be a *global* planner (in this case ``nav2_navfn_planner::NavfnPlanner``) and a *local*
+controller (in this case ``nav2_mppi_controller::MPPIController``). In general terms, the global planner can find solutions
+when the goal is far and create a trajectory. The controller will be responsible for dealing with following the trajectory
+in the short term. This split is common in robotics.
 
+map :file:`nav2_params.yaml`
+-----------------------------------
 
+.. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/maps/tb3_sandbox.yaml
+    :language: yaml
+    :linenos:
+
+A costmap in ``nav2`` is a 2D grid in which each cell is assigned a value, similarly to an image. Using the image analogy,
+each *costmap* (image) will be made of *costs* (pixels). The value in each pixel will define how *costly* it is to move
+through that pixel.
+
+Suppose that we have the small costmap below, for illustrative purposes. Suppose that we use ``F`` for free space, U
+for unknown, and O for occupied. We can see this as a top-view image of the path that the robot can traverse. The planner
+and controller will use this information.
+
++--+------+------+--+--+
+|O |O     |O     |O |U |
++--+------+------+--+--+
+|O |``F`` |``F`` |O |U |
++--+------+------+--+--+
+|O |O     |``F`` |O |U |
++--+------+------+--+--+
+|O |``F`` |``F`` |O |U |
++--+------+------+--+--+
+|O |O     |O     |O |U |
++--+------+------+--+--+
 
 Navigation with SLAM
 ++++++++++++++++++++
