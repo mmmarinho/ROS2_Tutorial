@@ -36,6 +36,20 @@ is a rather complete example that we can utilize, namely :file:`tb3_simulation_l
 
     ros2 launch nav2_bringup tb3_simulation_launch.py use_sim_time:=True headless:=False sigterm_timeout:=120
 
+This example will create a large number of nodes and open two screens. One of these will be for :program:`Gazebo` and
+another for :program:`rviz2`. In this example, there are two actions expected from the user.
+
+#. Set the initial *2D Pose Estimate*. This can be done through :program:`rviz2`, or :program:`ROS2` interfaces.
+#. Send one or more *Nav2 Goal* \s.
+
+An example of how to do so is shown in the video below. Please note that although I adjust :program:`Gazebo` to line
+up with the :program:`rviz2` view, this is for my convenience. As long as your initial estimate is fairly accurate
+the navigation should work fine.
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/eoZ6lu1YWQo?si=vDkECcj_1oQtgHcl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Navigation with SLAM
 ++++++++++++++++++++
 
