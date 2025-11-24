@@ -63,15 +63,15 @@ Here's a brief explanation of why we need each one of these.
 
     More information is available in the :file:`gz-sim/src/systems` folder at https://github.com/gazebosim/gz-sim/tree/gz-sim8/src/systems.
 
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-|``gz::sim::systems::Physics``          |  The physics behavior needed by the other systems.                                                                                         |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-|``gz::sim::systems::SceneBroadcaster`` |  Needed by the other systems `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/scene_broadcaster/SceneBroadcaster.hh>`_.|
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-|``gz::sim::systems::ApplyLinkWrench``  |  Creates the ``/wrench`` topic `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/user_commands/UserCommands.hh>`_.      |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-|``gz::sim::systems::UserCommands``     |  Creates the ``/set_pose`` topic `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/user_commands/UserCommands.hh>`_.    |
-+---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+|``gz::sim::systems::Physics``          |  The physics behavior needed by the other systems.                                                                                           |
++---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+|``gz::sim::systems::SceneBroadcaster`` |  Needed by the other systems `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/scene_broadcaster/SceneBroadcaster.hh>`_.  |
++---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+|``gz::sim::systems::ApplyLinkWrench``  |  Creates the ``/wrench`` topic `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/user_commands/UserCommands.hh>`_.        |
++---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+|``gz::sim::systems::UserCommands``     |  Creates the ``/set_pose`` service `[doc] <https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/user_commands/UserCommands.hh>`_.    |
++---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 We start by adding the following file to your :file:`~/gazebo_tutorial_workspace/scenes` folder.
 
