@@ -14,7 +14,7 @@ This is currently the only version known to be compatible with this tutorial.
 
 .. rli:: https://raw.githubusercontent.com/UoMMScRobotics/SFR_Gazebo/refs/heads/main/install_gazebo.sh
    :language: bash
-   :lines: 5-15
+   :lines: 5-18
 
 .. danger::
 

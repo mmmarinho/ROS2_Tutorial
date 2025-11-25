@@ -316,6 +316,16 @@ Navigation with SLAM
 
     Official documentation: https://docs.nav2.org/tutorials/docs/navigation2_with_slam.html#navigation2-with-slam
 
+In the previous example, we looked into navigating through a completely known map. This is a common problem to solve
+in robotics, but definitely not the only issue. Commonly, we have partial or no knowledge of the map through which a
+robot has to traverse. This is where SLAM kicks in. It becomes a problem of navigating through an incomplete and
+dynamic map.
+
+In this example, they make use of the `slam toolbox <https://github.com/SteveMacenski/slam_toolbox>`_. Going into the
+details of SLAM is beyond the scope of this tutorial, but there are some interesting aspects to learn from this example
+even with the basic concepts of navigation.
+
 .. code-block:: console
 
     ros2 launch nav2_bringup tb3_simulation_launch.py slam:=True sigterm_timeout:=120
+
