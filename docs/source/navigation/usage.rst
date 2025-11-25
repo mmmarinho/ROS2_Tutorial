@@ -253,12 +253,26 @@ and the controller.
 World and robot definition files
 --------------------------------
 
+As you might remember from the :file:`.sdf` contents, they are XML files. These files, by default, do not take advantage
+of programming concepts, such as macros and conditionals. This becomes an issue when you want to make a robot description
+file that is slightly more general and can be easily modified with specific parameters. Therefore you are likely to
+see `xacro <https://github.com/ros/xacro>`_ being used in many ROS examples.
+
+For instance, the :file:`tb3_sandbox.sdf.xacro` file's contents can be modified by the parameter ``headless``. Where
+the parameter is defined and where it's used are highlighted in the file below. In this example, this might be a quick
+patch given that :program:`Gazebo` does not seem to support it. In this example, :program:`xacro` will pre-process
+the file and output a compliant :file:`.sdf` based on the value.
 
 .. dropdown:: The contents of ``tb3_sandbox.sdf.xacro``.
 
     .. rli:: https://raw.githubusercontent.com/ros-navigation/nav2_minimal_turtlebot_simulation/refs/heads/jazzy/nav2_minimal_tb3_sim/worlds/tb3_sandbox.sdf.xacro
         :language: xml
         :linenos:
+        :emphasize-lines: 3,14
+
+
+Something similar is done to allow :program:`Gazebo` topics to have a different namespace. This is helpful when multiple
+robots are added to the same :program:`Gazebo` world.
 
 .. dropdown:: The contents of ``gz_waffle.sdf.xacro``.
 
@@ -266,11 +280,34 @@ World and robot definition files
         :language: xml
         :linenos:
 
+Although :file:`.sdf` files are meant to replace, or supersede, :file:`.urdf` files in the long term, the process is
+still ongoing or under discussion. So it is likely that you will see :file:`.urdf` files heavily used in many :program:`ROS2`
+packages. Nonetheless, :file:`.urdf` are close in syntax to :file:`.sdf` files and should be no surprise.
+
 .. dropdown:: The contents of ``turtlebot3_waffle.urdf``.
 
     .. rli:: https://raw.githubusercontent.com/ros-navigation/nav2_minimal_turtlebot_simulation/refs/heads/jazzy/nav2_minimal_tb3_sim/urdf/turtlebot3_waffle.urdf
         :language: xml
         :linenos:
+
+So what?
+--------
+
+After looking through this example you have probably noticed the complexity involved into setting up ``nav2`` for even
+relatively simple projects. Having a highly configurable system increases the number of possibilities, which is great
+when applying it to other settings, but might be daunting at first.
+
+Here are some examples of what you could modify in this example and what would be the estimated difficulty of doing so.
+
+
+- Changing the map. Not as trivial as it might sound, because the map needs to match the :program:`Gazebo` simulation scene. Some community `tools <https://github.com/Arseni1919/Converter_PGM_to_SDF>`_ might help with that.
+- Changing the :program:`Gazebo` scene. Same problem as above, although you might benefit from SLAM, it is not likely to create a perfect map.
+- Changing the robot. Online tutorials and official repositories might say that it's a matter of "changing the ``urdf`` file". Unfortunately, this might mean lots of other things will change, including the navigation parameters depending, for instance, on sensors and footprint of your robot.
+- Changing planners or controllers in ``nav2``. That is going to be easier generally, but the parameters of one planner or controller might not map exactly to another one. It might take some tinkering to get it to work.
+
+
+In conclusion, using this example, you have learned the basics of ``nav2`` from an official example. We went through
+the importance of each file and now you should have a conceptual knowledge beyond the basics for this navigation stack.
 
 Navigation with SLAM
 ++++++++++++++++++++
