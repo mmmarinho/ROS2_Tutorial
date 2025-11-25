@@ -338,3 +338,6 @@ even with the basic concepts of navigation.
     sigterm_timeout:=120 \
     slam:=True
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/7ADhJ3ZkBHI?si=cAY6uP--0ih3Redg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
