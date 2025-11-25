@@ -34,7 +34,11 @@ is a rather complete example that we can utilize, namely :file:`tb3_simulation_l
 
 .. code-block:: console
 
-    ros2 launch nav2_bringup tb3_simulation_launch.py use_sim_time:=True headless:=False sigterm_timeout:=120
+    ros2 launch nav2_bringup \
+    tb3_simulation_launch.py \
+    use_sim_time:=True \
+    headless:=False \
+    sigterm_timeout:=120
 
 We use ``headless:=False`` for the launch file to spawn :program:`Gazebo`. We use ``use_sim_time:=True`` to make sure
 that :program:`Gazebo`\'s clock will be used an prevent timing issues with `/tf`.
@@ -327,5 +331,10 @@ even with the basic concepts of navigation.
 
 .. code-block:: console
 
-    ros2 launch nav2_bringup tb3_simulation_launch.py slam:=True sigterm_timeout:=120
+    ros2 launch nav2_bringup \
+    tb3_simulation_launch.py \
+    use_sim_time:=True \
+    headless:=False \
+    sigterm_timeout:=120 \
+    slam:=True
 
