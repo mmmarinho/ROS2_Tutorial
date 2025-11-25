@@ -329,6 +329,8 @@ In this example, they make use of the `slam toolbox <https://github.com/SteveMac
 details of SLAM is beyond the scope of this tutorial, but there are some interesting aspects to learn from this example
 even with the basic concepts of navigation.
 
+We can run the demo with SLAM using the code below. Please note that the only difference is the flag ``slam:=True``.
+
 .. code-block:: console
 
     ros2 launch nav2_bringup \
@@ -338,10 +340,33 @@ even with the basic concepts of navigation.
     sigterm_timeout:=120 \
     slam:=True
 
+You can behold my incredible map completion skills in the video below. As you will notice it will start empty and be
+completed as move around it. Using our knowledge of the environment we can know where to go to complete the map and
+have good coverage. In practice, this can be challenging, when the environment is completely unknown and has more
+complex topology.
+
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/7ADhJ3ZkBHI?si=cAY6uP--0ih3Redg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+Running the same demonstration a second time, we can see how to save an incomplete map. The map will be saved in the
+folder in which you executed ``ros2 launch``.
+
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/ETFg4vllnBs?si=-ril5uBBOatRLeqh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+The maps will be saved into two files, compliant with ``nav2`` use. The first one we saved will be the ``.yaml`` file.
+
+.. literalinclude:: incomplete.yaml
+   :language: yaml
+   :linenos:
+
+The second one will be the map. When opened in a image viewer, this is how it looks like, showing its incomplete state.
+
+.. image:: incomplete.png
+
+This example is illustrative of the capacity to create maps using SLAM. This might not look like much, at first glance.
+However, please take this time to reflect that this mapping is happening with simulated data coming from :program:`Gazebo`.
+Therefore, it is as representative of reality as the programs we have used so far allow us to be at this point.
+
