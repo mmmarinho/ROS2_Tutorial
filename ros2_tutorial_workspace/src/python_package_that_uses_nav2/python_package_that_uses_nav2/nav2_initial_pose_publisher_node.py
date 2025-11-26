@@ -35,7 +35,7 @@ class Nav2InitialPosePublisherNode(Node):
 
         self._topic = '/initialpose'
 
-        self.amazing_quote_publisher = self.create_publisher(
+        self.publisher = self.create_publisher(
             msg_type=PoseWithCovarianceStamped,
             topic=self._topic,
             qos_profile=1)
@@ -69,7 +69,7 @@ class Nav2InitialPosePublisherNode(Node):
         pwcs.pose.covariance[7] = 0.25
         pwcs.pose.covariance[35] = 0.06853891909122467
 
-        self.amazing_quote_publisher.publish(pwcs)
+        self.publisher.publish(pwcs)
 
 def main(args=None):
     """

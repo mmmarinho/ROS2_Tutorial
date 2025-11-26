@@ -88,6 +88,9 @@ If you enjoyed this tutorial, please
 #. :doc:`Gazebo and ROS2 <gazebo/index>`
     :program:`Gazebo` installation, basic usage, and integration examples with ROS2.
 
+#. :doc:`nav2 <navigation/index>`
+    ``nav2`` installation, basic usage, and integration examples with custom ROS2 nodes.
+
 .. toctree::
    :caption: Preamble
    :maxdepth: 2
@@ -199,6 +202,16 @@ If you enjoyed this tutorial, please
    gazebo/custom_nodes
 
 .. toctree::
+   :caption: Navigation
+   :maxdepth: 2
+   :hidden:
+
+   navigation/index
+   navigation/installation
+   navigation/usage
+   navigation/custom_nodes
+
+.. toctree::
    :caption: ROS2 C++ Basics
    :maxdepth: 2
    :hidden:
@@ -225,15 +238,7 @@ If you enjoyed this tutorial, please
    cmake/index
    faq
 
-.. toctree::
-   :caption: Unstable
-   :maxdepth: 2
-   :hidden:
 
-   navigation/index
-   navigation/installation
-   navigation/usage
-   navigation/custom_nodes
 
 
 Disclaimers
