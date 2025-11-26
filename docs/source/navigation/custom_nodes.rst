@@ -491,6 +491,12 @@ goals unless an initial estimate is given first.
 
     ros2 run python_package_that_uses_nav2 nav2_navigate_to_pose_action_client_node
 
+The qualitative behaviour can be seen in the following video.
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/yZUyu0iefxA?si=9p3Fq1th3a8Uv-5v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 .. admonition:: Exercises
 
     Other possible interactions with these interfaces could be as follows.
@@ -500,3 +506,4 @@ goals unless an initial estimate is given first.
     - What would have to be modified if you had three goals, goal ``a``, goal ``b``, and goal ``c``. Suppose that we
       initially send goal ``a``. If the goal is reached, then go to goal ``b``. If not reached, go to goal ``c``. This
       is a very basic state machine. An embryo, but somewhat the motivation for behaviour tress.
+
