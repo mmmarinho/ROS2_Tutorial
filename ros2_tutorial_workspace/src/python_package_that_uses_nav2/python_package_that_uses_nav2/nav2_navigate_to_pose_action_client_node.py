@@ -43,7 +43,9 @@ class Nav2NavigateToPoseActionClient(Node):
 
     def send_goal_async(self, desired_pose: Pose, behaviour_tree: str) -> None:
         goal_msg = NavigateToPose.Goal()
-        goal_msg.pose = desired_pose
+        goal_msg.pose.header.stamp = self.get_clock().now().to_msg()
+        goal_msg.pose.header.frame_id = 'map'
+        goal_msg.pose.pose = desired_pose
         goal_msg.behavior_tree = behaviour_tree
 
         while not self.action_client.wait_for_server(timeout_sec=1.0):
@@ -84,10 +86,10 @@ def main(args=None):
 
         node = Nav2NavigateToPoseActionClient()
 
-        desired_pose = Pose
-        desired_pose.translation.x = 1.0
-        desired_pose.translation.y = -1.0
-        desired_pose.rotation.w = 1.0
+        desired_pose = Pose()
+        desired_pose.position.x = 1.0
+        desired_pose.position.y = -1.0
+        desired_pose.orientation.w = 1.0
 
         node.send_goal_async(desired_pose, "")
 
