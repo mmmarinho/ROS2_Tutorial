@@ -236,7 +236,10 @@ representation, the dark pixels represent occupied regions, such as walls. The w
 grey pixels represent unknown regions. This will be part of the so-called ``nav2_costmap_2d::StaticLayer``, representing
 these three states.
 
+Below is a representation of ``tb3_sandbox.pgm`` when opened in an image viewer.
+
 .. image:: tb3_sandbox.png
+    :width: 100%
 
 Given that we are unable to fully entrust the safety of the robot to our carefully-drawn maps, ``nav2`` also allows the use
 of a ``nav2_costmap_2d::ObstacleLayer``. This will be tied to one of the robot sensors, for instance, a laser scanner.
@@ -365,6 +368,7 @@ The maps will be saved into two files, compliant with ``nav2`` use. The first on
 The second one will be the map. When opened in a image viewer, this is how it looks like, showing its incomplete state.
 
 .. image:: incomplete.png
+    :width: 100%
 
 This example is illustrative of the capacity to create maps using SLAM. This might not look like much, at first glance.
 However, please take this time to reflect that this mapping is happening with simulated data coming from :program:`Gazebo`.
