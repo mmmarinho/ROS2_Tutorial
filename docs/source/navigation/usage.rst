@@ -34,6 +34,8 @@ with the following command.
     headless:=False \
     sigterm_timeout:=120
 
+.. include:: ./tb3_simulation_launch_disclaimer.rst
+
 .. warning::
 
     The ``sigterm_timeout`` flag is particularly important. Given that some devices we use might not be powerful enough

@@ -11,9 +11,30 @@ Interface ``nav2`` with custom :program:`ROS2` nodes
 Objective
 ---------
 
+We are going to create custom code to interact with the navigation stack, ``nav2``. This will be based on the demo
+``tb3_simulation_launch.py``, but it is generally applicable. In the example, ``rviz2`` is used for interactivity.
+In this example, we will be able to operate ``nav2`` automatically, without relying on the visualizer.
+
+#. Create a publisher to send the initial pose.
+#. Create an action client to send navigation goals.
+
+.. include:: ./tb3_simulation_launch_disclaimer.rst
+
+When dealing with a new stack you might not be familiar with, the first step is to try to make sense of the interfaces
+available.
+
+Initial pose topic
+++++++++++++++++++
+
+When the ``tb3_simulation_launch.py`` example is running, if we run ``ros2 topic list`` you will see a long
+list of topics. Let us filter them out with the keyword *pose*, giving that we're trying to find things related to
+pose. We can do so with the command below.
+
 .. code-block:: console
 
     ros2 topic list | grep pose
+
+The output of that will be the following topics.
 
 .. code-block:: console
 
@@ -25,35 +46,20 @@ Objective
     /initialpose
     /staging_pose
 
-.. code-block:: console
+This is convenient for us because ``/initialpose`` describes exactly what we want to do in the first step. If you are
+annoyed by the fact that the words *initial* and *pose* are not separated by a *_*, so am I.
 
-    ros2 action list | grep pose
-
-.. code-block:: console
-
-    /compute_path_through_poses
-    /compute_path_to_pose
-    /navigate_through_poses
-    /navigate_to_pose
-
-Send 2D pose estimate from :program:`rviz2`
-
-.. code-block:: console
-
-    ros2 topic info /initialpose
-
-.. code-block:: console
-
-    Type: geometry_msgs/msg/PoseWithCovarianceStamped
-    Publisher count: 1
-    Subscription count: 1
-
+We can check if this is in fact the correct topic used by :program:`rviz2`. With the demo running, we run, in another
+terminal, the following command.
 
 .. code-block:: console
 
     ros2 topic echo /initialpose
 
-.. dropdown::
+Then, we send the initial position through :program:`rviz2`. We can see that in fact :program:`rviz2` used this topic
+to set the initial pose, therefore our guess was correct. Below is not representative output.
+
+.. dropdown:: Output of ros2 topic echo
 
     .. code-block:: console
 
@@ -111,6 +117,47 @@ Send 2D pose estimate from :program:`rviz2`
           - 0.0
           - 0.06853891909122467
         ---
+
+We can understand more about the topic with the following command.
+
+.. code-block:: console
+
+    ros2 topic info /initialpose
+
+This will show us that the topic uses :file:`geometry_msgs/msg/PoseWithCovarianceStamped`. Thence, all we have to do
+is create a subscriber with that message type to the topic ``/initialpose``.
+
+.. code-block:: console
+
+    Type: geometry_msgs/msg/PoseWithCovarianceStamped
+    Publisher count: 1
+    Subscription count: 1
+
+Although it might look somewhat trivial at this stage, there are many :program:`ROS2` concepts at play so that these
+connections can be understood.
+
+Navigate to pose action
++++++++++++++++++++++++
+
+When operating the demo through :program:`rviz2`, you might have noticed that sending navigation goals behaves as an
+action. It has a goal, feedback, and a result.
+
+With that in mind, we look through the active action, once more filtering for *pose*. We can do so with the following
+command.
+
+.. code-block:: console
+
+    ros2 action list | grep pose
+
+This results in the following actions.
+
+.. code-block:: console
+
+    /compute_path_through_poses
+    /compute_path_to_pose
+    /navigate_through_poses
+    /navigate_to_pose
+
 
 .. code-block:: console
 
