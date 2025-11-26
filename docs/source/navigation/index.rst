@@ -1,5 +1,5 @@
-Navigation
-==========
+About Navigation
+================
 
 .. versionadded:: Jazzy
 
