@@ -233,6 +233,7 @@ If you enjoyed this tutorial, please
    navigation/index
    navigation/installation
    navigation/usage
+   navigation/custom_nodes
 
 
 Disclaimers
