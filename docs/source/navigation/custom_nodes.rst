@@ -196,6 +196,34 @@ Send 2D pose estimate from :program:`rviz2`
     int16 number_of_recoveries
     float32 distance_remaining
 
+.. code-block::
+
+    cd $(ros2 pkg prefix nav2_msgs --share)
+    cat action/NavigateToPose.action
+
+.. code-block:: yaml
+
+    #goal definition
+    geometry_msgs/PoseStamped pose
+    string behavior_tree
+    ---
+    #result definition
+
+    # Error codes
+    # Note: The expected priority order of the errors should match the message order
+    uint16 NONE=0
+
+    uint16 error_code
+    string error_msg
+    ---
+    #feedback definition
+    geometry_msgs/PoseStamped current_pose
+    builtin_interfaces/Duration navigation_time
+    builtin_interfaces/Duration estimated_time_remaining
+    int16 number_of_recoveries
+    float32 distance_remaining
+
+
 Create the package
 ------------------
 
