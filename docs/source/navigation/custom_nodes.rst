@@ -140,10 +140,8 @@ Navigate to pose action
 +++++++++++++++++++++++
 
 When operating the demo through :program:`rviz2`, you might have noticed that sending navigation goals behaves as an
-action. It has a goal, feedback, and a result.
-
-With that in mind, we look through the active action, once more filtering for *pose*. We can do so with the following
-command.
+action. It has a goal, feedback, and a result. With that in mind, we look through the active action, once more filtering
+for *pose*. We can do so with the following command.
 
 .. code-block:: console
 
@@ -158,10 +156,15 @@ This results in the following actions.
     /navigate_through_poses
     /navigate_to_pose
 
+Good sense should indicate that, given that we want to navigate to a pose, the correct topic in question is
+``/navigate_to_pose``. We can check more information about it with the following command.
 
 .. code-block:: console
 
     ros2 action info /navigate_to_pose
+
+The information clearly states that :program:`rviz2` is connected to it, which is a good indicator that we are on the
+right path.
 
 .. code-block:: console
 
@@ -175,78 +178,91 @@ This results in the following actions.
     Action servers: 1
         /bt_navigator
 
+With the following command we see what type of action we have to support.
+
 .. code-block:: console
 
     ros2 action type /navigate_to_pose
+
+The output of the command will be the following action type.
 
 .. code-block:: console
 
     nav2_msgs/action/NavigateToPose
 
+Thence, our next step is to see what are the fields that we need to support in our action client. The long way to do
+so is with the command we are already aware of.
+
 .. code-block:: console
 
     ros2 interface show nav2_msgs/action/NavigateToPose
 
-.. code-block:: console
+.. dropdown:: Output of ros2 interface show
 
-    #goal definition
-    geometry_msgs/PoseStamped pose
-        std_msgs/Header header
-            builtin_interfaces/Time stamp
-                int32 sec
-                uint32 nanosec
-            string frame_id
-        Pose pose
-            Point position
-                float64 x
-                float64 y
-                float64 z
-            Quaternion orientation
-                float64 x 0
-                float64 y 0
-                float64 z 0
-                float64 w 1
-    string behavior_tree
-    ---
-    #result definition
+    .. code-block:: yaml
 
-    # Error codes
-    # Note: The expected priority order of the errors should match the message order
-    uint16 NONE=0
+        #goal definition
+        geometry_msgs/PoseStamped pose
+            std_msgs/Header header
+                builtin_interfaces/Time stamp
+                    int32 sec
+                    uint32 nanosec
+                string frame_id
+            Pose pose
+                Point position
+                    float64 x
+                    float64 y
+                    float64 z
+                Quaternion orientation
+                    float64 x 0
+                    float64 y 0
+                    float64 z 0
+                    float64 w 1
+        string behavior_tree
+        ---
+        #result definition
 
-    uint16 error_code
-    string error_msg
-    ---
-    #feedback definition
-    geometry_msgs/PoseStamped current_pose
-        std_msgs/Header header
-            builtin_interfaces/Time stamp
-                int32 sec
-                uint32 nanosec
-            string frame_id
-        Pose pose
-            Point position
-                float64 x
-                float64 y
-                float64 z
-            Quaternion orientation
-                float64 x 0
-                float64 y 0
-                float64 z 0
-                float64 w 1
-    builtin_interfaces/Duration navigation_time
-        int32 sec
-        uint32 nanosec
-    builtin_interfaces/Duration estimated_time_remaining
-        int32 sec
-        uint32 nanosec
-    int16 number_of_recoveries
-    float32 distance_remaining
+        # Error codes
+        # Note: The expected priority order of the errors should match the message order
+        uint16 NONE=0
+
+        uint16 error_code
+        string error_msg
+        ---
+        #feedback definition
+        geometry_msgs/PoseStamped current_pose
+            std_msgs/Header header
+                builtin_interfaces/Time stamp
+                    int32 sec
+                    uint32 nanosec
+                string frame_id
+            Pose pose
+                Point position
+                    float64 x
+                    float64 y
+                    float64 z
+                Quaternion orientation
+                    float64 x 0
+                    float64 y 0
+                    float64 z 0
+                    float64 w 1
+        builtin_interfaces/Duration navigation_time
+            int32 sec
+            uint32 nanosec
+        builtin_interfaces/Duration estimated_time_remaining
+            int32 sec
+            uint32 nanosec
+        int16 number_of_recoveries
+        float32 distance_remaining
+
+A more condensed version of the action can be obtained with the following commands.
 
 .. code-block::
 
     cd $(ros2 pkg prefix nav2_msgs --share)
     cat action/NavigateToPose.action
+
+The output of this command will be the following.
 
 .. code-block:: yaml
 
@@ -270,9 +286,24 @@ This results in the following actions.
     int16 number_of_recoveries
     float32 distance_remaining
 
+So what?
+++++++++
+
+After going through this investigative process looking through topics and actions, we reached a conclusion of what
+must be done in a more concrete sense.
+
+#. Create a publisher to send the initial pose.
+    - The message type is ``geometry_msgs/msg/PoseWithCovarianceStamped``.
+#. Create an action client to send navigation goals.
+    - The action type is ``nav2_msgs/action/NavigateToPose``.
+
+That's it!
 
 Create the package
 ------------------
+
+We'll start by creating a suitable :program:`ROS2` package. We already now, from the previous investigation, what
+package we need to depend on.
 
 .. code-block:: console
 
@@ -281,7 +312,7 @@ Create the package
     --build-type ament_python \
     --dependencies rclpy geometry_msgs nav2_msgs
 
-.. dropdown::
+.. dropdown:: ros2 pkg create output
 
     .. code-block:: console
 
@@ -324,17 +355,105 @@ Create the package
 Files
 -----
 
+In this section, we will be creating or modifying the following highlighted files.
+
+.. code-block:: console
+    :emphasize-lines: 5,6,9
+
+    python_package_that_uses_nav2/
+    |-- package.xml
+    |-- python_package_that_uses_nav2
+    |   |-- __init__.py
+    |   |-- nav2_initial_pose_publisher_node.py
+    |   `-- nav2_navigate_to_pose_action_client_node.py
+    |-- resource
+    |   `-- python_package_that_uses_nav2
+    |-- setup.cfg
+    |-- setup.py
+    `-- test
+        |-- test_copyright.py
+        |-- test_flake8.py
+        `-- test_pep257.py
+
 Sending the initial pose to ``nav2``
 ------------------------------------
+
+Given that this node is a simple publisher, we can jump straight to it.
+
+:download:`nav2_initial_pose_publisher_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py
+   :language: python
+   :linenos:
+   :lines: 24-
+
+There might be two minor novelties in this example. The first one is similar to what we did in ``tf2`` when guaranteeing
+that the publisher was connected before attempting to publish for the first time. In this case, because in this demo
+:program:`rviz2` is already connected to that topic, we check that there are two subscribers connected before proceeding
+with the initialisation.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py
+   :language: python
+   :lines: 43-48
+   :emphasize-lines: 2
+
+The second part that might be unfamiliar is the covariance used in the message. The covariance matrix holds the variance
+in the diagonal and off the diagonal any pair-wise variances between different states. All of this to say that the
+covariance will be used to say how confident we are in a given field of the pose and if their variation is correlated.
+In this case, we choose the same, or similar, values that were sent by :program:`rviz2`. This is enough for our purposes.
+The covariance is highlighted below.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py
+   :language: python
+   :lines: 50-72
+   :emphasize-lines: 19-21
+
+It is important not to be distracted by the nested ``pose``. The first one os the ``PoseWithCovariance``, part of the
+``PoseWithCovarianceStamped``. The second one is the ``Pose`` part of the ``PoseWithCovariance``.
+
+That's it. This node is relatively simple: a publisher that publishes a single message. There will be other ways to achieve
+this. The one shown herein is the most standard one according to what has been shown in the tutorial.
 
 Handling ``nav2`` pose navigation actions
 -----------------------------------------
 
-The launch file
-+++++++++++++++
+I'm conflicted whether this one is even easier. I suppose it's more complex, being an action client. However, it
+follows the same formula as we did in the action tutorial.
+
+:download:`nav2_navigate_to_pose_action_client_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_navigate_to_pose_action_client_node.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_navigate_to_pose_action_client_node.py
+   :language: python
+   :linenos:
+   :lines: 24-
+
+We can highlight two possible pinch points. Starting by the ``main()`` function, we instantiate the node and create
+a desired pose, highlighted below. Indeed, we are going to use a stamped pose. However, it is simpler to grab the
+stamp from a node, so we do that in a method. We send an empty behaviour tree, because otherwise would be out of the
+scope of this tutorial.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_navigate_to_pose_action_client_node.py
+   :language: python
+   :lines: 87-94
+   :emphasize-lines: 3-6
+
+Then, in our implementation we populate the fields of the goal with the pose we just created and the stamp obtained
+from the node. We receive an empty behaviour tree and that is also added to the goal.
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_navigate_to_pose_action_client_node.py
+   :language: python
+   :lines: 44-49
+
 
 Adjusting the :file:`setup.py`
 ------------------------------
+
+:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/setup.py>`
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/setup.py
+   :language: python
+   :emphasize-lines: 27-28
+   :linenos:
 
 Build and source
 ----------------

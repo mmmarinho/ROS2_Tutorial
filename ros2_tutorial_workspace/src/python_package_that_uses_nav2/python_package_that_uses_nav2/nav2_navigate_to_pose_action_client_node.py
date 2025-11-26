@@ -68,12 +68,12 @@ class Nav2NavigateToPoseActionClient(Node):
         self.get_result_future.add_done_callback(self.action_result_callback)
 
     def action_result_callback(self, future: Future) -> None:
-        response: NavigateToPose.Response = future.result()
-        self.get_logger().info(f'Final position was: {response.result}.')
+        result: NavigateToPose.Result = future.result()
+        self.get_logger().info(f'Final position was: {result.result}.')
 
     def action_feedback_callback(self, feedback_msg: NavigateToPose.Feedback) -> None:
         feedback = feedback_msg.feedback
-        self.get_logger().info(f'Received feedback distance: {feedback}.')
+        self.get_logger().info(f'Received feedback distance: {feedback.distance_remaining}.')
 
 
 def main(args=None):
