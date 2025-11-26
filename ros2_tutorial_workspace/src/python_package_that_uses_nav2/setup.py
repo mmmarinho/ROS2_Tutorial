@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'nav2_initial_pose_publisher_node = python_package_that_uses_nav2.nav2_initial_pose_publisher_node:main'
         ],
     },
 )
