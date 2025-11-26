@@ -38,14 +38,19 @@ class Nav2InitialPosePublisherNode(Node):
         self.amazing_quote_publisher = self.create_publisher(
             msg_type=PoseWithCovarianceStamped,
             topic=self._topic,
-            qos_profile=1)
+            qos_profile=10)
 
-        while self.count_subscribers(self._topic) < 2:
-            print(f"Waiting for subscriber to be connected to {self._topic}...")
+        publisher_count = 0
+        while publisher_count < 2:
+            publisher_count = self.count_publishers(self._topic)
+            print(f"Waiting for publisher to be connected to {self._topic}.")
+            print(f"Publisher count is {publisher_count}.")
             time.sleep(1)
 
     def send_initial_pose_with_covariance(self):
         """Method to create the PoseWithCovarianceStamped."""
+
+        print(f"Printing pose to topic: {self._topic}.")
 
         pwcs = PoseWithCovarianceStamped()
         pwcs.header.stamp = self.get_clock().now().to_msg()
@@ -55,10 +60,10 @@ class Nav2InitialPosePublisherNode(Node):
         pwcs.pose.pose.position.y = -0.3
         pwcs.pose.pose.position.z = 0.0
 
-        pwcs.pose.orientation.w = 1.0
-        pwcs.pose.orientation.x = 0.0
-        pwcs.pose.orientation.y = 0.0
-        pwcs.pose.orientation.z = 0.0
+        pwcs.pose.pose.orientation.w = 1.0
+        pwcs.pose.pose.orientation.x = 0.0
+        pwcs.pose.pose.orientation.y = 0.0
+        pwcs.pose.pose.orientation.z = 0.0
 
 def main(args=None):
     """
