@@ -23,14 +23,8 @@ usual. It points out where things are, for instance, where passable regions (suc
 obstacles, and other relevant objects.
 
 In this example, a `TurtleBot3 <https://www.turtlebot.com/turtlebot3/>`_ will be used. As part of ``nav2_bringup``, there
-is a rather complete example that we can utilize, namely :file:`tb3_simulation_launch.py`.
-
-.. warning::
-
-    The ``sigterm_timeout`` flag is particularly important. Given that some devices we use might not be powerful enough
-    for all processes to finish cleanly within 5 or 10 seconds, we should add this to prevent a ``SIGTERM`` from
-    being sent to the nodes. If nodes are not terminated correctly they can leave connections open, linger indefinitely,
-    and cause extremely difficult-to-debug situations. This can also be dangerous when real robots are used.
+is a rather complete example that we can utilize, namely :file:`tb3_simulation_launch.py`. The example can be executed
+with the following command. 
 
 .. code-block:: console
 
@@ -39,6 +33,13 @@ is a rather complete example that we can utilize, namely :file:`tb3_simulation_l
     use_sim_time:=True \
     headless:=False \
     sigterm_timeout:=120
+
+.. warning::
+
+    The ``sigterm_timeout`` flag is particularly important. Given that some devices we use might not be powerful enough
+    for all processes to finish cleanly within 5 or 10 seconds, we should add this to prevent a ``SIGTERM`` from
+    being sent to the nodes. If nodes are not terminated correctly they can leave connections open, linger indefinitely,
+    and cause extremely difficult-to-debug situations. This can also be dangerous when real robots are used.
 
 We use ``headless:=False`` for the launch file to spawn :program:`Gazebo`. We use ``use_sim_time:=True`` to make sure
 that :program:`Gazebo`\'s clock will be used an prevent timing issues with `/tf`.
@@ -245,7 +246,7 @@ Given that we are unable to fully entrust the safety of the robot to our careful
 of a ``nav2_costmap_2d::ObstacleLayer``. This will be tied to one of the robot sensors, for instance, a laser scanner.
 This will allow the robot to avoid obstacles when the map itself was inaccurate, for instance, if an obstacle has not
 been accounted for, or account for inaccuracies in the localisation itself. The ``nav2_costmap_2d::VoxelLayer`` is used
-in this example for a similar purpose, with the different that the sensor relays 3D information that is then transformed
+in this example for a similar purpose, with the difference that the sensor relays 3D information that is then transformed
 into relevant 2D information.
 
 Lastly, there will be the ``nav2_costmap_2d::InflationLayer``. Given that the maps hold only three possible states for
