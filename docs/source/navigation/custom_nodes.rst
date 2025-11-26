@@ -444,6 +444,7 @@ from the node. We receive an empty behaviour tree and that is also added to the 
    :language: python
    :lines: 44-49
 
+Besides the slightly different action type, the process to make an action client is mostly unchanged. 
 
 Adjusting the :file:`setup.py`
 ------------------------------
@@ -465,3 +466,37 @@ Before we proceed, let us build and source once.
 Testing
 -------
 
+The first step is to run the same demo as before, with ``tb3_simulation_launch.py``. We can do that with the command
+below.
+
+.. code-block:: console
+
+    ros2 launch nav2_bringup \
+    tb3_simulation_launch.py \
+    use_sim_time:=True \
+    headless:=False \
+    sigterm_timeout:=120
+
+Then, in another terminal, we can run the following command. This one will be rather tolerant of what it's started
+because it will wait for the correct number of publishers before publishing.
+
+.. code-block:: console
+
+    ros2 run python_package_that_uses_nav2 nav2_initial_pose_publisher_node
+
+The following command should only be attempted after the initial pose was set. The navigation stack will not accept
+goals unless an initial estimate is given first.
+
+.. code-block:: console
+
+    ros2 run python_package_that_uses_nav2 nav2_navigate_to_pose_action_client_node
+
+.. admonition:: Exercises
+
+    Other possible interactions with these interfaces could be as follows.
+
+    - What would change if the same node was supposed to both send the initial pose and, after that is done, send
+      the goal?
+    - What would have to be modified if you had three goals, goal ``a``, goal ``b``, and goal ``c``. Suppose that we
+      initially send goal ``a``. If the goal is reached, then go to goal ``b``. If not reached, go to goal ``c``. This
+      is a very basic state machine. An embryo, but somewhat the motivation for behaviour tress.
