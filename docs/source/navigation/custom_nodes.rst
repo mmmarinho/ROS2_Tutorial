@@ -358,7 +358,7 @@ Files
 In this section, we will be creating or modifying the following highlighted files.
 
 .. code-block:: console
-    :emphasize-lines: 5,6,9
+    :emphasize-lines: 5,6,10
 
     python_package_that_uses_nav2/
     |-- package.xml
