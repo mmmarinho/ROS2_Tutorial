@@ -37,17 +37,17 @@ each of the cyber-security terminology becomes as follows.
 
 - Threat actor: the bad person wearing a balaclava that wants to steal your precious.
 - Vulnerability: issues with the security. For instance, leaving the front-door key under a potted plant.
-- Attack vector: the way in which a vulnerability is exploited to steal your precious. For instance, the balaclava-person picking up the front-door key that was under the potted plant and proceeding to open the door with it.
-- Impact: the problem you'll have if you're attacked. In this case, your precious will be stolen. You'll cry.
-- Risk: impact put into perspective of likelihood. How many balaclava-clad people want your ring, really? Alternatively, being a neighbor of `Sauron <https://en.wikipedia.org/wiki/Sauron>`_ might indicate high risk of losing your precious.
+- Attack vector: the way in which a vulnerability is exploited by a threat actor to steal your precious. For instance, the balaclava-person lifting up the potted plant, picking up the front-door key that was under the potted plant, and proceeding to open the door with it.
+- Impact: the problem you'll have if you're attacked. In this case, your precious will be stolen. You'll cry. Your contents insurance payments will rise.
+- Risk: impact put into perspective of likelihood. How many balaclava-clad people want your precious, really? Alternatively, being a neighbor of `Sauron <https://en.wikipedia.org/wiki/Sauron>`_ might indicate high risk of losing your precious.
 
 What should I do?
 -----------------
 
 The main backbone of everything we will discuss in this topic will be *encryption*, part of cryptography which is very
-much literally "the science of secret writing" :footcite:p:`Josang2024`. Other common-sense actions also apply for
-robotic systems. These include using firewalls, having strong passwords, keeping systems updated, not having things
-connected to the internet when they don't have to be, never store personal data on a robot, and so on.
+much literally "the science of secret writing" :footcite:p:`Josang2024`. Other common-sense IT security actions also apply for
+robotic systems. These include backing things up, using firewalls, having strong passwords, keeping systems updated, not having things
+connected to the internet when they don't have to be, never storing personal data on a robot, and so on.
 
 Scope for this tutorial
 -----------------------
@@ -70,7 +70,7 @@ search (complete search) of the entire key space. The time it takes for an exhau
 tive key search depends on the key size. Typical key size for symmetric encryp-
 tion is 128 or 256 bits, as in AES. For a key size of 128 bits, an attacker would
 have to try an average of (2128)/2 keys to find the key, which would take millions
-of years.
+of years. :footcite:p:`Josang2024`
 
 
 .. admonition:: References
