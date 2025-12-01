@@ -21,3 +21,8 @@ pip install nottf2
 curl -OL https://raw.githubusercontent.com/UoMMScRobotics/sfr_gazebo_nav2/refs/heads/main/install_gazebo.sh
 chmod +x install_gazebo.sh
 . install_gazebo.sh
+
+# Install nav2
+curl -OL https://raw.githubusercontent.com/UoMMScRobotics/sfr_gazebo_nav2/refs/heads/main/install_nav2.sh
+chmod +x install_nav2.sh
+. install_nav2.sh

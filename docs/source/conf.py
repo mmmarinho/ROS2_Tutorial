@@ -32,8 +32,11 @@ extensions = [
     'sphinx_copybutton', # https://sphinx-copybutton.readthedocs.io/en/latest/
     'sphinx_design', # https://sphinx-design.readthedocs.io/en/latest/get_started.html
     'sphinxext.remoteliteralinclude', # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
-    'sphinxcontrib.mermaid' #https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
+    'sphinxcontrib.mermaid', #https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
+    'sphinxcontrib.bibtex' #https://sphinxcontrib-bibtex.readthedocs.io/en/latest/quickstart.html
 ]
+
+bibtex_bibfiles = ['refs.bib']
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3.12/', None),
