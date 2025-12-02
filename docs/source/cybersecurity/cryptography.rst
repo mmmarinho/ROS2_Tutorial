@@ -283,13 +283,11 @@ reason. Anyone with this key can decode the message.
 
 .. code-block:: console
 
-    -----BEGIN OPENSSH PRIVATE KEY-----
     b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
     QyNTUxOQAAACB++6lmO8Owvo8VVfCtOQOAqniWSh5eR3N3URdXshe48wAAAJhFbUOVRW1D
     lQAAAAtzc2gtZWQyNTUxOQAAACB++6lmO8Owvo8VVfCtOQOAqniWSh5eR3N3URdXshe48w
     AAAEA4UX2xHSPqpsSdVUE3ApVp6q6YeERgtYiNaSgFBCOf3X77qWY7w7C+jxVV8K05A4Cq
     eJZKHl5Hc3dRF1eyF7jzAAAAEXJvb3RAYzg2OWZiY2UxYTExAQIDBA==
-    -----END OPENSSH PRIVATE KEY-----
 
 What are the decrypted contents of this message?
 
@@ -310,12 +308,10 @@ Encrypt the message below. Well, anything will do, really.
 
     Use this private key to test if your encryption was correct or not.
 
-    .. block:: console
+    .. code-block:: console
 
-        -----BEGIN OPENSSH PRIVATE KEY-----
         b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
         QyNTUxOQAAACCmUlsdqJr1dJUzSX2rSctLWrifN3FtXw0bhd+ACRet/QAAAKDv9N2x7/Td
         sQAAAAtzc2gtZWQyNTUxOQAAACCmUlsdqJr1dJUzSX2rSctLWrifN3FtXw0bhd+ACRet/Q
         AAAEDmqGfF7PfgEOBtbzsuZqocWgSAAmX4+zqMmhZZ+NBZDKZSWx2omvV0lTNJfatJy0ta
         uJ83cW1fDRuF34AJF639AAAAHWI0MDYxN21tQMOvwr/CvcOvwr/CvcOvwr/CvWVV
-        -----END OPENSSH PRIVATE KEY-----
