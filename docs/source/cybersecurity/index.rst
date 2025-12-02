@@ -56,8 +56,13 @@ connected to the internet when they don't have to be, trusting noone, never stor
 Scope of this tutorial
 ----------------------
 
-Among cybersecurity controls, two will stand out in this tutorial. Mainly encryption, which is a type of preventive
-control, and backup, which is a type of corrective control.
+Among cybersecurity controls, two will stand out in this tutorial. Mainly network isolation and encryption, which are types of preventive
+controls, and backup, which is a type of corrective control.
+
+Network topologies
+------------------
+
+
 
 Public-key cryptosystems
 ------------------------
@@ -327,7 +332,10 @@ The flow in this case would be as follows.
 - It will be sent to participant A.
 - Participant A will decrypt the message with private key A.
 
-
+Because the public keys can be freely seen through a public channel, e.g., the internet, the information exchanged is
+safe. This does not mean that encryption is not crackable. With enough time and opportunities to attack, a private key
+can theoretically be eventually guessed. This is to loosely one of the ideas behind `cryptocurrencies <https://en.wikipedia.org/wiki/Cryptocurrency>`_,
+in which a `hash<https://en.wikipedia.org/wiki/Cryptographic_hash_function>`_ must be guessed.
 
 Exercises
 ---------
