@@ -202,6 +202,10 @@ narrative line.
 How do we send a secret message?
 ++++++++++++++++++++++++++++++++
 
+Let us start by installing a supporting program, called :program:`age`. This program will allow us to use our encryption
+keys to encrypt specific messages. Usually, :program:`ssh` would handle those more complex connections for us. We are
+only using :program:`age` to illustrate the ideas behind public-key cryptography.
+
 .. code-block:: console
 
     sudo apt-get update
@@ -218,10 +222,10 @@ Let's create the secret message, called :file:`secret_message.txt`.
 
 Now, the contents are obviously visible to anyone. You want to be sure that only your friend can see it. Therefore, you
 grab your friend's public key. Let's use :file:`example_ed25519.pub` I showed as an example for this. Again, the public
-key is not a secret, it is meant to be seen by other people. They only need to be able to trust that you are the holder
-of this specific public key.
+key is not a secret, it is meant to be *public*, that is, seen by other people. People, then, only need to be able to
+trust that you are the holder of this specific key pair.
 
-There's a cool program called :program:`age` that allows us to play with encryption. Without further ado, let's go with it.
+Let's use our cool program, :program:`age`, that allows us to play with encryption. Without further ado, let's go with it.
 
 .. code-block:: console
 
@@ -243,33 +247,29 @@ friends might be concerned seeing that but otherwise your message is still a sec
                �CF��gf��V�Y*ez����5
                                    �bu�ང>ǒ ��n=˨g�}M]��     �e�#����^Zmuh���jj�o���ȅ�l_�root@c869fbce1a11
 
-The magic is that nobody will be able to decrypt the message unless you are given the *private* key. Let's summarise
+The magic is that nobody will be able to decrypt the message unless the have the *private* key. Let's summarise
 what just happened.
 
-- Anyone who wants to participate on an encrypted conversation make they *public* encryption key available.
+- Anyone who wants to participate on an encrypted conversation make their *public* encryption key available.
 - Anyone who wants to send them a secret message uses that public key to encrypt the message.
-- Only the person who receives the message can decrypt it. They need the *private* key to do so.
+- Only the person with the *private* can decrypt the message.
 
-Therefore, we are able to send secret messages through a compromised and public channel, e.g. the internet. As long as
+Therefore, they are able to send secret messages through a compromised and public channel, e.g. the internet. As long as
 the public key is correct, we do not have to trust the identity of anyone either. **ONLY** someone who holds the private
 key will be able to read the true contents of the original message.
-
-.. caution::
-
-    I will show the private key here because this is a tutorial. DO NOT SHARE YOUR PRIVATE KEY WITH ANYONE.
 
 How do we read a secret message?
 ++++++++++++++++++++++++++++++++
 
 So, suppose that you sent the secret message, :file:`secret_message.txt.age`, above to your friend. Your friend will now have to use their private
-key to decrypt the message. Again, suppose that the keys we just created, are safely held by your friend. If they
+key to decrypt the message. Again, suppose that the keys we just created are safely held by your friend. If they
 want to read the contents of the secret message they will have to use the matching private key.
 
 .. code-block:: console
 
     cat example_ed25519
 
-The output is somewhat similar. To the public key. I will not show it here to reinforce that it is something you should
+The output is somewhat similar to the public key. I will not show it here to reinforce that it is something you should
 keep private. Your friend will use the private key :file:`example_ed25519` and the secret file they just received
 from you :file:`secret_message.txt.age`.
 
@@ -289,30 +289,13 @@ In which the original message is restored.
 
     This is the best tutorial I have every seen thanks Murilo for being so great.
 
-.. admonition:: Exercise
+You can confirm that you won't be able to decrypt anything that was
+encrypted with the example public key. That is because I haven't showed you the private key. I'm pretty sure
+I lost it too.
 
-    You can confirm that you won't be able to decrypt anything that was
-    encrypted with the example public key. That is because I haven't showed you the private key. I'm pretty sure
-    I lost it too.
+.. danger::
 
-    .. danger::
-
-        If you lose your private key, any information you had only in encrypted form is lost forever. FOREVER.
-
-    For your reference, these were the contents of :file:`secret_message.txt.age`.
-
-    .. code-block:: console
-
-        age-encryption.org/v1
-        -> ssh-ed25519 Hb2mpA xxu02M6ZYcgdvpjQ0OtObLX67P+C1cr/6AefZ+w/g1I
-        R3mtqZ9x8sz54/j8g2qY/2EJvkQytXZnLOPmwTziY+w
-        --- GiV9DHB2gAr4V6ZFhIMPH81sDEEfjCGocYImCYD/lhA
-        1�
-          �,l�j
-               ݚ��&
-                   �CF��gf��V�Y*ez����5
-                                       �bu�ང>ǒ ��n=˨g�}M]��     �e�#����^Zmuh���jj�o���ȅ�l_�root@c869fbce1a11
-
+    If you lose your private key, any information you had only in encrypted form is lost forever. FOREVER.
 
 Wait, what?
 +++++++++++
@@ -335,10 +318,12 @@ The flow in this case would be as follows.
 Because the public keys can be freely seen through a public channel, e.g., the internet, the information exchanged is
 safe. This does not mean that encryption is not crackable. With enough time and opportunities to attack, a private key
 can theoretically be eventually guessed. This is to loosely one of the ideas behind `cryptocurrencies <https://en.wikipedia.org/wiki/Cryptocurrency>`_,
-in which a `hash<https://en.wikipedia.org/wiki/Cryptographic_hash_function>`_ must be guessed.
+in which a `hash <https://en.wikipedia.org/wiki/Cryptographic_hash_function>`_ must be guessed.
 
 Exercises
 ---------
+
+We can think of decryption and encryption exercises, that help illustrate the process.
 
 Decryption
 ~~~~~~~~~~
@@ -354,7 +339,11 @@ using :program:`age`.
     --- nnYExEUF5LrEfYqwXvLzGcr1eNcYPr3nuipLfflevSM
 
 This is the pairing private key that you have in your computer, which you should never ever share with anyone for any
-reason.
+reason. Anyone with this key can decode the message.
+
+.. caution::
+
+    I will show the private key here because this is a tutorial. DO NOT SHARE YOUR PRIVATE KEY WITH ANYONE.
 
 .. code-block:: console
 
@@ -367,6 +356,33 @@ reason.
     -----END OPENSSH PRIVATE KEY-----
 
 What are the decrypted contents of this message?
+
+Encryption
+~~~~~~~~~~
+
+Suppose that you have the following public key.
+
+.. code-block:: console
+
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKZSWx2omvV0lTNJfatJy0tauJ83cW1fDRuF34AJF639 b40617mm@ï¿½ï¿½ï¿½eU
+
+Encrypt the message below. Well, anything will do, really.
+
+    "Sorry kid, you got the gift but it looks like you are waiting for something, next life maybe who knows".
+
+.. dropdown:: Private key for you to test
+
+    Use this private key to test if your encryption was correct or not.
+
+    .. block:: console
+
+        -----BEGIN OPENSSH PRIVATE KEY-----
+        b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+        QyNTUxOQAAACCmUlsdqJr1dJUzSX2rSctLWrifN3FtXw0bhd+ACRet/QAAAKDv9N2x7/Td
+        sQAAAAtzc2gtZWQyNTUxOQAAACCmUlsdqJr1dJUzSX2rSctLWrifN3FtXw0bhd+ACRet/Q
+        AAAEDmqGfF7PfgEOBtbzsuZqocWgSAAmX4+zqMmhZZ+NBZDKZSWx2omvV0lTNJfatJy0ta
+        uJ83cW1fDRuF34AJF639AAAAHWI0MDYxN21tQMOvwr/CvcOvwr/CvcOvwr/CvWVV
+        -----END OPENSSH PRIVATE KEY-----
 
 .. admonition:: References
 
