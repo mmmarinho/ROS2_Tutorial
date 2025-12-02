@@ -287,7 +287,12 @@ In which the original message is restored.
 .. admonition:: Exercise
 
     You can confirm that you won't be able to decrypt anything that was
-    encrypted with the example public key. That is because I haven't showed you the private key.
+    encrypted with the example public key. That is because I haven't showed you the private key. I'm pretty sure
+    I lost it too.
+
+    .. danger::
+
+        If you lose your private key, any information you had only in encrypted form is lost forever. FOREVER.
 
     For your reference, these were the contents of :file:`secret_message.txt.age`.
 
@@ -323,6 +328,37 @@ The flow in this case would be as follows.
 - Participant A will decrypt the message with private key A.
 
 
+
+Exercises
+---------
+
+Decryption
+~~~~~~~~~~
+
+Suppose that you receive the following message, which has been encrypted with your public key. It was clearly done so
+using :program:`age`.
+
+.. code-block:: console
+
+    age-encryption.org/v1
+    -> ssh-ed25519 AMMzdA /ODwrsfFiJeEtlH2EuPzo8aENrDgsfb7gkdEcDMc3VA
+    GGajPsTFCAREmweT3f43+8cUJ1H+FQj/Oiv2uTcv/Ts
+    --- nnYExEUF5LrEfYqwXvLzGcr1eNcYPr3nuipLfflevSM
+
+This is the pairing private key that you have in your computer, which you should never ever share with anyone for any
+reason.
+
+.. code-block:: console
+
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+    QyNTUxOQAAACB++6lmO8Owvo8VVfCtOQOAqniWSh5eR3N3URdXshe48wAAAJhFbUOVRW1D
+    lQAAAAtzc2gtZWQyNTUxOQAAACB++6lmO8Owvo8VVfCtOQOAqniWSh5eR3N3URdXshe48w
+    AAAEA4UX2xHSPqpsSdVUE3ApVp6q6YeERgtYiNaSgFBCOf3X77qWY7w7C+jxVV8K05A4Cq
+    eJZKHl5Hc3dRF1eyF7jzAAAAEXJvb3RAYzg2OWZiY2UxYTExAQIDBA==
+    -----END OPENSSH PRIVATE KEY-----
+
+What are the decrypted contents of this message?
 
 .. admonition:: References
 
