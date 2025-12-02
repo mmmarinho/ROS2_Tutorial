@@ -238,6 +238,14 @@ If you enjoyed this tutorial, please
    cmake/index
    faq
 
+.. toctree::
+   :caption: Unstable
+   :maxdepth: 2
+   :hidden:
+
+   cybersecurity/index
+   cybersecurity/network
+   cybersecurity/cryptography
 
 
 
