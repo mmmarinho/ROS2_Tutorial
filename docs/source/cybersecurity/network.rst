@@ -3,8 +3,40 @@ Network topologies
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+
+      // copy-pasta from the documentation
+      mermaid.registerIconPacks([
+        {
+          name: 'logos',
+          loader: () =>
+            fetch('https://unpkg.com/@iconify-json/logos@1/icons.json').then((res) => res.json()),
+        },
+      ]);
+
+    </script>
+
 Case 1
 ++++++
+
+.. raw::
+
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+
+      // copy-pasta from the documentation
+      mermaid.registerIconPacks([
+        {
+          name: 'logos',
+          loader: () =>
+            fetch('https://unpkg.com/@iconify-json/logos@1/icons.json').then((res) => res.json()),
+        },
+      ]);
+
+    </script>
 
 .. mermaid::
 
@@ -37,7 +69,7 @@ Case 3
         group api(server)[Intranet]
 
         service internet(material-symbols:robot-2)[Enterprise Intranet] in api
-        service computer(disk)[Computer] in api
+        service computer(logos:aws-lambda)[Computer] in api
         service robot1(disk)[Robot 1] in api
         service robot2(disk)[Robot 1] in api
         junction junctionCenter1 in api
