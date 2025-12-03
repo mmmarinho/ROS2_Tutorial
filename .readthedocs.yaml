@@ -20,6 +20,7 @@ build:
     post_install:
       - npm install -g @mermaid-js/mermaid-cli
       - npm install -g @iconify-json/logos@1
+      - npm install -g @iconify-json/material-symbols
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:

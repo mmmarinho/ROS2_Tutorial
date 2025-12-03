@@ -12,6 +12,8 @@ chmod +x .devcontainer/serve_sphinx.sh
 sudo apt-get update
 sudo apt-get install -y npm
 npm install -g @mermaid-js/mermaid-cli
+npm install -g @iconify-json/logos@1
+npm install -g @iconify-json/material-symbols
 
 # Adding other useful packages
 sudo apt-get install -y tree

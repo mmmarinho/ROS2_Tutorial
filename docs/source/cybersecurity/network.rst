@@ -36,7 +36,7 @@ Case 3
     architecture-beta
         group api(server)[Intranet]
 
-        service internet(server)[Enterprise Intranet] in api
+        service internet(material-symbols:robot-2)[Enterprise Intranet] in api
         service computer(disk)[Computer] in api
         service robot1(disk)[Robot 1] in api
         service robot2(disk)[Robot 1] in api
