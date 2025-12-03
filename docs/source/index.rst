@@ -91,6 +91,9 @@ If you enjoyed this tutorial, please
 #. :doc:`nav2 <navigation/index>`
     ``nav2`` installation, basic usage, and integration examples with custom ROS2 nodes.
 
+#. :doc:`Cybersecurity <cybersecurity/index>`
+    Cybersecurity, networking, and public-key cryptography in a context of robotic systems.
+
 .. toctree::
    :caption: Preamble
    :maxdepth: 2
@@ -212,6 +215,15 @@ If you enjoyed this tutorial, please
    navigation/custom_nodes
 
 .. toctree::
+   :caption: Cybersecurity
+   :maxdepth: 2
+   :hidden:
+
+   cybersecurity/index
+   cybersecurity/network
+   cybersecurity/cryptography
+
+.. toctree::
    :caption: ROS2 C++ Basics
    :maxdepth: 2
    :hidden:
@@ -237,17 +249,6 @@ If you enjoyed this tutorial, please
    docker/index
    cmake/index
    faq
-
-.. toctree::
-   :caption: Unstable
-   :maxdepth: 2
-   :hidden:
-
-   cybersecurity/index
-   cybersecurity/network
-   cybersecurity/cryptography
-
-
 
 Disclaimers
 -----------
