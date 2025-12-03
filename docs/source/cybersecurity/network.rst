@@ -14,7 +14,7 @@ A common network architecture in small companies and laboratories is shown below
     architecture-beta
         group api(internet)[Internet]
 
-        service internet(router-outline)[Enterprise Intranet] in api
+        service internet(material-symbols:router-outline)[Enterprise Intranet] in api
         service computer(material-symbols:computer-outline)[Computer] in api
         service robot1(material-symbols:robot-2-outline)[Robot 1] in api
         service robot2(material-symbols:robot-2-outline)[Robot 1] in api
@@ -51,7 +51,7 @@ Case 3
     architecture-beta
         group api(server)[Intranet]
 
-        service internet(router-outline)[Enterprise Intranet] in api
+        service internet(material-symbols:router-outline)[Enterprise Intranet] in api
         service computer(material-symbols:computer-outline)[Computer] in api
         service robot1(material-symbols:robot-2-outline)[Robot 1] in api
         service robot2(material-symbols:robot-2-outline)[Robot 1] in api
@@ -75,9 +75,9 @@ Case 2
     architecture-beta
         group api(server)[Intranet]
 
-        service internet(router-outline)[Enterprise Intranet] in api
+        service internet(material-symbols:router-outline)[Enterprise Intranet] in api
         service computer(material-symbols:computer-outline)[Computer] in api
-        service router(router-outline)[Switching hub] in api
+        service router(material-symbols:router-outline)[Switching hub] in api
         service robot1(material-symbols:robot-2-outline)[Robot 1] in api
         service robot2(material-symbols:robot-2-outline)[Robot 1] in api
         junction junctionCenter1 in api
