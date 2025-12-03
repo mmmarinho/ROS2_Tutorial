@@ -18,6 +18,9 @@ in development environments, you might inadvertently move someone else's robot. 
 more efficient to physically isolate the robotic setup if many devices in the network can be shared with users with
 varying levels of network understanding.
 
+This section will be based on my experience with multiple robotic systems. Two representative examples are :footcite:p:`Marinho2020`
+and :footcite:p:`Marinho2024`.
+
 Case 1 - No isolation
 +++++++++++++++++++++
 
@@ -130,4 +133,8 @@ A possibly sufficient setup for most robotic demonstrators that need isolation i
 In this setup, you can imagine each robotic demonstrator having their own, isolated, network. This can be easily
 achieved physically using a `switching hub <https://en.wikipedia.org/wiki/Network_switch>`_. This type of physical isolation
 of interfaces tends to be beneficial in development environments where software infrastructure is often changing.
+
+.. admonition:: References
+
+    .. footbibliography::
 
