@@ -71,7 +71,7 @@ epub_show_urls = 'footnote'
 hoverxref_auto_ref = True
 
 # https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
-mermaid_params = ['-p' 'puppeteer-config.json']
+mermaid_params = ['-p' 'puppeteer-config.json', '--iconPacks', '@iconify-json/logos', '@iconify-json/material-symbols']
 mermaid_output_format = 'png'
 
 # -- Options for latex https://docs.readthedocs.io/en/stable/guides/pdf-non-ascii-languages.html

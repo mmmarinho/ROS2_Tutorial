@@ -1,0 +1,1 @@
+mmdc -i network.mmd -o network.png --iconPacks @iconify-json/logos @iconify-json/material-symbols

@@ -1,0 +1,17 @@
+architecture-beta
+    group api(server)[Intranet]
+
+    service internet(material-symbols:robot-2)[Enterprise Intranet] in api
+    service computer(logos:aws-lambda)[Computer] in api
+    service robot1(disk)[Robot 1] in api
+    service robot2(disk)[Robot 1] in api
+    junction junctionCenter1 in api
+    junction junctionCenter2 in api
+    junction junctionCenter3 in api
+
+    internet:R -- L:junctionCenter1
+    junctionCenter1:B -- T:robot1
+    junctionCenter2:B -- T:robot2
+    junctionCenter3:B -- T:computer
+    junctionCenter2:L -- R:junctionCenter1
+    junctionCenter3:L -- R:junctionCenter2
