@@ -10,12 +10,12 @@ Case 1
 
     %%{init: { "theme" : "dark" }}%%
     architecture-beta
-        group api(cloud)[Internet]
+        group api(internet)[Internet]
 
-        service internet(internet)[Internet] in api
-        service computer(disk)[Computer] in api
-        service robot1(disk)[Robot 1] in api
-        service robot2(disk)[Robot 1] in api
+        service internet(server)[Enterprise Intranet] in api
+        service computer(material-symbols:computer-outline)[Computer] in api
+        service robot1(material-symbols:robot-2-outline)[Robot 1] in api
+        service robot2(material-symbols:robot-2-outline)[Robot 1] in api
         junction junctionCenter1 in api
         junction junctionCenter2 in api
         junction junctionCenter3 in api
@@ -36,10 +36,10 @@ Case 3
     architecture-beta
         group api(server)[Intranet]
 
-        service internet(material-symbols:robot-2)[Enterprise Intranet] in api
-        service computer(logos:aws-lambda)[Computer] in api
-        service robot1(disk)[Robot 1] in api
-        service robot2(disk)[Robot 1] in api
+        service internet(server)[Enterprise Intranet] in api
+        service computer(material-symbols:computer-outline)[Computer] in api
+        service robot1(material-symbols:robot-2-outline)[Robot 1] in api
+        service robot2(material-symbols:robot-2-outline)[Robot 1] in api
         junction junctionCenter1 in api
         junction junctionCenter2 in api
         junction junctionCenter3 in api
@@ -60,10 +60,10 @@ Case 2
     architecture-beta
         group api(server)[Intranet]
 
-        service computer(disk)[Computer] in api
+        service computer(material-symbols:computer-outline)[Computer] in api
         service router(server)[Switching hub] in api
-        service robot1(disk)[Robot 1] in api
-        service robot2(disk)[Robot 1] in api
+        service robot1(material-symbols:robot-2-outline)[Robot 1] in api
+        service robot2(material-symbols:robot-2-outline)[Robot 1] in api
         junction junctionCenter1 in api
         junction junctionCenter2 in api
 
