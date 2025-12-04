@@ -206,7 +206,7 @@ task or attempt to replan to another location.
 map
 ---
 
-The contents of :file:`nav2_params.yaml` are shown below.
+The contents of :file:`tb3_sandbox.yaml` are shown below.
 
 .. rli:: https://raw.githubusercontent.com/ros-navigation/navigation2/refs/heads/jazzy/nav2_bringup/maps/tb3_sandbox.yaml
     :language: yaml
