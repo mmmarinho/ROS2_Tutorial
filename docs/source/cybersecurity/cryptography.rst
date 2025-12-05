@@ -7,6 +7,29 @@ Public-key cryptosystems
 
     This is obviously a simplified discussion of the topic.
 
+ROS2 Security
++++++++++++++
+
+.. seealso::
+
+    Official information: https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Security.html
+
+There are facilities in :program:`ROS2` to enable secure communication. The communication uses cryptography which
+will be shown in the following section. It is important to know that such capability exists. It will have a number
+of steps needed to create the necessary certificates to guarantee security among nodes.
+
+After that is set up, nodes and program:`ros2cli` tools can be called with additional security.
+
+.. seealso::
+
+    Official information https://docs.ros.org/en/jazzy/Tutorials/Advanced/Security/Introducing-ros2-security.html
+
+Altering these settings can have unwanted side effects to other parts of the tutorial so we will leave this topic
+only briefly mentioned. In addition, understanding these topics requires first understanding public-key cryptography, shown below.
+
+Scope of this section
++++++++++++++++++++++
+
 Most of the important infrastructure for software for robotics relies heavily the concept of public-key cryptosystems.
 Many attribute this concept to as early as `1977 <https://patents.google.com/patent/US4405829>`_, in one type of encryption
 algorithm (`RSA <https://en.wikipedia.org/wiki/RSA_cryptosystem>`_) that is still in use.
