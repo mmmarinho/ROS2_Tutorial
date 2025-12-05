@@ -276,6 +276,8 @@ Changelog
 - Updated to ROS2 Jazzy.
 - Updated theme to ``sphinx_book_theme``.
 - Moved ROS2 parameter and launch to before the services.
-- Added a section mostly about ROS2 Actions.
+- Added a section about ROS2 Actions.
 - Added a section mostly about ``tf2``.
-- Added a section mostly about program:`Gazebo`.
+- Added a section mostly about :program:`Gazebo`.
+- Added a section about ``nav2``.
+- Added a section about cybersecurity.
