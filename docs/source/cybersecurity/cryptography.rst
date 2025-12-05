@@ -280,7 +280,7 @@ can theoretically be eventually guessed. This is to loosely one of the ideas beh
 in which a `hash <https://en.wikipedia.org/wiki/Cryptographic_hash_function>`_ must be guessed.
 
 Exercises
----------
++++++++++
 
 We can think of decryption and encryption exercises, that help illustrate the process.
 
