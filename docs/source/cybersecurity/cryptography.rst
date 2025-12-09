@@ -194,6 +194,11 @@ Now, the message has been encrypted. We can see the contents of :file:`secret_me
 you will send your friend. You can even copy and paste it on something fully public, like an Instagram post. Your other
 friends might be concerned seeing that but otherwise your message is still a secret.
 
+.. note::
+
+    The encrypted messages will not always show well in the terminal or websites like this. The encrypted messages
+    are not meant to be human readable.
+
 .. code-block:: console
 
     age-encryption.org/v1
