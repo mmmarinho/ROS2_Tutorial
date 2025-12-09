@@ -168,10 +168,17 @@ sort out its shutdown procedure.
 Docker container in a realtime kernel
 -------------------------------------
 
-TODO
+.. seealso::
 
-Install PREEMPT_RT
-++++++++++++++++++
+   An example: https://github.com/MarinhoLab/sas_ur_control_template
+
+Making things work on a realtime kernel is a relatively simple task.
+
+#. Install the realtime kernel on the host.
+#. Set up the container to take advantage of the realtime capabilities.
+
+Install ``PREEMPT_RT`` on the host
+++++++++++++++++++++++++++++++++++
 
 .. seealso::
 
@@ -191,6 +198,19 @@ Install PREEMPT_RT
     .. code-block:: console
 
         ps -eLfc | grep FF
+
+The :file:`compose.yml`
++++++++++++++++++++++++
+
+.. rli:: https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_demo/compose.yml
+   :language: yaml
+
+For this example, these are the parameters that were relevant.
+
+``cap_add``, ``rtprio``, and ``rttime``. The first one is to add the capability of setting process `niceness <https://manpages.ubuntu.com/manpages/focal/en/man1/nice.1.html>`_. Then, 
+the other two are related to the realtime priorities. 
+
+That's it!
 
 Tips and troubeshooting
 -----------------------
