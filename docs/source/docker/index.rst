@@ -1,12 +1,8 @@
-How is Murilo using :program:`docker`
-=====================================
+Happy days with :program:`docker`
+=================================
 
-.. important::
 
-    This section is a working draft.
-
-    It is an Ubuntu 24.04 host tutorial. It might work in other host systems in some cases
-    but the support is finicky for more advanced elements.
+.. include:: ../the_topic_is_under_heavy_construction.rst
 
 Installation
 ------------
@@ -78,8 +74,7 @@ Basic testing
 SAS testing
 -----------
 
-For the purposes of this illustration we will use the image 
-``murilomarinho/sas``.
+For the purposes of this illustration we will use the image ``murilomarinho/sas``.
 
 Docker run interactively
 ++++++++++++++++++++++++
@@ -133,9 +128,7 @@ Then, in the container and in the host we do as follows.
    be also modified in the host or they will not find and communicate with each other.
 
 Notice that host and container will communicate without any issues. Changing the network settings of the
-docker container may cause this to stop working. For instance, a very popular setting is to use
-``--net=host``. This is not recommended unless strictly necessary because it will generate issues
-with :program:`ROS2` networking.
+docker container may cause this to stop working.
 
 Docker compose
 ++++++++++++++
@@ -182,8 +175,8 @@ Install PREEMPT_RT
 
 .. seealso::
 
-    *. https://ubuntu.com/real-time
-    *. https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/
+    #. https://ubuntu.com/real-time
+    #. https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/
 
 .. code-block:: console
 
@@ -199,8 +192,8 @@ Install PREEMPT_RT
 
         ps -eLfc | grep FF
 
-Common issues
--------------
+Tips and troubeshooting
+-----------------------
 
 This documents part of my own misunderstandings when getting used to docker (which is an ongoing process) and other difficulties that are
 contributed by others.
@@ -248,17 +241,17 @@ Noninteractive shells by default do not expand aliases.
 
 The "easiest" solution is
 
-#. Set your :file:`Dockerfile` to source /etc/bash_env`
+#. Set your :file:`Dockerfile` to source ``/etc/bash_env``
 #. Add ``source source /etc/bash_env`` to your :file:`~/.bashrc` exactly once.
 
---net=host
-++++++++++
+Stop with the ``--net=host`` for everything
++++++++++++++++++++++++++++++++++++++++++++
 
 .. seealso::
 
-    *. https://robotics.stackexchange.com/questions/98161/ros2-foxy-nodes-cant-communicate-through-docker-container-border
-    *. https://github.com/rosblox/ros-template
-    *. https://github.com/eProsima/Fast-DDS/issues/1750
+    #. https://robotics.stackexchange.com/questions/98161/ros2-foxy-nodes-cant-communicate-through-docker-container-border
+    #. https://github.com/rosblox/ros-template
+    #. https://github.com/eProsima/Fast-DDS/issues/1750
 
 Although this command can help in some situations it is not recommended unless strictly
 necessary. It can for instance cause :program:`ros2` to no longer be able to communicate between
@@ -312,13 +305,8 @@ Then, in the container, you can set before the nodes.
 
     export FASTRTPS_DEFAULT_PROFILES_FILE="~/ros2_tutorial_workspace/docker/fastrtps_profile.xml"
 
-Notes on rootless docker
-++++++++++++++++++++++++
-
-.. note::
-
-   I am a strong proponent of this capability and will be happy to use it when
-   it's working in a less demanding way.
+Sad notes on rootless :program:`docker`
++++++++++++++++++++++++++++++++++++++++
 
 Although ideally having a rootless docker environment is what would be expected
 in a situation with shared computers and equipment the experience as of now adds
