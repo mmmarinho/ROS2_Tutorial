@@ -286,7 +286,7 @@ in which a `hash <https://en.wikipedia.org/wiki/Cryptographic_hash_function>`_ m
 Exercises
 +++++++++
 
-We can think of decryption and encryption exercises, that help illustrate the process.
+We can think of decryption and encryption exercises that help illustrate the process.
 
 Decryption
 ~~~~~~~~~~
@@ -296,25 +296,23 @@ using :program:`age`.
 
 .. caution::
 
-    Please download the file. Copying and pasting from the terminal causes issues with the characters.
+    Please download the file using the link below. It cannot be correctly displayed on this webpage.
+    Encrypted messages are not meant to be human readable.
 
 :download:`exercise_message.txt.age <exercise_message.txt.age>`
 
-.. literalinclude:: exercise_message.txt.age
-
-This is the pairing private key that you have in your computer, which you should never ever share with anyone for any
-reason. Anyone with this key can decode the message.
+Below is the pairing private key, which you should never ever share with anyone for any reason.
+Anyone with this key can decode the message. If anyone can decode the message, then it's no longer a secret.
 
 .. caution::
 
-    I will show the private key here because this is a tutorial. DO NOT SHARE YOUR PRIVATE KEY WITH ANYONE.
+    I will share the private key here because this is a tutorial. DO NOT SHARE YOUR PRIVATE KEY WITH ANYONE.
 
 :download:`exercise_ed25519 <exercise_ed25519>`
 
 .. literalinclude:: exercise_ed25519
 
 What are the decrypted contents of this message?
-
 
 Encryption
 ~~~~~~~~~~
