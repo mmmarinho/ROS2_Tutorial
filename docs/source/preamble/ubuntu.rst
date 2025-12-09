@@ -92,7 +92,7 @@ To warm up, let's start by creating an empty file inside a new directory, as fol
 
 .. hint::
 
-   The path :file:`~` stands for the currently logged-in user's home folder.
+   The path :file:`~` stands for the currently logged-in user's home folder. Not every command is able to expand it. In those cases, use ``$USER`` instead.
 
 .. hint:: 
 
