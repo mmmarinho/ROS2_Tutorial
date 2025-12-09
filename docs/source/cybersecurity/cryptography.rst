@@ -177,7 +177,7 @@ Let's create the secret message, called :file:`secret_message.txt`.
 
 .. code-block:: console
 
-    echo "This is the best tutorial I have every seen thanks Murilo for being so great." > secret_message.txt
+    echo "This is the best tutorial I have ever seen thanks Murilo for being so great." > secret_message.txt
 
 Now, the contents are obviously visible to anyone. You want to be sure that only your friend can see it. Therefore, you
 grab your friend's public key. Let's use :file:`example_ed25519.pub` I showed as an example for this. Again, the public
@@ -246,11 +246,10 @@ In which the original message is restored.
 
 .. code-block:: console
 
-    This is the best tutorial I have every seen thanks Murilo for being so great.
+    This is the best tutorial I have ever seen thanks Murilo for being so great.
 
-You can confirm that you won't be able to decrypt anything that was
-encrypted with the example public key. That is because I haven't showed you the private key. I'm pretty sure
-I lost it too.
+You can confirm that you won't be able to decrypt anything that was encrypted with the example public key.
+That is because I haven't showed you the private key. I'm pretty sure I lost it too.
 
 .. danger::
 
