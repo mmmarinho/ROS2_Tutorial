@@ -290,12 +290,13 @@ Decryption
 Suppose that you receive the following message, which has been encrypted with your public key. It was clearly done so
 using :program:`age`.
 
-.. code-block:: console
+.. caution::
 
-    age-encryption.org/v1
-    -> ssh-ed25519 AMMzdA /ODwrsfFiJeEtlH2EuPzo8aENrDgsfb7gkdEcDMc3VA
-    GGajPsTFCAREmweT3f43+8cUJ1H+FQj/Oiv2uTcv/Ts
-    --- nnYExEUF5LrEfYqwXvLzGcr1eNcYPr3nuipLfflevSM
+    Please download the file. Copying and pasting from the terminal causes issues with the characters.
+
+:download:`exercise_message.txt.age <exercise_message.txt.age>`
+
+.. literalinclude:: exercise_message.txt.age
 
 This is the pairing private key that you have in your computer, which you should never ever share with anyone for any
 reason. Anyone with this key can decode the message.
@@ -304,26 +305,21 @@ reason. Anyone with this key can decode the message.
 
     I will show the private key here because this is a tutorial. DO NOT SHARE YOUR PRIVATE KEY WITH ANYONE.
 
-.. code-block:: console
+:download:`exercise_ed25519 <exercise_ed25519>`
 
-    -----BEGIN OPENSSH PRIVATE KEY-----
-    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-    QyNTUxOQAAACCmUlsdqJr1dJUzSX2rSctLWrifN3FtXw0bhd+ACRet/QAAAKDv9N2x7/Td
-    sQAAAAtzc2gtZWQyNTUxOQAAACCmUlsdqJr1dJUzSX2rSctLWrifN3FtXw0bhd+ACRet/Q
-    AAAEDmqGfF7PfgEOBtbzsuZqocWgSAAmX4+zqMmhZZ+NBZDKZSWx2omvV0lTNJfatJy0ta
-    uJ83cW1fDRuF34AJF639AAAAHWI0MDYxN21tQMOvwr/CvcOvwr/CvcOvwr/CvWVV
-    -----END OPENSSH PRIVATE KEY-----
+.. literalinclude:: exercise_ed25519
 
 What are the decrypted contents of this message?
+
 
 Encryption
 ~~~~~~~~~~
 
 Suppose that you have the following public key.
 
-.. code-block:: console
+:download:`exercise_ed25519.pub <exercise_ed25519.pub>`
 
-    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKZSWx2omvV0lTNJfatJy0tauJ83cW1fDRuF34AJF639 b40617mm@ï¿½ï¿½ï¿½eU
+.. literalinclude:: exercise_ed25519.pub
 
 Encrypt the message below. Well, anything will do, really.
 
@@ -333,13 +329,5 @@ Encrypt the message below. Well, anything will do, really.
 
     Use this private key to test if your encryption was correct or not.
 
-    .. code-block:: console
-    
-        -----BEGIN OPENSSH PRIVATE KEY-----
-        b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-        QyNTUxOQAAACCmUlsdqJr1dJUzSX2rSctLWrifN3FtXw0bhd+ACRet/QAAAKDv9N2x7/Td
-        sQAAAAtzc2gtZWQyNTUxOQAAACCmUlsdqJr1dJUzSX2rSctLWrifN3FtXw0bhd+ACRet/Q
-        AAAEDmqGfF7PfgEOBtbzsuZqocWgSAAmX4+zqMmhZZ+NBZDKZSWx2omvV0lTNJfatJy0ta
-        uJ83cW1fDRuF34AJF639AAAAHWI0MDYxN21tQMOvwr/CvcOvwr/CvcOvwr/CvWVV
-        -----END OPENSSH PRIVATE KEY-----
+    .. literalinclude:: exercise_ed25519
 
