@@ -54,6 +54,7 @@ folder will hold, for instance, launch files and other installable files that mi
 
 .. code-block:: console
 
+    python_package_with_a_node/
     |-- lib
     |   `-- python_package_with_a_node
     |       `-- sample_python_node

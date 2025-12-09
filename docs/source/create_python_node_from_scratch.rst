@@ -15,6 +15,29 @@ Creating a Python Node from scratch (for :program:`ament_python`)
 Let us add an additional Node to our :program:`ament_python` package that actually uses ROS2 functionality. 
 These are the steps that must be taken, in general, to add a new Node.
 
+File structure
+--------------
+
+In this section, we will be modifying or creating the following files.
+
+.. code-block:: console
+    :emphasize-lines: 2,5,10
+
+    python_package_with_a_node
+    |-- package.xml
+    |-- python_package_with_a_node
+    |   |-- __init__.py
+    |   |-- print_forever_node.py
+    |   `-- sample_python_node.py
+    |-- resource
+    |   `-- python_package_with_a_node
+    |-- setup.cfg
+    |-- setup.py
+    `-- test
+        |-- test_copyright.py
+        |-- test_flake8.py
+        `-- test_pep257.py
+
 .. _Handling dependencies:
 
 Handling dependencies (:file:`package.xml`)
@@ -30,69 +53,31 @@ By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meani
 
 Let us add the dependency between the :code:`<license>` and :code:`<test_depend>` tags. This is not a strict requirement but is where it commonly is for standard packages.
 
-:download:`~/ros2_tutorial_workspace/src/python_package_with_a_node/package.xml <../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml>`
+:download:`package.xml <../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml
    :language: xml
    :linenos:
    :emphasize-lines: 10
   
-After you modify the workspace, build it once
----------------------------------------------
-
-.. warning:
- 
-   Depending on the particulars of the workspace you are (re)building, :program:`PyCharm` will only be able to recognize certain changes if it is restarted from a properly sourced terminal.
-
-After you add a new dependency to :file:`package.xml`, nothing really changes in the workspace unless a new build is performed. 
-
-In addition, when programming with new dependencies, unless you rebuild the workspace, :program:`PyCharm` will not recognize the libraries, and autocomplete will not work.
-
-So, 
-
-#. close :program:`PyCharm`.
-#. Run (in the terminal you used to run :program:`PyCharm` before)
-         .. include:: the_canonical_build_command.rst
-#. Re-open pycharm
-         .. code:: console
-
-                    pycharm_ros2
-
-
 Creating the Node
 -----------------
 
 In the directory :file:`src/python_package_with_a_node/python_package_with_a_node`, create a new file called :file:`print_forever_node.py`. Copy and paste the following contents into the file.
 
-:download:`~/ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py <../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py>`
+:download:`print_forever_node.py <../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 24-
    
-By now, this should be enough for you to be able to run the node in :program:`PyCharm`. You can right-click it and choose :guilabel:`D&ebug print_forever_node`. This will output
-
-.. code :: console
-
-    [INFO] [1753518435.025424000] [print_forever]: Printed 0 times.
-    [INFO] [1753518435.509299083] [print_forever]: Printed 1 times.
-    [INFO] [1753518436.009566292] [print_forever]: Printed 2 times.
-    [INFO] [1753518436.509644292] [print_forever]: Printed 3 times.
-    [INFO] [1753518437.009296251] [print_forever]: Printed 4 times.
-
-To finish, press the :guilabel:`Stop` button or press :kbd:`CTRL+F2` on :program:`PyCharm`. The node will exit gracefully with
-
-.. code :: console
-
-   Process finished with exit code 0
-
 .. _Making rosrun work:
 
 Making :command:`ros2 run` work
 -------------------------------
 
-Even though you can run the new node in :program:`PyCharm`, we need an additional step to make it deployable in a place where :command:`ros2 run` can find it.
+We need an additional step to make it deployable in a place where :command:`ros2 run` can find it.
 
 To do so, we modify the :code:`console_scripts` key in the :code:`entry_points` dictionary defined in :file:`setup.py`, to have our new node, as follows
 
@@ -116,19 +101,25 @@ The format is straightforward, as follows
 :code:`main`                         The function, within the script, that will be called. In general, :code:`main`.
 ==================================   ===================================================================================
 
-Once again, we have to refresh the workspace so we run
+Build and source
+----------------
+
+We can build and source the workspace with the following command.
 
 .. include:: the_canonical_build_command.rst
 
+Test
+----
+
 And, with that, we can run
 
-.. code :: console
+.. code-block:: console
 
   ros2 run python_package_with_a_node print_forever_node
    
 which will output, as expected
  
-.. code :: console
+.. code-block:: console
  
     [INFO] [1753518652.646459087] [print_forever]: Printed 0 times.
     [INFO] [1753518653.131078795] [print_forever]: Printed 1 times.
