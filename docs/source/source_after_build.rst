@@ -37,6 +37,40 @@ My suggestion is to always source after a build, so that sourcing errors can alw
         cd ~/ros2_tutorial_workspace
         source install/setup.bash
 
+Go to an installed package
+--------------------------
+
+After sourcing an installed package, we can see the installed contents. This can be particularly useful if you want
+to inspect the contents of packages that are installed, but have not been built by you.
+
+.. code-block:: console
+
+    cd $(ros2 pkg prefix python_package_with_a_node)
+
+This should move the terminal to the folder :file:`~/ros2_tutorial_workspace/install/python_package_with_a_node`.
+
+The simplified file structure is shown below. The :file:`lib` folder will hold, for instance, nodes. The :file:`share`
+folder will hold, for instance, launch files and other installable files that might be relevant for the package.
+
+.. code-block:: console
+
+    |-- lib
+    |   `-- python_package_with_a_node
+    |       `-- sample_python_node
+    `-- share
+
+Whenever the nodes you run do not seem to match the source code you are working on, you should look at this installation
+folder. Programs such as :program:`ros2 run`, with the :program:`colcon` instructions shown herein, will exclusively look at the content in your install folder.
+
+.. note::
+
+    You can use the flag ``--share`` to go straight to the :file:`share` folder.
+
+    .. code-block:: console
+
+        cd $(ros2 pkg prefix python_package_with_a_node --share)
+
+
 Troubleshooting tips
 --------------------
 
