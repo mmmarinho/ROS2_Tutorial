@@ -325,9 +325,4 @@ Encrypt the message below. Well, anything will do, really.
 
     "Sorry kid, you got the gift but it looks like you are waiting for something, next life maybe who knows".
 
-.. dropdown:: Private key for you to test
-
-    Use this private key to test if your encryption was correct or not.
-
-    .. literalinclude:: exercise_ed25519
-
+The private key for you to test is the same as the previous example.
