@@ -49,7 +49,7 @@ Running :program:`Gazebo`
 
     Content from ``ROS 2 Networking and Communication``
 
-        https://github.com/UoMMScRobotics/UOMDocumentationForLeoRover/blob/main/Further_reading/Networking.m
+        https://github.com/UoMMScRobotics/UOMDocumentationForLeoRover/blob/main/Further_reading/Networking.md
         by https://github.com/Https404PaigeNotFound
 
 After installation, :program:`Gazebo Harmonic` can be run with the following command
