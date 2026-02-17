@@ -28,7 +28,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'hoverxref.extension', # https://sphinx-hoverxref.readthedocs.io/en/latest/index.html
+    #'hoverxref.extension', # https://sphinx-hoverxref.readthedocs.io/en/latest/index.html
     'sphinx_copybutton', # https://sphinx-copybutton.readthedocs.io/en/latest/
     'sphinx_design', # https://sphinx-design.readthedocs.io/en/latest/get_started.html
     'sphinxext.remoteliteralinclude', # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
@@ -68,7 +68,7 @@ html_title = project
 epub_show_urls = 'footnote'
 
 # -- Options for hoverxref.extension https://sphinx-hoverxref.readthedocs.io/en/latest/configuration.html
-hoverxref_auto_ref = True
+# hoverxref_auto_ref = True
 
 # https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
 mermaid_params = ['-p' 'puppeteer-config.json', '--iconPacks', '@iconify-json/logos', '@iconify-json/material-symbols']
