@@ -144,15 +144,21 @@ In the folder where :file:`compose.yml` exists, we do
 
 .. code-block::
 
-    docker compose up --force-recreate -V
+    docker compose build --pull
 
 .. tip::
 
-    The ``--force-recreate`` and ``-V`` are an overkill for this toy problem but that is the best equivalent
-    around for docker compose to do something similar to ``--rm`` as in :program:`docker`. In tutorials it
-    is convenient to always start fresh.
+    The ``--pull`` flag is useful most of the time. This will guarantee that any images that your compose file
+    depends on will be pulled to their latest version. This can save a lot of time.
 
-    Notice that this will cause data to be lost in the container when it's closed.
+    The ``--no-cache`` flag is useful when things changed in the image but did not trigger a re-build of that part of
+    the cache. Most of the time you won't need to use it and instead it will cost you additional time.
+
+    You can combine them like so.
+
+    .. code-block::
+
+        docker compose build --pull --no-cache
 
 This will show the output of the two images communicating over :program:`ROS2`. Notice that there is no input
 from the host and no complicated network setup involved.
@@ -212,11 +218,24 @@ the other two are related to the realtime priorities.
 
 That's it!
 
-Tips and troubeshooting
------------------------
+Tips and troubleshooting
+------------------------
 
 This documents part of my own misunderstandings when getting used to docker (which is an ongoing process) and other difficulties that are
 contributed by others.
+
+Cleaning things up
+++++++++++++++++++
+
+Related information: https://docs.docker.com/engine/manage-resources/pruning/.
+
+.. caution::
+
+    This will remove all containers and volumes. Check the instructions carefully before moving forward.
+
+.. console::
+
+    docker system prune --volumes
 
 The standard shell is not interactive
 +++++++++++++++++++++++++++++++++++++
@@ -224,6 +243,8 @@ The standard shell is not interactive
 .. seealso::
 
     https://github.com/traefik/traefik/issues/12253#issuecomment-3515555316
+
+Most of the time this can be solved by updating the software that relies on the Docker API.
 
 Error type
 
@@ -297,27 +318,8 @@ well described in `this issue <https://github.com/eProsima/Fast-DDS/issues/1750>
 
 This can be done by copying the contents below in the file :file:`~/ros2_tutorial_workspace/docker/fastrtps_profile.xml`.
 
-.. code-block:: xml
-
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles" >
-        <transport_descriptors>
-            <transport_descriptor>
-                <transport_id>CustomUdpTransport</transport_id>
-                <type>UDPv4</type>
-            </transport_descriptor>
-        </transport_descriptors>
-
-        <participant profile_name="participant_profile" is_default_profile="true">
-            <rtps>
-                <userTransports>
-                    <transport_id>CustomUdpTransport</transport_id>
-                </userTransports>
-
-                <useBuiltinTransports>false</useBuiltinTransports>
-            </rtps>
-        </participant>
-    </profiles>
+.. literalinclude:: fastrtps_profile.xml
+   :language: xml
 
 Then, in the container, you can set before the nodes.
 
