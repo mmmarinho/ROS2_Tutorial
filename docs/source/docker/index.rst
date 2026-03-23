@@ -233,7 +233,8 @@ Related information: https://docs.docker.com/engine/manage-resources/pruning/.
 
     This will remove all containers and volumes. Check the instructions carefully before moving forward.
 
-.. console::
+
+.. code-block:: console
 
     docker system prune --volumes
 
