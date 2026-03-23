@@ -28,7 +28,7 @@ The example code have their own License headers, usually `MIT Licensed <https://
    then following the NC restriction would require that all stages,
    from copying the data during training to sharing the trained model, must not be for commercial gain.*
 
-   * Following the NoDerivatives restriction would require that ND-licensed content not be used as training data. *
+   *Following the NoDerivatives restriction would require that ND-licensed content not be used as training data.*
 
 📖 **About this tutorial** 
 
