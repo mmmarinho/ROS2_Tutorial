@@ -233,19 +233,20 @@ Related information: https://docs.docker.com/engine/manage-resources/pruning/.
 
     This will remove all containers and volumes. Check the instructions carefully before moving forward.
 
-
 .. code-block:: console
 
     docker system prune --volumes
 
-The standard shell is not interactive
-+++++++++++++++++++++++++++++++++++++
+Status 400: client version X.YY is too old 
+++++++++++++++++++++++++++++++++++++++++++
+
+.. caution::
+
+   Most of the time this can be solved by updating the software that relies on the Docker API.
 
 .. seealso::
 
     https://github.com/traefik/traefik/issues/12253#issuecomment-3515555316
-
-Most of the time this can be solved by updating the software that relies on the Docker API.
 
 Error type
 
