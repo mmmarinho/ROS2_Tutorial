@@ -1,0 +1,12 @@
+services:
+  gazebo:
+      image: ghcr.io/uommscrobotics/sfr_gazebo_nav2:latest
+      environment:
+        DISPLAY: $DISPLAY # x server related
+      privileged: true # Needed for some gpu configurations.
+      volumes:
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw # x server related
+        - $HOME:/home/shared:rw
+      stdin_open: true
+      tty: true
+      command: /bin/bash
