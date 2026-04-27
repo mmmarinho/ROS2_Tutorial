@@ -191,6 +191,14 @@ Install ``PREEMPT_RT`` on the host
     #. https://ubuntu.com/real-time
     #. https://canonical-ubuntu-pro-client.readthedocs-hosted.com/en/latest/howtoguides/enable_realtime_kernel/
 
+.. important::
+
+   From Ubuntu 26.04, the following command will suffice. Ubuntu pro is no longer needed.
+
+   .. code-block:: console
+
+       sudo apt update && sudo apt install ubuntu-realtime
+
 .. code-block:: console
 
     sudo pro attach
