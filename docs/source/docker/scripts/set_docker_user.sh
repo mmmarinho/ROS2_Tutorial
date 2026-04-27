@@ -17,8 +17,8 @@ USER_TO_ADD="$1"
 
 # Check Ubuntu version
 . /etc/lsb-release
-if ["${DISTRIB_CODENAME}" = "resolute"]; then
-    echo "Ubuntu ${DISTRIB_CODENAME} detected, installing dependencies"
+if [ "$DISTRIB_CODENAME" = "resolute"]; then
+    echo "Ubuntu $DISTRIB_CODENAME detected, installing dependencies"
     sudo apt-get install util-linux-extra
 fi
 
