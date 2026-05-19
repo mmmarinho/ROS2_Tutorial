@@ -14,7 +14,6 @@ This is currently the only version known to be compatible with this tutorial.
 
 .. include:: ../../../docker/gazebo_nav2/install_gazebo.sh
    :language: bash
-   :lines: 5-18
 
 .. danger::
 
