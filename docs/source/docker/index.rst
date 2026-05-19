@@ -74,7 +74,7 @@ Basic testing
 SAS testing
 -----------
 
-For the purposes of this illustration we will use the image ``murilomarinho/sas``.
+For the purposes of this illustration we will use the image ``murilomarinho/sas:jazzy``.
 
 Docker run interactively
 ++++++++++++++++++++++++
@@ -86,7 +86,7 @@ We can start with the simple
 
 .. code-block:: console
 
-   docker run -it --rm murilomarinho/sas
+   docker run -it --rm murilomarinho/sas:jazzy
 
 Where the flags
 

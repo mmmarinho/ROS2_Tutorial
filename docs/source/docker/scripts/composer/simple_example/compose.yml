@@ -1,6 +1,6 @@
 services:
   talker:
-    image: murilomarinho/sas
+    image: murilomarinho/sas:jazzy
     stop_signal: SIGINT
     stop_grace_period: 1m
     command: /bin/bash -c "
@@ -8,7 +8,7 @@ services:
       "
 
   listener:
-    image: murilomarinho/sas
+    image: murilomarinho/sas:jazzy
     stop_signal: SIGINT
     stop_grace_period: 1m
     command: /bin/bash -c "
