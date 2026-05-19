@@ -144,21 +144,32 @@ In the folder where :file:`compose.yml` exists, we do
 
 .. code-block::
 
-    docker compose build --pull
+    docker compose pull
 
-.. tip::
+to make sure the image we have locally is indeed the latest.
 
-    The ``--pull`` flag is useful most of the time. This will guarantee that any images that your compose file
-    depends on will be pulled to their latest version. This can save a lot of time.
+.. warning::
 
-    The ``--no-cache`` flag is useful when things changed in the image but did not trigger a re-build of that part of
-    the cache. Most of the time you won't need to use it and instead it will cost you additional time.
-
-    You can combine them like so.
+    If the :file:`compose.yml` refers to a :file:`Dockerfile` instead of an image, then ``pull`` will not have the
+    intended effect. Instead, we do
 
     .. code-block::
 
-        docker compose build --pull --no-cache
+        docker compose build --pull
+
+    .. tip::
+
+        The ``--pull`` flag is useful most of the time. This will guarantee that any images that your compose file
+        depends on will be pulled to their latest version. This can save a lot of time.
+
+        The ``--no-cache`` flag is useful when things changed in the image but did not trigger a re-build of that part of
+        the cache. Most of the time you won't need to use it and instead it will cost you additional time.
+
+        You can combine them like so.
+
+        .. code-block::
+
+            docker compose build --pull --no-cache
 
 This will show the output of the two images communicating over :program:`ROS2`. Notice that there is no input
 from the host and no complicated network setup involved.
