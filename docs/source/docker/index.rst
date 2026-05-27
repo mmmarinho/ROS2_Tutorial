@@ -234,7 +234,7 @@ the other two are related to the realtime priorities.
 
 That's it!
 
-Note that this example won't make anything realtime, I'm just showcasing how to set up the docker image. For a realtime thread you will have to set up the scheduling properly to ``SCHED_FIFO`` or ``SCHED_RR``.
+Note that this example won't make anything realtime, I'm just showcasing how to set up the docker container. For a realtime thread you will have to set up the scheduling properly to ``SCHED_FIFO`` or ``SCHED_RR``.
 
 Tips and troubleshooting
 ------------------------
@@ -255,36 +255,6 @@ Related information: https://docs.docker.com/engine/manage-resources/pruning/.
 
     docker system prune --volumes
 
-Status 400: client version X.YY is too old 
-++++++++++++++++++++++++++++++++++++++++++
-
-.. caution::
-
-   Most of the time this can be solved by updating the software that relies on the Docker API.
-
-.. seealso::
-
-    https://github.com/traefik/traefik/issues/12253#issuecomment-3515555316
-
-Error type
-
-    com.github.dockerjava.api.exception.DockerException: Status 400: client version 1.24 is too old. Minimum supported API version is 1.44, please upgrade your client to a newer version. To fix it, change the project interpreter or check settings.
-
-.. code-block::
-
-    sudo systemctl edit docker.service
-
-Add this line.
-
-.. code-block::
-
-    [Service]
-    Environment=DOCKER_MIN_API_VERSION=1.24
-
-.. code-block::
-
-    systemctl restart docker
-
 The standard shell is not interactive
 +++++++++++++++++++++++++++++++++++++
 
@@ -296,7 +266,7 @@ bash in interactive mode. This means that it will not execute anything in :file:
 It does not matter what you add, because the first few lines of :file:`~/.bashrc` check if
 the shell is interactive and return if it's not.
 
-This example image that we use will run ``source /etc/bash_env`` in noninteractive shells.
+This example image that we use runs ``source /etc/bash_env`` in noninteractive shells.
 However, it will not run for interactive shells and aliases that we define will not work.
 Noninteractive shells by default do not expand aliases.
 
