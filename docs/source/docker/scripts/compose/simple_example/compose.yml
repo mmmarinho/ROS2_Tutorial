@@ -2,7 +2,9 @@ services:
   talker:
     image: murilomarinho/sas:jazzy
     stop_signal: SIGINT
-    stop_grace_period: 1m
+    stop_grace_period: 10s
+    environment:
+      - ROS_DOMAIN_ID
     command: /bin/bash -c "
       ros2 run demo_nodes_cpp talker
       "
@@ -10,7 +12,9 @@ services:
   listener:
     image: murilomarinho/sas:jazzy
     stop_signal: SIGINT
-    stop_grace_period: 1m
+    stop_grace_period: 10s
+    environment:
+      - ROS_DOMAIN_ID
     command: /bin/bash -c "
       ros2 topic echo /chatter
       "

@@ -1,0 +1,15 @@
+services:
+  realtime:
+    image: murilomarinho/sas:jazzy
+    stop_signal: SIGINT
+    stop_grace_period: 10s
+    environment:
+      - ROS_DOMAIN_ID
+    cap_add:
+      - SYS_NICE # PREEMPT_RT
+    ulimits:
+      rtprio: 99 # PREEMPT_RT
+      rttime: -1 # PREEMPT_RT
+    command: /bin/bash -c "
+      ros2 run demo_nodes_cpp talker
+      "

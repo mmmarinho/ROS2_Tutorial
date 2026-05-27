@@ -82,16 +82,20 @@ Docker run interactively
 Firstly it would be easier to tackle docker in simple commands before tackling complex
 scenarios.
 
-We can start with the simple
+We can start with the simple command below.
 
 .. code-block:: console
 
-   docker run -it --rm murilomarinho/sas:jazzy
+   docker run -it --rm -e ROS_DOMAIN_ID=$ROS_DOMAIN_ID murilomarinho/sas:jazzy
 
-Where the flags
+The flags
 
 #. ``-it`` will open an interactive shell and
 #. ``--rm`` will remove all changes and return the image to its fresh initial state after we're done.
+#. ``-e`` will pass environment variables to the container.
+
+For this example, we will have ``ROS_DOMAIN_ID=$ROS_DOMAIN_ID``. This means that the container will have the same ``ROS_DOMAIN_ID`` as the host.
+This is usually sufficient, but keep that in mind in case something is not communicating as expected.
 
 The terminal in which you ran the ``docker run`` command should now be logged inside the container.
 The computer from which you ran is called the host. We will use this terminology to help explain where
@@ -111,8 +115,7 @@ Then, in the container and in the host we do as follows.
 
         .. code-block:: console
 
-            export ROS_DOMAIN_ID=1
-            ros2 topic echo /chatter
+             ros2 topic echo /chatter
 
 .. tip::
 
@@ -122,13 +125,9 @@ Then, in the container and in the host we do as follows.
 
         exit
 
-.. note::
-
-   In the container we have ``ROS_DOMAIN_ID=1``. If this is modified in the container, this must
-   be also modified in the host or they will not find and communicate with each other.
 
 Notice that host and container will communicate without any issues. Changing the network settings of the
-docker container may cause this to stop working.
+docker container may cause this to stop working, so make sure you know what you're doing.
 
 Docker compose
 ++++++++++++++
@@ -137,7 +136,7 @@ If your host does not have :program:`ROS2` you can also have multiple containers
 other without any direct involvement of the host. For instance with the following compose file named
 :file:`compose.yml` below.
 
-.. literalinclude:: scripts/composer/simple_example/compose.yml
+.. literalinclude:: scripts/compose/simple_example/compose.yml
    :language: yaml
 
 In the folder where :file:`compose.yml` exists, we do
@@ -227,15 +226,15 @@ Install ``PREEMPT_RT`` on the host
 The :file:`compose.yml`
 +++++++++++++++++++++++
 
-.. rli:: https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_demo/compose.yml
+.. literalinclude:: scripts/compose/realtime_example/compose.yml
    :language: yaml
 
-For this example, these are the parameters that were relevant.
-
-``cap_add``, ``rtprio``, and ``rttime``. The first one is to add the capability of setting process `niceness <https://manpages.ubuntu.com/manpages/focal/en/man1/nice.1.html>`_. Then, 
+For this example, the relevant parameters are ``cap_add``, ``rtprio``, and ``rttime``. The first one is to add the capability of setting process `niceness <https://manpages.ubuntu.com/manpages/focal/en/man1/nice.1.html>`_. Then,
 the other two are related to the realtime priorities. 
 
 That's it!
+
+Note that this example won't make anything realtime, I'm just showcasing how to set up the docker image. For a realtime thread you will have to set up the scheduling properly to ``SCHED_FIFO`` or ``SCHED_RR``.
 
 Tips and troubleshooting
 ------------------------
