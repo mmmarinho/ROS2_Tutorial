@@ -170,8 +170,8 @@ to make sure the image we have locally is indeed the latest.
 
             docker compose build --pull --no-cache
 
-This will show the output of the two images communicating over :program:`ROS2`. Notice that there is no input
-from the host and no complicated network setup involved.
+This will show the output of the two containers communicating over :program:`ROS2`. Notice that there is no input
+from the host and no complicated network setup involved. Each container is called a service.
 
 You can stop the process with ``CTRL+C``. Note that we are using ``stop_signal: SIGINT`` in the docker compose
 file because otherwise it will send ``SIGTERM``. In this toy example this is not an issue, but this is a major
@@ -180,6 +180,25 @@ the container is destroyed leaving it in an undetermined state. For the same rea
 to give the container enough time to close safely. Depending on your resource you'd prefer to have a larger
 value so that it is not escalated into a ``SIGTERM`` or ``SIGKILL`` before your container had enough time to
 sort out its shutdown procedure.
+
+You will note that ``SIGINT`` sent this way might not kill one or another service.
+I haven't found too much discussion about the topic in the :program:`ROS2` planet, but the gist of it is that we are not
+running :program:`ROS2` commands directly in these examples. We are running a :program:`bash` shell, which will configure itself
+with the :program:`ROS2` workspace, then running ``ros2 run`` inside it. Therefore, the ``SIGINT`` is sent to
+:program:`bash` first which will forward that signal to whatever it is running below. If the program ignores it,
+then it will be ignored.
+
+Although in :program:`sas` and in these tutorials there is much effort to guarantee nodes finish cleanly with
+a ``SIGINT``, there will be many examples online that do not do this correctly.
+
+.. seealso::
+
+    You might be interested in reading about the *wait and cooperative exit* implemented in :program:`bash` to
+    save yourself from the headaches of edge cases.
+
+    https://mywiki.wooledge.org/SignalTrap
+
+
 
 Docker container in a realtime kernel
 -------------------------------------
