@@ -140,6 +140,8 @@ If your host does not have :program:`ROS2` you can also have multiple containers
 other without any direct involvement of the host. For instance with the following compose file named
 :file:`compose.yml` below.
 
+:download:`simple_example/compose.yml <scripts/simple_example/compose.yml>`
+
 .. literalinclude:: scripts/compose/simple_example/compose.yml
    :language: yaml
 
@@ -209,7 +211,7 @@ Docker container in a realtime kernel
 
 .. seealso::
 
-   An example: https://github.com/MarinhoLab/sas_ur_control_template
+   Real-life example: https://github.com/MarinhoLab/sas_ur_control_template
 
 Making things work on a realtime kernel is a relatively simple task.
 
@@ -232,6 +234,8 @@ Install ``PREEMPT_RT`` on the host
 
        sudo apt update && sudo apt install ubuntu-realtime
 
+For ubuntu 24.04, we do the following.
+
 .. code-block:: console
 
     sudo pro attach
@@ -249,15 +253,68 @@ Install ``PREEMPT_RT`` on the host
 The :file:`compose.yml`
 +++++++++++++++++++++++
 
+For real-time performance, additional capabilities must be given to the container.
+
+:download:`realtime_example/compose.yml <scripts/realtime_example/compose.yml>`
+
 .. literalinclude:: scripts/compose/realtime_example/compose.yml
    :language: yaml
 
 For this example, the relevant parameters are ``cap_add``, ``rtprio``, and ``rttime``. The first one is to add the capability of setting process `niceness <https://manpages.ubuntu.com/manpages/focal/en/man1/nice.1.html>`_. Then,
 the other two are related to the realtime priorities. 
 
-That's it!
+The compose file does not make anything realtime. For a realtime thread you will have to set up the thread scheduling properly to ``SCHED_FIFO`` or ``SCHED_RR``
+We can run one example doing so in ``sas_core`` is shown below.
 
-Note that this example won't make anything realtime, I'm just showcasing how to set up the docker container. For a realtime thread you will have to set up the scheduling properly to ``SCHED_FIFO`` or ``SCHED_RR``.
+.. rli:: https://raw.githubusercontent.com/SmartArmStack/sas_core/refs/heads/jazzy/src/examples/sas_clock_sched_fifo_example.cpp
+    :language: cpp
+    :lines: 25-
+
+With the :file:`compose.yml` above, we do the following.
+
+.. code-block:: console
+
+    docker compose up
+
+Which should output something similar to the following.
+
+.. code-block:: console
+
+    [+] up 1/1
+     ✔ Container realtime_example-realtime-1 Recreated                                                                                                                                                                                                                                                             0.3s
+    Attaching to realtime-1
+    realtime-1  | **************************************************************************
+    realtime-1  | sas::Clock (c) Murilo M. Marinho (murilomarinho.info) 2016-2026 LGPLv3
+    realtime-1  | **************************************************************************
+    realtime-1  | Statistics for the entire loop
+    realtime-1  |   Mean computation time: 3.42e-07
+    realtime-1  |   Mean idle time: 0.000999767
+    realtime-1  |   Mean effective thread sampling time: 0.00100012
+    realtime-1  |   Overrun count: 0
+    realtime-1  |
+    realtime-1 exited with code 0
+
+Note that if the correct capabilities are not available or if the correct kernel is not installed, even such a simple
+example can show clock overruns.
+
+See below one run after removing ``cap_add``, ``rtprio``, and ``rttime``.
+
+.. code-block:: console
+
+    [+] up 1/1
+     ✔ Container realtime_example-realtime-1 Recreated                                                                                                                                                                                                                                                             0.1s
+    Attaching to realtime-1
+    realtime-1  | **************************************************************************
+    realtime-1  | sas::Clock (c) Murilo M. Marinho (murilomarinho.info) 2016-2026 LGPLv3
+    realtime-1  | **************************************************************************
+    realtime-1  | Failed to setschedparam: Operation not permitted
+    realtime-1  | Statistics for the entire loop
+    realtime-1  |   Mean computation time: 7.02e-07
+    realtime-1  |   Mean idle time: 0.00106458
+    realtime-1  |   Mean effective thread sampling time: 0.00106529
+    realtime-1  |   Overrun count: 3
+    realtime-1  |
+    realtime-1 exited with code 0
 
 Tips and troubleshooting
 ------------------------

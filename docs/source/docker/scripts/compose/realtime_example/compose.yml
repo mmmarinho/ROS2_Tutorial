@@ -11,5 +11,5 @@ services:
       rtprio: 99 # PREEMPT_RT
       rttime: -1 # PREEMPT_RT
     command: /bin/bash -c "
-      ros2 run demo_nodes_cpp talker
+      ros2 run sas_core sas_clock_sched_fifo_example
       "
