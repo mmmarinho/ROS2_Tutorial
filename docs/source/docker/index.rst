@@ -1,8 +1,12 @@
 Happy days with :program:`docker`
 =================================
 
-
 .. include:: ../the_topic_is_under_heavy_construction.rst
+
+.. important::
+
+    For a basic treatise see https://uomresearchit.github.io/docker-introduction/
+    This tutorial is about the specifics of ``ROS2`` and ``sas`` when using docker.
 
 Installation
 ------------
