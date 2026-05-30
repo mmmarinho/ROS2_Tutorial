@@ -360,11 +360,11 @@ Related information: https://docs.docker.com/engine/manage-resources/pruning/.
 
 .. caution::
 
-    This will remove all containers and volumes. Check the instructions carefully before moving forward.
+    This will remove all containers, cache, and volumes. Check the instructions carefully before moving forward.
 
 .. code-block:: console
 
-    docker system prune --volumes
+    docker system prune --all --volumes
 
 The standard shell is not interactive
 +++++++++++++++++++++++++++++++++++++
