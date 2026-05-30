@@ -171,7 +171,7 @@ If your host does not have :program:`ROS2` you can also have multiple containers
 other without any direct involvement of the host. For instance with the following compose file named
 :file:`compose.yml` below.
 
-:download:`simple_example/compose.yml <scripts/simple_example/compose.yml>`
+:download:`simple_example/compose.yml <scripts/compose/simple_example/compose.yml>`
 
 .. literalinclude:: scripts/compose/simple_example/compose.yml
    :language: yaml
@@ -286,7 +286,7 @@ The :file:`compose.yml`
 
 For real-time performance, additional capabilities must be given to the container.
 
-:download:`realtime_example/compose.yml <scripts/realtime_example/compose.yml>`
+:download:`realtime_example/compose.yml <scripts/compose/realtime_example/compose.yml>`
 
 .. literalinclude:: scripts/compose/realtime_example/compose.yml
    :language: yaml
