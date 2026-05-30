@@ -3,19 +3,16 @@ Happy days with :program:`docker`
 
 .. include:: ../the_topic_is_under_heavy_construction.rst
 
-.. important::
+For a basic treatise see https://uomresearchit.github.io/docker-introduction/.
 
-    For a basic treatise see https://uomresearchit.github.io/docker-introduction/
-    This tutorial is about the specifics of ``ROS2`` and ``sas`` when using docker.
+This tutorial is about the specifics of ``ROS2`` and ``sas`` when using docker on Ubuntu.
 
 Installation
 ------------
 .. note::
 
-   This is a quick installation script for a fresh system.
-
-Information obtained from the main documentation for Ubuntu.
-https://docs.docker.com/engine/install/ubuntu/
+   Information obtained from the main documentation for Ubuntu.
+   https://docs.docker.com/engine/install/ubuntu/
 
 .. literalinclude:: scripts/install_docker.sh
    :language: bash
@@ -71,9 +68,43 @@ If you're curious, here are the main contents of the script.
 Basic testing
 -------------
 
+In a terminal window, do the following.
+
 .. code-block:: console
 
     docker run hello-world
+
+If executed for the first time in the machine, it should return something similar to the following. If the image already exists in the system, it will not be pulled.
+
+.. code-block:: console
+
+    Unable to find image 'hello-world:latest' locally
+    latest: Pulling from library/hello-world
+    58dee6a49ef1: Pull complete 
+    c3bdf82c34d1: Download complete 
+    Digest: sha256:0e760fdfbc48ba8041e7c6db999bb40bfca508b4be580ac75d32c4e29d202ce1
+    Status: Downloaded newer image for hello-world:latest
+    
+    Hello from Docker!
+    This message shows that your installation appears to be working correctly.
+    
+    To generate this message, Docker took the following steps:
+     1. The Docker client contacted the Docker daemon.
+     2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+        (arm64v8)
+     3. The Docker daemon created a new container from that image which runs the
+        executable that produces the output you are currently reading.
+     4. The Docker daemon streamed that output to the Docker client, which sent it
+        to your terminal.
+    
+    To try something more ambitious, you can run an Ubuntu container with:
+     $ docker run -it ubuntu bash
+    
+    Share images, automate workflows, and more with a free Docker ID:
+     https://hub.docker.com/
+    
+    For more examples and ideas, visit:
+     https://docs.docker.com/get-started/
 
 SAS testing
 -----------
