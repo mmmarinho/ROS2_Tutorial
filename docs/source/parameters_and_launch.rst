@@ -11,7 +11,7 @@ For Python users, that might sound less appealing than for users of compiled lan
 Create the package
 ------------------
 
-First, let us create an :program:`ament_python` package that depends on our :file:`packages_with_interfaces` and build from there.
+First, let us create an :program:`ament_python` package that depends on our :file:`package_with_interfaces` and build from there.
 
 .. code:: console
 

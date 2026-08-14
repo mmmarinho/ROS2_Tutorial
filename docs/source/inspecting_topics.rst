@@ -283,7 +283,7 @@ which will result in our subscriber outputting
 
                    'So you’re telling me there’s a chance'
 
-            And was though by the following genius
+            And was thought by the following genius
 
                 -- Lloyd
 
@@ -295,7 +295,7 @@ which will result in our subscriber outputting
 
                    'So you’re telling me there’s a chance'
 
-            And was though by the following genius
+            And was thought by the following genius
 
                 -- Lloyd
 

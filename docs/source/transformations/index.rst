@@ -323,7 +323,7 @@ Lastly, we have, for a ``rotation``,
 Create the package
 ------------------
 
-We will create a package to showcase the transformations from the previous section. We use ``TransformedStamped`` as
+We will create a package to showcase the transformations from the previous section. We use ``TransformStamped`` as
 it will be useful right away, when we talk about ``tf2``.
 
 To see how this would work, programmatically, we start by creating the :file:`python_package_that_uses_geometry_msgs` package.

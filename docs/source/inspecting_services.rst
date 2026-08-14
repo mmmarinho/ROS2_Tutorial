@@ -216,7 +216,7 @@ It might be a bit of a handful, but we will need three (properly sourced) termin
 
             ros2 run python_package_that_uses_the_services add_points_service_client_introspection_node
 
-Each program will have it's own output, shown below. For the purposes of this section we can focus on the output of
+Each program will have its own output, shown below. For the purposes of this section we can focus on the output of
 :program:`ros2 service echo`. The other two outputs repeat what we have seen in the previous session, further guaranteeing
 that the introspection works without affecting the overall behavior of the nodes too much.
 

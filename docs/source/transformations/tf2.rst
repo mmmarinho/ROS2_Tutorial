@@ -224,7 +224,7 @@ We can show the integrated example as follows.
 Our broadcaster won't output anything to the screen.
 
 The output of the listener will be as long as you allow it to be. The first line indicates a normal behavior, in which
-subscribers to not have instant access to topics. That is properly handled by our listener. When available, you can see
+subscribers do not have instant access to topics. That is properly handled by our listener. When available, you can see
 the output.
 
 .. code-block:: console
