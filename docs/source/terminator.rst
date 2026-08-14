@@ -6,8 +6,8 @@ Terminator is life
 .. note::
 
    You can refer to the `project's documentation <https://terminator-gtk3.readthedocs.io/en/latest/>`_ for more info.
-   
-   
+
+
 After installing :program:`terminator` as instructed in the last section, the default terminal window will be automatically updated to use it.
 
 Shortcuts
@@ -35,7 +35,7 @@ Will result in three terminal windows that look like so.
 OK, but what if shortcuts scare me
 ----------------------------------
 
-Instead of using shortcuts, a context menu can be opened by right-clicking a terminal window. 
+Instead of using shortcuts, a context menu can be opened by right-clicking a terminal window.
 Then, you can choose to `Split Horizontally` or `Split Vertically` to achieve the same results.
 
 .. image:: ../images/terminator_right_click_menu.png

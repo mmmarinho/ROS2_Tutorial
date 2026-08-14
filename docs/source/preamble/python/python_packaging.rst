@@ -27,7 +27,7 @@ The :file:`setup.py`
 
    .. code-block:: console
       :emphasize-lines: 12
-      
+
         python/
         `-- minimalist_package
             |-- minimalist_package
@@ -73,7 +73,7 @@ Installing :file:`wheel`
 
    .. code-block:: console
 
-      DEPRECATION: minimalist-package is being installed using the legacy 'setup.py install' method because it does not have a 'pyproject.toml' 
+      DEPRECATION: minimalist-package is being installed using the legacy 'setup.py install' method because it does not have a 'pyproject.toml'
       and the 'wheel' package is not installed. pip 23.1 will enforce this behaviour change. A possible replacement is to enable the '--use-pep517'
       option. Discussion can be found at https://github.com/pypa/pip/issues/8559
 
@@ -138,16 +138,16 @@ which will return something similar to
 .. code-block:: console
 
    Awaiting results...
-   task1 retry needed (roll = 0.1534174185325745 > 0.1).            
-   task2 retry needed (roll = 0.35338687437350913 > 0.1).            
+   task1 retry needed (roll = 0.1534174185325745 > 0.1).
+   task2 retry needed (roll = 0.35338687437350913 > 0.1).
    task1 Done.
-   task2 retry needed (roll = 0.3877920607121429 > 0.1).            
+   task2 retry needed (roll = 0.3877920607121429 > 0.1).
    The result of task=task1 was 0.07646509818952207.
-   task2 retry needed (roll = 0.7010015915930288 > 0.1).            
-   task2 retry needed (roll = 0.8907576123834621 > 0.1).            
-   task2 retry needed (roll = 0.4233577578392548 > 0.1).            
-   task2 retry needed (roll = 0.7512028176843422 > 0.1).            
-   task2 retry needed (roll = 0.33501957024540663 > 0.1).            
+   task2 retry needed (roll = 0.7010015915930288 > 0.1).
+   task2 retry needed (roll = 0.8907576123834621 > 0.1).
+   task2 retry needed (roll = 0.4233577578392548 > 0.1).
+   task2 retry needed (roll = 0.7512028176843422 > 0.1).
+   task2 retry needed (roll = 0.33501957024540663 > 0.1).
    task2 Done.
    The result of task=task2 was 0.09239734738421612.
 
@@ -158,7 +158,7 @@ We first run an interactive session with
 
 .. code-block:: console
 
-   python3 
+   python3
 
 we can then interact with it as any other installed package
 
@@ -192,7 +192,7 @@ which will return something similar to
        /home/murilo/ros2tutorial_venv/bin/minimalist_script
        /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/minimalist_package-23.6.0.dist-info/*
        /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/minimalist_package/*
-   Proceed (Y/n)? 
+   Proceed (Y/n)?
 
 and just press :kbd:`ENTER`, resulting in the package being uninstalled
 

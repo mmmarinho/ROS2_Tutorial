@@ -12,9 +12,9 @@ Who cares about the :program:`terminal` anyways, are you like 100 years old or s
 -----------------------------------------------------------------------------------------
 
 Besides the unintended upside that if you're typing into a terminal fast enough with a black hoodie, you're cosplaying `Mr. Robot <https://www.imdb.com/title/tt4158110/>`_ at a very low cost, there wouldn't be another way to make a tutorial like this within
-the current age of the Universe without relying on Ubuntu's :program:`terminal`. 
+the current age of the Universe without relying on Ubuntu's :program:`terminal`.
 
-:abbr:`GUIs (Graphical User Interfaces)` change faster than long tutorials like this one can keep up with and :program:`terminal` 
+:abbr:`GUIs (Graphical User Interfaces)` change faster than long tutorials like this one can keep up with and :program:`terminal`
 is our reliable partner in crime and unlikely to change much in the foreseeable future.
 
 For the whole tutorial, you can copy and paste the commands in :program:`terminal`. If it doesn't work, it's either your fault or mine,
@@ -27,7 +27,7 @@ The :program:`terminal`
 
    Check out `Canonical's Tutorial <https://ubuntu.com/tutorials/command-line-for-beginners>`_ on :program:`terminal` for the complete story.
 
-.. hint:: 
+.. hint::
 
    You can open a new terminal window by pressing :kbd:`CTRL+ALT+T`.
 
@@ -50,7 +50,7 @@ For all intents and purposes, Tom Hanks is not stuck in this terminal. Instead, 
      - Outputs the absolute path to the current directory.
    * - :program:`mkdir`
      - :code:`mkdir a_folder`
-     - **M**\ a\ **k**\ es a **dir**\ ectory called :file:`a_folder` in the current directory. 
+     - **M**\ a\ **k**\ es a **dir**\ ectory called :file:`a_folder` in the current directory.
    * - :program:`cd`
      - :code:`cd a_folder`
      - **C**\ hanges **d**\ irectory to a specified target.
@@ -94,7 +94,7 @@ To warm up, let's start by creating an empty file inside a new directory, as fol
 
    The path :file:`~` stands for the currently logged-in user's home folder. Not every command is able to expand it. In those cases, use ``$USER`` instead.
 
-.. hint:: 
+.. hint::
 
    You can open a new terminal window by pressing :kbd:`CTRL+ALT+T`.
 
@@ -115,7 +115,7 @@ Then, we can use :program:`nano` to create another file with some contents
 
    nano file_with_stuff.txt
 
-Then, :program:`nano` will run. At this point we can start typing, so let's just type 
+Then, :program:`nano` will run. At this point we can start typing, so let's just type
 
 .. code-block:: console
 
@@ -208,7 +208,7 @@ Tab completion
 Whenever I have to look at a novice's shoulders while they interact with the terminal it gives me a certain level of anxiety. That is because they are trying to perfectly type even the longest and meanest paths for files, directories, and programs.
 
 The terminal has :kbd:`TAB` completion, so use it extensively.
-You can press :kbd:`TAB` at any time to complete the name of a program, folder, file, or pretty much anything. 
+You can press :kbd:`TAB` at any time to complete the name of a program, folder, file, or pretty much anything.
 
 For example, we can move to a folder
 
@@ -245,7 +245,7 @@ Be careful even when not using :program:`sudo`
 ----------------------------------------------
 
 With regular user privileges, the `major <https://www.youtube.com/watch?v=DDfPwaWwrII>`_ system folders will be protected from tampering. However, our home folder, e.g. :file:`/home/<YOU>` will not.
-In our home folder, we are the lords, so a mistake can be fatal for your files/directories. 
+In our home folder, we are the lords, so a mistake can be fatal for your files/directories.
 
 File permissions
 ----------------
@@ -264,7 +264,7 @@ I will not get into detail here about programs to change permissions because we 
 To some extent similar to :program:`explorer` in Windows and :program:`finder` in macOS, :program:`nautilus` is `the default file manager in Ubuntu <https://manpages.ubuntu.com/manpages/jammy/en/man1/nautilus.1.html>`_.
 
 One tip is that it can be opened from the :program:`terminal` as well, so that you don't have to find whatever folder you are again.
-For example, 
+For example,
 
 .. hint::
 

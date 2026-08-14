@@ -1,18 +1,18 @@
 Creating a Python Node with a template (for :program:`ament_python`)
 ====================================================================
 
-It is always good to rely on the templates available in :program:`ros2 pkg create`, mostly because the best practices for packaging might change between ROS2 versions. 
+It is always good to rely on the templates available in :program:`ros2 pkg create`, mostly because the best practices for packaging might change between ROS2 versions.
 
 Let us use the template for creating a package with a Node, as follows.
 
-.. code :: console
+.. code-block:: console
 
    cd ~/ros2_tutorial_workspace/src
    ros2 pkg create python_package_with_a_node \
    --build-type ament_python \
    --node-name sample_python_node
-   
-Which will output many things in common with the prior example, but with two major differences. 
+
+Which will output many things in common with the prior example, but with two major differences.
 
 #. It generates a template Node
 #. The :file:`setup.py` has information about the Node.
@@ -60,14 +60,14 @@ Which will output many things in common with the prior example, but with two maj
 
 Then, we can build the workspace as usual to consider the new package as well.
 
-.. code :: console
+.. code-block:: console
 
    cd ~/ros2_tutorial_workspace
    colcon build
-   
-which will result in going through the package we created in the prior example and the current one.   
 
-.. code :: console
+which will result in going through the package we created in the prior example and the current one.
+
+.. code-block:: console
 
    Starting >>> python_package_with_a_node
    Starting >>> the_simplest_python_package

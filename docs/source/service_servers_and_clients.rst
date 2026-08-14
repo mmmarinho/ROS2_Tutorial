@@ -124,19 +124,19 @@ Create the Node with a Service Server
 -------------------------------------
 
 .. admonition::  **TL;DR** Creating a service server
-      
+
                #. Add new dependencies to :file:`package.xml`
                #. Import new services :code:`from <package_name>.srv import <srv_name>`
                #. In a subclass of :code:`Node`
-      
+
                   #. create a callback :code:`def callback(self, request, response):`
                   #. create a service server with :code:`self.service_server = self.create_service(...)`
-      
+
                #. Add the new Node to :file:`setup.py`
 
 Let's start by creating a :file:`add_points_service_server_node.py`.
 
-:download:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py>`
+:download:`add_points_service_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_node.py
    :language: python
@@ -194,16 +194,16 @@ Create the Node with a Service Client (using a :code:`callback`)
                #. Add new dependencies to :file:`package.xml`
                #. Import new services :code:`from <package_name>.srv import <srv_name>`
                #. In a subclass of :code:`Node`
-      
+
                   #. (*recommended*) wait for service to be available :code:`service_client.wait_for_service(...)`.
                   #. (*if periodic*) add a :code:`Timer` with a proper :code:`timer_callback()`
                   #. create a callback for the future :code:`def service_future_callback(self, future: Future):`
                   #. create a Service Client with :code:`self.service_client = self.create_client(...)`
-      
+
                #. Add the new Node to :file:`setup.py`
 
 The Node
-^^^^^^^^
+++++++++
 
 .. note::
    This example deviates somewhat from what is done in the `official examples <https://github.com/ros2/examples/tree/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client>`_.
@@ -220,9 +220,9 @@ We start by adding a :file:`add_points_service_client_node.py` at :file:`python_
    :lines: 24-
 
 Imports
-^^^^^^^
++++++++
 
-To have access to the service, we import it with :code:`from <package>.srv import <Service>`. 
+To have access to the service, we import it with :code:`from <package>.srv import <Service>`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_node.py
    :language: python
@@ -230,7 +230,7 @@ To have access to the service, we import it with :code:`from <package>.srv impor
    :emphasize-lines: 5,7
 
 Instantiate a Service Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+++++++++++++++++++++++++++++
 
 We instantiate a Service Client with :code:`Node.create_client()`. The values of :code:`srv_type` and :code:`srv_name` must match the ones used in the Service Server.
 
@@ -239,7 +239,7 @@ We instantiate a Service Client with :code:`Node.create_client()`. The values of
    :lines: 39-41
 
 (Recommended) Wait for the Service Server to be available
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. warning::
    The order of execution and speed of Nodes depend on a complicated web of relationships between ROS2, the operating system, and the workload of the machine. It would be naive to expect the server to always be active before the client, even if the server Node is started before the client Node.
@@ -251,7 +251,7 @@ In many cases, having the result of the service is of particular importance (hen
    :lines: 43,44
 
 Instantiate a :code:`Future` as a class attribute
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++++++++
 
 As part of the :code:`async` framework, we instantiate a :code:`Future` (`More info <https://docs.python.org/3.10/library/asyncio-future.html#asyncio-futures>`_). In this example it is important to have it as an attribute of the class so that we do not lose the reference to it after the callback.
 
@@ -260,7 +260,7 @@ As part of the :code:`async` framework, we instantiate a :code:`Future` (`More i
    :lines: 46
 
 Instantiate a Timer
-^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++
 
 Whenever periodic work must be done, it is recommended to use a :code:`Timer`, as we already learned in :ref:`Use a Timer for periodic work`.
 
@@ -275,7 +275,7 @@ The need for a callback for the :code:`Timer`, should also be no surprise.
    :lines: 53-54
 
 Service Clients use :code:`<srv>.Request()`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++
 
 Given that services work in a request-response model, the Service Client must instantiate a suitable :code:`<srv>.Request()` and populate its fields before making the service call, as shown below. To make the example more interesting, it randomly switches between two possible quotes.
 
@@ -284,15 +284,15 @@ Given that services work in a request-response model, the Service Client must in
    :lines: 56-64
 
 Make service calls with :code:`call_async()`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+++++++++++++++++++++++++++++++++++++++++++++
 
 The :code:`async` framework in ROS2 is based on Python's :code:`asyncio` that we already saw in :ref:`Asyncio`.
-   
+
 .. note::
    At first glance, it might feel that all this trouble to use :code:`async` is unjustified. However, Nodes in practice will hardly ever do one service call and be done. Many Nodes in a complex system
    will have a composition of many service servers, service clients, publishers, and subscribers. Blocking the entire Node while it waits for the result of a service is, in most cases, a bad design.
 
-The recommended way to call a service is through :code:`call_async()`, which is the reason why we are working with :code:`async` logic. In general, the result of :code:`call_async()`, a :code:`Future`, will not have the result of the service call at the next line of our program. 
+The recommended way to call a service is through :code:`call_async()`, which is the reason why we are working with :code:`async` logic. In general, the result of :code:`call_async()`, a :code:`Future`, will not have the result of the service call at the next line of our program.
 
 There are many ways to address the use of a :code:`Future`. One of them, specially tailored to interface :code:`async` with callback-based frameworks is the :code:`Future.add_done_callback()`. If the :code:`Future` is already done by the time we call :code:`add_done_callback()`, it is supposed to `call the callback for us <https://github.com/ros2/rclpy/blob/0f1af0db16c38899aaea1fb1ca696800255d2b55/rclpy/rclpy/task.py#L163>`_.
 
@@ -311,7 +311,7 @@ Given that we are periodically calling the service, before replace the class :co
    :emphasize-lines: 1-4
 
 The Future callback
-^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++
 
 The callback for the :code:`Future` must receive a :code:`Future` as an argument. Having it as an attribute of the Node's class allows us to access ROS2 method such as :code:`get_logger()` and other contextual information.
 

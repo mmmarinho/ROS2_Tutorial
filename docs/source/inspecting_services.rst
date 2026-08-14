@@ -52,7 +52,7 @@ To see all currently active services, we run
 .. code:: console
 
    ros2 service list
-   
+
 which, in this case, outputs
 
 .. code-block:: console
@@ -79,7 +79,7 @@ Back to our example, we can do
 
     ros2 service call /add_points \
     package_with_interfaces/srv/AddPoints \
-    '{ 
+    '{
     a: {
          x: 10,
          y: 11,
@@ -95,7 +95,7 @@ Back to our example, we can do
 which results in
 
 .. code-block:: console
-    
+
     requester: making request: package_with_interfaces.srv.AddPoints_Request(a=geometry_msgs.msg.Point(x=10.0, y=11.0, z=12.0), b=geometry_msgs.msg.Point(x=-10.0, y=-10.0, z=22.0))
 
     response:

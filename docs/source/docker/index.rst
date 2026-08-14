@@ -80,14 +80,14 @@ If executed for the first time in the machine, it should return something simila
 
     Unable to find image 'hello-world:latest' locally
     latest: Pulling from library/hello-world
-    58dee6a49ef1: Pull complete 
-    c3bdf82c34d1: Download complete 
+    58dee6a49ef1: Pull complete
+    c3bdf82c34d1: Download complete
     Digest: sha256:0e760fdfbc48ba8041e7c6db999bb40bfca508b4be580ac75d32c4e29d202ce1
     Status: Downloaded newer image for hello-world:latest
-    
+
     Hello from Docker!
     This message shows that your installation appears to be working correctly.
-    
+
     To generate this message, Docker took the following steps:
      1. The Docker client contacted the Docker daemon.
      2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
@@ -96,13 +96,13 @@ If executed for the first time in the machine, it should return something simila
         executable that produces the output you are currently reading.
      4. The Docker daemon streamed that output to the Docker client, which sent it
         to your terminal.
-    
+
     To try something more ambitious, you can run an Ubuntu container with:
      $ docker run -it ubuntu bash
-    
+
     Share images, automate workflows, and more with a free Docker ID:
      https://hub.docker.com/
-    
+
     For more examples and ideas, visit:
      https://docs.docker.com/get-started/
 
@@ -171,7 +171,7 @@ If your host does not have :program:`ROS2` you can also have multiple containers
 other without any direct involvement of the host. For instance with the following compose file named
 :file:`compose.yml` below.
 
-:download:`simple_example/compose.yml <scripts/compose/simple_example/compose.yml>`
+:download:`compose.yml <scripts/compose/simple_example/compose.yml>`
 
 .. literalinclude:: scripts/compose/simple_example/compose.yml
    :language: yaml
@@ -286,13 +286,13 @@ The :file:`compose.yml`
 
 For real-time performance, additional capabilities must be given to the container.
 
-:download:`realtime_example/compose.yml <scripts/compose/realtime_example/compose.yml>`
+:download:`compose.yml <scripts/compose/realtime_example/compose.yml>`
 
 .. literalinclude:: scripts/compose/realtime_example/compose.yml
    :language: yaml
 
 For this example, the relevant parameters are ``cap_add``, ``rtprio``, and ``rttime``. The first one is to add the capability of setting process `niceness <https://manpages.ubuntu.com/manpages/focal/en/man1/nice.1.html>`_. Then,
-the other two are related to the realtime priorities. 
+the other two are related to the realtime priorities.
 
 The compose file does not make anything realtime. For a realtime thread you will have to set up the thread scheduling properly to ``SCHED_FIFO`` or ``SCHED_RR``
 We can run one example doing so in ``sas_core`` is shown below.

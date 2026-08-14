@@ -53,7 +53,7 @@ Minimalist package: something to start with
 
    .. code-block:: console
       :emphasize-lines: 1-4
-      
+
         python/
         `-- minimalist_package
             |-- minimalist_package
@@ -197,7 +197,7 @@ resulting in
 
 Note that for this second execution strategy to work, we **MUST** have the `#!`, called `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_, at the beginning of the first line.
 The path after the shebang specifies what program will be used to interpret that file. In general, differently from Windows, Ubuntu does not guess the file type by the extension
-when running it. 
+when running it.
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_script.py
    :language: python
@@ -313,7 +313,7 @@ following contents
 .. note::
 
    Relative imports such as :code:`from . import <THING_TO_IMPORT>` might work in some cases, and that is fine. It is a supported
-   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc., and `generates 
+   and valid way to import. However, don't be surprised when it doesn't work in ROS2, PyPI packages, etc., and `generates
    a lot of frustration <https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time?rq=1>`_.
 
 Not a matter of taste: Code style
@@ -393,7 +393,7 @@ When documenting your code, obviously, the documentation should be about what th
 
 .. hint::
 
-   Ideally, all documentation is perfect from the start. In reality, however, that rarely ever happens so some documentation is always better than none. 
+   Ideally, all documentation is perfect from the start. In reality, however, that rarely ever happens so some documentation is always better than none.
    My advice would be to write something as it goes and possibly adjust it to more stable or cleaner documentation when the need arises.
 
 Unit tests: always test your code
@@ -423,15 +423,15 @@ Unit tests: always test your code
             `-- test
                 `-- test_minimalist_class.py
 
-`Unit testing <https://en.wikipedia.org/wiki/Unit_testing>`_ is a flag that has been waved by programming enthusiasts 
+`Unit testing <https://en.wikipedia.org/wiki/Unit_testing>`_ is a flag that has been waved by programming enthusiasts
 and is often a good measurement of code maturity.
 
 The elephant in the room is that writing unit tests is **boring**. Yes, we know, *very* boring.
 
 Unit tests are boring because they are an *investment*. Unit testing won't necessarily make your
-code `[...] better, faster, [...] <https://www.youtube.com/watch?v=gAjR4_CbPpQ>`_ *right now*. However, without tests, don't 
+code `[...] better, faster, [...] <https://www.youtube.com/watch?v=gAjR4_CbPpQ>`_ *right now*. However, without tests, don't
 be surprised after some point if your implementations make you drown in `tech debt <https://en.wikipedia.org/wiki/Technical_debt>`_.
-Dedicating a couple of minutes now to make a couple of tests when your codebase is still in its infancy makes it more manageable 
+Dedicating a couple of minutes now to make a couple of tests when your codebase is still in its infancy makes it more manageable
 and less boresome.
 
 Back to the example, a good practice is to create a folder name :file:`test` at the same level as the packages to be tested, like so
@@ -444,7 +444,7 @@ Back to the example, a good practice is to create a folder name :file:`test` at 
 Then, we create a file named :file:`test_minimalist_class.py` with the contents below in the :file:`test` folder.
 
 .. note::
- 
+
    The prefix :file:`test_` is important as it is used by some frameworks to automatically discover tests. So it is better not to use
    that prefix if that file does not contain a unit test.
 
@@ -456,7 +456,7 @@ Then, we create a file named :file:`test_minimalist_class.py` with the contents 
    :lines: 1-
 
 Running the tests
-^^^^^^^^^^^^^^^^^
++++++++++++++++++
 
 For a quick jolt of instant gratification, let's run the tests before we proceed with the explanation.
 
@@ -470,22 +470,22 @@ There are many ways to run tests written with :code:`unittest`. The following wi
 which will output
 
 .. code-block:: console
-   
+
    test_attribute (test_minimalist_class.TestMinimalistClass) ... ok
    test_get_set_private_attribute (test_minimalist_class.TestMinimalistClass) ... ok
    test_method (test_minimalist_class.TestMinimalistClass) ... ok
    test_private_attribute (test_minimalist_class.TestMinimalistClass) ... ok
    test_static_method (test_minimalist_class.TestMinimalistClass) ... ok
-   
+
    ----------------------------------------------------------------------
    Ran 5 tests in 0.000s
-   
+
    OK
 
 Yay! We've done it!
 
 Start with use :code:`unittest`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++
 
 .. note::
 
@@ -501,18 +501,18 @@ We import the :code:`unittest` module along with the class that we want to test,
    :lines: 1-2
 
 Test them all
-^^^^^^^^^^^^^
++++++++++++++
 
 .. note::
 
    Good unit tests will not only let you know when something broke but also *where* it broke. A failed test of a high-level function might not give
    you too much information, whereas a failed test of a lower-level (more fundamental) function will allow you to pinpoint the issue.
 
-Unit tests are somewhat like insurance. The more coverage you have, the better. In this example, we test all the 
+Unit tests are somewhat like insurance. The more coverage you have, the better. In this example, we test all the
 elements in the class. Each test will be based on one or more asserts. For more info check the `unittest docs <https://docs.python.org/3.12/library/unittest.html>`_.
 
 In a few words, we make a subclass of :code:`unittest.TestCase` and create methods within it that test one part
-of the code, hence the name unit tests. 
+of the code, hence the name unit tests.
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/test/test_minimalist_class.py
    :language: python
@@ -521,7 +521,7 @@ of the code, hence the name unit tests.
 If one of the :code:`asserts` fails, then the related test will fail, and the test framework will let us know which one.
 
 The test's main function
-^^^^^^^^^^^^^^^^^^^^^^^^
+++++++++++++++++++++++++
 
 Generally, a test script based on `unittest` will have the following main function. It will run all available tests in our test class.
 For more info and alternatives check the `unittest docs <https://docs.python.org/3.12/library/unittest.html>`_.

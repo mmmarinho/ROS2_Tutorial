@@ -28,9 +28,9 @@ Getting info on interfaces
 We can get information about ROS2 interfaces available in our system with :program:`ros2 interface`. Let us first get more information about the program usage with
 
 .. code:: console
-   
+
    ros2 interface -h
-   
+
 which results in
 
 .. code:: console
@@ -50,18 +50,18 @@ which results in
       show      Output the interface definition
 
       Call `ros2 interface <command> -h` for more detailed usage.
-      
+
 This shows that with :program:`ros2 interface list` we can get a list of all interfaces available in our workspace. That returns a huge list of interfaces, so it will not be replicated entirely here. Instead, we can run
 
 .. code:: console
 
      ros2 interface packages
-     
+
 to get the list of packages with interfaces available, which returns something similar to
- 
+
 .. code-block:: console
     :emphasize-lines: 8, 21
- 
+
     action_msgs
     action_tutorials_interfaces
     actionlib_msgs
@@ -99,16 +99,16 @@ to get the list of packages with interfaces available, which returns something s
 
 From those, :file:`sensor_msgs` and :file:`geometry_msgs` are packages to always keep in mind when looking for a suitable interface. It will help to keep your Nodes compatible with the community.
 
-.. warning:: 
+.. warning::
 
    The :file:`std_msgs` package, widely used in ROS1, is deprecated in ROS2 since Foxy. The :file:`example_interfaces` somewhat takes its place, but the recommended practice is to create "semantically meaningful message types". They might remove both or either of these in future versions, so do not use them.
 
-As an example, let us take a look into the :file:`example_interfaces` package, containing, as the name implies, example interface types. We can do so with 
- 
+As an example, let us take a look into the :file:`example_interfaces` package, containing, as the name implies, example interface types. We can do so with
+
 .. code:: console
 
     ros2 interface package example_interfaces
-    
+
 which returns
 
 .. code:: console
@@ -155,7 +155,7 @@ For example, let's say that we are interested in looking up the contents of :fil
 .. code:: console
 
     ros2 interface show example_interfaces/msg/String
-    
+
 which returns the contents of the source file used to create this message
 
 .. code-block:: yaml
@@ -181,9 +181,9 @@ We run
 .. code:: console
 
     ros2 interface show example_interfaces/srv/AddTwoInts
-    
+
 that results in
-    
+
 .. code-block:: yaml
    :emphasize-lines:  3
 

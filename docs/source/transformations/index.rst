@@ -164,10 +164,10 @@ Let's rip the trademarked plaster brand out. The following equation represents t
     :name: eq:rotation_formation
 
     \boldsymbol{r} \triangleq \cos\left(\frac{\phi}{2}\right) + \boldsymbol{v}\sin\left(\frac{\phi}{2}\right),
-    
+
 where :math:`\boldsymbol{v}^2=-1`. This means that the rotation axis :math:`\boldsymbol{v}` can be any imaginary number
 such that :math:`||\boldsymbol{v}||=1`.
-  
+
 The easiest way to think about a rotation using quaternions is to think about the axis of rotation :math:`\boldsymbol{v}`
 and the angle of rotation :math:`\phi`.
 Then, you construct the quaternion with the :ref:`rotation quaternion formation law <eq:rotation_formation>`.

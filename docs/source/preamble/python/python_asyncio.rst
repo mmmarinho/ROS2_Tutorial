@@ -113,7 +113,7 @@ Using :code:`await`
 -------------------
 
 .. admonition:: **TL;DR** Using :code:`await`
-      
+
    #. Run multiple :code:`Task`\ s.
    #. Use :code:`await` for them, **after they were executed**.
 
@@ -176,7 +176,7 @@ Ok, enough with the explanation, let's go to the endorphin rush of actually runn
    cd ~/ros2_tutorials_preamble/python/minimalist_package/
    python3 -m minimalist_package.minimalist_async.async_await_example
 
-Which will result in something like shown below. The function is stochastic, so it might take more or less time to 
+Which will result in something like shown below. The function is stochastic, so it might take more or less time to
 return and the order of the tasks ending might also be different.
 
 However, in the :code:`await` framework, the results will **ALWAYS** be processed in the order that was specified
@@ -189,28 +189,28 @@ We can also see that both tasks are running concurrently until :code:`task2` fin
    :emphasize-lines: 13,20,21,22
 
    Awaiting results...
-   task1 retry needed (roll = 0.36896762068176037 > 0.1).            
-   task2 retry needed (roll = 0.8429002838770375 > 0.1).            
-   task1 retry needed (roll = 0.841018521652675 > 0.1).            
-   task2 retry needed (roll = 0.1351152094825686 > 0.1).            
-   task1 retry needed (roll = 0.9484654265361889 > 0.1).            
-   task2 retry needed (roll = 0.3167046796566366 > 0.1).            
-   task1 retry needed (roll = 0.7519672365071198 > 0.1).            
-   task2 retry needed (roll = 0.38440407016827005 > 0.1).            
-   task1 retry needed (roll = 0.23155484384953284 > 0.1).            
-   task2 retry needed (roll = 0.6418306170261009 > 0.1).            
-   task1 retry needed (roll = 0.532161975008607 > 0.1).            
+   task1 retry needed (roll = 0.36896762068176037 > 0.1).
+   task2 retry needed (roll = 0.8429002838770375 > 0.1).
+   task1 retry needed (roll = 0.841018521652675 > 0.1).
+   task2 retry needed (roll = 0.1351152094825686 > 0.1).
+   task1 retry needed (roll = 0.9484654265361889 > 0.1).
+   task2 retry needed (roll = 0.3167046796566366 > 0.1).
+   task1 retry needed (roll = 0.7519672365071198 > 0.1).
+   task2 retry needed (roll = 0.38440407016827005 > 0.1).
+   task1 retry needed (roll = 0.23155484384953284 > 0.1).
+   task2 retry needed (roll = 0.6418306170261009 > 0.1).
+   task1 retry needed (roll = 0.532161975008607 > 0.1).
    task2 Done.
-   task1 retry needed (roll = 0.448132225703992 > 0.1).            
-   task1 retry needed (roll = 0.13504700640433664 > 0.1).            
-   task1 retry needed (roll = 0.7404815278498079 > 0.1).            
-   task1 retry needed (roll = 0.9830081693068259 > 0.1).            
-   task1 retry needed (roll = 0.4070546146764875 > 0.1).            
-   task1 retry needed (roll = 0.7474267487174882 > 0.1).            
+   task1 retry needed (roll = 0.448132225703992 > 0.1).
+   task1 retry needed (roll = 0.13504700640433664 > 0.1).
+   task1 retry needed (roll = 0.7404815278498079 > 0.1).
+   task1 retry needed (roll = 0.9830081693068259 > 0.1).
+   task1 retry needed (roll = 0.4070546146764875 > 0.1).
+   task1 retry needed (roll = 0.7474267487174882 > 0.1).
    task1 Done.
    The result of task=task1 was 0.038934769861482144.
    The result of task=task2 was 0.06380247590535493.
-   
+
    Process finished with exit code 0
 
 Hooray! May there be concurrency!
@@ -219,7 +219,7 @@ Using :code:`callback`
 ----------------------
 
 .. admonition:: **TL;DR** Using :code:`callbacks`
-      
+
    #. Run multiple :code:`Task`\ s.
    #. Add a :code:`callback` to handle the result **as soon as it is ready**.
    #. Use :code:`await` for each :code:`Task` just so that the main loop does not return prematurely.
@@ -261,13 +261,13 @@ Enough diplomacy, let's make a file called :file:`async_callback_example.py` in 
 In the :code:`callback` paradigm, besides the function that does the actual task, as in the prior example, we have to make
 a, to no one's surprise, callback function to process the results as they come.
 
-We do so with 
+We do so with
 
 .. literalinclude:: ../../../../preamble/python/minimalist_package/minimalist_package/minimalist_async/async_callback_example.py
    :language: python
    :lines: 29-40
 
-In this case, the :code:`callback` must receive a :code:`asyncio.Future` and process it. Test the future for :code:`None` in 
+In this case, the :code:`callback` must receive a :code:`asyncio.Future` and process it. Test the future for :code:`None` in
 case the task fails for any reason.
 
 Aside from that, there are only two key differences with the :code:`await` logic example we showed before,
@@ -296,13 +296,13 @@ ends before the first one, it will be automatically processed by its :code:`call
    Awaiting results...
    task1 retry needed (roll = 0.6248308966234916 > 0.1).
    task2 retry needed (roll = 0.24259714032999036 > 0.1).
-   task1 retry needed (roll = 0.1996764883575476 > 0.1).            
+   task1 retry needed (roll = 0.1996764883575476 > 0.1).
    task2 Done.
    The result of task=task2 was 0.09069407383542283.
-   task1 retry needed (roll = 0.6700777523785147 > 0.1).            
-   task1 retry needed (roll = 0.7344216907108979 > 0.1).            
-   task1 retry needed (roll = 0.4907223062034761 > 0.1).            
-   task1 retry needed (roll = 0.20026037098687932 > 0.1).            
+   task1 retry needed (roll = 0.6700777523785147 > 0.1).
+   task1 retry needed (roll = 0.7344216907108979 > 0.1).
+   task1 retry needed (roll = 0.4907223062034761 > 0.1).
+   task1 retry needed (roll = 0.20026037098687932 > 0.1).
    task1 Done.
    The result of task=task1 was 0.09676678954317675.
 

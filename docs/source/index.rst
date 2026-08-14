@@ -30,13 +30,13 @@ The example code has their own License headers, usually `MIT Licensed <https://o
 
    *Following the NoDerivatives restriction would require that ND-licensed content not be used as training data.*
 
-📖 **About this tutorial** 
+📖 **About this tutorial**
 
 `ROS2 Jazzy <https://docs.ros.org/en/jazzy/>`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 24.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://smartarmstack.github.io>`_ also used in the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
 These tutorials have been the backbone of `EEEN62021 Software for Robotics <https://www.manchester.ac.uk/study/masters/courses/list/20967/msc-robotics/course-details/EEEN62021>`_, one of the units of the `MSc Robotics <https://www.manchester.ac.uk/study/masters/courses/list/20967/msc-robotics/>`_ at the `University of Manchester <https://www.manchester.ac.uk>`_.
 
-🤟 **Using this tutorial** 
+🤟 **Using this tutorial**
 
 This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`.
 
@@ -106,7 +106,7 @@ If you enjoyed this tutorial, please
    preamble/python/python_best_practices
    preamble/python/python_asyncio
    preamble/python/python_packaging
-    
+
 .. toctree::
    :caption: ROS2 Setup (⭐start here⭐)
    :maxdepth: 2
@@ -131,7 +131,7 @@ If you enjoyed this tutorial, please
    :caption: ROS2 Python Node
    :maxdepth: 2
    :hidden:
-   
+
    create_python_node_from_scratch
    python_node_explained
 
@@ -139,7 +139,7 @@ If you enjoyed this tutorial, please
    :caption: ROS2 Python Library
    :maxdepth: 2
    :hidden:
-   
+
    create_python_library
    using_python_library
 
@@ -155,7 +155,7 @@ If you enjoyed this tutorial, please
    :caption: ROS2 Messages in Python
    :maxdepth: 2
    :hidden:
-   
+
    publishers_and_subscribers
    inspecting_topics
 
@@ -229,7 +229,7 @@ If you enjoyed this tutorial, please
    :caption: ROS2 C++ Basics
    :maxdepth: 2
    :hidden:
-   
+
    cpp/cpp_node
    cpp/cpp_library
    cpp/cpp_vent
@@ -238,7 +238,7 @@ If you enjoyed this tutorial, please
    :caption: SAS Basics
    :maxdepth: 2
    :hidden:
-   
+
    sas/index
    sas/installation
    sas/sas_robot_driver_add_new_robot
@@ -268,7 +268,7 @@ By reading and/or using this tutorial in total or in part, you agree to these te
 .. admonition:: Disclaimer
 
    THIS TUTORIAL AND RELATED SOFTWARE ARE PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE AND/OR TUTORIAL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-   
+
 Changelog
 ---------
 
