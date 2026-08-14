@@ -90,7 +90,7 @@ The :file:`package.xml` dependencies
 Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely, the ones highlighted below.
 Edit the :file:`package_with_interfaces/package.xml` like so
 
-:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
+:download:`package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml
    :language: xml
@@ -100,7 +100,7 @@ Edit the :file:`package_with_interfaces/package.xml` like so
 The message folder
 ------------------
 
-The convention is to add all messages to a folder called :file:`msg`. Let's follow that convention 
+The convention is to add all messages to a folder called :file:`msg`. Let's follow that convention
 
 .. code:: console
 
@@ -125,7 +125,7 @@ Let us create a message file to transfer inspirational quotes between Nodes. For
 There are many ways to represent this, but for the sake of the example let us give each message an :code:`id` and two rather obvious fields.
 Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we just created with the following contents.
 
-:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
+:download:`AmazingQuote.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
@@ -141,7 +141,7 @@ Re-using a message from the same package
 
 With the :file:`AmazingQuote.msg`, we have seen how to use built-in types. Let's use another message, :file:`AmazingQuoteStamped.msg`,  to learn two more possibilities, namely using messages from the same package and messages defined elsewhere.
 
-:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg>`
+:download:`AmazingQuoteStamped.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg
    :language: yaml
@@ -155,7 +155,7 @@ In many :program:`ROS2` packages, messages with the suffix ``Stamped`` exist. As
 The service folder
 ------------------
 
-The convention is to add all services to a folder called :file:`srv`. Let's follow that convention 
+The convention is to add all services to a folder called :file:`srv`. Let's follow that convention
 
 .. code:: console
 
@@ -169,7 +169,7 @@ The service file
 
 Add the file :file:`AddPoints.srv` in the :file:`srv` folder with the following contents
 
-:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv>`
+:download:`AddPoints.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv
    :language: yaml
@@ -192,7 +192,7 @@ The action file
 
 Add the file :file:`MoveStraightIn2D.action` in the :file:`action` folder with the following contents
 
-:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action <../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action>`
+:download:`MoveStraightIn2D.action <../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action
    :language: yaml
@@ -202,14 +202,14 @@ Add the file :file:`MoveStraightIn2D.action` in the :file:`action` folder with t
 The :file:`CMakeLists.txt` directives
 -------------------------------------
 
-.. note:: 
+.. note::
 
    The order of the :program:`CMake` directives is very important and getting the order wrong can result in bugs with cryptic error messages.
 
 If a package is dedicated to interfaces, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
 Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 
-:download:`~/ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
+:download:`CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
@@ -259,7 +259,7 @@ For instance, running
 .. code:: console
 
    ros2 interface package package_with_interfaces
-   
+
 returns
 
 .. code:: console
@@ -268,7 +268,7 @@ returns
     package_with_interfaces/msg/AmazingQuoteStamped
     package_with_interfaces/action/MoveStraightIn2D
     package_with_interfaces/srv/AddPoints
-   
+
 and we can further get more specific info on :file:`AmazingQuote` (or :file:`AmazingQuoteStamped`)
 
 .. code:: console
@@ -285,7 +285,7 @@ alternatively, we can do the same for :file:`AddPoints`
 .. code:: console
 
    ros2 interface show package_with_interfaces/srv/AddPoints
-   
+
 which returns expanded information on each field of the service
 
 .. code:: yaml

@@ -24,7 +24,7 @@ obstacles, and other relevant objects.
 
 In this example, a `TurtleBot3 <https://www.turtlebot.com/turtlebot3/>`_ will be used. As part of ``nav2_bringup``, there
 is a rather complete example that we can utilize, namely :file:`tb3_simulation_launch.py`. The example can be executed
-with the following command. 
+with the following command.
 
 .. code-block:: console
 

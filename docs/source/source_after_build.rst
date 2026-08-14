@@ -8,20 +8,20 @@ workspace is re-built and re-sourced.
 
 For example, if we try the following in the terminal window we used to first build this example package
 
-.. code :: console
+.. code-block:: console
 
    ros2 run python_package_with_a_node sample_python_node
 
 it will not work and will output
 
-.. code :: console
+.. code-block:: console
 
    Package 'python_package_with_a_node' not found
-   
+
 As the workspace grows bigger and the packages more complex, figuring out such errors becomes a considerable hassle.
 My suggestion is to always source after a build, so that sourcing errors can always be ruled out.
 
-.. code :: console
+.. code-block:: console
 
     cd ~/ros2_tutorial_workspace
     colcon build
@@ -83,7 +83,7 @@ Package not found
 
 One important tool to assist in case your package is not found is :program:`ros2 pkg list`. It can be called as follows.
 
-.. code :: console
+.. code-block:: console
 
    ros2 pkg list
 
@@ -91,13 +91,13 @@ It will output a large number of packages even for the most basic installations 
 a particular package, you can use :program:`grep` which is more actively used (and explained) in other parts of this tutorial. For instance,
 if you are looking for :file:`python_package_with_a_node` you can do as follows.
 
-.. code :: console
+.. code-block:: console
 
    ros2 pkg list | grep python_package_with_a_node
 
 This will either output nothing if the package is not found or it will output the name of the package, as follows.
 
-.. code :: console
+.. code-block:: console
 
    python_package_with_a_node
 
@@ -129,7 +129,7 @@ In this tutorial, this would be equivalent to doing
     Remember that :program:`rm` can cause *permanent* loss of data. Please understand the following command and its implications
     *before* executing it.
 
-.. code :: console
+.. code-block:: console
 
     deactivate
     cd ~/ros2_tutorial_workspace

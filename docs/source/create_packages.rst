@@ -7,7 +7,7 @@ Everything else that :program:`ROS2` can offer rotates about the effective use o
 ROS2 has a tool to help create package templates. We can get all available options by running
 
 .. code-block:: console
-   
+
    ros2 pkg create -h
 
 which outputs a list of handy options to populate the package template with useful files. Namely, the four emphasized ones.

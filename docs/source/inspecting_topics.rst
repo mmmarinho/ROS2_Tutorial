@@ -51,7 +51,7 @@ During the development of a publisher, it is extremely useful to be able to chec
 
 .. code:: console
 
-  ros2 run python_package_that_uses_the_messages amazing_quote_publisher_node 
+  ros2 run python_package_that_uses_the_messages amazing_quote_publisher_node
 
 Getting all topics with :program:`ros2 topic list`
 --------------------------------------------------
@@ -61,7 +61,7 @@ In particular, when there are many topics, it is difficult to remember every nam
 .. code:: console
 
    ros2 topic list
-   
+
 which, in this case, outputs
 
 .. code-block:: console
@@ -83,7 +83,7 @@ showing, in particular, the :code:`/amazing_quote` topic what we were looking fo
         /amazing_quotes
         /parameter_events
         /rosout
-        
+
 .. _Grep best friend:
 
 :program:`grep` is your new best friend
@@ -98,13 +98,13 @@ When the list of topics is too large, we can use :program:`grep` to help filter 
 .. code:: console
 
    ros2 topic list | grep quote
-   
+
 which outputs only the lines that contain :code:`quote`, that is
 
 .. code:: console
 
    /amazing_quote
-   
+
 Getting quick info with :program:`ros2 topic info`
 --------------------------------------------------
 
@@ -136,7 +136,7 @@ To inspect the topic whose name we already know, we run
 
 .. code:: console
 
-    ros2 topic echo /amazing_quote 
+    ros2 topic echo /amazing_quote
 
 which outputs the following
 
@@ -170,7 +170,7 @@ which outputs the following
 :program:`grep` is still your best friend
 -----------------------------------------
 
-Whenever the topic is too crowded or the messages too fast, it might be difficult to pinpoint a single field we are looking for. In that case, :program:`grep` can also help. 
+Whenever the topic is too crowded or the messages too fast, it might be difficult to pinpoint a single field we are looking for. In that case, :program:`grep` can also help.
 
 For example let us say that we want to see only the :code:`id` fields of the messages. We can do
 
@@ -195,7 +195,7 @@ There are situations in which we are interested in knowing if the topics are rec
 .. code:: console
 
    ros2 topic hz /amazing_quote
-   
+
 which will output, after some time,
 
 .. code:: console
@@ -220,14 +220,14 @@ Start the subscriber and get basic info
 
 .. code:: console
 
-  ros2 run python_package_that_uses_the_messages amazing_quote_subscriber_node 
+  ros2 run python_package_that_uses_the_messages amazing_quote_subscriber_node
 
-When only the subscriber is running, we can still get the basic info on the topic, e.g. 
+When only the subscriber is running, we can still get the basic info on the topic, e.g.
 
 .. code:: console
 
    ros2 topic list
-   
+
 which also outputs
 
 .. code-block:: console
@@ -237,7 +237,7 @@ which also outputs
     /parameter_events
     /rosout
 
-and 
+and
 
 .. code:: console
 
@@ -257,27 +257,27 @@ Testing your subscribers with :program:`ros2 topic pub`
 
 To somewhat quickly evaluate a subscriber, we can use the :program:`ros2 topic pub`. It allows us to publish messages to check the behavior of our subscribers.
 
-In our case, we can send an :program:`AmazingQuote` using :abbr:`YAML (YAML Ain't Markup Language)` `(More info) <https://yaml.org/>`_. You can also refer to the YAML Cheat Sheet at `QuickRef.ME <https://quickref.me/yaml.html>`_. 
+In our case, we can send an :program:`AmazingQuote` using :abbr:`YAML (YAML Ain't Markup Language)` `(More info) <https://yaml.org/>`_. You can also refer to the YAML Cheat Sheet at `QuickRef.ME <https://quickref.me/yaml.html>`_.
 
 .. code-block:: console
    :emphasize-lines: 4-6
 
    ros2 topic pub /amazing_quote \
    package_with_interfaces/msg/AmazingQuote \
-   '{ 
-   id: 1994, 
-   quote: So you’re telling me there’s a chance, 
-   philosopher_name: Lloyd 
+   '{
+   id: 1994,
+   quote: So you’re telling me there’s a chance,
+   philosopher_name: Lloyd
    }'
 
 .. note::
-   To improve readability, the command above uses the escape character ``\``. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_. You can also refer to the :program:`bash` Cheat Sheet at `QuickRef.ME <https://quickref.me/bash.html>`_. 
+   To improve readability, the command above uses the escape character ``\``. You can see more on this at the `bash docs <https://www.gnu.org/software/bash/manual/bash.html#Escape-Character>`_. You can also refer to the :program:`bash` Cheat Sheet at `QuickRef.ME <https://quickref.me/bash.html>`_.
 
 which will result in our subscriber outputting
 
 .. code:: console
 
-    [INFO] [1684222464.960446589] [amazing_quote_subscriber_node]: 
+    [INFO] [1684222464.960446589] [amazing_quote_subscriber_node]:
             I have received the most amazing of quotes.
             It says
 
@@ -289,7 +289,7 @@ which will result in our subscriber outputting
 
             This latest quote had the id=1994.
 
-    [INFO] [1684222465.953452826] [amazing_quote_subscriber_node]: 
+    [INFO] [1684222465.953452826] [amazing_quote_subscriber_node]:
             I have received the most amazing of quotes.
             It says
 
@@ -300,7 +300,7 @@ which will result in our subscriber outputting
                 -- Lloyd
 
             This latest quote had the id=1994.
-        
+
 
 For complicated messages, properly writing the message on the terminal can be a handful. In that case, it might be better to make a minimal script to test the subscriber instead. Refer to :ref:`Create a publisher`.
 

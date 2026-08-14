@@ -444,7 +444,7 @@ from the node. We receive an empty behaviour tree and that is also added to the 
    :language: python
    :lines: 44-49
 
-Besides the slightly different action type, the process to make an action client is mostly unchanged. 
+Besides the slightly different action type, the process to make an action client is mostly unchanged.
 
 Adjusting the :file:`setup.py`
 ------------------------------

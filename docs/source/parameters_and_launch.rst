@@ -1,13 +1,13 @@
 Parameters and launch files: creating configurable Nodes
 ========================================================
 
-The Nodes we have made in the past few sections are interesting because they take advantage of the interprocess communication provided by ROS2. 
+The Nodes we have made in the past few sections are interesting because they take advantage of the interprocess communication provided by ROS2.
 
-Other capabilities of ROS2 that we must take advantage of are `ROS2 parameters <https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html>`_ and `ROS2 launch files <https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html>`_. We can use them to modify the behavior of Nodes without having to modify their source code. 
+Other capabilities of ROS2 that we must take advantage of are `ROS2 parameters <https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html>`_ and `ROS2 launch files <https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html>`_. We can use them to modify the behavior of Nodes without having to modify their source code.
 
 For Python users, that might sound less appealing than for users of compiled languages. However, users of your package might not want nor be able to modify the source code directly, if the package is installable or part of a larger system with multiple users.
 
-  
+
 Create the package
 ------------------
 
@@ -41,7 +41,7 @@ Create the Node using parameters
 
    .. code-block:: console
       :emphasize-lines: 7
-      
+
         python_package_that_uses_parameters_and_launch_files/
         |-- launch
         |   `-- peanut_butter_falcon_quote_publisher_launch.py
@@ -94,7 +94,7 @@ For one-off parameters, we just get them once after declaring them. Because we'r
    :lines: 39-50
    :emphasize-lines: 2-5,9,12
 
-In this case, we're making the topic name and publication periodicity as one-off configurable parameters. 
+In this case, we're making the topic name and publication periodicity as one-off configurable parameters.
 
 Continuously-obtained parameters
 --------------------------------
@@ -128,10 +128,10 @@ Truly configurable: using :file:`_launch.py` files
                #. Create the launch file named as :file:`launch/<something>_launch.py`.
                #. (Once) modify the :file:`setup.py` to correctly install launch files.
 
-.. note:
+.. note::
    For a previous user of ROS1 used with the :abbr:`XML (Extensible Markup Language)`\ -based :file:`.launch` files, switching for the Python-based ones is a hassle.
    However, my experience with these so far has been quite positive, because when using Python we have access to an entire ecosystem of tools to make the launch files
-   smarter, whereas with the :abbr:`XML (Extensible Markup Language)`\ -based ones, if possible at all, we had to add hack on top of hack to achieve the same. 
+   smarter, whereas with the :abbr:`XML (Extensible Markup Language)`\ -based ones, if possible at all, we had to add hack on top of hack to achieve the same.
 
 Differently from ROS1, in ROS2 we can use Python launch files. They are quite powerful, well documented, and mentioned first `in the official documentation <https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Creating-Launch-Files.html>`_, so we will use them instead of :abbr:`XML (Extensible Markup Language)` or :abbr:`YAML (YAML ain't markup language)` files.
 
@@ -142,7 +142,7 @@ Differently from ROS1, in ROS2 we can use Python launch files. They are quite po
 
    .. code-block:: console
       :emphasize-lines: 2
-      
+
         python_package_that_uses_parameters_and_launch_files/
         |-- launch
         |   `-- peanut_butter_falcon_quote_publisher_launch.py
@@ -173,7 +173,7 @@ Create the :file:`launch` file
 
    .. code-block:: console
       :emphasize-lines: 3
-      
+
         python_package_that_uses_parameters_and_launch_files/
         |-- launch
         |   `-- peanut_butter_falcon_quote_publisher_launch.py
@@ -199,9 +199,9 @@ Suppose that we are tired of all the meme quotes and want to make our Node publi
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
-   :linenos: 
+   :linenos:
 
-We're relying on the :code:`LaunchDescription`, which expects a list of :code:`launch_ros.actions`. 
+We're relying on the :code:`LaunchDescription`, which expects a list of :code:`launch_ros.actions`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
@@ -233,7 +233,7 @@ The :file:`setup.py`
 
    .. code-block:: console
       :emphasize-lines: 11
-      
+
         python_package_that_uses_parameters_and_launch_files/
         |-- launch
         |   `-- peanut_butter_falcon_quote_publisher_launch.py
@@ -259,7 +259,7 @@ Modify the :file:`setup.py` to look like this
    :linenos:
    :emphasize-lines: 15,25-27
 
-We have already seen a :file:`setup.py` so many times we're almost calling it `Wilson <https://www.imdb.com/name/nm1012434/>`_. 
+We have already seen a :file:`setup.py` so many times we're almost calling it `Wilson <https://www.imdb.com/name/nm1012434/>`_.
 The only difference is emphasized above inside the :code:`data_files`, which is the line that will specify that launch files will be installed as well. Notice that
 the :file:`setup.py` looks for files with a specific pattern in the folder :file:`launch`, so be sure that your launch files
 have the correct name otherwise they might not be installed as expected.

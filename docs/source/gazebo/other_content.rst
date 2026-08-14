@@ -123,7 +123,7 @@ parameter_bridge \
 /world/shapes/set_pose/blocking@geometry_msgs/msg/PoseStamped]gz.msgs.Pose
 
 Getting entity pose information
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++++++
 
 https://github.com/gazebosim/gz-sim/blob/gz-sim8/examples/worlds/pose_publisher.sdf
 

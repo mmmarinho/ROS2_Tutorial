@@ -7,10 +7,10 @@ The most basic way of running a Node is using the ROS2 tool :program:`ros2 run`.
 
 More information on it can be obtained through
 
-.. code :: console
+.. code-block:: console
 
    ros2 run -h
-   
+
 which returns the most relevant arguments :code:`package_name` and :code:`executable_name`.
 
 .. code-block:: console
@@ -32,13 +32,13 @@ which returns the most relevant arguments :code:`package_name` and :code:`execut
 
 Back to our example, with a properly sourced terminal, the example node can be executed with
 
-.. code :: console
+.. code-block:: console
 
    ros2 run python_package_with_a_node sample_python_node
 
 which will now correctly output
 
-.. code :: console
+.. code-block:: console
 
    Hi from python_package_with_a_node.
 
@@ -48,13 +48,13 @@ Troubleshooting tips
 If :program:`ROS2` is unable to find the node, but it is able to find the package, then you can rely on :program:`ros2 pkg executables`. For instance,
 you can run as follows.
 
-.. code :: console
+.. code-block:: console
 
     ros2 pkg executables python_package_with_a_node
 
 The command, at this stage, should output the following.
 
-.. code :: console
+.. code-block:: console
 
     python_package_with_a_node sample_python_node
 

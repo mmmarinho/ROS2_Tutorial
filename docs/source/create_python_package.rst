@@ -4,7 +4,7 @@ Creating a Python package (for :program:`ament_python`)
 .. note::
    This is **NOT** the only way to build Python packages in ROS2.
 
-Packages in ROS2 can either rely on :program:`CMake` or directly use setup tools available in Python. 
+Packages in ROS2 can either rely on :program:`CMake` or directly use setup tools available in Python.
 For pure Python projects, it might be easier to use :program:`ament_python`, so we start this tutorial with it.
 
 Let us build the simplest of Python packages and start from there.
@@ -24,9 +24,9 @@ Let us build the simplest of Python packages and start from there.
 
 which will result in the output below, meaning the package has been generated successfully.
 
-..  code-block:: console
+.. code-block:: console
     :emphasize-lines: 7
-    
+
     going to create a new package
     package name: the_simplest_python_package
     destination directory: /root/ros2_tutorial_workspace/src
@@ -65,14 +65,14 @@ which will result in the output below, meaning the package has been generated su
 
 We can build the workspace that now has this empty package using :program:`colcon`
 
-.. code :: console
+.. code-block:: console
 
    cd ~/ros2_tutorial_workspace
    colcon build
-  
+
 which will now output
 
-.. code :: console
+.. code-block:: console
 
     Starting >>> the_simplest_python_package
     Finished <<< the_simplest_python_package [0.49s]

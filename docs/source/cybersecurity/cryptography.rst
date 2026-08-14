@@ -289,7 +289,7 @@ Exercises
 We can think of decryption and encryption exercises that help illustrate the process.
 
 Decryption
-~~~~~~~~~~
++~~~~~~~~~
 
 Suppose that you receive the following message, which has been encrypted with your public key. It was clearly done so
 using :program:`age`.
@@ -315,7 +315,7 @@ Anyone with this key can decode the message. If anyone can decode the message, t
 What are the decrypted contents of this message?
 
 Encryption
-~~~~~~~~~~
++~~~~~~~~~
 
 Suppose that you have the following public key.
 

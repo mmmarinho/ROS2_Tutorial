@@ -12,13 +12,13 @@ In ROS2, a workspace is nothing more than a folder in which all your packages ar
 
 No, really, you just need to make a folder, e.g. the one we will use throughout these tutorials.
 
-.. code :: console
+.. code-block:: console
 
    cd ~
    mkdir -p ros2_tutorial_workspace/src
-   
+
 It is common practice to have all source files inside the :code:`src` folder, so we will also do so for these tutorials. Nonetheless, it is not a strict requirement.
-   
+
 First build
 -----------
 
@@ -27,30 +27,30 @@ The program :program:`colcon` is the build system of ROS2 and will be described 
 
 For now, run
 
-.. code :: console
+.. code-block:: console
 
    cd ~/ros2_tutorial_workspace
    colcon build
-   
+
 for which the output will be something similar to
 
-.. code :: console
+.. code-block:: console
 
    Summary: 0 packages finished [0.08s]
-   
+
 given that we have an empty workspace, no surprise here.
 
 The folders :code:`build`, :code:`install`, and :code:`log` have been generated automatically by :program:`colcon`. The project structure becomes as follows.
 
 .. code-block:: console
    :emphasize-lines: 2-4
-   
+
    ros2_tutorial_workspace/
    |-- build
    |-- install
    |-- log
    `-- src
-    
+
 Inside the :code:`install` folder lie everything in the project that can be accessed by the users.
 
 .. note::
@@ -60,11 +60,11 @@ Inside the :code:`install` folder lie everything in the project that can be acce
 
 Do the following just once, so that all terminal windows automatically source this new workspace for you.
 
-.. code :: console
+.. code-block:: console
 
    echo "# Source the ROS2 overlay, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
    echo "source ~/ros2_tutorial_workspace/install/setup.bash" >> ~/.bashrc
    source ~/.bashrc
-   
+
 However, since our workspace is currently empty, there's not much we can do with it. Let's add some content.
-   
+

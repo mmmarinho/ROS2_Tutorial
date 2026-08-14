@@ -3,16 +3,16 @@
 ROS2 Installation
 =================
 
-.. note:: 
+.. note::
   This tutorial is an abridged version of the original `ROS 2 Documentation <https://docs.ros.org/en/jazzy/index.html>`_. This tutorial considers a fresh Ubuntu Desktop (not Server) 24.04 LTS installation, that you have super user access and common sense. It might work in other cases, but those have not been tested in this tutorial.
 
-.. warning:: 
+.. warning::
   All commands must be followed to the letter, in the precise order described herein. Any deviation from what is described might cause unspecified problems and not all of them are easily solvable.
 
 Update :program:`apt` packages
 ------------------------------
 
-.. hint:: 
+.. hint::
   You can quickly open a new terminal window by pressing :kbd:`CTRL+ATL+T`.
 
 After a fresh install, update and upgrade all :program:`apt` packages.
@@ -28,7 +28,7 @@ Install a few pre-requisites
 .. code-block:: console
 
    sudo apt install -y software-properties-common curl terminator git
-   
+
 Namely:
 
 ===========================   ================================================================================================================================================
@@ -55,14 +55,14 @@ The following commands will do all that magic.
 Install ROS2 packages
 ---------------------
 
-There are plenty of ways to install ROS2, the following will suffice for now. 
+There are plenty of ways to install ROS2, the following will suffice for now.
 
 .. code-block:: console
 
    sudo apt install -y ros-jazzy-desktop ros-dev-tools
 
 Set up system environment to find ROS2
--------------------------------------
+--------------------------------------
 
 ROS2 packages are implemented in such a way that they live peacefully in the :code:`/opt/ros/{ROS_DISTRO}` folder in your Ubuntu. A given terminal window or program will only know that ROS2 exists, and which version you want to use, if you run a setup file *for each terminal, every time you open a new one*.
 
@@ -75,14 +75,14 @@ The :code:`~/.bashrc` file can be used for that exact purpose as, in Ubuntu, tha
    echo "# Source ROS2 Jazzy, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
    echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
    source ~/.bashrc
-   
+
 Check if it works
 -----------------
 
 If the following command
 
 .. code-block:: console
-    
+
    ros2
 
 outputs something similar to what is shown below, then it worked! Otherwise, it didn't!

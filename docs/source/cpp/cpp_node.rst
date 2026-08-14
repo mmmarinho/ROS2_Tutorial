@@ -6,25 +6,25 @@ Creating C++ Nodes (for :program:`ament_cmake`)
     .. dropdown:: TL;DR
 
         When adding a new Node in an existing :file:`CMakeLists.txt`, you might benefit from using the following template.
-    
+
         Remember to:
-    
+
         #. Add **ALL** dependencies (including ROS2 ones) with ``find_package``, if applicable.
-    
+
             .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
                :language: cmake
                :lines: 8-10
-    
+
         #. Change ``print_forever_node`` to the name of your Node.
         #. Add all source files to ``add_executable``.
         #. Add all ROS2 dependencies of this binary to ``ament_target_dependencies``.
         #. Add any other (**NOT ROS2**) libraries to ``target_link_libraries``.
-    
+
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
            :language: cmake
            :lines: 12-47
            :emphasize-lines: 7,12,17,21
- 
+
 
 Create the package
 ------------------
@@ -46,7 +46,7 @@ which outputs
 
     .. code-block:: console
         :emphasize-lines: 13-16
-    
+
         going to create a new package
         package name: cpp_package_with_a_node
         destination directory: /home/murilo/ROS2_Tutorial/ros2_tutorial_workspace/src
@@ -63,7 +63,7 @@ which outputs
         creating folder ./cpp_package_with_a_node/src
         creating folder ./cpp_package_with_a_node/include/cpp_package_with_a_node
         creating ./cpp_package_with_a_node/CMakeLists.txt
-        
+
         [WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
         It is recommended to use one of the ament license identitifers:
         Apache-2.0
@@ -80,10 +80,10 @@ Package-related sources
 -----------------------
 
 .. admonition:: In this step, we'll work on these.
-    
+
     .. code-block:: console
         :emphasize-lines: 2,6
-    
+
         cpp_package_with_a_node
         ├── CMakeLists.txt
         ├── include
@@ -115,7 +115,7 @@ The files already exist, we just need to modify them as follows
         A *one-size-fits-most* solution is shown below. For each new Node we add a block to the :file:`CMakeLists.txt` with the following format.
 
         :download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt>`
-        
+
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/CMakeLists.txt
            :language: cmake
            :linenos:
@@ -124,7 +124,7 @@ The files already exist, we just need to modify them as follows
 Making C++ ROS2 Nodes
 ---------------------
 
-.. admonition:: (Murilo's) ``rclcpp`` best practices 
+.. admonition:: (Murilo's) ``rclcpp`` best practices
 
    For each new C++ Node, we make three files following the style below.
 
@@ -138,7 +138,7 @@ Making C++ ROS2 Nodes
 
     .. code-block:: console
         :emphasize-lines: 7-10
-    
+
         cpp_package_with_a_node
         ├── CMakeLists.txt
         ├── include
@@ -166,7 +166,7 @@ These files do not exist, so we'll create them.
     .. tab-item:: src/..._node.hpp
 
         Similar to what we did in Python, we inherit from ``rclcpp::Node``. Whatever is different is owing to differences in languages.
-  
+
         :download:`print_forever_node.hpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp>`
 
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.hpp
@@ -177,7 +177,7 @@ These files do not exist, so we'll create them.
 
     .. tab-item:: src/..._node.cpp
 
-        The implementation has nothing special, just don't forget to initialize the parent class, ``rclcpp::Node``, with the name of the node. 
+        The implementation has nothing special, just don't forget to initialize the parent class, ``rclcpp::Node``, with the name of the node.
 
         :download:`print_forever_node.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node.cpp>`
 
@@ -187,13 +187,13 @@ These files do not exist, so we'll create them.
            :lines: 24-
            :emphasize-lines: 7
 
-    .. tab-item::  src/..._main.cpp 
+    .. tab-item::  src/..._main.cpp
 
         Given that we are using ``rclcpp::spin()``, there is nothing special here either. Just remember to not mess up the ``std::make_shared`` and always use perfect forwarding.
         The ``rclcpp::spin()`` handles the ``SIGINT`` when we, for example, press :kbd:`CTRL+C` on the terminal. It is not perfect, but it does the trick for simple nodes like this one.
-        
+
         :download:`print_forever_node_main.cpp <../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp>`
-        
+
         .. literalinclude:: ../../../ros2_tutorial_workspace/src/cpp_package_with_a_node/src/print_forever_node_main.cpp
            :language: cpp
            :linenos:

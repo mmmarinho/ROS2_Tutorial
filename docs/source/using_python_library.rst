@@ -1,20 +1,20 @@
 Using a Python Library from another package (for :program:`ament_python`)
-======================================================================
+========================================================================
 
-Let us create a package with a Node that uses the library we created in the prior example. 
+Let us create a package with a Node that uses the library we created in the prior example.
 
 Note that we must add the :code:`python_package_with_a_library` as a dependency to our new package. The easiest way to
 do so is through :program:`ros2 pkg create`. We also add :code:`rclpy` as a dependency so that our Node can do something useful.
 
 
-.. code :: console
+.. code-block:: console
 
    cd ~/ros2_tutorial_workspace/src
    ros2 pkg create python_package_that_uses_the_library \
    --dependencies rclpy python_package_with_a_library \
    --build-type ament_python \
    --node-name node_that_uses_the_library
-   
+
 resulting in yet another version of our favorite wall of text
 
 .. code-block:: console
@@ -98,7 +98,7 @@ Indeed, the most difficult part is to make and configure the library itself. Aft
    :language: python
    :lines: 24-29
    :emphasize-lines: 6
-   
+
 And then use the symbols we imported as we would with any other Python library.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/node_that_uses_the_library.py
@@ -119,13 +119,13 @@ Run
 .. hint::
    Remember that you can stop the node at any time with :kbd:`CTRL+C`.
 
-.. code :: console
+.. code-block:: console
 
    ros2 run python_package_that_uses_the_library node_that_uses_the_library
-   
+
 Which outputs something similar to the shown below, but with different numbers and strings as they are randomized.
 
-.. code :: console
+.. code-block:: console
 
    [INFO] [1753585839.509922172] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.9787232004970391,1.7320908702316369) returned 7.348512926060575.
    [INFO] [1753585839.510400755] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned GQkUZgSkje.
@@ -135,4 +135,4 @@ Which outputs something similar to the shown below, but with different numbers a
    [INFO] [1753585840.495950422] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned ITLIHPOMgv.
    [INFO] [1753585840.994468589] [node_that_uses_the_library]: sample_function_for_square_of_sum(0.5244531764161572,1.7524376840394509) returned 5.184231990426279.
    [INFO] [1753585840.994695797] [node_that_uses_the_library]: sample_class_with_random_name.get_name() returned LGtybBngKv.
-    
+

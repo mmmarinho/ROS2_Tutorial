@@ -1,4 +1,4 @@
-.. code :: console
+.. code-block:: console
 
     cd ~/ros2_tutorial_workspace
     colcon build

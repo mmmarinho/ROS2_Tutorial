@@ -2,7 +2,7 @@ The Python Node, explained
 ==========================
 
 .. note::
-   
+
    The way that a Python Node in ROS2 works, i.e. the explanation in this section, does not depend on the building with :program:`ament_python` or :program:`ament_cmake`.
 
 In a strict sense, the :file:`print_forever_node.py` is not a minimal Node, but it does showcase most good practices in a Node that actually does something.
@@ -13,19 +13,19 @@ The imports
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 24-25
-   
+
 As in any Python code, we have to import the libraries that we will use and specific modules/classes within those libraries. With :code:`rclpy`, there is no difference.
 
 Making a subclass of :code:`Node`
 ---------------------------------
 
-The current version of ROS2 behaves better when your custom Node is a subclass of :code:`rclpy.node.Node`. That is achieved with 
+The current version of ROS2 behaves better when your custom Node is a subclass of :code:`rclpy.node.Node`. That is achieved with
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 28-33
    :emphasize-lines: 1,5
-   
+
 About inheritance in Python, you can check the official documentation on `inheritance <https://docs.python.org/3/tutorial/classes.html#inheritance>`_ and on `super() <https://docs.python.org/3/library/functions.html#super>`_.
 
 In more advanced nodes, inheritance does not cut it, but that is an advanced topic to be covered some other time.
@@ -39,7 +39,7 @@ Use a :code:`Timer` for periodic work (when using :code:`rclpy.spin()`)
 
    If the code relies on :code:`rclpy.spin()`, a Timer must be used for periodic work.
 
-In its most basic usage, periodic tasks in ROS2 must be handled by a `Timer <https://github.com/ros2/rclpy/blob/humble/rclpy/src/rclpy/timer.hpp>`_. 
+In its most basic usage, periodic tasks in ROS2 must be handled by a `Timer <https://github.com/ros2/rclpy/blob/humble/rclpy/src/rclpy/timer.hpp>`_.
 
 To do so, have the node create it with the :code:`create_timer()` method, as follows.
 
@@ -54,11 +54,11 @@ The method that is periodically called by the Timer is, in this case, as follows
    :language: python
    :lines: 37-39
    :emphasize-lines: 1
-   
+
 In ROS2, the logging methods, i.e. :code:`self.get_logger().info()`, are methods of the Node itself. So, the capability to log (print to the terminal) using ROS2 Nodes is dependent on the scope in which that Node exists.
-   
-Where the ROS2 magic happens: :code:`rclpy.init()` and :code:`rclpy.spin()` 
----------------------------------------------------------------------------
+
+Where the ROS2 magic happens: :code:`rclpy.init()` and :code:`rclpy.spin()`
+----------------------------------------------------------------------------
 
 All the ROS2 magic happens in some sort of :code:`spin()` method. It is called this way because the :code:`spin()` method will constantly loop (or spin) through **items of work**, e.g. scheduled Timer callbacks. All the **items of work** will only be effectively executed when an **executor** runs through it. For simple Nodes, such as the one in this example, the **global** executor is implicitly used. You can read a bit more about that `here <https://docs.ros2.org/foxy/api/rclpy/api/init_shutdown.html>`_.
 
@@ -68,11 +68,11 @@ Anyhow, the point is that nothing related to ROS2 will happen unless the two fol
    :language: python
    :lines: 43-58
    :emphasize-lines: 8,12
-   
+
 Have a :code:`try-catch` block for :code:`KeyboardInterrupt`
 ------------------------------------------------------------
 
-.. note:
+.. note::
 
    You can see more about this topic at :ref:`Python try catch`, in the preamble.
 
@@ -116,7 +116,7 @@ Example of a class:
    :language: python
    :lines: 28-29
    :emphasize-lines: 2
-   
+
 Example of a method:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py

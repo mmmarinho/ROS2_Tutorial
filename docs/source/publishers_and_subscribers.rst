@@ -1,5 +1,5 @@
 Publishers and Subscribers: using messages
-===========================================
+==========================================
 
 Finally, we reached the point where :program:`ROS2` becomes appealing. As you saw in the last section, we can easily create complex interface types using an easy and generic description.
 We can use those to provide `interprocess communication <https://en.wikipedia.org/wiki/Inter-process_communication>`_, i.e. two different programs talking to each other, which otherwise can be error-prone and very difficult to implement.
@@ -128,15 +128,15 @@ Create the Node with a publisher
                #. Add new dependencies to :file:`package.xml`
                #. Import new messages :code:`from <package_name>.msg import <msg_name>`
                #. In a subclass of :code:`Node`
-               
+
                   #. Create a publisher with :code:`self.publisher = self.create_publisher(...)`
                   #. Send messages with :code:`self.publisher.publish(....)`
-                  
+
                #. Add the new Node to :file:`setup.py`
 
 For the publisher, create a file called :file:`amazing_quote_publisher_node.py`, with the following contents
 
-:download:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py>`
+:download:`amazing_quote_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
@@ -178,7 +178,7 @@ Then, each message is handled much like any other class in Python. We instantiat
    :language: python
    :lines: 48-51
 
-Lastly, the message needs to be published using :code:`Node.publish(msg)`. 
+Lastly, the message needs to be published using :code:`Node.publish(msg)`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
@@ -196,22 +196,22 @@ Create the Node with a subscriber
                #. Add new dependencies to :file:`package.xml`
                #. Import new messages :code:`from <package_name>.msg import <msg_name>`
                #. In a subclass of :code:`Node`
-               
+
                   #. Create a callback :code:`def callback(self, msg):`
                   #. Create a subscriber :code:`self.subscriber = self.create_subscription(...)`
-                  
+
                #. Add the new Node to :file:`setup.py`
 
 For the subscriber Node, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_subscriber_node.py`, with the following contents
 
-:download:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py>`
+:download:`amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :linenos:
    :lines: 24-
    :emphasize-lines: 3, 11-15, 17-31
-   
+
 Similarly to the publisher, in the subscriber, we start by importing the message in question
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
@@ -225,7 +225,7 @@ Then, in our subclass of :code:`Node`, we call :code:`Node.create_subscription(.
    :language: python
    :lines: 34-38
    :emphasize-lines: 4
-   
+
 where the only difference with respect to the publisher is the third argument, namely :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
@@ -244,7 +244,7 @@ Update the :file:`setup.py`
 
 As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`setup.py` to refer to the Nodes we just created.
 
-:download:`~/ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py>`
+:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py
    :language: python
@@ -278,7 +278,7 @@ Hence, in the second terminal, we run
 .. code:: console
 
   ros2 run python_package_that_uses_the_messages amazing_quote_subscriber_node
- 
+
 which outputs
 
 .. code:: console
@@ -312,9 +312,9 @@ which outputs
 .. note::
 
    If there are any issues with either the publisher or the subscriber, this connection will not work. In the next section, we'll see strategies to help us troubleshoot and understand communication through topics.
-   
+
 .. warning::
 
    Unless instructed otherwise, the publisher does **NOT** wait for a subscriber to connect before it starts publishing the messages. As shown in the case above, the first message we received started with `id>0`. If we delayed longer to start the publisher, we would have received later messages only.
-   
+
 Let's close each node with :kbd:`CTRL+C` on each terminal before we proceed to the next tutorial.

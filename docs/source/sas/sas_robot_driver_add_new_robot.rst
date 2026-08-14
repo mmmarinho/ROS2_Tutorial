@@ -33,7 +33,7 @@ which outputs
 .. dropdown:: ros2 pkg create output
 
     .. code-block:: console
-    
+
         going to create a new package
         package name: sas_robot_driver_myrobot
         destination directory: /home/murilo/Downloads/pycharm-community-2024.3.5/bin

@@ -2,17 +2,17 @@ Creating a Python Node from scratch (for :program:`ament_python`)
 =================================================================
 
 .. seealso::
-         
+
           The official API documentation: https://docs.ros.org/en/jazzy/p/rclpy/rclpy.html
 
 
 .. admonition:: **TL;DR** Making an :program:`ament_python` Node
-         
+
          #. Modify :file:`package.xml` with any additional dependencies.
          #. Create the Node.
          #. Modify the :file:`setup.py` file.
 
-Let us add an additional Node to our :program:`ament_python` package that actually uses ROS2 functionality. 
+Let us add an additional Node to our :program:`ament_python` package that actually uses ROS2 functionality.
 These are the steps that must be taken, in general, to add a new Node.
 
 File structure
@@ -59,7 +59,7 @@ Let us add the dependency between the :code:`<license>` and :code:`<test_depend>
    :language: xml
    :linenos:
    :emphasize-lines: 10
-  
+
 Creating the Node
 -----------------
 
@@ -71,7 +71,7 @@ In the directory :file:`src/python_package_with_a_node/python_package_with_a_nod
    :language: python
    :linenos:
    :lines: 24-
-   
+
 .. _Making rosrun work:
 
 Making :command:`ros2 run` work
@@ -81,11 +81,11 @@ We need an additional step to make it deployable in a place where :command:`ros2
 
 To do so, we modify the :code:`console_scripts` key in the :code:`entry_points` dictionary defined in :file:`setup.py`, to have our new node, as follows
 
-.. hint:: 
+.. hint::
 
    :code:`console_scripts` expects a :code:`list` of :code:`str` in a specific format. Hence, follow the format properly and don't forget the commas to separate elements in the :code:`list`.
 
-:download:`~/ros2_tutorial_workspace/src/python_package_with_a_node/setup.py <../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py>`
+:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py>`
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py
    :language: python
@@ -116,11 +116,11 @@ And, with that, we can run
 .. code-block:: console
 
   ros2 run python_package_with_a_node print_forever_node
-   
+
 which will output, as expected
- 
+
 .. code-block:: console
- 
+
     [INFO] [1753518652.646459087] [print_forever]: Printed 0 times.
     [INFO] [1753518653.131078795] [print_forever]: Printed 1 times.
     [INFO] [1753518653.632436004] [print_forever]: Printed 2 times.

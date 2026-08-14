@@ -17,16 +17,16 @@ which returns
                        [--launch-prefix LAUNCH_PREFIX]
                        [--launch-prefix-filter LAUNCH_PREFIX_FILTER]
                        package_name [launch_file_name] [launch_arguments ...]
-    
+
     Run a launch file
-    
+
     positional arguments:
       package_name          Name of the ROS package which contains the launch
                             file
       launch_file_name      Name of the launch file
       launch_arguments      Arguments to the launch file; '<name>:=<value>' (for
                             duplicates, last one wins)
-    
+
     options:
       -h, --help            show this help message and exit
       -n, --noninteractive  Run the launch system non-interactively, with no
@@ -63,7 +63,7 @@ We can call our Node, configured with our launch file, with
 which returns
 
 .. code-block:: console
-  
+
     [INFO] [launch]: All log files can be found below /home/murilo/.ros/log/2023-06-30-17-00-07-522194-murilos-toaster-2963
     [INFO] [launch]: Default logging verbosity is set to INFO
     [INFO] [amazing_quote_configurable_publisher_node-1]: process started with pid [2964]
@@ -79,7 +79,7 @@ showing that the launch was successful.
 resulting in something similar to
 
 .. code-block:: console
-    
+
     id: 301
     quote: Yeah, you're gonna die, it's a matter of time. That ain't the question. The question's, whether they're gonna have a good story ...
     philosopher_name: Tyler

@@ -340,7 +340,7 @@ will be as follows.
     [INFO] [create-1]: process has finished cleanly [pid 14161]
 
 The package :file:`ros_gz_sim_demos`
------------------------------------
+------------------------------------
 
 .. seealso::
 

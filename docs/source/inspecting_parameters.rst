@@ -15,12 +15,12 @@ which returns
    :emphasize-lines: 11-15
 
    usage: ros2 param [-h] Call `ros2 param <command> -h` for more detailed usage. ...
-  
+
    Various param related sub-commands
-  
+
    options:
      -h, --help            show this help message and exit
-  
+
    Commands:
      delete    Delete parameter
      describe  Show descriptive information about declared parameters
@@ -29,13 +29,13 @@ which returns
      list      Output a list of available parameters
      load      Load parameter file for a node
      set       Set parameter
-  
+
      Call `ros2 param <command> -h` for more detailed usage.
 
 As shown in the emphasized lines above, the :program:`ros2 param` tool has a large number of useful commands to interact with parameters.
 
 Launching the Node with parameters
----------------------------------
+----------------------------------
 
 .. hint::
    If you left the Node running from the last section, just keep it that way and skip this.
@@ -52,7 +52,7 @@ List-up parameters with :program:`ros2 param list`
 .. hint::
    Remember that :ref:`Grep best friend`.
 
-Similar to other ROS2 commands, we can get a list of currently loaded parameters with 
+Similar to other ROS2 commands, we can get a list of currently loaded parameters with
 
 .. code-block:: console
 
@@ -70,7 +70,7 @@ which returns a well organized list showing the parameters of each active Node
     use_sim_time
 
 Obtain parameters with :program:`ros2 param get`
------------------------------------------------
+------------------------------------------------
 
 To obtain the value of a parameter, we can do as follows
 
@@ -109,7 +109,7 @@ to topics using a ROS2 tool, we can set a parameter with the following syntax
    ros2 param set \
    /peanut_butter_falcon_quote_publisher_node \
    quote \
-   "You got a good-guy heart. You can't do shit about it, that's just who you are. You're a hero." 
+   "You got a good-guy heart. You can't do shit about it, that's just who you are. You're a hero."
 
 If everything is correct, we'll get
 
@@ -122,7 +122,7 @@ If everything is correct, we'll get
    Some errors are easy to debug, such as when we get the name of the Node wrong
 
    .. code-block:: console
-   
+
       Node not found
 
    but because of the interaction between the :program:`terminal`, :program:`ros2 param` itself, and the syntax of the services, its easy to find cryptic error messages.
@@ -205,7 +205,7 @@ We can start the Node with the launch file
    ros2 launch python_package_that_uses_parameters_and_launch_files \
    peanut_butter_falcon_quote_publisher_launch.py
 
-which, at the beginning, will have the parameters set in the :file:`_launch.py`. We can then 
+which, at the beginning, will have the parameters set in the :file:`_launch.py`. We can then
 
 .. code-block:: console
    :emphasize-lines: 3
