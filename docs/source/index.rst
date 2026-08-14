@@ -19,7 +19,7 @@
 
 This tutorial is licensed under `Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <https://creativecommons.org/licenses/by-nc-nd/4.0/>`_.
 
-The example code have their own License headers, usually `MIT Licensed <https://opensource.org/license/mit>`_.
+The example code has their own License headers, usually `MIT Licensed <https://opensource.org/license/mit>`_.
 
 .. attention:: AI training with this content must follow the `license restrictions <https://creativecommons.org/using-cc-licensed-works-for-ai-training-2/>`_.
    In particular, please refer to the excerpt below.
@@ -40,7 +40,7 @@ These tutorials have been the backbone of `EEEN62021 Software for Robotics <http
 
 This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`.
 
-It is expected that the user will be working directly on an Ubuntu machine. :program:`Docker` images are available but no compatibility with host systems other than Ubuntu have been attempted.
+It is expected that the user will be working directly on an Ubuntu machine. :program:`Docker` images are available but no compatibility with host systems other than Ubuntu has been attempted.
 
 ❤️ **Ways to show love**
 
@@ -67,7 +67,7 @@ If you enjoyed this tutorial, please
     Creating ``rclpy`` Nodes and figuring out what all that means.
 
 #. :doc:`ROS2 Python Library <create_python_library>`
-    Create Python librarys and importing/using it in another :program:`ament_python` package.
+    Create Python libraries and importing/using them in another :program:`ament_python` package.
 
 #. :doc:`ROS2 Interfaces <interfaces>`
     ROS2 interfaces, i.e., messages ``.msg``, services ``.srv``, and actions ``.action``. Creating custom interface packages with :program:`ament_cmake`.

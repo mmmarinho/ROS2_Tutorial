@@ -120,7 +120,7 @@ To fix this, you must
 
 #. Deactivate the :program:`venv`.
 #. Remove the :file:`build`, :file:`install`, and :file:`log` folders.
-#. Rebuild and resource in a clean terminal, without a :program:`venv`.
+#. Rebuild and re-source in a clean terminal, without a :program:`venv`.
 
 In this tutorial, this would be equivalent to doing
 

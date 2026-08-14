@@ -56,7 +56,7 @@ This will be the structure of the package. The main elements are highlighted.
 Create the package
 ------------------
 
-First, let us create an :program:`ament_python` package that depends on our newly developed :file:`packages_with_interfaces` and build from there.
+First, let us create an :program:`ament_python` package that depends on our newly developed :file:`package_with_interfaces` and build from there.
 
 .. code:: console
 
