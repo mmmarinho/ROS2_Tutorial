@@ -32,7 +32,7 @@ The example code has their own License headers, usually `MIT Licensed <https://o
 
 📖 **About this tutorial**
 
-`ROS2 Jazzy <https://docs.ros.org/en/jazzy/>`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 24.04 x64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://smartarmstack.github.io>`_ also used in the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
+`ROS2 Jazzy <https://docs.ros.org/en/jazzy/>`_ tutorials by `Murilo M. Marinho <https://murilomarinho.info/>`_, focusing on Ubuntu 24.04 x64/arm64 LTS and the programming practices of successful state-of-the-art robotics implementations such as the `SmartArmStack <https://smartarmstack.github.io>`_ also used in the `AISciencePlatform <https://github.com/AISciencePlatform>`_.
 
 These tutorials have been the backbone of `EEEN62021 Software for Robotics <https://www.manchester.ac.uk/study/masters/courses/list/20967/msc-robotics/course-details/EEEN62021>`_, one of the units of the `MSc Robotics <https://www.manchester.ac.uk/study/masters/courses/list/20967/msc-robotics/>`_ at the `University of Manchester <https://www.manchester.ac.uk>`_.
 

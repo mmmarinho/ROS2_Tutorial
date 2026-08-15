@@ -320,7 +320,7 @@ which returns expanded information about all fields of the action
     # MoveStraightIn2D.action from https://ros2-tutorial.readthedocs.io
     # Attempts to move from initial position to `desired_position`.
     # Returns `final_position` achieved.
-    # Feedback is the norm of the error between `initial_position` and the current position.
+    # Feedback is the Euclidean distance between `initial_position` and the current position.
     geometry_msgs/Point desired_position
             float64 x
             float64 y
@@ -331,4 +331,4 @@ which returns expanded information about all fields of the action
             float64 y
             float64 z
     ---
-    float32 error_norm
+    float32 distance
