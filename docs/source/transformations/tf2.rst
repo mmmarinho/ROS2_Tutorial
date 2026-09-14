@@ -170,7 +170,7 @@ previous step. We will call ``lookup_transform`` and it will need the parent fra
 and the time of lookup. We add exception handling in case the transform is not available or not available
 in the time requested.
 
-The object created with ``rclpy.time.Time()`` is `equivalent to a time of zero <https://github.com/ros2/rclpy/blob/938f4968bc742a77169e5d73d46619db34dbcc50/rclpy/rclpy/time.py#L43>`_, and ``lookup_transform`` `returns the latest transformation available <https://docs.ros2.org/foxy/api/tf2_ros/classtf2__ros_1_1Buffer.html#a3ab502cc1e8b608957a96ad350815aee>`_.
+The object created with ``rclpy.time.Time()`` is `equivalent to a time of zero <https://github.com/ros2/rclpy/blob/938f4968bc742a77169e5d73d46619db34dbcc50/rclpy/rclpy/time.py#L43>`_, and ``lookup_transform`` `returns the latest transformation available <https://docs.ros.org/en/jazzy/p/tf2_ros/generated/classtf2__ros_1_1Buffer.html>`_.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_listener_node.py
    :language: python

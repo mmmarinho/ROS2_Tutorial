@@ -3,7 +3,7 @@ Parameters and launch files: creating configurable Nodes
 
 The Nodes we have made in the past few sections are interesting because they take advantage of the interprocess communication provided by ROS2.
 
-Other capabilities of ROS2 that we must take advantage of are `ROS2 parameters <https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html>`_ and `ROS2 launch files <https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html>`_. We can use them to modify the behavior of Nodes without having to modify their source code.
+Other capabilities of ROS2 that we must take advantage of are `ROS2 parameters <https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html>`_ and `ROS2 launch files <https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Launch/Creating-Launch-Files.html>`_. We can use them to modify the behavior of Nodes without having to modify their source code.
 
 For Python users, that might sound less appealing than for users of compiled languages. However, users of your package might not want nor be able to modify the source code directly, if the package is installable or part of a larger system with multiple users.
 
@@ -74,7 +74,7 @@ Don't forget to declare the parameter!
 
 .. note::
 
-   According to the `official documentation <https://docs.ros.org/en/humble/Concepts/Basic/About-Parameters.html>`_, it is possible to work with undeclared parameters, but
+   According to the `official documentation <https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html>`_, it is possible to work with undeclared parameters, but
    I recommend against this for basic usage.
 
 It's easy to forget it, but :code:`Node.get_parameter()` will not work if the parameter was not first declared with :code:`Node.declare_parameter()`. Don't forget it!
@@ -101,7 +101,7 @@ Continuously-obtained parameters
 
 .. note::
 
-   According to the `official documentation <https://docs.ros.org/en/humble/Concepts/Basic/About-Parameters.html>`_, it is possible to assign
+   According to the `official documentation <https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html>`_, it is possible to assign
    callbacks to manage changes in parameters. It is not the best-documented feature and has some caveats, so we will skip that for now.
 
 For parameters that we obtain continuously through the lifetime of the Node, we can, for example, declare them in the :code:`__init__` method, like so
@@ -133,7 +133,7 @@ Truly configurable: using :file:`_launch.py` files
    However, my experience with these so far has been quite positive, because when using Python we have access to an entire ecosystem of tools to make the launch files
    smarter, whereas with the :abbr:`XML (Extensible Markup Language)`\ -based ones, if possible at all, we had to add hack on top of hack to achieve the same.
 
-Differently from ROS1, in ROS2 we can use Python launch files. They are quite powerful, well documented, and mentioned first `in the official documentation <https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Creating-Launch-Files.html>`_, so we will use them instead of :abbr:`XML (Extensible Markup Language)` or :abbr:`YAML (YAML ain't markup language)` files.
+Differently from ROS1, in ROS2 we can use Python launch files. They are quite powerful, well documented, and mentioned first `in the official documentation <https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Launch/Creating-Launch-Files.html>`_, so we will use them instead of :abbr:`XML (Extensible Markup Language)` or :abbr:`YAML (YAML ain't markup language)` files.
 
 (Once) create the :file:`launch` folder
 ---------------------------------------

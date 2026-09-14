@@ -11,7 +11,7 @@ Then
 - A program that sends (publishes) information to the topic has one or more :code:`Publisher` \(s).
 - A program that reads (subscribes) information from a topic has one or more :code:`Subscriber` \(s).
 
-Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and a combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/humble/Concepts.html#quick-overview-of-ros-2-concepts>`_. An example is shown below.
+Each Node can have any number of :code:`Publishers` and :code:`Subscribers` and a combination thereof, connecting to an arbitrary number of Nodes. This forms part of the connections in the so-called `ROS graph <https://docs.ros.org/en/jazzy/Concepts/Basic.html>`_. An example is shown below.
 
 Diagram
 -------
@@ -165,7 +165,7 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 |:code:`topic`       |  The topic through which the communication will occur. Can be arbitrarily chosen, but to make sense :code:`/amazing_quote`.                                                                     |
 +--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |:code:`qos_profile` |  The simplest interpretation for this parameter is the maximum number of messages that will be stored in a buffer if your node (including :code:`spin(...)`) takes too long to process them.    |
-|                    |  (See more on  `docs for QoSProfile <https://docs.ros.org/en/humble/Concepts/About-Quality-of-Service-Settings.html>`_.)                                                                        |
+|                    |  (See more on  `docs for QoSProfile <https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html>`_.)                                                                        |
 +--------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. warning::

@@ -7,7 +7,7 @@ ROS2 Interfaces (:program:`ros2 interface`)
 
 If by now you haven't particularly fallen in love with :program:`ROS2`, fear not. Indeed, we haven't done much so far that couldn't be achieved more easily by other means.
 
-:program:`ROS2` begins to shine most in its interprocess communication, through what are called `ROS2 interfaces <https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html>`_.
+:program:`ROS2` begins to shine most in its interprocess communication, through what are called `ROS2 interfaces <https://docs.ros.org/en/jazzy/Concepts/Basic/About-Interfaces.html>`_.
 In particular, the fact that we can easily interface Nodes written in Python and C++ is a strong selling point.
 
 :code:`Messages` are one of the three types of ROS2 interfaces. This will most likely be the standard of communication between Nodes in your packages. We will also see the bidirectional :code:`Services` and :code:`Actions`.
