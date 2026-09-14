@@ -60,70 +60,17 @@ Some Python packages must be installed through :program:`apt`
 -------------------------------------------------------------
 
 .. warning::
-   Aside from these packages that you **MUST** install from :program:`apt`, it is best to use :program:`venv` and :program:`pip` to install packages only for your user
+   Aside from these packages that you **MUST** install from :program:`apt`, it is best to use :program:`pip` to install packages only for your user
    without using :code:`sudo`.
 
 For some Python packages to work well with the default Python in Ubuntu, they must be installed through :program:`apt`. If you deviate from this, you can cause issues that might not be easy to recover from.
 
-For the purposes of this tutorial, let us install :code:`pip` and :code:`venv`
+For the purposes of this tutorial, let us install :code:`pip`
 
 .. code-block:: console
 
    sudo apt update
-   sudo apt install -y python3-pip python3-venv
-
-.. _Isolate your environment with a venv:
-
-When you want to isolate your environment, use :program:`venv`
---------------------------------------------------------------
-
-.. warning::
-   At the time of this writing, there was no support for :program:`venv` on ROS2 `(More info) <https://github.com/ros2/ros2/issues/1094#issuecomment-897638520>`_.
-   Until that is handled, we are not going to use :program:`venv` for the ROS2 tutorials.
-   However, we will use :program:`venv` to protect our ROS2 environment from these Python preamble tutorials.
-
-Using :program:`venv` (`More info <https://docs.python.org/3.12/library/venv.html>`_) is quite straightforward.
-
-Create a :file:`venv`
-+++++++++++++++++++++
-
-.. code-block:: console
-
-   cd ~
-   python3 -m venv ros2tutorial_venv
-
-where the only argument, :code:`ros2tutorial_venv`, is the name of the folder in which the :code:`venv` will be created.
-
-Activate a :file:`venv`
-+++++++++++++++++++++++
-
-Whenever we want to use a :file:`venv`, it must be explicitly activated.
-
-.. code-block:: console
-
-   cd ~
-   source ros2tutorial_venv/bin/activate
-
-The terminal will change to have the prefix :code:`(ros2tutorial_venv)` to let us know that we are using a :file:`venv`, as follows
-
-.. code-block:: console
-
-   (ros2tutorial_venv) murilo@murilos-toaster:~$
-
-Deactivate a :file:`venv`
-+++++++++++++++++++++++++
-
-To deactivate, run
-
-.. code-block:: console
-
-   deactivate
-
-We'll know that we're no longer using the :code:`ros2tutorial_venv` because the prefix will disappear back to
-
-.. code-block:: console
-
-   murilo@murilos-toaster:~$
+   sudo apt install -y python3-pip
 
 Installing libraries
 --------------------
@@ -139,14 +86,7 @@ Installing libraries
 
 As an example, let us install the best robot modeling and control library ever conceived, `DQ Robotics <https://github.com/dqrobotics>`_.
 
-First, we activate the virtual environment
-
-.. code-block:: console
-
-   cd ~
-   source ros2tutorial_venv/bin/activate
-
-then, we install
+We install it with
 
 .. code-block:: console
 

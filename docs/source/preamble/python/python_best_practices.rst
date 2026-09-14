@@ -33,17 +33,6 @@ sources/tutorials you might find elsewhere. It is based on my interpretation of
      - A collection of modules.
      - A folder with an :file:`__init__.py`, even if it doesn't have more than one module. When people say `Python Packaging <https://packaging.python.org/en/latest/>`_ it refers instead to making your package installable (e.g. with a :file:`setup.py` or :file:`pyproject.toml`), so be ready for that ambiguity.
 
-Use a :code:`venv`
-------------------
-
-We already know that it is a good practice to :ref:`Isolate your environment with a venv`. So, let's turn that into a reflex
-and do so for this whole section.
-
-.. code-block:: console
-
-   cd ~
-   source ros2tutorial_venv/bin/activate
-
 .. _Python package:
 
 Minimalist package: something to start with
