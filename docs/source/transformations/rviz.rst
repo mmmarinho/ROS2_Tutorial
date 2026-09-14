@@ -114,9 +114,10 @@ The integrated sample can be executed as follows.
 
         .. code-block:: console
 
-            ros2 run rqt_image_view image_publisher
+            ros2 run image_publisher image_publisher_node /path/to/lenna.png \
+                --ros-args -r image_raw:=/images
 
-    .. tab-item:: Terminal 2: Run the bridge
+    .. tab-item:: Terminal 2: Run the visualiser
 
         .. code-block:: console
 
