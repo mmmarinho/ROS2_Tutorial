@@ -205,6 +205,7 @@ If you enjoyed this tutorial, please
    gazebo/usage
    gazebo/ros_gz_bridge
    gazebo/custom_nodes
+   gazebo/other_content
 
 .. toctree::
    :caption: Navigation

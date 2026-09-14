@@ -112,7 +112,7 @@ The message file
 
 .. note::
 
-   Here is a list of available `built-in types <https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html#field-types>`_ for ROS2 interfaces.
+   Here is a list of available `built-in types <https://docs.ros.org/en/jazzy/Concepts/Basic/About-Interfaces.html#field-types>`_ for ROS2 interfaces.
 
 Let us create a message file to transfer inspirational quotes between Nodes. For example, the one below.
 
