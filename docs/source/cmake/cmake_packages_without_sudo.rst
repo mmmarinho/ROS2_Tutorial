@@ -63,7 +63,7 @@ This example shows how to build and install the qpOASES to be used in your CMake
 
 
 .. warning::
-  This example assumes you have git, CMake, Eigen, and a C++ compiler installed in your GNU/Linux distribution.
+  This example assumes you have git, CMake, and a C++ compiler installed in your GNU/Linux distribution.
 
 
 To install qpOASES as a shared library, we use the instructions provided by the DQ Robotics in \
@@ -95,11 +95,11 @@ Example: include and link the qpOASES in your project
         .. literalinclude:: ../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/CMakeLists.txt
            :language: cmake
            :linenos:
-           :emphasize-lines: 17
+           :emphasize-lines: 15
 
     .. tab-item:: test_qpoases.cpp
 
-        :download:`test_dqrobotics.cpp <../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp>`
+        :download:`test_qpoases.cpp <../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp>`
 
         .. literalinclude:: ../../../cmake_tutorial_workspace/src/cpp_cmake_example_qpoases_lib/src/test_qpoases.cpp
             :language: cpp
