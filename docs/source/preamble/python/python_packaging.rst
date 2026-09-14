@@ -9,17 +9,6 @@ Making your Python package installable
    In :program:`ROS2`, currently we fully rely on :file:`setup.py` approach using setuptools therefore that's what I discuss herein.
 
 
-Use a :code:`venv`
-------------------
-
-We already know that it is a good practice to :ref:`Isolate your environment with a venv`. So, let's turn that into a reflex
-and do so for this whole section.
-
-.. code-block:: console
-
-   cd ~
-   source ros2tutorial_venv/bin/activate
-
 The :file:`setup.py`
 --------------------
 
@@ -77,11 +66,11 @@ Installing :file:`wheel`
       and the 'wheel' package is not installed. pip 23.1 will enforce this behaviour change. A possible replacement is to enable the '--use-pep517'
       option. Discussion can be found at https://github.com/pypa/pip/issues/8559
 
-To install the package in the recommended way in this tutorial, we need :file:`wheel`. While using the :code:`venv`, we install it
+To install the package in the recommended way in this tutorial, we need :file:`wheel`. We install it with
 
 .. code-block:: console
 
-   python3 -m pip install wheel
+   python3 -m pip install wheel --break-system-packages
 
 Installing the Python package
 -----------------------------
@@ -91,7 +80,7 @@ We first go to the folder containing our *project* folder and we build and insta
 .. code-block:: console
 
    cd ~/ros2_tutorials_preamble/python
-   python3 -m pip install ./minimalist_package
+   python3 -m pip install ./minimalist_package --break-system-packages
 
 which results in
 
@@ -99,7 +88,7 @@ which results in
 
    Processing ./minimalist_package
      Preparing metadata (setup.py) ... done
-   Requirement already satisfied: setuptools in ~ros2tutorial_venv/lib/python3.10/site-packages (from minimalist-package==23.6.0) (65.6.3)
+   Requirement already satisfied: setuptools in /home/murilo/.local/lib/python3.12/site-packages (from minimalist-package==23.6.0) (65.6.3)
    Building wheels for collected packages: minimalist-package
      Building wheel for minimalist-package (setup.py) ... done
      Created wheel for minimalist-package: filename=minimalist_package-23.6.0-py3-none-any.whl size=8608 sha256=929446a2fa81fc99fc5dec239a9f3e4439bc8fa8fe49cc4deb987d6f31b3d8b9
@@ -178,7 +167,7 @@ Given that we installed it using :program:`pip`, removing it is also a breeze. W
 
 .. code-block:: console
 
-   python3 -m pip uninstall minimalist_package
+   python3 -m pip uninstall minimalist_package --break-system-packages
 
 which will return something similar to
 
@@ -187,11 +176,11 @@ which will return something similar to
    Found existing installation: minimalist-package 23.6.0
    Uninstalling minimalist-package-23.6.0:
      Would remove:
-       /home/murilo/ros2tutorial_venv/bin/async_await_example
-       /home/murilo/ros2tutorial_venv/bin/async_callback_example
-       /home/murilo/ros2tutorial_venv/bin/minimalist_script
-       /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/minimalist_package-23.6.0.dist-info/*
-       /home/murilo/ros2tutorial_venv/lib/python3.10/site-packages/minimalist_package/*
+       /home/murilo/.local/bin/async_await_example
+       /home/murilo/.local/bin/async_callback_example
+       /home/murilo/.local/bin/minimalist_script
+       /home/murilo/.local/lib/python3.12/site-packages/minimalist_package-23.6.0.dist-info/*
+       /home/murilo/.local/lib/python3.12/site-packages/minimalist_package/*
    Proceed (Y/n)?
 
 and just press :kbd:`ENTER`, resulting in the package being uninstalled

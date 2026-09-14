@@ -106,8 +106,7 @@ Fixing a dirty state in your :program:`colcon build`
 
 Sometimes, a problematic build might not go away even with repeated calls to :program:`colcon build`.
 
-The most common cause of this is when, by mistake, a terminal with an active :program:`venv` was used when calling
-:program:`colcon build`. The usual error message will look like so.
+A common error message will look like so.
 
 .. code-block:: console
 
@@ -118,9 +117,8 @@ The most common cause of this is when, by mistake, a terminal with an active :pr
 
 To fix this, you must
 
-#. Deactivate the :program:`venv`.
 #. Remove the :file:`build`, :file:`install`, and :file:`log` folders.
-#. Rebuild and re-source in a clean terminal, without a :program:`venv`.
+#. Rebuild and re-source in a clean terminal.
 
 In this tutorial, this would be equivalent to doing
 
@@ -131,13 +129,12 @@ In this tutorial, this would be equivalent to doing
 
 .. code-block:: console
 
-    deactivate
     cd ~/ros2_tutorial_workspace
     rm -rf build/ install/ log/
     colcon build
     source install/setup.bash
 
-In rare cases, even without using a :program:`venv`, the workspace can be left in an unclean state in which older build
+In rare cases, the workspace can be left in an unclean state in which older build
 artifacts cause build and runtime issues, such as failed builds and programs that do not seem to match their intended source code.
 These artifacts might include old files that should have been removed, issues with dependencies, and so on.
 In this case, removing the :file:`build`, :file:`install`, and :file:`log` folders can be useful.
