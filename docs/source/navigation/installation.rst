@@ -13,7 +13,7 @@ Installation
 
 We will install ``nav2``, a few example packages, and the ``slam-toolbox`` with the following command.
 
-.. rli:: https://raw.githubusercontent.com/UoMMScRobotics/SFR_Gazebo/refs/heads/main/install_nav2.sh
+.. literalinclude:: ../../../docker/gazebo_nav2/install_nav2.sh
    :language: bash
    :lines: 5-14
 
