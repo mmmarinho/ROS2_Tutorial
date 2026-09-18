@@ -22,20 +22,23 @@ Run the following commands,
     mkdir -p include
     mkdir -p lib
 
-Then, we update the LD_LIBRARY_PATH, LIBRARY_PATH, and CPATH in :code:`~/.bashrc`.
+Then, we update the LD_LIBRARY_PATH, LIBRARY_PATH, CPATH, and CMAKE_PREFIX_PATH in :code:`~/.bashrc`.
 
 Do the following just once, so that all terminal windows automatically source this new workspace for you.
 
 .. code-block:: console
 
     echo "# Update the environment variable LD_LIBRARY_PATH to include ~/opt/lib, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
-    echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/opt/lib" >> ~/.bashrc
+    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/opt/lib' >> ~/.bashrc
 
     echo "# Update the environment variable LIBRARY_PATH to include ~/opt/lib, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
-    echo "export LIBRARY_PATH=$LIBRARY_PATH:~/opt/lib" >> ~/.bashrc
+    echo 'export LIBRARY_PATH=$LIBRARY_PATH:~/opt/lib' >> ~/.bashrc
 
     echo "# Update the environment variable CPATH to include ~/opt/include, as instructed in https://ros2-tutorial.readthedocs.io" >> ~/.bashrc
-    echo "export CPATH=$CPATH:~/opt/include" >> ~/.bashrc
+    echo 'export CPATH=$CPATH:~/opt/include' >> ~/.bashrc
+
+    echo "# Update the environment variable CMAKE_PREFIX_PATH to include ~/opt, so that find_package() can locate packages installed there" >> ~/.bashrc
+    echo 'export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:~/opt' >> ~/.bashrc
 
     source ~/.bashrc
 
