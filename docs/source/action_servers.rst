@@ -27,14 +27,14 @@ is the need to process and send feedback until the action is completed or aborte
 
     %%{init: { "theme" : "dark" }}%%
     sequenceDiagram
-        participant Action Client as Action Client
-        participant Action Server as Action Server
+        participant ActionClientP as Action Client
+        participant ActionServerP as Action Server
         autonumber
-        Action Client ->>+ Action Server: Receive Goal
+        ActionClientP ->>+ ActionServerP: Receive Goal
         loop While action has not ended
-        Action Server -->> Action Client: Publish Feedback
+        ActionServerP -->> ActionClientP: Publish Feedback
         end
-        Action Server -->>- Action Client: Send Result
+        ActionServerP -->>- ActionClientP: Send Result
 
 Files
 -----
