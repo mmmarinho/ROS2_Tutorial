@@ -51,9 +51,6 @@ templates_path = ['_templates']
 html_theme = 'sphinx_book_theme'
 # Tried with `furo` on May 23, 2025, but somehow it didn't look right. In particular the download button wasn't as clear.
 html_theme_options = {
-    "announcement": "This tutorial has been updated to ROS2 Jazzy. "
-                   "See <a href='https://ros2-tutorial.readthedocs.io/en/humble/'>Humble Docs</a> for the previous version. "
-                   "Create an <a href='https://github.com/mmmarinho/ROS2_Tutorial/issues'>issue</a> for inconsistencies.",
     "repository_url": "https://github.com/mmmarinho/ROS2_Tutorial",
     "use_source_button": True,
     "repository_branch": "main",
