@@ -18,7 +18,7 @@ build:
     - libasound2 # For mermaid rendering in PDFs
   jobs:
     post_install:
-      - npm install -g @mermaid-js/mermaid-cli
+      - npm install -g @mermaid-js/mermaid-cli@11.17.0
       - npm install -g @iconify-json/logos@1
       - npm install -g @iconify-json/material-symbols
 
