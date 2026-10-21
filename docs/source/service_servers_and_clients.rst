@@ -18,20 +18,20 @@ Diagram
 
     %%{init: { "theme" : "dark" }}%%
     sequenceDiagram
-      participant Service Client 1 as Service Client 1
-      participant Service Server as Service Server
-      participant Service Client 2 as Service Client 2
+      participant C1 as Service Client 1
+      participant S as Service Server
+      participant C2 as Service Client 2
       autonumber
-      Service Client 1 ->>+ Service Server: service_client.call_async()
+      C1 ->>+ S: service_client.call_async()
       loop
-        Service Client 1-->Service Client 1: rclpy.spin()
+        Note over C1: rclpy.spin()
       end
-      Service Server -->>- Service Client 1: ServiceServerNode.service_callback()
-      Service Client 2 ->>+ Service Server: service_client.call_async()
+      S -->>- C1: ServiceServerNode.service_callback()
+      C2 ->>+ S: service_client.call_async()
       loop
-        Service Client 2-->Service Client 2: rclpy.spin()
+        Note over C2: rclpy.spin()
       end
-      Service Server -->>- Service Client 2: ServiceServerNode.service_callback()
+      S -->>- C2: ServiceServerNode.service_callback()
 
 Create the package
 ------------------
