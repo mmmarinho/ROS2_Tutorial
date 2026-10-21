@@ -183,9 +183,9 @@ which outputs
      ros__parameters:
        period: 0.25
        philosopher_name: Tyler
-       quote: Yeah, you're gonna die, it's a matter of time. That ain't the question.
-         The question's, whether they're gonna have a good story to tell about you when
-         you're gone
+       quote: You got a good-guy heart. You can't do shit about it, that's just who you
+         are. You're a hero.
+       start_type_description_service: true
        topic_name: truly_inspirational_quote
        use_sim_time: false
 
