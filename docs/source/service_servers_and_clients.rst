@@ -93,14 +93,13 @@ Overview
     This will be the file structure for the :code:`Service` tutorial. Highlighted are the main files for the :code:`ServiceServer` and :code:`ServiceClient`.
 
     .. code-block:: console
-        :emphasize-lines: 7,9
+        :emphasize-lines: 6,8
 
         python_package_that_uses_the_services
         |-- package.xml
         |-- python_package_that_uses_the_services
         |   |-- __init__.py
         |   |-- add_points_service_client_introspection_node.py
-        |   |-- add_points_service_client_just_once_node.py
         |   |-- add_points_service_client_node.py
         |   |-- add_points_service_server_introspection_node.py
         |   `-- add_points_service_server_node.py
@@ -333,7 +332,7 @@ As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`se
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/setup.py
    :language: python
    :linenos:
-   :emphasize-lines: 23-28
+   :emphasize-lines: 23,24,27,28
 
 Build and source
 ----------------
