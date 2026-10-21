@@ -75,7 +75,7 @@ A common network architecture in small companies and laboratories is shown below
         service internet(material-symbols:router-outline)[Enterprise Intranet] in api
         service computer(material-symbols:computer-outline)[Computer] in api
         service robot1(material-symbols:robot-2-outline)[Robot 1] in api
-        service robot2(material-symbols:robot-2-outline)[Robot 1] in api
+        service robot2(material-symbols:robot-2-outline)[Robot 2] in api
         junction junctionCenter1 in api
         junction junctionCenter2 in api
         junction junctionCenter3 in api
@@ -118,7 +118,7 @@ here is that different parts of the company have their own subnets.
         service computer(material-symbols:computer-outline)[Computer] in api
         service router(material-symbols:router-outline)[Router] in api
         service robot1(material-symbols:robot-2-outline)[Robot 1] in api
-        service robot2(material-symbols:robot-2-outline)[Robot 1] in api
+        service robot2(material-symbols:robot-2-outline)[Robot 2] in api
         junction junctionCenter1 in api
         junction junctionCenter2 in api
         junction junctionCenter3 in api
@@ -158,7 +158,7 @@ A possibly sufficient setup for most robotic demonstrators that need isolation i
         service router(material-symbols:router-outline)[Router] in api
         service switch(material-symbols:router-outline)[Switching hub] in api
         service robot1(material-symbols:robot-2-outline)[Robot 1] in api
-        service robot2(material-symbols:robot-2-outline)[Robot 1] in api
+        service robot2(material-symbols:robot-2-outline)[Robot 2] in api
         junction junctionCenter1 in api
         junction junctionCenter2 in api
 
