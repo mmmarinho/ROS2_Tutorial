@@ -28,16 +28,16 @@ calls for the goal and the result, the node is free to do other tasks while thos
 
     %%{init: { "theme" : "dark" }}%%
     sequenceDiagram
-      participant Action Client as Action Client
-      participant Action Server as Action Server
+      participant ActionClientP as Action Client
+      participant ActionServerP as Action Server
       autonumber
-      Action Client ->>+ Action Server: Send Goal
-      Action Server -->>- Action Client: Receive Goal Response
-      Action Client ->>+ Action Server: Request Result
+      ActionClientP ->>+ ActionServerP: Send Goal
+      ActionServerP -->>- ActionClientP: Receive Goal Response
+      ActionClientP ->>+ ActionServerP: Request Result
       loop While action has not ended
-        Action Server -->> Action Client: Receive Feedback
+        ActionServerP -->> ActionClientP: Receive Feedback
       end
-      Action Server -->>- Action Client: Receive Result
+      ActionServerP -->>- ActionClientP: Receive Result
 
 Files
 -----
