@@ -428,6 +428,77 @@ Then, in the container, you can set before the nodes.
 
     export FASTRTPS_DEFAULT_PROFILES_FILE="~/ros2_tutorial_workspace/docker/fastrtps_profile.xml"
 
+Whitelisting the interface your topics are advertised on
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. seealso::
+
+    #. https://github.com/eProsima/Fast-DDS/issues/1750
+    #. https://robotics.stackexchange.com/questions/98161/ros2-foxy-nodes-cant-communicate-through-docker-container-border
+
+Once you are on ``UDP`` you inherit a new problem. With ``--net=host`` the container sees every
+interface of the host, and Fast DDS announces your nodes on all of them, so the nodes of a cell
+robot end up discoverable on the office LAN adapter, the wifi stick and ``docker0`` as well. Anyone
+on those networks can list your nodes and subscribe to their topics, which is rarely what one wants
+when the robot and its workstation sit on a dedicated segment.
+
+The ``interfaceWhiteList`` restricts the transport to the interfaces you name. Copy the contents
+below to :file:`~/ros2_tutorial_workspace/docker/fastrtps_profile_whitelist.xml` and adjust
+``eth0``.
+
+.. literalinclude:: fastrtps_profile_whitelist.xml
+   :language: xml
+
+Then set it as before.
+
+.. code-block:: console
+
+    export FASTRTPS_DEFAULT_PROFILES_FILE="~/ros2_tutorial_workspace/docker/fastrtps_profile_whitelist.xml"
+
+There are four things worth knowing about it.
+
+#. **The name is enough.** An ``<address>`` entry is matched against the interface *name* as well as
+   against addresses, so ``eth0`` pins the physical NIC regardless of the address it ends up with.
+   A nice side effect is that the interface does not need an address for the pin to hold, which
+   makes it possible to ship the profile to a machine whose cell NIC is not configured yet.
+#. **``useBuiltinTransports`` must stay ``false``.** With it left on, Fast DDS keeps its own default
+   transports next to yours and the whitelist then restricts nothing at all -- the profile looks
+   correct and silently does nothing, which is the single most common mistake with this file.
+#. **Keep ``127.0.0.1``.** Without it you cannot even run ``ros2 node list`` or
+   ``ros2 topic echo`` against your own nodes on the same host, and since the previous section
+   turned shared memory off, loopback ``UDP`` is the only same-host path left.
+#. **Several interfaces** are simply several ``<address>`` entries.
+
+Interface names are machine specific, so do not hardcode them in a :file:`compose.yml` that is shared
+between workstations. Keep the file above as a template with a placeholder and render it when the
+container starts, before the nodes are launched.
+
+.. code-block:: console
+
+    export FASTRTPS_DEFAULT_PROFILES_FILE=/tmp/fastrtps_profile.xml
+    sed "s/eth0/enp0s31f6/" ~/ros2_tutorial_workspace/docker/fastrtps_profile_whitelist.xml > $FASTRTPS_DEFAULT_PROFILES_FILE
+    ros2 run demo_nodes_cpp talker
+
+.. note::
+
+    In practice the rendering is wrapped in a small shell script that the container entry point
+    sources before launching the nodes, and the interface is picked as the one that is physically up
+    and is not the default-route device (so the LAN adapter is not mistaken for the cell one).
+
+To see what a node is actually announcing where, join the discovery multicast on the interface you
+expect to be quiet and look at the source of the ``RTPS`` packets. With the whitelist in place this
+should stay empty for your node, and start printing once you remove it.
+
+.. code-block:: console
+
+    sudo tcpdump -ni eth1 -c 5 udp port 7400
+
+.. warning::
+
+    An interface that is pinned but down or unaddressed announces nothing, and Fast DDS is quiet
+    about it: the node starts, shows up in the local graph, and receives nothing from the peers on
+    the other side. Check ``cat /sys/class/net/eth0/operstate`` before blaming the robot.
+
 Sad notes on rootless :program:`docker`
 +++++++++++++++++++++++++++++++++++++++
 
