@@ -177,6 +177,55 @@ def MakeIt():
     pass
 """
 
+PRACTICES_OK = """
+from python_package_with_a_node.sample_module import Thing
+import rclpy
+from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
+
+class PublisherNode(Node):
+    \"\"\"A well-behaved publisher.\"\"\"
+    def __init__(self):
+        super().__init__("publisher_node")
+        self.declare_parameter("period", 0.5)
+        self.period = self.get_parameter("period") \\
+            .get_parameter_value().double_value
+        self.create_timer(self.period, self.timer_callback)
+    def timer_callback(self) -> None:
+        \"\"\"Log one line.\"\"\"
+        self.get_logger().info("hi")
+
+def main(args=None) -> None:
+    \"\"\"Entry point.\"\"\"
+    try:
+        rclpy.init()
+        node = PublisherNode()
+        rclpy.spin(node)
+    except (KeyboardInterrupt, ExternalShutdownException):
+        pass
+"""
+
+PRACTICES_BAD = """
+import rclpy
+from rclpy.node import Node
+from .sibling_module import Thing
+
+class PublisherNode(Node):
+    def __init__(self):
+        super().__init__("publisher")
+        self.period = self.get_parameter("period") \\
+            .get_parameter_value().double_value
+        print("started")
+    def timer_callback(self, extra: int):
+        pass
+
+def main(args=None):
+    node = PublisherNode()
+    rclpy.init()
+    rclpy.spin(node)
+    rclpy.shutdown()
+"""
+
 SYNTAX_ERROR = "def main(:\n"
 
 
@@ -263,9 +312,11 @@ def run_pkg_cases():
     return failures
 
 
-def run(source, path="sample_python_node.py", require_node_suffix=False):
+def run(source, path="sample_python_node.py", require_node_suffix=False,
+        require_docstrings=False, require_type_hints=False):
     return [(sev, msg) for _, sev, msg in
-            lint_source(source, path, require_node_suffix)]
+            lint_source(source, path, require_node_suffix,
+                        require_docstrings, require_type_hints)]
 
 
 CASES = [
@@ -294,6 +345,23 @@ CASES = [
     (NAMING_OK, "bad_name.py", True,
      [(WARNING, "should be named *_node.py")]),
     (NAMING_OK, "bad_name_node.py", True, []),
+    (PRACTICES_OK, None, (False, True, True), []),
+    (PRACTICES_BAD, None, False,
+     [(WARNING, "from .sibling_module import"),
+      (WARNING, "get_parameter('period') without"),
+      (WARNING, "print() inside a Node subclass"),
+      (ERROR, "not wrapped"),
+      (WARNING, "shutdown() is not in the tutorial template")]),
+    (PRACTICES_BAD, None, (False, True, True),
+     [(WARNING, "from .sibling_module import"),
+      (WARNING, "class 'PublisherNode' has no docstring"),
+      (WARNING, "get_parameter('period') without"),
+      (WARNING, "print() inside a Node subclass"),
+      (WARNING, "'timer_callback' has no docstring"),
+      (WARNING, "partial type hints"),
+      (WARNING, "'main' has no docstring"),
+      (ERROR, "not wrapped"),
+      (WARNING, "shutdown() is not in the tutorial template")]),
     (SYNTAX_ERROR, None, False, [(ERROR, "could not parse")]),
 ]
 
@@ -301,7 +369,8 @@ CASES = [
 def main():
     failures = 0
     for i, (source, path, suffix, expected) in enumerate(CASES):
-        findings = run(source, path or "sample_python_node.py", suffix)
+        flags = suffix if isinstance(suffix, tuple) else (suffix,)
+        findings = run(source, path or "sample_python_node.py", *flags)
         ok = len(findings) == len(expected) and all(
             sev == exp_sev and needle in msg
             for (sev, msg), (exp_sev, needle) in zip(findings, expected))

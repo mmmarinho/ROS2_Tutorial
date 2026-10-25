@@ -32,6 +32,18 @@ handlers re-raise or do not match:
       on swallowing, so the explicit tuple is preferred;
     * the operative handler is not just ``pass``.
 
+Best practices (``python_best_practices``, ``python_node_explained``,
+``parameters_and_launch``) -- all warnings:
+
+    * no relative imports (absolute ``from <package>.<module> import``);
+    * no ``destroy_node()``/``rclpy.shutdown()`` (not in the template);
+    * ``get_logger().info()`` instead of ``print()`` inside Node
+      subclasses;
+    * ``get_parameter('x')`` only after ``declare_parameter('x', ...)``.
+    With --require-docstrings: classes/public functions need docstrings.
+    With --require-type-hints: functions with partial type hints are
+    flagged (annotate all parameters and the return).
+
 Naming (``python_best_practices`` and the node template) -- all warnings:
 
     * class names PascalCase;
@@ -63,6 +75,8 @@ template calls spin inside main()'s try directly.
 Usage::
 
     ./murilos_ros2_linter.py [paths ...] [--strict] [--quiet]
+        [--require-node-suffix] [--require-docstrings]
+        [--require-type-hints]
 
 Paths default to the current directory; directories are scanned for *.py.
 Exit code: 1 when errors (or, with --strict, warnings) were found.
@@ -237,13 +251,100 @@ def _lint_names(tree: ast.AST):
     return findings
 
 
-def lint_source(source: str, path: str, require_node_suffix: bool = False):
+def _lint_best_practices(tree: ast.AST, require_docstrings: bool,
+                         require_type_hints: bool):
+    """Assorted MUSTs/shoulds from python_best_practices,
+    python_node_explained and parameters_and_launch."""
+    findings = []
+    node_classes = [n for n in ast.walk(tree)
+                    if isinstance(n, ast.ClassDef) and _is_node_subclass(n)]
+    inside_node = {id(sub) for c in node_classes for sub in ast.walk(c)}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ImportFrom) and node.level:
+            names = ", ".join(a.name for a in node.names)
+            findings.append((node.lineno, WARNING,
+                             f"relative import 'from {'.' * node.level}"
+                             f"{node.module or ''} import {names}': the "
+                             "tutorial teaches absolute "
+                             "'from <package>.<module> import ...' (relative "
+                             "imports break in deployed packages)"))
+        elif isinstance(node, ast.Call):
+            if isinstance(node.func, ast.Attribute) and (
+                    node.func.attr == "destroy_node"
+                    or (node.func.attr == "shutdown"
+                        and isinstance(node.func.value, ast.Name)
+                        and node.func.value.id == "rclpy")):
+                findings.append((node.lineno, WARNING,
+                                 f"{node.func.attr}() is not in the tutorial "
+                                 "template: rclpy shuts the context down "
+                                 "itself, and adding it crashes on Ctrl-C "
+                                 "and hides the 0 exit code"))
+            elif (isinstance(node.func, ast.Name)
+                  and node.func.id == "print" and id(node) in inside_node):
+                findings.append((node.lineno, WARNING,
+                                 "print() inside a Node subclass: use "
+                                 "self.get_logger().info() (tutorial: The "
+                                 "Python Node, explained)"))
+    for c in node_classes:
+        declared, used = set(), []
+        for sub in ast.walk(c):
+            if (isinstance(sub, ast.Call)
+                    and isinstance(sub.func, ast.Attribute)
+                    and sub.func.attr in ("declare_parameter",
+                                          "get_parameter")
+                    and sub.args and isinstance(sub.args[0], ast.Constant)
+                    and isinstance(sub.args[0].value, str)):
+                if sub.func.attr == "declare_parameter":
+                    declared.add(sub.args[0].value)
+                else:
+                    used.append((sub.args[0].value, sub.lineno))
+        for pname, lineno in used:
+            if pname not in declared:
+                findings.append((lineno, WARNING,
+                                 f"get_parameter('{pname}') without "
+                                 f"declare_parameter('{pname}') in class "
+                                 f"'{c.name}': get_parameter fails on "
+                                 "undeclared parameters"))
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ClassDef):
+            if require_docstrings and ast.get_docstring(node) is None:
+                findings.append((node.lineno, WARNING,
+                                 f"class '{node.name}' has no docstring "
+                                 "(tutorial: Document your code with "
+                                 "Docstrings)"))
+        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            if require_docstrings and not node.name.startswith("_") \
+                    and ast.get_docstring(node) is None:
+                findings.append((node.lineno, WARNING,
+                                 f"method/function '{node.name}' has no "
+                                 "docstring (tutorial: Document your code "
+                                 "with Docstrings)"))
+            if require_type_hints:
+                params = [p for p in
+                          node.args.posonlyargs + node.args.args
+                          + node.args.kwonlyargs
+                          if p.arg not in ("self", "cls")]
+                annotated = [p for p in params if p.annotation is not None]
+                if annotated and (len(annotated) < len(params)
+                                  or node.returns is None):
+                    findings.append((node.lineno, WARNING,
+                                     f"'{node.name}' has partial type hints: "
+                                     "annotate all parameters and the return "
+                                     "(tutorial: Take the (type) hint)"))
+    return findings
+
+
+def lint_source(source: str, path: str, require_node_suffix: bool = False,
+                require_docstrings: bool = False,
+                require_type_hints: bool = False):
     try:
         tree = ast.parse(source, filename=path)
     except SyntaxError as err:
         return [(err.lineno or 1, ERROR, f"could not parse: {err.msg}")]
     parents = _parents(tree)
     findings = _lint_names(tree)
+    findings += _lint_best_practices(tree, require_docstrings,
+                                     require_type_hints)
     if require_node_suffix and any(
             isinstance(n, ast.ClassDef) and _is_node_subclass(n)
             for n in ast.walk(tree)):
@@ -439,6 +540,13 @@ def main(argv=None):
                              "is not named *_node.py (tutorial samples; "
                              "leave off when the brief mandates exact "
                              "module names)")
+    parser.add_argument("--require-docstrings", action="store_true",
+                        help="warn on classes/public functions without "
+                             "docstrings (tutorial: Document your code "
+                             "with Docstrings)")
+    parser.add_argument("--require-type-hints", action="store_true",
+                        help="warn on functions with partial type hints "
+                             "(tutorial: Take the (type) hint)")
     parser.add_argument("--quiet", action="store_true",
                         help="only print the summary")
     args = parser.parse_args(argv)
@@ -453,7 +561,8 @@ def main(argv=None):
             continue
         n_files += 1
         for lineno, severity, message in lint_source(
-                source, str(path), args.require_node_suffix):
+                source, str(path), args.require_node_suffix,
+                args.require_docstrings, args.require_type_hints):
             n_err += severity == ERROR
             n_warn += severity == WARNING
             if not args.quiet:
