@@ -152,9 +152,9 @@ def lint_source(source: str, path: str):
             found = _operative_handler(exc, node, parents)
             if found is None:
                 findings.append((node.lineno, ERROR,
-                                 f"{exc} escapes to the module top: an "
-                                 "unhandled traceback on Ctrl-C costs the "
-                                 "clean-shutdown mark"))
+                                 f"{exc} escapes to the module top: Ctrl-C "
+                                 "would print a traceback and exit "
+                                 "non-zero (see the template in --help)"))
                 continue
             handler, kind = found
             if kind == "broad":
