@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lint rclpy.spin() call sites and naming against the tutorial practices.
+"""Murilo's ROS 2 linter: spin template, naming and package structure checks.
 
 Shutdown template (``python_node_explained``, week 3-5 lecture decks):
 every ``rclpy.spin()`` must sit inside::
@@ -43,24 +43,38 @@ Naming (``python_best_practices`` and the node template) -- all warnings:
     Node subclass is not named *_node.py (tutorial samples; assessments
     whose brief mandates exact module names should leave it off).
 
+Package structure checks run for every package.xml found under the given
+paths (lint_package() is importable for zip-based flows):
+
+  errors
+    * package folder name != <name> in package.xml;
+    * console_scripts entry point pointing at a missing module or a
+      missing target function;
+    * a module in the package defining a Node subclass and main() but not
+      listed in console_scripts (ros2 run cannot launch it).
+  warnings
+    * module with main() but no entry point (no Node subclass);
+    * missing resource/<package_name> marker file.
+
 Known limitation: a spin() that is wrapped lexically but called from a try
 elsewhere (``def run(): rclpy.spin(n)``) is reported as unguarded -- the
 template calls spin inside main()'s try directly.
 
 Usage::
 
-    ./lint_spin_template.py [paths ...] [--strict] [--quiet]
+    ./murilos_ros2_linter.py [paths ...] [--strict] [--quiet]
 
 Paths default to the current directory; directories are scanned for *.py.
 Exit code: 1 when errors (or, with --strict, warnings) were found.
 
-Test: ``python3 test_lint_spin_template.py``
+Test: ``python3 test_murilos_ros2_linter.py``
 """
 
 import argparse
 import ast
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 SPIN_FUNCS = {"spin", "spin_once", "spin_until_future_complete"}
@@ -300,6 +314,119 @@ def iter_python_files(paths):
                     yield f
 
 
+def _console_scripts(setup_py: Path):
+    """[(exe, 'module:func'), ...] from setup(entry_points=
+    {'console_scripts': [...]}) when statically resolvable, else None."""
+    try:
+        tree = ast.parse(setup_py.read_text(encoding="utf-8",
+                                             errors="replace"))
+    except (OSError, SyntaxError):
+        return None
+    for node in ast.walk(tree):
+        if not (isinstance(node, ast.Call)
+                and _name(node.func) == "setup"):
+            continue
+        for kw in node.keywords:
+            if kw.arg != "entry_points" or not isinstance(kw.value, ast.Dict):
+                continue
+            scripts = None
+            for k, v in zip(kw.value.keys, kw.value.values):
+                if isinstance(k, ast.Constant) and k.value == "console_scripts"\
+                        and isinstance(v, (ast.List, ast.Tuple)):
+                    if all(isinstance(e, ast.Constant)
+                           and isinstance(e.value, str) for e in v.elts):
+                        scripts = [e.value for e in v.elts]
+            if scripts is None:
+                continue
+            entries = []
+            for s in scripts:
+                if "=" not in s or ":" not in s:
+                    continue
+                exe, target = s.split("=", 1)
+                entries.append((exe.strip(), target.strip()))
+            return entries
+    return None
+
+
+def lint_package(pkg_dir: Path):
+    """ROS 2 package structure checks (package.xml vs folder, setup.py
+    console_scripts vs modules, resource marker). Importable so zip-based
+    flows (e.g. marking) can call it on an extracted tree."""
+    pkg_dir = Path(pkg_dir)
+    findings = []
+    try:
+        xml_root = ET.parse(pkg_dir / "package.xml").getroot()
+    except (OSError, ET.ParseError) as err:
+        return [(0, ERROR, f"package.xml could not be parsed: {err}")]
+    name = (xml_root.findtext("name") or "").strip()
+    if not name:
+        findings.append((0, ERROR, "package.xml has no <name>"))
+    elif name != pkg_dir.name:
+        findings.append((0, ERROR,
+                         f"package folder is '{pkg_dir.name}' but "
+                         f"package.xml declares <name>{name}</name>: they "
+                         "must match (ros2 pkg list/run use the "
+                         "declared name)"))
+    setup_py = pkg_dir / "setup.py"
+    if setup_py.exists():
+        entries = _console_scripts(setup_py)
+        if entries is not None:
+            referenced = set()
+            for exe, target in entries:
+                mod, _, fn = target.partition(":")
+                referenced.add(mod)
+                mod_file = pkg_dir.joinpath(*mod.split(".")).with_suffix(".py")
+                if not mod_file.exists():
+                    findings.append((0, ERROR,
+                                     f"entry point '{exe} = {target}' points"
+                                     f" at module '{mod}', which has no "
+                                     f"{mod.split('.')[-1]}.py in the "
+                                     "package"))
+                    continue
+                if fn and f"def {fn}(" not in mod_file.read_text(
+                        encoding="utf-8", errors="replace"):
+                    findings.append((0, ERROR,
+                                     f"entry point '{exe} = {target}' "
+                                     f"targets function '{fn}', which "
+                                     f"'{mod_file.name}' does not define"))
+            pkg_sub = pkg_dir / name
+            if pkg_sub.is_dir():
+                for mod_file in sorted(pkg_sub.rglob("*.py")):
+                    if mod_file.name == "__init__.py":
+                        continue
+                    mod = ".".join(mod_file.relative_to(pkg_dir)
+                                   .with_suffix("").parts)
+                    if mod in referenced:
+                        continue
+                    try:
+                        tree = ast.parse(mod_file.read_text(
+                            encoding="utf-8", errors="replace"))
+                    except SyntaxError:
+                        continue  # reported by the file pass
+                    has_main = any(isinstance(n, ast.FunctionDef)
+                                   and n.name == "main"
+                                   for n in ast.walk(tree))
+                    if not has_main:
+                        continue
+                    has_node = any(isinstance(n, ast.ClassDef)
+                                   and _is_node_subclass(n)
+                                   for n in ast.walk(tree))
+                    findings.append((0, ERROR if has_node else WARNING,
+                                     f"'{mod}' defines "
+                                     + ("a Node subclass and main() but has "
+                                        "no console_scripts entry point: "
+                                        "ros2 run cannot launch it"
+                                        if has_node else
+                                        "main() but has no console_scripts "
+                                        "entry point")))
+        if name and not (pkg_dir / "resource" / name).exists():
+            findings.append((0, WARNING,
+                             f"resource/{name} marker file is missing "
+                             "(needed by ament_python for ros2 pkg "
+                             "discovery)"))
+    return findings
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(
         description=__doc__.split("Usage::")[0],
@@ -316,7 +443,7 @@ def main(argv=None):
                         help="only print the summary")
     args = parser.parse_args(argv)
 
-    n_err = n_warn = n_files = n_spins = 0
+    n_err = n_warn = n_files = 0
     for path in iter_python_files(args.paths):
         try:
             source = path.read_text(encoding="utf-8", errors="replace")
@@ -331,6 +458,19 @@ def main(argv=None):
             n_warn += severity == WARNING
             if not args.quiet:
                 print(f"{path}:{lineno}: {severity}: {message}")
+    for p in (Path(x) for x in args.paths):
+        candidates = ([p] if p.name == "package.xml" and p.is_file()
+                      else sorted(p.rglob("package.xml")) if p.is_dir()
+                      else [])
+        for pkg_xml in candidates:
+            if set(pkg_xml.parts) & SKIP_DIRS:
+                continue
+            for lineno, severity, message in lint_package(pkg_xml.parent):
+                n_err += severity == ERROR
+                n_warn += severity == WARNING
+                if not args.quiet:
+                    print(f"{pkg_xml.parent}:{lineno}: {severity}: "
+                          f"{message}")
     if not args.quiet or n_err or (args.strict and n_warn):
         print(f"{n_files} file(s), {n_err} error(s), {n_warn} warning(s)")
     if n_err or (args.strict and n_warn):

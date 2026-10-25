@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Tests for lint_spin_template.py: python3 test_lint_spin_template.py"""
+"""Tests for murilos_ros2_linter.py: python3 test_murilos_ros2_linter.py"""
 
 import sys
+import tempfile
+from pathlib import Path
 
-from lint_spin_template import ERROR, WARNING, lint_source
+from murilos_ros2_linter import ERROR, WARNING, lint_package, lint_source
 
 TEMPLATE = """
 import rclpy
@@ -178,6 +180,89 @@ def MakeIt():
 SYNTAX_ERROR = "def main(:\n"
 
 
+PKG_XML = ('<?xml version="1.0"?>\n'
+           '<package format="3"><name>{}</name></package>\n')
+NODE_MAIN = """import rclpy
+from rclpy.node import Node
+
+class Barker(Node):
+    def __init__(self):
+        super().__init__("barker")
+
+def main(args=None):
+    pass
+"""
+
+
+def make_pkg(root, folder="demo", xml_name="demo",
+             scripts=("barker = demo.barker:main",),
+             files=None, resource=True, setup_body=None):
+    pkg = Path(root) / folder
+    (pkg / "demo").mkdir(parents=True)
+    (pkg / "package.xml").write_text(PKG_XML.format(xml_name))
+    (pkg / "demo" / "__init__.py").write_text("")
+    for rel, content in (files or {"demo/barker.py": NODE_MAIN}).items():
+        target = pkg / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content)
+    if setup_body is None:
+        setup_body = (
+            "from setuptools import setup\n"
+            "setup(\n    name='demo',\n"
+            "    entry_points={'console_scripts': [\n"
+            + "".join(f"        '{s}',\n" for s in scripts)
+            + "    ]},\n)\n")
+    (pkg / "setup.py").write_text(setup_body)
+    if resource:
+        (pkg / "resource").mkdir(exist_ok=True)
+        (pkg / "resource" / xml_name).write_text("")
+    return pkg
+
+
+PKG_CASES = [
+    ("good", {}, []),
+    ("folder_mismatch", {"folder": "demoo"},
+     [(ERROR, "must match")]),
+    ("unlisted_node",
+     {"files": {"demo/barker.py": NODE_MAIN,
+                "demo/sleeper.py": NODE_MAIN.replace("Barker", "Sleeper")}},
+     [(ERROR, "no console_scripts entry")]),
+    ("missing_module",
+     {"scripts": ("barker = demo.barker:main",
+                  "ratter = demo.ratter:main")},
+     [(ERROR, "points at module")]),
+    ("missing_func",
+     {"scripts": ("barker = demo.barker:startup",)},
+     [(ERROR, "targets function")]),
+    ("no_resource", {"resource": False}, [(WARNING, "resource/")]),
+    ("dynamic_setup",
+     {"setup_body":
+      "from setuptools import setup\n"
+      "package_name = 'demo'\n"
+      "setup(name='demo', entry_points={'console_scripts': ["
+      "package_name + '.barker:main']})\n"}, []),
+]
+
+
+def run_pkg_cases():
+    failures = 0
+    with tempfile.TemporaryDirectory() as tmp:
+        for i, (label, kwargs, expected) in enumerate(PKG_CASES):
+            base = Path(tmp) / f"case{i}"
+            base.mkdir()
+            pkg = make_pkg(base, **kwargs)
+            findings = [(sev, msg) for _, sev, msg in lint_package(pkg)]
+            ok = len(findings) == len(expected) and all(
+                sev == exp_sev and needle in msg
+                for (sev, msg), (exp_sev, needle) in zip(findings, expected))
+            print(f"pkg {i:2d} {label:16s}: {'ok' if ok else 'FAIL'}")
+            if not ok:
+                failures += 1
+                print(f"    expected: {expected}")
+                print(f"    got:      {findings}")
+    return failures
+
+
 def run(source, path="sample_python_node.py", require_node_suffix=False):
     return [(sev, msg) for _, sev, msg in
             lint_source(source, path, require_node_suffix)]
@@ -225,6 +310,7 @@ def main():
             failures += 1
             print(f"    expected: {expected}")
             print(f"    got:      {findings}")
+    failures += run_pkg_cases()
     print("FAILED" if failures else "all tests passed")
     return 1 if failures else 0
 
