@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'node_that_uses_the_library = python_package_that_uses_the_library.node_that_uses_the_library:main'
+            'library_user_node = python_package_that_uses_the_library.library_user_node:main'
         ],
     },
 )
