@@ -26,6 +26,7 @@ import random
 import rclpy
 from rclpy.task import Future
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 
 from package_with_interfaces.srv import AddPoints
 
@@ -51,7 +52,7 @@ class AddPointsServiceClientJustOnceNode(Node):
 
         request.a.x = random.uniform(0, 1000)
         request.a.y = random.uniform(0, 1000)
-        request.a.y = random.uniform(0, 1000)
+        request.a.z = random.uniform(0, 1000)
 
         request.b.x = random.uniform(0, 1000)
         request.b.y = random.uniform(0, 1000)
@@ -86,7 +87,7 @@ def main(args=None):
         node = AddPointsServiceClientJustOnceNode()
 
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

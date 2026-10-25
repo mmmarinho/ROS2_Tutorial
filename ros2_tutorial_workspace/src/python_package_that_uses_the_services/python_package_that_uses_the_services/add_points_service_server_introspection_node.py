@@ -25,6 +25,7 @@ from .add_points_service_server_node import AddPointsServiceServerNode
 
 import rclpy
 from rclpy.service import ServiceIntrospectionState
+from rclpy.executors import ExternalShutdownException
 from rclpy.qos import qos_profile_system_default
 
 class AddPointsServiceServerIntrospectionNode(AddPointsServiceServerNode):
@@ -50,7 +51,7 @@ def main(args=None):
         add_points_service_server_introspection_node = AddPointsServiceServerIntrospectionNode()
 
         rclpy.spin(add_points_service_server_introspection_node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)
