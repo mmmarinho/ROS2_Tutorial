@@ -26,6 +26,7 @@ from ros_gz_interfaces.msg import EntityWrench
 
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 
 import tf2_ros
 
@@ -124,7 +125,7 @@ def main(args=None):
         node = ControlShapeThrustNode()
         rclpy.spin(node)
 
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 
 
 class PrintForever(Node):
@@ -52,7 +53,7 @@ def main(args=None):
         print_forever_node = PrintForever()
 
         rclpy.spin(print_forever_node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

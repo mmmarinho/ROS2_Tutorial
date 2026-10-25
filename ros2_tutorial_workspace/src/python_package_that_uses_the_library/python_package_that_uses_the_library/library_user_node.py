@@ -26,14 +26,15 @@ import string
 
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 from python_package_with_a_library.sample_python_library import SampleClass, sample_function_for_square_of_sum
 
 
-class NodeThatUsesTheLibrary(Node):
+class LibraryUser(Node):
     """A ROS2 Node that prints to the console periodically."""
 
     def __init__(self):
-        super().__init__('node_that_uses_the_library')
+        super().__init__('library_user')
         timer_period: float = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
@@ -64,10 +65,10 @@ def main(args=None):
     try:
         rclpy.init(args=args)
 
-        node_that_uses_the_library = NodeThatUsesTheLibrary()
+        library_user = LibraryUser()
 
-        rclpy.spin(node_that_uses_the_library)
-    except KeyboardInterrupt:
+        rclpy.spin(library_user)
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

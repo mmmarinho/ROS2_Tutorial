@@ -26,6 +26,7 @@ from ros_gz_interfaces.srv import SetEntityPose
 
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 
 class SendPosesToGazeboNode(Node):
     """A ROS2 Node that sends poses to Gazebo"""
@@ -75,7 +76,7 @@ def main(args=None):
         future = node.send_pose_to_gazebo()
         rclpy.spin_until_future_complete(node, future)
 
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 from package_with_interfaces.msg import AmazingQuote
 
 
@@ -79,7 +80,7 @@ def main(args=None):
         amazing_quote_configurable_publisher_node = AmazingQuoteConfigurablePublisherNode()
 
         rclpy.spin(amazing_quote_configurable_publisher_node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)
