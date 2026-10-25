@@ -51,7 +51,7 @@ class ControlShapeThrustNode(Node):
 
         # This is one way to prevent published messages from being lost, but we don't know what is subscribing.
         while not self.count_subscribers(self._wrench_topic):
-            print(f"Waiting for subscriber to be connected to {self._wrench_topic}...")
+            self.get_logger().info(f"Waiting for subscriber to be connected to {self._wrench_topic}...")
             time.sleep(1)
 
         # Setting up the TransformListener.

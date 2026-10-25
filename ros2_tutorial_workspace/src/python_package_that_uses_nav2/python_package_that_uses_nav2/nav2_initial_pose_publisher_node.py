@@ -44,14 +44,14 @@ class Nav2InitialPosePublisherNode(Node):
         publisher_count = 0
         while publisher_count < 2:
             publisher_count = self.count_publishers(self._topic)
-            print(f"Waiting for publisher to be connected to {self._topic}.")
-            print(f"Publisher count is {publisher_count}.")
+            self.get_logger().info(f"Waiting for publisher to be connected to {self._topic}.")
+            self.get_logger().info(f"Publisher count is {publisher_count}.")
             time.sleep(1)
 
     def send_initial_pose_with_covariance(self):
         """Method to create the PoseWithCovarianceStamped."""
 
-        print(f"Publishing pose to topic: {self._topic}.")
+        self.get_logger().info(f"Publishing pose to topic: {self._topic}.")
 
         pwcs = PoseWithCovarianceStamped()
         pwcs.header.stamp = self.get_clock().now().to_msg()

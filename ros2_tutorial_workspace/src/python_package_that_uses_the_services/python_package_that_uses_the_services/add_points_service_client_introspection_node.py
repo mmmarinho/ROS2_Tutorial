@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from .add_points_service_client_node import AddPointsServiceClientNode
+from python_package_that_uses_the_services.add_points_service_client_node import AddPointsServiceClientNode
 
 import rclpy
 from rclpy.service import ServiceIntrospectionState
@@ -29,6 +29,7 @@ from rclpy.executors import ExternalShutdownException
 from rclpy.qos import qos_profile_system_default
 
 class AddPointsServiceClientIntrospectionNode(AddPointsServiceClientNode):
+    """A ROS2 Node that enables introspection on its service client."""
 
     def __init__(self):
         super().__init__()

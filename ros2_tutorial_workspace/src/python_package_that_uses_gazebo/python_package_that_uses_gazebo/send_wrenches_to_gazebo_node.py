@@ -40,7 +40,7 @@ class SendWrenchesToGazeboNode(Node):
             qos_profile=1)
 
         while not self.count_subscribers('/world/shapes_with_tf2_and_wrench/wrench'):
-            print(f"Waiting for subscriber to be connected...")
+            self.get_logger().info("Waiting for subscriber to be connected...")
             time.sleep(1)
 
     def send_wrench_to_gazebo(self):
