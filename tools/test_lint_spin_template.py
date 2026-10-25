@@ -178,41 +178,45 @@ def MakeIt():
 SYNTAX_ERROR = "def main(:\n"
 
 
-def run(source, path="sample_python_node.py"):
-    return [(sev, msg) for _, sev, msg in lint_source(source, path)]
+def run(source, path="sample_python_node.py", require_node_suffix=False):
+    return [(sev, msg) for _, sev, msg in
+            lint_source(source, path, require_node_suffix)]
 
 
 CASES = [
-    (TEMPLATE, None, []),
-    (SPLIT_EXCEPTS, None, []),
-    (QUALIFIED_NAME, None, []),
-    (NESTED_FINALLY, None, []),
-    (RERAISE_TO_OUTER, None, []),
-    (EXECUTOR_SPIN, None, []),
-    (NO_TRY, None, [(ERROR, "not wrapped")]),
-    (OLD_TUTORIAL, None,
+    (TEMPLATE, None, False, []),
+    (SPLIT_EXCEPTS, None, False, []),
+    (QUALIFIED_NAME, None, False, []),
+    (NESTED_FINALLY, None, False, []),
+    (RERAISE_TO_OUTER, None, False, []),
+    (EXECUTOR_SPIN, None, False, []),
+    (NO_TRY, None, False, [(ERROR, "not wrapped")]),
+    (OLD_TUTORIAL, None, False,
      [(WARNING, "caught only by a broad except Exception")]),
-    (EXCEPTION_FIRST, None,
+    (EXCEPTION_FIRST, None, False,
      [(WARNING, "caught only by a broad except Exception")]),
-    (HANDLER_LOGS, None, [(WARNING, "does more than"),
-                          (WARNING, "does more than")]),
-    (BARE_EXCEPT, None, [(WARNING, "caught only by a bare except"),
-                         (WARNING, "caught only by a bare except")]),
-    (NAMING_OK, None, []),
-    (NAMING_BAD, None, [(WARNING, "should be PascalCase"),
-                        (WARNING, "node name 'My Node'"),
-                        (WARNING, "'my-topic'"),
-                        (WARNING, "'DoStuff'"),
-                        (WARNING, "'MakeIt'")]),
-    (NAMING_OK, "bad_name.py", [(WARNING, "should be named *_node.py")]),
-    (SYNTAX_ERROR, None, [(ERROR, "could not parse")]),
+    (HANDLER_LOGS, None, False, [(WARNING, "does more than"),
+                                 (WARNING, "does more than")]),
+    (BARE_EXCEPT, None, False, [(WARNING, "caught only by a bare except"),
+                                (WARNING, "caught only by a bare except")]),
+    (NAMING_OK, None, False, []),
+    (NAMING_BAD, None, False, [(WARNING, "should be PascalCase"),
+                               (WARNING, "node name 'My Node'"),
+                               (WARNING, "'my-topic'"),
+                               (WARNING, "'DoStuff'"),
+                               (WARNING, "'MakeIt'")]),
+    (NAMING_OK, "bad_name.py", False, []),
+    (NAMING_OK, "bad_name.py", True,
+     [(WARNING, "should be named *_node.py")]),
+    (NAMING_OK, "bad_name_node.py", True, []),
+    (SYNTAX_ERROR, None, False, [(ERROR, "could not parse")]),
 ]
 
 
 def main():
     failures = 0
-    for i, (source, path, expected) in enumerate(CASES):
-        findings = run(source, path or "sample_python_node.py")
+    for i, (source, path, suffix, expected) in enumerate(CASES):
+        findings = run(source, path or "sample_python_node.py", suffix)
         ok = len(findings) == len(expected) and all(
             sev == exp_sev and needle in msg
             for (sev, msg), (exp_sev, needle) in zip(findings, expected))

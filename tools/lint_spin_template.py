@@ -38,8 +38,10 @@ Naming (``python_best_practices`` and the node template) -- all warnings:
     * function/method names snake_case (PEP8);
     * the node name passed to ``super().__init__()`` snake_case;
     * topic/service names passed to create_publisher/subscription/
-      service/client snake_case (string literals only);
-    * modules defining a Node subclass live in a *_node.py file.
+      service/client snake_case (string literals only).
+    With --require-node-suffix additionally warns when a module defining a
+    Node subclass is not named *_node.py (tutorial samples; assessments
+    whose brief mandates exact module names should leave it off).
 
 Known limitation: a spin() that is wrapped lexically but called from a try
 elsewhere (``def run(): rclpy.spin(n)``) is reported as unguarded -- the
@@ -221,21 +223,22 @@ def _lint_names(tree: ast.AST):
     return findings
 
 
-def lint_source(source: str, path: str):
+def lint_source(source: str, path: str, require_node_suffix: bool = False):
     try:
         tree = ast.parse(source, filename=path)
     except SyntaxError as err:
         return [(err.lineno or 1, ERROR, f"could not parse: {err.msg}")]
     parents = _parents(tree)
     findings = _lint_names(tree)
-    if any(isinstance(n, ast.ClassDef) and _is_node_subclass(n)
-           for n in ast.walk(tree)):
+    if require_node_suffix and any(
+            isinstance(n, ast.ClassDef) and _is_node_subclass(n)
+            for n in ast.walk(tree)):
         base = Path(path).name
         if not base.endswith("_node.py") and base != "__init__.py":
             findings.append((1, WARNING,
                              f"module '{base}' defines a Node subclass and "
                              "should be named *_node.py (tutorial "
-                             "convention, e.g. print_forever_node.py)"))
+                             "convention)"))
     for node in ast.walk(tree):
         if not (isinstance(node, ast.Call) and _is_spin(node)):
             continue
@@ -304,6 +307,11 @@ def main(argv=None):
     parser.add_argument("paths", nargs="*", default=["."])
     parser.add_argument("--strict", action="store_true",
                         help="treat warnings as errors")
+    parser.add_argument("--require-node-suffix", action="store_true",
+                        help="warn when a module defining a Node subclass "
+                             "is not named *_node.py (tutorial samples; "
+                             "leave off when the brief mandates exact "
+                             "module names)")
     parser.add_argument("--quiet", action="store_true",
                         help="only print the summary")
     args = parser.parse_args(argv)
@@ -317,7 +325,8 @@ def main(argv=None):
             n_err += 1
             continue
         n_files += 1
-        for lineno, severity, message in lint_source(source, str(path)):
+        for lineno, severity, message in lint_source(
+                source, str(path), args.require_node_suffix):
             n_err += severity == ERROR
             n_warn += severity == WARNING
             if not args.quiet:
