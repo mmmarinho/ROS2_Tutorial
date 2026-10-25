@@ -137,6 +137,44 @@ def main():
         pass
 """
 
+NAMING_OK = """
+import rclpy
+from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
+from std_msgs.msg import String
+
+class AmazingQuotePublisher(Node):
+    def __init__(self):
+        super().__init__("amazing_quote_publisher")
+        self.pub = self.create_publisher(String, "/amazing_quote", 10)
+        self.create_timer(0.5, self.timer_callback)
+    def timer_callback(self):
+        self.pub.publish(String(data="hello"))
+
+def main(args=None):
+    try:
+        rclpy.init()
+        node = AmazingQuotePublisher()
+        rclpy.spin(node)
+    except (KeyboardInterrupt, ExternalShutdownException):
+        pass
+"""
+
+NAMING_BAD = """
+import rclpy
+from rclpy.node import Node
+
+class my_node(Node):
+    def __init__(self):
+        super().__init__("My Node")
+        self.pub = self.create_publisher(String, "my-topic", 10)
+    def DoStuff(self):
+        pass
+
+def MakeIt():
+    pass
+"""
+
 SYNTAX_ERROR = "def main(:\n"
 
 
@@ -158,6 +196,12 @@ CASES = [
                     (WARNING, "does more than")]),
     (BARE_EXCEPT, [(WARNING, "caught only by a bare except"),
                    (WARNING, "caught only by a bare except")]),
+    (NAMING_OK, []),
+    (NAMING_BAD, [(WARNING, "should be PascalCase"),
+                  (WARNING, "node name 'My Node'"),
+                  (WARNING, "'my-topic'"),
+                  (WARNING, "'DoStuff'"),
+                  (WARNING, "'MakeIt'")]),
     (SYNTAX_ERROR, [(ERROR, "could not parse")]),
 ]
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Lint rclpy.spin() call sites against the ROS2_Tutorial shutdown template.
+"""Lint rclpy.spin() call sites and naming against the tutorial practices.
 
-The tutorial (``python_node_explained`` and the week 3-5 lecture decks)
-requires every ``rclpy.spin()`` to sit inside::
+Shutdown template (``python_node_explained``, week 3-5 lecture decks):
+every ``rclpy.spin()`` must sit inside::
 
     try:
         rclpy.spin(node)
@@ -32,6 +32,14 @@ handlers re-raise or do not match:
       on swallowing, so the explicit tuple is preferred;
     * the operative handler is not just ``pass``.
 
+Naming (``python_best_practices`` and the node template) -- all warnings:
+
+    * class names PascalCase;
+    * function/method names snake_case (PEP8);
+    * the node name passed to ``super().__init__()`` snake_case;
+    * topic/service names passed to create_publisher/subscription/
+      service/client snake_case (string literals only).
+
 Known limitation: a spin() that is wrapped lexically but called from a try
 elsewhere (``def run(): rclpy.spin(n)``) is reported as unguarded -- the
 template calls spin inside main()'s try directly.
@@ -48,13 +56,20 @@ Test: ``python3 test_lint_spin_template.py``
 
 import argparse
 import ast
+import re
 import sys
 from pathlib import Path
 
 SPIN_FUNCS = {"spin", "spin_once", "spin_until_future_complete"}
+TOPIC_NAME_FUNCS = {"create_publisher", "create_subscription",
+                    "create_service", "create_client"}
 SKIP_DIRS = {"install", "build", "log", "__pycache__", ".venv",
              ".git", ".idea", "node_modules"}
 EXCEPTIONS = ("KeyboardInterrupt", "ExternalShutdownException")
+
+PASCAL_RE = re.compile(r"_?[A-Z][A-Za-z0-9]*$")
+SNAKE_RE = re.compile(r"_{0,2}[a-z][a-z0-9_]*$")
+NODE_SUFFIXES = {"Node"}
 
 ERROR = "error"
 WARNING = "warning"
@@ -130,13 +145,88 @@ def _operative_handler(exc, spin, parents):
         cur = node
 
 
+def _is_node_subclass(node: ast.ClassDef) -> bool:
+    for base in node.bases:
+        name = _name(base)
+        if name in NODE_SUFFIXES or name.endswith("Node"):
+            return True
+    return False
+
+
+def _node_name_arg(classdef: ast.ClassDef):
+    """The string literal passed to super().__init__('name') in this class."""
+    for sub in ast.walk(classdef):
+        if (isinstance(sub, ast.Call)
+                and isinstance(sub.func, ast.Attribute)
+                and sub.func.attr == "__init__"
+                and isinstance(sub.func.value, ast.Call)
+                and isinstance(sub.func.value.func, ast.Name)
+                and sub.func.value.func.id == "super"
+                and sub.args and isinstance(sub.args[0], ast.Constant)
+                and isinstance(sub.args[0].value, str)):
+            return sub.args[0]
+    return None
+
+
+def _snake_ok(name: str) -> bool:
+    return bool(SNAKE_RE.match(name.lstrip("/~").rstrip("/")))
+
+
+def _lint_names(tree: ast.AST):
+    """Naming conventions taught in the tutorial (python_best_practices:
+    PascalCase classes, snake_case files and functions; snake_case node,
+    topic and service names)."""
+    findings = []
+    exempt = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ClassDef) and any(
+                _name(b).endswith("TestCase") for b in node.bases):
+            for sub in node.body:  # unittest API forces camelCase names
+                if isinstance(sub, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    exempt.add(id(sub))
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ClassDef):
+            if not PASCAL_RE.match(node.name):
+                findings.append((node.lineno, WARNING,
+                                 f"class name '{node.name}' should be "
+                                 "PascalCase (tutorial: naming of classes)"))
+            if _is_node_subclass(node):
+                arg = _node_name_arg(node)
+                if arg is not None and not _snake_ok(arg.value):
+                    findings.append((arg.lineno, WARNING,
+                                     f"node name '{arg.value}' should be "
+                                     "snake_case (template uses e.g. "
+                                     "sample_python_node)"))
+        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            if id(node) not in exempt and not node.name.startswith("__") \
+                    and not SNAKE_RE.match(node.name.lstrip("_")):
+                findings.append((node.lineno, WARNING,
+                                 f"function/method name '{node.name}' "
+                                 "should be snake_case (tutorial: naming of "
+                                 "functions, PEP8)"))
+        elif (isinstance(node, ast.Call)
+              and isinstance(node.func, ast.Attribute)
+              and node.func.attr in TOPIC_NAME_FUNCS
+              and len(node.args) >= 2
+              and isinstance(node.args[1], ast.Constant)
+              and isinstance(node.args[1].value, str)
+              and "{" not in node.args[1].value):
+            name = node.args[1].value
+            if name and not all(_snake_ok(seg)
+                                for seg in name.lstrip("/~").split("/")):
+                findings.append((node.lineno, WARNING,
+                                 f"{node.func.attr} name '{name}' should be "
+                                 "snake_case"))
+    return findings
+
+
 def lint_source(source: str, path: str):
     try:
         tree = ast.parse(source, filename=path)
     except SyntaxError as err:
         return [(err.lineno or 1, ERROR, f"could not parse: {err.msg}")]
     parents = _parents(tree)
-    findings = []
+    findings = _lint_names(tree)
     for node in ast.walk(tree):
         if not (isinstance(node, ast.Call) and _is_spin(node)):
             continue
@@ -176,7 +266,7 @@ def lint_source(source: str, path: str):
                 findings.append((handler.lineno, WARNING,
                                  f"handler for {exc} does more than 'pass' "
                                  "(template uses pass)"))
-    return findings
+    return sorted(findings, key=lambda f: f[0])
 
 
 def _ancestors(node, parents):
