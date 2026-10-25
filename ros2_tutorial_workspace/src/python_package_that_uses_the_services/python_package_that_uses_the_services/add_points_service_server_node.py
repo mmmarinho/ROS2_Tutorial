@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 from package_with_interfaces.srv import AddPoints
 
 
@@ -66,7 +67,7 @@ def main(args=None):
         add_points_service_server_node = AddPointsServiceServerNode()
 
         rclpy.spin(add_points_service_server_node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)
