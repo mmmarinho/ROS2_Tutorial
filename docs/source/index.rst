@@ -253,6 +253,13 @@ If you enjoyed this tutorial, please
    cmake/index
    faq
 
+.. toctree::
+   :caption: Tools
+   :maxdepth: 2
+   :hidden:
+
+   tools
+
 Disclaimers
 -----------
 
