@@ -38,7 +38,8 @@ Naming (``python_best_practices`` and the node template) -- all warnings:
     * function/method names snake_case (PEP8);
     * the node name passed to ``super().__init__()`` snake_case;
     * topic/service names passed to create_publisher/subscription/
-      service/client snake_case (string literals only).
+      service/client snake_case (string literals only);
+    * modules defining a Node subclass live in a *_node.py file.
 
 Known limitation: a spin() that is wrapped lexically but called from a try
 elsewhere (``def run(): rclpy.spin(n)``) is reported as unguarded -- the
@@ -227,6 +228,14 @@ def lint_source(source: str, path: str):
         return [(err.lineno or 1, ERROR, f"could not parse: {err.msg}")]
     parents = _parents(tree)
     findings = _lint_names(tree)
+    if any(isinstance(n, ast.ClassDef) and _is_node_subclass(n)
+           for n in ast.walk(tree)):
+        base = Path(path).name
+        if not base.endswith("_node.py") and base != "__init__.py":
+            findings.append((1, WARNING,
+                             f"module '{base}' defines a Node subclass and "
+                             "should be named *_node.py (tutorial "
+                             "convention, e.g. print_forever_node.py)"))
     for node in ast.walk(tree):
         if not (isinstance(node, ast.Call) and _is_spin(node)):
             continue

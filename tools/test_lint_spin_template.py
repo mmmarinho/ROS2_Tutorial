@@ -178,38 +178,41 @@ def MakeIt():
 SYNTAX_ERROR = "def main(:\n"
 
 
-def run(source):
-    return [(sev, msg) for _, sev, msg in lint_source(source, "t.py")]
+def run(source, path="sample_python_node.py"):
+    return [(sev, msg) for _, sev, msg in lint_source(source, path)]
 
 
 CASES = [
-    (TEMPLATE, []),
-    (SPLIT_EXCEPTS, []),
-    (QUALIFIED_NAME, []),
-    (NESTED_FINALLY, []),
-    (RERAISE_TO_OUTER, []),
-    (EXECUTOR_SPIN, []),
-    (NO_TRY, [(ERROR, "not wrapped")]),
-    (OLD_TUTORIAL, [(WARNING, "caught only by a broad except Exception")]),
-    (EXCEPTION_FIRST, [(WARNING, "caught only by a broad except Exception")]),
-    (HANDLER_LOGS, [(WARNING, "does more than"),
-                    (WARNING, "does more than")]),
-    (BARE_EXCEPT, [(WARNING, "caught only by a bare except"),
-                   (WARNING, "caught only by a bare except")]),
-    (NAMING_OK, []),
-    (NAMING_BAD, [(WARNING, "should be PascalCase"),
-                  (WARNING, "node name 'My Node'"),
-                  (WARNING, "'my-topic'"),
-                  (WARNING, "'DoStuff'"),
-                  (WARNING, "'MakeIt'")]),
-    (SYNTAX_ERROR, [(ERROR, "could not parse")]),
+    (TEMPLATE, None, []),
+    (SPLIT_EXCEPTS, None, []),
+    (QUALIFIED_NAME, None, []),
+    (NESTED_FINALLY, None, []),
+    (RERAISE_TO_OUTER, None, []),
+    (EXECUTOR_SPIN, None, []),
+    (NO_TRY, None, [(ERROR, "not wrapped")]),
+    (OLD_TUTORIAL, None,
+     [(WARNING, "caught only by a broad except Exception")]),
+    (EXCEPTION_FIRST, None,
+     [(WARNING, "caught only by a broad except Exception")]),
+    (HANDLER_LOGS, None, [(WARNING, "does more than"),
+                          (WARNING, "does more than")]),
+    (BARE_EXCEPT, None, [(WARNING, "caught only by a bare except"),
+                         (WARNING, "caught only by a bare except")]),
+    (NAMING_OK, None, []),
+    (NAMING_BAD, None, [(WARNING, "should be PascalCase"),
+                        (WARNING, "node name 'My Node'"),
+                        (WARNING, "'my-topic'"),
+                        (WARNING, "'DoStuff'"),
+                        (WARNING, "'MakeIt'")]),
+    (NAMING_OK, "bad_name.py", [(WARNING, "should be named *_node.py")]),
+    (SYNTAX_ERROR, None, [(ERROR, "could not parse")]),
 ]
 
 
 def main():
     failures = 0
-    for i, (source, expected) in enumerate(CASES):
-        findings = run(source)
+    for i, (source, path, expected) in enumerate(CASES):
+        findings = run(source, path or "sample_python_node.py")
         ok = len(findings) == len(expected) and all(
             sev == exp_sev and needle in msg
             for (sev, msg), (exp_sev, needle) in zip(findings, expected))
