@@ -26,6 +26,7 @@ from ros_gz_interfaces.msg import EntityWrench
 
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 
 class SendWrenchesToGazeboNode(Node):
     """A ROS2 Node that sends wrenches to Gazebo."""
@@ -81,7 +82,7 @@ def main(args=None):
         node.send_wrench_to_gazebo()
         rclpy.spin(node)
 
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

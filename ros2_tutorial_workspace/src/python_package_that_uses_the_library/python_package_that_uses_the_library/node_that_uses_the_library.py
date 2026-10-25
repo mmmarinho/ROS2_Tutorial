@@ -26,6 +26,7 @@ import string
 
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 from python_package_with_a_library.sample_python_library import SampleClass, sample_function_for_square_of_sum
 
 
@@ -67,7 +68,7 @@ def main(args=None):
         node_that_uses_the_library = NodeThatUsesTheLibrary()
 
         rclpy.spin(node_that_uses_the_library)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

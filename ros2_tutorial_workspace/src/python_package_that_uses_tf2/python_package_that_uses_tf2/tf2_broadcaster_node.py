@@ -26,6 +26,7 @@ from geometry_msgs.msg import TransformStamped
 
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 
 import tf2_ros
 
@@ -94,7 +95,7 @@ def main(args=None):
         node = TF2BroadcasterNode()
 
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

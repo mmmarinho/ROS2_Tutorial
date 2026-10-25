@@ -28,6 +28,7 @@ import rclpy
 from rclpy.action import ActionServer
 from rclpy.action.server import ServerGoalHandle
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 
 from geometry_msgs.msg import Point
 from package_with_interfaces.action import MoveStraightIn2D
@@ -126,7 +127,7 @@ def main(args=None):
         node = MoveStraightIn2DActionServerNode()
 
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

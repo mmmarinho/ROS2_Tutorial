@@ -25,6 +25,7 @@ import rclpy
 from rclpy.action import ActionClient
 from rclpy.action.client import ClientGoalHandle
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 from rclpy.task import Future
 
 from geometry_msgs.msg import Pose, PoseStamped
@@ -94,7 +95,7 @@ def main(args=None):
         node.send_goal_async(desired_pose, "")
 
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)

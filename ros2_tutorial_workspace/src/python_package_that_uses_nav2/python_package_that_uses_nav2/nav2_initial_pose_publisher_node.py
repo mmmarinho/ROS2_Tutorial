@@ -25,6 +25,7 @@ import time
 
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 from geometry_msgs.msg import PoseWithCovarianceStamped
 
 class Nav2InitialPosePublisherNode(Node):
@@ -82,7 +83,7 @@ def main(args=None):
         node = Nav2InitialPosePublisherNode()
         node.send_initial_pose_with_covariance()
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
         print(e)
