@@ -24,12 +24,13 @@ handlers re-raise or do not match:
   errors
     * spin is not guarded by any try/except at all;
     * KeyboardInterrupt or ExternalShutdownException escapes to the module
-      top (unhandled -> traceback on Ctrl-C);
-    * ExternalShutdownException is caught only by a broad ``except
-      Exception`` (it should be caught explicitly with KeyboardInterrupt).
+      top (unhandled -> traceback on Ctrl-C).
   warnings
-    * the operative handler is a bare ``except:``;
-    * the operative handler does more than ``pass``.
+    * KeyboardInterrupt or ExternalShutdownException is caught only by a
+      broad ``except Exception``/bare ``except:`` -- the old tutorial
+      style: it works (exit 0, no KeyboardInterrupt traceback) but relies
+      on swallowing, so the explicit tuple is preferred;
+    * the operative handler is not just ``pass``.
 
 Known limitation: a spin() that is wrapped lexically but called from a try
 elsewhere (``def run(): rclpy.spin(n)``) is reported as unguarded -- the
@@ -156,22 +157,21 @@ def lint_source(source: str, path: str):
                                  "clean-shutdown mark"))
                 continue
             handler, kind = found
-            if kind == "broad" and handler.type is None:
-                findings.append((handler.lineno,
-                                 ERROR if exc == "ExternalShutdownException"
-                                 else WARNING,
-                                 f"bare except swallows everything; catch "
-                                 f"{exc} explicitly" if exc == "KeyboardInterrupt"
-                                 else "ExternalShutdownException is caught "
-                                 "only by a bare except -- catch it "
-                                 "explicitly with KeyboardInterrupt"))
-            elif kind == "broad":
-                findings.append((handler.lineno, ERROR,
-                                 "ExternalShutdownException is caught only "
-                                 "by a broad except Exception -- catch it "
-                                 "explicitly: "
-                                 "except (KeyboardInterrupt, "
-                                 "ExternalShutdownException): pass"))
+            if kind == "broad":
+                style = ("a bare except" if handler.type is None
+                         else "a broad except Exception")
+                if exc == "KeyboardInterrupt":
+                    findings.append((handler.lineno, WARNING,
+                                     f"KeyboardInterrupt is caught only by "
+                                     f"{style}; catch it explicitly"))
+                else:
+                    findings.append((handler.lineno, WARNING,
+                                     "ExternalShutdownException is caught "
+                                     f"only by {style}: old tutorial style, "
+                                     "it works (exit 0, no KeyboardInterrupt "
+                                     "traceback) but relies on swallowing; "
+                                     "prefer except (KeyboardInterrupt, "
+                                     "ExternalShutdownException): pass"))
             elif not _just_pass(handler):
                 findings.append((handler.lineno, WARNING,
                                  f"handler for {exc} does more than 'pass' "

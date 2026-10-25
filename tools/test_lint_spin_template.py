@@ -152,12 +152,12 @@ CASES = [
     (RERAISE_TO_OUTER, []),
     (EXECUTOR_SPIN, []),
     (NO_TRY, [(ERROR, "not wrapped")]),
-    (OLD_TUTORIAL, [(ERROR, "ExternalShutdownException is caught only")]),
-    (EXCEPTION_FIRST, [(ERROR, "ExternalShutdownException is caught only")]),
+    (OLD_TUTORIAL, [(WARNING, "caught only by a broad except Exception")]),
+    (EXCEPTION_FIRST, [(WARNING, "caught only by a broad except Exception")]),
     (HANDLER_LOGS, [(WARNING, "does more than"),
                     (WARNING, "does more than")]),
-    (BARE_EXCEPT, [(WARNING, "bare except"),
-                   (ERROR, "caught only")]),
+    (BARE_EXCEPT, [(WARNING, "caught only by a bare except"),
+                   (WARNING, "caught only by a bare except")]),
     (SYNTAX_ERROR, [(ERROR, "could not parse")]),
 ]
 
