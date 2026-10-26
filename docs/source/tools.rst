@@ -27,7 +27,7 @@ It checks four groups of things:
   existing modules (and are not missing for launchable nodes), and the
   :code:`resource/<package_name>` marker exists.
 
-Students can run it on their workspace with a single command, no clone
+You can run it on your workspace with a single command, no clone
 required:
 
 .. code-block:: console
@@ -36,12 +36,12 @@ required:
 
 Errors (unguarded :code:`spin()`, escaping shutdown exceptions, broken
 entry points, :file:`package.xml` mismatches) make the command exit
-non-zero, which is handy before submitting an assessment or in CI.
+non-zero, which is handy in CI or before sharing your code.
 Warnings (old-style broad-except shutdown handling, naming, best
 practices) are reported but do not fail the run; use :code:`--strict` to
 make them fail. Three opt-in checks are off by default:
 :code:`--require-node-suffix` (launchable modules must be named
-:code:`*_node.py` — leave off when a brief mandates exact module names),
+:code:`*_node.py` — leave off if your project names modules differently),
 :code:`--require-docstrings` (classes and public functions need
 docstrings) and :code:`--require-type-hints` (functions with partial type
 hints are flagged). A local copy can be run the same way:
