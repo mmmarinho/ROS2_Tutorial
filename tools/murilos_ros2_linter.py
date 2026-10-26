@@ -83,6 +83,16 @@ Known limitation: a spin() that is wrapped lexically but called from a try
 elsewhere (``def run(): rclpy.spin(n)``) is reported as unguarded -- the
 template calls spin inside main()'s try directly.
 
+Programmatic API (importable, no I/O besides reading the given files):
+``lint_source(source, path, ...)`` and ``lint_package(pkg_dir)`` return
+(lineno, severity, message) findings; ``shutdown_template_status(source,
+path)`` returns per-spin-site dicts (guarded, keyboard/shutdown caught
+explicitly or by a broad handler, has_broad_handler, ...) so scripts can
+check the shutdown template of a source programmatically instead of
+reading findings: conformant is guarded, with both exceptions caught
+(explicitly or by the broad handler) and a broad ``except Exception``
+present -- the two styles the tutorial teaches.
+
 Usage::
 
     ./murilos_ros2_linter.py [paths ...] [--strict] [--quiet]
@@ -503,6 +513,83 @@ def _ancestors(node, parents):
         yield cur
 
 
+def shutdown_template_status(source: str, path: str = "<string>"):
+    """Per-spin() call site template status, for scripts that need to know
+    whether a source follows the shutdown template without reading the
+    findings as text (or running a live Ctrl-C).
+
+    Returns one dict per spin call site (same set of sites the template
+    checks above report on), each with:
+
+        lineno             line of the spin call
+        parsed             False if the module does not parse (reason set)
+        guarded            a try/except with handlers encloses the spin
+        keyboard           'explicit' | 'broad' | None (escapes to top)
+                           for KeyboardInterrupt
+        shutdown           same for ExternalShutdownException
+        has_broad_handler  an enclosing try also has a non-reraising
+                           ``except Exception``/bare handler (the template's
+                           ``except Exception as e: print(e)``)
+        handlers_pass      every operative handler is just ``pass``
+        callback_form      spin is a thread/callback target, uninspectable
+
+    A site is template-conformant when ``guarded`` and both ``keyboard``
+    and ``shutdown`` are caught and ``has_broad_handler`` holds: exactly
+    the two styles the tutorial teaches --
+    ``except (KeyboardInterrupt, ExternalShutdownException)`` +
+    ``except Exception``, or the old ``except KeyboardInterrupt`` +
+    ``except Exception`` (which catches ESE by swallowing).
+    """
+    try:
+        tree = ast.parse(source, filename=path)
+    except SyntaxError as err:
+        return [{"lineno": err.lineno or 1, "parsed": False,
+                 "guarded": False, "keyboard": None, "shutdown": None,
+                 "has_broad_handler": False, "handlers_pass": False,
+                 "callback_form": False,
+                 "reason": f"could not parse: {err.msg}"}]
+    parents = _parents(tree)
+    statuses = []
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        if _is_spin(node):
+            guarded = any(isinstance(n, ast.Try) and n.handlers
+                          for n in _ancestors(node, parents))
+            kinds, handlers = {}, []
+            for exc in EXCEPTIONS:
+                found = (_operative_handler(exc, node, parents)
+                         if guarded else None)
+                kinds[exc] = found[1] if found else None
+                if found:
+                    handlers.append(found[0])
+            has_broad = any(
+                (handler.type is None
+                 or "Exception" in ([_name(t) for t in handler.type.elts]
+                                    if isinstance(handler.type, ast.Tuple)
+                                    else [_name(handler.type)]))
+                and not _reises(handler)
+                for anc in _ancestors(node, parents)
+                if isinstance(anc, ast.Try)
+                for handler in anc.handlers)
+            statuses.append({
+                "lineno": node.lineno, "parsed": True, "guarded": guarded,
+                "keyboard": kinds["KeyboardInterrupt"],
+                "shutdown": kinds["ExternalShutdownException"],
+                "has_broad_handler": has_broad,
+                "handlers_pass": bool(handlers)
+                and all(_just_pass(h) for h in handlers),
+                "callback_form": False})
+            continue
+        target = _spin_callback(node)
+        if target is not None:
+            statuses.append({"lineno": node.lineno, "parsed": True,
+                             "guarded": False, "keyboard": None,
+                             "shutdown": None, "has_broad_handler": False,
+                             "handlers_pass": False, "callback_form": True})
+    return statuses
+
+
 def iter_python_files(paths):
     for p in (Path(x) for x in paths):
         if p.is_file():
@@ -549,8 +636,8 @@ def _console_scripts(setup_py: Path):
 
 def lint_package(pkg_dir: Path):
     """ROS 2 package structure checks (package.xml vs folder, setup.py
-    console_scripts vs modules, resource marker). Importable so zip-based
-    flows (e.g. marking) can call it on an extracted tree."""
+    console_scripts vs modules, resource marker). Importable so scripts can
+    call it on an unpacked tree (e.g. extracted from a zip)."""
     # resolve(): Path('.').name is '', which would report every package as a
     # folder mismatch when the linter is run from inside the package folder.
     pkg_dir = Path(pkg_dir).resolve()

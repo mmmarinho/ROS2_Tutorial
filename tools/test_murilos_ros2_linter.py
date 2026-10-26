@@ -5,7 +5,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-from murilos_ros2_linter import ERROR, WARNING, lint_package, lint_source
+from murilos_ros2_linter import (ERROR, WARNING, lint_package, lint_source,
+                                 shutdown_template_status)
 
 TEMPLATE = """
 import rclpy
@@ -489,6 +490,73 @@ CASES = [
 ]
 
 
+NO_BROAD = """
+import rclpy
+from rclpy.executors import ExternalShutdownException
+
+def main():
+    try:
+        rclpy.spin(node)
+    except (KeyboardInterrupt, ExternalShutdownException):
+        pass
+"""
+
+LOGS_WITH_BROAD = """
+import rclpy
+from rclpy.executors import ExternalShutdownException
+
+def main():
+    try:
+        rclpy.spin(node)
+    except (KeyboardInterrupt, ExternalShutdownException):
+        get_logger().info("bye")
+    except Exception as e:
+        print(e)
+"""
+
+
+def _conformant(statuses):
+    return bool(statuses) and all(
+        s["parsed"] and s["guarded"] and s["keyboard"] and s["shutdown"]
+        and s["has_broad_handler"] for s in statuses)
+
+
+STATUS_CASES = [
+    ("template", TEMPLATE, True),
+    ("old_style", OLD_TUTORIAL, True),
+    ("bare_except", BARE_EXCEPT, True),
+    ("handler_logs_no_broad", HANDLER_LOGS, False),
+    ("handler_logs_with_broad", LOGS_WITH_BROAD, True),
+    ("no_broad", NO_BROAD, False),
+    ("no_try", NO_TRY, False),
+    ("thread_partial_callback", THREAD_PARTIAL, False),
+    ("thread_target_wrapped_template", THREAD_TARGET_WRAPPED, True),
+    ("syntax_error", SYNTAX_ERROR, False),
+]
+
+
+def run_status_cases():
+    failures = 0
+    for name, source, expected in STATUS_CASES:
+        statuses = shutdown_template_status(source, "x_node.py")
+        got = _conformant(statuses)
+        ok = got == expected
+        print(f"status {name:28s}: {'ok' if ok else 'FAIL'} {statuses}")
+        if not ok:
+            failures += 1
+    st = shutdown_template_status(TEMPLATE, "x_node.py")[0]
+    if not (st["keyboard"] == "explicit" and st["shutdown"] == "explicit"
+            and st["handlers_pass"]):
+        print(f"status template fields                : FAIL {st}")
+        failures += 1
+    st = shutdown_template_status(OLD_TUTORIAL, "x_node.py")[0]
+    if not (st["keyboard"] == "explicit" and st["shutdown"] == "broad"
+            and st["has_broad_handler"]):
+        print(f"status old_style fields               : FAIL {st}")
+        failures += 1
+    return failures
+
+
 def main():
     failures = 0
     for i, (source, path, suffix, expected) in enumerate(CASES):
@@ -504,6 +572,7 @@ def main():
             print(f"    got:      {findings}")
     failures += run_pkg_cases()
     failures += run_pkg_dot_case()
+    failures += run_status_cases()
     print("FAILED" if failures else "all tests passed")
     return 1 if failures else 0
 
