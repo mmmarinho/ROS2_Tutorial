@@ -86,7 +86,7 @@ As input to the initializer of :code:`ActionServer`, we need an action, a string
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
-   :lines: 36-49
+   :lines: 37-50
    :emphasize-lines: 1, 10
 
 The callback is likely to be the most complex aspect of an action server. The callback must receive an instance of
@@ -109,7 +109,7 @@ in the action file description, therefore we populate it as needed.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
-   :lines: 84-115
+   :lines: 85-116
    :emphasize-lines: 1, 7, 12, 18, 24, 30, 32
 
 The other methods are to support the important aspects of the action server. The :code:`get_distance` method will compute
@@ -118,7 +118,7 @@ This is represented by the following piece of code.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
-   :lines: 53-64
+   :lines: 54-65
    :emphasize-lines: 1, 12
 
 The action server will update the :code:`current_position` based on a simple constant speed motion of the point.
@@ -126,7 +126,7 @@ Remember :ref:`The controller equation <eq:actions_controller>`. This is represe
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
-   :lines: 66-81
+   :lines: 67-82
 
 Note that we use an arbitrary minimum distance as stop criterion. Do not expect the distance to ever be zero, given
 that we are using floating point representation for the numbers. If you do not add a stopping range it is likely

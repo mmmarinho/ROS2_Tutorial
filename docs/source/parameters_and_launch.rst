@@ -91,7 +91,7 @@ For one-off parameters, we just get them once after declaring them. Because we'r
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
-   :lines: 39-50
+   :lines: 40-51
    :emphasize-lines: 2-5,9,12
 
 In this case, we're making the topic name and publication periodicity as one-off configurable parameters.
@@ -108,13 +108,13 @@ For parameters that we obtain continuously through the lifetime of the Node, we 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
-   :lines: 35-37
+   :lines: 36-38
 
 then obtain them in another method, like so
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
-   :lines: 54-67
+   :lines: 55-68
    :emphasize-lines: 4,5,9,10
 
 In this example, we are making the :code:`quote` and the :code:`philosopher_name` as configurable parameters that can be changed continuously, during the lifetime of the Node. After they are changed, the node will publish a message with different contents.

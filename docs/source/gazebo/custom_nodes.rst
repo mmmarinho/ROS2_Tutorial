@@ -273,7 +273,7 @@ name for :program:`Gazebo` to know which entity to set the pose. This name can b
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 44-63
+   :lines: 45-64
    :emphasize-lines: 7
 
 The second possibly unfamiliar is the choice of ``rclpy.spin_until_future_complete`` to illustrate calling the service
@@ -281,7 +281,7 @@ client only once.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 66-81
+   :lines: 67-82
    :emphasize-lines: 11
 
 .. admonition:: Exercises
@@ -334,7 +334,7 @@ and :program:`Gazebo` won't recognise it.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_node.py
    :language: python
-   :lines: 45-69
+   :lines: 46-70
    :emphasize-lines: 7
 
 .. admonition:: Wait... what?
@@ -387,13 +387,13 @@ Lastly, `_gazebo_entity_id` is used to send the wrench to the correct entity.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
    :language: python
-   :lines: 39-43
+   :lines: 40-44
 
 There is also a simple proportional controller in one dimension.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
    :language: python
-   :lines: 67-70
+   :lines: 68-71
 
 Lastly, in the ``timer_callback``, we use the current coordinate value to compute the control action and send it to
 :program:`Gazebo`.
@@ -401,7 +401,7 @@ Lastly, in the ``timer_callback``, we use the current coordinate value to comput
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
    :language: python
    :emphasize-lines: 11,13
-   :lines: 92-113
+   :lines: 93-114
 
 .. admonition:: Exercises
 
