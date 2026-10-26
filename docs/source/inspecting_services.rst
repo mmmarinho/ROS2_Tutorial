@@ -167,7 +167,7 @@ Note that we are using inheritance from the previously written :code:`AddPointsS
            :language: python
            :linenos:
            :lines: 24-
-           :emphasize-lines: 4,5,12-16
+           :emphasize-lines: 4,6,14-18
 
     .. tab-item:: Introspection Server
 
@@ -179,7 +179,7 @@ Note that we are using inheritance from the previously written :code:`AddPointsS
            :language: python
            :linenos:
            :lines: 24-
-           :emphasize-lines: 4,5,12-16
+           :emphasize-lines: 4,6,14-18
 
 Build and source
 ----------------

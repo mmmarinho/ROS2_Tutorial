@@ -89,7 +89,7 @@ of the instance to guarantee they will not get out of scope before the result is
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
-   :lines: 36-42
+   :lines: 37-43
    :emphasize-lines: 4,6,7
 
 The following method can be used to send the action goal and trigger the entire process. Notably, suppose that a suitable
@@ -104,7 +104,7 @@ is for the result of the goal request operation.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
-   :lines: 44-54
+   :lines: 45-55
    :emphasize-lines: 1,5,10,11
 
 After the goal is processed, the goal-related callback will be automatically called for us given that it was added to the respective
@@ -115,7 +115,7 @@ We ask for a result asynchronously. We then assign a third callback for when a r
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
-   :lines: 56-65
+   :lines: 57-66
    :emphasize-lines: 1,4,9,10
 
 The result callback will receive a future and process the result of the action somehow. In this toy example, we simply
@@ -123,13 +123,13 @@ print the results to the screen.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
-   :lines: 67-69
+   :lines: 68-70
 
 Lastly, we see that the callback for the feedback is, again, very similar to that for a subscriber.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
-   :lines: 71-73
+   :lines: 72-74
 
 To simplify this example slightly, please notice that the action is instantiated in the :code:`main` function, and
 the action is triggered only once.
@@ -139,7 +139,7 @@ the object will not yet exist, or you will be locked in the spinner before sendi
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
-   :lines: 84-92
+   :lines: 85-93
 
 Build and source
 ----------------
