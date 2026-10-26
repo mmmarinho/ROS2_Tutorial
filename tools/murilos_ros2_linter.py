@@ -57,8 +57,8 @@ Naming (``python_best_practices`` and the node template) -- all warnings:
     * topic/service names passed to create_publisher/subscription/
       service/client snake_case (string literals only).
     With --require-node-suffix additionally warns when a module defining a
-    Node subclass is not named *_node.py (tutorial samples; assessments
-    whose brief mandates exact module names should leave it off).
+    Node subclass is not named *_node.py (the tutorial's own convention;
+    leave it off if your project names modules differently).
 
 Package structure checks run for every package.xml found under the given
 paths (lint_package() is importable for zip-based flows):
@@ -586,9 +586,9 @@ def main(argv=None):
                         help="treat warnings as errors")
     parser.add_argument("--require-node-suffix", action="store_true",
                         help="warn when a module defining a Node subclass "
-                             "is not named *_node.py (tutorial samples; "
-                             "leave off when the brief mandates exact "
-                             "module names)")
+                             "is not named *_node.py (the tutorial's own "
+                             "convention; leave off if your project names "
+                             "modules differently)")
     parser.add_argument("--require-docstrings", action="store_true",
                         help="warn on classes/public functions without "
                              "docstrings (tutorial: Document your code "
