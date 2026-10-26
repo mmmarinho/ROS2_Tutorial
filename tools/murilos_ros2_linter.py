@@ -30,7 +30,12 @@ handlers re-raise or do not match:
       broad ``except Exception``/bare ``except:`` -- the old tutorial
       style: it works (exit 0, no KeyboardInterrupt traceback) but relies
       on swallowing, so the explicit tuple is preferred;
-    * the operative handler is not just ``pass``.
+    * the operative handler is not just ``pass``;
+    * a spin function is handed to something else as a callback/thread
+      target (``threading.Thread(target=rclpy.spin, args=(node,))``): there
+      is no ``Call`` node for that spin, so the template cannot be checked
+      here -- the fix is to wrap it in a function of your own that uses the
+      template, which this linter can then check.
 
 Best practices (``python_best_practices``, ``python_node_explained``,
 ``parameters_and_launch``) -- all warnings:
@@ -106,18 +111,42 @@ ERROR = "error"
 WARNING = "warning"
 
 
-def _is_spin(call: ast.Call) -> bool:
-    func = call.func
-    if isinstance(func, ast.Name):
-        return func.id in SPIN_FUNCS
-    if not isinstance(func, ast.Attribute) or func.attr not in SPIN_FUNCS:
-        return False
-    base = func.value
+def _spin_ref(expr: ast.expr):
+    """The spin function ``expr`` refers to (``spin``, ``rclpy.spin``,
+    ``ex.spin``, ``rclpy.executors.spin``...), or None. Shared by the call
+    sites below and by the callback form, where the name is used without
+    being called."""
+    if isinstance(expr, ast.Name):
+        return expr.id if expr.id in SPIN_FUNCS else None
+    if not isinstance(expr, ast.Attribute) or expr.attr not in SPIN_FUNCS:
+        return None
+    base = expr.value
     if isinstance(base, ast.Name):
-        return base.id == "rclpy" or "executor" in base.id.lower()
+        if base.id == "rclpy" or "executor" in base.id.lower():
+            return expr.attr
+        return None
     if isinstance(base, ast.Attribute):
-        return base.attr == "executors"
-    return False
+        return expr.attr if base.attr == "executors" else None
+    return None
+
+
+def _is_spin(call: ast.Call) -> bool:
+    return _spin_ref(call.func) is not None
+
+
+def _spin_callback(call: ast.Call):
+    """The spin passed as an argument (``Thread(target=rclpy.spin,
+    args=(node,))``, ``functools.partial(rclpy.spin, node)``), or None.
+
+    Such a spin has no ``Call`` node, so ``lint_source`` never reaches it
+    with the template check and reports nothing while Ctrl-C prints a
+    traceback from the worker thread. Only a warning: the handler belongs to
+    rclpy's own body, which this file cannot inspect.
+    """
+    for expr in list(call.args) + [kw.value for kw in call.keywords]:
+        if _spin_ref(expr) is not None:
+            return expr
+    return None
 
 
 def _name(node: ast.expr) -> str:
@@ -355,45 +384,63 @@ def lint_source(source: str, path: str, require_node_suffix: bool = False,
                              "should be named *_node.py (tutorial "
                              "convention)"))
     for node in ast.walk(tree):
-        if not (isinstance(node, ast.Call) and _is_spin(node)):
+        if not isinstance(node, ast.Call):
             continue
-        guarded = any(isinstance(n, ast.Try) and n.handlers
-                      for n in _ancestors(node, parents))
-        if not guarded:
-            findings.append((node.lineno, ERROR,
-                             "rclpy.spin() is not wrapped in try/except "
-                             "(or is called from outside the try; see "
-                             "--help for the expected template)"))
+        if _is_spin(node):
+            findings.extend(_lint_spin_call(node, parents))
             continue
-        for exc in EXCEPTIONS:
-            found = _operative_handler(exc, node, parents)
-            if found is None:
-                findings.append((node.lineno, ERROR,
-                                 f"{exc} escapes to the module top: Ctrl-C "
-                                 "would print a traceback and exit "
-                                 "non-zero (see the template in --help)"))
-                continue
-            handler, kind = found
-            if kind == "broad":
-                style = ("a bare except" if handler.type is None
-                         else "a broad except Exception")
-                if exc == "KeyboardInterrupt":
-                    findings.append((handler.lineno, WARNING,
-                                     f"KeyboardInterrupt is caught only by "
-                                     f"{style}; catch it explicitly"))
-                else:
-                    findings.append((handler.lineno, WARNING,
-                                     "ExternalShutdownException is caught "
-                                     f"only by {style}: old tutorial style, "
-                                     "it works (exit 0, no KeyboardInterrupt "
-                                     "traceback) but relies on swallowing; "
-                                     "prefer except (KeyboardInterrupt, "
-                                     "ExternalShutdownException): pass"))
-            elif not _just_pass(handler):
-                findings.append((handler.lineno, WARNING,
-                                 f"handler for {exc} does more than 'pass' "
-                                 "(template uses pass)"))
+        target = _spin_callback(node)
+        if target is not None:
+            findings.append((node.lineno, WARNING,
+                             f"{ast.unparse(target)} is passed to "
+                             f"{ast.unparse(node.func)}() as a callback/thread"
+                             " target: that spin runs outside any try in this "
+                             "file, so wrap it in a function using the "
+                             "template (except (KeyboardInterrupt, "
+                             "ExternalShutdownException): pass)"))
     return sorted(findings, key=lambda f: f[0])
+
+
+def _lint_spin_call(node: ast.Call, parents: dict):
+    """Template findings for one spin() call site."""
+    findings = []
+    guarded = any(isinstance(n, ast.Try) and n.handlers
+                  for n in _ancestors(node, parents))
+    if not guarded:
+        findings.append((node.lineno, ERROR,
+                         "rclpy.spin() is not wrapped in try/except "
+                         "(or is called from outside the try; see "
+                         "--help for the expected template)"))
+        return findings
+    for exc in EXCEPTIONS:
+        found = _operative_handler(exc, node, parents)
+        if found is None:
+            findings.append((node.lineno, ERROR,
+                             f"{exc} escapes to the module top: Ctrl-C "
+                             "would print a traceback and exit "
+                             "non-zero (see the template in --help)"))
+            continue
+        handler, kind = found
+        if kind == "broad":
+            style = ("a bare except" if handler.type is None
+                     else "a broad except Exception")
+            if exc == "KeyboardInterrupt":
+                findings.append((handler.lineno, WARNING,
+                                 f"KeyboardInterrupt is caught only by "
+                                 f"{style}; catch it explicitly"))
+            else:
+                findings.append((handler.lineno, WARNING,
+                                 "ExternalShutdownException is caught "
+                                 f"only by {style}: old tutorial style, "
+                                 "it works (exit 0, no KeyboardInterrupt "
+                                 "traceback) but relies on swallowing; "
+                                 "prefer except (KeyboardInterrupt, "
+                                 "ExternalShutdownException): pass"))
+        elif not _just_pass(handler):
+            findings.append((handler.lineno, WARNING,
+                             f"handler for {exc} does more than 'pass' "
+                             "(template uses pass)"))
+    return findings
 
 
 def _ancestors(node, parents):
@@ -453,7 +500,9 @@ def lint_package(pkg_dir: Path):
     """ROS 2 package structure checks (package.xml vs folder, setup.py
     console_scripts vs modules, resource marker). Importable so zip-based
     flows (e.g. marking) can call it on an extracted tree."""
-    pkg_dir = Path(pkg_dir)
+    # resolve(): Path('.').name is '', which would report every package as a
+    # folder mismatch when the linter is run from inside the package folder.
+    pkg_dir = Path(pkg_dir).resolve()
     findings = []
     try:
         xml_root = ET.parse(pkg_dir / "package.xml").getroot()

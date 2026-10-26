@@ -87,6 +87,53 @@ def main():
         pass
 """
 
+THREAD_TARGET = """
+import rclpy
+import threading
+
+def main():
+    t = threading.Thread(target=rclpy.spin, args=(node,), daemon=True)
+    t.start()
+"""
+
+THREAD_TARGET_WRAPPED = """
+import rclpy
+import threading
+from rclpy.executors import ExternalShutdownException
+
+def _spin(node):
+    try:
+        rclpy.spin(node)
+    except (KeyboardInterrupt, ExternalShutdownException):
+        pass
+    except Exception as e:
+        print(e)
+
+def main():
+    threading.Thread(target=_spin, args=(node,), daemon=True).start()
+"""
+
+THREAD_TARGET_UNGUARDED_WRAPPER = """
+import rclpy
+import threading
+
+def _spin(node):
+    rclpy.spin(node)
+
+def main():
+    threading.Thread(target=_spin, args=(node,), daemon=True).start()
+"""
+
+THREAD_PARTIAL = """
+import functools
+import rclpy
+import threading
+
+def main():
+    job = functools.partial(rclpy.spin, node)
+    threading.Thread(target=job, daemon=True).start()
+"""
+
 NO_TRY = """
 import rclpy
 
@@ -312,6 +359,25 @@ def run_pkg_cases():
     return failures
 
 
+def run_pkg_dot_case():
+    """lint_package() on '.' (or a trailing slash) must not report the folder
+    mismatch: Path('.').name is '', which made every package look misnamed
+    when the linter was run from inside the package folder."""
+    failures = 0
+    with tempfile.TemporaryDirectory() as tmp:
+        for label, rel in (("dot", "."), ("trailing_slash", ""),
+                           ("subpath", "demo/..")):
+            pkg = make_pkg(Path(tmp) / label)
+            findings = [(sev, msg) for _, sev, msg
+                        in lint_package(pkg / rel if rel else pkg / ".")]
+            ok = not findings
+            print(f"pkg path form {label:15s}: {'ok' if ok else 'FAIL'}")
+            if not ok:
+                failures += 1
+                print(f"    got: {findings}")
+    return failures
+
+
 def run(source, path="sample_python_node.py", require_node_suffix=False,
         require_docstrings=False, require_type_hints=False):
     return [(sev, msg) for _, sev, msg in
@@ -326,6 +392,11 @@ CASES = [
     (NESTED_FINALLY, None, False, []),
     (RERAISE_TO_OUTER, None, False, []),
     (EXECUTOR_SPIN, None, False, []),
+    (THREAD_TARGET, None, False,
+     [(WARNING, "as a callback/thread target")]),
+    (THREAD_TARGET_WRAPPED, None, False, []),
+    (THREAD_TARGET_UNGUARDED_WRAPPER, None, False, [(ERROR, "not wrapped")]),
+    (THREAD_PARTIAL, None, False, [(WARNING, "as a callback/thread target")]),
     (NO_TRY, None, False, [(ERROR, "not wrapped")]),
     (OLD_TUTORIAL, None, False,
      [(WARNING, "caught only by a broad except Exception")]),
@@ -380,6 +451,7 @@ def main():
             print(f"    expected: {expected}")
             print(f"    got:      {findings}")
     failures += run_pkg_cases()
+    failures += run_pkg_dot_case()
     print("FAILED" if failures else "all tests passed")
     return 1 if failures else 0
 
