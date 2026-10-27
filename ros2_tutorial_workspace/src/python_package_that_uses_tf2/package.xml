@@ -7,6 +7,7 @@
   <maintainer email="murilo.marinho@manchester.ac.uk">root</maintainer>
   <license>TODO: License declaration</license>
 
+  <depend>rclpy</depend>
   <depend>geometry_msgs</depend>
   <depend>tf2_ros</depend>
 

@@ -7,7 +7,7 @@
   <maintainer email="murilomarinho@ieee.org">murilo</maintainer>
   <license>TODO: License declaration</license>
 
-  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
   <depend>python_package_with_a_library</depend>
 
   <test_depend>ament_copyright</test_depend>

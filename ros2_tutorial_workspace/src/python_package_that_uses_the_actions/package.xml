@@ -8,6 +8,7 @@
   <license>TODO: License declaration</license>
 
   <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
   <depend>package_with_interfaces</depend>
 
   <test_depend>ament_copyright</test_depend>
