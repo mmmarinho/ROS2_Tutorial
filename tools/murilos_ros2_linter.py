@@ -73,11 +73,20 @@ paths (lint_package() is importable for zip-based flows):
     * package folder name != <name> in package.xml;
     * console_scripts entry point pointing at a missing module or a
       missing target function;
+    * a console_scripts entry not of the form 'name =
+      package.module:function' (tutorial 5.1 format; a missing comma
+      silently fuses two entries);
     * a module in the package defining a Node subclass and main() but not
-      listed in console_scripts (ros2 run cannot launch it).
+      listed in console_scripts (ros2 run cannot launch it);
+    * a Node module importing a package that package.xml does not declare
+      as <depend> (tutorial 5.1 "Handling dependencies");
+    * the <package>/<package>/ Python folder without __init__.py (tutorial
+      5.1 file structure; ros2 run cannot import the modules).
   warnings
     * module with main() but no entry point (no Node subclass);
-    * missing resource/<package_name> marker file.
+    * missing resource/<package_name> marker file;
+    * non-Node module importing an undeclared third-party top-level
+      module.
 
 Known limitation: a spin() that is wrapped lexically but called from a try
 elsewhere (``def run(): rclpy.spin(n)``) is reported as unguarded -- the
@@ -107,6 +116,7 @@ Test: ``python3 test_murilos_ros2_linter.py``
 
 import argparse
 import ast
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -600,12 +610,17 @@ def iter_python_files(paths):
                     yield f
 
 
-def _console_scripts(setup_py: Path):
-    """[(exe, 'module:func'), ...] from setup(entry_points=
+_CONSOLE_SCRIPT_RE = re.compile(
+    r"[A-Za-z0-9._-]+\s*=\s*"
+    r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*\s*:\s*[A-Za-z_]\w*\s*")
+
+
+def _console_script_strings(setup_py: Path):
+    """Raw console_scripts entry strings from setup(entry_points=
     {'console_scripts': [...]}) when statically resolvable, else None."""
     try:
         tree = ast.parse(setup_py.read_text(encoding="utf-8",
-                                             errors="replace"))
+                                            errors="replace"))
     except (OSError, SyntaxError):
         return None
     for node in ast.walk(tree):
@@ -624,14 +639,39 @@ def _console_scripts(setup_py: Path):
                         scripts = [e.value for e in v.elts]
             if scripts is None:
                 continue
-            entries = []
-            for s in scripts:
-                if "=" not in s or ":" not in s:
-                    continue
-                exe, target = s.split("=", 1)
-                entries.append((exe.strip(), target.strip()))
-            return entries
+            return scripts
     return None
+
+
+def _console_scripts(setup_py: Path):
+    """[(exe, 'module:func'), ...] from setup(entry_points=
+    {'console_scripts': [...]}) when statically resolvable, else None."""
+    scripts = _console_script_strings(setup_py)
+    if scripts is None:
+        return None
+    entries = []
+    for s in scripts:
+        if "=" not in s or ":" not in s:
+            continue
+        exe, target = s.split("=", 1)
+        entries.append((exe.strip(), target.strip()))
+    return entries
+
+
+def _ament_installed():
+    """Package names visible in the share/ folders of AMENT_PREFIX_PATH:
+    dependencies already installed on this machine (e.g. prebuilt
+    interface packages) do not need to be flagged as undeclared."""
+    prefixes = [p for p in os.environ.get("AMENT_PREFIX_PATH", "").split(
+        os.pathsep) if p]
+    names = set()
+    for prefix in prefixes:
+        share = Path(prefix) / "share"
+        try:
+            names |= {d.name for d in share.iterdir() if d.is_dir()}
+        except OSError:
+            continue
+    return names
 
 
 def lint_package(pkg_dir: Path):
@@ -657,6 +697,14 @@ def lint_package(pkg_dir: Path):
                          "declared name)"))
     setup_py = pkg_dir / "setup.py"
     if setup_py.exists():
+        for s in _console_script_strings(setup_py) or []:
+            if not _CONSOLE_SCRIPT_RE.fullmatch(s):
+                findings.append((0, ERROR,
+                                 f"malformed console_scripts entry {s!r}: "
+                                 "each entry must be one string "
+                                 "'name = package.module:function' with a "
+                                 "comma between entries (tutorial 5.1 "
+                                 "'Making ros2 run work')"))
         entries = _console_scripts(setup_py)
         if entries is not None:
             referenced = set()
@@ -712,6 +760,51 @@ def lint_package(pkg_dir: Path):
                              f"resource/{name} marker file is missing "
                              "(needed by ament_python for ros2 pkg "
                              "discovery)"))
+    # tutorial 5.1 (Creating a Python Node from scratch): package.xml
+    # declares what the Nodes import; the module folder is a real package.
+    declared = {" ".join((t.text or "").split())
+                for t in xml_root.iter()
+                if t.tag in ("depend", "exec_depend", "build_depend")}
+    pkg_sub = pkg_dir / name if name else None
+    if pkg_sub is not None and pkg_sub.is_dir():
+        if not (pkg_sub / "__init__.py").exists():
+            findings.append((0, ERROR,
+                             f"{name}/__init__.py is missing: setup.py only "
+                             "installs proper Python packages, so ros2 run "
+                             "cannot import the modules (tutorial 5.1 file "
+                             "structure)"))
+        installed = _ament_installed()
+        for mod_file in sorted(pkg_sub.rglob("*.py")):
+            if mod_file.name == "__init__.py":
+                continue
+            try:
+                tree = ast.parse(mod_file.read_text(
+                    encoding="utf-8", errors="replace"))
+            except SyntaxError:
+                continue  # reported by the file pass
+            tops = set()
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    tops.update(a.name.split(".")[0] for a in node.names)
+                elif isinstance(node, ast.ImportFrom) and node.level == 0 \
+                        and node.module:
+                    tops.add(node.module.split(".")[0])
+            has_node = any(isinstance(n, ast.ClassDef)
+                           and _is_node_subclass(n)
+                           for n in ast.walk(tree))
+            for top in sorted(tops):
+                if (top in sys.stdlib_module_names or top == name
+                        or top in declared or top in installed
+                        or (pkg_dir / top).exists()
+                        or (pkg_dir / (top + ".py")).exists()):
+                    continue
+                message = (f"'{mod_file.name}' imports '{top}' but "
+                           f"package.xml declares no "
+                           f"<depend>{top}</depend> (tutorial 5.1 'Handling "
+                           f"dependencies': add new dependencies to "
+                           f"package.xml)")
+                findings.append((0, ERROR if (has_node or top == "rclpy")
+                                 else WARNING, message))
     return findings
 
 

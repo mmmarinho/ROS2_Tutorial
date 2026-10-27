@@ -278,7 +278,8 @@ SYNTAX_ERROR = "def main(:\n"
 
 
 PKG_XML = ('<?xml version="1.0"?>\n'
-           '<package format="3"><name>{}</name></package>\n')
+           '<package format="3"><name>{}</name>'
+           '<depend>rclpy</depend></package>\n')
 NODE_MAIN = """import rclpy
 from rclpy.node import Node
 
@@ -289,15 +290,21 @@ class Barker(Node):
 def main(args=None):
     pass
 """
+NODE_ACME = NODE_MAIN.replace("import rclpy",
+                              "import rclpy\nimport acme_interfaces.msg")
+HELPER_ACME = "import acme_utils\n\n\ndef help():\n    return 42\n"
 
 
 def make_pkg(root, folder="demo", xml_name="demo",
              scripts=("barker = demo.barker:main",),
-             files=None, resource=True, setup_body=None):
+             files=None, resource=True, setup_body=None,
+             xml_body=None, init=True):
     pkg = Path(root) / folder
     (pkg / "demo").mkdir(parents=True)
-    (pkg / "package.xml").write_text(PKG_XML.format(xml_name))
-    (pkg / "demo" / "__init__.py").write_text("")
+    (pkg / "package.xml").write_text(
+        xml_body or PKG_XML.format(xml_name))
+    if init:
+        (pkg / "demo" / "__init__.py").write_text("")
     for rel, content in (files or {"demo/barker.py": NODE_MAIN}).items():
         target = pkg / rel
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -338,6 +345,27 @@ PKG_CASES = [
       "package_name = 'demo'\n"
       "setup(name='demo', entry_points={'console_scripts': ["
       "package_name + '.barker:main']})\n"}, []),
+    # tutorial 5.1 rules
+    ("no_rclpy_depend",
+     {"xml_body": '<?xml version="1.0"?>\n'
+                  '<package format="3"><name>demo</name></package>\n'},
+     [(ERROR, "<depend>rclpy</depend>")]),
+    ("undeclared_import",
+     {"files": {"demo/barker.py": NODE_ACME}},
+     [(ERROR, "<depend>acme_interfaces</depend>")]),
+    ("fused_entry",
+     {"scripts": ("barker = demo.barker:main sleeper = demo.sleeper:main",),
+      "files": {"demo/barker.py": NODE_MAIN,
+                "demo/sleeper.py": NODE_MAIN.replace("Barker", "Sleeper")}},
+     [(ERROR, "malformed console_scripts"),
+      (ERROR, "targets function"),
+      (ERROR, "no console_scripts entry")]),
+    ("no_init", {"init": False},
+     [(ERROR, "__init__.py is missing")]),
+    ("nonnode_undeclared",
+     {"files": {"demo/barker.py": NODE_MAIN,
+                "demo/helper.py": HELPER_ACME}},
+     [(WARNING, "<depend>acme_utils</depend>")]),
 ]
 
 
