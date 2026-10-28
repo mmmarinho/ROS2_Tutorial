@@ -5,3 +5,4 @@ sphinxext-remoteliteralinclude
 sphinx-book-theme
 sphinxcontrib-mermaid
 sphinxcontrib-bibtex
+sphinx-reredirects

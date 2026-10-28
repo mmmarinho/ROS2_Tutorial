@@ -53,9 +53,9 @@ By no coincidence, the :file:`package.xml` has the :code:`.xml` extension, meani
 
 Let us add the dependency between the :code:`<license>` and :code:`<test_depend>` tags. This is not a strict requirement but is where it commonly is for standard packages.
 
-:download:`package.xml <../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml>`
+:download:`package.xml <../../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/package.xml
    :language: xml
    :linenos:
    :emphasize-lines: 10
@@ -65,9 +65,9 @@ Creating the Node
 
 In the directory :file:`src/python_package_with_a_node/python_package_with_a_node`, create a new file called :file:`print_forever_node.py`. Copy and paste the following contents into the file.
 
-:download:`print_forever_node.py <../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py>`
+:download:`print_forever_node.py <../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :linenos:
    :lines: 24-
@@ -85,9 +85,9 @@ To do so, we modify the :code:`console_scripts` key in the :code:`entry_points` 
 
    :code:`console_scripts` expects a :code:`list` of :code:`str` in a specific format. Hence, follow the format properly and don't forget the commas to separate elements in the :code:`list`.
 
-:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py>`
+:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/setup.py
    :language: python
    :linenos:
    :emphasize-lines: 24
@@ -106,7 +106,7 @@ Build and source
 
 We can build and source the workspace with the following command.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 Test
 ----

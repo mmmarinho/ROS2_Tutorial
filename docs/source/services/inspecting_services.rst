@@ -161,9 +161,9 @@ Note that we are using inheritance from the previously written :code:`AddPointsS
         The quality-of-service profile is within the same scope as the quality-of-service for messages and has a similar meaning. The :code:`introspection_state` defines how much of the service can be introspected.
         Less information can be made accessible if that is necessary.
 
-        :download:`add_points_service_client_introspection_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py>`
+        :download:`add_points_service_client_introspection_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py>`
 
-        .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_client_introspection_node.py
            :language: python
            :linenos:
            :lines: 24-
@@ -173,9 +173,9 @@ Note that we are using inheritance from the previously written :code:`AddPointsS
 
         The service server has the same syntax and requirements to activate introspection as the service client.
 
-        :download:`add_points_service_server_introspection_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py>`
+        :download:`add_points_service_server_introspection_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py>`
 
-        .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py
+        .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_services/python_package_that_uses_the_services/add_points_service_server_introspection_node.py
            :language: python
            :linenos:
            :lines: 24-
@@ -186,7 +186,7 @@ Build and source
 
 Before we proceed, let us build and source once.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 Finally the :program:`ros2 service echo`
 ----------------------------------------

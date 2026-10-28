@@ -15,7 +15,7 @@ Workshops
 Quick overview
 --------------
 
-#. :doc:`Installation <installation>`
+#. :doc:`Installation <../setup/installation>`
     Setting up your system to use `SAS`.
 
 #. :doc:`Creating a new SASRobotDriver <sas_robot_driver_add_new_robot>`

@@ -1,7 +1,7 @@
 Action Servers
 ==============
 
-.. include:: the_topic_is_under_heavy_construction.rst
+.. include:: ../the_topic_is_under_heavy_construction.rst
 
 .. versionadded:: Jazzy
 
@@ -72,9 +72,9 @@ In this section, we will do the following.
 
 Let us create the action server as follows.
 
-:download:`move_straight_in_2d_action_server_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py>`
+:download:`move_straight_in_2d_action_server_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
    :lines: 24-
    :linenos:
@@ -84,7 +84,7 @@ As always, our class must inherit from :code:`rclpy.node.Node`, so that it can b
 An action server is an instance of :code:`rclpy.action.ActionServer`.
 As input to the initializer of :code:`ActionServer`, we need an action, a string that names this action server, and a suitable callback.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
    :lines: 37-50
    :emphasize-lines: 1, 10
@@ -107,7 +107,7 @@ not set a goal as succeeded, it will automatically be aborted at the end of the 
 Lastly, the method must return an instance of :code:`MyAction.Result`. In our case, we have the field :code:`final_position`
 in the action file description, therefore we populate it as needed.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
    :lines: 85-116
    :emphasize-lines: 1, 7, 12, 18, 24, 30, 32
@@ -116,7 +116,7 @@ The other methods are to support the important aspects of the action server. The
 the Euclidean distance between :code:`current_position` and :code:`desired_position`. Remember :ref:`The distance equation <eq:actions_distance>`.
 This is represented by the following piece of code.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
    :lines: 54-65
    :emphasize-lines: 1, 12
@@ -124,7 +124,7 @@ This is represented by the following piece of code.
 The action server will update the :code:`current_position` based on a simple constant speed motion of the point.
 Remember :ref:`The controller equation <eq:actions_controller>`. This is represented by the following piece of code.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_server_node.py
    :language: python
    :lines: 67-82
 
@@ -137,7 +137,7 @@ Adjusting the :file:`setup.py`
 
 This file will include the directives for the server and client. The one for the server is highlighted below.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/setup.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/setup.py
    :language: python
    :emphasize-lines: 23
 
@@ -146,7 +146,7 @@ Build and source
 
 Before we proceed, let us build and source once.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 Testing the Action Server
 -------------------------

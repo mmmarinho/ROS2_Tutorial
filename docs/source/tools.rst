@@ -9,7 +9,7 @@ so there is nothing to install.
 It checks four groups of things:
 
 - **Shutdown template**: every :code:`rclpy.spin()` is wrapped according
-  to the template of :doc:`The Python Node, explained <python_node_explained>`,
+  to the template of :doc:`The Python Node, explained <python_node/python_node_explained>`,
   i.e., :code:`except (KeyboardInterrupt, ExternalShutdownException): pass`
   before any broad :code:`except Exception`.
 - **Naming**: the conventions of :doc:`(Murilo's) Python Best Practices
@@ -18,8 +18,8 @@ It checks four groups of things:
 - **Best practices**: no relative imports, no :code:`destroy_node()`/:code:`rclpy.shutdown()`
   (the template omits them), :code:`get_logger()` instead of :code:`print()`
   inside Nodes, and :code:`get_parameter()` only for declared parameters —
-  from :doc:`The Python Node, explained <python_node_explained>`,
-  :doc:`Parameters and Launch <parameters_and_launch>` and
+  from :doc:`The Python Node, explained <python_node/python_node_explained>`,
+  :doc:`Parameters and Launch <parameters_and_launch/parameters_and_launch>` and
   :doc:`(Murilo's) Python Best Practices
   <preamble/python/python_best_practices>`.
 - **Package structure**: package folder matches :code:`<name>` in

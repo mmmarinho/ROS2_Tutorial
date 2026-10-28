@@ -28,7 +28,7 @@ For example, pressing the following combination:
 
 Will result in three terminal windows that look like so.
 
-.. image:: ../images/terminator_example.png
+.. image:: ../../images/terminator_example.png
    :align: center
 
 
@@ -38,7 +38,7 @@ OK, but what if shortcuts scare me
 Instead of using shortcuts, a context menu can be opened by right-clicking a terminal window.
 Then, you can choose to `Split Horizontally` or `Split Vertically` to achieve the same results.
 
-.. image:: ../images/terminator_right_click_menu.png
+.. image:: ../../images/terminator_right_click_menu.png
    :align: center
 
 

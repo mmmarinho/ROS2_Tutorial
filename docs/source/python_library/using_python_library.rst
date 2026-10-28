@@ -85,23 +85,23 @@ The sample Node
 
 Given that it was created from a template, the file :file:`library_user_node.py` is currently *mostly* empty. Let us replace its contents with
 
-:download:`library_user_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py>`
+:download:`library_user_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py
    :language: python
    :linenos:
    :lines: 24-
 
 Indeed, the most difficult part is to make and configure the library itself. After that, to use it in another package, it is straightforward. We :code:`import` the library.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py
    :language: python
    :lines: 24-31
    :emphasize-lines: 7
 
 And then use the symbols we imported as we would with any other Python library.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py
    :language: python
    :lines: 42-57
    :emphasize-lines: 10, 14
@@ -111,7 +111,7 @@ Build and source
 
 As always, this is needed so that our new package and node can be recognized by :program:`ros2 run`.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 Run
 ---

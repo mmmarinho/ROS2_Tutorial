@@ -62,9 +62,9 @@ For the sake of the example, let us suppose that we want to make an :code:`Amazi
 
 Let's start by creating an :file:`amazing_quote_configurable_publisher_node.py` in :file:`python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files` with the following contents
 
-:download:`amazing_quote_configurable_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py>`
+:download:`amazing_quote_configurable_publisher_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
    :lines: 24-
    :linenos:
@@ -89,7 +89,7 @@ One-off parameters
 
 For one-off parameters, we just get them once after declaring them. Because we're using those attributes directly in the :code:`__init__` method, they are not made attributes of the class, but they could be.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
    :lines: 42-53
    :emphasize-lines: 2-5,9,12
@@ -106,13 +106,13 @@ Continuously-obtained parameters
 
 For parameters that we obtain continuously through the lifetime of the Node, we can, for example, declare them in the :code:`__init__` method, like so
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
    :lines: 38-40
 
 then obtain them in another method, like so
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/python_package_that_uses_parameters_and_launch_files/amazing_quote_configurable_publisher_node.py
    :language: python
    :lines: 57-70
    :emphasize-lines: 4,5,9,10
@@ -195,34 +195,34 @@ Create the :file:`launch` file
 
 Suppose that we are tired of all the meme quotes and want to make our Node publish a truly inspirational quote. We start by making the launch file named :file:`peanut_butter_falcon_quote_publisher_launch.py` within the :file:`launch` folder we just created, with the following contents
 
-:download:`peanut_butter_falcon_quote_publisher_launch.py <../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py>`
+:download:`peanut_butter_falcon_quote_publisher_launch.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
    :linenos:
 
 We're relying on the :code:`LaunchDescription`, which expects a list of :code:`launch_ros.actions`.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
    :lines: 1,2
 
 When using a :code:`launch_ros.actions.Node`, we need to define which :file:`package` it belongs to and the :file:`executable` which must match the name
 we set for the executable in the :file:`setup.py`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
    :lines: 10,11
 
 Besides the parameters, we can configure the name of the Node, such that each is unique
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
    :lines: 12
 
 Finally, our parameters are defined using a dictionary within a list, namely
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/launch/peanut_butter_falcon_quote_publisher_launch.py
    :language: python
    :lines: 14-18
 
@@ -252,9 +252,9 @@ The :file:`setup.py`
 
 Modify the :file:`setup.py` to look like this
 
-:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py>`
+:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_parameters_and_launch_files/setup.py
    :language: python
    :linenos:
    :emphasize-lines: 15,25-27
@@ -269,4 +269,4 @@ Build and source
 
 Before we proceed, let us build and source once.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst

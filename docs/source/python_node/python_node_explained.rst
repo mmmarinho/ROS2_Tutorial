@@ -10,7 +10,7 @@ In a strict sense, the :file:`print_forever_node.py` is not a minimal Node, but 
 The imports
 -----------
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 24-25
 
@@ -21,7 +21,7 @@ Making a subclass of :code:`Node`
 
 The current version of ROS2 behaves better when your custom Node is a subclass of :code:`rclpy.node.Node`. That is achieved with
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 30-35
    :emphasize-lines: 1,5
@@ -43,14 +43,14 @@ In its most basic usage, periodic tasks in ROS2 must be handled by a `Timer <htt
 
 To do so, have the node create it with the :code:`create_timer()` method, as follows.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 33-37
    :emphasize-lines: 4
 
 The method that is periodically called by the Timer is, in this case, as follows. We use :code:`self.get_logger().info()` to print to the terminal periodically.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 39-41
    :emphasize-lines: 1
@@ -64,7 +64,7 @@ All the ROS2 magic happens in some sort of :code:`spin()` method. It is called t
 
 Anyhow, the point is that nothing related to ROS2 will happen unless the two following methods are called. First, :code:`rclpy.init()` is going to initialize a bunch of ROS2 elements behind the curtains, whereas :code:`rclpy.spin()` will `block <https://en.wikipedia.org/wiki/Blocking_(computing)>`_ the program and, well, **spin** through Timer callbacks forever. There are alternative ways to :code:`spin()`, but we will not discuss them right now.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 45-60
    :emphasize-lines: 8,12
@@ -84,7 +84,7 @@ However, when running Nodes either in the terminal or in :program:`PyCharm`, cat
 
 That is particularly important when real robots need to be gracefully shut down (otherwise they might inadvertently start the evil robot uprising), but it also looks unprofessional when all your Nodes return with an ugly stack trace.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 45-60
    :emphasize-lines: 7,13
@@ -112,14 +112,14 @@ Add as much description as possible to classes and methods, using the `Docstring
 
 Example of a class:
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 30-31
    :emphasize-lines: 2
 
 Example of a method:
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
    :lines: 39-40
    :emphasize-lines: 2

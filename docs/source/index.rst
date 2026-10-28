@@ -38,7 +38,7 @@ These tutorials have been the backbone of `EEEN62021 Software for Robotics <http
 
 🤟 **Using this tutorial**
 
-This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <installation>`.
+This is a tutorial that supposes that the user will follow it linearly. Some readers can skip the :doc:`Preamble <preamble/ubuntu>` if they are somewhat already comfortable in Python and Ubuntu. Otherwise, all steps can be considered as dependent on the prior ones, starting from :doc:`ROS2 Setup <setup/installation>`.
 
 It is expected that the user will be working directly on an Ubuntu machine. :program:`Docker` images are available but no compatibility with host systems other than Ubuntu has been attempted.
 
@@ -57,31 +57,31 @@ If you enjoyed this tutorial, please
 #. :doc:`Preamble: Python Best Practices <preamble/python/python_best_practices>`
     A quick memory refresher for the Python stuff useful in ROS2.
 
-#. :doc:`ROS2 Setup <installation>` (⭐start here⭐)
+#. :doc:`ROS2 Setup <setup/installation>` (⭐start here⭐)
     Installing ROS2 and setting up its environment for use.
 
-#. :doc:`ROS2 Python Package/Build <create_packages>`
+#. :doc:`ROS2 Python Package/Build <packages/create_packages>`
     Creating our first ROS2 package with :program:`ament_python` and building it with :program:`colcon`.
 
-#. :doc:`ROS2 Python Node <running_node>`
+#. :doc:`ROS2 Python Node <packages/running_node>`
     Creating ``rclpy`` Nodes and figuring out what all that means.
 
-#. :doc:`ROS2 Python Library <create_python_library>`
+#. :doc:`ROS2 Python Library <python_library/create_python_library>`
     Create Python libraries and importing/using them in another :program:`ament_python` package.
 
-#. :doc:`ROS2 Interfaces <interfaces>`
+#. :doc:`ROS2 Interfaces <interfaces/interfaces>`
     ROS2 interfaces, i.e., messages ``.msg``, services ``.srv``, and actions ``.action``. Creating custom interface packages with :program:`ament_cmake`.
 
-#. :doc:`ROS2 Messages in Python <publishers_and_subscribers>`
+#. :doc:`ROS2 Messages in Python <messages/publishers_and_subscribers>`
     Writing and using ROS2 messages, publishers, and subscribers.
 
-#. :doc:`ROS2 Parameter/Launch <parameters_and_launch>`
+#. :doc:`ROS2 Parameter/Launch <parameters_and_launch/parameters_and_launch>`
     Making configurable ROS2 Nodes using parameters and launch files.
 
-#. :doc:`ROS2 Services in Python <service_servers_and_clients>`
+#. :doc:`ROS2 Services in Python <services/service_servers_and_clients>`
     Writing ROS2 services, service servers, and service clients.
 
-#. :doc:`ROS2 Actions in Python <actions>`
+#. :doc:`ROS2 Actions in Python <actions/actions>`
     Writing ROS2 actions, action servers, and action clients.
 
 #. :doc:`Frame Transformations <transformations/index>`
@@ -112,78 +112,78 @@ If you enjoyed this tutorial, please
    :maxdepth: 2
    :hidden:
 
-   installation
-   terminator
-   workspace_setup
+   setup/installation
+   setup/terminator
+   setup/workspace_setup
 
 .. toctree::
    :caption: ROS2 Python Package/Build
    :maxdepth: 2
    :hidden:
 
-   create_packages
-   create_python_package
-   create_python_node_with_template
-   source_after_build
-   running_node
+   packages/create_packages
+   packages/create_python_package
+   packages/create_python_node_with_template
+   packages/source_after_build
+   packages/running_node
 
 .. toctree::
    :caption: ROS2 Python Node
    :maxdepth: 2
    :hidden:
 
-   create_python_node_from_scratch
-   python_node_explained
+   python_node/create_python_node_from_scratch
+   python_node/python_node_explained
 
 .. toctree::
    :caption: ROS2 Python Library
    :maxdepth: 2
    :hidden:
 
-   create_python_library
-   using_python_library
+   python_library/create_python_library
+   python_library/using_python_library
 
 .. toctree::
    :caption: ROS2 Interfaces: Messages, Services, and Actions
    :maxdepth: 2
    :hidden:
 
-   interfaces
-   create_interface_package
+   interfaces/interfaces
+   interfaces/create_interface_package
 
 .. toctree::
    :caption: ROS2 Messages in Python
    :maxdepth: 2
    :hidden:
 
-   publishers_and_subscribers
-   inspecting_topics
+   messages/publishers_and_subscribers
+   messages/inspecting_topics
 
 .. toctree::
    :caption: ROS2 Parameter/Launch
    :maxdepth: 2
    :hidden:
 
-   parameters_and_launch
-   launch_configurable_nodes
-   inspecting_parameters
+   parameters_and_launch/parameters_and_launch
+   parameters_and_launch/launch_configurable_nodes
+   parameters_and_launch/inspecting_parameters
 
 .. toctree::
    :caption: ROS2 Services in Python
    :maxdepth: 2
    :hidden:
 
-   service_servers_and_clients
-   inspecting_services
+   services/service_servers_and_clients
+   services/inspecting_services
 
 .. toctree::
    :caption: ROS2 Actions in Python
    :maxdepth: 2
    :hidden:
 
-   actions
-   action_servers
-   action_clients
+   actions/actions
+   actions/action_servers
+   actions/action_clients
 
 .. toctree::
    :caption: Frame transformations and tf2
