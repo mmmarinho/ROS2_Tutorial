@@ -156,7 +156,7 @@ However, the complexity is exaggerated in multiple sources to some extent.
 In :program:`ROS2`, rotations are represented as quaternions.
 They have several benefits over other representations, which you can see in related literature on quaternions.
 For robotics, it is easier to think of rotations directly in quaternions instead of relying on intermediary ways, such as Euler angles.
-The reason is that the particularities of quaternions will eventually catch up to you, no matter how long and how far one might try to run away from them.
+The reason is that the particularities of quaternions will eventually catch up to you, no matter how long and how far one might try to run away from them. I'm sure you'll appreciate them eventually... `right? <https://youtu.be/jfBsI40vXTI?si=UAzHnWvArCyU83AX>`_?
 
 Let's rip the trademarked plaster brand out. The following equation represents the formation of a rotation quaternion.
 
