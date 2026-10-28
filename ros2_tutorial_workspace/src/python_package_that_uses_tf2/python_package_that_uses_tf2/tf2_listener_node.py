@@ -30,7 +30,7 @@ import tf2_ros
 class TF2ListenerNode(Node):
     """A ROS2 Node that listens to the `tf` topic in compliance with `tf2_ros2`."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('tf2_listener_node')
 
         # Setting up the TransformListener
@@ -44,7 +44,7 @@ class TF2ListenerNode(Node):
         self.timer_period: float = 0.1
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
 
-    def timer_callback(self):
+    def timer_callback(self) -> None:
 
         try:
             tfs =   self.transform_listener_buffer.lookup_transform(
@@ -60,7 +60,7 @@ class TF2ListenerNode(Node):
                 f'Could not get transform from `{self.parent_name}` to `{self.child_name}`: {e}')
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

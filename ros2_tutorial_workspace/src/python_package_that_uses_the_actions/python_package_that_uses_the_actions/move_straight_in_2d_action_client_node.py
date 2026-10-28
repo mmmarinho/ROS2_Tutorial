@@ -34,13 +34,13 @@ from package_with_interfaces.action import MoveStraightIn2D
 class MoveStraightIn2DActionClientNode(Node):
     """A ROS2 Node with an Action Client for MoveStraightIn2D."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('move_straight_in_2d_action_client')
 
         self.action_client = ActionClient(self, MoveStraightIn2D, '/move_straight_in_2d')
 
-        self.send_goal_future = None # This will be used in `send_goal`
-        self.get_result_future = None # This will be used in 'goal_response_callback'
+        self.send_goal_future: Future  # This will be used in `send_goal`
+        self.get_result_future: Future  # This will be used in 'goal_response_callback'
 
     def send_goal_async(self, desired_position: Point) -> None:
         goal_msg = MoveStraightIn2D.Goal()
@@ -74,7 +74,7 @@ class MoveStraightIn2DActionClientNode(Node):
         self.get_logger().info(f'Received feedback distance: {feedback.distance}.')
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

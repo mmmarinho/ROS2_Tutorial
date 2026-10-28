@@ -34,13 +34,13 @@ from nav2_msgs.action import NavigateToPose
 class Nav2NavigateToPoseActionClient(Node):
     """A ROS2 Node with an Action Client for Nav2NavigateToPoseActionClient."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('nav2_navigate_to_pose_action_client')
 
         self.action_client = ActionClient(self, NavigateToPose, '/navigate_to_pose')
 
-        self.send_goal_future = None # This will be used in `send_goal`
-        self.get_result_future = None # This will be used in 'goal_response_callback'
+        self.send_goal_future: Future  # This will be used in `send_goal`
+        self.get_result_future: Future  # This will be used in 'goal_response_callback'
 
     def send_goal_async(self, desired_pose: Pose, behaviour_tree: str) -> None:
         goal_msg = NavigateToPose.Goal()
@@ -77,7 +77,7 @@ class Nav2NavigateToPoseActionClient(Node):
         self.get_logger().info(f'Received feedback distance: {feedback.distance_remaining}.')
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

@@ -31,7 +31,7 @@ from geometry_msgs.msg import PoseWithCovarianceStamped
 class Nav2InitialPosePublisherNode(Node):
     """A ROS2 Node that publishes the initial pose for nav2."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('nav2_initial_pose_publisher_node')
 
         self._topic = '/initialpose'
@@ -48,7 +48,7 @@ class Nav2InitialPosePublisherNode(Node):
             self.get_logger().info(f"Publisher count is {publisher_count}.")
             time.sleep(1)
 
-    def send_initial_pose_with_covariance(self):
+    def send_initial_pose_with_covariance(self) -> None:
         """Method to create the PoseWithCovarianceStamped."""
 
         self.get_logger().info(f"Publishing pose to topic: {self._topic}.")
@@ -72,7 +72,7 @@ class Nav2InitialPosePublisherNode(Node):
 
         self.publisher.publish(pwcs)
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure

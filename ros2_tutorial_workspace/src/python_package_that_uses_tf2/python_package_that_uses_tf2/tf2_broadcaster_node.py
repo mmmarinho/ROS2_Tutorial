@@ -33,7 +33,7 @@ import tf2_ros
 class TF2BroadcasterNode(Node):
     """A ROS2 Node that broadcasts a TransformStamped in compliance with `tf2_ros2`."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('tf2_broadcaster_node')
 
         # Robot name
@@ -47,7 +47,7 @@ class TF2BroadcasterNode(Node):
         self.timer_elapsed_time: float = 0
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
 
-    def timer_callback(self):
+    def timer_callback(self) -> None:
         # We define some parameters of our trajectory.
         # Let's make the translation be a circle in 2D with radius of 0.2 meters and frequency of 0.1 Hz.
         # The rotation will be the robot spinning about the z-axis with the same frequency.
@@ -84,7 +84,7 @@ class TF2BroadcasterNode(Node):
         self.timer_elapsed_time += self.timer_period
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

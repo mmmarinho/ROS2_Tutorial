@@ -30,10 +30,10 @@ from rclpy.node import Node
 class CreateStampedTransformsNode(Node):
     """A ROS2 Node that creates TransformStamped objects."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('create_stamped_transforms_node')
 
-    def create_and_print_stamped_transform(self):
+    def create_and_print_stamped_transform(self) -> None:
         """Basic method showing the creation of TransformStamped objects."""
 
         tfs = TransformStamped()
@@ -62,7 +62,7 @@ class CreateStampedTransformsNode(Node):
                                f"and rotation:"
                                f" {tfs.transform.rotation}.")
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

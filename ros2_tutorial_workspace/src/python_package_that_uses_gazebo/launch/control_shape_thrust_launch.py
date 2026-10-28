@@ -4,7 +4,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 
-def generate_launch_description():
+def generate_launch_description() -> LaunchDescription:
     
     this_package_share_directory = get_package_share_directory('python_package_that_uses_gazebo')
 
