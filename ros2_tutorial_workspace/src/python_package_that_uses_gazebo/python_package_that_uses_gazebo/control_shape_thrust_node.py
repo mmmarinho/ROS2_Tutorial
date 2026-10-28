@@ -26,6 +26,9 @@ from ros_gz_interfaces.msg import EntityWrench
 
 import rclpy
 from rclpy.node import Node
+from geometry_msgs.msg import TransformStamped
+from rclpy.publisher import Publisher
+from rclpy.timer import Timer
 from rclpy.executors import ExternalShutdownException
 
 import tf2_ros
@@ -44,7 +47,7 @@ class ControlShapeThrustNode(Node):
         self._gazebo_entity_id = 9 # Find this in Gazebo
 
         # Set up the wrench publisher
-        self.wrench_publisher = self.create_publisher(
+        self.wrench_publisher: Publisher = self.create_publisher(
             msg_type=EntityWrench,
             topic=self._wrench_topic,
             qos_profile=1)
@@ -63,7 +66,7 @@ class ControlShapeThrustNode(Node):
         self.child_name = self._gazebo_entity_name # It will be populated this way by Gazebo
 
         self.timer_period: float = 0.001
-        self.timer = self.create_timer(self.timer_period, self.timer_callback)
+        self.timer: Timer = self.create_timer(self.timer_period, self.timer_callback)
 
     def compute_control_action(self, current: float, target: float,
                                proportional_gain: float = 5.0) -> float:
@@ -74,7 +77,7 @@ class ControlShapeThrustNode(Node):
     def send_force_to_gazebo(self, force: tuple[float, float, float] = (0, 0, 0)) -> None:
         """Basic method to send force to an entity."""
 
-        ew = EntityWrench()
+        ew: EntityWrench = EntityWrench()
 
         # Add the entity id. The entity.name is currently ignored by Gazebo.
         ew.entity.id = self._gazebo_entity_id
@@ -95,7 +98,7 @@ class ControlShapeThrustNode(Node):
         """The timer callback will look up the transforms and send the next control action."""
 
         try:
-            tfs =   self.transform_listener_buffer.lookup_transform(
+            tfs: TransformStamped =   self.transform_listener_buffer.lookup_transform(
                     self.parent_name,
                     self.child_name,
                     rclpy.time.Time())

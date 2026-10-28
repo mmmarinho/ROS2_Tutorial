@@ -39,11 +39,11 @@ class MoveStraightIn2DActionServerNode(Node):
 
     def __init__(self) -> None:
         super().__init__('move_straight_in_2d_action_server')
-        self.current_position = Point()
+        self.current_position: Point = Point()
         self.MAX_ITERATIONS: int  = 100
         self.sampling_time: float = 0.01
 
-        self.action_server = ActionServer(
+        self.action_server: ActionServer = ActionServer(
             self,
             MoveStraightIn2D,
             '/move_straight_in_2d',
@@ -93,7 +93,7 @@ class MoveStraightIn2DActionServerNode(Node):
         self.get_logger().info(f'current_position is {self.current_position}.')
         self.get_logger().info(f'desired_position set to {desired_position}.')
 
-        feedback_msg = MoveStraightIn2D.Feedback()
+        feedback_msg: MoveStraightIn2D.Feedback = MoveStraightIn2D.Feedback()
 
         # Let's limit the maximum number of iterations this can accept
         for i in range(self.MAX_ITERATIONS):
@@ -111,7 +111,7 @@ class MoveStraightIn2DActionServerNode(Node):
             # A sleep illustrating the time it would take in real life for a robot to move
             time.sleep(self.sampling_time)
 
-        result = MoveStraightIn2D.Result()
+        result: MoveStraightIn2D.Result = MoveStraightIn2D.Result()
         result.final_position = self.current_position
         return result
 

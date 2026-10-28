@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from rclpy.timer import Timer
 from rclpy.executors import ExternalShutdownException
 
 
@@ -32,7 +33,7 @@ class PrintForever(Node):
     def __init__(self) -> None:
         super().__init__('print_forever')
         timer_period: float = 0.5
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer: Timer = self.create_timer(timer_period, self.timer_callback)
         self.print_count: int = 0
 
     def timer_callback(self) -> None:

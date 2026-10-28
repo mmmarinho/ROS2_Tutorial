@@ -96,14 +96,14 @@ Indeed, the most difficult part is to make and configure the library itself. Aft
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py
    :language: python
-   :lines: 24-30
+   :lines: 24-31
    :emphasize-lines: 7
 
 And then use the symbols we imported as we would with any other Python library.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_library/python_package_that_uses_the_library/library_user_node.py
    :language: python
-   :lines: 41-56
+   :lines: 42-57
    :emphasize-lines: 10, 14
 
 Build and source

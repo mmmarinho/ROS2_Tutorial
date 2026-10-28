@@ -23,7 +23,7 @@ The current version of ROS2 behaves better when your custom Node is a subclass o
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 29-34
+   :lines: 30-35
    :emphasize-lines: 1,5
 
 About inheritance in Python, you can check the official documentation on `inheritance <https://docs.python.org/3/tutorial/classes.html#inheritance>`_ and on `super() <https://docs.python.org/3/library/functions.html#super>`_.
@@ -45,14 +45,14 @@ To do so, have the node create it with the :code:`create_timer()` method, as fol
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 32-36
+   :lines: 33-37
    :emphasize-lines: 4
 
 The method that is periodically called by the Timer is, in this case, as follows. We use :code:`self.get_logger().info()` to print to the terminal periodically.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 38-40
+   :lines: 39-41
    :emphasize-lines: 1
 
 In ROS2, the logging methods, i.e. :code:`self.get_logger().info()`, are methods of the Node itself. So, the capability to log (print to the terminal) using ROS2 Nodes is dependent on the scope in which that Node exists.
@@ -66,7 +66,7 @@ Anyhow, the point is that nothing related to ROS2 will happen unless the two fol
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 44-59
+   :lines: 45-60
    :emphasize-lines: 8,12
 
 Have a :code:`try-catch` block for :code:`KeyboardInterrupt`
@@ -86,7 +86,7 @@ That is particularly important when real robots need to be gracefully shut down 
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 44-59
+   :lines: 45-60
    :emphasize-lines: 7,13
 
 .. important::
@@ -114,12 +114,12 @@ Example of a class:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 29-30
+   :lines: 30-31
    :emphasize-lines: 2
 
 Example of a method:
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_node/python_package_with_a_node/print_forever_node.py
    :language: python
-   :lines: 38-39
+   :lines: 39-40
    :emphasize-lines: 2

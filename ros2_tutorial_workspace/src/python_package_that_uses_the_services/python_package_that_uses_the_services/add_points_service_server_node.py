@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from rclpy.service import Service
 from rclpy.executors import ExternalShutdownException
 from package_with_interfaces.srv import AddPoints
 
@@ -33,7 +34,7 @@ class AddPointsServiceServerNode(Node):
     def __init__(self) -> None:
         super().__init__('add_points_service_server')
 
-        self.service_server = self.create_service(
+        self.service_server: Service = self.create_service(
             srv_type=AddPoints,
             srv_name='/add_points',
             callback=self.add_points_service_callback)

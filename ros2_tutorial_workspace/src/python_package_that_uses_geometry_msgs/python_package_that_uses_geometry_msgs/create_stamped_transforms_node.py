@@ -36,7 +36,7 @@ class CreateStampedTransformsNode(Node):
     def create_and_print_stamped_transform(self) -> None:
         """Basic method showing the creation of TransformStamped objects."""
 
-        tfs = TransformStamped()
+        tfs: TransformStamped = TransformStamped()
 
         # Initialize header with
         ## Timestamp equal to the current clock time

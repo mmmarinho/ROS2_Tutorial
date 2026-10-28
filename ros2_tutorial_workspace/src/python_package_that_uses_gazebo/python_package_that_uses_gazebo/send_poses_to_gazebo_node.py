@@ -26,6 +26,7 @@ from ros_gz_interfaces.srv import SetEntityPose
 
 import rclpy
 from rclpy.node import Node
+from rclpy.client import Client
 from rclpy.executors import ExternalShutdownException
 from rclpy.task import Future
 
@@ -35,7 +36,7 @@ class SendPosesToGazeboNode(Node):
     def __init__(self) -> None:
         super().__init__('send_poses_to_gazebo_node')
 
-        self.service_client = self.create_client(
+        self.service_client: Client = self.create_client(
             srv_type=SetEntityPose,
             srv_name='/world/shapes_with_tf2_and_wrench/set_pose')
 
@@ -46,7 +47,7 @@ class SendPosesToGazeboNode(Node):
     def send_pose_to_gazebo(self) -> Future[SetEntityPose.Response]:
         """Sample method sending a pose to and entity in Gazebo."""
 
-        request = SetEntityPose.Request()
+        request: SetEntityPose.Request = SetEntityPose.Request()
 
         # Add the entity name. For this one, Gazebo accepts the name. :)
         request.entity.name = "box"

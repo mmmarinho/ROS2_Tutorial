@@ -23,6 +23,8 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from geometry_msgs.msg import TransformStamped
+from rclpy.timer import Timer
 from rclpy.executors import ExternalShutdownException
 
 import tf2_ros
@@ -42,12 +44,12 @@ class TF2ListenerNode(Node):
         self.child_name = "robot_1"
 
         self.timer_period: float = 0.1
-        self.timer = self.create_timer(self.timer_period, self.timer_callback)
+        self.timer: Timer = self.create_timer(self.timer_period, self.timer_callback)
 
     def timer_callback(self) -> None:
 
         try:
-            tfs =   self.transform_listener_buffer.lookup_transform(
+            tfs: TransformStamped =   self.transform_listener_buffer.lookup_transform(
                     self.parent_name,
                     self.child_name,
                     rclpy.time.Time())

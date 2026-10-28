@@ -26,6 +26,7 @@ import random
 import rclpy
 from rclpy.task import Future
 from rclpy.node import Node
+from rclpy.client import Client
 from rclpy.executors import ExternalShutdownException
 
 from package_with_interfaces.srv import AddPoints
@@ -37,7 +38,7 @@ class AddPointsServiceClientJustOnceNode(Node):
     def __init__(self) -> None:
         super().__init__('add_points_service_client_just_once')
 
-        self.service_client = self.create_client(
+        self.service_client: Client = self.create_client(
             srv_type=AddPoints,
             srv_name='/add_points')
 
@@ -48,7 +49,7 @@ class AddPointsServiceClientJustOnceNode(Node):
         self.future: Future = None
 
         # Create service request
-        request = AddPoints.Request()
+        request: AddPoints.Request = AddPoints.Request()
 
         request.a.x = random.uniform(0, 1000)
         request.a.y = random.uniform(0, 1000)
@@ -59,7 +60,7 @@ class AddPointsServiceClientJustOnceNode(Node):
         request.b.z = random.uniform(0, 1000)
 
         # Call the service async and set the done callback
-        self.future = self.service_client.call_async(request)
+        self.future: Future = self.service_client.call_async(request)
         self.future.add_done_callback(self.process_response)
 
     def process_response(self, future: Future) -> None:

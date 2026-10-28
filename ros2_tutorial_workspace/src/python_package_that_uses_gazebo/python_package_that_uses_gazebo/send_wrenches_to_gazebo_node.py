@@ -26,6 +26,7 @@ from ros_gz_interfaces.msg import EntityWrench
 
 import rclpy
 from rclpy.node import Node
+from rclpy.publisher import Publisher
 from rclpy.executors import ExternalShutdownException
 
 class SendWrenchesToGazeboNode(Node):
@@ -34,7 +35,7 @@ class SendWrenchesToGazeboNode(Node):
     def __init__(self) -> None:
         super().__init__('send_wrenches_to_gazebo_node')
 
-        self.publisher = self.create_publisher(
+        self.publisher: Publisher = self.create_publisher(
             msg_type=EntityWrench,
             topic='/world/shapes_with_tf2_and_wrench/wrench',
             qos_profile=1)
@@ -46,7 +47,7 @@ class SendWrenchesToGazeboNode(Node):
     def send_wrench_to_gazebo(self) -> None:
         """Basic method publishing wrenches to Gazebo."""
 
-        ew = EntityWrench()
+        ew: EntityWrench = EntityWrench()
 
         # Add the entity id. The entity.name is currently ignored by Gazebo.
         ew.entity.id = 9

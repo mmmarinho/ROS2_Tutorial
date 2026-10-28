@@ -26,6 +26,7 @@ from geometry_msgs.msg import TransformStamped
 
 import rclpy
 from rclpy.node import Node
+from rclpy.timer import Timer
 from rclpy.executors import ExternalShutdownException
 
 import tf2_ros
@@ -45,7 +46,7 @@ class TF2BroadcasterNode(Node):
 
         self.timer_period: float = 0.01
         self.timer_elapsed_time: float = 0
-        self.timer = self.create_timer(self.timer_period, self.timer_callback)
+        self.timer: Timer = self.create_timer(self.timer_period, self.timer_callback)
 
     def timer_callback(self) -> None:
         # We define some parameters of our trajectory.
@@ -55,7 +56,7 @@ class TF2BroadcasterNode(Node):
         trajectory_frequency = 0.1
 
         # Create an instance of a TransformStamped, used by the broadcaster
-        tfs = TransformStamped()
+        tfs: TransformStamped = TransformStamped()
 
         ## Initialize header with
         # Timestamp equal to the current clock time

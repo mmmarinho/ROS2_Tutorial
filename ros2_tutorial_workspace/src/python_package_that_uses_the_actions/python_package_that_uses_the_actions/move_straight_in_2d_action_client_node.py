@@ -37,13 +37,14 @@ class MoveStraightIn2DActionClientNode(Node):
     def __init__(self) -> None:
         super().__init__('move_straight_in_2d_action_client')
 
-        self.action_client = ActionClient(self, MoveStraightIn2D, '/move_straight_in_2d')
+        self.action_client: ActionClient = ActionClient(
+            self, MoveStraightIn2D, '/move_straight_in_2d')
 
         self.send_goal_future: Future  # This will be used in `send_goal`
         self.get_result_future: Future  # This will be used in 'goal_response_callback'
 
     def send_goal_async(self, desired_position: Point) -> None:
-        goal_msg = MoveStraightIn2D.Goal()
+        goal_msg: MoveStraightIn2D.Goal = MoveStraightIn2D.Goal()
         goal_msg.desired_position = desired_position
 
         while not self.action_client.wait_for_server(timeout_sec=1.0):
@@ -85,7 +86,7 @@ def main(args: list[str] | None = None) -> None:
         node = MoveStraightIn2DActionClientNode()
 
         # Send the goal once and then do nothing until the user shuts this node down.
-        desired_position = Point()
+        desired_position: Point = Point()
         desired_position.x = 1.0
         desired_position.y = -1.0
         node.send_goal_async(desired_position)

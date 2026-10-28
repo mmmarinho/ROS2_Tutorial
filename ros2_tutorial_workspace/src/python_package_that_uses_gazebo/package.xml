@@ -8,6 +8,7 @@
   <license>TODO: License declaration</license>
 
   <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
   <depend>ros_gz_interfaces</depend>
   <depend>tf2_ros</depend>
 

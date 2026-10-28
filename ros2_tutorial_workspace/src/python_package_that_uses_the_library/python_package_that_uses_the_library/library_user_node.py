@@ -26,6 +26,7 @@ import string
 
 import rclpy
 from rclpy.node import Node
+from rclpy.timer import Timer
 from rclpy.executors import ExternalShutdownException
 from python_package_with_a_library.sample_python_library import SampleClass, sample_function_for_square_of_sum
 
@@ -36,7 +37,7 @@ class LibraryUser(Node):
     def __init__(self) -> None:
         super().__init__('library_user')
         timer_period: float = 0.5
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer: Timer = self.create_timer(timer_period, self.timer_callback)
 
     def timer_callback(self) -> None:
         """

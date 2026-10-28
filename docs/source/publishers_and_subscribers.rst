@@ -148,14 +148,14 @@ When we built our :file:`package_with_interfaces` in the last section, what ROS2
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 24-27
+   :lines: 24-29
    :emphasize-lines: 4
 
 The publisher must be created with the :code:`Node.create_publisher(...)` method, which has the three parameters defined in the :ref:`publisher and subscriber parameter table`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 36-39
+   :lines: 38-41
 
 .. _publisher and subscriber parameter table:
 
@@ -178,13 +178,13 @@ Then, each message is handled much like any other class in Python. We instantiat
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 49-52
+   :lines: 51-54
 
 Lastly, the message needs to be published using :code:`Node.publish(msg)`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
-   :lines: 54
+   :lines: 56
 
 .. note::
 
@@ -218,21 +218,21 @@ Similarly to the publisher, in the subscriber, we start by importing the message
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
-   :lines: 24-27
+   :lines: 24-28
    :emphasize-lines: 4
 
 Then, in our subclass of :code:`Node`, we call :code:`Node.create_subscription(...)` as follows
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
-   :lines: 35-39
+   :lines: 36-40
    :emphasize-lines: 4
 
 where the only difference with respect to the publisher is the third argument, namely :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
 
 .. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
-   :lines: 41-54
+   :lines: 42-55
    :emphasize-lines: 8,12,14
 
 That callback method will be automatically called by ROS2, as one of the tasks performed by :code:`rclpy.spin(Node)`. Depending on the :code:`qos_profile`, it will not necessarily be the latest message.
