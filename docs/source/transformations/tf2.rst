@@ -116,7 +116,7 @@ it persists across callback calls.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
-   :lines: 36-49
+   :lines: 37-50
    :emphasize-lines: 5,9,12
 
 We add two parameters to be able to adjust the trajectory properties if desired. Again, these could be configurable
@@ -124,7 +124,7 @@ parameters but we leave them hard-coded for simplicity.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
-   :lines: 51-55
+   :lines: 52-56
    :emphasize-lines: 4,5
 
 We create the ``TransformStamped`` as follows. Our rotation is simple so we build Quaternion for the
@@ -133,14 +133,14 @@ and ``child_frame_id`` as this robot's frame.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
-   :lines: 58-78
+   :lines: 59-79
 
 Finally, we send the transform with ``transform_broadcaster.sendTransform`` and update the local time counter for
 the trajectory.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_broadcaster_node.py
    :language: python
-   :lines: 80-84
+   :lines: 81-85
 
 Creating the listener
 ---------------------
@@ -162,7 +162,7 @@ would be to make this configurable as a parameter. We do not do that here to not
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_listener_node.py
    :language: python
-   :lines: 36-42
+   :lines: 38-44
    :emphasize-lines: 2
 
 We then create an instance of ``Timer`` and add the callback. In the callback, we use the buffer we created in the
@@ -174,7 +174,7 @@ The object created with ``rclpy.time.Time()`` is `equivalent to a time of zero <
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_tf2/python_package_that_uses_tf2/tf2_listener_node.py
    :language: python
-   :lines: 47-60
+   :lines: 49-62
    :emphasize-lines: 4-7
 
 

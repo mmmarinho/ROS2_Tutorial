@@ -394,7 +394,7 @@ with the initialisation.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py
    :language: python
-   :lines: 44-49
+   :lines: 45-50
    :emphasize-lines: 2
 
 The second part that might be unfamiliar is the covariance used in the message. The covariance matrix holds the variance
@@ -405,7 +405,7 @@ The covariance is highlighted below.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py
    :language: python
-   :lines: 51-73
+   :lines: 52-74
    :emphasize-lines: 19-21
 
 It is important not to be distracted by the nested ``pose``. The first one os the ``PoseWithCovariance``, part of the
