@@ -27,7 +27,7 @@ be rough and some functionalities missing. Nonetheless, it is reasonable to beli
 
 For :program:`ROS2 Jazzy`, we use :program:`Gazebo Harmonic`. This replicates the strategy of having a LTS version for a given piece of software. This makes it easier for the users to learn and trust a platform without it constantly changing.
 
-Beauty and usability are in the eyes of the beholder. That said, one major improvement in :program:`Gazebo` is the motion
+Hopefully this doesn't bring us any closer to the `desert of the real <https://youtu.be/O5b0ZxUWNf0?si=HrrEIi9aAffDeHvM&t=107>`_. That said, one major improvement in :program:`Gazebo` is the motion
 towards not needing two robot description formats. It has always been the case that a robot would have to be described twice,
 once for :program:`ROS2` and another for :program:`Gazebo Classic`.
 Although this switch might still be ongoing and some more advanced functionalities might be missing, we will work with
