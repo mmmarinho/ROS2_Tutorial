@@ -11,7 +11,7 @@ jobs:
         image: murilomarinho/sas:jazzy
       steps:
         - name: Checkout repository
-          uses: actions/checkout@v4
+          uses: actions/checkout@v5
         - name: Build colcon
           shell: bash
           run: |
@@ -21,9 +21,9 @@ jobs:
       runs-on: ubuntu-24.04
       steps:
         - name: Checkout repository
-          uses: actions/checkout@v4
+          uses: actions/checkout@v5
         - name: Set up Node
-          uses: actions/setup-node@v4
+          uses: actions/setup-node@v5
           with:
             node-version: '22'
         - name: pyright (example code is fully annotated)
