@@ -23,6 +23,8 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from rclpy.publisher import Publisher
+from rclpy.timer import Timer
 from rclpy.executors import ExternalShutdownException
 from package_with_interfaces.msg import AmazingQuote
 
@@ -43,12 +45,12 @@ class AmazingQuoteConfigurablePublisherNode(Node):
         self.declare_parameter('period', 0.5)
         timer_period: float = self.get_parameter('period').get_parameter_value().double_value
 
-        self.configurable_amazing_quote_publisher = self.create_publisher(
+        self.configurable_amazing_quote_publisher: Publisher = self.create_publisher(
             msg_type=AmazingQuote,
             topic=topic_name,
             qos_profile=1)
 
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer: Timer = self.create_timer(timer_period, self.timer_callback)
 
         self.incremental_id: int = 0
 
@@ -58,7 +60,7 @@ class AmazingQuoteConfigurablePublisherNode(Node):
         quote: str = self.get_parameter('quote').get_parameter_value().string_value
         philosopher_name: str = self.get_parameter('philosopher_name').get_parameter_value().string_value
 
-        amazing_quote = AmazingQuote()
+        amazing_quote: AmazingQuote = AmazingQuote()
         amazing_quote.id = self.incremental_id
         amazing_quote.quote = quote
         amazing_quote.philosopher_name = philosopher_name

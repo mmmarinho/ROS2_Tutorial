@@ -26,6 +26,8 @@ import random
 import rclpy
 from rclpy.task import Future
 from rclpy.node import Node
+from rclpy.client import Client
+from rclpy.timer import Timer
 from rclpy.executors import ExternalShutdownException
 
 from package_with_interfaces.srv import AddPoints
@@ -37,7 +39,7 @@ class AddPointsServiceClientNode(Node):
     def __init__(self) -> None:
         super().__init__('add_points_service_client')
 
-        self.service_client = self.create_client(
+        self.service_client: Client = self.create_client(
             srv_type=AddPoints,
             srv_name='/add_points')
 
@@ -47,14 +49,14 @@ class AddPointsServiceClientNode(Node):
         self.future: Future = None
 
         timer_period: float = 0.5
-        self.timer = self.create_timer(
+        self.timer: Timer = self.create_timer(
             timer_period_sec=timer_period,
             callback=self.timer_callback)
 
     def timer_callback(self) -> None:
         """Method that is periodically called by the timer."""
 
-        request = AddPoints.Request()
+        request: AddPoints.Request = AddPoints.Request()
 
         request.a.x = random.uniform(0, 1000)
         request.a.y = random.uniform(0, 1000)
@@ -68,7 +70,7 @@ class AddPointsServiceClientNode(Node):
             self.future.cancel()  # Cancel the future. The callback will be called with Future.result == None.
             self.get_logger().warn("Service Future canceled. The Node took too long to process the service call."
                                    "Is the Service Server still alive?")
-        self.future = self.service_client.call_async(request)
+        self.future: Future = self.service_client.call_async(request)
         self.future.add_done_callback(self.process_response)
 
     def process_response(self, future: Future) -> None:

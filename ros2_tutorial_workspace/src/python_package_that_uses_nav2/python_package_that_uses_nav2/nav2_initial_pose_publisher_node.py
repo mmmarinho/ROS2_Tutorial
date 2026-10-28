@@ -25,6 +25,7 @@ import time
 
 import rclpy
 from rclpy.node import Node
+from rclpy.publisher import Publisher
 from rclpy.executors import ExternalShutdownException
 from geometry_msgs.msg import PoseWithCovarianceStamped
 
@@ -36,7 +37,7 @@ class Nav2InitialPosePublisherNode(Node):
 
         self._topic = '/initialpose'
 
-        self.publisher = self.create_publisher(
+        self.publisher: Publisher = self.create_publisher(
             msg_type=PoseWithCovarianceStamped,
             topic=self._topic,
             qos_profile=1)
@@ -53,7 +54,7 @@ class Nav2InitialPosePublisherNode(Node):
 
         self.get_logger().info(f"Publishing pose to topic: {self._topic}.")
 
-        pwcs = PoseWithCovarianceStamped()
+        pwcs: PoseWithCovarianceStamped = PoseWithCovarianceStamped()
         pwcs.header.stamp = self.get_clock().now().to_msg()
         pwcs.header.frame_id = 'map'
 

@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from rclpy.subscription import Subscription
 from rclpy.executors import ExternalShutdownException
 from package_with_interfaces.msg import AmazingQuote
 
@@ -32,7 +33,7 @@ class AmazingQuoteSubscriberNode(Node):
 
     def __init__(self) -> None:
         super().__init__('amazing_quote_subscriber_node')
-        self.amazing_quote_subscriber = self.create_subscription(
+        self.amazing_quote_subscriber: Subscription = self.create_subscription(
             msg_type=AmazingQuote,
             topic='/amazing_quote',
             callback=self.amazing_quote_subscriber_callback,

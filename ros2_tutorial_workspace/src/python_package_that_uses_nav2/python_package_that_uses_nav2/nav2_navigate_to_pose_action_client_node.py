@@ -37,13 +37,13 @@ class Nav2NavigateToPoseActionClient(Node):
     def __init__(self) -> None:
         super().__init__('nav2_navigate_to_pose_action_client')
 
-        self.action_client = ActionClient(self, NavigateToPose, '/navigate_to_pose')
+        self.action_client: ActionClient = ActionClient(self, NavigateToPose, '/navigate_to_pose')
 
         self.send_goal_future: Future  # This will be used in `send_goal`
         self.get_result_future: Future  # This will be used in 'goal_response_callback'
 
     def send_goal_async(self, desired_pose: Pose, behaviour_tree: str) -> None:
-        goal_msg = NavigateToPose.Goal()
+        goal_msg: NavigateToPose.Goal = NavigateToPose.Goal()
         goal_msg.pose.header.stamp = self.get_clock().now().to_msg()
         goal_msg.pose.header.frame_id = 'map'
         goal_msg.pose.pose = desired_pose
@@ -85,9 +85,9 @@ def main(args: list[str] | None = None) -> None:
     try:
         rclpy.init(args=args)
 
-        node = Nav2NavigateToPoseActionClient()
+        node: Nav2NavigateToPoseActionClient = Nav2NavigateToPoseActionClient()
 
-        desired_pose = Pose()
+        desired_pose: Pose = Pose()
         desired_pose.position.x = 1.0
         desired_pose.position.y = -1.0
         desired_pose.orientation.w = 1.0

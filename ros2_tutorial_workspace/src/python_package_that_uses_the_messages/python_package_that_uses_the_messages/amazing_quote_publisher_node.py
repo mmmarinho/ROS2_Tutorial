@@ -23,6 +23,8 @@ SOFTWARE.
 """
 import rclpy
 from rclpy.node import Node
+from rclpy.publisher import Publisher
+from rclpy.timer import Timer
 from rclpy.executors import ExternalShutdownException
 from package_with_interfaces.msg import AmazingQuote
 
@@ -33,20 +35,20 @@ class AmazingQuotePublisherNode(Node):
     def __init__(self) -> None:
         super().__init__('amazing_quote_publisher_node')
 
-        self.amazing_quote_publisher = self.create_publisher(
+        self.amazing_quote_publisher: Publisher = self.create_publisher(
             msg_type=AmazingQuote,
             topic='/amazing_quote',
             qos_profile=1)
 
         timer_period: float = 0.5
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer: Timer = self.create_timer(timer_period, self.timer_callback)
 
         self.incremental_id: int = 0
 
     def timer_callback(self) -> None:
         """Method that is periodically called by the timer."""
 
-        amazing_quote = AmazingQuote()
+        amazing_quote: AmazingQuote = AmazingQuote()
         amazing_quote.id = self.incremental_id
         amazing_quote.quote = 'Use the force, Pikachu!'
         amazing_quote.philosopher_name = 'Uncle Ben'
