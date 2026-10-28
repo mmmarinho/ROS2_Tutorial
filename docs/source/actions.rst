@@ -26,7 +26,7 @@ Objective
     Unless otherwise explicitly stated, we will always follow the `International System of Units <https://en.wikipedia.org/wiki/International_System_of_Units>`_.
     This means distances in meters, angles in radians, time in seconds, and so on.
 
-We can use an action to represent the first robot-like behavior of this tutorial in an illustrative manner.
+Although I wanted to make this section about `John MacClane's holiday season struggles <https://en.wikipedia.org/wiki/Die_Hard>`_, we shall be well behaved and use an action instead to represent the first robot-like behavior of this tutorial in an illustrative manner.
 
 Suppose that we have a simple robot that moves in 2D space and whose orientation is not important. Let it have a current position with respect to the
 :math:`k`\-ith iteration represented by (a 2D vector)
