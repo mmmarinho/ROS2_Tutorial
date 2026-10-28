@@ -141,9 +141,9 @@ Create the sample function
 
 Create a new file with the following contents and name.
 
-:download:`_sample_function.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py>`
+:download:`_sample_function.py <../../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_function.py
    :language: python
    :linenos:
    :lines: 26-
@@ -155,9 +155,9 @@ Create the sample class
 
 Create a new file with the following contents and name.
 
-:download:`_sample_class.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py>`
+:download:`_sample_class.py <../../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/_sample_class.py
    :language: python
    :linenos:
    :lines: 26-
@@ -167,9 +167,9 @@ The class is quite simple with a `private data member <https://docs.python.org/3
 Modify the :file:`__init__.py`
 ------------------------------
 
-:download:`__init__.py <../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py>`
+:download:`__init__.py <../../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_a_library/python_package_with_a_library/sample_python_library/__init__.py
    :language: python
    :linenos:
    :lines: 24-
@@ -184,6 +184,6 @@ Build and source
 
 No surprise here, right?
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 If it builds without any unexpected issues, we're good to go!

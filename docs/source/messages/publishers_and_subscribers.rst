@@ -136,9 +136,9 @@ Create the Node with a publisher
 
 For the publisher, create a file called :file:`amazing_quote_publisher_node.py`, with the following contents
 
-:download:`amazing_quote_publisher_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py>`
+:download:`amazing_quote_publisher_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
    :linenos:
    :lines: 24-
@@ -146,14 +146,14 @@ For the publisher, create a file called :file:`amazing_quote_publisher_node.py`,
 
 When we built our :file:`package_with_interfaces` in the last section, what ROS2 did for us, among other things, was create a Python library called :file:`package_with_interfaces.msg` containing the Python implementation of the :file:`AmazingQuote.msg`. Because of that, we can use it by importing it like so
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
    :lines: 24-29
    :emphasize-lines: 4
 
 The publisher must be created with the :code:`Node.create_publisher(...)` method, which has the three parameters defined in the :ref:`publisher and subscriber parameter table`.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
    :lines: 38-41
 
@@ -176,13 +176,13 @@ The publisher must be created with the :code:`Node.create_publisher(...)` method
 
 Then, each message is handled much like any other class in Python. We instantiate and initialize the message as follows
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
    :lines: 51-54
 
 Lastly, the message needs to be published using :code:`Node.publish(msg)`.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_publisher_node.py
    :language: python
    :lines: 56
 
@@ -206,9 +206,9 @@ Create the Node with a subscriber
 
 For the subscriber Node, create a file in :file:`python_package_that_uses_the_messages/python_package_that_uses_the_messages` called :file:`amazing_quote_subscriber_node.py`, with the following contents
 
-:download:`amazing_quote_subscriber_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py>`
+:download:`amazing_quote_subscriber_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :linenos:
    :lines: 24-
@@ -216,21 +216,21 @@ For the subscriber Node, create a file in :file:`python_package_that_uses_the_me
 
 Similarly to the publisher, in the subscriber, we start by importing the message in question
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :lines: 24-28
    :emphasize-lines: 4
 
 Then, in our subclass of :code:`Node`, we call :code:`Node.create_subscription(...)` as follows
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :lines: 36-40
    :emphasize-lines: 4
 
 where the only difference with respect to the publisher is the third argument, namely :code:`callback`, in which a method that receives a :code:`msg_type` and returns nothing is expected. For example, the :code:`amazing_quote_subscriber_callback`.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/python_package_that_uses_the_messages/amazing_quote_subscriber_node.py
    :language: python
    :lines: 42-55
    :emphasize-lines: 8,12,14
@@ -246,9 +246,9 @@ Update the :file:`setup.py`
 
 As we already learned in :ref:`Making rosrun work`, we must adjust the :file:`setup.py` to refer to the Nodes we just created.
 
-:download:`setup.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py>`
+:download:`setup.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_messages/setup.py
    :language: python
    :linenos:
    :emphasize-lines: 21-25
@@ -258,7 +258,7 @@ Build and source
 
 Before we proceed, let us build and source once.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 Testing Publisher and Subscriber
 --------------------------------

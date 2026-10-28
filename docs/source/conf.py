@@ -33,10 +33,41 @@ extensions = [
     'sphinx_design', # https://sphinx-design.readthedocs.io/en/latest/get_started.html
     'sphinxext.remoteliteralinclude', # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
     'sphinxcontrib.mermaid', #https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
-    'sphinxcontrib.bibtex' #https://sphinxcontrib-bibtex.readthedocs.io/en/latest/quickstart.html
+    'sphinxcontrib.bibtex', #https://sphinxcontrib-bibtex.readthedocs.io/en/latest/quickstart.html
+    'sphinx_reredirects' #https://gitlab.com/jborean93/sphinx-reredirects
 ]
 
 bibtex_bibfiles = ['refs.bib']
+
+# Old page locations from the topic-directory reorganisation (the pages were
+# git mv'ed into per-topic folders, e.g. installation -> setup/installation).
+# sphinx_reredirects emits meta-refresh pages for these during the html build.
+redirects = {
+    'installation': 'setup/installation',
+    'terminator': 'setup/terminator',
+    'workspace_setup': 'setup/workspace_setup',
+    'create_packages': 'packages/create_packages',
+    'create_python_package': 'packages/create_python_package',
+    'create_python_node_with_template': 'packages/create_python_node_with_template',
+    'source_after_build': 'packages/source_after_build',
+    'running_node': 'packages/running_node',
+    'create_python_node_from_scratch': 'python_node/create_python_node_from_scratch',
+    'python_node_explained': 'python_node/python_node_explained',
+    'create_python_library': 'python_library/create_python_library',
+    'using_python_library': 'python_library/using_python_library',
+    'interfaces': 'interfaces/interfaces',
+    'create_interface_package': 'interfaces/create_interface_package',
+    'publishers_and_subscribers': 'messages/publishers_and_subscribers',
+    'inspecting_topics': 'messages/inspecting_topics',
+    'parameters_and_launch': 'parameters_and_launch/parameters_and_launch',
+    'launch_configurable_nodes': 'parameters_and_launch/launch_configurable_nodes',
+    'inspecting_parameters': 'parameters_and_launch/inspecting_parameters',
+    'service_servers_and_clients': 'services/service_servers_and_clients',
+    'inspecting_services': 'services/inspecting_services',
+    'actions': 'actions/actions',
+    'action_servers': 'actions/action_servers',
+    'action_clients': 'actions/action_clients',
+}
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3.12/', None),

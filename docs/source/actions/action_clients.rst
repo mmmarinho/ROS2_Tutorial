@@ -1,7 +1,7 @@
 Action Clients
 ==============
 
-.. include:: the_topic_is_under_heavy_construction.rst
+.. include:: ../the_topic_is_under_heavy_construction.rst
 
 .. versionadded:: Jazzy
 
@@ -70,9 +70,9 @@ Action Client
 #. Create the Node with an :code:`ActionClient`.
 #. Update the :file:`setup.py` so that :program:`ros2 run` finds the node (if needed).
 
-:download:`move_straight_in_2d_action_client_node.py <../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py>`
+:download:`move_straight_in_2d_action_client_node.py <../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
    :lines: 24-
    :linenos:
@@ -87,7 +87,7 @@ In the action client, we will have to manage two instances of :code:`Future`. On
 It is important to keep them as attributes
 of the instance to guarantee they will not get out of scope before the result is obtained. This is done as follows.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
    :lines: 37-45
    :emphasize-lines: 4,7,8
@@ -102,7 +102,7 @@ Whenever a feedback is sent, the method we assign as callback will be called.
 After we send the goal request and assign a callback for the feedback, we assign another callback. This second callback
 is for the result of the goal request operation.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
    :lines: 47-57
    :emphasize-lines: 1,5,10,11
@@ -113,7 +113,7 @@ to ask for a result.
 
 We ask for a result asynchronously. We then assign a third callback for when a response is sent.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
    :lines: 59-68
    :emphasize-lines: 1,4,9,10
@@ -121,13 +121,13 @@ We ask for a result asynchronously. We then assign a third callback for when a r
 The result callback will receive a future and process the result of the action somehow. In this toy example, we simply
 print the results to the screen.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
    :lines: 70-72
 
 Lastly, we see that the callback for the feedback is, again, very similar to that for a subscriber.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
    :lines: 74-76
 
@@ -137,7 +137,7 @@ the action is triggered only once.
 When doing so, please remember to call the action after the node is instantiated and before :code:`rclpy.spin()`. Otherwise,
 the object will not yet exist, or you will be locked in the spinner before sending the goal.
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_the_actions/python_package_that_uses_the_actions/move_straight_in_2d_action_client_node.py
    :language: python
    :lines: 87-95
 
@@ -146,7 +146,7 @@ Build and source
 
 Before we proceed, let us build and source once.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 Testing the Action Client
 -------------------------

@@ -90,9 +90,9 @@ The :file:`package.xml` dependencies
 Whenever the package has any type of interface, the :file:`package.xml` **must** include three specific dependencies. Namely, the ones highlighted below.
 Edit the :file:`package_with_interfaces/package.xml` like so
 
-:download:`package.xml <../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
+:download:`package.xml <../../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/package_with_interfaces/package.xml
    :language: xml
    :linenos:
    :emphasize-lines: 14-16
@@ -125,9 +125,9 @@ Let us create a message file to transfer inspirational quotes between Nodes. For
 There are many ways to represent this, but for the sake of the example let us give each message an :code:`id` and two rather obvious fields.
 Create a file called :file:`AmazingQuote.msg` in the folder :file:`msg` that we just created with the following contents.
 
-:download:`AmazingQuote.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
+:download:`AmazingQuote.msg <../../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
    :linenos:
 
@@ -141,9 +141,9 @@ Re-using a message from the same package
 
 With the :file:`AmazingQuote.msg`, we have seen how to use built-in types. Let's use another message, :file:`AmazingQuoteStamped.msg`,  to learn two more possibilities, namely using messages from the same package and messages defined elsewhere.
 
-:download:`AmazingQuoteStamped.msg <../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg>`
+:download:`AmazingQuoteStamped.msg <../../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuoteStamped.msg
    :language: yaml
    :linenos:
 
@@ -169,9 +169,9 @@ The service file
 
 Add the file :file:`AddPoints.srv` in the :file:`srv` folder with the following contents
 
-:download:`AddPoints.srv <../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv>`
+:download:`AddPoints.srv <../../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/package_with_interfaces/srv/AddPoints.srv
    :language: yaml
    :linenos:
 
@@ -192,9 +192,9 @@ The action file
 
 Add the file :file:`MoveStraightIn2D.action` in the :file:`action` folder with the following contents
 
-:download:`MoveStraightIn2D.action <../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action>`
+:download:`MoveStraightIn2D.action <../../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/package_with_interfaces/action/MoveStraightIn2D.action
    :language: yaml
    :linenos:
 
@@ -209,9 +209,9 @@ The :file:`CMakeLists.txt` directives
 If a package is dedicated to interfaces, there is no need to worry too much about the :program:`CMake` details. We can follow the boilerplate as shown below.
 Edit the :file:`package_with_interfaces/CMakeLists.txt` like so
 
-:download:`CMakeLists.txt <../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
+:download:`CMakeLists.txt <../../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt>`
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
    :language: cmake
    :linenos:
    :emphasize-lines: 14-40
@@ -233,7 +233,7 @@ If additional interfaces are required
 
 #. Add each new interface file to :code:`set(interface_files ...)`
 
-   .. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
+   .. literalinclude:: ../../../ros2_tutorial_workspace/src/package_with_interfaces/CMakeLists.txt
       :language: cmake
       :lines: 17-28
       :emphasize-lines: 5,8,11
@@ -247,7 +247,7 @@ Build and source
 
 Before we proceed, let us build and source once.
 
-.. include:: the_canonical_build_command.rst
+.. include:: ../the_canonical_build_command.rst
 
 Getting info on custom interfaces
 ---------------------------------
@@ -277,7 +277,7 @@ and we can further get more specific info on :file:`AmazingQuote` (or :file:`Ama
 
 which returns
 
-.. literalinclude:: ../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/package_with_interfaces/msg/AmazingQuote.msg
    :language: yaml
 
 alternatively, we can do the same for :file:`AddPoints`
