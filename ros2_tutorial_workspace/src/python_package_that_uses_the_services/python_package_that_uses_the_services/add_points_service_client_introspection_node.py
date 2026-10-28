@@ -31,7 +31,7 @@ from rclpy.qos import qos_profile_system_default
 class AddPointsServiceClientIntrospectionNode(AddPointsServiceClientNode):
     """A ROS2 Node that enables introspection on its service client."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
         # https://github.com/ros2/demos/blob/rolling/demo_nodes_py/demo_nodes_py/services/introspection.py
@@ -40,7 +40,7 @@ class AddPointsServiceClientIntrospectionNode(AddPointsServiceClientNode):
             service_event_qos_profile=qos_profile_system_default,
             introspection_state=ServiceIntrospectionState.CONTENTS)
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure

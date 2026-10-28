@@ -25,7 +25,7 @@ from math import pi
 from geometry_msgs.msg import Quaternion
 import marinholab.nottf2 as ntf2
 
-def main():
+def main() -> None:
     phi: float = pi
 
     r1: Quaternion = ntf2.rx(phi=phi)

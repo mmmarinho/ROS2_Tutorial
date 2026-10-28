@@ -33,12 +33,12 @@ from python_package_with_a_library.sample_python_library import SampleClass, sam
 class LibraryUser(Node):
     """A ROS2 Node that prints to the console periodically."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('library_user')
         timer_period: float = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
-    def timer_callback(self):
+    def timer_callback(self) -> None:
         """
         Method that is periodically called by the timer.
         Prints out the result of sample_function_for_square_of_sum of two random numbers,
@@ -56,7 +56,7 @@ class LibraryUser(Node):
                                f'returned {sample_class_with_random_name.get_name()}.')
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure

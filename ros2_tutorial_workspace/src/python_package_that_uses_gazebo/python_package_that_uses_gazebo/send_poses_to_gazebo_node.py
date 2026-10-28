@@ -27,11 +27,12 @@ from ros_gz_interfaces.srv import SetEntityPose
 import rclpy
 from rclpy.node import Node
 from rclpy.executors import ExternalShutdownException
+from rclpy.task import Future
 
 class SendPosesToGazeboNode(Node):
     """A ROS2 Node that sends poses to Gazebo"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('send_poses_to_gazebo_node')
 
         self.service_client = self.create_client(
@@ -42,7 +43,7 @@ class SendPosesToGazeboNode(Node):
             self.get_logger().info(f'service {self.service_client.srv_name} not available, waiting...')
 
 
-    def send_pose_to_gazebo(self):
+    def send_pose_to_gazebo(self) -> Future[SetEntityPose.Response]:
         """Sample method sending a pose to and entity in Gazebo."""
 
         request = SetEntityPose.Request()
@@ -64,7 +65,7 @@ class SendPosesToGazeboNode(Node):
         return self.service_client.call_async(request)
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

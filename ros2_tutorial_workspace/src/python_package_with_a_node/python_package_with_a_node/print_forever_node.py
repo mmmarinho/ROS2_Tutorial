@@ -29,19 +29,19 @@ from rclpy.executors import ExternalShutdownException
 class PrintForever(Node):
     """A ROS2 Node that prints to the console periodically."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('print_forever')
         timer_period: float = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.print_count: int = 0
 
-    def timer_callback(self):
+    def timer_callback(self) -> None:
         """Method that is periodically called by the timer."""
         self.get_logger().info(f'Printed {self.print_count} times.')
         self.print_count = self.print_count + 1
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure

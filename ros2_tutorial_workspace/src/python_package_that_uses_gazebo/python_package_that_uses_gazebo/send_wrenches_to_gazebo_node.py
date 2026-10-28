@@ -31,7 +31,7 @@ from rclpy.executors import ExternalShutdownException
 class SendWrenchesToGazeboNode(Node):
     """A ROS2 Node that sends wrenches to Gazebo."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('send_wrenches_to_gazebo_node')
 
         self.publisher = self.create_publisher(
@@ -43,7 +43,7 @@ class SendWrenchesToGazeboNode(Node):
             self.get_logger().info("Waiting for subscriber to be connected...")
             time.sleep(1)
 
-    def send_wrench_to_gazebo(self):
+    def send_wrench_to_gazebo(self) -> None:
         """Basic method publishing wrenches to Gazebo."""
 
         ew = EntityWrench()
@@ -70,7 +70,7 @@ class SendWrenchesToGazeboNode(Node):
         self.publisher.publish(ew)
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

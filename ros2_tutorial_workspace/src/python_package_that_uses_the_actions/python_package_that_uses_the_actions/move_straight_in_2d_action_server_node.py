@@ -37,7 +37,7 @@ from package_with_interfaces.action import MoveStraightIn2D
 class MoveStraightIn2DActionServerNode(Node):
     """A ROS2 Node with an Action Server for MoveStraightIn2D."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('move_straight_in_2d_action_server')
         self.current_position = Point()
         self.MAX_ITERATIONS: int  = 100
@@ -116,7 +116,7 @@ class MoveStraightIn2DActionServerNode(Node):
         return result
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

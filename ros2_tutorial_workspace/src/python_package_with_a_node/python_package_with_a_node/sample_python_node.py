@@ -1,4 +1,4 @@
-def main():
+def main() -> None:
     print('Hi from python_package_with_a_node.')
 
 

@@ -34,7 +34,7 @@ class ControlShapeThrustNode(Node):
     """A ROS2 Node that controls the thrust of a shape in Gazebo.
        It will apply force based on the position of an entity."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('control_shape_thurst_node')
 
         # Structured easily to be changed into configurable parameters
@@ -65,7 +65,8 @@ class ControlShapeThrustNode(Node):
         self.timer_period: float = 0.001
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
 
-    def compute_control_action(self, current, target, proportional_gain:float = 5.0) -> float:
+    def compute_control_action(self, current: float, target: float,
+                               proportional_gain: float = 5.0) -> float:
         """A simple proportional controller"""
         error = current - target
         return -proportional_gain * error
@@ -90,7 +91,7 @@ class ControlShapeThrustNode(Node):
 
         self.wrench_publisher.publish(ew)
 
-    def timer_callback(self):
+    def timer_callback(self) -> None:
         """The timer callback will look up the transforms and send the next control action."""
 
         try:
@@ -114,7 +115,7 @@ class ControlShapeThrustNode(Node):
                 f'Could not get transform from `{self.parent_name}` to `{self.child_name}`: {e}')
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure certain aspects of the Node.

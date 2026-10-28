@@ -30,7 +30,7 @@ from package_with_interfaces.msg import AmazingQuote
 class AmazingQuoteSubscriberNode(Node):
     """A ROS2 Node that receives and AmazingQuote and prints out its info."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('amazing_quote_subscriber_node')
         self.amazing_quote_subscriber = self.create_subscription(
             msg_type=AmazingQuote,
@@ -38,7 +38,7 @@ class AmazingQuoteSubscriberNode(Node):
             callback=self.amazing_quote_subscriber_callback,
             qos_profile=1)
 
-    def amazing_quote_subscriber_callback(self, msg: AmazingQuote):
+    def amazing_quote_subscriber_callback(self, msg: AmazingQuote) -> None:
         """Method that is called when a new msg is received by the node."""
         
         self.get_logger().info(f"""
@@ -55,7 +55,7 @@ class AmazingQuoteSubscriberNode(Node):
         """)
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure

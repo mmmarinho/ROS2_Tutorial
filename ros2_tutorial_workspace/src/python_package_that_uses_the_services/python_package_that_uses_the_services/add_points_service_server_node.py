@@ -30,7 +30,7 @@ from package_with_interfaces.srv import AddPoints
 class AddPointsServiceServerNode(Node):
     """A ROS2 Node with a Service Server for AddPoints."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('add_points_service_server')
 
         self.service_server = self.create_service(
@@ -55,7 +55,7 @@ class AddPointsServiceServerNode(Node):
         return response
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure

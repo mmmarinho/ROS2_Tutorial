@@ -34,7 +34,7 @@ from package_with_interfaces.srv import AddPoints
 class AddPointsServiceClientJustOnceNode(Node):
     """A ROS2 Node with a Service Client for AddPoints, just once."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__('add_points_service_client_just_once')
 
         self.service_client = self.create_client(
@@ -62,7 +62,7 @@ class AddPointsServiceClientJustOnceNode(Node):
         self.future = self.service_client.call_async(request)
         self.future.add_done_callback(self.process_response)
 
-    def process_response(self, future: Future):
+    def process_response(self, future: Future) -> None:
         """Callback for the future, that will be called when it is done."""
         response = future.result()
         if response is not None:
@@ -75,7 +75,7 @@ class AddPointsServiceClientJustOnceNode(Node):
             self.get_logger().info("The response was None.")
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     """
     The main function.
     :param args: Not used directly by the user, but used by ROS2 to configure

@@ -26,7 +26,7 @@ SOFTWARE.
 class SampleClass:
     """A sample class to check how they can be imported by other ROS2 packages."""
 
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         self._name = name
 
     def get_name(self) -> str:
