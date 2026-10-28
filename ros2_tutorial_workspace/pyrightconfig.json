@@ -1,0 +1,17 @@
+{
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "**/test/**",
+    "**/build/**",
+    "**/install/**",
+    "**/log/**",
+    "**/resource/**"
+  ],
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none",
+  "reportMissingParameterType": "error",
+  "pythonVersion": "3.12",
+  "stubPath": "stubs"
+}
