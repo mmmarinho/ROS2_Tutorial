@@ -6,7 +6,7 @@ We press :code:`Ctrl-C` to stop a Node. The Node ending cleanly is essential for
 What :code:`Ctrl-C` actually does
 ---------------------------------
 
-:code:`Ctrl-C` sends the :code:`SIGINT` signal to your Node. While :code:`rclpy.spin()` is running, :code:`rclpy` handles that signal itself, with two consequences:
+:code:`Ctrl-C` sends the :code:`SIGINT` signal to your Node. While :code:`rclpy.spin()` is running, :code:`rclpy` handles that signal itself, with three consequences:
 
 1. :code:`spin()` raises an `ExternalShutdownException <https://docs.ros.org/en/jazzy/p/rclpy/generated/rclpy.executors.ExternalShutdownException.html>`_. If your :code:`except` clause does not catch it, the exception escapes :code:`main()` and Python dies.
 2. The :code:`rclpy` **context is already shut down** by the signal handler. Calling :code:`rclpy.shutdown()` afterwards raises :code:`RCLError: rcl_shutdown already called on the given context`, crashing the Node.
@@ -20,7 +20,7 @@ Catch both exit paths and do not shut the context down.
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/good_template.py
    :language: python
 
-   This is the only ending you need. Everything below exists because the ROS 2 documentation and Q&A threads show other endings.
+This is the only ending you need. Everything below exists because the ROS 2 documentation and Q&A threads show other endings.
 
 Endings that crash
 ------------------
