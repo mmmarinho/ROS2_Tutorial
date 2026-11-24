@@ -12,7 +12,6 @@ def main(args: list[str] | None = None) -> None:
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
-        node.destroy_node()
         rclpy.try_shutdown()
 
 
