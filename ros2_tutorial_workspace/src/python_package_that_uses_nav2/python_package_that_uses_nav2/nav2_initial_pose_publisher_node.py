@@ -42,11 +42,17 @@ class Nav2InitialPosePublisherNode(Node):
             topic=self._topic,
             qos_profile=1)
 
-        publisher_count = 0
+        publisher_count: int = 0
+        tries: int = 0
         while publisher_count < 2:
             publisher_count = self.count_publishers(self._topic)
             self.get_logger().info(f"Waiting for publisher to be connected to {self._topic}.")
             self.get_logger().info(f"Publisher count is {publisher_count}.")
+            if tries >= 15:
+                self.get_logger().error(f"Only {publisher_count} publisher(s) on {self._topic} after 15s."
+                                        " Is Nav2 running? The initial pose may be ignored.")
+                break
+            tries += 1
             time.sleep(1)
 
     def send_initial_pose_with_covariance(self) -> None:

@@ -394,8 +394,8 @@ with the initialisation.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py
    :language: python
-   :lines: 45-50
-   :emphasize-lines: 2
+   :lines: 45-56
+   :emphasize-lines: 4
 
 The second part that might be unfamiliar is the covariance used in the message. The covariance matrix holds the variance
 in the diagonal and off the diagonal any pair-wise variances between different states. All of this to say that the
@@ -405,7 +405,7 @@ The covariance is highlighted below.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py
    :language: python
-   :lines: 52-74
+   :lines: 58-80
    :emphasize-lines: 19-21
 
 It is important not to be distracted by the nested ``pose``. The first one os the ``PoseWithCovariance``, part of the
@@ -434,15 +434,15 @@ scope of this tutorial.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_navigate_to_pose_action_client_node.py
    :language: python
-   :lines: 88-95
-   :emphasize-lines: 3-6
+   :lines: 88-104
+   :emphasize-lines: 11-14,16
 
 Then, in our implementation we populate the fields of the goal with the pose we just created and the stamp obtained
 from the node. We receive an empty behaviour tree and that is also added to the goal.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_navigate_to_pose_action_client_node.py
    :language: python
-   :lines: 45-50
+   :lines: 46-51
 
 Besides the slightly different action type, the process to make an action client is mostly unchanged.
 
