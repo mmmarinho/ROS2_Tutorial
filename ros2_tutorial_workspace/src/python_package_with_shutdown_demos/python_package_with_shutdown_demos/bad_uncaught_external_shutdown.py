@@ -10,7 +10,6 @@ def main(args: list[str] | None = None) -> None:
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass
-    node.destroy_node()
 
 
 if __name__ == '__main__':

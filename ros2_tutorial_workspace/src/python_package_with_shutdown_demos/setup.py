@@ -22,7 +22,7 @@ setup(
         'console_scripts': [
             'good_template = python_package_with_shutdown_demos.good_template:main',
             'bad_bare_shutdown = python_package_with_shutdown_demos.bad_bare_shutdown:main',
-            'bad_destroy_after_keyboard_interrupt_only = python_package_with_shutdown_demos.bad_destroy_after_keyboard_interrupt_only:main',
+            'bad_uncaught_external_shutdown = python_package_with_shutdown_demos.bad_uncaught_external_shutdown:main',
             'warn_ok_guard = python_package_with_shutdown_demos.warn_ok_guard:main',
             'warn_keyboard_interrupt_only = python_package_with_shutdown_demos.warn_keyboard_interrupt_only:main',
             'warn_try_shutdown = python_package_with_shutdown_demos.warn_try_shutdown:main',

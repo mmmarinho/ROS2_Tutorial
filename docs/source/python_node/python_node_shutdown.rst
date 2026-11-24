@@ -38,7 +38,7 @@ Under :code:`Ctrl-C` the :code:`finally` block executes *after* :code:`rclpy`'s 
 
 A second crashing ending catches only :code:`KeyboardInterrupt`, so the :code:`ExternalShutdownException` raised by :code:`spin()` has nowhere to go:
 
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/bad_destroy_after_keyboard_interrupt_only.py
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/bad_uncaught_external_shutdown.py
    :language: python
 
 Endings that work, but are not recommended
