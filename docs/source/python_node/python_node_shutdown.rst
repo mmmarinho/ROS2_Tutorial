@@ -1,33 +1,25 @@
-How the Node ends: shutting down cleanly
-========================================
+Shutting down cleanly
+=====================
 
-Every Node eventually stops: someone presses :code:`Ctrl-C`. The difference between a Node that exits quietly and one that prints a wall of traceback on its very last second lies in a few lines at the end of :code:`main()`. This page shows the recommended ending, the endings that crash, and the measured frequency of each behaviour.
+We press :code:`Ctrl-C` to stop a Node. The Node ending cleanly is essential for the correct operation of more complex software with many interconnected Nodes.
 
 What :code:`Ctrl-C` actually does
 ---------------------------------
 
 :code:`Ctrl-C` sends the :code:`SIGINT` signal to your Node. While :code:`rclpy.spin()` is running, :code:`rclpy` handles that signal itself, with two consequences:
 
-1. :code:`spin()` does not simply return: it raises `ExternalShutdownException <https://docs.ros.org/en/jazzy/p/rclpy/generated/rclpy.executors.ExternalShutdownException.html>`_. If your :code:`except` clause does not catch it, the exception escapes :code:`main()` and Python dies with a traceback and exit code 1.
-2. The :code:`rclpy` **context is already shut down** by the signal handler. Calling :code:`rclpy.shutdown()` afterwards raises :code:`RCLError: rcl_shutdown already called on the given context` — the Node crashes on its own last line, after having behaved perfectly for its whole life.
-
-.. admonition:: Tips for the future you
-
-   When reproducing this in a terminal remember that :code:`Ctrl-C` goes to the whole foreground **process group** (:code:`ros2 run` *and* the Node it spawned). A bare :code:`kill -INT <pid>` aimed only at the :code:`ros2 run` wrapper is not the same experiment.
+1. :code:`spin()` raises an `ExternalShutdownException <https://docs.ros.org/en/jazzy/p/rclpy/generated/rclpy.executors.ExternalShutdownException.html>`_. If your :code:`except` clause does not catch it, the exception escapes :code:`main()` and Python dies.
+2. The :code:`rclpy` **context is already shut down** by the signal handler. Calling :code:`rclpy.shutdown()` afterwards raises :code:`RCLError: rcl_shutdown already called on the given context`, crashing the Node.
 
 The recommended ending
 ----------------------
 
-Catch both exit paths and do not shut the context down yourself — :code:`rclpy` already did it:
+Catch both exit paths and do not shut the context down.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/good_template.py
    :language: python
 
-Measured behaviour: always a clean exit (0 crashes in 3 runs).
-
-.. important::
-
-   This is the only ending you need. Everything below exists because the ROS 2 documentation and Q&A threads show other endings, and those endings behave badly under :code:`Ctrl-C`.
+   This is the only ending you need. Everything below exists because the ROS 2 documentation and Q&A threads show other endings.
 
 Endings that crash
 ------------------
@@ -43,14 +35,10 @@ Under :code:`Ctrl-C` the :code:`finally` block executes *after* :code:`rclpy`'s 
 
    rclpy.exceptions.RCLError: rcl_shutdown already called on the given context
 
-Measured behaviour: crashes in **3 of 3** runs (exit code 1).
-
-A second crashing ending catches only :code:`KeyboardInterrupt` — so the :code:`ExternalShutdownException` raised by :code:`spin()` has nowhere to go:
+A second crashing ending catches only :code:`KeyboardInterrupt`, so the :code:`ExternalShutdownException` raised by :code:`spin()` has nowhere to go:
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/bad_destroy_after_keyboard_interrupt_only.py
    :language: python
-
-Measured behaviour: crashes in **3 of 3** runs with an uncaught :code:`rclpy.executors.ExternalShutdownException` traceback (exit code 1).
 
 Endings that work, but are not recommended
 ------------------------------------------
@@ -60,16 +48,9 @@ The first survivor hedges the documented cleanup with a guard, which is what abs
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/warn_ok_guard.py
    :language: python
 
-Measured behaviour: 0 crashes in 3 runs — but the guard is a workaround for a crash you never need if you simply omit the cleanup.
+The guard is a workaround for a crash you never need if you simply omit the cleanup.
 
-The second survivor also catches only :code:`KeyboardInterrupt`, but its :code:`Exception` backstop swallows the :code:`ExternalShutdownException`:
-
-.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/warn_keyboard_interrupt_only.py
-   :language: python
-
-Measured behaviour: 0 crashes in 3 runs — yet it survives only because the backstop is there by accident, not because the :code:`except` clause names :code:`ExternalShutdownException` explicitly.
-
-The last pair uses :code:`rclpy.try_shutdown()`, which tolerates an already-dead context:
+The second pair uses :code:`rclpy.try_shutdown()`, which tolerates an already-dead context:
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/warn_try_shutdown.py
    :language: python
