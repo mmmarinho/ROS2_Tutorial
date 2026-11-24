@@ -37,25 +37,33 @@ class Nav2NavigateToPoseActionClient(Node):
     def __init__(self) -> None:
         super().__init__('nav2_navigate_to_pose_action_client')
 
-        self.action_client: ActionClient = ActionClient(self, NavigateToPose, '/navigate_to_pose')
+        self._action_name: str = '/navigate_to_pose'
+        self.action_client: ActionClient = ActionClient(self, NavigateToPose, self._action_name)
 
         self.send_goal_future: Future  # This will be used in `send_goal`
         self.get_result_future: Future  # This will be used in 'goal_response_callback'
 
-    def send_goal_async(self, desired_pose: Pose, behaviour_tree: str) -> None:
+    def send_goal_async(self, desired_pose: Pose, behaviour_tree: str) -> bool:
         goal_msg: NavigateToPose.Goal = NavigateToPose.Goal()
         goal_msg.pose.header.stamp = self.get_clock().now().to_msg()
         goal_msg.pose.header.frame_id = 'map'
         goal_msg.pose.pose = desired_pose
         goal_msg.behavior_tree = behaviour_tree
 
+        tries: int = 0
         while not self.action_client.wait_for_server(timeout_sec=1.0):
-            self.get_logger().info(f'action {self.action_client} not available, waiting...')
+            if tries >= 15:
+                self.get_logger().error(f"action {self._action_name} is still not available after 15s."
+                                        " Is Nav2 running (navigation_launch.py)?")
+                return False
+            self.get_logger().info(f'action {self._action_name} not available, waiting...')
+            tries += 1
 
         self.get_logger().info(f'Sending goal: {goal_msg}.')
 
         self.send_goal_future = self.action_client.send_goal_async(goal_msg, feedback_callback=self.action_feedback_callback)
         self.send_goal_future.add_done_callback(self.goal_response_callback)
+        return True
 
     def goal_response_callback(self, future: Future) -> None:
         goal: ClientGoalHandle = future.result()
@@ -92,9 +100,8 @@ def main(args: list[str] | None = None) -> None:
         desired_pose.position.y = -1.0
         desired_pose.orientation.w = 1.0
 
-        node.send_goal_async(desired_pose, "")
-
-        rclpy.spin(node)
+        if node.send_goal_async(desired_pose, ""):
+            rclpy.spin(node)
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
     except Exception as e:
