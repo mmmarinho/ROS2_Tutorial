@@ -55,7 +55,7 @@ Note that :code:`rclpy.try_shutdown()` tolerates an already-dead context.
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/warn_try_shutdown.py
    :language: python
 
-In most cases measured herein :code:`destroy_node()`, serves no purpose. It does not crash the node, but it is not needed either.
+In most cases measured herein, :code:`destroy_node()` serves no purpose. It does not crash the node, but it is not needed either.
 
 
 
