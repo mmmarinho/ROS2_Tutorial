@@ -265,7 +265,7 @@ service client.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 24-
+   :lines: 25-
    :linenos:
 
 There are perhaps only two unfamiliar aspects of this node by now. First, that we need to send the correct entity
@@ -273,7 +273,7 @@ name for :program:`Gazebo` to know which entity to set the pose. This name can b
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 47-66
+   :lines: 48-67
    :emphasize-lines: 7
 
 The second possibly unfamiliar is the choice of ``rclpy.spin_until_future_complete`` to illustrate calling the service
@@ -281,7 +281,7 @@ client only once.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 69-84
+   :lines: 70-85
    :emphasize-lines: 11
 
 .. admonition:: Exercises
