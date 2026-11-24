@@ -10,6 +10,7 @@ What :code:`Ctrl-C` actually does
 
 1. :code:`spin()` raises an `ExternalShutdownException <https://docs.ros.org/en/jazzy/p/rclpy/generated/rclpy.executors.ExternalShutdownException.html>`_. If your :code:`except` clause does not catch it, the exception escapes :code:`main()` and Python dies.
 2. The :code:`rclpy` **context is already shut down** by the signal handler. Calling :code:`rclpy.shutdown()` afterwards raises :code:`RCLError: rcl_shutdown already called on the given context`, crashing the Node.
+3. :code:`destroy_node()` serves no purpose in the shutdown process, so I will omit them in the examples. It does not crash the node, but it is not needed either.
 
 The recommended ending
 ----------------------
@@ -55,7 +56,6 @@ Note that :code:`rclpy.try_shutdown()` tolerates an already-dead context.
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/warn_try_shutdown.py
    :language: python
 
-In most cases measured herein, :code:`destroy_node()` serves no purpose. It does not crash the node, but it is not needed either.
 
 
 
