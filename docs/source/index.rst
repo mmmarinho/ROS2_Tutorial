@@ -134,6 +134,7 @@ If you enjoyed this tutorial, please
 
    python_node/create_python_node_from_scratch
    python_node/python_node_explained
+   python_node/python_node_shutdown
 
 .. toctree::
    :caption: ROS2 Python Library
