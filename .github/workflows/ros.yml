@@ -17,6 +17,12 @@ jobs:
           run: |
             source /opt/ros/jazzy/setup.bash
             colcon build
+        - name: Import smoke test (pyright cannot see rclpy, so import every example module)
+          shell: bash
+          run: |
+            source /opt/ros/jazzy/setup.bash
+            if [ -f install/setup.bash ]; then source install/setup.bash; fi
+            python3 tools/import_smoke_test.py
     typecheck:
       runs-on: ubuntu-24.04
       steps:

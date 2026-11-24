@@ -53,9 +53,15 @@ class ControlShapeThrustNode(Node):
             qos_profile=1)
 
         # This is one way to prevent published messages from being lost, but we don't know what is subscribing.
+        tries: int = 0
         while not self.count_subscribers(self._wrench_topic):
+            if tries >= 15:
+                self.get_logger().error(f"No subscriber on {self._wrench_topic} after 15s."
+                                        " Is the parameter_bridge running? Control commands may be lost.")
+                break
             self.get_logger().info(f"Waiting for subscriber to be connected to {self._wrench_topic}...")
             time.sleep(1)
+            tries += 1
 
         # Setting up the TransformListener.
         self.transform_listener_buffer = tf2_ros.Buffer()

@@ -41,8 +41,14 @@ class SendPosesToGazeboNode(Node):
             srv_type=SetEntityPose,
             srv_name='/world/shapes_with_tf2_and_wrench/set_pose')
 
+        tries: int = 0
         while not self.service_client.wait_for_service(timeout_sec=1.0):
+            if tries >= 15:
+                self.get_logger().error(f"service {self.service_client.srv_name} is still not available after 15s."
+                                        f" Is gz sim running shapes_with_tf2_and_wrench.sdf and is the parameter_bridge up?")
+                break
             self.get_logger().info(f'service {self.service_client.srv_name} not available, waiting...')
+            tries += 1
 
 
     def send_pose_to_gazebo(self) -> Future[SetEntityPose.Response]:
@@ -77,7 +83,12 @@ def main(args: list[str] | None = None) -> None:
 
         node = SendPosesToGazeboNode()
         future = node.send_pose_to_gazebo()
-        rclpy.spin_until_future_complete(node, future)
+        rclpy.spin_until_future_complete(node, future, timeout_sec=10.0)
+
+        if future.done():
+            node.get_logger().info(f"set_pose finished with success: {future.result().success}")
+        else:
+            node.get_logger().error("Timed out waiting for the set_pose service to reply.")
 
     except (KeyboardInterrupt, ExternalShutdownException):
         pass
