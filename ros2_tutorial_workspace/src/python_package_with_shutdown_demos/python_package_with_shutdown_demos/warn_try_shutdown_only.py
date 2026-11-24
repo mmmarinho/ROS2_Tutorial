@@ -4,7 +4,7 @@ from rclpy.executors import ExternalShutdownException
 from python_package_with_shutdown_demos._heartbeat import Heartbeat
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     node = None
     try:
         rclpy.init(args=args)
