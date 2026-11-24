@@ -273,7 +273,7 @@ name for :program:`Gazebo` to know which entity to set the pose. This name can b
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 48-67
+   :lines: 54-73
    :emphasize-lines: 7
 
 The second possibly unfamiliar is the choice of ``rclpy.spin_until_future_complete`` to illustrate calling the service
@@ -281,7 +281,7 @@ client only once.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 70-85
+   :lines: 76-101
    :emphasize-lines: 11
 
 .. admonition:: Exercises
@@ -334,7 +334,7 @@ and :program:`Gazebo` won't recognise it.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_wrenches_to_gazebo_node.py
    :language: python
-   :lines: 47-71
+   :lines: 53-77
    :emphasize-lines: 7
 
 .. admonition:: Wait... what?
@@ -393,7 +393,7 @@ There is also a simple proportional controller in one dimension.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
    :language: python
-   :lines: 71-75
+   :lines: 77-81
 
 Lastly, in the ``timer_callback``, we use the current coordinate value to compute the control action and send it to
 :program:`Gazebo`.
@@ -401,7 +401,7 @@ Lastly, in the ``timer_callback``, we use the current coordinate value to comput
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/control_shape_thrust_node.py
    :language: python
    :emphasize-lines: 11,13
-   :lines: 97-118
+   :lines: 103-124
 
 .. admonition:: Exercises
 
@@ -484,6 +484,7 @@ We can run the first example with the following command. Then, stop it with :kbd
         [INFO] [send_poses_to_gazebo_node-1]: process started with pid [6423]
         [INFO] [parameter_bridge-2]: process started with pid [6424]
         [parameter_bridge-2] [INFO] [1762943343.652578097] [ros_gz_bridge]: Creating ROS->GZ service bridge [/world/shapes_with_tf2_and_wrench/set_pose (ros_gz_interfaces/srv/SetEntityPose -> /)]
+        [INFO] [1762943343.701338744] [send_poses_to_gazebo_node]: set_pose finished with success: True
         [INFO] [send_poses_to_gazebo_node-1]: process has finished cleanly [pid 6423]
         ^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
         [parameter_bridge-2] [INFO] [1762943347.930139121] [rclcpp]: signal_handler(signum=2)
@@ -506,7 +507,7 @@ We can run the second example with the following command. Then, stop it with :kb
         [INFO] [parameter_bridge-2]: process started with pid [6508]
         [parameter_bridge-2] [INFO] [1762943375.599973888] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/world/shapes_with_tf2_and_wrench/wrench (ros_gz_interfaces/msg/EntityWrench) -> /world/shapes_with_tf2_and_wrench/wrench (gz.msgs.EntityWrench)] (Lazy 0)
         [send_wrenches_to_gazebo_node-1] Waiting for subscriber to be connected...
-        [send_wrenches_to_gazebo_node-1] [INFO] [1762943376.818068638] [send_wrenches_to_gazebo_node]: This sent entity  a wrench with force: geometry_msgs.msg.Vector3(x=1000.0, y=0.0, z=0.0) and torque: geometry_msgs.msg.Vector3(x=0.0, y=0.0, z=0.0).
+        [send_wrenches_to_gazebo_node-1] [INFO] [1762943376.818068638] [send_wrenches_to_gazebo_node]: This sent entity id 9 a wrench with force: geometry_msgs.msg.Vector3(x=1000.0, y=0.0, z=0.0) and torque: geometry_msgs.msg.Vector3(x=0.0, y=0.0, z=0.0).
         [parameter_bridge-2] [INFO] [1762943376.824228506] [ros_gz_bridge]: Passing message from ROS ros_gz_interfaces/msg/EntityWrench to Gazebo gz.msgs.EntityWrench (showing msg only once per type)
         ^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
         [parameter_bridge-2] [INFO] [1762943378.394190781] [rclcpp]: signal_handler(signum=2)

@@ -40,9 +40,15 @@ class SendWrenchesToGazeboNode(Node):
             topic='/world/shapes_with_tf2_and_wrench/wrench',
             qos_profile=1)
 
+        tries: int = 0
         while not self.count_subscribers('/world/shapes_with_tf2_and_wrench/wrench'):
+            if tries >= 15:
+                self.get_logger().error("No subscriber on /world/shapes_with_tf2_and_wrench/wrench after 15s."
+                                        " Is the parameter_bridge running? This wrench may be lost.")
+                break
             self.get_logger().info("Waiting for subscriber to be connected...")
             time.sleep(1)
+            tries += 1
 
     def send_wrench_to_gazebo(self) -> None:
         """Basic method publishing wrenches to Gazebo."""
@@ -62,7 +68,7 @@ class SendWrenchesToGazeboNode(Node):
         ew.wrench.torque.y = 0.0
         ew.wrench.torque.z = 0.0
 
-        self.get_logger().info(f"This sent entity {ew.entity.name} a wrench with force:"
+        self.get_logger().info(f"This sent entity id {ew.entity.id} a wrench with force:"
                                f" {ew.wrench.force} "
                                f"and torque:"
                                f" {ew.wrench.torque}.")
