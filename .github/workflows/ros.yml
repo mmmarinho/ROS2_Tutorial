@@ -21,6 +21,8 @@ jobs:
           shell: bash
           run: |
             source /opt/ros/jazzy/setup.bash
+            apt-get update -qq
+            apt-get install -y -qq --no-install-recommends ros-jazzy-ros-gz-interfaces ros-jazzy-nav2-msgs
             if [ -f install/setup.bash ]; then source install/setup.bash; fi
             python3 tools/import_smoke_test.py
     typecheck:
