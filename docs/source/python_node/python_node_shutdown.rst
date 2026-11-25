@@ -12,6 +12,14 @@ What :code:`Ctrl-C` actually does
 2. The :code:`rclpy` **context is already shut down** by the signal handler. Calling :code:`rclpy.shutdown()` afterwards raises :code:`RCLError: rcl_shutdown already called on the given context`, crashing the Node.
 3. :code:`destroy_node()` serves no purpose in the shutdown process, so I will omit them in the examples. It does not crash the node, but it is not needed either.
 
+The Node used by every ending
+-----------------------------
+
+All the endings below run the same tiny Node, kept in a module that every example imports:
+
+.. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_with_shutdown_demos/python_package_with_shutdown_demos/_heartbeat.py
+   :language: python
+
 The recommended ending
 ----------------------
 
