@@ -6,3 +6,4 @@ sphinx-book-theme
 sphinxcontrib-mermaid
 sphinxcontrib-bibtex
 sphinx-reredirects
+sphinxext-opengraph
