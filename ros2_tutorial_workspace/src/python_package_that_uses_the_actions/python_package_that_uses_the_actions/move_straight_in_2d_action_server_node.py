@@ -74,12 +74,20 @@ class MoveStraightIn2DActionServerNode(Node):
         if distance < 0.01:
             return
 
-        x_direction = (self.current_position.x - desired_position.x) / distance
-        y_direction = (self.current_position.y - desired_position.y) / distance
+        desired_delta_x = (desired_position.x - self.current_position.x)
+        desired_delta_y = (desired_position.y - self.current_position.y)
 
-        # Apply new position based on the desired velocity and direction
-        self.current_position.x -= x_direction * desired_speed * self.sampling_time
-        self.current_position.y -= y_direction * desired_speed * self.sampling_time
+        x_direction = desired_delta_x / distance
+        y_direction = desired_delta_y / distance
+
+        # maximum distance we can move in x and y based on the desired velocity, direction, and time step.
+        max_delta_x = x_direction * desired_speed * self.sampling_time
+        max_delta_y = y_direction * desired_speed * self.sampling_time
+        
+        #move either the maximum distance in x and y at the current speed,
+        #or just the desired move distance if we can reach it within the current time step.
+        self.current_position.x += min(desired_delta_x, max_delta_x)
+        self.current_position.y += min(desired_delta_y, max_delta_y)
 
 
     def execute_callback(self, goal: ServerGoalHandle) -> MoveStraightIn2D.Result:
