@@ -42,6 +42,7 @@ extensions = [
 ogp_site_url = 'https://ros2-tutorial.readthedocs.io/en/latest/'
 ogp_site_name = project
 ogp_image = '_static/social_card.png'
+html_static_path = ['_static']  # publishes the card (and custom.css) with the html build
 ogp_image_alt = ("(Murilo's) ROS2 Tutorial: hands-on tutorial on software for robotics, "
                  "making and understanding custom nodes for physical and simulated robots.")
 ogp_social_cards = {'enable': False}
