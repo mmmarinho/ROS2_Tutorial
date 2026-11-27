@@ -1,3 +1,5 @@
+:og:description: Hands-on tutorial on software for robotics: making and understanding custom ROS 2 nodes in Python and C++ for physical and simulated robots.
+
 ========================
 (Murilo's) ROS2 Tutorial
 ========================
