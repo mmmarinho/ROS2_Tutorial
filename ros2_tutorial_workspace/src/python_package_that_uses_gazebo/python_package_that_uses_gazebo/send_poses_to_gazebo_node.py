@@ -21,7 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from __future__ import annotations
 import time
 from ros_gz_interfaces.srv import SetEntityPose
 
@@ -51,7 +50,7 @@ class SendPosesToGazeboNode(Node):
             tries += 1
 
 
-    def send_pose_to_gazebo(self) -> Future[SetEntityPose.Response]:
+    def send_pose_to_gazebo(self) -> Future:
         """Sample method sending a pose to and entity in Gazebo."""
 
         request: SetEntityPose.Request = SetEntityPose.Request()
