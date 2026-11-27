@@ -266,22 +266,14 @@ service client.
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
    :lines: 24-
-   :emphasize-lines: 1
    :linenos:
-
-.. Note::
-
-   The ``from __future__ import annotations`` on L1 is not decoration. On Jazzy, :class:`rclpy.task.Future`
-   is not subscriptable at runtime, so the ``Future[SetEntityPose.Response]`` annotation below would crash
-   the node with a ``TypeError`` the moment the module is imported. Postponing the evaluation of
-   annotations keeps it purely documentation.
 
 There are perhaps only two unfamiliar aspects of this node by now. First, that we need to send the correct entity
 name for :program:`Gazebo` to know which entity to set the pose. This name can be obtained in :program:`Gazebo`\`s GUI.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 54-73
+   :lines: 53-72
    :emphasize-lines: 7
 
 The second possibly unfamiliar is the choice of ``rclpy.spin_until_future_complete`` to illustrate calling the service
@@ -289,7 +281,7 @@ client only once.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_gazebo/python_package_that_uses_gazebo/send_poses_to_gazebo_node.py
    :language: python
-   :lines: 76-101
+   :lines: 75-100
    :emphasize-lines: 11
 
 .. admonition:: Exercises
