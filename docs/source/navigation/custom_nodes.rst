@@ -389,8 +389,9 @@ Given that this node is a simple publisher, we can jump straight to it.
 
 There might be two minor novelties in this example. The first one is similar to what we did in ``tf2`` when guaranteeing
 that the publisher was connected before attempting to publish for the first time. In this case, because in this demo
-:program:`rviz2` is already connected to that topic, we check that there are two subscribers connected before proceeding
-with the initialisation.
+:program:`rviz2` is already a publisher on that topic (its :guilabel:`2D Pose Estimate` tool), we check with
+``count_publishers()`` that there are two publishers, :program:`rviz2` and this node, before proceeding with the
+initialisation.
 
 .. literalinclude:: ../../../ros2_tutorial_workspace/src/python_package_that_uses_nav2/python_package_that_uses_nav2/nav2_initial_pose_publisher_node.py
    :language: python
