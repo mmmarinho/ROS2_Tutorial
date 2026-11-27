@@ -34,7 +34,21 @@ extensions = [
     'sphinxext.remoteliteralinclude', # https://github.com/wpilibsuite/sphinxext-remoteliteralinclude
     'sphinxcontrib.mermaid', #https://sphinxcontrib-mermaid-demo.readthedocs.io/en/latest/
     'sphinxcontrib.bibtex', #https://sphinxcontrib-bibtex.readthedocs.io/en/latest/quickstart.html
-    'sphinx_reredirects' #https://gitlab.com/jborean93/sphinx-reredirects
+    'sphinx_reredirects', #https://gitlab.com/jborean93/sphinx-reredirects
+    'sphinxext.opengraph' # https://sphinxext-opengraph.readthedocs.io/en/latest/
+]
+
+# Link previews (LinkedIn, Slack, etc.). The card is drawn by tools/make_social_card.py.
+ogp_site_url = 'https://ros2-tutorial.readthedocs.io/en/latest/'
+ogp_site_name = project
+ogp_image = '_static/social_card.png'
+ogp_image_alt = ("(Murilo's) ROS2 Tutorial: hands-on tutorial on software for robotics, "
+                 "making and understanding custom nodes for physical and simulated robots.")
+ogp_social_cards = {'enable': False}
+ogp_custom_meta_tags = [
+    '<meta property="og:image:width" content="1200" />',
+    '<meta property="og:image:height" content="627" />',
+    '<meta name="twitter:card" content="summary_large_image" />',
 ]
 
 bibtex_bibfiles = ['refs.bib']
